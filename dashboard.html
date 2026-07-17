@@ -13,6 +13,10 @@
     --texto-sub: #8a8377;
     --acento: #33302a;
     --acento-suave: #cbc3b3;
+    --destacado-bg: #ece5d8;
+    --verde: #4d7358;
+    --ambar: #a97b34;
+    --rojo: #b0503f;
   }
   * { box-sizing: border-box; }
   body {
@@ -22,7 +26,7 @@
     margin: 0;
     padding: 2.5rem 3rem;
   }
-  header { margin-bottom: 2rem; }
+  header { margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .5rem; }
   h1 {
     font-family: Georgia, "Times New Roman", serif;
     letter-spacing: .04em;
@@ -32,6 +36,7 @@
     text-transform: uppercase;
   }
   .subtitulo { color: var(--texto-sub); font-size: .95rem; }
+  .actualizado { color: var(--texto-sub); font-size: .8rem; text-align: right; }
   h2 {
     font-family: Georgia, "Times New Roman", serif;
     font-weight: 400;
@@ -44,7 +49,7 @@
   }
   .kpi-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 1rem;
   }
   .kpi-card {
@@ -54,8 +59,23 @@
     padding: 1.2rem 1.4rem;
   }
   .kpi-label { font-size: .8rem; color: var(--texto-sub); text-transform: uppercase; letter-spacing: .03em; }
-  .kpi-valor { font-size: 1.6rem; margin-top: .3rem; font-weight: 600; }
+  .kpi-valor { font-size: 1.5rem; margin-top: .3rem; font-weight: 600; }
   .kpi-sub { font-size: .78rem; color: var(--texto-sub); margin-top: .2rem; }
+
+  .venta-hoy {
+    margin-top: 1.5rem;
+    background: var(--destacado-bg);
+    border: 1px solid var(--acento-suave);
+    border-radius: 12px;
+    padding: 1.4rem 1.6rem;
+  }
+  .venta-hoy-label { font-size: .78rem; text-transform: uppercase; letter-spacing: .03em; color: var(--texto-sub); }
+  .venta-hoy-valor { font-size: 2.4rem; font-weight: 700; margin: .2rem 0; }
+  .venta-hoy-comp { font-size: .9rem; color: var(--texto-sub); }
+  .venta-hoy-desglose { font-size: .85rem; color: var(--texto-sub); margin-top: .6rem; }
+  .pos { color: var(--verde); font-weight: 600; }
+  .neg { color: var(--rojo); font-weight: 600; }
+
   .suc-fila {
     display: grid;
     grid-template-columns: 160px 1fr 220px;
@@ -70,6 +90,41 @@
   .suc-barra-inv { background: #a89f8c; }
   .suc-cifras { text-align: right; font-size: .92rem; font-variant-numeric: tabular-nums; }
   .suc-trans { color: var(--texto-sub); font-size: .8rem; }
+
+  .cat-fila {
+    display: grid;
+    grid-template-columns: 130px 1fr 60px 150px;
+    align-items: center;
+    gap: .8rem;
+    padding: .55rem 0;
+    border-bottom: 1px solid var(--borde);
+  }
+  .cat-nombre { font-weight: 600; font-size: .85rem; }
+  .cat-barra-wrap { background: #ece7dd; border-radius: 6px; height: 10px; overflow: hidden; }
+  .cat-barra { height: 100%; border-radius: 6px; }
+  .cat-margen { font-size: .8rem; font-weight: 700; text-align: right; }
+  .cat-valor { text-align: right; font-size: .88rem; font-variant-numeric: tabular-nums; }
+  .cat-barra.margen-alto { background: var(--verde); }
+  .cat-barra.margen-medio { background: var(--ambar); }
+  .cat-barra.margen-bajo { background: var(--rojo); }
+  .cat-margen.margen-alto { color: var(--verde); }
+  .cat-margen.margen-medio { color: var(--ambar); }
+  .cat-margen.margen-bajo { color: var(--rojo); }
+
+  .ref-fila {
+    display: grid;
+    grid-template-columns: 28px 1fr 90px 130px;
+    align-items: center;
+    gap: .8rem;
+    padding: .5rem 0;
+    border-bottom: 1px solid var(--borde);
+    font-size: .88rem;
+  }
+  .ref-rank { color: var(--texto-sub); font-weight: 700; }
+  .ref-nombre { font-weight: 500; }
+  .ref-unidades { color: var(--texto-sub); text-align: right; }
+  .ref-valor { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+
   .subseccion {
     font-family: -apple-system, "Segoe UI", sans-serif;
     font-size: .85rem;
@@ -84,8 +139,24 @@
   .tabla-categorias th { color: var(--texto-sub); text-transform: uppercase; font-size: .72rem; letter-spacing: .03em; font-weight: 600; }
   .tabla-categorias td.num, .tabla-categorias th.num { text-align: right; font-variant-numeric: tabular-nums; }
   .tabla-categorias tr:last-child td { border-bottom: none; }
+
+  .tabla-scroll { overflow-x: auto; border: 1px solid var(--borde); border-radius: 10px; background: var(--card); }
+  .tabla-historico { width: 100%; border-collapse: collapse; font-size: .78rem; min-width: 900px; }
+  .tabla-historico th, .tabla-historico td { padding: .5rem .6rem; border-bottom: 1px solid var(--borde); text-align: left; white-space: nowrap; }
+  .tabla-historico th { color: var(--texto-sub); text-transform: uppercase; font-size: .68rem; letter-spacing: .02em; font-weight: 600; position: sticky; top: 0; background: var(--card); }
+  .tabla-historico td.num { text-align: right; }
+  .tabla-historico tr:last-child td { border-bottom: none; }
+  .hist-sucursal { font-weight: 600; position: sticky; left: 0; background: var(--card); }
+  .hist-actual { font-weight: 600; }
+  .hist-anterior { color: var(--texto-sub); font-size: .85em; }
+  .hist-var { font-size: .85em; }
+  .hist-vacio { color: var(--acento-suave); }
+
+  .grid-2col { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2rem; align-items: start; }
+  @media (max-width: 900px) { .grid-2col { grid-template-columns: 1fr; } }
+
   .nota {
-    margin-top: 2.5rem;
+    margin-top: 1.5rem;
     padding: 1rem 1.2rem;
     border: 1px dashed var(--acento-suave);
     border-radius: 8px;
@@ -97,65 +168,254 @@
 </head>
 <body>
   <header>
-    <h1>Divina Intuición</h1>
-    <div class="subtitulo">Dashboard Gerencial · Local 144 · Local 433 · Local 107 (Divina Accesorios)</div>
+    <div>
+      <h1>Divina Intuición</h1>
+      <div class="subtitulo">Dashboard Gerencial de Ventas · Local 144 · Local 433 · Local 107 (Divina Accesorios)</div>
+    </div>
+    <div class="actualizado">Datos actualizados hasta<br>2026-07-16 19:08:24</div>
   </header>
 
-  <h2>Mesa de Gerencia</h2>
+  <h2>Indicadores clave · Año 2026</h2>
   <div class="kpi-grid">
     <div class="kpi-card">
-      <div class="kpi-label">Ingreso total</div>
-      <div class="kpi-valor">$62.649.600</div>
-      <div class="kpi-sub">460 ventas</div>
+      <div class="kpi-label">Ventas</div>
+      <div class="kpi-valor">$587.476.449</div>
+      <div class="kpi-sub">4.279 transacciones</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Ticket promedio</div>
-      <div class="kpi-valor">$136.195</div>
+      <div class="kpi-valor">$137.293</div>
       
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">Utilidad (costo promedio)</div>
-      <div class="kpi-valor">$28.115.404</div>
+      <div class="kpi-label">Unidades vendidas</div>
+      <div class="kpi-valor">8.078</div>
       
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">Margen promedio</div>
-      <div class="kpi-valor">47.0%</div>
+      <div class="kpi-label">Utilidad</div>
+      <div class="kpi-valor">$267.468.925</div>
       
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">Anuladas</div>
-      <div class="kpi-valor">17</div>
-      <div class="kpi-sub">excluidas del ingreso</div>
+      <div class="kpi-label">Margen</div>
+      <div class="kpi-valor">47.2%</div>
+      
+    </div></div>
+  
+  <div class="venta-hoy">
+    <div class="venta-hoy-label">Venta hoy · 39 transacciones</div>
+    <div class="venta-hoy-valor">$5.189.000</div>
+    <div class="venta-hoy-comp">Ayer: $4.879.000 &nbsp;<span class="pos">▲ 6.4% vs ayer</span></div>
+    <div class="venta-hoy-desglose">Local 144: $3.135.000 · Local 433: $1.608.000 · Local 107: $446.000</div>
+  </div>
+
+  <h2>Mes en curso</h2>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Ventas</div>
+      <div class="kpi-valor">$62.584.600</div>
+      <div class="kpi-sub">459 transacciones</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Ticket promedio</div>
+      <div class="kpi-valor">$136.350</div>
+      
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Utilidad</div>
+      <div class="kpi-valor">$28.073.814</div>
+      
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Margen</div>
+      <div class="kpi-valor">46.9%</div>
+      
     </div></div>
 
-  <h2>Ventas por Punto de Venta</h2>
+  <h2>Ventas por Punto de Venta · Año 2026</h2>
   <div>
     <div class="suc-fila">
       <div class="suc-nombre">Local 144</div>
       <div class="suc-barra-wrap">
-        <div class="suc-barra" style="width:100.0%"></div>
+        <div class="suc-barra " style="width:100.0%"></div>
       </div>
-      <div class="suc-cifras">$37.000.000 <span class="suc-trans">· 217 ventas</span></div>
+      <div class="suc-cifras">$369.307.700 <span class="suc-trans">· 2.324 ventas</span></div>
     </div>
     <div class="suc-fila">
       <div class="suc-nombre">Local 433</div>
       <div class="suc-barra-wrap">
-        <div class="suc-barra" style="width:53.0%"></div>
+        <div class="suc-barra " style="width:48.8%"></div>
       </div>
-      <div class="suc-cifras">$19.624.000 <span class="suc-trans">· 120 ventas</span></div>
+      <div class="suc-cifras">$180.191.000 <span class="suc-trans">· 1.121 ventas</span></div>
     </div>
     <div class="suc-fila">
       <div class="suc-nombre">Local 107</div>
       <div class="suc-barra-wrap">
-        <div class="suc-barra" style="width:16.3%"></div>
+        <div class="suc-barra " style="width:10.3%"></div>
       </div>
-      <div class="suc-cifras">$6.025.600 <span class="suc-trans">· 123 ventas</span></div>
+      <div class="suc-cifras">$37.977.749 <span class="suc-trans">· 834 ventas</span></div>
     </div></div>
 
-  <div class="nota">
-    Periodo mostrado: 2026-06-30 a 2026-07-16 (ventana visible por defecto de Effi al momento de la descarga).
-    Ingreso calculado solo sobre remisiones con estado "Pago total" — excluye 17 remisiones anuladas.
+  <div class="grid-2col">
+    <div>
+      <h2>Rentabilidad por categoría · Año 2026</h2>
+      <div>
+    <div class="cat-fila">
+      <div class="cat-nombre">PANTALONES</div>
+      <div class="cat-barra-wrap">
+        <div class="cat-barra margen-alto" style="width:100.0%"></div>
+      </div>
+      <div class="cat-margen margen-alto">43.1%</div>
+      <div class="cat-valor">$156.509.700</div>
+    </div>
+    <div class="cat-fila">
+      <div class="cat-nombre">BLUSAS</div>
+      <div class="cat-barra-wrap">
+        <div class="cat-barra margen-alto" style="width:58.6%"></div>
+      </div>
+      <div class="cat-margen margen-alto">55.1%</div>
+      <div class="cat-valor">$91.704.600</div>
+    </div>
+    <div class="cat-fila">
+      <div class="cat-nombre">CHAQUETAS</div>
+      <div class="cat-barra-wrap">
+        <div class="cat-barra margen-medio" style="width:45.4%"></div>
+      </div>
+      <div class="cat-margen margen-medio">39.9%</div>
+      <div class="cat-valor">$71.087.250</div>
+    </div>
+    <div class="cat-fila">
+      <div class="cat-nombre">CONJUNTOS</div>
+      <div class="cat-barra-wrap">
+        <div class="cat-barra margen-medio" style="width:28.7%"></div>
+      </div>
+      <div class="cat-margen margen-medio">36.4%</div>
+      <div class="cat-valor">$44.884.000</div>
+    </div>
+    <div class="cat-fila">
+      <div class="cat-nombre">VESTIDOS</div>
+      <div class="cat-barra-wrap">
+        <div class="cat-barra margen-alto" style="width:27.3%"></div>
+      </div>
+      <div class="cat-margen margen-alto">45.4%</div>
+      <div class="cat-valor">$42.658.150</div>
+    </div>
+    <div class="cat-fila">
+      <div class="cat-nombre">CORSET</div>
+      <div class="cat-barra-wrap">
+        <div class="cat-barra margen-alto" style="width:25.2%"></div>
+      </div>
+      <div class="cat-margen margen-alto">44.8%</div>
+      <div class="cat-valor">$39.380.000</div>
+    </div>
+    <div class="cat-fila">
+      <div class="cat-nombre">BODYS</div>
+      <div class="cat-barra-wrap">
+        <div class="cat-barra margen-alto" style="width:22.4%"></div>
+      </div>
+      <div class="cat-margen margen-alto">57.2%</div>
+      <div class="cat-valor">$35.050.000</div>
+    </div>
+    <div class="cat-fila">
+      <div class="cat-nombre">BUZOS</div>
+      <div class="cat-barra-wrap">
+        <div class="cat-barra margen-alto" style="width:17.3%"></div>
+      </div>
+      <div class="cat-margen margen-alto">48.6%</div>
+      <div class="cat-valor">$27.076.000</div>
+    </div>
+    <div class="cat-fila">
+      <div class="cat-nombre">FALDAS</div>
+      <div class="cat-barra-wrap">
+        <div class="cat-barra margen-alto" style="width:15.0%"></div>
+      </div>
+      <div class="cat-margen margen-alto">47.5%</div>
+      <div class="cat-valor">$23.490.000</div>
+    </div>
+    <div class="cat-fila">
+      <div class="cat-nombre">CADENAS</div>
+      <div class="cat-barra-wrap">
+        <div class="cat-barra margen-medio" style="width:7.3%"></div>
+      </div>
+      <div class="cat-margen margen-medio">38.8%</div>
+      <div class="cat-valor">$11.462.000</div>
+    </div></div>
+    </div>
+    <div>
+      <h2>Top referencias · ventas netas</h2>
+      <div>
+    <div class="ref-fila">
+      <div class="ref-rank">1</div>
+      <div class="ref-nombre">Capa Jean</div>
+      <div class="ref-unidades">75 und.</div>
+      <div class="ref-valor">$9.510.000</div>
+    </div>
+    <div class="ref-fila">
+      <div class="ref-rank">2</div>
+      <div class="ref-nombre">Capa Jean Azul Clara Tu</div>
+      <div class="ref-unidades">39 und.</div>
+      <div class="ref-valor">$5.040.000</div>
+    </div>
+    <div class="ref-fila">
+      <div class="ref-rank">3</div>
+      <div class="ref-nombre">Body Basico Redondo</div>
+      <div class="ref-unidades">76 und.</div>
+      <div class="ref-valor">$4.447.000</div>
+    </div>
+    <div class="ref-fila">
+      <div class="ref-rank">4</div>
+      <div class="ref-nombre">Capa Jean Gamuza</div>
+      <div class="ref-unidades">30 und.</div>
+      <div class="ref-valor">$4.180.000</div>
+    </div>
+    <div class="ref-fila">
+      <div class="ref-rank">5</div>
+      <div class="ref-nombre">Set Jean Sol  T8</div>
+      <div class="ref-unidades">19 und.</div>
+      <div class="ref-valor">$3.658.000</div>
+    </div>
+    <div class="ref-fila">
+      <div class="ref-rank">6</div>
+      <div class="ref-nombre">Camisa Colombia W  Tu</div>
+      <div class="ref-unidades">36 und.</div>
+      <div class="ref-valor">$3.343.000</div>
+    </div>
+    <div class="ref-fila">
+      <div class="ref-rank">7</div>
+      <div class="ref-nombre">Chamarra Cuero Corta Vinotinto</div>
+      <div class="ref-unidades">23 und.</div>
+      <div class="ref-valor">$2.930.000</div>
+    </div>
+    <div class="ref-fila">
+      <div class="ref-rank">8</div>
+      <div class="ref-nombre">Sudadera Zoe Negro</div>
+      <div class="ref-unidades">22 und.</div>
+      <div class="ref-valor">$2.925.000</div>
+    </div>
+    <div class="ref-fila">
+      <div class="ref-rank">9</div>
+      <div class="ref-nombre">Falda Short Georgina Negra</div>
+      <div class="ref-unidades">37 und.</div>
+      <div class="ref-valor">$2.775.000</div>
+    </div>
+    <div class="ref-fila">
+      <div class="ref-rank">10</div>
+      <div class="ref-nombre">Chamarra Hombro Cafe</div>
+      <div class="ref-unidades">20 und.</div>
+      <div class="ref-valor">$2.750.000</div>
+    </div></div>
+    </div>
+  </div>
+
+  
+  <h2>Comparativo histórico por sucursal</h2>
+  <div class="subtitulo" style="margin-bottom:1rem;">2025 vs 2026 · Total neto por mes</div>
+  <div class="tabla-scroll">
+  <table class="tabla-historico">
+    <thead><tr><th>Sucursal</th><th class='num'>Ene</th><th class='num'>Feb</th><th class='num'>Mar</th><th class='num'>Abr</th><th class='num'>May</th><th class='num'>Jun</th><th class='num'>Jul</th><th class='num'>Ago</th><th class='num'>Sep</th><th class='num'>Oct</th><th class='num'>Nov</th><th class='num'>Dic</th></tr></thead>
+    <tbody><tr><td class="hist-sucursal">Local 144</td><td class="num"><div class="hist-actual">$23.979.000</div></td><td class="num"><div class="hist-actual">$42.869.000</div></td><td class="num"><div class="hist-actual">$52.025.000</div></td><td class="num"><div class="hist-actual">$53.181.000</div><div class="hist-anterior">$28.637.000</div><div class="hist-var pos">+85.7%</div></td><td class="num"><div class="hist-actual">$67.411.700</div><div class="hist-anterior">$38.333.000</div><div class="hist-var pos">+75.9%</div></td><td class="num"><div class="hist-actual">$92.907.000</div><div class="hist-anterior">$55.238.000</div><div class="hist-var pos">+68.2%</div></td><td class="num"><div class="hist-actual">$36.935.000</div><div class="hist-anterior">$67.493.000</div><div class="hist-var neg">-45.3%</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$76.087.000</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$68.241.000</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$88.544.000</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$100.255.000</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$215.957.000</div></td></tr><tr><td class="hist-sucursal">Local 433</td><td class="num"><div class="hist-actual">$9.239.000</div></td><td class="num"><div class="hist-actual">$17.693.000</div></td><td class="num"><div class="hist-actual">$26.841.000</div></td><td class="num"><div class="hist-actual">$26.158.000</div><div class="hist-anterior">$13.716.000</div><div class="hist-var pos">+90.7%</div></td><td class="num"><div class="hist-actual">$38.744.000</div><div class="hist-anterior">$19.603.000</div><div class="hist-var pos">+97.6%</div></td><td class="num"><div class="hist-actual">$41.892.000</div><div class="hist-anterior">$22.437.000</div><div class="hist-var pos">+86.7%</div></td><td class="num"><div class="hist-actual">$19.624.000</div><div class="hist-anterior">$34.098.000</div><div class="hist-var neg">-42.4%</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$30.556.000</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$28.319.000</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$34.475.000</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$54.348.000</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$130.351.000</div></td></tr><tr><td class="hist-sucursal">Local 107</td><td class="num hist-vacio">—</td><td class="num hist-vacio">—</td><td class="num hist-vacio">—</td><td class="num"><div class="hist-actual">$9.212.100</div></td><td class="num"><div class="hist-actual">$10.525.249</div></td><td class="num"><div class="hist-actual">$12.214.800</div></td><td class="num"><div class="hist-actual">$6.025.600</div></td><td class="num hist-vacio">—</td><td class="num hist-vacio">—</td><td class="num hist-vacio">—</td><td class="num hist-vacio">—</td><td class="num hist-vacio">—</td></tr></tbody>
+  </table>
   </div>
 
   
@@ -264,8 +524,12 @@
     requiere cruzar este inventario con velocidad de venta por artículo — próxima iteración.
   </div>
 
-  <div class="nota">Pendiente: Comercial/Comisiones — se agrega cuando definamos el escalafón con el negocio.</div>
+  <div class="nota">
+    Cartera: 3 remisiones pendientes de cobro por $198.000 ·
+    332 remisiones anuladas excluidas del histórico.
+    Pendiente: escalafón de Comisiones (falta definir con el negocio) e índice de cobertura por SKU.
+  </div>
 
-  <footer>Generado el 2026-07-16 22:26 · datos de Effi Systems</footer>
+  <footer>Generado el 2026-07-16 23:02 · datos de Effi Systems</footer>
 </body>
 </html>

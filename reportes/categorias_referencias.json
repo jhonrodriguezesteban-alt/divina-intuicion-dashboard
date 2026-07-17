@@ -1,0 +1,599 @@
+{
+  "anio_actual": {
+    "unidades_totales": 8078,
+    "categorias": [
+      {
+        "categoria": "PANTALONES",
+        "ventas_netas": 156509700.05,
+        "utilidad": 67392106.7,
+        "unidades": 1363,
+        "margen": 0.4306
+      },
+      {
+        "categoria": "BLUSAS",
+        "ventas_netas": 91704600.0,
+        "utilidad": 50579000.0,
+        "unidades": 1426,
+        "margen": 0.5515
+      },
+      {
+        "categoria": "CHAQUETAS",
+        "ventas_netas": 71087249.99,
+        "utilidad": 28328554.61,
+        "unidades": 551,
+        "margen": 0.3985
+      },
+      {
+        "categoria": "CONJUNTOS",
+        "ventas_netas": 44884000.0,
+        "utilidad": 16313563.46,
+        "unidades": 308,
+        "margen": 0.3635
+      },
+      {
+        "categoria": "VESTIDOS",
+        "ventas_netas": 42658150.22,
+        "utilidad": 19377546.4,
+        "unidades": 376,
+        "margen": 0.4543
+      },
+      {
+        "categoria": "CORSET",
+        "ventas_netas": 39380000.0,
+        "utilidad": 17622000.0,
+        "unidades": 548,
+        "margen": 0.4475
+      },
+      {
+        "categoria": "BODYS",
+        "ventas_netas": 35050000.17,
+        "utilidad": 20060008.55,
+        "unidades": 537,
+        "margen": 0.5723
+      },
+      {
+        "categoria": "BUZOS",
+        "ventas_netas": 27076000.0,
+        "utilidad": 13153000.0,
+        "unidades": 345,
+        "margen": 0.4858
+      },
+      {
+        "categoria": "FALDAS",
+        "ventas_netas": 23490000.0,
+        "utilidad": 11148000.0,
+        "unidades": 298,
+        "margen": 0.4746
+      },
+      {
+        "categoria": "CADENAS",
+        "ventas_netas": 11461999.68,
+        "utilidad": 4444819.06,
+        "unidades": 392,
+        "margen": 0.3878
+      },
+      {
+        "categoria": "CHALECOS",
+        "ventas_netas": 8910000.0,
+        "utilidad": 3818000.0,
+        "unidades": 96,
+        "margen": 0.4285
+      },
+      {
+        "categoria": "ARETES",
+        "ventas_netas": 8339499.68,
+        "utilidad": 3207751.83,
+        "unidades": 444,
+        "margen": 0.3846
+      },
+      {
+        "categoria": "PULSERAS",
+        "ventas_netas": 6609999.67,
+        "utilidad": 2390704.5,
+        "unidades": 242,
+        "margen": 0.3617
+      },
+      {
+        "categoria": "ANILLOS",
+        "ventas_netas": 4303249.44,
+        "utilidad": 2011983.56,
+        "unidades": 259,
+        "margen": 0.4675
+      },
+      {
+        "categoria": "BLAZER",
+        "ventas_netas": 2675000.0,
+        "utilidad": 1120000.0,
+        "unidades": 30,
+        "margen": 0.4187
+      },
+      {
+        "categoria": "GENERICOS",
+        "ventas_netas": 2627000.0,
+        "utilidad": 1563000.0,
+        "unidades": 76,
+        "margen": 0.595
+      },
+      {
+        "categoria": "TOPOS",
+        "ventas_netas": 2463000.04,
+        "utilidad": 921747.09,
+        "unidades": 147,
+        "margen": 0.3742
+      },
+      {
+        "categoria": "EARCUF",
+        "ventas_netas": 1579999.96,
+        "utilidad": 597737.19,
+        "unidades": 93,
+        "margen": 0.3783
+      },
+      {
+        "categoria": "ACCESORIOS",
+        "ventas_netas": 1536000.01,
+        "utilidad": 831524.42,
+        "unidades": 45,
+        "margen": 0.5414
+      },
+      {
+        "categoria": "JUEGOS",
+        "ventas_netas": 1000999.99,
+        "utilidad": 351205.03,
+        "unidades": 25,
+        "margen": 0.3509
+      },
+      {
+        "categoria": "SHORTS",
+        "ventas_netas": 895000.0,
+        "utilidad": 510000.0,
+        "unidades": 11,
+        "margen": 0.5698
+      },
+      {
+        "categoria": "GARGANTILLAS",
+        "ventas_netas": 871000.02,
+        "utilidad": 308532.79,
+        "unidades": 22,
+        "margen": 0.3542
+      },
+      {
+        "categoria": "BRAZALETE",
+        "ventas_netas": 840999.95,
+        "utilidad": 316022.65,
+        "unidades": 34,
+        "margen": 0.3758
+      },
+      {
+        "categoria": "TOBILLERAS",
+        "ventas_netas": 435000.03,
+        "utilidad": 179896.24,
+        "unidades": 31,
+        "margen": 0.4136
+      }
+    ],
+    "top_referencias": [
+      {
+        "codigo": "1727",
+        "nombre": "CAPA JEAN",
+        "unidades": 75,
+        "ventas_netas": 9510000.0
+      },
+      {
+        "codigo": "1727",
+        "nombre": "CAPA JEAN AZUL CLARA TU",
+        "unidades": 39,
+        "ventas_netas": 5040000.1
+      },
+      {
+        "codigo": "1096",
+        "nombre": "BODY BASICO REDONDO",
+        "unidades": 76,
+        "ventas_netas": 4447000.0
+      },
+      {
+        "codigo": "2121",
+        "nombre": "CAPA JEAN GAMUZA",
+        "unidades": 30,
+        "ventas_netas": 4180000.0
+      },
+      {
+        "codigo": "2861",
+        "nombre": "SET JEAN SOL  T8",
+        "unidades": 19,
+        "ventas_netas": 3658000.0
+      },
+      {
+        "codigo": "3215",
+        "nombre": "CAMISA COLOMBIA W  TU",
+        "unidades": 36,
+        "ventas_netas": 3343000.0
+      },
+      {
+        "codigo": "1067",
+        "nombre": "CHAMARRA CUERO CORTA VINOTINTO",
+        "unidades": 23,
+        "ventas_netas": 2930000.0
+      },
+      {
+        "codigo": "999",
+        "nombre": "SUDADERA ZOE NEGRO",
+        "unidades": 22,
+        "ventas_netas": 2925000.0
+      },
+      {
+        "codigo": "209",
+        "nombre": "FALDA SHORT GEORGINA NEGRA",
+        "unidades": 37,
+        "ventas_netas": 2775000.0
+      },
+      {
+        "codigo": "1758",
+        "nombre": "CHAMARRA HOMBRO CAFE",
+        "unidades": 20,
+        "ventas_netas": 2750000.0
+      },
+      {
+        "codigo": "3033",
+        "nombre": "CAPA JEAN AZUL OSCURO TU",
+        "unidades": 21,
+        "ventas_netas": 2730000.06
+      },
+      {
+        "codigo": "2862",
+        "nombre": "SET JEAN SOL  T10",
+        "unidades": 14,
+        "ventas_netas": 2700000.0
+      },
+      {
+        "codigo": "911",
+        "nombre": "CAMISA OVERZISE BASIC",
+        "unidades": 36,
+        "ventas_netas": 2655000.0
+      },
+      {
+        "codigo": "326",
+        "nombre": "PROMOCIONES",
+        "unidades": 76,
+        "ventas_netas": 2627000.0
+      },
+      {
+        "codigo": "999",
+        "nombre": "SUDADERA ZOE NEGRO TU",
+        "unidades": 18,
+        "ventas_netas": 2530000.0
+      },
+      {
+        "codigo": "2743",
+        "nombre": "BLUSA PARIS NEGRO TU",
+        "unidades": 30,
+        "ventas_netas": 2503000.0
+      },
+      {
+        "codigo": "2578",
+        "nombre": "CAPA VINTAGE  TU",
+        "unidades": 19,
+        "ventas_netas": 2460000.0
+      },
+      {
+        "codigo": "1443",
+        "nombre": "JEAN GRIS ANIMAL PRINT T6",
+        "unidades": 17,
+        "ventas_netas": 2335000.0
+      },
+      {
+        "codigo": "461",
+        "nombre": "CHAMARRA CUERO CORTA NEGRO",
+        "unidades": 18,
+        "ventas_netas": 2330000.0
+      },
+      {
+        "codigo": "1018",
+        "nombre": "BUZO BORREGO URBAN MARFIL",
+        "unidades": 24,
+        "ventas_netas": 2260000.0
+      }
+    ]
+  },
+  "historico": {
+    "unidades_totales": 22369,
+    "categorias": [
+      {
+        "categoria": "PANTALONES",
+        "ventas_netas": 529579700.05,
+        "utilidad": 215485106.7,
+        "unidades": 4937,
+        "margen": 0.4069
+      },
+      {
+        "categoria": "BLUSAS",
+        "ventas_netas": 287995600.0,
+        "utilidad": 147508000.0,
+        "unidades": 4943,
+        "margen": 0.5122
+      },
+      {
+        "categoria": "CHAQUETAS",
+        "ventas_netas": 203868249.99,
+        "utilidad": 80832554.61,
+        "unidades": 1734,
+        "margen": 0.3965
+      },
+      {
+        "categoria": "CORSET",
+        "ventas_netas": 123088000.0,
+        "utilidad": 51204000.0,
+        "unidades": 1769,
+        "margen": 0.416
+      },
+      {
+        "categoria": "BODYS",
+        "ventas_netas": 111888000.17,
+        "utilidad": 62768008.55,
+        "unidades": 2012,
+        "margen": 0.561
+      },
+      {
+        "categoria": "CONJUNTOS",
+        "ventas_netas": 99662000.0,
+        "utilidad": 34411563.46,
+        "unidades": 794,
+        "margen": 0.3453
+      },
+      {
+        "categoria": "VESTIDOS",
+        "ventas_netas": 88574150.22,
+        "utilidad": 41023546.4,
+        "unidades": 868,
+        "margen": 0.4632
+      },
+      {
+        "categoria": "BUZOS",
+        "ventas_netas": 87934000.0,
+        "utilidad": 38995000.0,
+        "unidades": 1200,
+        "margen": 0.4435
+      },
+      {
+        "categoria": "FALDAS",
+        "ventas_netas": 79404000.0,
+        "utilidad": 35750000.0,
+        "unidades": 1069,
+        "margen": 0.4502
+      },
+      {
+        "categoria": "CHALECOS",
+        "ventas_netas": 30737000.0,
+        "utilidad": 12271000.0,
+        "unidades": 415,
+        "margen": 0.3992
+      },
+      {
+        "categoria": "BLAZER",
+        "ventas_netas": 13825000.0,
+        "utilidad": 4970000.0,
+        "unidades": 176,
+        "margen": 0.3595
+      },
+      {
+        "categoria": "CADENAS",
+        "ventas_netas": 11461999.68,
+        "utilidad": 4444819.06,
+        "unidades": 392,
+        "margen": 0.3878
+      },
+      {
+        "categoria": "GENERICOS",
+        "ventas_netas": 9136000.0,
+        "utilidad": 4794000.0,
+        "unidades": 284,
+        "margen": 0.5247
+      },
+      {
+        "categoria": "ARETES",
+        "ventas_netas": 8339499.68,
+        "utilidad": 3207751.83,
+        "unidades": 444,
+        "margen": 0.3846
+      },
+      {
+        "categoria": "PULSERAS",
+        "ventas_netas": 6609999.67,
+        "utilidad": 2390704.5,
+        "unidades": 242,
+        "margen": 0.3617
+      },
+      {
+        "categoria": "ANILLOS",
+        "ventas_netas": 4303249.44,
+        "utilidad": 2011983.56,
+        "unidades": 259,
+        "margen": 0.4675
+      },
+      {
+        "categoria": "TOPOS",
+        "ventas_netas": 2463000.04,
+        "utilidad": 921747.09,
+        "unidades": 147,
+        "margen": 0.3742
+      },
+      {
+        "categoria": "CAMISAS",
+        "ventas_netas": 2129000.0,
+        "utilidad": 685000.0,
+        "unidades": 38,
+        "margen": 0.3217
+      },
+      {
+        "categoria": "ACCESORIOS",
+        "ventas_netas": 1701000.01,
+        "utilidad": 924524.42,
+        "unidades": 51,
+        "margen": 0.5435
+      },
+      {
+        "categoria": "EARCUF",
+        "ventas_netas": 1579999.96,
+        "utilidad": 597737.19,
+        "unidades": 93,
+        "margen": 0.3783
+      },
+      {
+        "categoria": "JUEGOS",
+        "ventas_netas": 1000999.99,
+        "utilidad": 351205.03,
+        "unidades": 25,
+        "margen": 0.3509
+      },
+      {
+        "categoria": "SHORTS",
+        "ventas_netas": 895000.0,
+        "utilidad": 510000.0,
+        "unidades": 11,
+        "margen": 0.5698
+      },
+      {
+        "categoria": "GARGANTILLAS",
+        "ventas_netas": 871000.02,
+        "utilidad": 308532.79,
+        "unidades": 22,
+        "margen": 0.3542
+      },
+      {
+        "categoria": "BRAZALETE",
+        "ventas_netas": 840999.95,
+        "utilidad": 316022.65,
+        "unidades": 34,
+        "margen": 0.3758
+      },
+      {
+        "categoria": "TOBILLERAS",
+        "ventas_netas": 435000.03,
+        "utilidad": 179896.24,
+        "unidades": 31,
+        "margen": 0.4136
+      }
+    ],
+    "top_referencias": [
+      {
+        "codigo": "1727",
+        "nombre": "CAPA JEAN",
+        "unidades": 179,
+        "ventas_netas": 21544000.0
+      },
+      {
+        "codigo": "1096",
+        "nombre": "BODY BASICO REDONDO",
+        "unidades": 297,
+        "ventas_netas": 15007000.0
+      },
+      {
+        "codigo": "545",
+        "nombre": "CORSET COPA LARGO NEGRO",
+        "unidades": 199,
+        "ventas_netas": 14763000.0
+      },
+      {
+        "codigo": "547",
+        "nombre": "CORSET COPA LARGO CAFE",
+        "unidades": 162,
+        "ventas_netas": 12035000.0
+      },
+      {
+        "codigo": "461",
+        "nombre": "CHAMARRA CUERO NEGRO",
+        "unidades": 100,
+        "ventas_netas": 11445000.0
+      },
+      {
+        "codigo": "698",
+        "nombre": "BLUSA SALOME MARFIL",
+        "unidades": 177,
+        "ventas_netas": 9866000.0
+      },
+      {
+        "codigo": "544",
+        "nombre": "CORSET COPA LARGO BLANCO",
+        "unidades": 125,
+        "ventas_netas": 9280000.0
+      },
+      {
+        "codigo": "991",
+        "nombre": "BLUSA BODY ENCAJE NEGRO",
+        "unidades": 141,
+        "ventas_netas": 9066000.0
+      },
+      {
+        "codigo": "6",
+        "nombre": "BUZO TEJIDO CEREZAS BLANCO",
+        "unidades": 105,
+        "ventas_netas": 8811000.0
+      },
+      {
+        "codigo": "1443",
+        "nombre": "JEAN GRIS ANIMAL PRINT T6",
+        "unidades": 62,
+        "ventas_netas": 8605000.0
+      },
+      {
+        "codigo": "613",
+        "nombre": "CORSET COPA LARGO VINOTINTO",
+        "unidades": 114,
+        "ventas_netas": 8490000.0
+      },
+      {
+        "codigo": "460",
+        "nombre": "CHAMARRA CUERO CAFE",
+        "unidades": 74,
+        "ventas_netas": 8460000.0
+      },
+      {
+        "codigo": "1173",
+        "nombre": "JEAN BAGGY MERAKI T4",
+        "unidades": 73,
+        "ventas_netas": 8295000.0
+      },
+      {
+        "codigo": "1174",
+        "nombre": "JEAN BAGGY MERAKI T6",
+        "unidades": 70,
+        "ventas_netas": 7960000.0
+      },
+      {
+        "codigo": "999",
+        "nombre": "SUDADERA ZOE NEGRO",
+        "unidades": 64,
+        "ventas_netas": 7855000.0
+      },
+      {
+        "codigo": "1175",
+        "nombre": "JEAN BAGGY MERAKI T8",
+        "unidades": 70,
+        "ventas_netas": 7805000.0
+      },
+      {
+        "codigo": "1176",
+        "nombre": "JEAN BAGGY MERAKI T10",
+        "unidades": 68,
+        "ventas_netas": 7690000.0
+      },
+      {
+        "codigo": "209",
+        "nombre": "FALDA SHORT TELA NEGRA",
+        "unidades": 107,
+        "ventas_netas": 7544000.0
+      },
+      {
+        "codigo": "1215",
+        "nombre": "BLUSA RADICAL",
+        "unidades": 108,
+        "ventas_netas": 7510000.0
+      },
+      {
+        "codigo": "703",
+        "nombre": "BLUSA SALOME NEGRO",
+        "unidades": 129,
+        "ventas_netas": 7437000.0
+      }
+    ]
+  }
+}
