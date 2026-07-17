@@ -1,0 +1,8 @@
+{
+  "_comentario": "Mapeo de sucursales de Divina Intuición tal como deberían aparecer/identificarse en Effi. Ajustar 'nombre_effi' cuando confirmemos cómo las nombra el ERP exactamente (puede diferir del nombre comercial).",
+  "sucursales": [
+    { "codigo": "144", "nombre": "Local 144", "nombre_effi": "" },
+    { "codigo": "107", "nombre": "Local 107", "nombre_effi": "" },
+    { "codigo": "433", "nombre": "Local 433", "nombre_effi": "" }
+  ]
+}

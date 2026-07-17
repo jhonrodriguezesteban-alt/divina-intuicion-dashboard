@@ -1,0 +1,17 @@
+{
+  "_comentario": "Configuración del índice de cobertura de inventario (rotación) para el módulo de solicitud de pedidos a proveedores. Arranca a nivel general para todo el catálogo; más adelante se refina por línea de producto (nuevo / línea actual / antiguo / viejo) según lo conversado.",
+  "dias_cobertura_objetivo": 30,
+  "dias_cobertura_alerta": 15,
+  "dias_cobertura_critico": 7,
+  "metodo": "venta_promedio_diaria",
+  "ventana_venta_promedio_dias": 30,
+  "clasificacion_antiguedad": {
+    "_comentario": "Pendiente de definir con el negocio: a partir de qué antigüedad (días sin rotar / fecha de ingreso) un producto pasa de línea actual -> antiguo -> viejo.",
+    "linea_actual_dias_max": null,
+    "antiguo_dias_max": null
+  },
+  "categorias_excluidas": {
+    "_comentario": "Categorías Effi que son basura para efectos de inventario real (genéricos, gastos, administrativo, etc.). Completar cuando veamos el catálogo real.",
+    "codigos": []
+  }
+}

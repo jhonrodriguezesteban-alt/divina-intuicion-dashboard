@@ -1,0 +1,4 @@
+{
+  "_comentario": "Mapeo categoría Effi -> familia de negocio (ej. Camisas, Pantalones, Vestidos, Accesorios...). Nunca es 1:1 automático; se completa manualmente al ver el catálogo real de Divina Intuición. Formato: 'CATEGORIA_EFFI': 'Familia de negocio'.",
+  "mapeo": {}
+}

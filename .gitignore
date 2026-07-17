@@ -1,0 +1,19 @@
+# Sesión y credenciales — nunca se versionan
+*.session.json
+*_credentials*
+.env
+
+# Datos crudos descargados de Effi (se regeneran, no se versionan)
+reportes/raw/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Sistema
+.DS_Store
+
+# Estado interno del harness/agente, no es parte del proyecto
+.claude/

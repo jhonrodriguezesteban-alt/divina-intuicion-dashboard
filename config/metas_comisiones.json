@@ -1,0 +1,10 @@
+{
+  "_comentario": "Escalafón de comisiones y metas por vendedor/sucursal. Pendiente: definir con el negocio el orden/tramos de comisión de esta marca. El dashboard debe leer este archivo, nunca hardcodear metas en el código de generación de HTML.",
+  "periodo_actual": "",
+  "metas_por_sucursal": {
+    "144": null,
+    "107": null,
+    "433": null
+  },
+  "escalafon_comision": []
+}
