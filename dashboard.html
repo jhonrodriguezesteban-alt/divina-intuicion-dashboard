@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Divina Intuición — Dashboard Gerencial</title>
+<style>
+  :root {
+    --bg: #f4f1ec;
+    --card: #ffffff;
+    --borde: #e6e1d8;
+    --texto: #2b2823;
+    --texto-sub: #8a8377;
+    --acento: #33302a;
+    --acento-suave: #cbc3b3;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--texto);
+    margin: 0;
+    padding: 2.5rem 3rem;
+  }
+  header { margin-bottom: 2rem; }
+  h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    letter-spacing: .04em;
+    font-weight: 400;
+    font-size: 1.9rem;
+    margin: 0 0 .3rem 0;
+    text-transform: uppercase;
+  }
+  .subtitulo { color: var(--texto-sub); font-size: .95rem; }
+  h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: .5rem;
+    margin: 2.5rem 0 1.2rem 0;
+  }
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .kpi-card {
+    background: var(--card);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+  }
+  .kpi-label { font-size: .8rem; color: var(--texto-sub); text-transform: uppercase; letter-spacing: .03em; }
+  .kpi-valor { font-size: 1.6rem; margin-top: .3rem; font-weight: 600; }
+  .kpi-sub { font-size: .78rem; color: var(--texto-sub); margin-top: .2rem; }
+  .suc-fila {
+    display: grid;
+    grid-template-columns: 160px 1fr 220px;
+    align-items: center;
+    gap: 1rem;
+    padding: .7rem 0;
+    border-bottom: 1px solid var(--borde);
+  }
+  .suc-nombre { font-weight: 600; font-size: .92rem; }
+  .suc-barra-wrap { background: #ece7dd; border-radius: 6px; height: 14px; overflow: hidden; }
+  .suc-barra { background: var(--acento); height: 100%; border-radius: 6px; }
+  .suc-cifras { text-align: right; font-size: .92rem; font-variant-numeric: tabular-nums; }
+  .suc-trans { color: var(--texto-sub); font-size: .8rem; }
+  .nota {
+    margin-top: 2.5rem;
+    padding: 1rem 1.2rem;
+    border: 1px dashed var(--acento-suave);
+    border-radius: 8px;
+    font-size: .85rem;
+    color: var(--texto-sub);
+  }
+  footer { margin-top: 2rem; font-size: .75rem; color: var(--texto-sub); }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Divina Intuición</h1>
+    <div class="subtitulo">Dashboard Gerencial · Local 144 · Local 433 · Local 107 (Divina Accesorios)</div>
+  </header>
+
+  <h2>Mesa de Gerencia</h2>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Ingreso total</div>
+      <div class="kpi-valor">$62.649.600</div>
+      <div class="kpi-sub">460 ventas</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Ticket promedio</div>
+      <div class="kpi-valor">$136.195</div>
+      
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Utilidad (costo promedio)</div>
+      <div class="kpi-valor">$28.115.404</div>
+      
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Margen promedio</div>
+      <div class="kpi-valor">47.0%</div>
+      
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Anuladas</div>
+      <div class="kpi-valor">17</div>
+      <div class="kpi-sub">excluidas del ingreso</div>
+    </div></div>
+
+  <h2>Ventas por Punto de Venta</h2>
+  <div>
+    <div class="suc-fila">
+      <div class="suc-nombre">Local 144</div>
+      <div class="suc-barra-wrap">
+        <div class="suc-barra" style="width:100.0%"></div>
+      </div>
+      <div class="suc-cifras">$37.000.000 <span class="suc-trans">· 217 ventas</span></div>
+    </div>
+    <div class="suc-fila">
+      <div class="suc-nombre">Local 433</div>
+      <div class="suc-barra-wrap">
+        <div class="suc-barra" style="width:53.0%"></div>
+      </div>
+      <div class="suc-cifras">$19.624.000 <span class="suc-trans">· 120 ventas</span></div>
+    </div>
+    <div class="suc-fila">
+      <div class="suc-nombre">Local 107</div>
+      <div class="suc-barra-wrap">
+        <div class="suc-barra" style="width:16.3%"></div>
+      </div>
+      <div class="suc-cifras">$6.025.600 <span class="suc-trans">· 123 ventas</span></div>
+    </div></div>
+
+  <div class="nota">
+    Periodo mostrado: 2026-06-30 a 2026-07-16 (ventana visible por defecto de Effi al momento de la descarga).
+    Ingreso calculado solo sobre remisiones con estado "Pago total" — excluye 17 remisiones anuladas.
+    Pendiente: Inventario/Rotación (reorden a proveedores) y Comisiones, en construcción.
+  </div>
+
+  <footer>Generado el 2026-07-16 22:08 · datos de Effi Systems</footer>
+</body>
+</html>

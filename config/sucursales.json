@@ -1,8 +1,8 @@
 {
-  "_comentario": "Mapeo de sucursales de Divina Intuición tal como deberían aparecer/identificarse en Effi. Ajustar 'nombre_effi' cuando confirmemos cómo las nombra el ERP exactamente (puede diferir del nombre comercial).",
+  "_comentario": "Mapeo de sucursales de Divina Intuición confirmado en Effi (https://effi.com.co/app/sucursal el 16-jul-2026). Local 107 aparece registrado en Effi como 'DIVINA ACCESORIOS'.",
   "sucursales": [
-    { "codigo": "144", "nombre": "Local 144", "nombre_effi": "" },
-    { "codigo": "107", "nombre": "Local 107", "nombre_effi": "" },
-    { "codigo": "433", "nombre": "Local 433", "nombre_effi": "" }
+    { "codigo": "144", "nombre": "Local 144", "nombre_effi": "DIVINA INTUCION 144", "id_effi": 1, "prefijo": "DVI" },
+    { "codigo": "433", "nombre": "Local 433", "nombre_effi": "DIVINA INTUCION 433", "id_effi": 2, "prefijo": "DVII" },
+    { "codigo": "107", "nombre": "Local 107", "nombre_effi": "DIVINA ACCESORIOS", "id_effi": 3, "prefijo": "DA" }
   ]
 }
