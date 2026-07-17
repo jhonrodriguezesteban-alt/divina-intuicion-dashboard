@@ -2,10 +2,12 @@
 Motor de generación del dashboard.html — un solo archivo estático, sin build step.
 Ver JR ARQUITECTURA_REPLICABLE.md sección 4 para las trampas de f-strings/JS embebido.
 
-v1: Mesa de Gerencia + Ventas por Punto de Venta, con datos reales de Effi
-(remisiones de venta, filtradas por Estado CXC = "Pago total").
-Pendiente: Inventario/Rotación y Comercial/Comisiones (se agregan cuando
-completemos config/categoria_familia.json y config/metas_comisiones.json).
+v1: Mesa de Gerencia + Ventas por Punto de Venta + Inventario (resumen
+general), con datos reales de Effi (remisiones de venta filtradas por
+Estado CXC = "Pago total", y catálogo de artículos con stock por sucursal).
+Pendiente: índice de cobertura por SKU (cruce inventario x ventas) y
+Comercial/Comisiones — se agregan cuando completemos
+config/categoria_familia.json y config/metas_comisiones.json.
 
 Paleta: tonos grises claros / boutique minimalista, inspirada en el
 Instagram de la marca (@divina_intuicion) — fondo crema, tarjetas blancas,
@@ -28,8 +30,12 @@ def _cargar_json(ruta: Path, default=None):
         return json.load(f)
 
 
+def _miles(n) -> str:
+    return f"{round(n):,}".replace(",", ".")
+
+
 def _cop(valor) -> str:
-    return "$" + f"{round(valor):,}".replace(",", ".")
+    return "$" + _miles(valor)
 
 
 def _tarjeta_kpi(etiqueta: str, valor: str, sub: str = "") -> str:
@@ -54,8 +60,68 @@ def _fila_sucursal(nombre: str, ingreso: float, transacciones: int, maximo: floa
     </div>"""
 
 
+def _fila_stock(nombre: str, unidades: int, maximo: int) -> str:
+    pct = round((unidades / maximo) * 100, 1) if maximo else 0
+    return f"""
+    <div class="suc-fila">
+      <div class="suc-nombre">{nombre}</div>
+      <div class="suc-barra-wrap">
+        <div class="suc-barra suc-barra-inv" style="width:{pct}%"></div>
+      </div>
+      <div class="suc-cifras">{_miles(unidades)} unidades</div>
+    </div>"""
+
+
+def _fila_categoria(cat: dict) -> str:
+    return f"""
+    <tr>
+      <td>{cat["Categoría"]}</td>
+      <td class="num">{_miles(cat["articulos"])}</td>
+      <td class="num">{_miles(cat["stock_total"])}</td>
+      <td class="num">{_cop(cat["valor_costo"])}</td>
+    </tr>"""
+
+
+def _seccion_inventario(inv: dict) -> str:
+    if not inv:
+        return '<div class="nota">Inventario aún no procesado. Corre scripts/procesar_inventario.py.</div>'
+
+    kpis_inv = "".join([
+        _tarjeta_kpi("Artículos activos", _miles(inv["total_articulos"])),
+        _tarjeta_kpi("Sin stock", _miles(inv["articulos_sin_stock"]), "de todas las sucursales"),
+        _tarjeta_kpi("Unidades totales", _miles(inv["unidades_totales"])),
+        _tarjeta_kpi("Valor inventario (costo)", _cop(inv["valor_total_costo"])),
+    ])
+
+    maximo_stock = max(inv["stock_por_sucursal"].values(), default=1)
+    stock_html = "".join([
+        _fila_stock(nombre, unidades, maximo_stock)
+        for nombre, unidades in sorted(inv["stock_por_sucursal"].items(), key=lambda kv: -kv[1])
+    ])
+
+    filas_categorias = "".join(_fila_categoria(c) for c in inv["top_categorias_por_valor"])
+
+    return f"""
+  <h2>Inventario</h2>
+  <div class="kpi-grid">{kpis_inv}</div>
+
+  <h3 class="subseccion">Stock por sucursal</h3>
+  <div>{stock_html}</div>
+
+  <h3 class="subseccion">Categorías con mayor valor en inventario</h3>
+  <table class="tabla-categorias">
+    <thead><tr><th>Categoría</th><th class="num">Artículos</th><th class="num">Unidades</th><th class="num">Valor a costo</th></tr></thead>
+    <tbody>{filas_categorias}</tbody>
+  </table>
+  <div class="nota">
+    Índice de cobertura por SKU (para sugerencia de pedidos a proveedores) pendiente:
+    requiere cruzar este inventario con velocidad de venta por artículo — próxima iteración.
+  </div>"""
+
+
 def generar_dashboard_html(datos: dict = None) -> str:
     ventas = _cargar_json(REPORTES_DIR / "ventas_procesado.json")
+    inventario = _cargar_json(REPORTES_DIR / "inventario_procesado.json")
     sucursales_cfg = _cargar_json(CONFIG_DIR / "sucursales.json", {"sucursales": []})["sucursales"]
     nombre_effi_a_comercial = {s["nombre_effi"]: s["nombre"] for s in sucursales_cfg}
 
@@ -154,8 +220,23 @@ def generar_dashboard_html(datos: dict = None) -> str:
   .suc-nombre {{ font-weight: 600; font-size: .92rem; }}
   .suc-barra-wrap {{ background: #ece7dd; border-radius: 6px; height: 14px; overflow: hidden; }}
   .suc-barra {{ background: var(--acento); height: 100%; border-radius: 6px; }}
+  .suc-barra-inv {{ background: #a89f8c; }}
   .suc-cifras {{ text-align: right; font-size: .92rem; font-variant-numeric: tabular-nums; }}
   .suc-trans {{ color: var(--texto-sub); font-size: .8rem; }}
+  .subseccion {{
+    font-family: -apple-system, "Segoe UI", sans-serif;
+    font-size: .85rem;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    color: var(--texto-sub);
+    margin: 1.8rem 0 .8rem 0;
+    font-weight: 600;
+  }}
+  .tabla-categorias {{ width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--borde); border-radius: 10px; overflow: hidden; }}
+  .tabla-categorias th, .tabla-categorias td {{ padding: .6rem 1rem; text-align: left; font-size: .88rem; border-bottom: 1px solid var(--borde); }}
+  .tabla-categorias th {{ color: var(--texto-sub); text-transform: uppercase; font-size: .72rem; letter-spacing: .03em; font-weight: 600; }}
+  .tabla-categorias td.num, .tabla-categorias th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
+  .tabla-categorias tr:last-child td {{ border-bottom: none; }}
   .nota {{
     margin-top: 2.5rem;
     padding: 1rem 1.2rem;
@@ -182,8 +263,11 @@ def generar_dashboard_html(datos: dict = None) -> str:
   <div class="nota">
     Periodo mostrado: {rango["desde"]} a {rango["hasta"]} (ventana visible por defecto de Effi al momento de la descarga).
     Ingreso calculado solo sobre remisiones con estado "Pago total" — excluye {k["num_anuladas"]} remisiones anuladas.
-    Pendiente: Inventario/Rotación (reorden a proveedores) y Comisiones, en construcción.
   </div>
+
+  {_seccion_inventario(inventario)}
+
+  <div class="nota">Pendiente: Comercial/Comisiones — se agrega cuando definamos el escalafón con el negocio.</div>
 
   <footer>Generado el {generado} · datos de Effi Systems</footer>
 </body>

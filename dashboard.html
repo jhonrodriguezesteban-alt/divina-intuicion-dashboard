@@ -67,8 +67,23 @@
   .suc-nombre { font-weight: 600; font-size: .92rem; }
   .suc-barra-wrap { background: #ece7dd; border-radius: 6px; height: 14px; overflow: hidden; }
   .suc-barra { background: var(--acento); height: 100%; border-radius: 6px; }
+  .suc-barra-inv { background: #a89f8c; }
   .suc-cifras { text-align: right; font-size: .92rem; font-variant-numeric: tabular-nums; }
   .suc-trans { color: var(--texto-sub); font-size: .8rem; }
+  .subseccion {
+    font-family: -apple-system, "Segoe UI", sans-serif;
+    font-size: .85rem;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    color: var(--texto-sub);
+    margin: 1.8rem 0 .8rem 0;
+    font-weight: 600;
+  }
+  .tabla-categorias { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--borde); border-radius: 10px; overflow: hidden; }
+  .tabla-categorias th, .tabla-categorias td { padding: .6rem 1rem; text-align: left; font-size: .88rem; border-bottom: 1px solid var(--borde); }
+  .tabla-categorias th { color: var(--texto-sub); text-transform: uppercase; font-size: .72rem; letter-spacing: .03em; font-weight: 600; }
+  .tabla-categorias td.num, .tabla-categorias th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .tabla-categorias tr:last-child td { border-bottom: none; }
   .nota {
     margin-top: 2.5rem;
     padding: 1rem 1.2rem;
@@ -141,9 +156,116 @@
   <div class="nota">
     Periodo mostrado: 2026-06-30 a 2026-07-16 (ventana visible por defecto de Effi al momento de la descarga).
     Ingreso calculado solo sobre remisiones con estado "Pago total" — excluye 17 remisiones anuladas.
-    Pendiente: Inventario/Rotación (reorden a proveedores) y Comisiones, en construcción.
   </div>
 
-  <footer>Generado el 2026-07-16 22:08 · datos de Effi Systems</footer>
+  
+  <h2>Inventario</h2>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Artículos activos</div>
+      <div class="kpi-valor">2.806</div>
+      
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Sin stock</div>
+      <div class="kpi-valor">1.325</div>
+      <div class="kpi-sub">de todas las sucursales</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Unidades totales</div>
+      <div class="kpi-valor">5.022</div>
+      
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Valor inventario (costo)</div>
+      <div class="kpi-valor">$184.028.252</div>
+      
+    </div></div>
+
+  <h3 class="subseccion">Stock por sucursal</h3>
+  <div>
+    <div class="suc-fila">
+      <div class="suc-nombre">Local 144</div>
+      <div class="suc-barra-wrap">
+        <div class="suc-barra suc-barra-inv" style="width:100.0%"></div>
+      </div>
+      <div class="suc-cifras">1.876 unidades</div>
+    </div>
+    <div class="suc-fila">
+      <div class="suc-nombre">Local 107</div>
+      <div class="suc-barra-wrap">
+        <div class="suc-barra suc-barra-inv" style="width:85.3%"></div>
+      </div>
+      <div class="suc-cifras">1.600 unidades</div>
+    </div>
+    <div class="suc-fila">
+      <div class="suc-nombre">Local 433</div>
+      <div class="suc-barra-wrap">
+        <div class="suc-barra suc-barra-inv" style="width:82.4%"></div>
+      </div>
+      <div class="suc-cifras">1.546 unidades</div>
+    </div></div>
+
+  <h3 class="subseccion">Categorías con mayor valor en inventario</h3>
+  <table class="tabla-categorias">
+    <thead><tr><th>Categoría</th><th class="num">Artículos</th><th class="num">Unidades</th><th class="num">Valor a costo</th></tr></thead>
+    <tbody>
+    <tr>
+      <td>PANTALONES</td>
+      <td class="num">827</td>
+      <td class="num">720</td>
+      <td class="num">$51.154.152</td>
+    </tr>
+    <tr>
+      <td>CONJUNTOS</td>
+      <td class="num">101</td>
+      <td class="num">233</td>
+      <td class="num">$22.356.000</td>
+    </tr>
+    <tr>
+      <td>BLUSAS</td>
+      <td class="num">401</td>
+      <td class="num">580</td>
+      <td class="num">$16.388.000</td>
+    </tr>
+    <tr>
+      <td>CHAQUETAS</td>
+      <td class="num">158</td>
+      <td class="num">190</td>
+      <td class="num">$14.234.000</td>
+    </tr>
+    <tr>
+      <td>BODYS</td>
+      <td class="num">208</td>
+      <td class="num">402</td>
+      <td class="num">$10.370.000</td>
+    </tr>
+    <tr>
+      <td>BUZOS</td>
+      <td class="num">118</td>
+      <td class="num">247</td>
+      <td class="num">$10.160.000</td>
+    </tr>
+    <tr>
+      <td>CORSET</td>
+      <td class="num">158</td>
+      <td class="num">269</td>
+      <td class="num">$9.906.000</td>
+    </tr>
+    <tr>
+      <td>FALDAS</td>
+      <td class="num">192</td>
+      <td class="num">142</td>
+      <td class="num">$6.562.000</td>
+    </tr></tbody>
+  </table>
+  <div class="nota">
+    Índice de cobertura por SKU (para sugerencia de pedidos a proveedores) pendiente:
+    requiere cruzar este inventario con velocidad de venta por artículo — próxima iteración.
+  </div>
+
+  <div class="nota">Pendiente: Comercial/Comisiones — se agrega cuando definamos el escalafón con el negocio.</div>
+
+  <footer>Generado el 2026-07-16 22:26 · datos de Effi Systems</footer>
 </body>
 </html>

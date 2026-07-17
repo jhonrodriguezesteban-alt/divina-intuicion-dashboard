@@ -13,10 +13,19 @@ CONFIG_DIR = Path(__file__).resolve().parent.parent.parent / "config"
 
 def leer_excel_effi(ruta: Path) -> pd.DataFrame:
     """
-    Los .xls/.xlsx que exporta Effi son HTML, no binarios Excel reales.
-    decimal="," es obligatorio: Effi exporta en formato colombiano (3.000.000,00)
-    y sin esto pandas infla los montos 100x.
+    Effi tiene DOS formatos de exportación según el flujo:
+    - Export síncrono (botón directo en un listado): HTML con extensión .xls/.xlsx,
+      números en formato colombiano (3.000.000,00) -> exige decimal="," o pandas
+      infla los montos 100x.
+    - Export asíncrono (catálogos grandes, se genera en segundo plano y llega por
+      notificación): binario .xlsx real (ZIP/PK), números ya como floats nativos.
+    Se detecta por la firma de archivo (PK\\x03\\x04 = zip/xlsx real).
     """
+    with open(ruta, "rb") as f:
+        es_xlsx_real = f.read(4) == b"PK\x03\x04"
+
+    if es_xlsx_real:
+        return pd.read_excel(ruta)
     return pd.read_html(str(ruta), encoding="ISO-8859-1", decimal=",", thousands=".")[0]
 
 
