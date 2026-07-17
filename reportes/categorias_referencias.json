@@ -292,7 +292,451 @@
         "unidades": 24,
         "ventas_netas": 2260000.0
       }
-    ]
+    ],
+    "top_referencias_por_sucursal": {
+      "1727::CAPA JEAN": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 44,
+          "ventas_netas": 5540000.0
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 31,
+          "ventas_netas": 3970000.0
+        }
+      ],
+      "1727::CAPA JEAN AZUL CLARA TU": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 24,
+          "ventas_netas": 3090000.06
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 15,
+          "ventas_netas": 1950000.04
+        }
+      ],
+      "1096::BODY BASICO REDONDO": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 60,
+          "ventas_netas": 3447000.0
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 16,
+          "ventas_netas": 1000000.0
+        }
+      ],
+      "2121::CAPA JEAN GAMUZA": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 20,
+          "ventas_netas": 2780000.0
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 10,
+          "ventas_netas": 1400000.0
+        }
+      ],
+      "2861::SET JEAN SOL  T8": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 12,
+          "ventas_netas": 2293000.0
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 7,
+          "ventas_netas": 1365000.0
+        }
+      ],
+      "3215::CAMISA COLOMBIA W  TU": [
+        {
+          "sucursal": "Local 433",
+          "unidades": 18,
+          "ventas_netas": 1710000.0
+        },
+        {
+          "sucursal": "Local 144",
+          "unidades": 18,
+          "ventas_netas": 1633000.0
+        }
+      ],
+      "1067::CHAMARRA CUERO CORTA VINOTINTO": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 20,
+          "ventas_netas": 2530000.0
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 3,
+          "ventas_netas": 400000.0
+        }
+      ],
+      "999::SUDADERA ZOE NEGRO": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 14,
+          "ventas_netas": 1840000.0
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 8,
+          "ventas_netas": 1085000.0
+        }
+      ],
+      "209::FALDA SHORT GEORGINA NEGRA": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 27,
+          "ventas_netas": 2025000.0
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 10,
+          "ventas_netas": 750000.0
+        }
+      ],
+      "1758::CHAMARRA HOMBRO CAFE": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 16,
+          "ventas_netas": 2200000.0
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 4,
+          "ventas_netas": 550000.0
+        }
+      ]
+    },
+    "productos_por_categoria": {
+      "PANTALONES": [
+        {
+          "codigo": "1443",
+          "nombre": "JEAN GRIS ANIMAL PRINT T6",
+          "unidades": 17,
+          "ventas_netas": 2335000.0
+        },
+        {
+          "codigo": "1110",
+          "nombre": "JEAN NUBE BLANCO T6",
+          "unidades": 16,
+          "ventas_netas": 2210000.0
+        },
+        {
+          "codigo": "1111",
+          "nombre": "JEAN NUBE BLANCO T8",
+          "unidades": 15,
+          "ventas_netas": 2090000.0
+        },
+        {
+          "codigo": "1444",
+          "nombre": "JEAN GRIS ANIMAL PRINT T8",
+          "unidades": 13,
+          "ventas_netas": 1800000.0
+        },
+        {
+          "codigo": "1174",
+          "nombre": "JEAN BAGGY MERAKI T6",
+          "unidades": 15,
+          "ventas_netas": 1785000.0
+        }
+      ],
+      "BLUSAS": [
+        {
+          "codigo": "3215",
+          "nombre": "CAMISA COLOMBIA W  TU",
+          "unidades": 36,
+          "ventas_netas": 3343000.0
+        },
+        {
+          "codigo": "911",
+          "nombre": "CAMISA OVERZISE BASIC",
+          "unidades": 36,
+          "ventas_netas": 2655000.0
+        },
+        {
+          "codigo": "991",
+          "nombre": "BLUSA BODY ENCAJE NEGRO",
+          "unidades": 31,
+          "ventas_netas": 2025000.0
+        },
+        {
+          "codigo": "126",
+          "nombre": "BLUSA CORSET BLANCO/NEGRO",
+          "unidades": 25,
+          "ventas_netas": 1640000.0
+        },
+        {
+          "codigo": "1811",
+          "nombre": "BODY ESTRELLA TIRA",
+          "unidades": 25,
+          "ventas_netas": 1609000.0
+        }
+      ],
+      "CHAQUETAS": [
+        {
+          "codigo": "1067",
+          "nombre": "CHAMARRA CUERO CORTA VINOTINTO",
+          "unidades": 23,
+          "ventas_netas": 2930000.0
+        },
+        {
+          "codigo": "1758",
+          "nombre": "CHAMARRA HOMBRO CAFE",
+          "unidades": 20,
+          "ventas_netas": 2750000.0
+        },
+        {
+          "codigo": "2578",
+          "nombre": "CAPA VINTAGE  TU",
+          "unidades": 19,
+          "ventas_netas": 2460000.0
+        },
+        {
+          "codigo": "461",
+          "nombre": "CHAMARRA CUERO CORTA NEGRO",
+          "unidades": 18,
+          "ventas_netas": 2330000.0
+        },
+        {
+          "codigo": "1757",
+          "nombre": "CHAMARRA HOMBRO NEGRO",
+          "unidades": 16,
+          "ventas_netas": 2210000.0
+        }
+      ],
+      "CONJUNTOS": [
+        {
+          "codigo": "2861",
+          "nombre": "SET JEAN SOL  T8",
+          "unidades": 19,
+          "ventas_netas": 3658000.0
+        },
+        {
+          "codigo": "999",
+          "nombre": "SUDADERA ZOE NEGRO",
+          "unidades": 22,
+          "ventas_netas": 2925000.0
+        },
+        {
+          "codigo": "2862",
+          "nombre": "SET JEAN SOL  T10",
+          "unidades": 14,
+          "ventas_netas": 2700000.0
+        },
+        {
+          "codigo": "999",
+          "nombre": "SUDADERA ZOE NEGRO TU",
+          "unidades": 18,
+          "ventas_netas": 2530000.0
+        },
+        {
+          "codigo": "1606",
+          "nombre": "SUDADERA ZOE CAFE TU",
+          "unidades": 13,
+          "ventas_netas": 1850000.0
+        }
+      ],
+      "VESTIDOS": [
+        {
+          "codigo": "1727",
+          "nombre": "CAPA JEAN",
+          "unidades": 75,
+          "ventas_netas": 9510000.0
+        },
+        {
+          "codigo": "1727",
+          "nombre": "CAPA JEAN AZUL CLARA TU",
+          "unidades": 39,
+          "ventas_netas": 5040000.1
+        },
+        {
+          "codigo": "2121",
+          "nombre": "CAPA JEAN GAMUZA",
+          "unidades": 30,
+          "ventas_netas": 4180000.0
+        },
+        {
+          "codigo": "3033",
+          "nombre": "CAPA JEAN AZUL OSCURO TU",
+          "unidades": 21,
+          "ventas_netas": 2730000.06
+        },
+        {
+          "codigo": "1727",
+          "nombre": "CAPA JEAN AZUL CLARO TU",
+          "unidades": 10,
+          "ventas_netas": 1310000.0
+        }
+      ],
+      "CORSET": [
+        {
+          "codigo": "545",
+          "nombre": "CORSET COPA LARGO NEGRO",
+          "unidades": 30,
+          "ventas_netas": 2235000.0
+        },
+        {
+          "codigo": "613",
+          "nombre": "CORSET COPA LARGO VINOTINTO",
+          "unidades": 27,
+          "ventas_netas": 2025000.0
+        },
+        {
+          "codigo": "547",
+          "nombre": "CORSET COPA LARGO CAFE",
+          "unidades": 24,
+          "ventas_netas": 1785000.0
+        },
+        {
+          "codigo": "544",
+          "nombre": "CORSET COPA LARGO BLANCO",
+          "unidades": 22,
+          "ventas_netas": 1645000.0
+        },
+        {
+          "codigo": "2421",
+          "nombre": "BODY IBIZA BLONDA NEGRO TU",
+          "unidades": 16,
+          "ventas_netas": 1040000.0
+        }
+      ],
+      "BODYS": [
+        {
+          "codigo": "1096",
+          "nombre": "BODY BASICO REDONDO",
+          "unidades": 76,
+          "ventas_netas": 4447000.0
+        },
+        {
+          "codigo": "1184",
+          "nombre": "BODY BASICO ESCOTE ESPALDA",
+          "unidades": 17,
+          "ventas_netas": 965000.0
+        },
+        {
+          "codigo": "2505",
+          "nombre": "BODY BASICO REDONDO NEGRO TU",
+          "unidades": 13,
+          "ventas_netas": 845000.01
+        },
+        {
+          "codigo": "1813",
+          "nombre": "BODY ESPALDA MAOS",
+          "unidades": 13,
+          "ventas_netas": 833000.0
+        },
+        {
+          "codigo": "109",
+          "nombre": "BODY SOLES BLANCO",
+          "unidades": 10,
+          "ventas_netas": 739000.0
+        }
+      ],
+      "BUZOS": [
+        {
+          "codigo": "1018",
+          "nombre": "BUZO BORREGO URBAN MARFIL",
+          "unidades": 24,
+          "ventas_netas": 2260000.0
+        },
+        {
+          "codigo": "1586",
+          "nombre": "BUZO TEJIDO CAMPANA MARFIL TU",
+          "unidades": 20,
+          "ventas_netas": 1603000.0
+        },
+        {
+          "codigo": "7",
+          "nombre": "BUZO TEJIDO CUELLO TORTUGA MARFIL",
+          "unidades": 18,
+          "ventas_netas": 1520000.0
+        },
+        {
+          "codigo": "1017",
+          "nombre": "BUZO BORREGO URBAN CAMEL",
+          "unidades": 11,
+          "ventas_netas": 1015000.0
+        },
+        {
+          "codigo": "736",
+          "nombre": "BANDEJA MALLA MULTICOLOR",
+          "unidades": 14,
+          "ventas_netas": 880000.0
+        }
+      ],
+      "FALDAS": [
+        {
+          "codigo": "209",
+          "nombre": "FALDA SHORT GEORGINA NEGRA",
+          "unidades": 37,
+          "ventas_netas": 2775000.0
+        },
+        {
+          "codigo": "1293",
+          "nombre": "CORREAS  TU",
+          "unidades": 26,
+          "ventas_netas": 891000.0
+        },
+        {
+          "codigo": "209",
+          "nombre": "FALDA SHORT GEORGINA NEGRO TU",
+          "unidades": 9,
+          "ventas_netas": 675000.0
+        },
+        {
+          "codigo": "1975",
+          "nombre": "JEAN MAPACHE GAMUZA T6",
+          "unidades": 4,
+          "ventas_netas": 560000.0
+        },
+        {
+          "codigo": "1005",
+          "nombre": "FALDA SHORT GEORGINA CAFE",
+          "unidades": 7,
+          "ventas_netas": 520000.0
+        }
+      ],
+      "CADENAS": [
+        {
+          "codigo": "2321",
+          "nombre": "CADENA $38000",
+          "unidades": 38,
+          "ventas_netas": 1433999.86
+        },
+        {
+          "codigo": "2257",
+          "nombre": "CADENA $30000",
+          "unidades": 20,
+          "ventas_netas": 599999.91
+        },
+        {
+          "codigo": "2322",
+          "nombre": "CADENA $40000",
+          "unidades": 12,
+          "ventas_netas": 480000.07
+        },
+        {
+          "codigo": "2747",
+          "nombre": "CADENA $35000",
+          "unidades": 12,
+          "ventas_netas": 423999.94
+        },
+        {
+          "codigo": "3147",
+          "nombre": "CADENA $28000",
+          "unidades": 14,
+          "ventas_netas": 392000.0
+        }
+      ]
+    }
   },
   "historico": {
     "unidades_totales": 22369,
@@ -594,6 +1038,450 @@
         "unidades": 129,
         "ventas_netas": 7437000.0
       }
-    ]
+    ],
+    "top_referencias_por_sucursal": {
+      "1727::CAPA JEAN": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 98,
+          "ventas_netas": 11725000.0
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 81,
+          "ventas_netas": 9819000.0
+        }
+      ],
+      "1096::BODY BASICO REDONDO": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 221,
+          "ventas_netas": 11120000.0
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 76,
+          "ventas_netas": 3887000.0
+        }
+      ],
+      "545::CORSET COPA LARGO NEGRO": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 132,
+          "ventas_netas": 9785000.0
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 67,
+          "ventas_netas": 4978000.0
+        }
+      ],
+      "547::CORSET COPA LARGO CAFE": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 119,
+          "ventas_netas": 8855000.0
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 43,
+          "ventas_netas": 3180000.0
+        }
+      ],
+      "461::CHAMARRA CUERO NEGRO": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 65,
+          "ventas_netas": 7480000.0
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 35,
+          "ventas_netas": 3965000.0
+        }
+      ],
+      "698::BLUSA SALOME MARFIL": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 143,
+          "ventas_netas": 7979000.0
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 34,
+          "ventas_netas": 1887000.0
+        }
+      ],
+      "544::CORSET COPA LARGO BLANCO": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 91,
+          "ventas_netas": 6780000.0
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 34,
+          "ventas_netas": 2500000.0
+        }
+      ],
+      "991::BLUSA BODY ENCAJE NEGRO": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 93,
+          "ventas_netas": 5951000.0
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 48,
+          "ventas_netas": 3115000.0
+        }
+      ],
+      "6::BUZO TEJIDO CEREZAS BLANCO": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 78,
+          "ventas_netas": 6553000.0
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 27,
+          "ventas_netas": 2258000.0
+        }
+      ],
+      "1443::JEAN GRIS ANIMAL PRINT T6": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 40,
+          "ventas_netas": 5535000.0
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 22,
+          "ventas_netas": 3070000.0
+        }
+      ]
+    },
+    "productos_por_categoria": {
+      "PANTALONES": [
+        {
+          "codigo": "1443",
+          "nombre": "JEAN GRIS ANIMAL PRINT T6",
+          "unidades": 62,
+          "ventas_netas": 8605000.0
+        },
+        {
+          "codigo": "1173",
+          "nombre": "JEAN BAGGY MERAKI T4",
+          "unidades": 73,
+          "ventas_netas": 8295000.0
+        },
+        {
+          "codigo": "1174",
+          "nombre": "JEAN BAGGY MERAKI T6",
+          "unidades": 70,
+          "ventas_netas": 7960000.0
+        },
+        {
+          "codigo": "1175",
+          "nombre": "JEAN BAGGY MERAKI T8",
+          "unidades": 70,
+          "ventas_netas": 7805000.0
+        },
+        {
+          "codigo": "1176",
+          "nombre": "JEAN BAGGY MERAKI T10",
+          "unidades": 68,
+          "ventas_netas": 7690000.0
+        }
+      ],
+      "BLUSAS": [
+        {
+          "codigo": "698",
+          "nombre": "BLUSA SALOME MARFIL",
+          "unidades": 177,
+          "ventas_netas": 9866000.0
+        },
+        {
+          "codigo": "991",
+          "nombre": "BLUSA BODY ENCAJE NEGRO",
+          "unidades": 141,
+          "ventas_netas": 9066000.0
+        },
+        {
+          "codigo": "1215",
+          "nombre": "BLUSA RADICAL",
+          "unidades": 108,
+          "ventas_netas": 7510000.0
+        },
+        {
+          "codigo": "703",
+          "nombre": "BLUSA SALOME NEGRO",
+          "unidades": 129,
+          "ventas_netas": 7437000.0
+        },
+        {
+          "codigo": "911",
+          "nombre": "CAMISA OVERZISE BASIC",
+          "unidades": 112,
+          "ventas_netas": 7070000.0
+        }
+      ],
+      "CHAQUETAS": [
+        {
+          "codigo": "461",
+          "nombre": "CHAMARRA CUERO NEGRO",
+          "unidades": 100,
+          "ventas_netas": 11445000.0
+        },
+        {
+          "codigo": "460",
+          "nombre": "CHAMARRA CUERO CAFE",
+          "unidades": 74,
+          "ventas_netas": 8460000.0
+        },
+        {
+          "codigo": "1067",
+          "nombre": "CHAMARRA CUERO VINOTINTO",
+          "unidades": 62,
+          "ventas_netas": 7256000.0
+        },
+        {
+          "codigo": "1758",
+          "nombre": "CHAMARRA HOMBRO CAFE",
+          "unidades": 47,
+          "ventas_netas": 6415000.0
+        },
+        {
+          "codigo": "1786",
+          "nombre": "CHAMARRA HOMBRO VINOTINTO",
+          "unidades": 45,
+          "ventas_netas": 6230000.0
+        }
+      ],
+      "CORSET": [
+        {
+          "codigo": "545",
+          "nombre": "CORSET COPA LARGO NEGRO",
+          "unidades": 199,
+          "ventas_netas": 14763000.0
+        },
+        {
+          "codigo": "547",
+          "nombre": "CORSET COPA LARGO CAFE",
+          "unidades": 162,
+          "ventas_netas": 12035000.0
+        },
+        {
+          "codigo": "544",
+          "nombre": "CORSET COPA LARGO BLANCO",
+          "unidades": 125,
+          "ventas_netas": 9280000.0
+        },
+        {
+          "codigo": "613",
+          "nombre": "CORSET COPA LARGO VINOTINTO",
+          "unidades": 114,
+          "ventas_netas": 8490000.0
+        },
+        {
+          "codigo": "546",
+          "nombre": "CORSET COPA LARGO AZUL",
+          "unidades": 81,
+          "ventas_netas": 6033000.0
+        }
+      ],
+      "BODYS": [
+        {
+          "codigo": "1096",
+          "nombre": "BODY BASICO REDONDO",
+          "unidades": 297,
+          "ventas_netas": 15007000.0
+        },
+        {
+          "codigo": "109",
+          "nombre": "BODY SOLES BLANCO",
+          "unidades": 73,
+          "ventas_netas": 4363000.0
+        },
+        {
+          "codigo": "137",
+          "nombre": "BODY ESTAMPADO MULTICOLOR",
+          "unidades": 84,
+          "ventas_netas": 3825000.0
+        },
+        {
+          "codigo": "1098",
+          "nombre": "BODY BASICO CUADRADO",
+          "unidades": 64,
+          "ventas_netas": 3278000.0
+        },
+        {
+          "codigo": "1099",
+          "nombre": "BODY BASICO SISA",
+          "unidades": 67,
+          "ventas_netas": 3155000.0
+        }
+      ],
+      "CONJUNTOS": [
+        {
+          "codigo": "999",
+          "nombre": "SUDADERA ZOE NEGRO",
+          "unidades": 64,
+          "ventas_netas": 7855000.0
+        },
+        {
+          "codigo": "782",
+          "nombre": "SUDADERA ZOE CAMEL",
+          "unidades": 36,
+          "ventas_netas": 4410000.0
+        },
+        {
+          "codigo": "360",
+          "nombre": "SUDADERA CLASICA ROJO",
+          "unidades": 33,
+          "ventas_netas": 3905000.0
+        },
+        {
+          "codigo": "1158",
+          "nombre": "SUDADERA ZOE BLANCO",
+          "unidades": 32,
+          "ventas_netas": 3865000.0
+        },
+        {
+          "codigo": "2861",
+          "nombre": "SET JEAN SOL  T8",
+          "unidades": 19,
+          "ventas_netas": 3658000.0
+        }
+      ],
+      "VESTIDOS": [
+        {
+          "codigo": "1727",
+          "nombre": "CAPA JEAN",
+          "unidades": 179,
+          "ventas_netas": 21544000.0
+        },
+        {
+          "codigo": "1727",
+          "nombre": "CAPA JEAN AZUL CLARA TU",
+          "unidades": 39,
+          "ventas_netas": 5040000.1
+        },
+        {
+          "codigo": "2121",
+          "nombre": "CAPA JEAN GAMUZA",
+          "unidades": 30,
+          "ventas_netas": 4180000.0
+        },
+        {
+          "codigo": "3033",
+          "nombre": "CAPA JEAN AZUL OSCURO TU",
+          "unidades": 21,
+          "ventas_netas": 2730000.06
+        },
+        {
+          "codigo": "728",
+          "nombre": "VESTIDO MAYA LARGO",
+          "unidades": 24,
+          "ventas_netas": 1980000.0
+        }
+      ],
+      "BUZOS": [
+        {
+          "codigo": "6",
+          "nombre": "BUZO TEJIDO CEREZAS BLANCO",
+          "unidades": 105,
+          "ventas_netas": 8811000.0
+        },
+        {
+          "codigo": "7",
+          "nombre": "BUZO TEJIDO CUELLO TORTUGA MARFIL",
+          "unidades": 90,
+          "ventas_netas": 7190000.0
+        },
+        {
+          "codigo": "1018",
+          "nombre": "BUZO BORREGO URBAN MARFIL",
+          "unidades": 60,
+          "ventas_netas": 5378000.0
+        },
+        {
+          "codigo": "1586",
+          "nombre": "BUZO TEJIDO CAMPANA MARFIL",
+          "unidades": 62,
+          "ventas_netas": 4516000.0
+        },
+        {
+          "codigo": "297",
+          "nombre": "BUZO TEJIDO LAZOS BLANCO",
+          "unidades": 48,
+          "ventas_netas": 3961000.0
+        }
+      ],
+      "FALDAS": [
+        {
+          "codigo": "209",
+          "nombre": "FALDA SHORT TELA NEGRA",
+          "unidades": 107,
+          "ventas_netas": 7544000.0
+        },
+        {
+          "codigo": "711",
+          "nombre": "FALDA SHORT PRENSES TELA NEGRO",
+          "unidades": 82,
+          "ventas_netas": 5845000.0
+        },
+        {
+          "codigo": "710",
+          "nombre": "FALDA SHORT PRENSES TELA BLANCO",
+          "unidades": 51,
+          "ventas_netas": 3535000.0
+        },
+        {
+          "codigo": "209",
+          "nombre": "FALDA SHORT GEORGINA NEGRA",
+          "unidades": 37,
+          "ventas_netas": 2775000.0
+        },
+        {
+          "codigo": "304",
+          "nombre": "FALDA SHORT CUERINA",
+          "unidades": 31,
+          "ventas_netas": 2028000.0
+        }
+      ],
+      "CHALECOS": [
+        {
+          "codigo": "155",
+          "nombre": "CHALECO ACOLCHADO NEGRO",
+          "unidades": 33,
+          "ventas_netas": 2605000.0
+        },
+        {
+          "codigo": "577",
+          "nombre": "CHALECO ACOLCHADO CAFE",
+          "unidades": 32,
+          "ventas_netas": 2593000.0
+        },
+        {
+          "codigo": "156",
+          "nombre": "CHALECO ACOLCHADO BLANCO",
+          "unidades": 30,
+          "ventas_netas": 2333000.0
+        },
+        {
+          "codigo": "652",
+          "nombre": "CHALECO ACOLCHADO AZUL BEBE",
+          "unidades": 24,
+          "ventas_netas": 1910000.0
+        },
+        {
+          "codigo": "157",
+          "nombre": "CHALECO ACOLCHADO BEIGE",
+          "unidades": 23,
+          "ventas_netas": 1763000.0
+        }
+      ]
+    }
   }
 }
