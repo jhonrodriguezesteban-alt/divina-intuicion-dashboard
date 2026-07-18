@@ -59,13 +59,13 @@ def obtener_contexto(playwright, headless=True):
     browser = playwright.chromium.launch(headless=headless)
 
     if SESSION_PATH.exists():
-        context = browser.new_context(storage_state=str(SESSION_PATH))
+        context = browser.new_context(storage_state=str(SESSION_PATH), accept_downloads=True)
         page = context.new_page()
         if sesion_viva(page):
             return browser, context, page
         context.close()
 
-    context = browser.new_context()
+    context = browser.new_context(accept_downloads=True)
     page = context.new_page()
     login(page)
     context.storage_state(path=str(SESSION_PATH))

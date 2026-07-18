@@ -21,7 +21,7 @@ RAW_ARTICULOS = Path(__file__).resolve().parent.parent / "reportes" / "raw" / "r
 RAW_CONCEPTOS = Path(__file__).resolve().parent.parent / "reportes" / "raw" / "raw_conceptos.xlsx"
 OUT = Path(__file__).resolve().parent.parent / "reportes" / "reorden.json"
 
-HOY = pd.Timestamp("2026-07-16")
+HOY = pd.Timestamp.now().normalize()
 VENTANA_DIAS = 90
 INICIO_VENTANA = HOY - pd.Timedelta(days=VENTANA_DIAS)
 

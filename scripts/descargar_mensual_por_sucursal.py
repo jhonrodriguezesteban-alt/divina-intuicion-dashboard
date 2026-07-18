@@ -5,18 +5,18 @@ sucursal en columnas — solo agrega por mes). Rango: todo el histórico
 disponible hasta hoy.
 """
 
+from datetime import datetime
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
-from common.effi_client import SESSION_PATH
-from common.export_async import exportar_con_fallback_async
+from common.effi_client import obtener_contexto
 from common.procesamiento import cargar_config
 
 RAW_DIR = Path(__file__).resolve().parent.parent / "reportes" / "raw"
 URL = "https://effi.com.co/app/remision_v/reporte_mensual"
 DESDE = "2025-01-01 00:00:00"
-HASTA = "2026-07-16 23:59:59"
+HASTA = datetime.now().strftime("%Y-%m-%d 23:59:59")
 
 
 def _select_por_texto(page, selector_css: str, texto_opcion: str):
@@ -47,9 +47,7 @@ def main():
     sucursales = cargar_config("sucursales.json")["sucursales"]
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        context = browser.new_context(storage_state=str(SESSION_PATH), accept_downloads=True)
-        page = context.new_page()
+        browser, context, page = obtener_contexto(p, headless=True)
 
         for s in sucursales:
             page.goto(URL, wait_until="domcontentloaded")
@@ -68,15 +66,10 @@ def main():
             print(f"{s['nombre']} ({s['nombre_effi']}): {resumen}")
 
             ruta = RAW_DIR / f"raw_mensual_{s['codigo']}.xlsx"
-            resultado = exportar_con_fallback_async(
-                context, page,
-                boton_selector="text=Exportar a excel",
-                prefijo_notificacion="Reporte: Remisiones",
-                ruta_destino=ruta,
-                timeout_directo_ms=20_000,
-                max_espera_segundos=120,
-            )
-            print(f"  -> {resultado}: {ruta.name}")
+            with page.expect_download(timeout=120_000) as dl_info:
+                page.locator("text=Exportar a excel").first.click()
+            dl_info.value.save_as(str(ruta))
+            print(f"  -> descargado: {ruta.name}")
 
         browser.close()
 

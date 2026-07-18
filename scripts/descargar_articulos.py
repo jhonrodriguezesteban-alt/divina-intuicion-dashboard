@@ -17,7 +17,7 @@ from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
-from common.effi_client import SESSION_PATH
+from common.effi_client import obtener_contexto
 
 RAW_DIR = Path(__file__).resolve().parent.parent / "reportes" / "raw"
 URL_ARTICULOS = "https://effi.com.co/app/articulo"
@@ -35,9 +35,7 @@ def _links_reporte_articulos(page):
 
 def main():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        context = browser.new_context(storage_state=str(SESSION_PATH), accept_downloads=True)
-        page = context.new_page()
+        browser, context, page = obtener_contexto(p, headless=True)
 
         page.goto(URL_ARTICULOS, wait_until="domcontentloaded")
         page.wait_for_timeout(3000)

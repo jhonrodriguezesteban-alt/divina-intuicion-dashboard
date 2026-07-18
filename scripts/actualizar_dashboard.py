@@ -1,38 +1,47 @@
 """
-Corrida automática (cron/LaunchAgent cada hora): reutiliza la sesión guardada,
-descarga solo el período en curso, regenera y publica.
-Si la sesión expiró, intenta auto-login; si falla (ej. captcha), se detiene sin publicar.
+Corrida automática horaria (LaunchAgent, 9am-7pm): reutiliza la sesión
+guardada, descarga las remisiones completas (rápido, es un download
+directo — no async), reprocesa ventas y publica. NO refresca inventario
+ni el detalle por artículo (más pesado, se reserva para el cierre de
+las 8pm en cierre_dia.py).
+
+Si la sesión expiró y el auto-login falla (ej. captcha), se detiene sin
+publicar — regla de oro de JR ARQUITECTURA_REPLICABLE.md sección 3.
 """
 
-from datetime import date
+import subprocess
+import sys
+from datetime import datetime
 from pathlib import Path
 
-from playwright.sync_api import sync_playwright
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from common.effi_client import obtener_contexto, navegar_y_descargar
-from generar_dashboard import generar_dashboard_html, publicar
+from common.publicar_git import publicar
 
-RAW_DIR = Path(__file__).resolve().parent.parent / "reportes" / "raw"
+SCRIPTS_DIR = Path(__file__).resolve().parent
+PYTHON = sys.executable
+
+
+def _run(script: str) -> bool:
+    resultado = subprocess.run([PYTHON, str(SCRIPTS_DIR / script)], cwd=SCRIPTS_DIR)
+    return resultado.returncode == 0
 
 
 def main():
-    hoy = date.today().isoformat()
-    with sync_playwright() as p:
-        try:
-            browser, context, page = obtener_contexto(p, headless=True)
-        except Exception as e:
-            print(f"No se pudo establecer sesión con Effi ({e}). Abortando sin publicar.")
+    pasos = [
+        "descargar_remisiones_completas.py",
+        "procesar_ventas.py",
+        "procesar_ventas_diarias.py",
+        "generar_dashboard.py",
+    ]
+    for paso in pasos:
+        print(f"--- {paso} ---")
+        if not _run(paso):
+            print(f"Falló '{paso}'. Abortando sin publicar.")
             return
 
-        try:
-            # TODO: descargar solo el período en curso (hoy) para los módulos activos.
-            pass
-        finally:
-            browser.close()
-
-    html = generar_dashboard_html({})
-    publicar(html)
-    # TODO: git add/commit/push automático una vez el repo remoto esté creado.
+    hora = datetime.now().strftime("%Y-%m-%d %H:%M")
+    publicar(f"Actualización automática {hora}")
 
 
 if __name__ == "__main__":

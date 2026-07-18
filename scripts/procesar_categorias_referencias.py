@@ -16,7 +16,8 @@ from common.procesamiento import leer_excel_effi, cargar_config
 RAW = Path(__file__).resolve().parent.parent / "reportes" / "raw" / "raw_conceptos.xlsx"
 OUT = Path(__file__).resolve().parent.parent / "reportes" / "categorias_referencias.json"
 
-INICIO_ANIO = pd.Timestamp("2026-01-01")
+_HOY = pd.Timestamp.now().normalize()
+INICIO_ANIO = pd.Timestamp(year=_HOY.year, month=1, day=1)
 TOP_N = 10
 
 

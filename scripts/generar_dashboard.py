@@ -375,9 +375,58 @@ def _seccion_comparativo_historico(historico_mensual: dict) -> str:
   </div>"""
 
 
+# ---------- login (pantalla de acceso, protección de fricción — ver nota en el README) ----------
+# Credenciales de acceso al dashboard (no las de Effi). Cambiar aquí si hace falta.
+LOGIN_USUARIO = "divina"
+LOGIN_CLAVE = "DivinaIntuicion2026"
+
+_LOGIN_HTML = """
+  <div class="login-overlay" id="login-overlay">
+    <div class="login-card">
+      <div class="login-marca">DIVINA INTUICIÓN</div>
+      <div class="login-subtitulo">Dashboard Gerencial</div>
+      <input type="text" id="login-usuario" placeholder="Usuario" autocomplete="username">
+      <div class="login-pass-wrap">
+        <input type="password" id="login-clave" placeholder="Contraseña" autocomplete="current-password">
+        <span class="login-eye" onclick="togglePassVis()">👁</span>
+      </div>
+      <label class="login-recordar"><input type="checkbox" id="login-recordar"> Recordarme en este dispositivo</label>
+      <button class="login-btn" onclick="doLogin()">Ingresar</button>
+      <div class="login-error" id="login-error"></div>
+    </div>
+  </div>"""
+
+
 # ---------- JS estático (sin interpolación de Python, ver docstring del módulo) ----------
 
 _JS = """
+function togglePassVis(){
+  var el = document.getElementById('login-clave');
+  el.type = (el.type === 'password') ? 'text' : 'password';
+}
+
+function _mostrarApp(){
+  document.getElementById('login-overlay').style.display = 'none';
+  document.getElementById('app-contenido').style.display = '';
+}
+
+function doLogin(){
+  var usuario = document.getElementById('login-usuario').value.trim();
+  var clave = document.getElementById('login-clave').value;
+  if (usuario === LOGIN_USUARIO && clave === LOGIN_CLAVE){
+    if (document.getElementById('login-recordar').checked){
+      localStorage.setItem('divina_dashboard_auth', '1');
+    }
+    _mostrarApp();
+  } else {
+    document.getElementById('login-error').textContent = 'Usuario o contraseña incorrectos.';
+  }
+}
+
+if (localStorage.getItem('divina_dashboard_auth') === '1'){
+  document.addEventListener('DOMContentLoaded', _mostrarApp);
+}
+
 function toggleAbierto(el){
   el.classList.toggle('abierto');
 }
@@ -623,6 +672,31 @@ _CSS = """
 
   .nota { margin-top: 1.5rem; padding: 1rem 1.2rem; border: 1px dashed var(--acento-suave); border-radius: 8px; font-size: .85rem; color: var(--texto-sub); }
   footer { margin-top: 2rem; font-size: .75rem; color: var(--texto-sub); }
+
+  .login-overlay {
+    position: fixed; inset: 0; background: var(--bg);
+    display: flex; align-items: center; justify-content: center; z-index: 100;
+  }
+  .login-card {
+    background: var(--card); border: 1px solid var(--borde); border-radius: 14px;
+    padding: 2.4rem 2.2rem; width: 320px; text-align: center;
+  }
+  .login-marca { font-family: Georgia, serif; text-transform: uppercase; letter-spacing: .06em; font-size: 1.2rem; }
+  .login-subtitulo { color: var(--texto-sub); font-size: .85rem; margin-bottom: 1.6rem; }
+  .login-card input[type="text"], .login-card input[type="password"] {
+    width: 100%; padding: .7rem .9rem; margin-bottom: .8rem; border-radius: 8px;
+    border: 1px solid var(--borde); background: var(--bg); color: var(--texto); font-size: .9rem;
+  }
+  .login-pass-wrap { position: relative; }
+  .login-pass-wrap input { padding-right: 2.2rem; }
+  .login-eye { position: absolute; right: .8rem; top: 50%; transform: translateY(-50%); translate: 0 -.4rem; cursor: pointer; font-size: .9rem; }
+  .login-recordar { display: flex; align-items: center; gap: .4rem; font-size: .78rem; color: var(--texto-sub); margin-bottom: 1.2rem; text-align: left; }
+  .login-btn {
+    width: 100%; padding: .75rem; border-radius: 8px; border: none;
+    background: var(--acento); color: #fff; font-weight: 600; font-size: .9rem; cursor: pointer;
+  }
+  .login-btn:hover { opacity: .9; }
+  .login-error { color: var(--rojo); font-size: .8rem; margin-top: .8rem; min-height: 1em; }
 """
 
 
@@ -644,6 +718,7 @@ def generar_dashboard_html(datos: dict = None) -> str:
     hoy = ventas["hoy"]
     cartera = ventas["cartera"]
     fecha_ref = ventas["actualizado_hasta"].split(" ")[0]
+    anio_num = int(fecha_ref.split("-")[0])
 
     unidades_anio = cat_ref["anio_actual"]["unidades_totales"] if cat_ref else None
     kpis_anio_html = _grupo_kpis(anio["kpis"], unidades_anio)
@@ -683,10 +758,13 @@ def generar_dashboard_html(datos: dict = None) -> str:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
 <title>Divina Intuición — Dashboard Gerencial</title>
 <style>{_CSS}</style>
 </head>
 <body data-hoy="{fecha_ref}">
+  {_LOGIN_HTML}
+  <div id="app-contenido" style="display:none">
 
   <div class="nav-overlay" id="nav-overlay" onclick="closeNav()"></div>
   <div class="nav-panel" id="nav-panel">
@@ -708,7 +786,7 @@ def generar_dashboard_html(datos: dict = None) -> str:
   </header>
 
   <div id="sec-gerencia" class="seccion">
-    <h2>Indicadores clave · Año 2026</h2>
+    <h2>Indicadores clave · Año {anio_num}</h2>
     <div class="kpi-grid">{kpis_anio_html}</div>
     {venta_hoy_html}
 
@@ -717,12 +795,12 @@ def generar_dashboard_html(datos: dict = None) -> str:
     <h2>Mes en curso</h2>
     <div class="kpi-grid">{kpis_mes_html}</div>
 
-    <h2>Ventas por Punto de Venta · Año 2026</h2>
+    <h2>Ventas por Punto de Venta · Año {anio_num}</h2>
     <div>{sucursales_html}</div>
 
     <div class="grid-2col">
       <div>
-        <h2>Rentabilidad por categoría · Año 2026</h2>
+        <h2>Rentabilidad por categoría · Año {anio_num}</h2>
         <div class="subtitulo">Clic en una categoría para ver sus productos top</div>
         <div>{rentabilidad_html}</div>
       </div>
@@ -754,7 +832,10 @@ def generar_dashboard_html(datos: dict = None) -> str:
 
   <footer>Generado el {generado} · datos de Effi Systems</footer>
 
+  </div>
+
   <script type="application/json" id="data-diarias">{diarias_json}</script>
+  <script>var LOGIN_USUARIO = {json.dumps(LOGIN_USUARIO)}; var LOGIN_CLAVE = {json.dumps(LOGIN_CLAVE)};</script>
   <script>{_JS}</script>
 </body>
 </html>

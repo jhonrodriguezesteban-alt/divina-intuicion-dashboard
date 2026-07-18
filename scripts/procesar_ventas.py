@@ -20,10 +20,10 @@ from common.procesamiento import leer_excel_effi, cargar_config
 RAW = Path(__file__).resolve().parent.parent / "reportes" / "raw" / "raw_remisiones_completo.xlsx"
 OUT = Path(__file__).resolve().parent.parent / "reportes" / "ventas_procesado.json"
 
-HOY = pd.Timestamp("2026-07-16")
+HOY = pd.Timestamp.now().normalize()
 AYER = HOY - pd.Timedelta(days=1)
-INICIO_ANIO = pd.Timestamp("2026-01-01")
-INICIO_MES = pd.Timestamp("2026-07-01")
+INICIO_ANIO = pd.Timestamp(year=HOY.year, month=1, day=1)
+INICIO_MES = pd.Timestamp(year=HOY.year, month=HOY.month, day=1)
 
 
 def _kpis(df: pd.DataFrame) -> dict:
