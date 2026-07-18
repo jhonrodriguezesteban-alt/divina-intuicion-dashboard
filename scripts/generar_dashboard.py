@@ -26,6 +26,7 @@ REPORTES_DIR = Path(__file__).resolve().parent.parent / "reportes"
 CONFIG_DIR = Path(__file__).resolve().parent.parent / "config"
 DASHBOARD_PATH = Path(__file__).resolve().parent.parent / "dashboard.html"
 LOGO_PATH = Path(__file__).resolve().parent.parent / "assets" / "logo_divina.png"
+MARMOL_PATH = Path(__file__).resolve().parent.parent / "assets" / "marmol_textura.jpg"
 
 
 def _logo_img_html(clase: str, alto: str) -> str:
@@ -34,6 +35,13 @@ def _logo_img_html(clase: str, alto: str) -> str:
         return ""
     b64 = base64.b64encode(LOGO_PATH.read_bytes()).decode("ascii")
     return f'<img class="{clase}" src="data:image/png;base64,{b64}" style="height:{alto};width:auto;" alt="Divina Intuición">'
+
+
+def _marmol_data_uri() -> str:
+    if not MARMOL_PATH.exists():
+        return ""
+    b64 = base64.b64encode(MARMOL_PATH.read_bytes()).decode("ascii")
+    return f"data:image/jpeg;base64,{b64}"
 
 MESES_ES = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
 
@@ -262,13 +270,32 @@ def _fila_reorden_ref(ref: dict) -> str:
     estado = ref["estado"]
     rot = f'{_miles(ref["rotacion_anualizada"])} uds/año' if ref["rotacion_anualizada"] else "sin ventas 90d"
     sug = f'+{_miles(ref["sugerido"])}' if ref["sugerido"] > 0 else "—"
+    variantes = ref.get("variantes", [])
+    tiene_tallas = len(variantes) > 1
+
+    chevron = '<span class="chevron">▶</span> ' if tiene_tallas else ""
+    conteo = f' <span class="reo-tallas-count">· {len(variantes)} tallas</span>' if tiene_tallas else ""
+    detalle = ""
+    if tiene_tallas:
+        items = "".join(
+            f'<div class="detalle-item"><span>{v["talla"]}</span><span>{_miles(v["disponible"])} disp.</span></div>'
+            for v in variantes
+        )
+        detalle = f'<div class="reo-variantes">{items}</div>'
+
+    clase_wrap = "reo-ref-wrap expandible" if tiene_tallas else "reo-ref-wrap"
+    onclick = ' onclick="toggleAbierto(this, event)"' if tiene_tallas else ""
+
     return f"""
-      <div class="reo-fila">
-        <div class="reo-nombre">{ref["nombre"].title()}</div>
-        <div class="reo-disp">{_miles(ref["disponible"])} disp.</div>
-        <div class="reo-rot">{rot}</div>
-        <div class="reo-estado {estado}">{ref["estado_label"]}</div>
-        <div class="reo-sug">{sug}</div>
+      <div class="{clase_wrap}"{onclick}>
+        <div class="reo-fila">
+          <div class="reo-nombre">{chevron}{ref["referencia"].title()}{conteo}</div>
+          <div class="reo-disp">{_miles(ref["disponible"])} disp.</div>
+          <div class="reo-rot">{rot}</div>
+          <div class="reo-estado {estado}">{ref["estado_label"]}</div>
+          <div class="reo-sug">{sug}</div>
+        </div>
+        {detalle}
       </div>"""
 
 
@@ -437,7 +464,8 @@ if (localStorage.getItem('divina_dashboard_auth') === '1'){
   document.addEventListener('DOMContentLoaded', _mostrarApp);
 }
 
-function toggleAbierto(el){
+function toggleAbierto(el, evt){
+  if (evt) evt.stopPropagation();
   el.classList.toggle('abierto');
 }
 
@@ -680,6 +708,12 @@ _CSS = """
   .reo-estado.critico { background: var(--rojo-bg); color: var(--rojo); }
   .reo-estado.alerta { background: var(--ambar-bg); color: var(--ambar); }
   .reo-sug { text-align: right; font-weight: 700; }
+  .reo-ref-wrap.expandible { cursor: pointer; }
+  .reo-ref-wrap.expandible:hover .reo-fila { background: var(--destacado-bg); }
+  .reo-tallas-count { color: var(--texto-sub); font-weight: 400; font-size: .78em; }
+  .reo-variantes { display: none; padding: .4rem 0 .6rem 1.6rem; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: .3rem .8rem; }
+  .reo-ref-wrap.abierto .reo-variantes { display: grid; }
+  .reo-variantes .detalle-item { border-bottom: none; padding: .15rem 0; font-size: .78rem; }
 
   .nota { margin-top: 1.5rem; padding: 1rem 1.2rem; border: 1px dashed var(--acento-suave); border-radius: 8px; font-size: .85rem; color: var(--texto-sub); }
   footer { margin-top: 2rem; font-size: .75rem; color: var(--texto-sub); }
@@ -730,6 +764,12 @@ def generar_dashboard_html(datos: dict = None) -> str:
     cartera = ventas["cartera"]
     fecha_ref = ventas["actualizado_hasta"].split(" ")[0]
     anio_num = int(fecha_ref.split("-")[0])
+    marmol_uri = _marmol_data_uri()
+    body_style = (
+        f'background-color:#f4f1ec; background-image:url({marmol_uri}); '
+        f'background-repeat:repeat; background-size:900px auto; background-blend-mode:multiply;'
+        if marmol_uri else ""
+    )
 
     unidades_anio = cat_ref["anio_actual"]["unidades_totales"] if cat_ref else None
     kpis_anio_html = _grupo_kpis(anio["kpis"], unidades_anio)
@@ -773,7 +813,7 @@ def generar_dashboard_html(datos: dict = None) -> str:
 <title>Divina Intuición — Dashboard Gerencial</title>
 <style>{_CSS}</style>
 </head>
-<body data-hoy="{fecha_ref}">
+<body data-hoy="{fecha_ref}" style="{body_style}">
   {_LOGIN_HTML}
   <div id="app-contenido" style="display:none">
 
