@@ -138,19 +138,45 @@
   .tabla-categorias tr:last-child td { border-bottom: none; }
 
   .tabla-scroll { overflow-x: auto; border: 1px solid var(--borde); border-radius: 10px; background: var(--card); }
-  .tabla-historico { width: 100%; border-collapse: collapse; font-size: .78rem; min-width: 900px; }
-  .tabla-historico th, .tabla-historico td { padding: .5rem .6rem; border-bottom: 1px solid var(--borde); text-align: left; white-space: nowrap; }
-  .tabla-historico th { color: var(--texto-sub); text-transform: uppercase; font-size: .68rem; letter-spacing: .02em; font-weight: 600; position: sticky; top: 0; background: var(--card); }
-  .tabla-historico td.num { text-align: right; }
+  .tabla-historico { width: 100%; border-collapse: collapse; font-size: .78rem; min-width: 900px; background: var(--card); }
+  .tabla-historico th, .tabla-historico td { padding: .5rem .6rem; border-bottom: 1px solid var(--borde); text-align: right; white-space: nowrap; }
+  .tabla-historico th { color: var(--texto-sub); text-transform: uppercase; font-size: .68rem; letter-spacing: .02em; font-weight: 600; position: sticky; top: 0; background: var(--card); text-align: right; }
+  .tabla-historico th.hist-th-suc, .tabla-historico td.hist-td-suc { text-align: left; }
   .tabla-historico tr:last-child td { border-bottom: none; }
-  .hist-sucursal { font-weight: 600; position: sticky; left: 0; background: var(--card); }
-  .hist-actual { font-weight: 600; }
-  .hist-anterior { color: var(--texto-sub); font-size: .85em; }
-  .hist-var { font-size: .85em; }
-  .hist-vacio { color: var(--acento-suave); }
+  .hist-td-suc { font-weight: 600; position: sticky; left: 0; background: var(--card); }
+  .hist-v-main { font-weight: 600; display: block; }
+  .hist-v-cmp { color: var(--texto-sub); font-size: .85em; display: block; }
+  .hist-v-meta { color: var(--texto-sub); font-style: italic; }
+  .hist-meta-lbl { color: var(--acento-suave); font-size: .65em; text-transform: uppercase; letter-spacing: .03em; }
+  .hist-td-meta { background: var(--bg); }
+  .hist-var-up { color: var(--verde); font-size: .82em; font-weight: 600; display: block; }
+  .hist-var-dn { color: var(--rojo); font-size: .82em; font-weight: 600; display: block; }
+  .tabla-historico tfoot td { font-weight: 700; border-top: 2px solid var(--borde); border-bottom: none; }
+
+  .hist-controles { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
+  .hist-selects { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .hist-selects label { font-size: .78rem; color: var(--texto-sub); display: flex; align-items: center; gap: .4rem; }
+  .hist-selects select { padding: .35rem .6rem; border-radius: 6px; border: 1px solid var(--borde); background: var(--card); font-size: .82rem; font-weight: 600; }
+  .hist-legend { font-size: .82rem; font-weight: 600; }
+  .hist-meses { display: flex; gap: .35rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .hmf-btn { padding: .3rem .65rem; border-radius: 999px; border: 1px solid var(--borde); background: var(--card); color: var(--texto-sub); font-size: .74rem; cursor: pointer; }
+  .hmf-btn.hmf-on { background: var(--acento); color: #fff; border-color: var(--acento); }
+  .hmf-todos { font-weight: 700; }
 
   .grid-2col { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2rem; align-items: start; }
   @media (max-width: 900px) { .grid-2col { grid-template-columns: 1fr; } }
+
+  .donut-wrap { background: var(--card); border: 1px solid var(--borde); border-radius: 10px; padding: 1.4rem; display: flex; flex-direction: column; align-items: center; }
+  .donut-container { position: relative; width: 180px; height: 180px; }
+  .donut-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .donut-pct { font-size: 1.5rem; font-weight: 700; }
+  .donut-sub-label { font-size: .72rem; color: var(--texto-sub); text-transform: uppercase; letter-spacing: .03em; }
+  .donut-legend { width: 100%; max-width: 220px; margin-top: 1.2rem; }
+  .legend-item { display: flex; align-items: center; gap: .5rem; padding: .3rem 0; font-size: .85rem; }
+  .legend-item-separada { margin-top: .5rem; padding-top: .6rem; border-top: 1px solid var(--borde); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .legend-name { flex: 1; color: var(--texto-sub); }
+  .legend-pct { font-weight: 700; font-variant-numeric: tabular-nums; }
 
   .reo-cat-wrap { border: 1px solid var(--borde); border-radius: 10px; background: var(--card); margin-bottom: .7rem; overflow: hidden; }
   .reo-cat-wrap:hover { background: var(--card); }
@@ -314,8 +340,10 @@
       
     </div></div>
 
-    <h2>Ventas por Punto de Venta · Año 2026</h2>
-    <div>
+    <div class="grid-2col">
+      <div>
+        <h2>Ventas por Punto de Venta · Año 2026</h2>
+        <div>
     <div class="suc-fila">
       <div class="suc-nombre">Local 144</div>
       <div class="suc-barra-wrap">
@@ -337,6 +365,36 @@
       </div>
       <div class="suc-cifras">$38.493.749 <span class="suc-trans">· 847 ventas</span></div>
     </div></div>
+      </div>
+      <div>
+        <h2>Composición de Venta · Año 2026</h2>
+        <div class="donut-wrap">
+    <div class="donut-container">
+      <svg class="donut-svg" width="180" height="180" viewBox="0 0 180 180">
+        <circle cx="90" cy="90" r="70" fill="none" stroke="var(--borde)" stroke-width="22"/>
+        <circle cx="90" cy="90" r="70" fill="none" stroke="var(--verde)" stroke-width="22"
+                stroke-dasharray="437.8 439.8" stroke-dashoffset="0" transform="rotate(-90 90 90)"/>
+        <circle cx="90" cy="90" r="70" fill="none" stroke="var(--ambar)" stroke-width="22"
+                stroke-dasharray="0.0 439.8" stroke-dashoffset="-439.8" transform="rotate(-90 90 90)"/>
+      </svg>
+      <div class="donut-center">
+        <div class="donut-pct" style="color:var(--verde)">100.0%</div>
+        <div class="donut-sub-label">Cobrado</div>
+      </div>
+    </div>
+    <div class="donut-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--verde)"></div>
+        <span class="legend-name">Pago total</span><span class="legend-pct">100.0%</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--ambar)"></div>
+        <span class="legend-name">Pendiente de cobro</span><span class="legend-pct">0.0%</span></div>
+      <div class="legend-item legend-item-separada">
+        <div class="legend-dot" style="background:var(--verde)"></div>
+        <span class="legend-name">Margen general</span>
+        <span class="legend-pct" style="color:var(--verde)">47.2%</span>
+      </div>
+    </div></div>
+      </div>
+    </div>
 
     <div class="grid-2col">
       <div>
@@ -347,7 +405,7 @@
       <div class="cat-fila">
         <div class="cat-nombre"><span class="chevron">▶</span> PANTALONES</div>
         <div class="cat-barra-wrap">
-          <div class="cat-barra margen-alto" style="width:100.0%"></div>
+          <div class="cat-barra margen-alto" style="width:75.2%"></div>
         </div>
         <div class="cat-margen margen-alto">43.1%</div>
         <div class="cat-valor">$156.509.700</div>
@@ -358,7 +416,7 @@
       <div class="cat-fila">
         <div class="cat-nombre"><span class="chevron">▶</span> BLUSAS</div>
         <div class="cat-barra-wrap">
-          <div class="cat-barra margen-alto" style="width:58.6%"></div>
+          <div class="cat-barra margen-alto" style="width:96.4%"></div>
         </div>
         <div class="cat-margen margen-alto">55.1%</div>
         <div class="cat-valor">$91.704.600</div>
@@ -369,9 +427,9 @@
       <div class="cat-fila">
         <div class="cat-nombre"><span class="chevron">▶</span> CHAQUETAS</div>
         <div class="cat-barra-wrap">
-          <div class="cat-barra margen-medio" style="width:45.4%"></div>
+          <div class="cat-barra margen-alto" style="width:69.6%"></div>
         </div>
-        <div class="cat-margen margen-medio">39.9%</div>
+        <div class="cat-margen margen-alto">39.9%</div>
         <div class="cat-valor">$71.087.250</div>
       </div>
       <div class="cat-detalle"><div class="detalle-titulo">Top productos de la categoría</div><div class="detalle-item"><span>Chamarra Cuero Corta Vinotinto</span><span>23 und. · $2.930.000</span></div><div class="detalle-item"><span>Chamarra Hombro Cafe</span><span>20 und. · $2.750.000</span></div><div class="detalle-item"><span>Capa Vintage  Tu</span><span>19 und. · $2.460.000</span></div><div class="detalle-item"><span>Chamarra Cuero Corta Negro</span><span>18 und. · $2.330.000</span></div><div class="detalle-item"><span>Chamarra Hombro Negro</span><span>16 und. · $2.210.000</span></div></div>
@@ -380,9 +438,9 @@
       <div class="cat-fila">
         <div class="cat-nombre"><span class="chevron">▶</span> CONJUNTOS</div>
         <div class="cat-barra-wrap">
-          <div class="cat-barra margen-medio" style="width:28.7%"></div>
+          <div class="cat-barra margen-alto" style="width:63.5%"></div>
         </div>
-        <div class="cat-margen margen-medio">36.4%</div>
+        <div class="cat-margen margen-alto">36.4%</div>
         <div class="cat-valor">$44.884.000</div>
       </div>
       <div class="cat-detalle"><div class="detalle-titulo">Top productos de la categoría</div><div class="detalle-item"><span>Set Jean Sol  T8</span><span>19 und. · $3.658.000</span></div><div class="detalle-item"><span>Sudadera Zoe Negro</span><span>22 und. · $2.925.000</span></div><div class="detalle-item"><span>Set Jean Sol  T10</span><span>14 und. · $2.700.000</span></div><div class="detalle-item"><span>Sudadera Zoe Negro Tu</span><span>18 und. · $2.530.000</span></div><div class="detalle-item"><span>Sudadera Zoe Cafe Tu</span><span>13 und. · $1.850.000</span></div></div>
@@ -391,7 +449,7 @@
       <div class="cat-fila">
         <div class="cat-nombre"><span class="chevron">▶</span> VESTIDOS</div>
         <div class="cat-barra-wrap">
-          <div class="cat-barra margen-alto" style="width:27.3%"></div>
+          <div class="cat-barra margen-alto" style="width:79.4%"></div>
         </div>
         <div class="cat-margen margen-alto">45.4%</div>
         <div class="cat-valor">$42.658.150</div>
@@ -402,7 +460,7 @@
       <div class="cat-fila">
         <div class="cat-nombre"><span class="chevron">▶</span> CORSET</div>
         <div class="cat-barra-wrap">
-          <div class="cat-barra margen-alto" style="width:25.2%"></div>
+          <div class="cat-barra margen-alto" style="width:78.2%"></div>
         </div>
         <div class="cat-margen margen-alto">44.8%</div>
         <div class="cat-valor">$39.380.000</div>
@@ -413,7 +471,7 @@
       <div class="cat-fila">
         <div class="cat-nombre"><span class="chevron">▶</span> BODYS</div>
         <div class="cat-barra-wrap">
-          <div class="cat-barra margen-alto" style="width:22.4%"></div>
+          <div class="cat-barra margen-alto" style="width:100.0%"></div>
         </div>
         <div class="cat-margen margen-alto">57.2%</div>
         <div class="cat-valor">$35.050.000</div>
@@ -424,7 +482,7 @@
       <div class="cat-fila">
         <div class="cat-nombre"><span class="chevron">▶</span> BUZOS</div>
         <div class="cat-barra-wrap">
-          <div class="cat-barra margen-alto" style="width:17.3%"></div>
+          <div class="cat-barra margen-alto" style="width:84.9%"></div>
         </div>
         <div class="cat-margen margen-alto">48.6%</div>
         <div class="cat-valor">$27.076.000</div>
@@ -435,7 +493,7 @@
       <div class="cat-fila">
         <div class="cat-nombre"><span class="chevron">▶</span> FALDAS</div>
         <div class="cat-barra-wrap">
-          <div class="cat-barra margen-alto" style="width:15.0%"></div>
+          <div class="cat-barra margen-alto" style="width:82.9%"></div>
         </div>
         <div class="cat-margen margen-alto">47.5%</div>
         <div class="cat-valor">$23.490.000</div>
@@ -446,9 +504,9 @@
       <div class="cat-fila">
         <div class="cat-nombre"><span class="chevron">▶</span> CADENAS</div>
         <div class="cat-barra-wrap">
-          <div class="cat-barra margen-medio" style="width:7.3%"></div>
+          <div class="cat-barra margen-alto" style="width:67.8%"></div>
         </div>
-        <div class="cat-margen margen-medio">38.8%</div>
+        <div class="cat-margen margen-alto">38.8%</div>
         <div class="cat-valor">$11.462.000</div>
       </div>
       <div class="cat-detalle"><div class="detalle-titulo">Top productos de la categoría</div><div class="detalle-item"><span>Cadena $38000</span><span>38 und. · $1.434.000</span></div><div class="detalle-item"><span>Cadena $30000</span><span>20 und. · $600.000</span></div><div class="detalle-item"><span>Cadena $40000</span><span>12 und. · $480.000</span></div><div class="detalle-item"><span>Cadena $35000</span><span>12 und. · $424.000</span></div><div class="detalle-item"><span>Cadena $28000</span><span>14 und. · $392.000</span></div></div>
@@ -553,13 +611,26 @@
 
     
   <h2>Comparativo histórico por sucursal</h2>
-  <div class="subtitulo" style="margin-bottom:1rem;">2025 vs 2026 · Total neto por mes</div>
-  <div class="tabla-scroll">
-  <table class="tabla-historico">
-    <thead><tr><th>Sucursal</th><th class='num'>Ene</th><th class='num'>Feb</th><th class='num'>Mar</th><th class='num'>Abr</th><th class='num'>May</th><th class='num'>Jun</th><th class='num'>Jul</th><th class='num'>Ago</th><th class='num'>Sep</th><th class='num'>Oct</th><th class='num'>Nov</th><th class='num'>Dic</th></tr></thead>
-    <tbody><tr><td class="hist-sucursal">Local 144</td><td class="num"><div class="hist-actual">$23.979.000</div></td><td class="num"><div class="hist-actual">$42.869.000</div></td><td class="num"><div class="hist-actual">$52.025.000</div></td><td class="num"><div class="hist-actual">$53.181.000</div><div class="hist-anterior">$28.637.000</div><div class="hist-var pos">+85.7%</div></td><td class="num"><div class="hist-actual">$67.411.700</div><div class="hist-anterior">$38.333.000</div><div class="hist-var pos">+75.9%</div></td><td class="num"><div class="hist-actual">$92.907.000</div><div class="hist-anterior">$55.238.000</div><div class="hist-var pos">+68.2%</div></td><td class="num"><div class="hist-actual">$36.935.000</div><div class="hist-anterior">$67.493.000</div><div class="hist-var neg">-45.3%</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$76.087.000</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$68.241.000</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$88.544.000</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$100.255.000</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$215.957.000</div></td></tr><tr><td class="hist-sucursal">Local 433</td><td class="num"><div class="hist-actual">$9.239.000</div></td><td class="num"><div class="hist-actual">$17.693.000</div></td><td class="num"><div class="hist-actual">$26.841.000</div></td><td class="num"><div class="hist-actual">$26.158.000</div><div class="hist-anterior">$13.716.000</div><div class="hist-var pos">+90.7%</div></td><td class="num"><div class="hist-actual">$38.744.000</div><div class="hist-anterior">$19.603.000</div><div class="hist-var pos">+97.6%</div></td><td class="num"><div class="hist-actual">$41.892.000</div><div class="hist-anterior">$22.437.000</div><div class="hist-var pos">+86.7%</div></td><td class="num"><div class="hist-actual">$19.624.000</div><div class="hist-anterior">$34.098.000</div><div class="hist-var neg">-42.4%</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$30.556.000</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$28.319.000</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$34.475.000</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$54.348.000</div></td><td class="num"><div class="hist-actual hist-vacio">—</div><div class="hist-anterior">$130.351.000</div></td></tr><tr><td class="hist-sucursal">Local 107</td><td class="num hist-vacio">—</td><td class="num hist-vacio">—</td><td class="num hist-vacio">—</td><td class="num"><div class="hist-actual">$9.212.100</div></td><td class="num"><div class="hist-actual">$10.525.249</div></td><td class="num"><div class="hist-actual">$12.214.800</div></td><td class="num"><div class="hist-actual">$6.025.600</div></td><td class="num hist-vacio">—</td><td class="num hist-vacio">—</td><td class="num hist-vacio">—</td><td class="num hist-vacio">—</td><td class="num hist-vacio">—</td></tr></tbody>
-  </table>
+  <div class="hist-controles">
+    <div class="hist-selects">
+      <label>Año principal <select id="hist-yr-main" onchange="renderHist()"><option value="2026" selected>2026 YTD</option><option value="2025">2025</option></select></label>
+      <label>Comparar con <select id="hist-yr-cmp" onchange="renderHist()"><option value="">Ninguno</option><option value="2026">2026</option><option value="2025" selected>2025</option></select></label>
+    </div>
+    <div id="hist-legend" class="hist-legend"></div>
   </div>
+  <div class="hist-meses">
+    <button class="hmf-btn hmf-on" data-mes="ENE" onclick="togMes('ENE',this)">Ene</button><button class="hmf-btn hmf-on" data-mes="FEB" onclick="togMes('FEB',this)">Feb</button><button class="hmf-btn hmf-on" data-mes="MAR" onclick="togMes('MAR',this)">Mar</button><button class="hmf-btn hmf-on" data-mes="ABR" onclick="togMes('ABR',this)">Abr</button><button class="hmf-btn hmf-on" data-mes="MAY" onclick="togMes('MAY',this)">May</button><button class="hmf-btn hmf-on" data-mes="JUN" onclick="togMes('JUN',this)">Jun</button><button class="hmf-btn hmf-on" data-mes="JUL" onclick="togMes('JUL',this)">Jul</button><button class="hmf-btn hmf-on" data-mes="AGO" onclick="togMes('AGO',this)">Ago</button><button class="hmf-btn hmf-on" data-mes="SEP" onclick="togMes('SEP',this)">Sep</button><button class="hmf-btn hmf-on" data-mes="OCT" onclick="togMes('OCT',this)">Oct</button><button class="hmf-btn hmf-on" data-mes="NOV" onclick="togMes('NOV',this)">Nov</button><button class="hmf-btn hmf-on" data-mes="DIC" onclick="togMes('DIC',this)">Dic</button>
+    <button class="hmf-btn hmf-todos" onclick="selAllMes()">Todos</button>
+  </div>
+  <div class="tabla-scroll">
+    <table class="tabla-historico" id="hist-table"></table>
+  </div>
+  <div class="nota">
+    Las celdas en gris con "META" son meses sin cerrar o sin meta fijada manualmente en
+    config/metas_mensuales.json — se calculan automáticamente como +10% de lo vendido ese
+    mismo mes el año anterior, igual que el dashboard de referencia.
+  </div>
+  <script type="application/json" id="data-historico">{"histData": {"2025": {"Local 144": {"ENE": 0, "FEB": 0, "MAR": 0, "ABR": 28637000.0, "MAY": 38333000.0, "JUN": 55238000.0, "JUL": 67493000.0, "AGO": 76087000.0, "SEP": 68241000.0, "OCT": 88544000.0, "NOV": 100255000.0, "DIC": 215957000.0, "TOTAL": 738785000.0}, "Local 433": {"ENE": 0, "FEB": 0, "MAR": 0, "ABR": 13716000.0, "MAY": 19603000.0, "JUN": 22437000.0, "JUL": 34098000.0, "AGO": 30556000.0, "SEP": 28319000.0, "OCT": 34475000.0, "NOV": 54348000.0, "DIC": 130351000.0, "TOTAL": 367903000.0}}, "2026": {"Local 144": {"ENE": 23979000.0, "FEB": 42869000.0, "MAR": 52025000.0, "ABR": 53181000.0, "MAY": 67411700.0, "JUN": 92907000.0, "JUL": 36935000.0, "AGO": 0, "SEP": 0, "OCT": 0, "NOV": 0, "DIC": 0, "TOTAL": 369307700.0}, "Local 433": {"ENE": 9239000.0, "FEB": 17693000.0, "MAR": 26841000.0, "ABR": 26158000.0, "MAY": 38744000.02, "JUN": 41892000.0, "JUL": 19624000.0, "AGO": 0, "SEP": 0, "OCT": 0, "NOV": 0, "DIC": 0, "TOTAL": 180191000.02}, "Local 107": {"ENE": 0, "FEB": 0, "MAR": 0, "ABR": 9212100.02, "MAY": 10525249.2, "JUN": 12214799.63, "JUL": 6025599.85, "AGO": 0, "SEP": 0, "OCT": 0, "NOV": 0, "DIC": 0, "TOTAL": 37977748.7}}}, "metas": {}, "meses": ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"], "mesLabels": ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"], "mesActual": 7, "anioActual": "2026"}</script>
 
     <div class="nota">
       Cartera: 3 remisiones pendientes de cobro por $198.000 ·
@@ -3641,7 +3712,7 @@
     <div class="nota">Pendiente: definir con el negocio el escalafón de comisiones por vendedor/sucursal en config/metas_comisiones.json.</div>
   </div>
 
-  <footer>Generado el 2026-07-18 17:13 · datos de Effi Systems</footer>
+  <footer>Generado el 2026-07-18 17:56 · datos de Effi Systems</footer>
 
   </div>
 
@@ -3746,6 +3817,179 @@ function filtrarRango(diasDesde, diasHasta, btn){
   var cont = document.getElementById('ventas-recientes-bars');
   if (cont) cont.innerHTML = html;
 }
+
+function _histCop(v){
+  if (!v || v === 0) return '\u2014';
+  return '$' + Math.round(v).toLocaleString('es-CO');
+}
+
+function colorSelect(el){
+  var c = el.id === 'hist-yr-main' ? 'var(--acento)' : 'var(--ambar)';
+  el.style.color = c;
+  el.style.borderColor = c;
+}
+
+function _histYrLabel(yr, anioActual){
+  return yr === anioActual ? yr + ' YTD' : yr;
+}
+
+function updateLegend(yr, cmp){
+  var el = document.getElementById('hist-legend');
+  if (!el) return;
+  var d = JSON.parse(document.getElementById('data-historico').textContent);
+  var h = '<span style="color:var(--acento)">\u25a0 ' + _histYrLabel(yr, d.anioActual) + '</span>';
+  if (cmp) h += ' <span style="color:var(--texto-sub)">vs</span> <span style="color:var(--ambar)">\u25a0 ' + _histYrLabel(cmp, d.anioActual) + '</span>';
+  el.innerHTML = h;
+}
+
+var visibleMes = (function(){
+  var el = document.getElementById('data-historico');
+  return el ? new Set(JSON.parse(el.textContent).meses) : new Set();
+})();
+
+function togMes(m, btn){
+  if (visibleMes.has(m)) { visibleMes.delete(m); btn.classList.remove('hmf-on'); }
+  else { visibleMes.add(m); btn.classList.add('hmf-on'); }
+  renderHist();
+}
+
+function selAllMes(){
+  var d = JSON.parse(document.getElementById('data-historico').textContent);
+  visibleMes = new Set(d.meses);
+  document.querySelectorAll('.hmf-btn[data-mes]').forEach(function(b){ b.classList.add('hmf-on'); });
+  renderHist();
+}
+
+function renderHist(){
+  var datosEl = document.getElementById('data-historico');
+  if (!datosEl) return;
+  var datos = JSON.parse(datosEl.textContent);
+  var selM = document.getElementById('hist-yr-main');
+  var selC = document.getElementById('hist-yr-cmp');
+  var yr = selM.value, cmp = selC.value;
+  colorSelect(selM); colorSelect(selC);
+  updateLegend(yr, cmp);
+
+  var MD = datos.histData[yr] || {};
+  var CD = cmp ? (datos.histData[cmp] || {}) : null;
+  var MESES = datos.meses, MES_LABELS = datos.mesLabels, MES_ACTUAL = datos.mesActual;
+  var ANIO_ACTUAL = datos.anioActual, METAS = datos.metas;
+  var yc = 'var(--acento)', cc = 'var(--ambar)';
+
+  var visMes = MESES.filter(function(m){ return visibleMes.has(m); });
+  var visMesLbl = MES_LABELS.filter(function(_, i){ return visibleMes.has(MESES[i]); });
+
+  function sucTotal(sd){
+    var t = 0; visMes.forEach(function(m){ var v = (sd || {})[m] || 0; if (v > 0) t += v; }); return t;
+  }
+  var sucs = Object.keys(MD).sort(function(a, b){ return sucTotal(MD[b]) - sucTotal(MD[a]); });
+
+  var h = '<thead><tr><th class="hist-th-suc">SUCURSAL</th>';
+  visMesLbl.forEach(function(lbl){ h += '<th>' + lbl + '</th>'; });
+  h += '<th>TOTAL</th></tr></thead><tbody>';
+
+  sucs.forEach(function(s){
+    h += '<tr><td class="hist-td-suc">' + s + '</td>';
+    visMes.forEach(function(m){
+      var v = (MD[s] || {})[m] || 0;
+      var vc = CD ? ((CD[s] || {})[m] || 0) : 0;
+      var mIdx = MESES.indexOf(m) + 1;
+      var vPrevYear = ((datos.histData[String(Number(yr) - 1)] || {})[s] || {})[m] || 0;
+      var mr = METAS[s], hayMeta = mr !== undefined && mr[mIdx] !== undefined;
+      var metaV = (hayMeta && mIdx <= 12) ? mr[mIdx] : vPrevYear * 1.10;
+
+      if (yr === ANIO_ACTUAL) {
+        if (mIdx > MES_ACTUAL || v === 0) {
+          h += metaV > 0
+            ? '<td class="hist-td-meta"><span class="hist-v-meta">' + _histCop(metaV) + '</span><span class="hist-meta-lbl"> META</span></td>'
+            : '<td class="hist-td-meta">\u2014</td>';
+        } else {
+          var cell = '<span class="hist-v-main" style="color:' + yc + '">' + _histCop(v) + '</span>';
+          if (CD && vc > 0) {
+            var p = (v - vc) / vc * 100, cl = p >= 0 ? 'hist-var-up' : 'hist-var-dn';
+            cell += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(vc) + '</span><span class="' + cl + '">' + (p >= 0 ? '+' : '') + p.toFixed(1) + '%</span>';
+          } else if (metaV > 0) {
+            var p2 = (v / metaV - 1) * 100, cl2 = p2 >= 0 ? 'hist-var-up' : 'hist-var-dn';
+            cell += '<span class="hist-v-cmp">' + _histCop(metaV) + '</span><span class="' + cl2 + '">' + (p2 >= 0 ? '+' : '') + p2.toFixed(1) + '%</span>';
+          }
+          h += '<td>' + cell + '</td>';
+        }
+      } else {
+        var cell2 = '<span class="hist-v-main" style="color:' + yc + '">' + _histCop(v) + '</span>';
+        if (CD) {
+          cell2 += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(vc) + '</span>';
+          if (vc > 0) {
+            var p3 = (v - vc) / vc * 100, cl3 = p3 >= 0 ? 'hist-var-up' : 'hist-var-dn';
+            cell2 += '<span class="' + cl3 + '">' + (p3 >= 0 ? '+' : '') + p3.toFixed(1) + '%</span>';
+          }
+        }
+        h += '<td>' + cell2 + '</td>';
+      }
+    });
+
+    var vt = 0, vtc = 0;
+    visMes.forEach(function(m){
+      var mv = (MD[s] || {})[m] || 0; if (mv > 0) vt += mv;
+      if (CD) { var mvc = (CD[s] || {})[m] || 0; if (mvc > 0) vtc += mvc; }
+    });
+    var tc = '<span class="hist-v-main" style="color:' + yc + '">' + _histCop(vt) + '</span>';
+    if (CD) {
+      tc += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(vtc) + '</span>';
+      if (vtc > 0) {
+        var p4 = (vt - vtc) / vtc * 100, cl4 = p4 >= 0 ? 'hist-var-up' : 'hist-var-dn';
+        tc += '<span class="' + cl4 + '">' + (p4 >= 0 ? '+' : '') + p4.toFixed(1) + '%</span>';
+      }
+    }
+    h += '<td>' + tc + '</td></tr>';
+  });
+
+  h += '</tbody><tfoot><tr><td>TOTAL MES</td>';
+  visMes.forEach(function(m){
+    var t = 0, tc2 = 0;
+    sucs.forEach(function(s){ t += (MD[s] || {})[m] || 0; if (CD) tc2 += (CD[s] || {})[m] || 0; });
+    var mIdxF = MESES.indexOf(m) + 1;
+    if (yr === ANIO_ACTUAL) {
+      var tMeta = 0;
+      sucs.forEach(function(s){
+        var v25s = ((datos.histData[String(Number(yr) - 1)] || {})[s] || {})[m] || 0;
+        var mr2 = METAS[s], hayMeta2 = mr2 !== undefined && mr2[mIdxF] !== undefined;
+        tMeta += (hayMeta2 && mIdxF <= 12) ? mr2[mIdxF] : v25s * 1.10;
+      });
+      if (mIdxF > MES_ACTUAL || t === 0) {
+        h += tMeta > 0
+          ? '<td class="hist-td-meta"><span class="hist-v-meta">' + _histCop(tMeta) + '</span><span class="hist-meta-lbl"> META</span></td>'
+          : '<td class="hist-td-meta">\u2014</td>';
+      } else {
+        var fc = '<span style="color:' + yc + '">' + _histCop(t) + '</span>';
+        if (CD && tc2 > 0) {
+          var p5 = (t - tc2) / tc2 * 100, cl5 = p5 >= 0 ? 'hist-var-up' : 'hist-var-dn';
+          fc += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(tc2) + '</span><span class="' + cl5 + '">' + (p5 >= 0 ? '+' : '') + p5.toFixed(1) + '%</span>';
+        } else if (tMeta > 0) {
+          var p6 = (t / tMeta - 1) * 100, cl6 = p6 >= 0 ? 'hist-var-up' : 'hist-var-dn';
+          fc += '<span class="hist-v-cmp">' + _histCop(tMeta) + '</span><span class="' + cl6 + '">' + (p6 >= 0 ? '+' : '') + p6.toFixed(1) + '%</span>';
+        }
+        h += '<td>' + fc + '</td>';
+      }
+    } else {
+      var fc2 = '<span style="color:' + yc + '">' + _histCop(t) + '</span>';
+      if (CD && tc2 > 0) fc2 += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(tc2) + '</span>';
+      h += '<td>' + fc2 + '</td>';
+    }
+  });
+
+  var g = 0, gc = 0;
+  sucs.forEach(function(s){
+    visMes.forEach(function(m){ var mv2 = (MD[s] || {})[m] || 0; if (mv2 > 0) g += mv2; });
+    if (CD) visMes.forEach(function(m){ var mvc2 = (CD[s] || {})[m] || 0; if (mvc2 > 0) gc += mvc2; });
+  });
+  var gfc = '<span style="color:' + yc + '">' + _histCop(g) + '</span>';
+  if (CD && gc > 0) gfc += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(gc) + '</span>';
+  h += '<td>' + gfc + '</td></tr></tfoot>';
+
+  document.getElementById('hist-table').innerHTML = h;
+}
+
+if (document.getElementById('hist-table')) renderHist();
 
 filtrarRango(0, 0, document.querySelector('.filtro-btn[data-desde="0"][data-hasta="0"]'));
 </script>

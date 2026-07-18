@@ -65,13 +65,21 @@ def main():
 
     validas = df_full[df_full["Estado CXC"] == "Pago total"].copy()
     anuladas = df_full[df_full["Estado CXC"] == "Anulado"]
-    pendientes_cobro = df_full[df_full["Estado CXC"] == "Pendiente de cobro al día"]
+    pendientes_cobro_todas = df_full[df_full["Estado CXC"] == "Pendiente de cobro al día"]
 
     historico = validas
     anio_actual = validas[validas["Fecha de creación"] >= INICIO_ANIO]
     mes_actual = validas[validas["Fecha de creación"] >= INICIO_MES]
     hoy = validas[validas["dia"] == HOY.date()]
     ayer = validas[validas["dia"] == AYER.date()]
+
+    pendientes_cobro_anio = pendientes_cobro_todas[pendientes_cobro_todas["Fecha de creación"] >= INICIO_ANIO]
+    composicion_anio = {
+        "pago_total": round(float(anio_actual["Total neto"].sum()), 2),
+        "pendiente_cobro": round(float(pendientes_cobro_anio["Total neto"].sum()), 2),
+        "num_pago_total": int(len(anio_actual)),
+        "num_pendiente_cobro": int(len(pendientes_cobro_anio)),
+    }
 
     salida = {
         "actualizado_hasta": str(df_full["Fecha de creación"].max()),
@@ -83,6 +91,7 @@ def main():
         "anio_actual": {
             "kpis": _kpis(anio_actual),
             "por_sucursal": _por_sucursal(anio_actual, nombre_map),
+            "composicion": composicion_anio,
         },
         "mes_actual": {
             "kpis": _kpis(mes_actual),
@@ -95,8 +104,8 @@ def main():
         },
         "cartera": {
             "num_anuladas_historico": int(len(anuladas)),
-            "pendiente_de_cobro": round(float(pendientes_cobro["Total neto"].sum()), 2),
-            "num_pendiente_de_cobro": int(len(pendientes_cobro)),
+            "pendiente_de_cobro": round(float(pendientes_cobro_todas["Total neto"].sum()), 2),
+            "num_pendiente_de_cobro": int(len(pendientes_cobro_todas)),
         },
     }
 

@@ -114,9 +114,10 @@ def _fila_stock(nombre: str, unidades: int, maximo: int) -> str:
 
 
 def _clase_margen(margen: float) -> str:
-    if margen >= 0.40:
+    """Umbrales calcados del dashboard de referencia (Grupo Bentley): >=30% verde, >=10% ámbar, si no rojo."""
+    if margen >= 0.30:
         return "margen-alto"
-    if margen >= 0.25:
+    if margen >= 0.10:
         return "margen-medio"
     return "margen-bajo"
 
@@ -132,8 +133,11 @@ def _detalle_categoria_html(productos: list) -> str:
     return f'<div class="cat-detalle"><div class="detalle-titulo">Top productos de la categoría</div>{filas}</div>'
 
 
-def _fila_categoria_rentabilidad(cat: dict, maximo: float, productos_por_categoria: dict) -> str:
-    pct_barra = round((cat["ventas_netas"] / maximo) * 100, 1) if maximo else 0
+def _fila_categoria_rentabilidad(cat: dict, maximo_margen: float, productos_por_categoria: dict) -> str:
+    """El orden de las categorías es por ventas (de mayor a menor), pero el largo de la
+    barra representa el MARGEN relativo al máximo margen del grupo — igual que el
+    dashboard de referencia: la barra comunica rentabilidad, no volumen de venta."""
+    pct_barra = round((cat["margen"] / maximo_margen) * 100, 1) if maximo_margen else 0
     clase = _clase_margen(cat["margen"])
     productos = productos_por_categoria.get(cat["categoria"], [])
     detalle = _detalle_categoria_html(productos)
@@ -224,6 +228,54 @@ def _seccion_ventas_recientes() -> str:
   </div>
   <div class="subtitulo" style="margin:.8rem 0;">Total del rango: <strong id="ventas-recientes-total">—</strong></div>
   <div id="ventas-recientes-bars"></div>"""
+
+
+def _seccion_composicion_venta(composicion: dict, margen: float) -> str:
+    """Donut SVG hecho a mano (stroke-dasharray/dashoffset), igual técnica que el
+    dashboard de referencia. Ahí mostraba Facturado vs Pendiente de facturar — en
+    Divina esa distinción no aplica (todo queda "pendiente de facturar" en Effi),
+    así que la composición real y útil es Cobrado (Pago total) vs Pendiente de cobro."""
+    pago = composicion["pago_total"]
+    pendiente = composicion["pendiente_cobro"]
+    total = pago + pendiente
+    if total <= 0:
+        return '<div class="detalle-vacio">Sin datos de cartera para este período.</div>'
+
+    pct_pago = pago / total * 100
+    pct_pendiente = pendiente / total * 100
+    circ = 2 * 3.14159265 * 70
+    gap = 2
+    arco_pago = max(0, pct_pago / 100 * circ - gap)
+    arco_pendiente = max(0, pct_pendiente / 100 * circ - gap)
+    offset_pendiente = -(pct_pago / 100 * circ)
+    clase_margen = _clase_margen(margen)
+    color_margen = {"margen-alto": "var(--verde)", "margen-medio": "var(--ambar)", "margen-bajo": "var(--rojo)"}[clase_margen]
+
+    return f"""
+    <div class="donut-container">
+      <svg class="donut-svg" width="180" height="180" viewBox="0 0 180 180">
+        <circle cx="90" cy="90" r="70" fill="none" stroke="var(--borde)" stroke-width="22"/>
+        <circle cx="90" cy="90" r="70" fill="none" stroke="var(--verde)" stroke-width="22"
+                stroke-dasharray="{arco_pago:.1f} {circ:.1f}" stroke-dashoffset="0" transform="rotate(-90 90 90)"/>
+        <circle cx="90" cy="90" r="70" fill="none" stroke="var(--ambar)" stroke-width="22"
+                stroke-dasharray="{arco_pendiente:.1f} {circ:.1f}" stroke-dashoffset="{offset_pendiente:.1f}" transform="rotate(-90 90 90)"/>
+      </svg>
+      <div class="donut-center">
+        <div class="donut-pct" style="color:var(--verde)">{pct_pago:.1f}%</div>
+        <div class="donut-sub-label">Cobrado</div>
+      </div>
+    </div>
+    <div class="donut-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--verde)"></div>
+        <span class="legend-name">Pago total</span><span class="legend-pct">{pct_pago:.1f}%</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--ambar)"></div>
+        <span class="legend-name">Pendiente de cobro</span><span class="legend-pct">{pct_pendiente:.1f}%</span></div>
+      <div class="legend-item legend-item-separada">
+        <div class="legend-dot" style="background:{color_margen}"></div>
+        <span class="legend-name">Margen general</span>
+        <span class="legend-pct" style="color:{color_margen}">{_pct(margen)}</span>
+      </div>
+    </div>"""
 
 
 # ---------- sección: inventario + reorden ----------
@@ -358,58 +410,98 @@ def _seccion_reorden(reorden: dict) -> str:
 
 # ---------- sección: comparativo histórico ----------
 
-def _seccion_comparativo_historico(historico_mensual: dict) -> str:
+MESES_UP = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"]
+
+
+def _hist_data_js(historico_mensual: dict) -> dict:
+    """Reforma reportes/historico_mensual.json a la forma que consume el JS de
+    renderHist (calcada del dashboard de referencia): {anio: {sucursal: {MES: valor, TOTAL: valor}}}."""
+    hist = {}
+    for data in historico_mensual.values():
+        nombre = data["nombre"]
+        for anio, meses in data["por_anio_mes"].items():
+            bloque = hist.setdefault(anio, {}).setdefault(nombre, {})
+            total = 0
+            for mes_es, mes_up in zip(MESES_ES, MESES_UP):
+                valor = meses.get(mes_es, {}).get("neto", 0)
+                bloque[mes_up] = valor
+                total += valor
+            bloque["TOTAL"] = round(total, 2)
+    return hist
+
+
+def _metas_js(metas_cfg: dict, sucursales_cfg: list) -> dict:
+    """config/metas_mensuales.json (por código de sucursal) -> {nombre_sucursal: {mes_idx: valor}},
+    solo con los meses que el negocio fijó manualmente (el resto usa el respaldo +10% vs año anterior)."""
+    nombre_por_codigo = {s["codigo"]: s["nombre"] for s in sucursales_cfg}
+    metas = {}
+    for codigo, meses in metas_cfg.items():
+        if codigo.startswith("_") or not isinstance(meses, dict):
+            continue
+        nombre = nombre_por_codigo.get(codigo, codigo)
+        limpio = {k: v for k, v in meses.items() if v is not None}
+        if limpio:
+            metas[nombre] = limpio
+    return metas
+
+
+def _seccion_comparativo_historico(historico_mensual: dict, metas_cfg: dict, sucursales_cfg: list, hoy: "datetime") -> str:
     if not historico_mensual:
         return ""
 
-    filas = []
-    for cod, data in historico_mensual.items():
-        por_anio_mes = data["por_anio_mes"]
-        anios_disponibles = sorted(por_anio_mes.keys())
-        if len(anios_disponibles) < 1:
-            continue
-        anio_reciente = anios_disponibles[-1]
-        anio_anterior = anios_disponibles[-2] if len(anios_disponibles) > 1 else None
+    hist_data = _hist_data_js(historico_mensual)
+    metas = _metas_js(metas_cfg, sucursales_cfg)
+    anios = sorted(hist_data.keys())
+    if not anios:
+        return ""
+    anio_actual_str = str(hoy.year)
+    anio_principal = anio_actual_str if anio_actual_str in anios else anios[-1]
+    anio_comparar = str(int(anio_principal) - 1) if str(int(anio_principal) - 1) in anios else ""
 
-        celdas = []
-        for mes in MESES_ES:
-            actual = por_anio_mes.get(anio_reciente, {}).get(mes)
-            anterior = por_anio_mes.get(anio_anterior, {}).get(mes) if anio_anterior else None
+    opciones_principal = "".join(
+        f'<option value="{a}"{" selected" if a == anio_principal else ""}>{a}{" YTD" if a == anio_actual_str else ""}</option>'
+        for a in reversed(anios)
+    )
+    opciones_cmp = '<option value="">Ninguno</option>' + "".join(
+        f'<option value="{a}"{" selected" if a == anio_comparar else ""}>{a}</option>'
+        for a in reversed(anios)
+    )
+    botones_mes = "".join(
+        f'<button class="hmf-btn hmf-on" data-mes="{m}" onclick="togMes(\'{m}\',this)">{lbl}</button>'
+        for m, lbl in zip(MESES_UP, MESES_ES)
+    )
 
-            if not actual and not anterior:
-                celdas.append('<td class="num hist-vacio">—</td>')
-                continue
-
-            partes = []
-            if actual:
-                partes.append(f'<div class="hist-actual">{_cop(actual["neto"])}</div>')
-            else:
-                partes.append('<div class="hist-actual hist-vacio">—</div>')
-            if anterior:
-                partes.append(f'<div class="hist-anterior">{_cop(anterior["neto"])}</div>')
-                if actual and anterior["neto"]:
-                    var = (actual["neto"] - anterior["neto"]) / anterior["neto"]
-                    clase = "pos" if var >= 0 else "neg"
-                    signo = "+" if var >= 0 else ""
-                    partes.append(f'<div class="hist-var {clase}">{signo}{round(var * 100, 1)}%</div>')
-            celdas.append(f'<td class="num">{"".join(partes)}</td>')
-
-        filas.append(f'<tr><td class="hist-sucursal">{data["nombre"]}</td>{"".join(celdas)}</tr>')
-
-    anios_todos = sorted({a for d in historico_mensual.values() for a in d["por_anio_mes"].keys()})
-    etiqueta_anios = " vs ".join(anios_todos[-2:]) if len(anios_todos) > 1 else (anios_todos[0] if anios_todos else "")
-
-    encabezado_meses = "".join(f"<th class='num'>{m}</th>" for m in MESES_ES)
+    datos_json = json.dumps({
+        "histData": hist_data,
+        "metas": metas,
+        "meses": MESES_UP,
+        "mesLabels": MESES_ES,
+        "mesActual": hoy.month,
+        "anioActual": anio_actual_str,
+    }, ensure_ascii=False)
 
     return f"""
   <h2>Comparativo histórico por sucursal</h2>
-  <div class="subtitulo" style="margin-bottom:1rem;">{etiqueta_anios} · Total neto por mes</div>
+  <div class="hist-controles">
+    <div class="hist-selects">
+      <label>Año principal <select id="hist-yr-main" onchange="renderHist()">{opciones_principal}</select></label>
+      <label>Comparar con <select id="hist-yr-cmp" onchange="renderHist()">{opciones_cmp}</select></label>
+    </div>
+    <div id="hist-legend" class="hist-legend"></div>
+  </div>
+  <div class="hist-meses">
+    {botones_mes}
+    <button class="hmf-btn hmf-todos" onclick="selAllMes()">Todos</button>
+  </div>
   <div class="tabla-scroll">
-  <table class="tabla-historico">
-    <thead><tr><th>Sucursal</th>{encabezado_meses}</tr></thead>
-    <tbody>{"".join(filas)}</tbody>
-  </table>
-  </div>"""
+    <table class="tabla-historico" id="hist-table"></table>
+  </div>
+  <div class="nota">
+    Las celdas en gris con "META" son meses sin cerrar o sin meta fijada manualmente en
+    config/metas_mensuales.json — se calculan automáticamente como +10% de lo vendido ese
+    mismo mes el año anterior, igual que el dashboard de referencia.
+  </div>
+  <script type="application/json" id="data-historico">{datos_json}</script>"""
 
 
 # ---------- login (pantalla de acceso, protección de fricción — ver nota en el README) ----------
@@ -535,6 +627,179 @@ function filtrarRango(diasDesde, diasHasta, btn){
   var cont = document.getElementById('ventas-recientes-bars');
   if (cont) cont.innerHTML = html;
 }
+
+function _histCop(v){
+  if (!v || v === 0) return '\\u2014';
+  return '$' + Math.round(v).toLocaleString('es-CO');
+}
+
+function colorSelect(el){
+  var c = el.id === 'hist-yr-main' ? 'var(--acento)' : 'var(--ambar)';
+  el.style.color = c;
+  el.style.borderColor = c;
+}
+
+function _histYrLabel(yr, anioActual){
+  return yr === anioActual ? yr + ' YTD' : yr;
+}
+
+function updateLegend(yr, cmp){
+  var el = document.getElementById('hist-legend');
+  if (!el) return;
+  var d = JSON.parse(document.getElementById('data-historico').textContent);
+  var h = '<span style="color:var(--acento)">\\u25a0 ' + _histYrLabel(yr, d.anioActual) + '</span>';
+  if (cmp) h += ' <span style="color:var(--texto-sub)">vs</span> <span style="color:var(--ambar)">\\u25a0 ' + _histYrLabel(cmp, d.anioActual) + '</span>';
+  el.innerHTML = h;
+}
+
+var visibleMes = (function(){
+  var el = document.getElementById('data-historico');
+  return el ? new Set(JSON.parse(el.textContent).meses) : new Set();
+})();
+
+function togMes(m, btn){
+  if (visibleMes.has(m)) { visibleMes.delete(m); btn.classList.remove('hmf-on'); }
+  else { visibleMes.add(m); btn.classList.add('hmf-on'); }
+  renderHist();
+}
+
+function selAllMes(){
+  var d = JSON.parse(document.getElementById('data-historico').textContent);
+  visibleMes = new Set(d.meses);
+  document.querySelectorAll('.hmf-btn[data-mes]').forEach(function(b){ b.classList.add('hmf-on'); });
+  renderHist();
+}
+
+function renderHist(){
+  var datosEl = document.getElementById('data-historico');
+  if (!datosEl) return;
+  var datos = JSON.parse(datosEl.textContent);
+  var selM = document.getElementById('hist-yr-main');
+  var selC = document.getElementById('hist-yr-cmp');
+  var yr = selM.value, cmp = selC.value;
+  colorSelect(selM); colorSelect(selC);
+  updateLegend(yr, cmp);
+
+  var MD = datos.histData[yr] || {};
+  var CD = cmp ? (datos.histData[cmp] || {}) : null;
+  var MESES = datos.meses, MES_LABELS = datos.mesLabels, MES_ACTUAL = datos.mesActual;
+  var ANIO_ACTUAL = datos.anioActual, METAS = datos.metas;
+  var yc = 'var(--acento)', cc = 'var(--ambar)';
+
+  var visMes = MESES.filter(function(m){ return visibleMes.has(m); });
+  var visMesLbl = MES_LABELS.filter(function(_, i){ return visibleMes.has(MESES[i]); });
+
+  function sucTotal(sd){
+    var t = 0; visMes.forEach(function(m){ var v = (sd || {})[m] || 0; if (v > 0) t += v; }); return t;
+  }
+  var sucs = Object.keys(MD).sort(function(a, b){ return sucTotal(MD[b]) - sucTotal(MD[a]); });
+
+  var h = '<thead><tr><th class="hist-th-suc">SUCURSAL</th>';
+  visMesLbl.forEach(function(lbl){ h += '<th>' + lbl + '</th>'; });
+  h += '<th>TOTAL</th></tr></thead><tbody>';
+
+  sucs.forEach(function(s){
+    h += '<tr><td class="hist-td-suc">' + s + '</td>';
+    visMes.forEach(function(m){
+      var v = (MD[s] || {})[m] || 0;
+      var vc = CD ? ((CD[s] || {})[m] || 0) : 0;
+      var mIdx = MESES.indexOf(m) + 1;
+      var vPrevYear = ((datos.histData[String(Number(yr) - 1)] || {})[s] || {})[m] || 0;
+      var mr = METAS[s], hayMeta = mr !== undefined && mr[mIdx] !== undefined;
+      var metaV = (hayMeta && mIdx <= 12) ? mr[mIdx] : vPrevYear * 1.10;
+
+      if (yr === ANIO_ACTUAL) {
+        if (mIdx > MES_ACTUAL || v === 0) {
+          h += metaV > 0
+            ? '<td class="hist-td-meta"><span class="hist-v-meta">' + _histCop(metaV) + '</span><span class="hist-meta-lbl"> META</span></td>'
+            : '<td class="hist-td-meta">\\u2014</td>';
+        } else {
+          var cell = '<span class="hist-v-main" style="color:' + yc + '">' + _histCop(v) + '</span>';
+          if (CD && vc > 0) {
+            var p = (v - vc) / vc * 100, cl = p >= 0 ? 'hist-var-up' : 'hist-var-dn';
+            cell += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(vc) + '</span><span class="' + cl + '">' + (p >= 0 ? '+' : '') + p.toFixed(1) + '%</span>';
+          } else if (metaV > 0) {
+            var p2 = (v / metaV - 1) * 100, cl2 = p2 >= 0 ? 'hist-var-up' : 'hist-var-dn';
+            cell += '<span class="hist-v-cmp">' + _histCop(metaV) + '</span><span class="' + cl2 + '">' + (p2 >= 0 ? '+' : '') + p2.toFixed(1) + '%</span>';
+          }
+          h += '<td>' + cell + '</td>';
+        }
+      } else {
+        var cell2 = '<span class="hist-v-main" style="color:' + yc + '">' + _histCop(v) + '</span>';
+        if (CD) {
+          cell2 += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(vc) + '</span>';
+          if (vc > 0) {
+            var p3 = (v - vc) / vc * 100, cl3 = p3 >= 0 ? 'hist-var-up' : 'hist-var-dn';
+            cell2 += '<span class="' + cl3 + '">' + (p3 >= 0 ? '+' : '') + p3.toFixed(1) + '%</span>';
+          }
+        }
+        h += '<td>' + cell2 + '</td>';
+      }
+    });
+
+    var vt = 0, vtc = 0;
+    visMes.forEach(function(m){
+      var mv = (MD[s] || {})[m] || 0; if (mv > 0) vt += mv;
+      if (CD) { var mvc = (CD[s] || {})[m] || 0; if (mvc > 0) vtc += mvc; }
+    });
+    var tc = '<span class="hist-v-main" style="color:' + yc + '">' + _histCop(vt) + '</span>';
+    if (CD) {
+      tc += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(vtc) + '</span>';
+      if (vtc > 0) {
+        var p4 = (vt - vtc) / vtc * 100, cl4 = p4 >= 0 ? 'hist-var-up' : 'hist-var-dn';
+        tc += '<span class="' + cl4 + '">' + (p4 >= 0 ? '+' : '') + p4.toFixed(1) + '%</span>';
+      }
+    }
+    h += '<td>' + tc + '</td></tr>';
+  });
+
+  h += '</tbody><tfoot><tr><td>TOTAL MES</td>';
+  visMes.forEach(function(m){
+    var t = 0, tc2 = 0;
+    sucs.forEach(function(s){ t += (MD[s] || {})[m] || 0; if (CD) tc2 += (CD[s] || {})[m] || 0; });
+    var mIdxF = MESES.indexOf(m) + 1;
+    if (yr === ANIO_ACTUAL) {
+      var tMeta = 0;
+      sucs.forEach(function(s){
+        var v25s = ((datos.histData[String(Number(yr) - 1)] || {})[s] || {})[m] || 0;
+        var mr2 = METAS[s], hayMeta2 = mr2 !== undefined && mr2[mIdxF] !== undefined;
+        tMeta += (hayMeta2 && mIdxF <= 12) ? mr2[mIdxF] : v25s * 1.10;
+      });
+      if (mIdxF > MES_ACTUAL || t === 0) {
+        h += tMeta > 0
+          ? '<td class="hist-td-meta"><span class="hist-v-meta">' + _histCop(tMeta) + '</span><span class="hist-meta-lbl"> META</span></td>'
+          : '<td class="hist-td-meta">\\u2014</td>';
+      } else {
+        var fc = '<span style="color:' + yc + '">' + _histCop(t) + '</span>';
+        if (CD && tc2 > 0) {
+          var p5 = (t - tc2) / tc2 * 100, cl5 = p5 >= 0 ? 'hist-var-up' : 'hist-var-dn';
+          fc += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(tc2) + '</span><span class="' + cl5 + '">' + (p5 >= 0 ? '+' : '') + p5.toFixed(1) + '%</span>';
+        } else if (tMeta > 0) {
+          var p6 = (t / tMeta - 1) * 100, cl6 = p6 >= 0 ? 'hist-var-up' : 'hist-var-dn';
+          fc += '<span class="hist-v-cmp">' + _histCop(tMeta) + '</span><span class="' + cl6 + '">' + (p6 >= 0 ? '+' : '') + p6.toFixed(1) + '%</span>';
+        }
+        h += '<td>' + fc + '</td>';
+      }
+    } else {
+      var fc2 = '<span style="color:' + yc + '">' + _histCop(t) + '</span>';
+      if (CD && tc2 > 0) fc2 += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(tc2) + '</span>';
+      h += '<td>' + fc2 + '</td>';
+    }
+  });
+
+  var g = 0, gc = 0;
+  sucs.forEach(function(s){
+    visMes.forEach(function(m){ var mv2 = (MD[s] || {})[m] || 0; if (mv2 > 0) g += mv2; });
+    if (CD) visMes.forEach(function(m){ var mvc2 = (CD[s] || {})[m] || 0; if (mvc2 > 0) gc += mvc2; });
+  });
+  var gfc = '<span style="color:' + yc + '">' + _histCop(g) + '</span>';
+  if (CD && gc > 0) gfc += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(gc) + '</span>';
+  h += '<td>' + gfc + '</td></tr></tfoot>';
+
+  document.getElementById('hist-table').innerHTML = h;
+}
+
+if (document.getElementById('hist-table')) renderHist();
 
 filtrarRango(0, 0, document.querySelector('.filtro-btn[data-desde="0"][data-hasta="0"]'));
 """
@@ -675,19 +940,45 @@ _CSS = """
   .tabla-categorias tr:last-child td { border-bottom: none; }
 
   .tabla-scroll { overflow-x: auto; border: 1px solid var(--borde); border-radius: 10px; background: var(--card); }
-  .tabla-historico { width: 100%; border-collapse: collapse; font-size: .78rem; min-width: 900px; }
-  .tabla-historico th, .tabla-historico td { padding: .5rem .6rem; border-bottom: 1px solid var(--borde); text-align: left; white-space: nowrap; }
-  .tabla-historico th { color: var(--texto-sub); text-transform: uppercase; font-size: .68rem; letter-spacing: .02em; font-weight: 600; position: sticky; top: 0; background: var(--card); }
-  .tabla-historico td.num { text-align: right; }
+  .tabla-historico { width: 100%; border-collapse: collapse; font-size: .78rem; min-width: 900px; background: var(--card); }
+  .tabla-historico th, .tabla-historico td { padding: .5rem .6rem; border-bottom: 1px solid var(--borde); text-align: right; white-space: nowrap; }
+  .tabla-historico th { color: var(--texto-sub); text-transform: uppercase; font-size: .68rem; letter-spacing: .02em; font-weight: 600; position: sticky; top: 0; background: var(--card); text-align: right; }
+  .tabla-historico th.hist-th-suc, .tabla-historico td.hist-td-suc { text-align: left; }
   .tabla-historico tr:last-child td { border-bottom: none; }
-  .hist-sucursal { font-weight: 600; position: sticky; left: 0; background: var(--card); }
-  .hist-actual { font-weight: 600; }
-  .hist-anterior { color: var(--texto-sub); font-size: .85em; }
-  .hist-var { font-size: .85em; }
-  .hist-vacio { color: var(--acento-suave); }
+  .hist-td-suc { font-weight: 600; position: sticky; left: 0; background: var(--card); }
+  .hist-v-main { font-weight: 600; display: block; }
+  .hist-v-cmp { color: var(--texto-sub); font-size: .85em; display: block; }
+  .hist-v-meta { color: var(--texto-sub); font-style: italic; }
+  .hist-meta-lbl { color: var(--acento-suave); font-size: .65em; text-transform: uppercase; letter-spacing: .03em; }
+  .hist-td-meta { background: var(--bg); }
+  .hist-var-up { color: var(--verde); font-size: .82em; font-weight: 600; display: block; }
+  .hist-var-dn { color: var(--rojo); font-size: .82em; font-weight: 600; display: block; }
+  .tabla-historico tfoot td { font-weight: 700; border-top: 2px solid var(--borde); border-bottom: none; }
+
+  .hist-controles { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
+  .hist-selects { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .hist-selects label { font-size: .78rem; color: var(--texto-sub); display: flex; align-items: center; gap: .4rem; }
+  .hist-selects select { padding: .35rem .6rem; border-radius: 6px; border: 1px solid var(--borde); background: var(--card); font-size: .82rem; font-weight: 600; }
+  .hist-legend { font-size: .82rem; font-weight: 600; }
+  .hist-meses { display: flex; gap: .35rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .hmf-btn { padding: .3rem .65rem; border-radius: 999px; border: 1px solid var(--borde); background: var(--card); color: var(--texto-sub); font-size: .74rem; cursor: pointer; }
+  .hmf-btn.hmf-on { background: var(--acento); color: #fff; border-color: var(--acento); }
+  .hmf-todos { font-weight: 700; }
 
   .grid-2col { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2rem; align-items: start; }
   @media (max-width: 900px) { .grid-2col { grid-template-columns: 1fr; } }
+
+  .donut-wrap { background: var(--card); border: 1px solid var(--borde); border-radius: 10px; padding: 1.4rem; display: flex; flex-direction: column; align-items: center; }
+  .donut-container { position: relative; width: 180px; height: 180px; }
+  .donut-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .donut-pct { font-size: 1.5rem; font-weight: 700; }
+  .donut-sub-label { font-size: .72rem; color: var(--texto-sub); text-transform: uppercase; letter-spacing: .03em; }
+  .donut-legend { width: 100%; max-width: 220px; margin-top: 1.2rem; }
+  .legend-item { display: flex; align-items: center; gap: .5rem; padding: .3rem 0; font-size: .85rem; }
+  .legend-item-separada { margin-top: .5rem; padding-top: .6rem; border-top: 1px solid var(--borde); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .legend-name { flex: 1; color: var(--texto-sub); }
+  .legend-pct { font-weight: 700; font-variant-numeric: tabular-nums; }
 
   .reo-cat-wrap { border: 1px solid var(--borde); border-radius: 10px; background: var(--card); margin-bottom: .7rem; overflow: hidden; }
   .reo-cat-wrap:hover { background: var(--card); }
@@ -754,6 +1045,8 @@ def generar_dashboard_html(datos: dict = None) -> str:
     cat_ref = _cargar_json(REPORTES_DIR / "categorias_referencias.json")
     ventas_diarias = _cargar_json(REPORTES_DIR / "ventas_diarias.json", {"sucursales": [], "por_dia": {}})
     reorden = _cargar_json(REPORTES_DIR / "reorden.json")
+    metas_cfg = _cargar_json(CONFIG_DIR / "metas_mensuales.json", {})
+    sucursales_cfg = _cargar_json(CONFIG_DIR / "sucursales.json", {"sucursales": []})["sucursales"]
 
     if not ventas:
         return _html_sin_datos()
@@ -785,19 +1078,23 @@ def generar_dashboard_html(datos: dict = None) -> str:
         for r in por_sucursal_anio
     ])
 
+    composicion_html = ""
+    if anio.get("composicion"):
+        composicion_html = _seccion_composicion_venta(anio["composicion"], anio["kpis"]["margen_promedio"])
+
     rentabilidad_html = ""
     referencias_html = ""
     if cat_ref:
         productos_por_categoria = cat_ref["anio_actual"].get("productos_por_categoria", {})
         categorias = cat_ref["anio_actual"]["categorias"][:10]
-        maximo_cat = max((c["ventas_netas"] for c in categorias), default=1)
-        rentabilidad_html = "".join(_fila_categoria_rentabilidad(c, maximo_cat, productos_por_categoria) for c in categorias)
+        maximo_margen = max((c["margen"] for c in categorias), default=1)
+        rentabilidad_html = "".join(_fila_categoria_rentabilidad(c, maximo_margen, productos_por_categoria) for c in categorias)
 
         por_sucursal_ref = cat_ref["anio_actual"].get("top_referencias_por_sucursal", {})
         referencias = cat_ref["anio_actual"]["top_referencias"][:10]
         referencias_html = "".join(_fila_referencia(i + 1, r, por_sucursal_ref) for i, r in enumerate(referencias))
 
-    comparativo_html = _seccion_comparativo_historico(historico_mensual)
+    comparativo_html = _seccion_comparativo_historico(historico_mensual, metas_cfg, sucursales_cfg, datetime.now())
     inventario_resumen_html = _seccion_inventario_resumen(inventario)
     reorden_html = _seccion_reorden(reorden)
 
@@ -846,8 +1143,16 @@ def generar_dashboard_html(datos: dict = None) -> str:
     <h2>Mes en curso</h2>
     <div class="kpi-grid">{kpis_mes_html}</div>
 
-    <h2>Ventas por Punto de Venta · Año {anio_num}</h2>
-    <div>{sucursales_html}</div>
+    <div class="grid-2col">
+      <div>
+        <h2>Ventas por Punto de Venta · Año {anio_num}</h2>
+        <div>{sucursales_html}</div>
+      </div>
+      <div>
+        <h2>Composición de Venta · Año {anio_num}</h2>
+        <div class="donut-wrap">{composicion_html}</div>
+      </div>
+    </div>
 
     <div class="grid-2col">
       <div>

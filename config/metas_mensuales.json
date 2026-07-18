@@ -1,0 +1,6 @@
+{
+  "_comentario": "Meta de ventas por sucursal y mes (índice 1=Enero..12=Diciembre). Si un mes no tiene meta manual aquí, el dashboard usa automáticamente el 110% de lo vendido ese mismo mes el año anterior (igual que el dashboard de referencia de Grupo Bentley). Completa los valores que quieras fijar manualmente; deja null o el mes ausente para usar el respaldo automático.",
+  "144": {},
+  "433": {},
+  "107": {}
+}

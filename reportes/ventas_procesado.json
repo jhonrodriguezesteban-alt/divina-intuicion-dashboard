@@ -54,7 +54,13 @@
         "ingreso": 38493748.7,
         "transacciones": 847
       }
-    ]
+    ],
+    "composicion": {
+      "pago_total": 595925448.72,
+      "pendiente_cobro": 43000.01,
+      "num_pago_total": 4337,
+      "num_pendiente_cobro": 1
+    }
   },
   "mes_actual": {
     "kpis": {
