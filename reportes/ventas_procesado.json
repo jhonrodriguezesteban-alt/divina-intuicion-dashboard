@@ -1,113 +1,113 @@
 {
-  "actualizado_hasta": "2026-07-16 19:08:24",
+  "actualizado_hasta": "2026-07-18 13:00:27",
   "historico": {
     "kpis": {
-      "ingreso_total": 1694164448.72,
-      "num_transacciones": 12155,
-      "ticket_promedio": 139380.05,
-      "utilidad_total": 741012925.08,
+      "ingreso_total": 1699385448.72,
+      "num_transacciones": 12191,
+      "ticket_promedio": 139396.72,
+      "utilidad_total": 743406363.07,
       "margen_promedio": 0.4511
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 1108092700.0,
-        "transacciones": 7708
+        "ingreso": 1111407700.0,
+        "transacciones": 7726
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 548094000.02,
-        "transacciones": 3613
+        "ingreso": 549614000.02,
+        "transacciones": 3621
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 37977748.7,
-        "transacciones": 834
+        "ingreso": 38363748.7,
+        "transacciones": 844
       }
     ],
     "rango_fechas": {
       "desde": "2025-04-01",
-      "hasta": "2026-07-16"
+      "hasta": "2026-07-18"
     }
   },
   "anio_actual": {
     "kpis": {
-      "ingreso_total": 587476448.72,
-      "num_transacciones": 4279,
-      "ticket_promedio": 137292.93,
-      "utilidad_total": 267468925.08,
+      "ingreso_total": 592697448.72,
+      "num_transacciones": 4315,
+      "ticket_promedio": 137357.46,
+      "utilidad_total": 269862363.07,
       "margen_promedio": 0.472
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 369307700.0,
-        "transacciones": 2324
+        "ingreso": 372622700.0,
+        "transacciones": 2342
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 180191000.02,
-        "transacciones": 1121
+        "ingreso": 181711000.02,
+        "transacciones": 1129
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 37977748.7,
-        "transacciones": 834
+        "ingreso": 38363748.7,
+        "transacciones": 844
       }
     ]
   },
   "mes_actual": {
     "kpis": {
-      "ingreso_total": 62584599.85,
-      "num_transacciones": 459,
-      "ticket_promedio": 136349.89,
-      "utilidad_total": 28073813.99,
-      "margen_promedio": 0.4689
+      "ingreso_total": 67805599.85,
+      "num_transacciones": 495,
+      "ticket_promedio": 136981.01,
+      "utilidad_total": 30467251.98,
+      "margen_promedio": 0.4693
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 36935000.0,
-        "transacciones": 216
+        "ingreso": 40250000.0,
+        "transacciones": 234
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 19624000.0,
-        "transacciones": 120
+        "ingreso": 21144000.0,
+        "transacciones": 128
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 6025599.85,
-        "transacciones": 123
+        "ingreso": 6411599.85,
+        "transacciones": 133
       }
     ]
   },
   "hoy": {
     "kpis": {
-      "ingreso_total": 5188999.96,
-      "num_transacciones": 39,
-      "ticket_promedio": 133051.28,
-      "utilidad_total": 1749905.85,
-      "margen_promedio": 0.3669
+      "ingreso_total": 1043000.0,
+      "num_transacciones": 7,
+      "ticket_promedio": 149000.0,
+      "utilidad_total": 530205.04,
+      "margen_promedio": 0.51
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 3135000.0,
-        "transacciones": 18
+        "ingreso": 575000.0,
+        "transacciones": 3
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 1608000.0,
-        "transacciones": 10
+        "ingreso": 425000.0,
+        "transacciones": 2
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 445999.96,
-        "transacciones": 11
+        "ingreso": 43000.0,
+        "transacciones": 2
       }
     ],
-    "ingreso_ayer": 4878999.99
+    "ingreso_ayer": 4178000.0
   },
   "cartera": {
     "num_anuladas_historico": 332,
