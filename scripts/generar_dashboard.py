@@ -17,6 +17,7 @@ se evita por completo la trampa de comillas en f-strings con JS embebido
 Pendiente: Comercial/Comisiones (falta escalafón del negocio).
 """
 
+import base64
 import json
 from datetime import datetime
 from pathlib import Path
@@ -24,6 +25,15 @@ from pathlib import Path
 REPORTES_DIR = Path(__file__).resolve().parent.parent / "reportes"
 CONFIG_DIR = Path(__file__).resolve().parent.parent / "config"
 DASHBOARD_PATH = Path(__file__).resolve().parent.parent / "dashboard.html"
+LOGO_PATH = Path(__file__).resolve().parent.parent / "assets" / "logo_divina.png"
+
+
+def _logo_img_html(clase: str, alto: str) -> str:
+    """<img> con el logo incrustado en base64 (un solo archivo HTML, sin dependencias externas)."""
+    if not LOGO_PATH.exists():
+        return ""
+    b64 = base64.b64encode(LOGO_PATH.read_bytes()).decode("ascii")
+    return f'<img class="{clase}" src="data:image/png;base64,{b64}" style="height:{alto};width:auto;" alt="Divina Intuición">'
 
 MESES_ES = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
 
@@ -380,10 +390,10 @@ def _seccion_comparativo_historico(historico_mensual: dict) -> str:
 LOGIN_USUARIO = "divina"
 LOGIN_CLAVE = "DivinaIntuicion2026"
 
-_LOGIN_HTML = """
+_LOGIN_HTML = f"""
   <div class="login-overlay" id="login-overlay">
     <div class="login-card">
-      <div class="login-marca">DIVINA INTUICIÓN</div>
+      {_logo_img_html("login-logo", "56px")}
       <div class="login-subtitulo">Dashboard Gerencial</div>
       <input type="text" id="login-usuario" placeholder="Usuario" autocomplete="username">
       <div class="login-pass-wrap">
@@ -562,6 +572,7 @@ _CSS = """
     letter-spacing: .04em; font-weight: 400; font-size: 1.9rem;
     margin: 0 0 .3rem 0; text-transform: uppercase;
   }
+  .header-logo { display: block; margin-bottom: .3rem; }
   .subtitulo { color: var(--texto-sub); font-size: .95rem; }
   .actualizado { color: var(--texto-sub); font-size: .8rem; text-align: right; }
   h2 {
@@ -681,8 +692,8 @@ _CSS = """
     background: var(--card); border: 1px solid var(--borde); border-radius: 14px;
     padding: 2.4rem 2.2rem; width: 320px; text-align: center;
   }
-  .login-marca { font-family: Georgia, serif; text-transform: uppercase; letter-spacing: .06em; font-size: 1.2rem; }
-  .login-subtitulo { color: var(--texto-sub); font-size: .85rem; margin-bottom: 1.6rem; }
+  .login-logo { display: block; margin: 0 auto; }
+  .login-subtitulo { color: var(--texto-sub); font-size: .85rem; margin: .6rem 0 1.6rem; }
   .login-card input[type="text"], .login-card input[type="password"] {
     width: 100%; padding: .7rem .9rem; margin-bottom: .8rem; border-radius: 8px;
     border: 1px solid var(--borde); background: var(--bg); color: var(--texto); font-size: .9rem;
@@ -778,7 +789,7 @@ def generar_dashboard_html(datos: dict = None) -> str:
     <div class="header-left">
       <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menú">☰</button>
       <div>
-        <h1>Divina Intuición</h1>
+        {_logo_img_html("header-logo", "34px")}
         <div class="subtitulo">Dashboard Gerencial de Ventas · Local 144 · Local 433 · Local 107 (Divina Accesorios)</div>
       </div>
     </div>
