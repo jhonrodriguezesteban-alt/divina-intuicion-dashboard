@@ -1736,12 +1736,10 @@ def generar_dashboard_html(datos: dict = None) -> str:
     <div class="grid-2col">
       <div>
         <h2>Rentabilidad por categoría · Año {anio_num}</h2>
-        <div class="subtitulo">Clic en una categoría para ver sus productos top · desliza para ver todas</div>
         <div class="lista-scroll">{rentabilidad_html}</div>
       </div>
       <div>
         <h2>Referencias · ventas netas · Año {anio_num}</h2>
-        <div class="subtitulo">Clic en una referencia para ver el detalle por sucursal · desliza para ver todas</div>
         <div class="lista-scroll">{referencias_html}</div>
       </div>
     </div>
