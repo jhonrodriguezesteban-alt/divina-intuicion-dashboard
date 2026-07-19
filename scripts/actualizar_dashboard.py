@@ -17,6 +17,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from common.publicar_git import publicar
+from common.estado_automatizacion import marcar_ok
 
 SCRIPTS_DIR = Path(__file__).resolve().parent
 PYTHON = sys.executable
@@ -40,6 +41,7 @@ def main():
             print(f"Falló '{paso}'. Abortando sin publicar.")
             return
 
+    marcar_ok("hora")
     hora = datetime.now().strftime("%Y-%m-%d %H:%M")
     publicar(f"Actualización automática {hora}")
 

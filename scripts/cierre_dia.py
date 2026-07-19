@@ -18,6 +18,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from common.notificar import notificar_mac
 from common.publicar_git import publicar
+from common.estado_automatizacion import marcar_ok
 from generar_resumen_dia import generar_texto as generar_resumen_texto
 
 SCRIPTS_DIR = Path(__file__).resolve().parent
@@ -51,6 +52,7 @@ def main():
             notificar_mac("Divina Intuición — Cierre falló", f"'{paso}' falló. Revisar manualmente.")
             return
 
+    marcar_ok("cierre")
     hora = datetime.now().strftime("%Y-%m-%d %H:%M")
     publicado = publicar(f"Cierre del día {hora}")
 

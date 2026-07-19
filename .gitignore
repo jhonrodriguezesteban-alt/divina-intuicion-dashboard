@@ -6,6 +6,9 @@
 # Datos crudos descargados de Effi (se regeneran, no se versionan)
 reportes/raw/
 
+# Marcas de última corrida OK del vigía de automatización (estado local, no se versiona)
+reportes/.ultima_*_ok
+
 # Python
 __pycache__/
 *.pyc
