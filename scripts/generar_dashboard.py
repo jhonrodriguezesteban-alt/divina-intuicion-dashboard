@@ -381,6 +381,52 @@ def _seccion_inventario_resumen(inv: dict) -> str:
   </table>"""
 
 
+def _fila_liquidacion(item: dict) -> str:
+    return f"""
+    <div class="liq-fila">
+      <div class="liq-nombre">{item["referencia"].title()} <span class="reo-tallas-count">· {item["categoria"]}</span></div>
+      <div class="liq-disp">{_miles(item["disponible"])} und.</div>
+      <div class="liq-valor">{_cop(item["valor_costo"])}</div>
+    </div>"""
+
+
+def _seccion_liquidacion(liq: dict) -> str:
+    """Ropa activa vs inactiva este año (ver scripts/procesar_liquidacion.py) --
+    los accesorios no entran acá por referencia, se siguen por categoría en
+    Reposición (mismo criterio que el módulo de reorden)."""
+    if not liq:
+        return '<div class="nota">Análisis de liquidación aún no procesado. Corre scripts/procesar_liquidacion.py.</div>'
+
+    r = liq["resumen"]
+    kpis_html = "".join([
+        _tarjeta_kpi("Activas", _miles(r["activas"]["num_referencias"]), f'{_miles(r["activas"]["unidades"])} und. · {_cop(r["activas"]["valor_costo"])}'),
+        _tarjeta_kpi("Inactivas · liquidar", _miles(r["inactivas"]["num_referencias"]), f'{_miles(r["inactivas"]["unidades"])} und. · {_cop(r["inactivas"]["valor_costo"])}'),
+        _tarjeta_kpi("Nuevas · evaluar", _miles(r["nuevas"]["num_referencias"]), f'{_miles(r["nuevas"]["unidades"])} und. · {_cop(r["nuevas"]["valor_costo"])}'),
+    ])
+
+    inactivas_html = "".join(_fila_liquidacion(i) for i in liq["inactivas"]) or '<div class="detalle-vacio">Sin referencias inactivas.</div>'
+    nuevas_html = "".join(_fila_liquidacion(i) for i in liq["nuevas"]) or '<div class="detalle-vacio">Sin referencias nuevas sin vender.</div>'
+
+    return f"""
+  <h2>Productos activos vs inactivos · Ropa · Año {liq["anio"]}</h2>
+  <div class="subtitulo" style="margin-bottom:1rem;">
+    Activa = se vendió al menos una vez este año. Inactiva = se vendía antes pero nada en {liq["anio"]} — candidata real a
+    liquidar. Nueva = nunca se ha vendido — puede ser referencia reciente, requiere evaluación manual antes de liquidar.
+  </div>
+  <div class="kpi-grid">{kpis_html}</div>
+
+  <div class="grid-2col" style="margin-top:1.5rem;">
+    <div>
+      <h3 class="subseccion">Candidatas a liquidar ({_miles(r["inactivas"]["num_referencias"])})</h3>
+      <div class="lista-scroll">{inactivas_html}</div>
+    </div>
+    <div>
+      <h3 class="subseccion">Nuevas · sin vender aún ({_miles(r["nuevas"]["num_referencias"])})</h3>
+      <div class="lista-scroll">{nuevas_html}</div>
+    </div>
+  </div>"""
+
+
 def _badge_reorden(cantidad: int, etiqueta: str, clase: str) -> str:
     if cantidad <= 0:
         return ""
@@ -452,11 +498,21 @@ def _seccion_categoria_reorden(cat: dict) -> str:
     </div>"""
 
 
-def _seccion_reorden(reorden: dict) -> str:
-    if not reorden:
-        return '<div class="nota">Sugerencia de pedidos aún no procesada. Corre scripts/procesar_reorden.py.</div>'
+def _fila_reorden_categoria_accesorio(cat: dict) -> str:
+    rot = f'{_miles(cat["rotacion_anualizada"])} uds/año' if cat["rotacion_anualizada"] else "sin ventas 90d"
+    sug = f'+{_miles(cat["sugerido"])}' if cat["sugerido"] > 0 else "—"
+    return f"""
+      <div class="reo-fila">
+        <div class="reo-nombre">{cat["categoria"]} <span class="reo-tallas-count">· {_miles(cat["num_referencias"])} referencias</span></div>
+        <div class="reo-disp">{_miles(cat["disponible"])} disp.</div>
+        <div class="reo-rot">{rot}</div>
+        <div class="reo-estado {cat["estado"]}">{cat["estado_label"]}</div>
+        <div class="reo-sug">{sug}</div>
+      </div>"""
 
-    r = reorden["resumen"]
+
+def _seccion_reorden_ropa(ropa: dict) -> str:
+    r = ropa["resumen"]
     kpis_html = "".join([
         _tarjeta_kpi("Críticas", _miles(r["criticos"]), "cobertura ≤ 7 días"),
         _tarjeta_kpi("En alerta", _miles(r["alerta"]), "cobertura ≤ 30 días"),
@@ -464,8 +520,43 @@ def _seccion_reorden(reorden: dict) -> str:
         _tarjeta_kpi("Nuevas / sin evaluar", _miles(r["nuevos"])),
         _tarjeta_kpi("Unidades sugeridas", _miles(r["unidades_sugeridas_total"]), "a pedir a proveedores"),
     ])
+    categorias_html = "".join(_seccion_categoria_reorden(c) for c in ropa["categorias"])
+    return f"""
+  <h3 class="subseccion">Ropa · por referencia</h3>
+  <div class="kpi-grid">{kpis_html}</div>
+  <div style="margin-top:1.2rem;">{categorias_html}</div>"""
 
-    categorias_html = "".join(_seccion_categoria_reorden(c) for c in reorden["categorias"])
+
+def _seccion_reorden_accesorios(accesorios: dict) -> str:
+    r = accesorios["resumen"]
+    kpis_html = "".join([
+        _tarjeta_kpi("Categorías críticas", _miles(r["criticos"]), "cobertura ≤ 7 días"),
+        _tarjeta_kpi("En alerta", _miles(r["alerta"]), "cobertura ≤ 30 días"),
+        _tarjeta_kpi("Sin rotación 90d", _miles(r["sin_rotacion"])),
+        _tarjeta_kpi("Unidades sugeridas", _miles(r["unidades_sugeridas_total"]), "a pedir a proveedores"),
+    ])
+    filas_html = "".join(_fila_reorden_categoria_accesorio(c) for c in accesorios["categorias"])
+    return f"""
+  <h3 class="subseccion">Accesorios · por categoría</h3>
+  <div class="subtitulo" style="margin-bottom:1rem;">
+    Mucha variedad de diseño por categoría (aretes, anillos, pulseras...) para rastrear uno por uno —
+    acá se mide el ritmo de la categoría completa.
+  </div>
+  <div class="kpi-grid">{kpis_html}</div>
+  <div class="reo-cat-detalle" style="display:block; margin-top:1rem;">{filas_html}</div>"""
+
+
+def _seccion_reorden(reorden: dict) -> str:
+    if not reorden:
+        return '<div class="nota">Sugerencia de pedidos aún no procesada. Corre scripts/procesar_reorden.py.</div>'
+
+    hoy_dt = datetime.now()
+    es_dia_pedido = hoy_dt.weekday() in (1, 4)  # martes=1, viernes=4
+    aviso_html = (
+        '<div class="reo-aviso-dia">📦 Hoy toca revisar pedidos a proveedores (martes/viernes) — '
+        'mira las categorías en crítico/alerta abajo.</div>'
+        if es_dia_pedido else ""
+    )
 
     return f"""
   <h2>Solicitud de pedidos a proveedores</h2>
@@ -473,8 +564,9 @@ def _seccion_reorden(reorden: dict) -> str:
     Índice de cobertura calculado sobre venta de los últimos {reorden["ventana_dias"]} días, al {reorden["generado_al"]}.
     Clic en una categoría para ver las referencias que necesitan atención.
   </div>
-  <div class="kpi-grid">{kpis_html}</div>
-  <div style="margin-top:1.2rem;">{categorias_html}</div>"""
+  {aviso_html}
+  {_seccion_reorden_ropa(reorden["ropa"])}
+  {_seccion_reorden_accesorios(reorden["accesorios"])}"""
 
 
 # ---------- sección: comparativo histórico ----------
@@ -1358,6 +1450,16 @@ _CSS = """
   .ref-unidades { color: var(--texto-sub); text-align: right; }
   .ref-valor { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
 
+  .liq-fila { display: grid; grid-template-columns: 1fr 90px 130px; align-items: center; gap: .8rem; padding: .6rem .4rem; font-size: .85rem; border-bottom: 1px dotted var(--borde); }
+  .liq-nombre { font-weight: 500; }
+  .liq-disp { color: var(--texto-sub); text-align: right; }
+  .liq-valor { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--rojo); }
+
+  .reo-aviso-dia {
+    background: var(--destacado-bg); border: 1px solid var(--acento-suave); border-radius: 10px;
+    padding: .9rem 1.2rem; margin-bottom: 1.2rem; font-weight: 600; font-size: .9rem;
+  }
+
   .subseccion { font-size: .85rem; text-transform: uppercase; letter-spacing: .03em; color: var(--texto-sub); margin: 1.8rem 0 .8rem 0; font-weight: 600; }
   .tabla-categorias { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--borde); border-radius: 10px; overflow: hidden; }
   .tabla-categorias th, .tabla-categorias td { padding: .6rem 1rem; text-align: left; font-size: .88rem; border-bottom: 1px solid var(--borde); }
@@ -1533,11 +1635,11 @@ _CSS = """
     .filtro-rango, .filtro-rango-fechas { width: 100%; }
     .filtro-rango-fechas input[type="date"] { flex: 1 1 120px; min-width: 0; }
 
-    .suc-fila, .cat-fila, .ref-fila, .reo-fila {
+    .suc-fila, .cat-fila, .ref-fila, .reo-fila, .liq-fila {
       grid-template-columns: 1fr !important; row-gap: .3rem; padding: .8rem 0;
     }
     .suc-cifras, .cat-valor, .cat-margen, .ref-unidades, .ref-valor,
-    .reo-disp, .reo-rot, .reo-sug { text-align: left; }
+    .reo-disp, .reo-rot, .reo-sug, .liq-disp, .liq-valor { text-align: left; }
     .reo-estado { justify-self: start; }
 
     .reo-cat-header { flex-direction: column; align-items: flex-start; gap: .4rem; }
@@ -1564,6 +1666,7 @@ def generar_dashboard_html(datos: dict = None) -> str:
     cat_ref = _cargar_json(REPORTES_DIR / "categorias_referencias.json")
     ventas_diarias = _cargar_json(REPORTES_DIR / "ventas_diarias.json", {"sucursales": [], "por_dia": {}})
     reorden = _cargar_json(REPORTES_DIR / "reorden.json")
+    liquidacion = _cargar_json(REPORTES_DIR / "liquidacion.json")
     metas_cfg = _cargar_json(CONFIG_DIR / "metas_mensuales.json", {})
     sucursales_cfg = _cargar_json(CONFIG_DIR / "sucursales.json", {"sucursales": []})["sucursales"]
     comisiones_cfg = _cargar_json(CONFIG_DIR / "comisiones_config.json", {})
@@ -1636,6 +1739,7 @@ def generar_dashboard_html(datos: dict = None) -> str:
     comparativo_html = _seccion_comparativo_historico(historico_mensual, metas_cfg, sucursales_cfg, datetime.now())
     comisiones_html = _seccion_comisiones(comisiones_cfg, sucursales_cfg, datetime.now())
     inventario_resumen_html = _seccion_inventario_resumen(inventario)
+    liquidacion_html = _seccion_liquidacion(liquidacion)
     reorden_html = _seccion_reorden(reorden)
 
     generado = datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -1755,6 +1859,7 @@ def generar_dashboard_html(datos: dict = None) -> str:
   <div id="sec-inventario" class="seccion" style="display:none">
     <h2>Inventario</h2>
     {inventario_resumen_html}
+    {liquidacion_html}
     {reorden_html}
   </div>
 

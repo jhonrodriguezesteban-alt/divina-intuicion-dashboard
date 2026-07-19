@@ -1,0 +1,15 @@
+{
+  "_comentario": "Categorías de artículo que se tratan como 'accesorios' en Inventario: demasiada variedad de SKU (aretes, anillos, pulseras...) para rastrear una por una, así que su análisis de rotación/reposición se hace por categoría, no por referencia. Todo lo que NO esté en esta lista se trata como 'ropa' (análisis por referencia). Ajustar aquí si se agrega una categoría nueva de accesorios.",
+  "categorias": [
+    "ACCESORIOS",
+    "ANILLOS",
+    "ARETES",
+    "BRAZALETE",
+    "CADENAS",
+    "EARCUF",
+    "GARGANTILLAS",
+    "PULSERAS",
+    "TOBILLERAS",
+    "TOPOS"
+  ]
+}

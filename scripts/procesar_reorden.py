@@ -1,17 +1,19 @@
 """
 Cruza inventario actual (raw_articulos.xlsx) con velocidad de venta
-reciente (raw_conceptos.xlsx, últimos 90 días) para calcular el índice de
-cobertura y una sugerencia de cantidad a pedir — el módulo de "solicitud
-de pedidos a proveedores" que Divina Intuición pidió priorizar.
+reciente (conceptos combinados, últimos 90 días) para calcular el índice
+de cobertura y una sugerencia de cantidad a pedir — el módulo de
+"solicitud de pedidos a proveedores" que Divina Intuición pidió priorizar.
 
-Se agrupa por REFERENCIA (nombre del artículo sin la talla), no por SKU:
-Effi trae una fila por combinación artículo+talla, y mostrarlas sueltas
-hace que un mismo diseño en varias tallas aparezca como "productos"
-distintos en la lista. El campo "Texto auxiliar" de Effi debería servir
-para esto pero viene inconsistente (a veces incluye el color, a veces
-no), así que la talla se quita del nombre con una regla propia — ver
-_referencia_base(). Cada referencia agregada trae sus tallas/variantes
-como detalle expandible (mismo patrón que el resto del dashboard).
+Ropa vs accesorios se tratan distinto (config/categorias_accesorios.json):
+- Ropa: por REFERENCIA (nombre del artículo sin la talla). Effi trae una
+  fila por combinación artículo+talla, y mostrarlas sueltas hace que un
+  mismo diseño en varias tallas aparezca como "productos" distintos en la
+  lista — ver common.procesamiento.referencia_base(). Cada referencia
+  agregada trae sus tallas/variantes como detalle expandible.
+- Accesorios: por CATEGORÍA completa (aretes, anillos, pulseras...) --
+  demasiada variedad de SKU para que el seguimiento por referencia
+  individual sea manejable; lo que importa ahí es el ritmo de la
+  categoría completa, no de cada diseño puntual.
 
 Estructura de salida inspirada en el acordeón de Programación del
 dashboard de referencia (Grupo Bentley): categoría -> lista de
@@ -45,26 +47,20 @@ def _clasificar(disponible, venta_diaria, dias_cobertura, cfg):
     return "ok", "Cobertura ok"
 
 
-def main():
-    cfg = cargar_config("inventario_config.json")
+def _estado_fila(disponible, venta_diaria, dias_cobertura, vendido_alguna_vez, cfg):
+    if venta_diaria == 0 and not vendido_alguna_vez:
+        return ("nuevo", "Nuevo / evaluar") if disponible > 0 else ("sin_datos", "Sin datos")
+    return _clasificar(disponible, venta_diaria, dias_cobertura or 0, cfg)
 
-    articulos = leer_excel_effi(RAW_ARTICULOS)
-    articulos["Stock total empresa"] = pd.to_numeric(articulos["Stock total empresa"], errors="coerce").fillna(0)
-    articulos["Costo manual"] = pd.to_numeric(articulos["Costo manual"], errors="coerce").fillna(0)
-    articulos["Categoría"] = articulos["Categoría"].fillna("SIN CATEGORÍA")
-    articulos["referencia"] = articulos["Nombre"].apply(referencia_base)
 
-    conceptos = cargar_conceptos_combinados()
-    conceptos["Fecha creación"] = pd.to_datetime(conceptos["Fecha creación"])
-    ventas_recientes = conceptos[
-        (conceptos["Estado CXC"] == "Pago total") & (conceptos["Fecha creación"] >= INICIO_VENTANA)
-    ]
-    venta_por_sku = ventas_recientes.groupby("Cod. artículo")["Cantidad"].sum()
-    algo_vendido_historico = set(conceptos.loc[conceptos["Estado CXC"] == "Pago total", "Cod. artículo"].unique())
+def _sugerido(venta_diaria, disponible, cfg):
+    if venta_diaria <= 0:
+        return 0
+    objetivo = venta_diaria * cfg["dias_cobertura_objetivo"]
+    return max(0, round(objetivo - disponible))
 
-    articulos["venta_90d"] = articulos["ID"].map(venta_por_sku).fillna(0)
-    articulos["vendido_alguna_vez"] = articulos["ID"].isin(algo_vendido_historico)
 
+def _procesar_ropa(articulos: pd.DataFrame, cfg: dict) -> dict:
     filas = []
     for (categoria, referencia), grupo in articulos.groupby(["Categoría", "referencia"]):
         disponible = int(grupo["Stock total empresa"].sum())
@@ -73,19 +69,10 @@ def main():
         dias_cobertura = (disponible / venta_diaria) if venta_diaria > 0 else None
         vendido_alguna_vez = bool(grupo["vendido_alguna_vez"].any())
 
-        if venta_diaria == 0 and not vendido_alguna_vez:
-            estado, etiqueta = ("nuevo", "Nuevo / evaluar") if disponible > 0 else ("sin_datos", "Sin datos")
-        else:
-            estado, etiqueta = _clasificar(disponible, venta_diaria, dias_cobertura or 0, cfg)
-
-        if venta_diaria > 0:
-            objetivo = venta_diaria * cfg["dias_cobertura_objetivo"]
-            sugerido = max(0, round(objetivo - disponible))
-        else:
-            sugerido = 0
-
         if disponible == 0 and venta_diaria == 0 and not vendido_alguna_vez:
             continue  # sin stock, nunca vendido: no aporta al reorden
+
+        estado, etiqueta = _estado_fila(disponible, venta_diaria, dias_cobertura, vendido_alguna_vez, cfg)
 
         variantes = [
             {
@@ -105,12 +92,15 @@ def main():
             "dias_cobertura": round(dias_cobertura, 1) if dias_cobertura is not None else None,
             "estado": estado,
             "estado_label": etiqueta,
-            "sugerido": int(sugerido),
+            "sugerido": int(_sugerido(venta_diaria, disponible, cfg)),
             "num_variantes": len(variantes),
             "variantes": variantes,
         })
 
     df = pd.DataFrame(filas)
+    if not len(df):
+        return {"resumen": {"total_referencias": 0, "criticos": 0, "alerta": 0, "sin_rotacion": 0,
+                             "nuevos": 0, "unidades_sugeridas_total": 0}, "categorias": []}
 
     categorias = []
     for cat, grupo in df.groupby("categoria"):
@@ -127,9 +117,7 @@ def main():
         })
     categorias.sort(key=lambda c: -(c["num_criticos"] * 1000 + c["num_alerta"]))
 
-    salida = {
-        "ventana_dias": VENTANA_DIAS,
-        "generado_al": str(HOY.date()),
+    return {
         "resumen": {
             "total_referencias": int(len(df)),
             "criticos": int((df["estado"] == "critico").sum()),
@@ -141,9 +129,92 @@ def main():
         "categorias": categorias,
     }
 
+
+def _procesar_accesorios(articulos: pd.DataFrame, cfg: dict) -> dict:
+    filas = []
+    for categoria, grupo in articulos.groupby("Categoría"):
+        disponible = int(grupo["Stock total empresa"].sum())
+        venta_ventana = float(grupo["venta_90d"].sum())
+        venta_diaria = venta_ventana / VENTANA_DIAS
+        dias_cobertura = (disponible / venta_diaria) if venta_diaria > 0 else None
+        vendido_alguna_vez = bool(grupo["vendido_alguna_vez"].any())
+
+        if disponible == 0 and venta_diaria == 0 and not vendido_alguna_vez:
+            continue
+
+        estado, etiqueta = _estado_fila(disponible, venta_diaria, dias_cobertura, vendido_alguna_vez, cfg)
+
+        filas.append({
+            "categoria": categoria,
+            "disponible": disponible,
+            "venta_90d": int(venta_ventana),
+            "rotacion_anualizada": round(venta_diaria * 365) if venta_diaria > 0 else 0,
+            "dias_cobertura": round(dias_cobertura, 1) if dias_cobertura is not None else None,
+            "estado": estado,
+            "estado_label": etiqueta,
+            "sugerido": int(_sugerido(venta_diaria, disponible, cfg)),
+            "num_referencias": int(grupo["referencia"].nunique()),
+        })
+
+    df = pd.DataFrame(filas)
+    if not len(df):
+        return {"resumen": {"total_categorias": 0, "criticos": 0, "alerta": 0, "sin_rotacion": 0,
+                             "nuevos": 0, "unidades_sugeridas_total": 0}, "categorias": []}
+
+    df = df.sort_values(
+        by=["estado", "dias_cobertura"], key=lambda s: s if s.name != "dias_cobertura" else s.fillna(999999)
+    )
+
+    return {
+        "resumen": {
+            "total_categorias": int(len(df)),
+            "criticos": int((df["estado"] == "critico").sum()),
+            "alerta": int((df["estado"] == "alerta").sum()),
+            "sin_rotacion": int((df["estado"] == "sin_rotacion").sum()),
+            "nuevos": int((df["estado"] == "nuevo").sum()),
+            "unidades_sugeridas_total": int(df["sugerido"].sum()),
+        },
+        "categorias": df.to_dict(orient="records"),
+    }
+
+
+def main():
+    cfg = cargar_config("inventario_config.json")
+    categorias_accesorios = set(cargar_config("categorias_accesorios.json")["categorias"])
+
+    articulos = leer_excel_effi(RAW_ARTICULOS)
+    articulos["Stock total empresa"] = pd.to_numeric(articulos["Stock total empresa"], errors="coerce").fillna(0)
+    articulos["Costo manual"] = pd.to_numeric(articulos["Costo manual"], errors="coerce").fillna(0)
+    articulos["Categoría"] = articulos["Categoría"].fillna("SIN CATEGORÍA")
+    articulos["referencia"] = articulos["Nombre"].apply(referencia_base)
+    articulos["es_accesorio"] = articulos["Categoría"].isin(categorias_accesorios)
+
+    conceptos = cargar_conceptos_combinados()
+    conceptos["Fecha creación"] = pd.to_datetime(conceptos["Fecha creación"])
+    ventas_recientes = conceptos[
+        (conceptos["Estado CXC"] == "Pago total") & (conceptos["Fecha creación"] >= INICIO_VENTANA)
+    ]
+    venta_por_sku = ventas_recientes.groupby("Cod. artículo")["Cantidad"].sum()
+    algo_vendido_historico = set(conceptos.loc[conceptos["Estado CXC"] == "Pago total", "Cod. artículo"].unique())
+
+    articulos["venta_90d"] = articulos["ID"].map(venta_por_sku).fillna(0)
+    articulos["vendido_alguna_vez"] = articulos["ID"].isin(algo_vendido_historico)
+
+    ropa_salida = _procesar_ropa(articulos[~articulos["es_accesorio"]], cfg)
+    accesorios_salida = _procesar_accesorios(articulos[articulos["es_accesorio"]], cfg)
+
+    salida = {
+        "ventana_dias": VENTANA_DIAS,
+        "generado_al": str(HOY.date()),
+        "ropa": ropa_salida,
+        "accesorios": accesorios_salida,
+    }
+
     OUT.write_text(json.dumps(salida, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(json.dumps(salida["resumen"], ensure_ascii=False, indent=2))
-    print(f"{len(categorias)} categorías, {len(df)} referencias (antes por SKU individual). Guardado en {OUT}")
+    print("Ropa:", json.dumps(ropa_salida["resumen"], ensure_ascii=False))
+    print("Accesorios:", json.dumps(accesorios_salida["resumen"], ensure_ascii=False))
+    print(f"{len(ropa_salida['categorias'])} categorías de ropa, "
+          f"{len(accesorios_salida['categorias'])} categorías de accesorios. Guardado en {OUT}")
 
 
 if __name__ == "__main__":

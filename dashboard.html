@@ -180,6 +180,16 @@
   .ref-unidades { color: var(--texto-sub); text-align: right; }
   .ref-valor { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
 
+  .liq-fila { display: grid; grid-template-columns: 1fr 90px 130px; align-items: center; gap: .8rem; padding: .6rem .4rem; font-size: .85rem; border-bottom: 1px dotted var(--borde); }
+  .liq-nombre { font-weight: 500; }
+  .liq-disp { color: var(--texto-sub); text-align: right; }
+  .liq-valor { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--rojo); }
+
+  .reo-aviso-dia {
+    background: var(--destacado-bg); border: 1px solid var(--acento-suave); border-radius: 10px;
+    padding: .9rem 1.2rem; margin-bottom: 1.2rem; font-weight: 600; font-size: .9rem;
+  }
+
   .subseccion { font-size: .85rem; text-transform: uppercase; letter-spacing: .03em; color: var(--texto-sub); margin: 1.8rem 0 .8rem 0; font-weight: 600; }
   .tabla-categorias { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--borde); border-radius: 10px; overflow: hidden; }
   .tabla-categorias th, .tabla-categorias td { padding: .6rem 1rem; text-align: left; font-size: .88rem; border-bottom: 1px solid var(--borde); }
@@ -355,11 +365,11 @@
     .filtro-rango, .filtro-rango-fechas { width: 100%; }
     .filtro-rango-fechas input[type="date"] { flex: 1 1 120px; min-width: 0; }
 
-    .suc-fila, .cat-fila, .ref-fila, .reo-fila {
+    .suc-fila, .cat-fila, .ref-fila, .reo-fila, .liq-fila {
       grid-template-columns: 1fr !important; row-gap: .3rem; padding: .8rem 0;
     }
     .suc-cifras, .cat-valor, .cat-margen, .ref-unidades, .ref-valor,
-    .reo-disp, .reo-rot, .reo-sug { text-align: left; }
+    .reo-disp, .reo-rot, .reo-sug, .liq-disp, .liq-valor { text-align: left; }
     .reo-estado { justify-self: start; }
 
     .reo-cat-header { flex-direction: column; align-items: flex-start; gap: .4rem; }
@@ -22269,35 +22279,1171 @@
     </tr></tbody>
   </table>
     
+  <h2>Productos activos vs inactivos · Ropa · Año 2026</h2>
+  <div class="subtitulo" style="margin-bottom:1rem;">
+    Activa = se vendió al menos una vez este año. Inactiva = se vendía antes pero nada en 2026 — candidata real a
+    liquidar. Nueva = nunca se ha vendido — puede ser referencia reciente, requiere evaluación manual antes de liquidar.
+  </div>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Activas</div>
+      <div class="kpi-valor">672</div>
+      <div class="kpi-sub">2.766 und. · $138.822.452</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Inactivas · liquidar</div>
+      <div class="kpi-valor">33</div>
+      <div class="kpi-sub">61 und. · $3.289.000</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Nuevas · evaluar</div>
+      <div class="kpi-valor">187</div>
+      <div class="kpi-sub">556 und. · $22.691.500</div>
+    </div></div>
+
+  <div class="grid-2col" style="margin-top:1.5rem;">
+    <div>
+      <h3 class="subseccion">Candidatas a liquidar (33)</h3>
+      <div class="lista-scroll">
+    <div class="liq-fila">
+      <div class="liq-nombre">Pant Pana Cafe <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">8 und.</div>
+      <div class="liq-valor">$440.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Buzo Capota Algodon Cafe <span class="reo-tallas-count">· BUZOS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$272.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Jean Momfit Meraki <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">5 und.</div>
+      <div class="liq-valor">$260.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Jean Palazo Negro <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$186.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Short Prenses Tela Beige <span class="reo-tallas-count">· FALDAS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$180.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Vestido Sirena Verde Oliva <span class="reo-tallas-count">· VESTIDOS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$130.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Vestido Sirena Camel <span class="reo-tallas-count">· VESTIDOS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$130.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Jean Maos Moños <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$130.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chaqueta Cuero Bolsillo Camel <span class="reo-tallas-count">· CHAQUETAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$130.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Buzo Tejido Bandeja Beige <span class="reo-tallas-count">· BUZOS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$104.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Estraple Tamalito Beige <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$96.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Estraple Tamalito Camel <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$96.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chamarra Roquera Vinotinto <span class="reo-tallas-count">· CHAQUETAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$85.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chamarra Roquera Camel <span class="reo-tallas-count">· CHAQUETAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$85.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chaqueta Vaca <span class="reo-tallas-count">· CHAQUETAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$80.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Jean Bolsillo Brillante <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$65.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Vestido Sirena Azul Bebe <span class="reo-tallas-count">· VESTIDOS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$65.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Jean Tou Triangulo <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$65.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Enterizo Jean Short <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$65.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chaqueta California Negro <span class="reo-tallas-count">· CHAQUETAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$65.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chaqueta Bentley <span class="reo-tallas-count">· CHAQUETAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$65.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Jean Corazon Desgaste <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$60.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Copa Largo Rosa <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$50.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Buzo Tejido Boton Azul Bebe <span class="reo-tallas-count">· BUZOS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$50.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blazer Gris <span class="reo-tallas-count">· CONJUNTOS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$50.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Jean Palazo Rotos <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$48.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Jean Murren <span class="reo-tallas-count">· FALDAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$47.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chaleco Acolchado Rosa <span class="reo-tallas-count">· CHALECOS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$46.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Croma Palo De Rosa <span class="reo-tallas-count">· FALDAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$39.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blusa Vale Gris <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$29.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Costillero Rosa <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$26.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Luna Encaje Negro <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$25.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Luna Encaje Marfil <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$25.000</div>
+    </div></div>
+    </div>
+    <div>
+      <h3 class="subseccion">Nuevas · sin vender aún (187)</h3>
+      <div class="lista-scroll">
+    <div class="liq-fila">
+      <div class="liq-nombre">Sudadera Clasica Gris Claro <span class="reo-tallas-count">· CONJUNTOS</span></div>
+      <div class="liq-disp">10 und.</div>
+      <div class="liq-valor">$800.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Sudadera Clasica Gris Oscuro <span class="reo-tallas-count">· CONJUNTOS</span></div>
+      <div class="liq-disp">10 und.</div>
+      <div class="liq-valor">$800.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Sudadera Venecia  Azul Bebe <span class="reo-tallas-count">· CONJUNTOS</span></div>
+      <div class="liq-disp">6 und.</div>
+      <div class="liq-valor">$552.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Pant Cuerina Meli Cafe <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">9 und.</div>
+      <div class="liq-valor">$495.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Jean Fire Azul <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">5 und.</div>
+      <div class="liq-valor">$475.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Braga Jean Azul Frosteado <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">6 und.</div>
+      <div class="liq-valor">$408.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Braga Jean Gris Oscuro <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">6 und.</div>
+      <div class="liq-valor">$408.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chamarra Globo Hombro Negro <span class="reo-tallas-count">· CHAQUETAS</span></div>
+      <div class="liq-disp">6 und.</div>
+      <div class="liq-valor">$390.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chaqueta Paño Tina Camel <span class="reo-tallas-count">· CHAQUETAS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$360.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Tejido Ivy Rojo/Fucsia <span class="reo-tallas-count">· SIN CATEGORÍA</span></div>
+      <div class="liq-disp">6 und.</div>
+      <div class="liq-valor">$360.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chamarra Hombro Paño Negro <span class="reo-tallas-count">· CHAQUETAS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$340.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Pantalon Like  Tl <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">5 und.</div>
+      <div class="liq-valor">$325.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Flower Lila/Blanco <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">10 und.</div>
+      <div class="liq-valor">$320.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chaqueta Teddy Cafe <span class="reo-tallas-count">· CHAQUETAS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$320.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chaqueta Teddy Negro <span class="reo-tallas-count">· CHAQUETAS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$320.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chaqueta Teddy Beige <span class="reo-tallas-count">· CHAQUETAS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$320.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chaleco Santa Azul Frosteado Claro <span class="reo-tallas-count">· CHALECOS</span></div>
+      <div class="liq-disp">5 und.</div>
+      <div class="liq-valor">$275.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Tejido Cuello Boton Azul Bebe/Gris <span class="reo-tallas-count">· BUZOS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$240.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Tejido Cuello Boton Azul Bebe/Azul <span class="reo-tallas-count">· BUZOS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$240.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Esqueleto Multicolor <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">16 und.</div>
+      <div class="liq-valor">$240.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Buzo Algodon Celestial Gris Claro <span class="reo-tallas-count">· BUZOS</span></div>
+      <div class="liq-disp">5 und.</div>
+      <div class="liq-valor">$240.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Tejido Cuello Boton Azul Bebe/Cafe <span class="reo-tallas-count">· BUZOS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$240.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Short Lucy Negro <span class="reo-tallas-count">· FALDAS</span></div>
+      <div class="liq-disp">6 und.</div>
+      <div class="liq-valor">$228.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Short Lucy Blanco <span class="reo-tallas-count">· FALDAS</span></div>
+      <div class="liq-disp">6 und.</div>
+      <div class="liq-valor">$228.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Basica Tank Negro <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">6 und.</div>
+      <div class="liq-valor">$210.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Basica Tank Azul Rey <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">6 und.</div>
+      <div class="liq-valor">$210.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Capa Fire Azul <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$200.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Petite Vinotinto Txs <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$192.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blusa Blair Cuero Negro <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">8 und.</div>
+      <div class="liq-valor">$184.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Sudadera Venecia Gris <span class="reo-tallas-count">· CONJUNTOS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$184.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Cuero Mini Negro <span class="reo-tallas-count">· FALDAS</span></div>
+      <div class="liq-disp">5 und.</div>
+      <div class="liq-valor">$175.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Sudadera Algodon Blanco <span class="reo-tallas-count">· CONJUNTOS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$174.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Sudadera Algodon Camel <span class="reo-tallas-count">· CONJUNTOS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$174.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chaqueta Bomber Cuero Larga Chocolate <span class="reo-tallas-count">· SIN CATEGORÍA</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$170.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chaleco Santa Azul Frosteado Oscuro <span class="reo-tallas-count">· CHALECOS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$165.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Overzise Bra  Negro <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$162.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Overzise Matcha Gris <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$162.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Short Grecia Camel <span class="reo-tallas-count">· FALDAS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$160.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Short Grecia Gris Claro <span class="reo-tallas-count">· FALDAS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$160.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Estrella Vinotinto <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">5 und.</div>
+      <div class="liq-valor">$160.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Malla Mia Rojo <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">8 und.</div>
+      <div class="liq-valor">$160.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Buzo Encaje Like Negro <span class="reo-tallas-count">· BUZOS</span></div>
+      <div class="liq-disp">5 und.</div>
+      <div class="liq-valor">$160.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Vestido Flores Blanco/Azul <span class="reo-tallas-count">· VESTIDOS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$160.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chamarra Gamuza Aurora Verde <span class="reo-tallas-count">· SIN CATEGORÍA</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$160.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Buzo Encaje Like Marfil <span class="reo-tallas-count">· BUZOS</span></div>
+      <div class="liq-disp">5 und.</div>
+      <div class="liq-valor">$160.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Short Lucy Beige <span class="reo-tallas-count">· FALDAS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$152.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Buzo Tejido Cuello Tortuga Verde Militar <span class="reo-tallas-count">· BUZOS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$150.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Vestido Bandeja Multicolor Naranja <span class="reo-tallas-count">· VESTIDOS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$150.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Petite Blanco Tm <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$144.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Petite Amarillo  Txs <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$144.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blazer Cuadros Tren <span class="reo-tallas-count">· CONJUNTOS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$130.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Pantalon Like  Tm <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$130.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blusa Caro Cafe <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$128.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blusa Caro Verde <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$128.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blusa Caro Vinotinto <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$128.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Camisa Victoria Camel <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$128.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Tira Basico Verde <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$128.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Overzise Matcha Negro <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$121.500</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Overzise Bra  Marfil <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$121.500</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Tejido Cuello Boton Cafe/Rojo <span class="reo-tallas-count">· BUZOS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$120.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Serena Amarillo <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$120.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Serena Negro <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$120.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Tejido Ivy Cafe/Rojo <span class="reo-tallas-count">· SIN CATEGORÍA</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$120.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Vestido Valeria Azul <span class="reo-tallas-count">· VESTIDOS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$120.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Malla Mia Amarillo <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">6 und.</div>
+      <div class="liq-valor">$120.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Jean Clasico Gris <span class="reo-tallas-count">· VESTIDOS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$112.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Pantalon Satinado Camel <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$110.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Vestido Noa  Camel <span class="reo-tallas-count">· VESTIDOS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$105.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Malla Ambar  Negro <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$104.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Buzo Duo Lily Animal Print <span class="reo-tallas-count">· BUZOS</span></div>
+      <div class="liq-disp">5 und.</div>
+      <div class="liq-valor">$100.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Duo Lily Animal Print Negro <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">5 und.</div>
+      <div class="liq-valor">$100.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Short Prenses Tela Blanco Tl <span class="reo-tallas-count">· FALDAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$100.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Short Prenses Tela Cafe Tl <span class="reo-tallas-count">· FALDAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$100.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Duo Lily Animal Print <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">5 und.</div>
+      <div class="liq-valor">$100.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Buzo Algodon Celestial Negro <span class="reo-tallas-count">· BUZOS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$96.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Camisa Victoria Azul Bebe <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$96.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Petite Blanco <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$96.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Petite Blanco Txs <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$96.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Petite Cafe Tl <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$96.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Petite Cafe Tm <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$96.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Petite Rojo <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$96.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Camisa Victoria Marfil <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$96.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Petite Vinotinto Tm <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$96.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Sudadera Amsterdan Vinotinto <span class="reo-tallas-count">· CONJUNTOS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$92.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Overzise Ruge Blanco <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$91.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Overzise Love Blanco <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$91.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Overzise New York Negro <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$91.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Cuadrado Vinotinto <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">5 und.</div>
+      <div class="liq-valor">$90.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Camisa London Lineas Azul <span class="reo-tallas-count">· CAMISAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$90.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Camisa London Negro <span class="reo-tallas-count">· CAMISAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$90.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Camisa London Vinotinto <span class="reo-tallas-count">· CAMISAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$90.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Camisa London Beige <span class="reo-tallas-count">· CAMISAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$90.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Estraple Ana Marfil <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$90.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Vale Beige <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$88.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chaqueta Bomber Cuero Vinotinto <span class="reo-tallas-count">· CHAQUETAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$85.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Overzise Bra  Gris <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$81.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Overzise Boston Marfil <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$81.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Malla Animal Print <span class="reo-tallas-count">· SIN CATEGORÍA</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$80.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blazer Rebel Largo Negro Tl <span class="reo-tallas-count">· CONJUNTOS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$80.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Malla Lunar Marfil <span class="reo-tallas-count">· SIN CATEGORÍA</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$80.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blazer Rebel Largo Beige <span class="reo-tallas-count">· CONJUNTOS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$80.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Maxi Negro <span class="reo-tallas-count">· FALDAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$80.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Petra Negro <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$80.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Duo Lily Camel Frosteado <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$80.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Buzo Duo Lily Camel Frosteado <span class="reo-tallas-count">· BUZOS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$80.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Malla Beso Multicolor <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$80.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Petra Marfil <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$80.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Malla Dados Multicolor <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$80.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Bandeja Blanco <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$76.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">T6 <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$75.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chaqueta Oslo Peluche Camel <span class="reo-tallas-count">· CHAQUETAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$75.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chaqueta Oslo Peluche Avena <span class="reo-tallas-count">· CHAQUETAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$75.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Chaqueta Oslo Peluche Marfil <span class="reo-tallas-count">· CHAQUETAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$75.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Redondo Amarillo <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$72.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Esqueleto Negro <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$72.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Redondo Gris Cemento <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">4 und.</div>
+      <div class="liq-valor">$72.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Pantalon Encaje Marfil <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$70.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Pantalon Like Cuerina  Txl <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$65.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blusa Caro Verde Esmeralda <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$64.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Camisa Victoria Verde <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$64.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Buzo Encaje Like Rosa <span class="reo-tallas-count">· BUZOS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$64.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Estrella Tira Blanco <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$64.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blusa Malla Amelia Amarillo <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$60.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Serena Cafe <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$60.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Buzo Duo Lily Animal Print Negro <span class="reo-tallas-count">· BUZOS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$60.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blusa Malla Amelia Negro <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$60.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blusa Malla Amelia Vinotinto <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$60.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Serena Rojo <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$60.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Jean Bota Recta Maos Gris <span class="reo-tallas-count">· PANTALONES</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$60.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blusa Malla Amelia Blanco <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$60.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Buzo Nala Morado <span class="reo-tallas-count">· BUZOS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$56.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blusa Thalia Puntos Cafe <span class="reo-tallas-count">· SIN CATEGORÍA</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$56.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blusa Thalia Puntos Negro <span class="reo-tallas-count">· SIN CATEGORÍA</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$56.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Esqueleto Redondo Negro <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$54.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Esqueleto Redondo Blanco <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$54.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Esqueleto Redondo Gris Claro <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">3 und.</div>
+      <div class="liq-valor">$54.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blusa Globo Azul <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$50.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Escote Espalda Vinotinto <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$50.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Olivia Malla Blanco <span class="reo-tallas-count">· SIN CATEGORÍA</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$50.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Petite Rosa Tl <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$48.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Petite Blanco Tl <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$48.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Petite Amarillo  Tl <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$48.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Corta Animal Print <span class="reo-tallas-count">· FALDAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$47.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Clasica Gris <span class="reo-tallas-count">· FALDAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$47.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Overzise Edna Negro <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$45.500</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Short Bella Café <span class="reo-tallas-count">· FALDAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$45.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Cuero Anna Negro <span class="reo-tallas-count">· FALDAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$44.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Cuero Anna Beige <span class="reo-tallas-count">· FALDAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$44.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Malla Mia Rosa <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$40.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Falda Cargo Negro <span class="reo-tallas-count">· FALDAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$40.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Petra Rosa <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$40.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blusa Malla Amelia Azul Bebe <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$40.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Petra Verde <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$40.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Petra Rojo <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$40.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Petra Vinotinto <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$40.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blusa Malla Amelia Cafe <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$40.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Petra Azul Noche <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$40.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Petra Amarillo <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$40.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Petra Beige <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$40.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Malla Mar Multicolor <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$40.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Bandeja Rojo <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$38.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Vestido Bolero Negro <span class="reo-tallas-count">· VESTIDOS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$38.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Bandeja Cafe <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$38.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Bandeja Beige <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$38.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Esqueleto Vinotinto <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$36.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Esqueleto Redondo Beige <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$36.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Esqueleto Verde Esmeralda Tl <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">2 und.</div>
+      <div class="liq-valor">$36.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Barbie Cafe <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$35.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Camisa Perla  Azul Oscuro <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$35.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Vestido Noa  Vinotinto <span class="reo-tallas-count">· VESTIDOS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$35.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Vestido Noa  Negro <span class="reo-tallas-count">· VESTIDOS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$35.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Estrella Tira Negro <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$32.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Estrella Tira Camel <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$32.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Encaje W Blanco <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$32.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Corset Serena Vinotinto <span class="reo-tallas-count">· CORSET</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$30.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Blusa Zoe Punta Beige <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$30.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Buzo Nala Amarillo <span class="reo-tallas-count">· BUZOS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$28.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Vestido Globo Vinotinto <span class="reo-tallas-count">· VESTIDOS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$25.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Bandeja Malla Cafe <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$20.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Cuello V Manga Corta Amarillo <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$18.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Cuello V Manga Corta Azul Noche <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$18.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Cuello V Manga Corta Cafe <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$18.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Cuello V Manga Corta Marfil <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$18.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Cuello V Manga Corta Negro <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$18.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Cuello V Manga Corta Vinotinto <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$18.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Body Basico Esqueleto Gris <span class="reo-tallas-count">· BODYS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$18.000</div>
+    </div>
+    <div class="liq-fila">
+      <div class="liq-nombre">Esqueleto Vinotinto <span class="reo-tallas-count">· BLUSAS</span></div>
+      <div class="liq-disp">1 und.</div>
+      <div class="liq-valor">$13.000</div>
+    </div></div>
+    </div>
+  </div>
+    
   <h2>Solicitud de pedidos a proveedores</h2>
   <div class="subtitulo" style="margin-bottom:1rem;">
     Índice de cobertura calculado sobre venta de los últimos 90 días, al 2026-07-19.
     Clic en una categoría para ver las referencias que necesitan atención.
   </div>
+  
+  
+  <h3 class="subseccion">Ropa · por referencia</h3>
   <div class="kpi-grid">
     <div class="kpi-card">
       <div class="kpi-label">Críticas</div>
-      <div class="kpi-valor">267</div>
+      <div class="kpi-valor">254</div>
       <div class="kpi-sub">cobertura ≤ 7 días</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">En alerta</div>
-      <div class="kpi-valor">30</div>
+      <div class="kpi-valor">26</div>
       <div class="kpi-sub">cobertura ≤ 30 días</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Sin rotación 90d</div>
-      <div class="kpi-valor">85</div>
+      <div class="kpi-valor">81</div>
       <div class="kpi-sub">candidatas a liquidar</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Nuevas / sin evaluar</div>
-      <div class="kpi-valor">187</div>
+      <div class="kpi-valor">174</div>
       
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Unidades sugeridas</div>
-      <div class="kpi-valor">385</div>
+      <div class="kpi-valor">353</div>
       <div class="kpi-sub">a pedir a proveedores</div>
     </div></div>
   <div style="margin-top:1.2rem;">
@@ -25216,218 +26362,6 @@
     <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
       <div class="reo-cat-header">
         <span class="chevron">▶</span>
-        <span class="reo-cat-nombre">TOPOS</span>
-        <span class="reo-cat-meta">21 refs · 141 uds disponibles</span>
-        <span class="reo-badge critico">3 crítico</span><span class="reo-badge alerta">1 alerta</span><span class="reo-badge sugerido">Sugerido: 8 uds</span>
-      </div>
-      <div class="reo-cat-detalle">
-        
-      <div class="reo-ref-wrap">
-        <div class="reo-fila">
-          <div class="reo-nombre">Topos $25000</div>
-          <div class="reo-disp">1 disp.</div>
-          <div class="reo-rot">45 uds/año</div>
-          <div class="reo-estado alerta">Alerta</div>
-          <div class="reo-sug">+3</div>
-        </div>
-        
-      </div>
-      <div class="reo-ref-wrap">
-        <div class="reo-fila">
-          <div class="reo-nombre">Topos $12000</div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">16 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+1</div>
-        </div>
-        
-      </div>
-      <div class="reo-ref-wrap">
-        <div class="reo-fila">
-          <div class="reo-nombre">Topos $15000</div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">20 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+2</div>
-        </div>
-        
-      </div>
-      <div class="reo-ref-wrap">
-        <div class="reo-fila">
-          <div class="reo-nombre">Topos $8000</div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">24 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+2</div>
-        </div>
-        
-      </div>
-        <div class="detalle-vacio">+17 referencias más sin alerta de cobertura (ok, sin rotación o nuevas).</div>
-      </div>
-    </div>
-    <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
-      <div class="reo-cat-header">
-        <span class="chevron">▶</span>
-        <span class="reo-cat-nombre">ACCESORIOS</span>
-        <span class="reo-cat-meta">16 refs · 112 uds disponibles</span>
-        <span class="reo-badge critico">2 crítico</span><span class="reo-badge alerta">1 alerta</span><span class="reo-badge sugerido">Sugerido: 3 uds</span>
-      </div>
-      <div class="reo-cat-detalle">
-        
-      <div class="reo-ref-wrap">
-        <div class="reo-fila">
-          <div class="reo-nombre">Pañoleta Colombia</div>
-          <div class="reo-disp">1 disp.</div>
-          <div class="reo-rot">28 uds/año</div>
-          <div class="reo-estado alerta">Alerta</div>
-          <div class="reo-sug">+1</div>
-        </div>
-        
-      </div>
-      <div class="reo-ref-wrap">
-        <div class="reo-fila">
-          <div class="reo-nombre">Anillo $15000</div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">20 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+2</div>
-        </div>
-        
-      </div>
-      <div class="reo-ref-wrap">
-        <div class="reo-fila">
-          <div class="reo-nombre">Collar</div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">4 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">—</div>
-        </div>
-        
-      </div>
-        <div class="detalle-vacio">+13 referencias más sin alerta de cobertura (ok, sin rotación o nuevas).</div>
-      </div>
-    </div>
-    <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
-      <div class="reo-cat-header">
-        <span class="chevron">▶</span>
-        <span class="reo-cat-nombre">ANILLOS</span>
-        <span class="reo-cat-meta">16 refs · 139 uds disponibles</span>
-        <span class="reo-badge critico">2 crítico</span><span class="reo-badge sugerido">Sugerido: 9 uds</span>
-      </div>
-      <div class="reo-cat-detalle">
-        
-      <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
-        <div class="reo-fila">
-          <div class="reo-nombre"><span class="chevron">▶</span> Anillo $12000 <span class="reo-tallas-count">· 2 tallas</span></div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">57 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+5</div>
-        </div>
-        <div class="reo-variantes"><div class="detalle-item"><span>Única</span><span>0 disp.</span></div><div class="detalle-item"><span>Única</span><span>0 disp.</span></div></div>
-      </div>
-      <div class="reo-ref-wrap">
-        <div class="reo-fila">
-          <div class="reo-nombre">Anillo $14000</div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">12 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+1</div>
-        </div>
-        
-      </div>
-        <div class="detalle-vacio">+14 referencias más sin alerta de cobertura (ok, sin rotación o nuevas).</div>
-      </div>
-    </div>
-    <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
-      <div class="reo-cat-header">
-        <span class="chevron">▶</span>
-        <span class="reo-cat-nombre">CADENAS</span>
-        <span class="reo-cat-meta">35 refs · 390 uds disponibles</span>
-        <span class="reo-badge critico">2 crítico</span><span class="reo-badge sugerido">Sugerido: 2 uds</span>
-      </div>
-      <div class="reo-cat-detalle">
-        
-      <div class="reo-ref-wrap">
-        <div class="reo-fila">
-          <div class="reo-nombre">Cadena $16000</div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">8 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+1</div>
-        </div>
-        
-      </div>
-      <div class="reo-ref-wrap">
-        <div class="reo-fila">
-          <div class="reo-nombre">Cadena $43000</div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">16 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+1</div>
-        </div>
-        
-      </div>
-        <div class="detalle-vacio">+33 referencias más sin alerta de cobertura (ok, sin rotación o nuevas).</div>
-      </div>
-    </div>
-    <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
-      <div class="reo-cat-header">
-        <span class="chevron">▶</span>
-        <span class="reo-cat-nombre">GARGANTILLAS</span>
-        <span class="reo-cat-meta">6 refs · 11 uds disponibles</span>
-        <span class="reo-badge critico">2 crítico</span><span class="reo-badge sugerido">Sugerido: 2 uds</span>
-      </div>
-      <div class="reo-cat-detalle">
-        
-      <div class="reo-ref-wrap">
-        <div class="reo-fila">
-          <div class="reo-nombre">Gargantillas $36000</div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">16 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+1</div>
-        </div>
-        
-      </div>
-      <div class="reo-ref-wrap">
-        <div class="reo-fila">
-          <div class="reo-nombre">Gargantillas $40000</div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">12 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+1</div>
-        </div>
-        
-      </div>
-        <div class="detalle-vacio">+4 referencias más sin alerta de cobertura (ok, sin rotación o nuevas).</div>
-      </div>
-    </div>
-    <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
-      <div class="reo-cat-header">
-        <span class="chevron">▶</span>
-        <span class="reo-cat-nombre">ARETES</span>
-        <span class="reo-cat-meta">24 refs · 412 uds disponibles</span>
-        <span class="reo-badge critico">1 crítico</span><span class="reo-badge sugerido">Sugerido: 2 uds</span>
-      </div>
-      <div class="reo-cat-detalle">
-        
-      <div class="reo-ref-wrap">
-        <div class="reo-fila">
-          <div class="reo-nombre">Aretes $24000</div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">20 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+2</div>
-        </div>
-        
-      </div>
-        <div class="detalle-vacio">+23 referencias más sin alerta de cobertura (ok, sin rotación o nuevas).</div>
-      </div>
-    </div>
-    <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
-      <div class="reo-cat-header">
-        <span class="chevron">▶</span>
         <span class="reo-cat-nombre">CAMISAS</span>
         <span class="reo-cat-meta">6 refs · 9 uds disponibles</span>
         <span class="reo-badge critico">1 crítico</span><span class="reo-badge sugerido">Sugerido: 1 uds</span>
@@ -25450,28 +26384,6 @@
     <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
       <div class="reo-cat-header">
         <span class="chevron">▶</span>
-        <span class="reo-cat-nombre">EARCUF</span>
-        <span class="reo-cat-meta">10 refs · 108 uds disponibles</span>
-        <span class="reo-badge critico">1 crítico</span>
-      </div>
-      <div class="reo-cat-detalle">
-        
-      <div class="reo-ref-wrap">
-        <div class="reo-fila">
-          <div class="reo-nombre">Earcuff $13000</div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">4 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">—</div>
-        </div>
-        
-      </div>
-        <div class="detalle-vacio">+9 referencias más sin alerta de cobertura (ok, sin rotación o nuevas).</div>
-      </div>
-    </div>
-    <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
-      <div class="reo-cat-header">
-        <span class="chevron">▶</span>
         <span class="reo-cat-nombre">JUEGOS</span>
         <span class="reo-cat-meta">6 refs · 10 uds disponibles</span>
         <span class="reo-badge critico">1 crítico</span><span class="reo-badge sugerido">Sugerido: 1 uds</span>
@@ -25489,50 +26401,6 @@
         
       </div>
         <div class="detalle-vacio">+5 referencias más sin alerta de cobertura (ok, sin rotación o nuevas).</div>
-      </div>
-    </div>
-    <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
-      <div class="reo-cat-header">
-        <span class="chevron">▶</span>
-        <span class="reo-cat-nombre">BRAZALETE</span>
-        <span class="reo-cat-meta">8 refs · 25 uds disponibles</span>
-        <span class="reo-badge alerta">1 alerta</span><span class="reo-badge sugerido">Sugerido: 1 uds</span>
-      </div>
-      <div class="reo-cat-detalle">
-        
-      <div class="reo-ref-wrap">
-        <div class="reo-fila">
-          <div class="reo-nombre">Topos $26000</div>
-          <div class="reo-disp">1 disp.</div>
-          <div class="reo-rot">24 uds/año</div>
-          <div class="reo-estado alerta">Alerta</div>
-          <div class="reo-sug">+1</div>
-        </div>
-        
-      </div>
-        <div class="detalle-vacio">+7 referencias más sin alerta de cobertura (ok, sin rotación o nuevas).</div>
-      </div>
-    </div>
-    <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
-      <div class="reo-cat-header">
-        <span class="chevron">▶</span>
-        <span class="reo-cat-nombre">TOBILLERAS</span>
-        <span class="reo-cat-meta">3 refs · 45 uds disponibles</span>
-        <span class="reo-badge alerta">1 alerta</span><span class="reo-badge sugerido">Sugerido: 2 uds</span>
-      </div>
-      <div class="reo-cat-detalle">
-        
-      <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
-        <div class="reo-fila">
-          <div class="reo-nombre"><span class="chevron">▶</span> Tobilleras $20000 <span class="reo-tallas-count">· 2 tallas</span></div>
-          <div class="reo-disp">1 disp.</div>
-          <div class="reo-rot">36 uds/año</div>
-          <div class="reo-estado alerta">Alerta</div>
-          <div class="reo-sug">+2</div>
-        </div>
-        <div class="reo-variantes"><div class="detalle-item"><span>Única</span><span>1 disp.</span></div><div class="detalle-item"><span>Única</span><span>0 disp.</span></div></div>
-      </div>
-        <div class="detalle-vacio">+2 referencias más sin alerta de cobertura (ok, sin rotación o nuevas).</div>
       </div>
     </div>
     <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
@@ -25562,18 +26430,6 @@
     <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
       <div class="reo-cat-header">
         <span class="chevron">▶</span>
-        <span class="reo-cat-nombre">PULSERAS</span>
-        <span class="reo-cat-meta">27 refs · 252 uds disponibles</span>
-        <span class="reo-badge sugerido">Sugerido: 3 uds</span>
-      </div>
-      <div class="reo-cat-detalle">
-        <div class="detalle-vacio">Sin referencias críticas o en alerta en esta categoría.</div>
-        <div class="detalle-vacio">+27 referencias más sin alerta de cobertura (ok, sin rotación o nuevas).</div>
-      </div>
-    </div>
-    <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
-      <div class="reo-cat-header">
-        <span class="chevron">▶</span>
         <span class="reo-cat-nombre">SHORTS</span>
         <span class="reo-cat-meta">3 refs · 14 uds disponibles</span>
         
@@ -25583,6 +26439,104 @@
         <div class="detalle-vacio">+3 referencias más sin alerta de cobertura (ok, sin rotación o nuevas).</div>
       </div>
     </div></div>
+  
+  <h3 class="subseccion">Accesorios · por categoría</h3>
+  <div class="subtitulo" style="margin-bottom:1rem;">
+    Mucha variedad de diseño por categoría (aretes, anillos, pulseras...) para rastrear uno por uno —
+    acá se mide el ritmo de la categoría completa.
+  </div>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Categorías críticas</div>
+      <div class="kpi-valor">0</div>
+      <div class="kpi-sub">cobertura ≤ 7 días</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">En alerta</div>
+      <div class="kpi-valor">0</div>
+      <div class="kpi-sub">cobertura ≤ 30 días</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Sin rotación 90d</div>
+      <div class="kpi-valor">0</div>
+      
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Unidades sugeridas</div>
+      <div class="kpi-valor">0</div>
+      <div class="kpi-sub">a pedir a proveedores</div>
+    </div></div>
+  <div class="reo-cat-detalle" style="display:block; margin-top:1rem;">
+      <div class="reo-fila">
+        <div class="reo-nombre">ANILLOS <span class="reo-tallas-count">· 16 referencias</span></div>
+        <div class="reo-disp">139 disp.</div>
+        <div class="reo-rot">884 uds/año</div>
+        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-sug">—</div>
+      </div>
+      <div class="reo-fila">
+        <div class="reo-nombre">GARGANTILLAS <span class="reo-tallas-count">· 6 referencias</span></div>
+        <div class="reo-disp">11 disp.</div>
+        <div class="reo-rot">65 uds/año</div>
+        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-sug">—</div>
+      </div>
+      <div class="reo-fila">
+        <div class="reo-nombre">BRAZALETE <span class="reo-tallas-count">· 8 referencias</span></div>
+        <div class="reo-disp">25 disp.</div>
+        <div class="reo-rot">97 uds/año</div>
+        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-sug">—</div>
+      </div>
+      <div class="reo-fila">
+        <div class="reo-nombre">ARETES <span class="reo-tallas-count">· 24 referencias</span></div>
+        <div class="reo-disp">412 disp.</div>
+        <div class="reo-rot">1.440 uds/año</div>
+        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-sug">—</div>
+      </div>
+      <div class="reo-fila">
+        <div class="reo-nombre">CADENAS <span class="reo-tallas-count">· 35 referencias</span></div>
+        <div class="reo-disp">390 disp.</div>
+        <div class="reo-rot">1.338 uds/año</div>
+        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-sug">—</div>
+      </div>
+      <div class="reo-fila">
+        <div class="reo-nombre">TOPOS <span class="reo-tallas-count">· 21 referencias</span></div>
+        <div class="reo-disp">141 disp.</div>
+        <div class="reo-rot">483 uds/año</div>
+        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-sug">—</div>
+      </div>
+      <div class="reo-fila">
+        <div class="reo-nombre">PULSERAS <span class="reo-tallas-count">· 27 referencias</span></div>
+        <div class="reo-disp">252 disp.</div>
+        <div class="reo-rot">852 uds/año</div>
+        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-sug">—</div>
+      </div>
+      <div class="reo-fila">
+        <div class="reo-nombre">EARCUF <span class="reo-tallas-count">· 10 referencias</span></div>
+        <div class="reo-disp">108 disp.</div>
+        <div class="reo-rot">324 uds/año</div>
+        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-sug">—</div>
+      </div>
+      <div class="reo-fila">
+        <div class="reo-nombre">TOBILLERAS <span class="reo-tallas-count">· 3 referencias</span></div>
+        <div class="reo-disp">45 disp.</div>
+        <div class="reo-rot">118 uds/año</div>
+        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-sug">—</div>
+      </div>
+      <div class="reo-fila">
+        <div class="reo-nombre">ACCESORIOS <span class="reo-tallas-count">· 16 referencias</span></div>
+        <div class="reo-disp">112 disp.</div>
+        <div class="reo-rot">187 uds/año</div>
+        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-sug">—</div>
+      </div></div>
   </div>
 
   <div id="sec-comisiones" class="seccion" style="display:none">
@@ -25602,7 +26556,7 @@
   <script>document.addEventListener('DOMContentLoaded', function(){ renderComisiones(7); });</script>
   </div>
 
-  <footer>Generado el 2026-07-19 15:57 · datos de Effi Systems</footer>
+  <footer>Generado el 2026-07-19 16:29 · datos de Effi Systems</footer>
   <div class="powered-by">Powered by Divina Intuición IA</div>
 
   </div>

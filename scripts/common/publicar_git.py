@@ -18,6 +18,7 @@ ARCHIVOS_A_PUBLICAR = [
     "reportes/historico_mensual.json",
     "reportes/categorias_referencias.json",
     "reportes/reorden.json",
+    "reportes/liquidacion.json",
     "reportes/resumen_dia.txt",
 ]
 
