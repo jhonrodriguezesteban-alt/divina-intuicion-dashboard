@@ -1,0 +1,9 @@
+{
+  "_comentario": "Comisión plana para la administradora de punto de cada sucursal, sobre la venta neta del mes (Estado CXC = Pago total), medida contra la meta de metas_mensuales.json. Reemplaza los nombres de 'administradoras' por los reales.",
+  "tasa_comision": 0.01,
+  "administradoras": {
+    "144": "Administradora Local 144",
+    "433": "Administradora Local 433",
+    "107": "Administradora Local 107"
+  }
+}

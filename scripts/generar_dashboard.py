@@ -27,6 +27,7 @@ CONFIG_DIR = Path(__file__).resolve().parent.parent / "config"
 DASHBOARD_PATH = Path(__file__).resolve().parent.parent / "dashboard.html"
 LOGO_PATH = Path(__file__).resolve().parent.parent / "assets" / "logo_divina.png"
 MARMOL_PATH = Path(__file__).resolve().parent.parent / "assets" / "marmol_textura.jpg"
+ICONO_APP_PATH = Path(__file__).resolve().parent.parent / "assets" / "icono_app.png"
 
 
 def _logo_img_html(clase: str, alto: str) -> str:
@@ -43,7 +44,44 @@ def _marmol_data_uri() -> str:
     b64 = base64.b64encode(MARMOL_PATH.read_bytes()).decode("ascii")
     return f"data:image/jpeg;base64,{b64}"
 
+
+def _icono_app_data_uri() -> str:
+    """PNG cuadrado (logo sobre fondo crema, ver scripts/generar_icono_app.py) para
+    favicon/apple-touch-icon -- así "Agregar a pantalla de inicio" en el celular
+    muestra el logo real en vez de un ícono genérico o una captura recortada."""
+    if not ICONO_APP_PATH.exists():
+        return ""
+    b64 = base64.b64encode(ICONO_APP_PATH.read_bytes()).decode("ascii")
+    return f"data:image/png;base64,{b64}"
+
+
+def _manifest_data_uri(icono_uri: str) -> str:
+    if not icono_uri:
+        return ""
+    manifest = {
+        "name": "Divina Intuición — Dashboard Gerencial",
+        "short_name": "Divina Intuición",
+        "start_url": ".",
+        "display": "standalone",
+        "background_color": "#f4f1ec",
+        "theme_color": "#f4f1ec",
+        "icons": [{"src": icono_uri, "sizes": "512x512", "type": "image/png"}],
+    }
+    b64 = base64.b64encode(json.dumps(manifest, ensure_ascii=False).encode("utf-8")).decode("ascii")
+    return f"data:application/manifest+json;base64,{b64}"
+
 MESES_ES = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+
+
+def _opciones_mes_filtro(ventas_diarias: dict, anio_num: int) -> str:
+    """<option> por cada mes del año en curso con datos en ventas_diarias.json,
+    para el selector "Filtrar por mes" de Ventas por Punto de Venta."""
+    meses_presentes = sorted({d[:7] for d in ventas_diarias.get("por_dia", {}) if d.startswith(str(anio_num))})
+    opciones = []
+    for ym in meses_presentes:
+        mes_num = int(ym.split("-")[1])
+        opciones.append(f'<option value="{ym}">{MESES_ES[mes_num - 1]} {anio_num}</option>')
+    return "".join(opciones)
 
 
 # ---------- helpers de formato ----------
@@ -105,8 +143,9 @@ def _fila_barra(nombre: str, valor: float, sub: str, maximo: float, clase_barra:
     </div>"""
 
 
-def _fila_sucursal(nombre: str, ingreso: float, transacciones: int, maximo: float) -> str:
-    return _fila_barra(nombre, ingreso, f'{_cop(ingreso)} <span class="suc-trans">· {_miles(transacciones)} ventas</span>', maximo)
+def _fila_sucursal(nombre: str, ingreso: float, transacciones: int, maximo: float, pct_total: float = None) -> str:
+    pct_txt = f' · {pct_total:.0f}% del total' if pct_total is not None else ''
+    return _fila_barra(nombre, ingreso, f'{_cop(ingreso)} <span class="suc-trans">· {_miles(transacciones)} ventas{pct_txt}</span>', maximo)
 
 
 def _fila_stock(nombre: str, unidades: int, maximo: int) -> str:
@@ -156,19 +195,38 @@ def _fila_categoria_rentabilidad(cat: dict, maximo_margen: float, productos_por_
 
 
 def _detalle_referencia_html(por_sucursal: list) -> str:
+    """Ventas por sucursal de una referencia; si esa sucursal vendió más de una
+    talla/color de la referencia, la fila es clicable y despliega el detalle
+    (mismo patrón de doble expandible que el módulo de Reorden: toggleAbierto
+    con el evento para no disparar también el toggle de la fila padre)."""
     if not por_sucursal:
         return '<div class="detalle-vacio">Sin detalle por sucursal.</div>'
-    filas = "".join(
-        f'<div class="detalle-item"><span>{s["sucursal"]}</span>'
-        f'<span>{_miles(s["unidades"])} und. · {_cop(s["ventas_netas"])}</span></div>'
-        for s in por_sucursal
-    )
-    return f'<div class="ref-detalle"><div class="detalle-titulo">Ventas por sucursal</div>{filas}</div>'
+    filas = []
+    for s in por_sucursal:
+        variantes = s.get("variantes", [])
+        tiene_variantes = len(variantes) > 1
+        chevron = '<span class="chevron">▶</span> ' if tiene_variantes else ""
+        clase_wrap = "ref-suc-wrap expandible" if tiene_variantes else "ref-suc-wrap"
+        onclick = ' onclick="toggleAbierto(this, event)"' if tiene_variantes else ""
+        nested = ""
+        if tiene_variantes:
+            items = "".join(
+                f'<div class="detalle-item"><span>{v["nombre"]}</span>'
+                f'<span>{_miles(v["unidades"])} und. · {_cop(v["ventas_netas"])}</span></div>'
+                for v in variantes
+            )
+            nested = f'<div class="ref-variantes">{items}</div>'
+        filas.append(f"""
+      <div class="{clase_wrap}"{onclick}>
+        <div class="detalle-item"><span>{chevron}{s["sucursal"]}</span>
+        <span>{_miles(s["unidades"])} und. · {_cop(s["ventas_netas"])}</span></div>
+        {nested}
+      </div>""")
+    return f'<div class="ref-detalle"><div class="detalle-titulo">Ventas por sucursal · clic para ver tallas/colores</div>{"".join(filas)}</div>'
 
 
 def _fila_referencia(rank: int, ref: dict, por_sucursal_ref: dict) -> str:
-    clave = f'{ref["codigo"]}::{ref["nombre"]}'
-    detalle = _detalle_referencia_html(por_sucursal_ref.get(clave, []))
+    detalle = _detalle_referencia_html(por_sucursal_ref.get(ref["nombre"], []))
     return f"""
     <div class="expandible ref-wrap" onclick="toggleAbierto(this)">
       <div class="ref-fila">
@@ -504,6 +562,48 @@ def _seccion_comparativo_historico(historico_mensual: dict, metas_cfg: dict, suc
   <script type="application/json" id="data-historico">{datos_json}</script>"""
 
 
+# ---------- sección: comisiones ----------
+
+def _seccion_comisiones(comisiones_cfg: dict, sucursales_cfg: list, hoy: "datetime") -> str:
+    """Tarjetas por sucursal (meta/venta/% cumplimiento/comisión + mini gráfico
+    presupuesto vs. real acumulado), calcadas del módulo "Comisiones Asesoras" del
+    dashboard de referencia. A diferencia de Bentley (escalafón 0.5%-3% por asesora),
+    Divina paga una tasa plana a la administradora de cada punto -- ver
+    config/comisiones_config.json. Todo el cálculo día a día corre en JS puro sobre
+    los datos ya embebidos (data-diarias, data-historico), sin generar un JSON nuevo
+    por mes -- mismo patrón de la sección de filtros de Ventas por Punto de Venta."""
+    if not comisiones_cfg:
+        return '<div class="nota">Falta config/comisiones_config.json (tasa de comisión y administradoras por sucursal).</div>'
+
+    tasa = comisiones_cfg.get("tasa_comision", 0.01)
+    admins_por_codigo = comisiones_cfg.get("administradoras", {})
+    nombre_por_codigo = {s["codigo"]: s["nombre"] for s in sucursales_cfg}
+    administradoras = {nombre_por_codigo.get(cod, cod): nom for cod, nom in admins_por_codigo.items()}
+
+    botones_mes = "".join(
+        f'<button class="com-mes-btn{" com-mes-on" if i + 1 == hoy.month else ""}" '
+        f'data-mes="{i + 1}" onclick="renderComisiones({i + 1}, this)">{MESES_ES[i]}</button>'
+        for i in range(hoy.month)
+    )
+
+    comisiones_json = json.dumps({"tasaComision": tasa, "administradoras": administradoras}, ensure_ascii=False)
+
+    return f"""
+  <h2>Comisiones · Administradoras de punto</h2>
+  <div class="subtitulo" style="margin-bottom:1.2rem;">
+    Comisión del {tasa * 100:.0f}% sobre la venta neta del mes (Estado CXC = Pago total),
+    medida contra la meta fijada en config/metas_mensuales.json.
+  </div>
+  <div class="com-meses">{botones_mes}</div>
+  <div class="com-total-card">
+    <div class="kpi-label" id="comisiones-total-label">Total comisiones</div>
+    <div class="com-total-valor" id="comisiones-total">—</div>
+  </div>
+  <div class="com-grid" id="comisiones-tarjetas"></div>
+  <script type="application/json" id="data-comisiones">{comisiones_json}</script>
+  <script>document.addEventListener('DOMContentLoaded', function(){{ renderComisiones({hoy.month}); }});</script>"""
+
+
 # ---------- login (pantalla de acceso, protección de fricción — ver nota en el README) ----------
 # Credenciales de acceso al dashboard (no las de Effi). Cambiar aquí si hace falta.
 LOGIN_USUARIO = "divina"
@@ -554,6 +654,14 @@ function doLogin(){
 
 if (localStorage.getItem('divina_dashboard_auth') === '1'){
   document.addEventListener('DOMContentLoaded', _mostrarApp);
+}
+
+function cerrarSesion(){
+  localStorage.removeItem('divina_dashboard_auth');
+  document.getElementById('app-contenido').style.display = 'none';
+  document.getElementById('login-overlay').style.display = '';
+  document.getElementById('login-usuario').value = '';
+  document.getElementById('login-clave').value = '';
 }
 
 function toggleAbierto(el, evt){
@@ -626,6 +734,140 @@ function filtrarRango(diasDesde, diasHasta, btn){
   });
   var cont = document.getElementById('ventas-recientes-bars');
   if (cont) cont.innerHTML = html;
+}
+
+function _diaISO(fecha){
+  return fecha.toISOString().slice(0, 10);
+}
+
+function _rangoFechasISO(desde, hasta){
+  var dias = [];
+  var d = new Date(desde.getTime());
+  while (d <= hasta){
+    dias.push(_diaISO(d));
+    d.setDate(d.getDate() + 1);
+  }
+  return dias;
+}
+
+function _renderSucursalesFiltro(diasISO){
+  var diarios = JSON.parse(document.getElementById('data-diarias').textContent);
+  var totales = {};
+  diarios.sucursales.forEach(function(s){ totales[s] = {ingreso: 0, transacciones: 0}; });
+  var pago = 0, pendiente = 0;
+
+  diasISO.forEach(function(key){
+    var dia = diarios.por_dia[key];
+    if (dia){
+      Object.keys(dia).forEach(function(suc){
+        if (!totales[suc]) totales[suc] = {ingreso: 0, transacciones: 0};
+        totales[suc].ingreso += dia[suc].ingreso;
+        totales[suc].transacciones += dia[suc].transacciones;
+      });
+    }
+    var comp = diarios.composicion_por_dia[key];
+    if (comp){ pago += comp.pago_total; pendiente += comp.pendiente_cobro; }
+  });
+
+  var entries = Object.keys(totales).map(function(k){
+    return {sucursal: k, ingreso: totales[k].ingreso, transacciones: totales[k].transacciones};
+  });
+  entries.sort(function(a, b){ return b.ingreso - a.ingreso; });
+  var maximo = Math.max.apply(null, entries.map(function(e){ return e.ingreso; }).concat([1]));
+  var totalGeneral = entries.reduce(function(s, e){ return s + e.ingreso; }, 0);
+  var totalTrans = entries.reduce(function(s, e){ return s + e.transacciones; }, 0);
+
+  var html = '';
+  entries.forEach(function(e){
+    var pct = maximo ? (e.ingreso / maximo * 100) : 0;
+    var pctTotal = totalGeneral ? (e.ingreso / totalGeneral * 100) : 0;
+    html += '<div class="suc-fila"><div class="suc-nombre">' + e.sucursal + '</div>' +
+      '<div class="suc-barra-wrap"><div class="suc-barra" style="width:' + pct + '%"></div></div>' +
+      '<div class="suc-cifras">' + _cop(e.ingreso) + ' <span class="suc-trans">\\u00b7 ' + e.transacciones + ' ventas \\u00b7 ' + pctTotal.toFixed(0) + '% del total</span></div></div>';
+  });
+  if (html) html += '<div class="suc-total-linea"><span>Total</span><span>' + _cop(totalGeneral) + ' \\u00b7 ' + totalTrans + ' ventas</span></div>';
+  var cont = document.getElementById('suc-punto-venta-bars');
+  if (cont) cont.innerHTML = html || '<div class="detalle-vacio">Sin ventas en este período.</div>';
+
+  _renderComposicionFiltro(pago, pendiente);
+}
+
+function _renderComposicionFiltro(pago, pendiente){
+  var wrap = document.getElementById('composicion-wrap');
+  if (!wrap) return;
+  var total = pago + pendiente;
+  if (total <= 0){
+    wrap.innerHTML = '<div class="detalle-vacio">Sin datos de cartera para este período.</div>';
+    return;
+  }
+  var pctPago = pago / total * 100, pctPendiente = pendiente / total * 100;
+  var circ = 2 * Math.PI * 70, gap = 2;
+  var arcoPago = Math.max(0, pctPago / 100 * circ - gap);
+  var arcoPendiente = Math.max(0, pctPendiente / 100 * circ - gap);
+  var offsetPendiente = -(pctPago / 100 * circ);
+  wrap.innerHTML =
+    '<div class="donut-container"><svg class="donut-svg" width="180" height="180" viewBox="0 0 180 180">' +
+    '<circle cx="90" cy="90" r="70" fill="none" stroke="var(--borde)" stroke-width="22"/>' +
+    '<circle cx="90" cy="90" r="70" fill="none" stroke="var(--verde)" stroke-width="22" stroke-dasharray="' + arcoPago.toFixed(1) + ' ' + circ.toFixed(1) + '" stroke-dashoffset="0" transform="rotate(-90 90 90)"/>' +
+    '<circle cx="90" cy="90" r="70" fill="none" stroke="var(--ambar)" stroke-width="22" stroke-dasharray="' + arcoPendiente.toFixed(1) + ' ' + circ.toFixed(1) + '" stroke-dashoffset="' + offsetPendiente.toFixed(1) + '" transform="rotate(-90 90 90)"/>' +
+    '</svg><div class="donut-center"><div class="donut-pct" style="color:var(--verde)">' + pctPago.toFixed(1) + '%</div><div class="donut-sub-label">Cobrado</div></div></div>' +
+    '<div class="donut-legend">' +
+    '<div class="legend-item"><div class="legend-dot" style="background:var(--verde)"></div><span class="legend-name">Pago total</span><span class="legend-pct">' + pctPago.toFixed(1) + '%</span></div>' +
+    '<div class="legend-item"><div class="legend-dot" style="background:var(--ambar)"></div><span class="legend-name">Pendiente de cobro</span><span class="legend-pct">' + pctPendiente.toFixed(1) + '%</span></div>' +
+    '</div>';
+}
+
+function _limpiarBotonesFiltroSuc(){
+  document.querySelectorAll('.filtro-btn-suc').forEach(function(b){ b.classList.remove('activo'); });
+}
+
+function filtrarSucursales(diasDesde, diasHasta, btn){
+  _limpiarBotonesFiltroSuc();
+  if (btn) btn.classList.add('activo');
+  document.getElementById('filtro-fecha-desde').value = '';
+  document.getElementById('filtro-fecha-hasta').value = '';
+  document.getElementById('filtro-mes-select').value = '';
+
+  var hoyRef = document.body.getAttribute('data-hoy');
+  var hoy = new Date(hoyRef + 'T00:00:00');
+  var desde = new Date(hoy.getTime() - diasDesde * 86400000);
+  var hasta = new Date(hoy.getTime() - diasHasta * 86400000);
+  _renderSucursalesFiltro(_rangoFechasISO(desde, hasta));
+}
+
+function filtrarPorMes(valor){
+  _limpiarBotonesFiltroSuc();
+  document.getElementById('filtro-fecha-desde').value = '';
+  document.getElementById('filtro-fecha-hasta').value = '';
+  if (!valor){ limpiarFiltroSucursales(); return; }
+  var partes = valor.split('-');
+  var anio = parseInt(partes[0], 10), mes = parseInt(partes[1], 10);
+  var desde = new Date(anio, mes - 1, 1);
+  var hasta = new Date(anio, mes, 0);
+  _renderSucursalesFiltro(_rangoFechasISO(desde, hasta));
+}
+
+function filtrarPorRangoFechas(){
+  var desdeStr = document.getElementById('filtro-fecha-desde').value;
+  var hastaStr = document.getElementById('filtro-fecha-hasta').value;
+  if (!desdeStr || !hastaStr) return;
+  _limpiarBotonesFiltroSuc();
+  document.getElementById('filtro-mes-select').value = '';
+  var desde = new Date(desdeStr + 'T00:00:00');
+  var hasta = new Date(hastaStr + 'T00:00:00');
+  if (hasta < desde) return;
+  _renderSucursalesFiltro(_rangoFechasISO(desde, hasta));
+}
+
+function limpiarFiltroSucursales(){
+  _limpiarBotonesFiltroSuc();
+  document.getElementById('filtro-fecha-desde').value = '';
+  document.getElementById('filtro-fecha-hasta').value = '';
+  document.getElementById('filtro-mes-select').value = '';
+  var diarios = JSON.parse(document.getElementById('data-diarias').textContent);
+  var anioActual = new Date(document.body.getAttribute('data-hoy') + 'T00:00:00').getFullYear();
+  var dias = Object.keys(diarios.por_dia).filter(function(d){ return d.slice(0, 4) === String(anioActual); }).sort();
+  _renderSucursalesFiltro(dias);
 }
 
 function _histCop(v){
@@ -801,6 +1043,136 @@ function renderHist(){
 
 if (document.getElementById('hist-table')) renderHist();
 
+function _comisionLineChart(puntos, meta, diasEnMes){
+  var w = 400, h = 130, padL = 4, padR = 6, padT = 10, padB = 18;
+  var plotW = w - padL - padR, plotH = h - padT - padB;
+  var ultimoReal = puntos.length ? puntos[puntos.length - 1].real : 0;
+  var maxVal = Math.max(meta, ultimoReal, 1) * 1.05;
+
+  function xFor(d){ return padL + (d - 1) / Math.max(1, diasEnMes - 1) * plotW; }
+  function yFor(v){ return padT + plotH - (v / maxVal) * plotH; }
+
+  var presupuestoPts = xFor(1) + ',' + yFor(meta / diasEnMes) + ' ' + xFor(diasEnMes) + ',' + yFor(meta);
+  var realPts = puntos.map(function(p){ return xFor(p.dia) + ',' + yFor(p.real); }).join(' ');
+  var dotX = puntos.length ? xFor(puntos[puntos.length - 1].dia) : padL;
+  var dotY = puntos.length ? yFor(ultimoReal) : (padT + plotH);
+
+  var ejeX = [1, Math.round(diasEnMes / 2), diasEnMes].map(function(d){
+    return '<text x="' + xFor(d) + '" y="' + (h - 3) + '" class="com-chart-eje" text-anchor="middle">' + d + '</text>';
+  }).join('');
+
+  return '<svg viewBox="0 0 ' + w + ' ' + h + '" class="com-chart" preserveAspectRatio="none">' +
+    ejeX +
+    '<polyline points="' + presupuestoPts + '" fill="none" stroke="var(--verde)" stroke-width="2" stroke-dasharray="6 4"/>' +
+    '<polyline points="' + realPts + '" fill="none" stroke="var(--acento)" stroke-width="2.5"/>' +
+    '<circle cx="' + dotX + '" cy="' + dotY + '" r="4" fill="var(--acento)"/>' +
+    '</svg>';
+}
+
+function _tarjetaComision(suc, admin, tasaPct, venta, meta, comision, puntos, diaCorte, mesLbl, diasEnMes, esMesActual){
+  if (meta <= 0 && venta <= 0){
+    return '<div class="comision-card"><div class="comision-card-top"><span class="comision-suc">' + suc + '</span></div>' +
+      '<div class="detalle-vacio">Sin datos ni meta fijada para este mes.</div></div>';
+  }
+  var sinMeta = meta <= 0;
+  var pct = sinMeta ? null : (venta / meta * 100);
+  var claseP = sinMeta ? '' : (pct >= 100 ? 'pos' : (pct >= 70 ? '' : 'neg'));
+  var pctTxt = sinMeta ? '—' : pct.toFixed(1) + '%';
+  var barraPct = sinMeta ? 0 : Math.max(0, Math.min(100, pct));
+  var deberiamos = meta * (diaCorte / diasEnMes);
+  var diff = venta - deberiamos;
+
+  var avance;
+  if (sinMeta){
+    avance = '<div class="comision-avance-sub">Sin meta de referencia este mes</div>' +
+      '<div class="comision-avance-meta"><span class="comision-meta-txt">Fija una meta manual en config/metas_mensuales.json para comparar el ritmo.</span></div>';
+  } else if (esMesActual){
+    avance = '<div class="comision-avance-sub">Primeros ' + diaCorte + ' días de ' + mesLbl + '</div>' +
+      '<div class="comision-avance-meta">' + (diff >= 0
+        ? '<span class="pos">✓ Vas ' + _cop(Math.abs(diff)) + ' arriba del ritmo</span>'
+        : '<span class="neg">⚠ Deberíamos tener ' + _cop(deberiamos) + ' · Falta ' + _cop(Math.abs(diff)) + '</span>') + '</div>';
+  } else {
+    avance = '<div class="comision-avance-sub">Mes cerrado</div>' +
+      '<div class="comision-avance-meta">' + (venta >= meta
+        ? '<span class="pos">✓ Meta cumplida</span>'
+        : '<span class="neg">No se alcanzó la meta (' + pct.toFixed(1) + '%)</span>') + '</div>';
+  }
+
+  return '<div class="comision-card">' +
+    '<div class="comision-card-top"><span class="comision-suc">' + suc + '</span><span class="comision-pct ' + claseP + '">' + pctTxt + '</span></div>' +
+    '<div class="comision-cifras">' + _cop(venta) + ' <span class="comision-meta-txt">/ ' + (sinMeta ? 'sin meta' : _cop(meta)) + '</span></div>' +
+    '<div class="comision-barra-wrap"><div class="comision-barra" style="width:' + barraPct + '%"></div></div>' +
+    '<div class="comision-admin"><span>' + admin + '</span><span>' + pctTxt + '</span></div>' +
+    '<div class="comision-desglose">' +
+      '<div><span class="comision-desglose-lbl">Meta</span><span>' + (sinMeta ? '—' : _cop(meta)) + '</span></div>' +
+      '<div><span class="comision-desglose-lbl">Venta</span><span>' + _cop(venta) + '</span></div>' +
+      '<div><span class="comision-desglose-lbl">% Comisión</span><span>' + tasaPct + '%</span></div>' +
+      '<div><span class="comision-desglose-lbl">Comisión</span><span class="pos">' + _cop(comision) + '</span></div>' +
+    '</div>' +
+    '<div class="comision-total-linea">Total comisión ' + suc + '<span class="pos">' + _cop(comision) + '</span></div>' +
+    '<div class="comision-chart-legend"><span><i class="com-dot-dash"></i>Presupuesto</span><span><i class="com-dot-solid"></i>Real acumulado</span></div>' +
+    _comisionLineChart(puntos, meta, diasEnMes) +
+    avance +
+  '</div>';
+}
+
+function renderComisiones(mesIdx, btn){
+  var cfgEl = document.getElementById('data-comisiones');
+  var histEl = document.getElementById('data-historico');
+  var diariosEl = document.getElementById('data-diarias');
+  if (!cfgEl || !histEl || !diariosEl) return;
+
+  document.querySelectorAll('.com-mes-btn').forEach(function(b){ b.classList.remove('com-mes-on'); });
+  if (btn) btn.classList.add('com-mes-on');
+
+  var cfg = JSON.parse(cfgEl.textContent);
+  var hist = JSON.parse(histEl.textContent);
+  var diarios = JSON.parse(diariosEl.textContent);
+
+  var anioActual = hist.anioActual;
+  var histActual = hist.histData[anioActual] || {};
+  var histPrev = hist.histData[String(Number(anioActual) - 1)] || {};
+  var mesUp = hist.meses[mesIdx - 1];
+  var mesLbl = hist.mesLabels[mesIdx - 1];
+  var hoy = new Date(document.body.getAttribute('data-hoy') + 'T00:00:00');
+  var esMesActual = (mesIdx === hoy.getMonth() + 1) && (Number(anioActual) === hoy.getFullYear());
+  var diasEnMes = new Date(Number(anioActual), mesIdx, 0).getDate();
+  var diaCorte = esMesActual ? hoy.getDate() : diasEnMes;
+  var tasaPct = (cfg.tasaComision * 100).toFixed(cfg.tasaComision * 100 % 1 === 0 ? 0 : 1);
+
+  var totalComisiones = 0;
+  var tarjetas = '';
+
+  diarios.sucursales.forEach(function(suc){
+    var venta = (histActual[suc] || {})[mesUp] || 0;
+    var metaCfg = hist.metas[suc];
+    var metaManual = metaCfg && metaCfg[mesIdx] !== undefined ? metaCfg[mesIdx] : null;
+    var ventaPrevYear = (histPrev[suc] || {})[mesUp] || 0;
+    var meta = metaManual !== null ? metaManual : ventaPrevYear * 1.10;
+
+    var puntos = [];
+    var acumulado = 0;
+    for (var d = 1; d <= diaCorte; d++){
+      var key = anioActual + '-' + String(mesIdx).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+      var dia = diarios.por_dia[key];
+      if (dia && dia[suc]) acumulado += dia[suc].ingreso;
+      puntos.push({dia: d, real: acumulado});
+    }
+
+    var comision = venta * cfg.tasaComision;
+    totalComisiones += comision;
+
+    tarjetas += _tarjetaComision(suc, cfg.administradoras[suc] || ('Administradora ' + suc), tasaPct, venta, meta, comision, puntos, diaCorte, mesLbl, diasEnMes, esMesActual);
+  });
+
+  var totalEl = document.getElementById('comisiones-total');
+  if (totalEl) totalEl.textContent = _cop(totalComisiones);
+  var lblEl = document.getElementById('comisiones-total-label');
+  if (lblEl) lblEl.textContent = 'Total comisiones ' + mesLbl + ' ' + anioActual;
+  var cont = document.getElementById('comisiones-tarjetas');
+  if (cont) cont.innerHTML = tarjetas;
+}
+
 filtrarRango(0, 0, document.querySelector('.filtro-btn[data-desde="0"][data-hasta="0"]'));
 """
 
@@ -832,8 +1204,33 @@ _CSS = """
     margin: 0;
     padding: 2.5rem 3rem 4rem;
   }
-  header { margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
-  .header-left { display: flex; align-items: center; gap: 1rem; }
+  header.header-top { margin-bottom: 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .header-badges { display: flex; align-items: center; gap: .7rem; }
+  .live-badge {
+    display: flex; align-items: center; gap: .45rem; font-size: .74rem; color: var(--texto-sub);
+    text-transform: uppercase; letter-spacing: .04em; padding: .4rem .8rem;
+    border: 1px solid var(--borde); border-radius: 999px; background: var(--card);
+  }
+  .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--verde); animation: pulso-vivo 1.8s infinite; }
+  @keyframes pulso-vivo {
+    0% { box-shadow: 0 0 0 0 rgba(77, 115, 88, .55); }
+    70% { box-shadow: 0 0 0 8px rgba(77, 115, 88, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(77, 115, 88, 0); }
+  }
+  .logout-btn {
+    padding: .5rem 1rem; border-radius: 999px; border: 1px solid var(--borde);
+    background: var(--card); color: var(--texto); font-size: .78rem; cursor: pointer;
+  }
+  .logout-btn:hover { background: var(--destacado-bg); }
+  .marca-central { display: flex; flex-direction: column; align-items: center; text-align: center; margin: 1.6rem 0 2.4rem; }
+  .logo-central { display: block; margin: 0 auto .9rem; }
+  .marca-actualizado { display: flex; align-items: baseline; gap: .5rem; font-size: .85rem; color: var(--texto-sub); }
+  .marca-actualizado-label { text-transform: uppercase; letter-spacing: .04em; font-size: .72rem; }
+  .marca-actualizado-valor { font-weight: 600; color: var(--texto); }
+  .powered-by {
+    text-align: center; margin-top: .6rem; padding-top: 1rem;
+    font-size: .7rem; letter-spacing: .04em; color: var(--texto-sub); text-transform: uppercase;
+  }
   .nav-hamburger {
     width: 42px; height: 42px; flex-shrink: 0;
     border-radius: 8px; border: 1px solid var(--borde);
@@ -865,9 +1262,7 @@ _CSS = """
     letter-spacing: .04em; font-weight: 400; font-size: 1.9rem;
     margin: 0 0 .3rem 0; text-transform: uppercase;
   }
-  .header-logo { display: block; margin-bottom: .3rem; }
   .subtitulo { color: var(--texto-sub); font-size: .95rem; }
-  .actualizado { color: var(--texto-sub); font-size: .8rem; text-align: right; }
   h2 {
     font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: 1.2rem;
     text-transform: uppercase; letter-spacing: .03em;
@@ -894,6 +1289,24 @@ _CSS = """
   }
   .filtro-btn:hover { background: var(--destacado-bg); }
   .filtro-btn.activo { background: var(--acento); color: #fff; border-color: var(--acento); }
+
+  .filtro-bar {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 1rem;
+    background: var(--card); border: 1px solid var(--borde); border-radius: 10px;
+    padding: 1rem 1.2rem; margin-bottom: 1.5rem;
+  }
+  .filtro-mes-label { display: flex; align-items: center; gap: .5rem; font-size: .8rem; color: var(--texto-sub); }
+  .filtro-mes-select, .filtro-rango-fechas input[type="date"] {
+    padding: .45rem .7rem; border-radius: 8px; border: 1px solid var(--borde);
+    background: var(--card); color: var(--texto); font-size: .82rem;
+  }
+  .filtro-rango-fechas { display: flex; align-items: center; gap: .5rem; color: var(--texto-sub); font-size: .82rem; }
+  .filtro-btn-suc {
+    padding: .5rem 1rem; border-radius: 999px; border: 1px solid var(--borde);
+    background: var(--card); color: var(--texto); font-size: .82rem; cursor: pointer;
+  }
+  .filtro-btn-suc:hover { background: var(--destacado-bg); }
+  .filtro-btn-suc.activo { background: var(--acento); color: #fff; border-color: var(--acento); }
 
   .suc-fila { display: grid; grid-template-columns: 160px 1fr 220px; align-items: center; gap: 1rem; padding: .7rem 0; border-bottom: 1px solid var(--borde); }
   .suc-nombre { font-weight: 600; font-size: .92rem; }
@@ -967,7 +1380,15 @@ _CSS = """
 
   .grid-2col { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2rem; align-items: start; }
   @media (max-width: 900px) { .grid-2col { grid-template-columns: 1fr; } }
+  .lista-scroll { max-height: 520px; overflow-y: auto; border: 1px solid var(--borde); border-radius: 10px; background: var(--card); padding: 0 1rem; }
+  .lista-scroll::-webkit-scrollbar { width: 8px; }
+  .lista-scroll::-webkit-scrollbar-thumb { background: var(--acento-suave); border-radius: 4px; }
 
+  .suc-wrap { background: var(--card); border: 1px solid var(--borde); border-radius: 10px; padding: 1.4rem 1.6rem; }
+  .suc-wrap .suc-fila:last-of-type { border-bottom: none; }
+  .suc-total-linea { display: flex; justify-content: space-between; font-weight: 700; font-size: .92rem; padding-top: 1rem; margin-top: .3rem; border-top: 1px solid var(--borde); }
+  .card-titulo { font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: 1rem; text-transform: uppercase; letter-spacing: .03em; align-self: flex-start; margin-bottom: 1rem; }
+  .com-inner { width: 100%; display: flex; flex-direction: column; align-items: center; }
   .donut-wrap { background: var(--card); border: 1px solid var(--borde); border-radius: 10px; padding: 1.4rem; display: flex; flex-direction: column; align-items: center; }
   .donut-container { position: relative; width: 180px; height: 180px; }
   .donut-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
@@ -1006,6 +1427,12 @@ _CSS = """
   .reo-ref-wrap.abierto .reo-variantes { display: grid; }
   .reo-variantes .detalle-item { border-bottom: none; padding: .15rem 0; font-size: .78rem; }
 
+  .ref-suc-wrap.expandible { cursor: pointer; }
+  .ref-suc-wrap.expandible:hover .detalle-item { background: var(--destacado-bg); }
+  .ref-variantes { display: none; padding: .3rem 0 .5rem 1.4rem; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: .25rem .7rem; }
+  .ref-suc-wrap.abierto .ref-variantes { display: grid; }
+  .ref-variantes .detalle-item { border-bottom: none; padding: .12rem 0; font-size: .76rem; }
+
   .nota { margin-top: 1.5rem; padding: 1rem 1.2rem; border: 1px dashed var(--acento-suave); border-radius: 8px; font-size: .85rem; color: var(--texto-sub); }
   footer { margin-top: 2rem; font-size: .75rem; color: var(--texto-sub); }
 
@@ -1015,7 +1442,7 @@ _CSS = """
   }
   .login-card {
     background: var(--card); border: 1px solid var(--borde); border-radius: 14px;
-    padding: 2.4rem 2.2rem; width: 320px; text-align: center;
+    padding: 2.4rem 2.2rem; width: 320px; max-width: 88vw; text-align: center;
   }
   .login-logo { display: block; margin: 0 auto; }
   .login-subtitulo { color: var(--texto-sub); font-size: .85rem; margin: .6rem 0 1.6rem; }
@@ -1033,6 +1460,85 @@ _CSS = """
   }
   .login-btn:hover { opacity: .9; }
   .login-error { color: var(--rojo); font-size: .8rem; margin-top: .8rem; min-height: 1em; }
+
+  .com-meses { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+  .com-mes-btn { padding: .4rem .9rem; border-radius: 999px; border: 1px solid var(--borde); background: var(--card); color: var(--texto-sub); font-size: .82rem; cursor: pointer; }
+  .com-mes-btn.com-mes-on { background: var(--acento); color: #fff; border-color: var(--acento); }
+  .com-total-card { background: var(--destacado-bg); border: 1px solid var(--acento-suave); border-radius: 12px; padding: 1.1rem 1.4rem; margin-bottom: 1.5rem; max-width: 320px; }
+  .com-total-valor { font-size: 1.8rem; font-weight: 700; margin-top: .2rem; }
+  .com-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
+  .comision-card { background: var(--card); border: 1px solid var(--borde); border-radius: 12px; padding: 1.3rem 1.4rem; }
+  .comision-card-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .3rem; }
+  .comision-suc { font-weight: 700; font-size: 1rem; }
+  .comision-pct { font-size: 1.3rem; font-weight: 700; color: var(--ambar); }
+  .comision-pct.pos { color: var(--verde); }
+  .comision-pct.neg { color: var(--rojo); }
+  .comision-cifras { font-size: .88rem; color: var(--texto-sub); margin-bottom: .5rem; }
+  .comision-meta-txt { color: var(--texto-sub); }
+  .comision-barra-wrap { background: #ece7dd; border-radius: 6px; height: 10px; overflow: hidden; margin-bottom: 1rem; }
+  .comision-barra { background: var(--acento); height: 100%; border-radius: 6px; }
+  .comision-admin { display: flex; justify-content: space-between; font-size: .85rem; font-weight: 600; padding-bottom: .6rem; border-bottom: 1px solid var(--borde); margin-bottom: .6rem; }
+  .comision-desglose { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem .8rem; font-size: .82rem; margin-bottom: .6rem; }
+  .comision-desglose > div { display: flex; justify-content: space-between; }
+  .comision-desglose-lbl { color: var(--texto-sub); }
+  .comision-total-linea { display: flex; justify-content: space-between; font-weight: 700; font-size: .88rem; padding: .6rem 0; border-top: 1px solid var(--borde); margin-bottom: .8rem; }
+  .comision-chart-legend { display: flex; gap: 1rem; font-size: .74rem; color: var(--texto-sub); margin-bottom: .3rem; }
+  .comision-chart-legend span { display: flex; align-items: center; gap: .3rem; }
+  .com-dot-dash, .com-dot-solid { width: 10px; height: 2px; display: inline-block; }
+  .com-dot-dash { background: repeating-linear-gradient(to right, var(--verde) 0 3px, transparent 3px 5px); }
+  .com-dot-solid { background: var(--acento); height: 2.5px; }
+  .com-chart { width: 100%; height: auto; display: block; margin-bottom: .5rem; }
+  .com-chart-eje { font-size: 7px; fill: var(--texto-sub); }
+  .comision-avance-sub { font-size: .74rem; color: var(--texto-sub); text-transform: uppercase; letter-spacing: .02em; }
+  .comision-avance-meta { font-size: .84rem; font-weight: 600; margin-top: .15rem; }
+
+  /* ---- Mobile: todas las filas de datos vienen de grids con columnas en px
+     (suc-fila, cat-fila, ref-fila, reo-fila) pensadas para escritorio; en un
+     viewport angosto esas columnas fijas se salen de la pantalla. Se
+     colapsan a una sola columna aquí en vez de tocar el HTML/JS que las
+     genera (parte se arma en Python, parte en JS — una sola regla CSS
+     cubre ambos casos sin duplicar lógica). ---- */
+  @media (max-width: 640px) {
+    body { padding: 1.4rem 1rem 3rem; }
+    header.header-top { gap: .6rem; }
+    .live-badge { font-size: .68rem; padding: .35rem .6rem; }
+    .logout-btn { padding: .4rem .8rem; font-size: .72rem; }
+    .marca-central { margin: 1.1rem 0 1.6rem; }
+    .logo-central { height: 56px !important; }
+    .marca-actualizado { flex-direction: column; gap: .1rem; }
+    h2 { font-size: 1rem; margin: 1.8rem 0 1rem 0; }
+
+    .kpi-grid { grid-template-columns: 1fr 1fr; gap: .7rem; }
+    .kpi-card { padding: .9rem 1rem; }
+    .kpi-valor { font-size: 1.15rem; }
+
+    .venta-hoy { padding: 1.1rem 1.2rem; }
+    .venta-hoy-valor { font-size: 1.9rem; }
+
+    .filtro-bar { flex-direction: column; align-items: stretch; padding: .9rem; }
+    .filtro-mes-label { flex-direction: column; align-items: stretch; }
+    .filtro-rango, .filtro-rango-fechas { width: 100%; }
+    .filtro-rango-fechas input[type="date"] { flex: 1 1 120px; min-width: 0; }
+
+    .suc-fila, .cat-fila, .ref-fila, .reo-fila {
+      grid-template-columns: 1fr !important; row-gap: .3rem; padding: .8rem 0;
+    }
+    .suc-cifras, .cat-valor, .cat-margen, .ref-unidades, .ref-valor,
+    .reo-disp, .reo-rot, .reo-sug { text-align: left; }
+    .reo-estado { justify-self: start; }
+
+    .reo-cat-header { flex-direction: column; align-items: flex-start; gap: .4rem; }
+    .reo-badge, .reo-badge + .reo-badge { margin-left: 0; }
+    .reo-variantes { grid-template-columns: 1fr 1fr; }
+    .ref-variantes { grid-template-columns: 1fr 1fr; }
+
+    .donut-legend { max-width: 100%; }
+    .hist-controles { flex-direction: column; align-items: flex-start; }
+    .nav-panel { width: 84vw; max-width: 300px; }
+
+    .com-total-card { max-width: 100%; }
+    .com-grid { grid-template-columns: 1fr; }
+  }
 """
 
 
@@ -1047,6 +1553,7 @@ def generar_dashboard_html(datos: dict = None) -> str:
     reorden = _cargar_json(REPORTES_DIR / "reorden.json")
     metas_cfg = _cargar_json(CONFIG_DIR / "metas_mensuales.json", {})
     sucursales_cfg = _cargar_json(CONFIG_DIR / "sucursales.json", {"sucursales": []})["sucursales"]
+    comisiones_cfg = _cargar_json(CONFIG_DIR / "comisiones_config.json", {})
 
     if not ventas:
         return _html_sin_datos()
@@ -1058,6 +1565,8 @@ def generar_dashboard_html(datos: dict = None) -> str:
     fecha_ref = ventas["actualizado_hasta"].split(" ")[0]
     anio_num = int(fecha_ref.split("-")[0])
     marmol_uri = _marmol_data_uri()
+    icono_uri = _icono_app_data_uri()
+    manifest_uri = _manifest_data_uri(icono_uri)
     body_style = (
         f'background-color:#f4f1ec; background-image:url({marmol_uri}); '
         f'background-repeat:repeat; background-size:900px auto; background-blend-mode:multiply;'
@@ -1073,28 +1582,39 @@ def generar_dashboard_html(datos: dict = None) -> str:
 
     por_sucursal_anio = sorted(anio["por_sucursal"], key=lambda r: -r["ingreso"])
     maximo_suc = max((r["ingreso"] for r in por_sucursal_anio), default=1)
+    total_ventas_suc = sum(r["ingreso"] for r in por_sucursal_anio)
+    total_trans_suc = sum(r["transacciones"] for r in por_sucursal_anio)
     sucursales_html = "".join([
-        _fila_sucursal(r["sucursal"], r["ingreso"], r["transacciones"], maximo_suc)
+        _fila_sucursal(r["sucursal"], r["ingreso"], r["transacciones"], maximo_suc,
+                        pct_total=(r["ingreso"] / total_ventas_suc * 100) if total_ventas_suc else None)
         for r in por_sucursal_anio
     ])
+    if por_sucursal_anio:
+        sucursales_html += (
+            f'<div class="suc-total-linea"><span>Total</span>'
+            f'<span>{_cop(total_ventas_suc)} · {_miles(total_trans_suc)} ventas</span></div>'
+        )
 
     composicion_html = ""
     if anio.get("composicion"):
         composicion_html = _seccion_composicion_venta(anio["composicion"], anio["kpis"]["margen_promedio"])
 
+    opciones_mes_filtro_html = _opciones_mes_filtro(ventas_diarias, anio_num)
+
     rentabilidad_html = ""
     referencias_html = ""
     if cat_ref:
         productos_por_categoria = cat_ref["anio_actual"].get("productos_por_categoria", {})
-        categorias = cat_ref["anio_actual"]["categorias"][:10]
+        categorias = cat_ref["anio_actual"]["categorias"]
         maximo_margen = max((c["margen"] for c in categorias), default=1)
         rentabilidad_html = "".join(_fila_categoria_rentabilidad(c, maximo_margen, productos_por_categoria) for c in categorias)
 
         por_sucursal_ref = cat_ref["anio_actual"].get("top_referencias_por_sucursal", {})
-        referencias = cat_ref["anio_actual"]["top_referencias"][:10]
+        referencias = cat_ref["anio_actual"]["top_referencias"]
         referencias_html = "".join(_fila_referencia(i + 1, r, por_sucursal_ref) for i, r in enumerate(referencias))
 
     comparativo_html = _seccion_comparativo_historico(historico_mensual, metas_cfg, sucursales_cfg, datetime.now())
+    comisiones_html = _seccion_comisiones(comisiones_cfg, sucursales_cfg, datetime.now())
     inventario_resumen_html = _seccion_inventario_resumen(inventario)
     reorden_html = _seccion_reorden(reorden)
 
@@ -1107,6 +1627,13 @@ def generar_dashboard_html(datos: dict = None) -> str:
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#f4f1ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Divina Intuición">
+{f'<link rel="icon" type="image/png" sizes="512x512" href="{icono_uri}">' if icono_uri else ""}
+{f'<link rel="apple-touch-icon" href="{icono_uri}">' if icono_uri else ""}
+{f'<link rel="manifest" href="{manifest_uri}">' if manifest_uri else ""}
 <title>Divina Intuición — Dashboard Gerencial</title>
 <style>{_CSS}</style>
 </head>
@@ -1122,48 +1649,79 @@ def generar_dashboard_html(datos: dict = None) -> str:
     <div class="nav-item" data-nav="comisiones" onclick="navTo('comisiones')">💼&nbsp; Comisiones</div>
   </div>
 
-  <header>
-    <div class="header-left">
-      <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menú">☰</button>
-      <div>
-        {_logo_img_html("header-logo", "34px")}
-        <div class="subtitulo">Dashboard Gerencial de Ventas · Local 144 · Local 433 · Local 107 (Divina Accesorios)</div>
-      </div>
+  <header class="header-top">
+    <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menú">☰</button>
+    <div class="header-badges">
+      <div class="live-badge"><span class="live-dot"></span>En vivo</div>
+      <button class="logout-btn" onclick="cerrarSesion()">Cerrar sesión</button>
     </div>
-    <div class="actualizado">Datos actualizados hasta<br>{ventas["actualizado_hasta"]}</div>
   </header>
+
+  <div class="marca-central">
+    {_logo_img_html("logo-central", "84px")}
+    <div class="marca-actualizado">
+      <span class="marca-actualizado-label">Datos actualizados hasta</span>
+      <span class="marca-actualizado-valor">{ventas["actualizado_hasta"]}</span>
+    </div>
+  </div>
 
   <div id="sec-gerencia" class="seccion">
     <h2>Indicadores clave · Año {anio_num}</h2>
     <div class="kpi-grid">{kpis_anio_html}</div>
-    {venta_hoy_html}
-
-    {ventas_recientes_html}
 
     <h2>Mes en curso</h2>
     <div class="kpi-grid">{kpis_mes_html}</div>
 
+    {venta_hoy_html}
+
+    {ventas_recientes_html}
+
+    <h2>Ventas por Punto de Venta · Año {anio_num}</h2>
+    <div class="filtro-bar">
+      <label class="filtro-mes-label" for="filtro-mes-select">Filtrar por mes
+        <select id="filtro-mes-select" class="filtro-mes-select" onchange="filtrarPorMes(this.value)">
+          <option value="">Año completo {anio_num}</option>
+          {opciones_mes_filtro_html}
+        </select>
+      </label>
+      <div class="filtro-rango-fechas">
+        <input type="date" id="filtro-fecha-desde" onchange="filtrarPorRangoFechas()">
+        <span>—</span>
+        <input type="date" id="filtro-fecha-hasta" onchange="filtrarPorRangoFechas()">
+      </div>
+      <div class="filtro-rango">
+        <button class="filtro-btn-suc" data-desde="0" data-hasta="0" onclick="filtrarSucursales(0,0,this)">Hoy</button>
+        <button class="filtro-btn-suc" data-desde="1" data-hasta="1" onclick="filtrarSucursales(1,1,this)">Ayer</button>
+        <button class="filtro-btn-suc" data-desde="6" data-hasta="0" onclick="filtrarSucursales(6,0,this)">7 días</button>
+        <button class="filtro-btn-suc" data-desde="29" data-hasta="0" onclick="filtrarSucursales(29,0,this)">30 días</button>
+        <button class="filtro-btn-suc" onclick="limpiarFiltroSucursales()">Limpiar</button>
+      </div>
+    </div>
+
     <div class="grid-2col">
       <div>
-        <h2>Ventas por Punto de Venta · Año {anio_num}</h2>
-        <div>{sucursales_html}</div>
+        <div class="suc-wrap">
+          <div id="suc-punto-venta-bars">{sucursales_html}</div>
+        </div>
       </div>
       <div>
-        <h2>Composición de Venta · Año {anio_num}</h2>
-        <div class="donut-wrap">{composicion_html}</div>
+        <div class="donut-wrap">
+          <div class="card-titulo">Composición de Venta · Año {anio_num}</div>
+          <div id="composicion-wrap" class="com-inner">{composicion_html}</div>
+        </div>
       </div>
     </div>
 
     <div class="grid-2col">
       <div>
         <h2>Rentabilidad por categoría · Año {anio_num}</h2>
-        <div class="subtitulo">Clic en una categoría para ver sus productos top</div>
-        <div>{rentabilidad_html}</div>
+        <div class="subtitulo">Clic en una categoría para ver sus productos top · desliza para ver todas</div>
+        <div class="lista-scroll">{rentabilidad_html}</div>
       </div>
       <div>
-        <h2>Top referencias · ventas netas</h2>
-        <div class="subtitulo">Clic en una referencia para ver el detalle por sucursal</div>
-        <div>{referencias_html}</div>
+        <h2>Referencias · ventas netas · Año {anio_num}</h2>
+        <div class="subtitulo">Clic en una referencia para ver el detalle por sucursal · desliza para ver todas</div>
+        <div class="lista-scroll">{referencias_html}</div>
       </div>
     </div>
 
@@ -1182,11 +1740,11 @@ def generar_dashboard_html(datos: dict = None) -> str:
   </div>
 
   <div id="sec-comisiones" class="seccion" style="display:none">
-    <h2>Comisiones</h2>
-    <div class="nota">Pendiente: definir con el negocio el escalafón de comisiones por vendedor/sucursal en config/metas_comisiones.json.</div>
+    {comisiones_html}
   </div>
 
   <footer>Generado el {generado} · datos de Effi Systems</footer>
+  <div class="powered-by">Powered by Divina Intuición IA</div>
 
   </div>
 

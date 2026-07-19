@@ -21,12 +21,11 @@ Umbrales en config/inventario_config.json.
 """
 
 import json
-import re
 from pathlib import Path
 
 import pandas as pd
 
-from common.procesamiento import leer_excel_effi, cargar_config
+from common.procesamiento import leer_excel_effi, cargar_config, referencia_base, talla_de
 
 RAW_ARTICULOS = Path(__file__).resolve().parent.parent / "reportes" / "raw" / "raw_articulos.xlsx"
 RAW_CONCEPTOS = Path(__file__).resolve().parent.parent / "reportes" / "raw" / "raw_conceptos.xlsx"
@@ -35,27 +34,6 @@ OUT = Path(__file__).resolve().parent.parent / "reportes" / "reorden.json"
 HOY = pd.Timestamp.now().normalize()
 VENTANA_DIAS = 90
 INICIO_VENTANA = HOY - pd.Timedelta(days=VENTANA_DIAS)
-
-_RE_TALLA_GRANDE = re.compile(r"\s+TALLA\s+\w+(\s+\w+)?$", re.IGNORECASE)
-_RE_TALLA = re.compile(r"\s+T(U|S|\d{1,2})$", re.IGNORECASE)
-
-
-def _referencia_base(nombre: str) -> str:
-    """Nombre del artículo sin el sufijo de talla (T6, T10, TU, "TALLA GRANDE"...).
-    Mantiene el color — dos colores del mismo diseño quedan como referencias
-    separadas, que es lo útil para decidir qué pedir a proveedores."""
-    n = (nombre or "").strip()
-    n = _RE_TALLA_GRANDE.sub("", n)
-    n = _RE_TALLA.sub("", n)
-    return n.strip() or (nombre or "").strip()
-
-
-def _talla_de(nombre: str, referencia: str) -> str:
-    """Lo que sobra del nombre completo al quitarle la referencia — la talla."""
-    resto = (nombre or "").strip()
-    if resto.startswith(referencia):
-        resto = resto[len(referencia):].strip()
-    return resto or "Única"
 
 
 def _clasificar(disponible, venta_diaria, dias_cobertura, cfg):
@@ -75,7 +53,7 @@ def main():
     articulos["Stock total empresa"] = pd.to_numeric(articulos["Stock total empresa"], errors="coerce").fillna(0)
     articulos["Costo manual"] = pd.to_numeric(articulos["Costo manual"], errors="coerce").fillna(0)
     articulos["Categoría"] = articulos["Categoría"].fillna("SIN CATEGORÍA")
-    articulos["referencia"] = articulos["Nombre"].apply(_referencia_base)
+    articulos["referencia"] = articulos["Nombre"].apply(referencia_base)
 
     conceptos = leer_excel_effi(RAW_CONCEPTOS)
     conceptos["Fecha creación"] = pd.to_datetime(conceptos["Fecha creación"])
@@ -113,7 +91,7 @@ def main():
         variantes = [
             {
                 "id": int(r["ID"]),
-                "talla": _talla_de(r["Nombre"], referencia),
+                "talla": talla_de(r["Nombre"], referencia),
                 "disponible": int(r["Stock total empresa"]),
             }
             for _, r in grupo.sort_values("Nombre").iterrows()

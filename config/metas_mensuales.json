@@ -1,6 +1,28 @@
 {
   "_comentario": "Meta de ventas por sucursal y mes (índice 1=Enero..12=Diciembre). Si un mes no tiene meta manual aquí, el dashboard usa automáticamente el 110% de lo vendido ese mismo mes el año anterior (igual que el dashboard de referencia de Grupo Bentley). Completa los valores que quieras fijar manualmente; deja null o el mes ausente para usar el respaldo automático.",
-  "144": {},
-  "433": {},
-  "107": {}
+  "_metodologia_jul_dic_2026": "Metas Jul-Dic 2026 calculadas el 2026-07-18 a partir del crecimiento interanual real de los últimos 3 meses cerrados (Abr-Jun): Local 144 ~70% YoY (venía desacelerando de 85.7% a 68.2%), Local 433 ~85% YoY (estable ~86-98%). Fórmula: mismo mes 2025 x (1+tasa) -- así se conserva la estacionalidad de diciembre. Local 107 no tiene año anterior (abrió abr-2026): meta mes a mes con crecimiento decreciente (15% -> 8%) según su propia tendencia reciente, más un salto de temporada en diciembre. Revisar y ajustar mes a mes según el comportamiento real.",
+  "144": {
+    "7": 114738000,
+    "8": 129348000,
+    "9": 116010000,
+    "10": 150525000,
+    "11": 170434000,
+    "12": 367127000
+  },
+  "433": {
+    "7": 63081000,
+    "8": 56529000,
+    "9": 52390000,
+    "10": 63779000,
+    "11": 100544000,
+    "12": 241149000
+  },
+  "107": {
+    "7": 14047000,
+    "8": 15733000,
+    "9": 17306000,
+    "10": 18690000,
+    "11": 20185000,
+    "12": 26240000
+  }
 }

@@ -4,6 +4,14 @@ reportes/categorias_referencias.json
 
 Rentabilidad por categoría + Top de referencias (artículos) por ventas
 netas, solo sobre líneas con Estado CXC = "Pago total".
+
+Se agrupa por REFERENCIA (nombre sin talla, ver common.procesamiento.
+referencia_base) — igual que en el módulo de reorden: sin esto, un mismo
+diseño en varias tallas ("SET JEAN SOL T8" / "SET JEAN SOL T10") aparece
+repetido como si fueran productos distintos, diluyendo su ranking real.
+
+Devuelve TODAS las categorías y referencias (no solo un top N) — el
+dashboard las muestra en una tarjeta con scroll, no recortadas.
 """
 
 import json
@@ -11,19 +19,19 @@ from pathlib import Path
 
 import pandas as pd
 
-from common.procesamiento import leer_excel_effi, cargar_config
+from common.procesamiento import leer_excel_effi, cargar_config, referencia_base, talla_de
 
 RAW = Path(__file__).resolve().parent.parent / "reportes" / "raw" / "raw_conceptos.xlsx"
 OUT = Path(__file__).resolve().parent.parent / "reportes" / "categorias_referencias.json"
 
 _HOY = pd.Timestamp.now().normalize()
 INICIO_ANIO = pd.Timestamp(year=_HOY.year, month=1, day=1)
-TOP_N = 10
 
 
 def _resumen(validas: pd.DataFrame, nombre_map: dict) -> dict:
     validas = validas.copy()
     validas["sucursal_nombre"] = validas["Sucursal"].map(nombre_map)
+    validas["referencia"] = validas["Descripción artículo"].apply(referencia_base)
 
     categorias = (
         validas.groupby("Categoría artículo")
@@ -35,48 +43,63 @@ def _resumen(validas: pd.DataFrame, nombre_map: dict) -> dict:
     categorias = categorias.sort_values("ventas_netas", ascending=False)
 
     referencias = (
-        validas.groupby(["Cod. artículo", "Descripción artículo"])
+        validas.groupby("referencia")
         .agg(unidades=("Cantidad", "sum"), ventas_netas=("Precio neto total", "sum"))
         .reset_index()
         .sort_values("ventas_netas", ascending=False)
-        .head(20)
     )
 
-    # detalle por sucursal, solo para las referencias top que se muestran expandibles.
-    # "Cod. artículo" NO es único por sí solo (Effi reutiliza el mismo código para
-    # variantes/artículos distintos) — hay que combinarlo con la descripción para
-    # no mezclar productos distintos en el mismo detalle.
-    top_refs = referencias.head(TOP_N)[["Cod. artículo", "Descripción artículo"]].values.tolist()
+    # detalle por sucursal, para cada referencia (ya expandible en el dashboard) -- y dentro de
+    # cada sucursal, el detalle por talla/color (variantes reales que Effi trae como filas
+    # separadas y que referencia_base() agrupó), para el segundo nivel de expandible.
     por_sucursal_ref = {}
-    for cod, nombre in top_refs:
+    for ref in referencias["referencia"]:
+        sub_ref = validas[validas["referencia"] == ref]
         sub = (
-            validas[(validas["Cod. artículo"] == cod) & (validas["Descripción artículo"] == nombre)]
-            .groupby("sucursal_nombre")
+            sub_ref.groupby("sucursal_nombre")
             .agg(unidades=("Cantidad", "sum"), ventas_netas=("Precio neto total", "sum"))
             .reset_index()
             .sort_values("ventas_netas", ascending=False)
         )
-        clave = f"{cod}::{nombre}"
-        por_sucursal_ref[clave] = [
-            {"sucursal": r["sucursal_nombre"], "unidades": int(r["unidades"]), "ventas_netas": round(float(r["ventas_netas"]), 2)}
-            for _, r in sub.iterrows()
-        ]
+        filas_sucursal = []
+        for _, r in sub.iterrows():
+            suc_nombre = r["sucursal_nombre"]
+            sub_variantes = (
+                sub_ref[sub_ref["sucursal_nombre"] == suc_nombre]
+                .groupby("Descripción artículo")
+                .agg(unidades=("Cantidad", "sum"), ventas_netas=("Precio neto total", "sum"))
+                .reset_index()
+                .sort_values("ventas_netas", ascending=False)
+            )
+            variantes = [
+                {
+                    "nombre": talla_de(vr["Descripción artículo"], ref),
+                    "unidades": int(vr["unidades"]),
+                    "ventas_netas": round(float(vr["ventas_netas"]), 2),
+                }
+                for _, vr in sub_variantes.iterrows()
+            ]
+            filas_sucursal.append({
+                "sucursal": suc_nombre,
+                "unidades": int(r["unidades"]),
+                "ventas_netas": round(float(r["ventas_netas"]), 2),
+                "variantes": variantes,
+            })
+        por_sucursal_ref[ref] = filas_sucursal
 
-    # top productos dentro de cada una de las categorías top, para el expandible de rentabilidad
-    top_categorias = categorias.head(TOP_N)["Categoría artículo"].tolist()
+    # top productos (ya agrupados por referencia) dentro de cada categoría, para el expandible de rentabilidad
     productos_por_categoria = {}
-    for cat in top_categorias:
+    for cat in categorias["Categoría artículo"]:
         sub = (
             validas[validas["Categoría artículo"] == cat]
-            .groupby(["Cod. artículo", "Descripción artículo"])
+            .groupby("referencia")
             .agg(unidades=("Cantidad", "sum"), ventas_netas=("Precio neto total", "sum"))
             .reset_index()
             .sort_values("ventas_netas", ascending=False)
-            .head(5)
+            .head(8)
         )
         productos_por_categoria[cat] = [
-            {"codigo": str(r["Cod. artículo"]), "nombre": r["Descripción artículo"],
-             "unidades": int(r["unidades"]), "ventas_netas": round(float(r["ventas_netas"]), 2)}
+            {"nombre": r["referencia"], "unidades": int(r["unidades"]), "ventas_netas": round(float(r["ventas_netas"]), 2)}
             for _, r in sub.iterrows()
         ]
 
@@ -94,8 +117,7 @@ def _resumen(validas: pd.DataFrame, nombre_map: dict) -> dict:
         ],
         "top_referencias": [
             {
-                "codigo": str(r["Cod. artículo"]),
-                "nombre": r["Descripción artículo"],
+                "nombre": r["referencia"],
                 "unidades": int(r["unidades"]),
                 "ventas_netas": round(float(r["ventas_netas"]), 2),
             }
@@ -122,9 +144,10 @@ def main():
 
     OUT.write_text(json.dumps(salida, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Año actual: {len(salida['anio_actual']['categorias'])} categorías, "
+          f"{len(salida['anio_actual']['top_referencias'])} referencias, "
           f"{salida['anio_actual']['unidades_totales']} unidades")
     print(f"Histórico: {len(salida['historico']['categorias'])} categorías, "
-          f"{salida['historico']['unidades_totales']} unidades")
+          f"{len(salida['historico']['top_referencias'])} referencias")
     print(f"Guardado en {OUT}")
 
 

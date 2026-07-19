@@ -4,11 +4,36 @@ Ver JR ARQUITECTURA_REPLICABLE.md sección 2.3 para el porqué de cada trampa.
 """
 
 import json
+import re
 from pathlib import Path
 
 import pandas as pd
 
 CONFIG_DIR = Path(__file__).resolve().parent.parent.parent / "config"
+
+_RE_TALLA_GRANDE = re.compile(r"\s+TALLA\s+\w+(\s+\w+)?$", re.IGNORECASE)
+_RE_TALLA = re.compile(r"\s+T(U|S|\d{1,2})$", re.IGNORECASE)
+
+
+def referencia_base(nombre: str) -> str:
+    """Nombre del artículo sin el sufijo de talla (T6, T10, TU, "TALLA GRANDE"...).
+    Effi trae una fila por combinación artículo+talla — sin esto, el mismo diseño en
+    varias tallas aparece repetido como si fueran productos distintos en cualquier
+    listado (top referencias, rentabilidad por categoría, reorden de inventario).
+    Mantiene el color: dos colores del mismo diseño quedan como referencias separadas,
+    que es lo útil para decidir qué pedir a proveedores o qué se vende más."""
+    n = (nombre or "").strip()
+    n = _RE_TALLA_GRANDE.sub("", n)
+    n = _RE_TALLA.sub("", n)
+    return n.strip() or (nombre or "").strip()
+
+
+def talla_de(nombre: str, referencia: str) -> str:
+    """Lo que sobra del nombre completo al quitarle la referencia — la talla."""
+    resto = (nombre or "").strip()
+    if resto.startswith(referencia):
+        resto = resto[len(referencia):].strip()
+    return resto or "Única"
 
 
 def leer_excel_effi(ruta: Path) -> pd.DataFrame:
