@@ -25,10 +25,9 @@ from pathlib import Path
 
 import pandas as pd
 
-from common.procesamiento import leer_excel_effi, cargar_config, referencia_base, talla_de
+from common.procesamiento import leer_excel_effi, cargar_conceptos_combinados, cargar_config, referencia_base, talla_de
 
 RAW_ARTICULOS = Path(__file__).resolve().parent.parent / "reportes" / "raw" / "raw_articulos.xlsx"
-RAW_CONCEPTOS = Path(__file__).resolve().parent.parent / "reportes" / "raw" / "raw_conceptos.xlsx"
 OUT = Path(__file__).resolve().parent.parent / "reportes" / "reorden.json"
 
 HOY = pd.Timestamp.now().normalize()
@@ -55,7 +54,7 @@ def main():
     articulos["Categoría"] = articulos["Categoría"].fillna("SIN CATEGORÍA")
     articulos["referencia"] = articulos["Nombre"].apply(referencia_base)
 
-    conceptos = leer_excel_effi(RAW_CONCEPTOS)
+    conceptos = cargar_conceptos_combinados()
     conceptos["Fecha creación"] = pd.to_datetime(conceptos["Fecha creación"])
     ventas_recientes = conceptos[
         (conceptos["Estado CXC"] == "Pago total") & (conceptos["Fecha creación"] >= INICIO_VENTANA)

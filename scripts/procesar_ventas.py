@@ -1,9 +1,24 @@
 """
-Procesa reportes/raw/raw_remisiones_completo.xlsx (histórico completo,
-2025-04 en adelante) -> reportes/ventas_procesado.json
+Procesa reportes/raw/raw_remisiones_completo.xlsx + raw_facturas_completo.xlsx
+-> reportes/ventas_procesado.json
 
 Regla de negocio (JR ARQUITECTURA_REPLICABLE.md 5.3): el ingreso real se
-mide por remisiones con Estado CXC = "Pago total". Se excluyen anuladas.
+mide por documentos con Estado CXC = "Pago total". Se excluyen anuladas.
+
+Por qué dos fuentes: cuando una venta necesita factura formal (cliente con
+NIT/CUFE), el flujo en Effi es crear la remisión y luego convertirla en
+factura -- Effi anula automáticamente la remisión original al hacerlo. Esa
+remisión Anulada ya se excluye (correcto), pero si solo se lee remisiones,
+la factura resultante nunca se cuenta en ningún lado. Se suman ambas
+fuentes sin riesgo de doble conteo porque la remisión que originó una
+factura siempre queda Anulada -- verificado contra el histórico real
+(117 de 125 facturas no anuladas tienen una remisión Anulada exacta del
+mismo cliente y monto).
+
+"Composición de venta" (Facturado vs Remisionado) usa exactamente esta
+distinción de fuente -- reemplaza la versión anterior (Cobrado vs
+Pendiente de cobro), que era una aproximación mientras no se sabía que
+"Facturas de venta" era un módulo aparte en Effi.
 
 Genera: KPIs de todo el histórico, del año en curso, del mes en curso, de
 hoy (con comparación vs ayer), y ventas por sucursal en cada uno de esos
@@ -17,13 +32,30 @@ import pandas as pd
 
 from common.procesamiento import leer_excel_effi, cargar_config
 
-RAW = Path(__file__).resolve().parent.parent / "reportes" / "raw" / "raw_remisiones_completo.xlsx"
+RAW_DIR = Path(__file__).resolve().parent.parent / "reportes" / "raw"
+RAW_REMISIONES = RAW_DIR / "raw_remisiones_completo.xlsx"
+RAW_FACTURAS = RAW_DIR / "raw_facturas_completo.xlsx"
 OUT = Path(__file__).resolve().parent.parent / "reportes" / "ventas_procesado.json"
 
 HOY = pd.Timestamp.now().normalize()
 AYER = HOY - pd.Timedelta(days=1)
 INICIO_ANIO = pd.Timestamp(year=HOY.year, month=1, day=1)
 INICIO_MES = pd.Timestamp(year=HOY.year, month=HOY.month, day=1)
+
+
+def _cargar_documentos() -> pd.DataFrame:
+    remisiones = leer_excel_effi(RAW_REMISIONES)
+    remisiones["Fecha de creación"] = pd.to_datetime(remisiones["Fecha de creación"])
+    remisiones["fuente"] = "remision"
+    marcos = [remisiones]
+
+    if RAW_FACTURAS.exists():
+        facturas = leer_excel_effi(RAW_FACTURAS)
+        facturas["Fecha de creación"] = pd.to_datetime(facturas["Fecha de creación"])
+        facturas["fuente"] = "factura"
+        marcos.append(facturas)
+
+    return pd.concat(marcos, ignore_index=True)
 
 
 def _kpis(df: pd.DataFrame) -> dict:
@@ -56,8 +88,7 @@ def _por_sucursal(df: pd.DataFrame, nombre_map: dict) -> list:
 
 
 def main():
-    df_full = leer_excel_effi(RAW)
-    df_full["Fecha de creación"] = pd.to_datetime(df_full["Fecha de creación"])
+    df_full = _cargar_documentos()
     df_full["dia"] = df_full["Fecha de creación"].dt.date
 
     sucursales_cfg = cargar_config("sucursales.json")["sucursales"]
@@ -73,12 +104,13 @@ def main():
     hoy = validas[validas["dia"] == HOY.date()]
     ayer = validas[validas["dia"] == AYER.date()]
 
-    pendientes_cobro_anio = pendientes_cobro_todas[pendientes_cobro_todas["Fecha de creación"] >= INICIO_ANIO]
+    facturado_anio = anio_actual[anio_actual["fuente"] == "factura"]
+    remisionado_anio = anio_actual[anio_actual["fuente"] == "remision"]
     composicion_anio = {
-        "pago_total": round(float(anio_actual["Total neto"].sum()), 2),
-        "pendiente_cobro": round(float(pendientes_cobro_anio["Total neto"].sum()), 2),
-        "num_pago_total": int(len(anio_actual)),
-        "num_pendiente_cobro": int(len(pendientes_cobro_anio)),
+        "facturado": round(float(facturado_anio["Total neto"].sum()), 2),
+        "remisionado": round(float(remisionado_anio["Total neto"].sum()), 2),
+        "num_facturado": int(len(facturado_anio)),
+        "num_remisionado": int(len(remisionado_anio)),
     }
 
     salida = {

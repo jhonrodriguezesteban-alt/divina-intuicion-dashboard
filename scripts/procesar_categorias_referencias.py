@@ -19,9 +19,8 @@ from pathlib import Path
 
 import pandas as pd
 
-from common.procesamiento import leer_excel_effi, cargar_config, referencia_base, talla_de
+from common.procesamiento import cargar_conceptos_combinados, cargar_config, referencia_base, talla_de
 
-RAW = Path(__file__).resolve().parent.parent / "reportes" / "raw" / "raw_conceptos.xlsx"
 OUT = Path(__file__).resolve().parent.parent / "reportes" / "categorias_referencias.json"
 
 _HOY = pd.Timestamp.now().normalize()
@@ -129,7 +128,7 @@ def _resumen(validas: pd.DataFrame, nombre_map: dict) -> dict:
 
 
 def main():
-    df = leer_excel_effi(RAW)
+    df = cargar_conceptos_combinados()
     df["Fecha creación"] = pd.to_datetime(df["Fecha creación"])
     validas = df[df["Estado CXC"] == "Pago total"].copy()
     anio_actual = validas[validas["Fecha creación"] >= INICIO_ANIO]

@@ -1,9 +1,14 @@
 """
 Corrida automática horaria (LaunchAgent, 9am-7pm): reutiliza la sesión
-guardada, descarga las remisiones completas (rápido, es un download
-directo — no async), reprocesa ventas y publica. NO refresca inventario
-ni el detalle por artículo (más pesado, se reserva para el cierre de
-las 8pm en cierre_dia.py).
+guardada, descarga las remisiones y facturas completas (rápido, son
+downloads directos — no async), reprocesa ventas y publica. NO refresca
+inventario ni el detalle por artículo (más pesado, se reserva para el
+cierre de las 8pm en cierre_dia.py).
+
+Se agregan las facturas de venta (además de remisiones) porque son un
+módulo aparte en Effi -- si a un cliente le facturan formalmente, esa
+venta vive en Facturas de venta y no en Remisiones. Ver la nota en
+procesar_ventas.py.
 
 Si la sesión expiró y el auto-login falla (ej. captcha), se detiene sin
 publicar — regla de oro de JR ARQUITECTURA_REPLICABLE.md sección 3.
@@ -31,6 +36,7 @@ def _run(script: str) -> bool:
 def main():
     pasos = [
         "descargar_remisiones_completas.py",
+        "descargar_facturas_completas.py",
         "procesar_ventas.py",
         "procesar_ventas_diarias.py",
         "generar_dashboard.py",

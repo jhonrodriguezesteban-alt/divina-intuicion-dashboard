@@ -33,11 +33,13 @@ def _run(script: str) -> bool:
 def main():
     pasos = [
         "descargar_remisiones_completas.py",
+        "descargar_facturas_completas.py",
         "procesar_ventas.py",
         "procesar_ventas_diarias.py",
         "descargar_articulos.py",
         "procesar_inventario.py",
         "descargar_conceptos.py",
+        "descargar_conceptos_facturas.py",
         "procesar_categorias_referencias.py",
         "descargar_mensual_por_sucursal.py",
         "procesar_historico_mensual.py",

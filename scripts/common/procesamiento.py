@@ -10,6 +10,13 @@ from pathlib import Path
 import pandas as pd
 
 CONFIG_DIR = Path(__file__).resolve().parent.parent.parent / "config"
+RAW_DIR = Path(__file__).resolve().parent.parent.parent / "reportes" / "raw"
+
+_COLUMNAS_CONCEPTOS = [
+    "Sucursal", "Estado CXC", "Fecha creación", "Categoría artículo", "Cod. artículo",
+    "Descripción artículo", "Cantidad", "Costo manual unitario", "Costo manual total",
+    "Precio neto total", "Utilidad total (costo manual)",
+]
 
 _RE_TALLA_GRANDE = re.compile(r"\s+TALLA\s+\w+(\s+\w+)?$", re.IGNORECASE)
 _RE_TALLA = re.compile(r"\s+T(U|S|\d{1,2})$", re.IGNORECASE)
@@ -99,3 +106,31 @@ def calcular_cobertura_inventario(df_inventario: pd.DataFrame, df_ventas: pd.Dat
 
     resultado["alerta"] = resultado["dias_cobertura"].apply(_alerta)
     return resultado
+
+
+def cargar_conceptos_combinados() -> pd.DataFrame:
+    """Detalle por línea/artículo, remisiones + facturas, con el mismo esquema
+    de columnas (Sucursal, Estado CXC, Fecha creación, Categoría artículo,
+    Cod. artículo, Descripción artículo, Cantidad, costos, Precio neto total,
+    Utilidad total). Usan Top Referencias, Rentabilidad por categoría y Reorden.
+
+    El "Reporte de conceptos" de facturas no trae Estado CXC por línea (solo
+    "Vigencia factura": Vigente/Anulada) -- se cruza con el documento
+    (raw_facturas_completo.xlsx, por "ID interno") para traer el Estado CXC
+    real y poder filtrar "Pago total" igual que en remisiones. Sin esto, una
+    factura "Pendiente de cobro" contaría como venta cerrada.
+    """
+    remisiones = leer_excel_effi(RAW_DIR / "raw_conceptos.xlsx")[_COLUMNAS_CONCEPTOS].copy()
+    marcos = [remisiones]
+
+    ruta_conceptos_facturas = RAW_DIR / "raw_conceptos_facturas.xlsx"
+    ruta_facturas = RAW_DIR / "raw_facturas_completo.xlsx"
+    if ruta_conceptos_facturas.exists() and ruta_facturas.exists():
+        conceptos_f = leer_excel_effi(ruta_conceptos_facturas)
+        facturas = leer_excel_effi(ruta_facturas)[["ID interno", "Estado CXC"]]
+        conceptos_f = conceptos_f.merge(facturas, on="ID interno", how="left")
+        conceptos_f = conceptos_f.rename(columns={"Fecha creación factura": "Fecha creación"})
+        conceptos_f = conceptos_f[_COLUMNAS_CONCEPTOS]
+        marcos.append(conceptos_f)
+
+    return pd.concat(marcos, ignore_index=True)

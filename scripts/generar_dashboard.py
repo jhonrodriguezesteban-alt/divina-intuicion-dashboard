@@ -300,22 +300,23 @@ def _seccion_ventas_recientes() -> str:
 
 def _seccion_composicion_venta(composicion: dict, margen: float) -> str:
     """Donut SVG hecho a mano (stroke-dasharray/dashoffset), igual técnica que el
-    dashboard de referencia. Ahí mostraba Facturado vs Pendiente de facturar — en
-    Divina esa distinción no aplica (todo queda "pendiente de facturar" en Effi),
-    así que la composición real y útil es Cobrado (Pago total) vs Pendiente de cobro."""
-    pago = composicion["pago_total"]
-    pendiente = composicion["pendiente_cobro"]
-    total = pago + pendiente
+    dashboard de referencia: Facturado (módulo "Facturas de venta" de Effi,
+    clientes con NIT/CUFE) vs Remisionado (venta de mostrador que nunca se
+    convirtió en factura). Ver la nota en procesar_ventas.py sobre por qué
+    sumar ambas fuentes no duplica ninguna venta."""
+    facturado = composicion["facturado"]
+    remisionado = composicion["remisionado"]
+    total = facturado + remisionado
     if total <= 0:
-        return '<div class="detalle-vacio">Sin datos de cartera para este período.</div>'
+        return '<div class="detalle-vacio">Sin datos de ventas para este período.</div>'
 
-    pct_pago = pago / total * 100
-    pct_pendiente = pendiente / total * 100
+    pct_facturado = facturado / total * 100
+    pct_remisionado = remisionado / total * 100
     circ = 2 * 3.14159265 * 70
     gap = 2
-    arco_pago = max(0, pct_pago / 100 * circ - gap)
-    arco_pendiente = max(0, pct_pendiente / 100 * circ - gap)
-    offset_pendiente = -(pct_pago / 100 * circ)
+    arco_facturado = max(0, pct_facturado / 100 * circ - gap)
+    arco_remisionado = max(0, pct_remisionado / 100 * circ - gap)
+    offset_remisionado = -(pct_facturado / 100 * circ)
     clase_margen = _clase_margen(margen)
     color_margen = {"margen-alto": "var(--verde)", "margen-medio": "var(--ambar)", "margen-bajo": "var(--rojo)"}[clase_margen]
 
@@ -324,20 +325,20 @@ def _seccion_composicion_venta(composicion: dict, margen: float) -> str:
       <svg class="donut-svg" width="180" height="180" viewBox="0 0 180 180">
         <circle cx="90" cy="90" r="70" fill="none" stroke="var(--borde)" stroke-width="22"/>
         <circle cx="90" cy="90" r="70" fill="none" stroke="var(--verde)" stroke-width="22"
-                stroke-dasharray="{arco_pago:.1f} {circ:.1f}" stroke-dashoffset="0" transform="rotate(-90 90 90)"/>
+                stroke-dasharray="{arco_facturado:.1f} {circ:.1f}" stroke-dashoffset="0" transform="rotate(-90 90 90)"/>
         <circle cx="90" cy="90" r="70" fill="none" stroke="var(--ambar)" stroke-width="22"
-                stroke-dasharray="{arco_pendiente:.1f} {circ:.1f}" stroke-dashoffset="{offset_pendiente:.1f}" transform="rotate(-90 90 90)"/>
+                stroke-dasharray="{arco_remisionado:.1f} {circ:.1f}" stroke-dashoffset="{offset_remisionado:.1f}" transform="rotate(-90 90 90)"/>
       </svg>
       <div class="donut-center">
-        <div class="donut-pct" style="color:var(--verde)">{pct_pago:.1f}%</div>
-        <div class="donut-sub-label">Cobrado</div>
+        <div class="donut-pct" style="color:var(--verde)">{pct_facturado:.1f}%</div>
+        <div class="donut-sub-label">Facturado</div>
       </div>
     </div>
     <div class="donut-legend">
       <div class="legend-item"><div class="legend-dot" style="background:var(--verde)"></div>
-        <span class="legend-name">Pago total</span><span class="legend-pct">{pct_pago:.1f}%</span></div>
+        <span class="legend-name">Facturado</span><span class="legend-pct">{pct_facturado:.1f}%</span></div>
       <div class="legend-item"><div class="legend-dot" style="background:var(--ambar)"></div>
-        <span class="legend-name">Pendiente de cobro</span><span class="legend-pct">{pct_pendiente:.1f}%</span></div>
+        <span class="legend-name">Remisionado</span><span class="legend-pct">{pct_remisionado:.1f}%</span></div>
       <div class="legend-item legend-item-separada">
         <div class="legend-dot" style="background:{color_margen}"></div>
         <span class="legend-name">Margen general</span>
@@ -764,7 +765,7 @@ function _renderSucursalesFiltro(diasISO){
   var diarios = JSON.parse(document.getElementById('data-diarias').textContent);
   var totales = {};
   diarios.sucursales.forEach(function(s){ totales[s] = {ingreso: 0, transacciones: 0}; });
-  var pago = 0, pendiente = 0;
+  var facturado = 0, remisionado = 0;
 
   diasISO.forEach(function(key){
     var dia = diarios.por_dia[key];
@@ -776,7 +777,7 @@ function _renderSucursalesFiltro(diasISO){
       });
     }
     var comp = diarios.composicion_por_dia[key];
-    if (comp){ pago += comp.pago_total; pendiente += comp.pendiente_cobro; }
+    if (comp){ facturado += comp.facturado; remisionado += comp.remisionado; }
   });
 
   var entries = Object.keys(totales).map(function(k){
@@ -799,31 +800,31 @@ function _renderSucursalesFiltro(diasISO){
   var cont = document.getElementById('suc-punto-venta-bars');
   if (cont) cont.innerHTML = html || '<div class="detalle-vacio">Sin ventas en este período.</div>';
 
-  _renderComposicionFiltro(pago, pendiente);
+  _renderComposicionFiltro(facturado, remisionado);
 }
 
-function _renderComposicionFiltro(pago, pendiente){
+function _renderComposicionFiltro(facturado, remisionado){
   var wrap = document.getElementById('composicion-wrap');
   if (!wrap) return;
-  var total = pago + pendiente;
+  var total = facturado + remisionado;
   if (total <= 0){
-    wrap.innerHTML = '<div class="detalle-vacio">Sin datos de cartera para este período.</div>';
+    wrap.innerHTML = '<div class="detalle-vacio">Sin datos de ventas para este período.</div>';
     return;
   }
-  var pctPago = pago / total * 100, pctPendiente = pendiente / total * 100;
+  var pctFacturado = facturado / total * 100, pctRemisionado = remisionado / total * 100;
   var circ = 2 * Math.PI * 70, gap = 2;
-  var arcoPago = Math.max(0, pctPago / 100 * circ - gap);
-  var arcoPendiente = Math.max(0, pctPendiente / 100 * circ - gap);
-  var offsetPendiente = -(pctPago / 100 * circ);
+  var arcoFacturado = Math.max(0, pctFacturado / 100 * circ - gap);
+  var arcoRemisionado = Math.max(0, pctRemisionado / 100 * circ - gap);
+  var offsetRemisionado = -(pctFacturado / 100 * circ);
   wrap.innerHTML =
     '<div class="donut-container"><svg class="donut-svg" width="180" height="180" viewBox="0 0 180 180">' +
     '<circle cx="90" cy="90" r="70" fill="none" stroke="var(--borde)" stroke-width="22"/>' +
-    '<circle cx="90" cy="90" r="70" fill="none" stroke="var(--verde)" stroke-width="22" stroke-dasharray="' + arcoPago.toFixed(1) + ' ' + circ.toFixed(1) + '" stroke-dashoffset="0" transform="rotate(-90 90 90)"/>' +
-    '<circle cx="90" cy="90" r="70" fill="none" stroke="var(--ambar)" stroke-width="22" stroke-dasharray="' + arcoPendiente.toFixed(1) + ' ' + circ.toFixed(1) + '" stroke-dashoffset="' + offsetPendiente.toFixed(1) + '" transform="rotate(-90 90 90)"/>' +
-    '</svg><div class="donut-center"><div class="donut-pct" style="color:var(--verde)">' + pctPago.toFixed(1) + '%</div><div class="donut-sub-label">Cobrado</div></div></div>' +
+    '<circle cx="90" cy="90" r="70" fill="none" stroke="var(--verde)" stroke-width="22" stroke-dasharray="' + arcoFacturado.toFixed(1) + ' ' + circ.toFixed(1) + '" stroke-dashoffset="0" transform="rotate(-90 90 90)"/>' +
+    '<circle cx="90" cy="90" r="70" fill="none" stroke="var(--ambar)" stroke-width="22" stroke-dasharray="' + arcoRemisionado.toFixed(1) + ' ' + circ.toFixed(1) + '" stroke-dashoffset="' + offsetRemisionado.toFixed(1) + '" transform="rotate(-90 90 90)"/>' +
+    '</svg><div class="donut-center"><div class="donut-pct" style="color:var(--verde)">' + pctFacturado.toFixed(1) + '%</div><div class="donut-sub-label">Facturado</div></div></div>' +
     '<div class="donut-legend">' +
-    '<div class="legend-item"><div class="legend-dot" style="background:var(--verde)"></div><span class="legend-name">Pago total</span><span class="legend-pct">' + pctPago.toFixed(1) + '%</span></div>' +
-    '<div class="legend-item"><div class="legend-dot" style="background:var(--ambar)"></div><span class="legend-name">Pendiente de cobro</span><span class="legend-pct">' + pctPendiente.toFixed(1) + '%</span></div>' +
+    '<div class="legend-item"><div class="legend-dot" style="background:var(--verde)"></div><span class="legend-name">Facturado</span><span class="legend-pct">' + pctFacturado.toFixed(1) + '%</span></div>' +
+    '<div class="legend-item"><div class="legend-dot" style="background:var(--ambar)"></div><span class="legend-name">Remisionado</span><span class="legend-pct">' + pctRemisionado.toFixed(1) + '%</span></div>' +
     '</div>';
 }
 
@@ -1747,8 +1748,8 @@ def generar_dashboard_html(datos: dict = None) -> str:
     {comparativo_html}
 
     <div class="nota">
-      Cartera: {_miles(cartera["num_pendiente_de_cobro"])} remisiones pendientes de cobro por {_cop(cartera["pendiente_de_cobro"])} ·
-      {_miles(cartera["num_anuladas_historico"])} remisiones anuladas excluidas del histórico.
+      Cartera: {_miles(cartera["num_pendiente_de_cobro"])} documentos (remisiones + facturas) pendientes de cobro por {_cop(cartera["pendiente_de_cobro"])} ·
+      {_miles(cartera["num_anuladas_historico"])} documentos anulados excluidos del histórico.
     </div>
   </div>
 
