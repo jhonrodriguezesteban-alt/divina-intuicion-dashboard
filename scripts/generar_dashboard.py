@@ -71,6 +71,16 @@ def _manifest_data_uri(icono_uri: str) -> str:
     return f"data:application/manifest+json;base64,{b64}"
 
 MESES_ES = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+DIAS_ES = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+MESES_LARGO_ES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
+                   "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+
+
+def _fecha_larga(dt: "datetime") -> str:
+    """'Domingo, 19 de julio de 2026' -- fecha del reporte (hoy), no la del
+    último dato de venta: si un día no hay ventas todavía, "Datos actualizados
+    hasta" queda en el día anterior y sin esto parece que el reporte no corrió."""
+    return f"{DIAS_ES[dt.weekday()]}, {dt.day} de {MESES_LARGO_ES[dt.month - 1]} de {dt.year}"
 
 
 def _opciones_mes_filtro(ventas_diarias: dict, anio_num: int) -> str:
@@ -1224,9 +1234,11 @@ _CSS = """
   .logout-btn:hover { background: var(--destacado-bg); }
   .marca-central { display: flex; flex-direction: column; align-items: center; text-align: center; margin: 1.6rem 0 2.4rem; }
   .logo-central { display: block; margin: 0 auto .9rem; }
-  .marca-actualizado { display: flex; align-items: baseline; gap: .5rem; font-size: .85rem; color: var(--texto-sub); }
+  .marca-fecha-reporte { font-size: .95rem; font-weight: 600; margin-bottom: .4rem; }
+  .marca-actualizado { display: flex; align-items: baseline; gap: .5rem; font-size: .85rem; color: var(--texto-sub); flex-wrap: wrap; justify-content: center; }
   .marca-actualizado-label { text-transform: uppercase; letter-spacing: .04em; font-size: .72rem; }
   .marca-actualizado-valor { font-weight: 600; color: var(--texto); }
+  .marca-sin-ventas-hoy { font-style: italic; }
   .powered-by {
     text-align: center; margin-top: .6rem; padding-top: 1rem;
     font-size: .7rem; letter-spacing: .04em; color: var(--texto-sub); text-transform: uppercase;
@@ -1564,6 +1576,12 @@ def generar_dashboard_html(datos: dict = None) -> str:
     cartera = ventas["cartera"]
     fecha_ref = ventas["actualizado_hasta"].split(" ")[0]
     anio_num = int(fecha_ref.split("-")[0])
+    hoy_dt = datetime.now()
+    fecha_reporte_html = _fecha_larga(hoy_dt)
+    sin_ventas_hoy_html = (
+        ' <span class="marca-sin-ventas-hoy">· aún sin ventas registradas hoy</span>'
+        if fecha_ref != str(hoy_dt.date()) else ""
+    )
     marmol_uri = _marmol_data_uri()
     icono_uri = _icono_app_data_uri()
     manifest_uri = _manifest_data_uri(icono_uri)
@@ -1659,9 +1677,10 @@ def generar_dashboard_html(datos: dict = None) -> str:
 
   <div class="marca-central">
     {_logo_img_html("logo-central", "84px")}
+    <div class="marca-fecha-reporte">Reporte del {fecha_reporte_html}</div>
     <div class="marca-actualizado">
       <span class="marca-actualizado-label">Datos actualizados hasta</span>
-      <span class="marca-actualizado-valor">{ventas["actualizado_hasta"]}</span>
+      <span class="marca-actualizado-valor">{ventas["actualizado_hasta"]}</span>{sin_ventas_hoy_html}
     </div>
   </div>
 
