@@ -25,6 +25,7 @@ OUT = Path(__file__).resolve().parent.parent / "reportes" / "categorias_referenc
 
 _HOY = pd.Timestamp.now().normalize()
 INICIO_ANIO = pd.Timestamp(year=_HOY.year, month=1, day=1)
+INICIO_MES = pd.Timestamp(year=_HOY.year, month=_HOY.month, day=1)
 
 
 def _resumen(validas: pd.DataFrame, nombre_map: dict) -> dict:
@@ -132,12 +133,14 @@ def main():
     df["Fecha creación"] = pd.to_datetime(df["Fecha creación"])
     validas = df[df["Estado CXC"] == "Pago total"].copy()
     anio_actual = validas[validas["Fecha creación"] >= INICIO_ANIO]
+    mes_actual = validas[validas["Fecha creación"] >= INICIO_MES]
 
     sucursales_cfg = cargar_config("sucursales.json")["sucursales"]
     nombre_map = {s["nombre_effi"]: s["nombre"] for s in sucursales_cfg}
 
     salida = {
         "anio_actual": _resumen(anio_actual, nombre_map),
+        "mes_actual": {"unidades_totales": int(mes_actual["Cantidad"].sum())},
         "historico": _resumen(validas, nombre_map),
     }
 
@@ -145,6 +148,7 @@ def main():
     print(f"Año actual: {len(salida['anio_actual']['categorias'])} categorías, "
           f"{len(salida['anio_actual']['top_referencias'])} referencias, "
           f"{salida['anio_actual']['unidades_totales']} unidades")
+    print(f"Mes actual: {salida['mes_actual']['unidades_totales']} unidades")
     print(f"Histórico: {len(salida['historico']['categorias'])} categorías, "
           f"{len(salida['historico']['top_referencias'])} referencias")
     print(f"Guardado en {OUT}")

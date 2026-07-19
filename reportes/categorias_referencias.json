@@ -37746,6 +37746,9 @@
       ]
     }
   },
+  "mes_actual": {
+    "unidades_totales": 1222
+  },
   "historico": {
     "unidades_totales": 22696,
     "categorias": [

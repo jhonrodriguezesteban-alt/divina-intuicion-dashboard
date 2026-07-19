@@ -1593,8 +1593,9 @@ def generar_dashboard_html(datos: dict = None) -> str:
     )
 
     unidades_anio = cat_ref["anio_actual"]["unidades_totales"] if cat_ref else None
+    unidades_mes = cat_ref.get("mes_actual", {}).get("unidades_totales") if cat_ref else None
     kpis_anio_html = _grupo_kpis(anio["kpis"], unidades_anio)
-    kpis_mes_html = _grupo_kpis(mes["kpis"])
+    kpis_mes_html = _grupo_kpis(mes["kpis"], unidades_mes)
 
     venta_hoy_html = _seccion_venta_hoy(hoy)
     ventas_recientes_html = _seccion_ventas_recientes()
