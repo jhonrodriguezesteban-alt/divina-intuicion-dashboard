@@ -1,36 +1,24 @@
 {
-  "generado_al": "2026-07-19",
+  "generado_al": "2026-07-20",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 672,
-      "unidades": 2766,
-      "valor_costo": 138822452.0
+      "num_referencias": 352,
+      "unidades": 3183,
+      "valor_costo": 154930452.0
     },
     "inactivas": {
-      "num_referencias": 33,
-      "unidades": 61,
-      "valor_costo": 3289000.0
+      "num_referencias": 13,
+      "unidades": 21,
+      "valor_costo": 1160000.0
     },
     "nuevas": {
-      "num_referencias": 187,
-      "unidades": 556,
-      "valor_costo": 22691500.0
+      "num_referencias": 37,
+      "unidades": 139,
+      "valor_costo": 5831500.0
     }
   },
   "inactivas": [
-    {
-      "referencia": "PANT PANA CAFE",
-      "categoria": "PANTALONES",
-      "disponible": 8,
-      "valor_costo": 440000.0
-    },
-    {
-      "referencia": "BUZO CAPOTA ALGODON CAFE",
-      "categoria": "BUZOS",
-      "disponible": 4,
-      "valor_costo": 272000.0
-    },
     {
       "referencia": "JEAN MOMFIT MERAKI",
       "categoria": "PANTALONES",
@@ -38,28 +26,10 @@
       "valor_costo": 260000.0
     },
     {
-      "referencia": "JEAN PALAZO NEGRO",
+      "referencia": "JEAN PALAZO",
       "categoria": "PANTALONES",
       "disponible": 3,
       "valor_costo": 186000.0
-    },
-    {
-      "referencia": "FALDA SHORT PRENSES TELA BEIGE",
-      "categoria": "FALDAS",
-      "disponible": 4,
-      "valor_costo": 180000.0
-    },
-    {
-      "referencia": "VESTIDO SIRENA VERDE OLIVA",
-      "categoria": "VESTIDOS",
-      "disponible": 2,
-      "valor_costo": 130000.0
-    },
-    {
-      "referencia": "VESTIDO SIRENA CAMEL",
-      "categoria": "VESTIDOS",
-      "disponible": 2,
-      "valor_costo": 130000.0
     },
     {
       "referencia": "JEAN MAOS MOÑOS",
@@ -68,62 +38,14 @@
       "valor_costo": 130000.0
     },
     {
-      "referencia": "CHAQUETA CUERO BOLSILLO CAMEL",
-      "categoria": "CHAQUETAS",
-      "disponible": 2,
-      "valor_costo": 130000.0
-    },
-    {
-      "referencia": "BUZO TEJIDO BANDEJA BEIGE",
-      "categoria": "BUZOS",
-      "disponible": 2,
-      "valor_costo": 104000.0
-    },
-    {
-      "referencia": "ESTRAPLE TAMALITO BEIGE",
-      "categoria": "BLUSAS",
-      "disponible": 3,
-      "valor_costo": 96000.0
-    },
-    {
-      "referencia": "ESTRAPLE TAMALITO CAMEL",
-      "categoria": "BLUSAS",
-      "disponible": 3,
-      "valor_costo": 96000.0
-    },
-    {
-      "referencia": "CHAMARRA ROQUERA VINOTINTO",
-      "categoria": "CHAQUETAS",
-      "disponible": 1,
-      "valor_costo": 85000.0
-    },
-    {
-      "referencia": "CHAMARRA ROQUERA CAMEL",
-      "categoria": "CHAQUETAS",
-      "disponible": 1,
-      "valor_costo": 85000.0
-    },
-    {
       "referencia": "CHAQUETA VACA",
       "categoria": "CHAQUETAS",
       "disponible": 1,
       "valor_costo": 80000.0
     },
     {
-      "referencia": "JEAN BOLSILLO BRILLANTE",
-      "categoria": "PANTALONES",
-      "disponible": 1,
-      "valor_costo": 65000.0
-    },
-    {
-      "referencia": "VESTIDO SIRENA AZUL BEBE",
-      "categoria": "VESTIDOS",
-      "disponible": 1,
-      "valor_costo": 65000.0
-    },
-    {
-      "referencia": "JEAN TOU TRIANGULO",
-      "categoria": "PANTALONES",
+      "referencia": "CHAQUETA BENTLEY",
+      "categoria": "CHAQUETAS",
       "disponible": 1,
       "valor_costo": 65000.0
     },
@@ -134,14 +56,14 @@
       "valor_costo": 65000.0
     },
     {
-      "referencia": "CHAQUETA CALIFORNIA NEGRO",
-      "categoria": "CHAQUETAS",
+      "referencia": "JEAN BOLSILLO BRILLANTE",
+      "categoria": "PANTALONES",
       "disponible": 1,
       "valor_costo": 65000.0
     },
     {
-      "referencia": "CHAQUETA BENTLEY",
-      "categoria": "CHAQUETAS",
+      "referencia": "JEAN TOU TRIANGULO",
+      "categoria": "PANTALONES",
       "disponible": 1,
       "valor_costo": 65000.0
     },
@@ -152,21 +74,9 @@
       "valor_costo": 60000.0
     },
     {
-      "referencia": "CORSET COPA LARGO ROSA",
-      "categoria": "CORSET",
-      "disponible": 1,
-      "valor_costo": 50000.0
-    },
-    {
-      "referencia": "BUZO TEJIDO BOTON AZUL BEBE",
-      "categoria": "BUZOS",
-      "disponible": 1,
-      "valor_costo": 50000.0
-    },
-    {
-      "referencia": "BLAZER GRIS",
-      "categoria": "CONJUNTOS",
-      "disponible": 1,
+      "referencia": "CORSET LUNA ENCAJE",
+      "categoria": "BLUSAS",
+      "disponible": 2,
       "valor_costo": 50000.0
     },
     {
@@ -182,69 +92,21 @@
       "valor_costo": 47000.0
     },
     {
-      "referencia": "CHALECO ACOLCHADO ROSA",
-      "categoria": "CHALECOS",
-      "disponible": 1,
-      "valor_costo": 46000.0
-    },
-    {
-      "referencia": "FALDA CROMA PALO DE ROSA",
+      "referencia": "FALDA CROMA PALO DE",
       "categoria": "FALDAS",
       "disponible": 1,
       "valor_costo": 39000.0
-    },
-    {
-      "referencia": "BLUSA VALE GRIS",
-      "categoria": "BLUSAS",
-      "disponible": 1,
-      "valor_costo": 29000.0
-    },
-    {
-      "referencia": "BODY COSTILLERO ROSA",
-      "categoria": "BODYS",
-      "disponible": 1,
-      "valor_costo": 26000.0
-    },
-    {
-      "referencia": "CORSET LUNA ENCAJE NEGRO",
-      "categoria": "BLUSAS",
-      "disponible": 1,
-      "valor_costo": 25000.0
-    },
-    {
-      "referencia": "CORSET LUNA ENCAJE MARFIL",
-      "categoria": "BLUSAS",
-      "disponible": 1,
-      "valor_costo": 25000.0
     }
   ],
   "nuevas": [
     {
-      "referencia": "SUDADERA CLASICA GRIS CLARO",
-      "categoria": "CONJUNTOS",
-      "disponible": 10,
-      "valor_costo": 800000.0
+      "referencia": "CHAQUETA TEDDY",
+      "categoria": "CHAQUETAS",
+      "disponible": 12,
+      "valor_costo": 960000.0
     },
     {
-      "referencia": "SUDADERA CLASICA GRIS OSCURO",
-      "categoria": "CONJUNTOS",
-      "disponible": 10,
-      "valor_costo": 800000.0
-    },
-    {
-      "referencia": "SUDADERA VENECIA  AZUL BEBE",
-      "categoria": "CONJUNTOS",
-      "disponible": 6,
-      "valor_costo": 552000.0
-    },
-    {
-      "referencia": "PANT CUERINA MELI CAFE",
-      "categoria": "PANTALONES",
-      "disponible": 9,
-      "valor_costo": 495000.0
-    },
-    {
-      "referencia": "JEAN FIRE AZUL",
+      "referencia": "JEAN FIRE",
       "categoria": "PANTALONES",
       "disponible": 5,
       "valor_costo": 475000.0
@@ -256,63 +118,15 @@
       "valor_costo": 408000.0
     },
     {
-      "referencia": "BRAGA JEAN GRIS OSCURO",
-      "categoria": "PANTALONES",
-      "disponible": 6,
-      "valor_costo": 408000.0
+      "referencia": "OVERZISE BRA",
+      "categoria": "BLUSAS",
+      "disponible": 9,
+      "valor_costo": 364500.0
     },
     {
-      "referencia": "CHAMARRA GLOBO HOMBRO NEGRO",
-      "categoria": "CHAQUETAS",
-      "disponible": 6,
-      "valor_costo": 390000.0
-    },
-    {
-      "referencia": "CHAQUETA PAÑO TINA CAMEL",
-      "categoria": "CHAQUETAS",
-      "disponible": 4,
-      "valor_costo": 360000.0
-    },
-    {
-      "referencia": "TEJIDO IVY ROJO/FUCSIA",
-      "categoria": "SIN CATEGORÍA",
-      "disponible": 6,
-      "valor_costo": 360000.0
-    },
-    {
-      "referencia": "CHAMARRA HOMBRO PAÑO NEGRO",
-      "categoria": "CHAQUETAS",
-      "disponible": 4,
-      "valor_costo": 340000.0
-    },
-    {
-      "referencia": "PANTALON LIKE  TL",
-      "categoria": "PANTALONES",
-      "disponible": 5,
-      "valor_costo": 325000.0
-    },
-    {
-      "referencia": "BODY FLOWER LILA/BLANCO",
-      "categoria": "BODYS",
-      "disponible": 10,
-      "valor_costo": 320000.0
-    },
-    {
-      "referencia": "CHAQUETA TEDDY CAFE",
-      "categoria": "CHAQUETAS",
-      "disponible": 4,
-      "valor_costo": 320000.0
-    },
-    {
-      "referencia": "CHAQUETA TEDDY NEGRO",
-      "categoria": "CHAQUETAS",
-      "disponible": 4,
-      "valor_costo": 320000.0
-    },
-    {
-      "referencia": "CHAQUETA TEDDY BEIGE",
-      "categoria": "CHAQUETAS",
-      "disponible": 4,
+      "referencia": "BLUSA MALLA AMELIA",
+      "categoria": "BLUSAS",
+      "disponible": 16,
       "valor_costo": 320000.0
     },
     {
@@ -328,100 +142,22 @@
       "valor_costo": 240000.0
     },
     {
-      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/AZUL",
-      "categoria": "BUZOS",
-      "disponible": 4,
-      "valor_costo": 240000.0
-    },
-    {
-      "referencia": "ESQUELETO MULTICOLOR",
-      "categoria": "BODYS",
-      "disponible": 16,
-      "valor_costo": 240000.0
-    },
-    {
-      "referencia": "BUZO ALGODON CELESTIAL GRIS CLARO",
-      "categoria": "BUZOS",
-      "disponible": 5,
-      "valor_costo": 240000.0
-    },
-    {
       "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/CAFE",
       "categoria": "BUZOS",
       "disponible": 4,
       "valor_costo": 240000.0
     },
     {
-      "referencia": "FALDA SHORT LUCY NEGRO",
-      "categoria": "FALDAS",
-      "disponible": 6,
-      "valor_costo": 228000.0
+      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/AZUL",
+      "categoria": "BUZOS",
+      "disponible": 4,
+      "valor_costo": 240000.0
     },
     {
-      "referencia": "FALDA SHORT LUCY BLANCO",
-      "categoria": "FALDAS",
-      "disponible": 6,
-      "valor_costo": 228000.0
-    },
-    {
-      "referencia": "BASICA TANK NEGRO",
-      "categoria": "BLUSAS",
-      "disponible": 6,
-      "valor_costo": 210000.0
-    },
-    {
-      "referencia": "BASICA TANK AZUL REY",
-      "categoria": "BLUSAS",
-      "disponible": 6,
-      "valor_costo": 210000.0
-    },
-    {
-      "referencia": "CAPA FIRE AZUL",
+      "referencia": "CAPA FIRE",
       "categoria": "PANTALONES",
       "disponible": 2,
       "valor_costo": 200000.0
-    },
-    {
-      "referencia": "CORSET PETITE VINOTINTO TXS",
-      "categoria": "CORSET",
-      "disponible": 4,
-      "valor_costo": 192000.0
-    },
-    {
-      "referencia": "BLUSA BLAIR CUERO NEGRO",
-      "categoria": "BLUSAS",
-      "disponible": 8,
-      "valor_costo": 184000.0
-    },
-    {
-      "referencia": "SUDADERA VENECIA GRIS",
-      "categoria": "CONJUNTOS",
-      "disponible": 2,
-      "valor_costo": 184000.0
-    },
-    {
-      "referencia": "FALDA CUERO MINI NEGRO",
-      "categoria": "FALDAS",
-      "disponible": 5,
-      "valor_costo": 175000.0
-    },
-    {
-      "referencia": "SUDADERA ALGODON BLANCO",
-      "categoria": "CONJUNTOS",
-      "disponible": 2,
-      "valor_costo": 174000.0
-    },
-    {
-      "referencia": "SUDADERA ALGODON CAMEL",
-      "categoria": "CONJUNTOS",
-      "disponible": 2,
-      "valor_costo": 174000.0
-    },
-    {
-      "referencia": "CHAQUETA BOMBER CUERO LARGA CHOCOLATE",
-      "categoria": "SIN CATEGORÍA",
-      "disponible": 2,
-      "valor_costo": 170000.0
     },
     {
       "referencia": "CHALECO SANTA AZUL FROSTEADO OSCURO",
@@ -430,232 +166,22 @@
       "valor_costo": 165000.0
     },
     {
-      "referencia": "OVERZISE BRA  NEGRO",
-      "categoria": "BLUSAS",
-      "disponible": 4,
-      "valor_costo": 162000.0
-    },
-    {
-      "referencia": "OVERZISE MATCHA GRIS",
-      "categoria": "BLUSAS",
-      "disponible": 4,
-      "valor_costo": 162000.0
-    },
-    {
-      "referencia": "FALDA SHORT GRECIA CAMEL",
-      "categoria": "FALDAS",
-      "disponible": 4,
-      "valor_costo": 160000.0
-    },
-    {
-      "referencia": "FALDA SHORT GRECIA GRIS CLARO",
-      "categoria": "FALDAS",
-      "disponible": 4,
-      "valor_costo": 160000.0
-    },
-    {
-      "referencia": "BODY ESTRELLA VINOTINTO",
-      "categoria": "BODYS",
-      "disponible": 5,
-      "valor_costo": 160000.0
-    },
-    {
-      "referencia": "BODY MALLA MIA ROJO",
-      "categoria": "BODYS",
-      "disponible": 8,
-      "valor_costo": 160000.0
-    },
-    {
-      "referencia": "BUZO ENCAJE LIKE NEGRO",
-      "categoria": "BUZOS",
-      "disponible": 5,
-      "valor_costo": 160000.0
-    },
-    {
-      "referencia": "VESTIDO FLORES BLANCO/AZUL",
-      "categoria": "VESTIDOS",
-      "disponible": 4,
-      "valor_costo": 160000.0
-    },
-    {
-      "referencia": "CHAMARRA GAMUZA AURORA VERDE",
-      "categoria": "SIN CATEGORÍA",
-      "disponible": 2,
-      "valor_costo": 160000.0
-    },
-    {
-      "referencia": "BUZO ENCAJE LIKE MARFIL",
-      "categoria": "BUZOS",
-      "disponible": 5,
-      "valor_costo": 160000.0
-    },
-    {
-      "referencia": "FALDA SHORT LUCY BEIGE",
-      "categoria": "FALDAS",
-      "disponible": 4,
-      "valor_costo": 152000.0
-    },
-    {
-      "referencia": "BUZO TEJIDO CUELLO TORTUGA VERDE MILITAR",
-      "categoria": "BUZOS",
-      "disponible": 3,
-      "valor_costo": 150000.0
-    },
-    {
-      "referencia": "VESTIDO BANDEJA MULTICOLOR NARANJA",
-      "categoria": "VESTIDOS",
-      "disponible": 3,
-      "valor_costo": 150000.0
-    },
-    {
-      "referencia": "CORSET PETITE BLANCO TM",
-      "categoria": "CORSET",
-      "disponible": 3,
-      "valor_costo": 144000.0
-    },
-    {
-      "referencia": "CORSET PETITE AMARILLO  TXS",
-      "categoria": "CORSET",
-      "disponible": 3,
-      "valor_costo": 144000.0
-    },
-    {
       "referencia": "BLAZER CUADROS TREN",
       "categoria": "CONJUNTOS",
       "disponible": 2,
       "valor_costo": 130000.0
     },
     {
-      "referencia": "PANTALON LIKE  TM",
-      "categoria": "PANTALONES",
-      "disponible": 2,
-      "valor_costo": 130000.0
-    },
-    {
-      "referencia": "BLUSA CARO CAFE",
-      "categoria": "BLUSAS",
-      "disponible": 4,
-      "valor_costo": 128000.0
-    },
-    {
-      "referencia": "BLUSA CARO VERDE",
-      "categoria": "BLUSAS",
-      "disponible": 4,
-      "valor_costo": 128000.0
-    },
-    {
-      "referencia": "BLUSA CARO VINOTINTO",
-      "categoria": "BLUSAS",
-      "disponible": 4,
-      "valor_costo": 128000.0
-    },
-    {
-      "referencia": "CAMISA VICTORIA CAMEL",
-      "categoria": "BLUSAS",
-      "disponible": 4,
-      "valor_costo": 128000.0
-    },
-    {
-      "referencia": "BODY TIRA BASICO VERDE",
-      "categoria": "BODYS",
-      "disponible": 4,
-      "valor_costo": 128000.0
-    },
-    {
-      "referencia": "OVERZISE MATCHA NEGRO",
-      "categoria": "BLUSAS",
-      "disponible": 3,
-      "valor_costo": 121500.0
-    },
-    {
-      "referencia": "OVERZISE BRA  MARFIL",
-      "categoria": "BLUSAS",
-      "disponible": 3,
-      "valor_costo": 121500.0
-    },
-    {
-      "referencia": "TEJIDO CUELLO BOTON CAFE/ROJO",
-      "categoria": "BUZOS",
-      "disponible": 2,
-      "valor_costo": 120000.0
-    },
-    {
-      "referencia": "CORSET SERENA AMARILLO",
-      "categoria": "CORSET",
-      "disponible": 4,
-      "valor_costo": 120000.0
-    },
-    {
-      "referencia": "CORSET SERENA NEGRO",
-      "categoria": "CORSET",
-      "disponible": 4,
-      "valor_costo": 120000.0
-    },
-    {
-      "referencia": "TEJIDO IVY CAFE/ROJO",
-      "categoria": "SIN CATEGORÍA",
-      "disponible": 2,
-      "valor_costo": 120000.0
-    },
-    {
-      "referencia": "VESTIDO VALERIA AZUL",
-      "categoria": "VESTIDOS",
-      "disponible": 3,
-      "valor_costo": 120000.0
-    },
-    {
-      "referencia": "BODY MALLA MIA AMARILLO",
-      "categoria": "BODYS",
-      "disponible": 6,
-      "valor_costo": 120000.0
-    },
-    {
-      "referencia": "JEAN CLASICO GRIS",
-      "categoria": "VESTIDOS",
-      "disponible": 2,
-      "valor_costo": 112000.0
-    },
-    {
-      "referencia": "PANTALON SATINADO CAMEL",
+      "referencia": "PANTALON SATINADO",
       "categoria": "PANTALONES",
       "disponible": 2,
       "valor_costo": 110000.0
     },
     {
-      "referencia": "VESTIDO NOA  CAMEL",
-      "categoria": "VESTIDOS",
-      "disponible": 3,
-      "valor_costo": 105000.0
-    },
-    {
-      "referencia": "BODY MALLA AMBAR  NEGRO",
+      "referencia": "BODY BASICO CUELLO V MANGA CORTA",
       "categoria": "BODYS",
-      "disponible": 4,
-      "valor_costo": 104000.0
-    },
-    {
-      "referencia": "BUZO DUO LILY ANIMAL PRINT",
-      "categoria": "BUZOS",
-      "disponible": 5,
-      "valor_costo": 100000.0
-    },
-    {
-      "referencia": "BODY DUO LILY ANIMAL PRINT NEGRO",
-      "categoria": "BODYS",
-      "disponible": 5,
-      "valor_costo": 100000.0
-    },
-    {
-      "referencia": "FALDA SHORT PRENSES TELA BLANCO TL",
-      "categoria": "FALDAS",
-      "disponible": 2,
-      "valor_costo": 100000.0
-    },
-    {
-      "referencia": "FALDA SHORT PRENSES TELA CAFE TL",
-      "categoria": "FALDAS",
-      "disponible": 2,
-      "valor_costo": 100000.0
+      "disponible": 6,
+      "valor_costo": 108000.0
     },
     {
       "referencia": "BODY DUO LILY ANIMAL PRINT",
@@ -664,176 +190,56 @@
       "valor_costo": 100000.0
     },
     {
-      "referencia": "BUZO ALGODON CELESTIAL NEGRO",
-      "categoria": "BUZOS",
-      "disponible": 2,
-      "valor_costo": 96000.0
-    },
-    {
-      "referencia": "CAMISA VICTORIA AZUL BEBE",
-      "categoria": "BLUSAS",
-      "disponible": 3,
-      "valor_costo": 96000.0
-    },
-    {
-      "referencia": "CORSET PETITE BLANCO",
-      "categoria": "CORSET",
-      "disponible": 2,
-      "valor_costo": 96000.0
-    },
-    {
-      "referencia": "CORSET PETITE BLANCO TXS",
-      "categoria": "CORSET",
-      "disponible": 2,
-      "valor_costo": 96000.0
-    },
-    {
-      "referencia": "CORSET PETITE CAFE TL",
-      "categoria": "CORSET",
-      "disponible": 2,
-      "valor_costo": 96000.0
-    },
-    {
-      "referencia": "CORSET PETITE CAFE TM",
-      "categoria": "CORSET",
-      "disponible": 2,
-      "valor_costo": 96000.0
-    },
-    {
-      "referencia": "CORSET PETITE ROJO",
-      "categoria": "CORSET",
-      "disponible": 2,
-      "valor_costo": 96000.0
-    },
-    {
-      "referencia": "CAMISA VICTORIA MARFIL",
-      "categoria": "BLUSAS",
-      "disponible": 3,
-      "valor_costo": 96000.0
-    },
-    {
-      "referencia": "CORSET PETITE VINOTINTO TM",
-      "categoria": "CORSET",
-      "disponible": 2,
-      "valor_costo": 96000.0
-    },
-    {
-      "referencia": "SUDADERA AMSTERDAN VINOTINTO",
-      "categoria": "CONJUNTOS",
-      "disponible": 1,
-      "valor_costo": 92000.0
-    },
-    {
-      "referencia": "OVERZISE RUGE BLANCO",
-      "categoria": "BLUSAS",
-      "disponible": 2,
-      "valor_costo": 91000.0
-    },
-    {
-      "referencia": "OVERZISE LOVE BLANCO",
-      "categoria": "BLUSAS",
-      "disponible": 2,
-      "valor_costo": 91000.0
-    },
-    {
-      "referencia": "OVERZISE NEW YORK NEGRO",
-      "categoria": "BLUSAS",
-      "disponible": 2,
-      "valor_costo": 91000.0
-    },
-    {
-      "referencia": "BODY BASICO CUADRADO VINOTINTO",
+      "referencia": "BODY DUO LILY",
       "categoria": "BODYS",
       "disponible": 5,
-      "valor_costo": 90000.0
+      "valor_costo": 100000.0
     },
     {
-      "referencia": "CAMISA LONDON LINEAS AZUL",
+      "referencia": "BUZO DUO LILY",
+      "categoria": "BUZOS",
+      "disponible": 5,
+      "valor_costo": 100000.0
+    },
+    {
+      "referencia": "OVERZISE RUGE",
+      "categoria": "BLUSAS",
+      "disponible": 2,
+      "valor_costo": 91000.0
+    },
+    {
+      "referencia": "OVERZISE LOVE",
+      "categoria": "BLUSAS",
+      "disponible": 2,
+      "valor_costo": 91000.0
+    },
+    {
+      "referencia": "CAMISA LONDON LINEAS",
       "categoria": "CAMISAS",
       "disponible": 2,
       "valor_costo": 90000.0
     },
     {
-      "referencia": "CAMISA LONDON NEGRO",
-      "categoria": "CAMISAS",
-      "disponible": 2,
-      "valor_costo": 90000.0
-    },
-    {
-      "referencia": "CAMISA LONDON VINOTINTO",
-      "categoria": "CAMISAS",
-      "disponible": 2,
-      "valor_costo": 90000.0
-    },
-    {
-      "referencia": "CAMISA LONDON BEIGE",
-      "categoria": "CAMISAS",
-      "disponible": 2,
-      "valor_costo": 90000.0
-    },
-    {
-      "referencia": "ESTRAPLE ANA MARFIL",
-      "categoria": "BLUSAS",
-      "disponible": 3,
-      "valor_costo": 90000.0
-    },
-    {
-      "referencia": "BODY VALE BEIGE",
-      "categoria": "BLUSAS",
-      "disponible": 4,
-      "valor_costo": 88000.0
-    },
-    {
-      "referencia": "CHAQUETA BOMBER CUERO VINOTINTO",
-      "categoria": "CHAQUETAS",
-      "disponible": 1,
-      "valor_costo": 85000.0
-    },
-    {
-      "referencia": "OVERZISE BRA  GRIS",
-      "categoria": "BLUSAS",
-      "disponible": 2,
-      "valor_costo": 81000.0
-    },
-    {
-      "referencia": "OVERZISE BOSTON MARFIL",
-      "categoria": "BLUSAS",
-      "disponible": 2,
-      "valor_costo": 81000.0
-    },
-    {
-      "referencia": "FALDA MALLA ANIMAL PRINT",
-      "categoria": "SIN CATEGORÍA",
-      "disponible": 2,
-      "valor_costo": 80000.0
-    },
-    {
-      "referencia": "BLAZER REBEL LARGO NEGRO TL",
-      "categoria": "CONJUNTOS",
-      "disponible": 1,
-      "valor_costo": 80000.0
-    },
-    {
-      "referencia": "FALDA MALLA LUNAR MARFIL",
-      "categoria": "SIN CATEGORÍA",
-      "disponible": 2,
-      "valor_costo": 80000.0
-    },
-    {
-      "referencia": "BLAZER REBEL LARGO BEIGE",
-      "categoria": "CONJUNTOS",
-      "disponible": 1,
-      "valor_costo": 80000.0
-    },
-    {
-      "referencia": "FALDA MAXI NEGRO",
+      "referencia": "FALDA MAXI",
       "categoria": "FALDAS",
       "disponible": 2,
       "valor_costo": 80000.0
     },
     {
-      "referencia": "BODY PETRA NEGRO",
-      "categoria": "BODYS",
+      "referencia": "BUZO DUO LILY CAMEL FROSTEADO",
+      "categoria": "BUZOS",
+      "disponible": 4,
+      "valor_costo": 80000.0
+    },
+    {
+      "referencia": "BODY MALLA DADOS",
+      "categoria": "CORSET",
+      "disponible": 4,
+      "valor_costo": 80000.0
+    },
+    {
+      "referencia": "BODY MALLA BESO",
+      "categoria": "CORSET",
       "disponible": 4,
       "valor_costo": 80000.0
     },
@@ -844,70 +250,10 @@
       "valor_costo": 80000.0
     },
     {
-      "referencia": "BUZO DUO LILY CAMEL FROSTEADO",
-      "categoria": "BUZOS",
-      "disponible": 4,
-      "valor_costo": 80000.0
-    },
-    {
-      "referencia": "BODY MALLA BESO MULTICOLOR",
-      "categoria": "CORSET",
-      "disponible": 4,
-      "valor_costo": 80000.0
-    },
-    {
-      "referencia": "BODY PETRA MARFIL",
-      "categoria": "BODYS",
-      "disponible": 4,
-      "valor_costo": 80000.0
-    },
-    {
-      "referencia": "BODY MALLA DADOS MULTICOLOR",
-      "categoria": "CORSET",
-      "disponible": 4,
-      "valor_costo": 80000.0
-    },
-    {
-      "referencia": "BODY BASICO BANDEJA BLANCO",
-      "categoria": "BODYS",
-      "disponible": 4,
-      "valor_costo": 76000.0
-    },
-    {
       "referencia": "T6",
       "categoria": "PANTALONES",
       "disponible": 1,
       "valor_costo": 75000.0
-    },
-    {
-      "referencia": "CHAQUETA OSLO PELUCHE CAMEL",
-      "categoria": "CHAQUETAS",
-      "disponible": 1,
-      "valor_costo": 75000.0
-    },
-    {
-      "referencia": "CHAQUETA OSLO PELUCHE AVENA",
-      "categoria": "CHAQUETAS",
-      "disponible": 1,
-      "valor_costo": 75000.0
-    },
-    {
-      "referencia": "CHAQUETA OSLO PELUCHE MARFIL",
-      "categoria": "CHAQUETAS",
-      "disponible": 1,
-      "valor_costo": 75000.0
-    },
-    {
-      "referencia": "BODY BASICO REDONDO AMARILLO",
-      "categoria": "BODYS",
-      "disponible": 4,
-      "valor_costo": 72000.0
-    },
-    {
-      "referencia": "BODY BASICO ESQUELETO NEGRO",
-      "categoria": "BODYS",
-      "disponible": 4,
-      "valor_costo": 72000.0
     },
     {
       "referencia": "BODY BASICO REDONDO GRIS CEMENTO",
@@ -916,178 +262,34 @@
       "valor_costo": 72000.0
     },
     {
-      "referencia": "PANTALON ENCAJE MARFIL",
-      "categoria": "PANTALONES",
-      "disponible": 2,
-      "valor_costo": 70000.0
-    },
-    {
-      "referencia": "PANTALON LIKE CUERINA  TXL",
-      "categoria": "PANTALONES",
-      "disponible": 1,
-      "valor_costo": 65000.0
-    },
-    {
-      "referencia": "BLUSA CARO VERDE ESMERALDA",
+      "referencia": "BLUSA CARO VERDE",
       "categoria": "BLUSAS",
       "disponible": 2,
       "valor_costo": 64000.0
     },
     {
-      "referencia": "CAMISA VICTORIA VERDE",
-      "categoria": "BLUSAS",
-      "disponible": 2,
-      "valor_costo": 64000.0
-    },
-    {
-      "referencia": "BUZO ENCAJE LIKE ROSA",
-      "categoria": "BUZOS",
-      "disponible": 2,
-      "valor_costo": 64000.0
-    },
-    {
-      "referencia": "BODY ESTRELLA TIRA BLANCO",
-      "categoria": "BODYS",
-      "disponible": 2,
-      "valor_costo": 64000.0
-    },
-    {
-      "referencia": "BLUSA MALLA AMELIA AMARILLO",
-      "categoria": "BLUSAS",
-      "disponible": 3,
-      "valor_costo": 60000.0
-    },
-    {
-      "referencia": "CORSET SERENA CAFE",
-      "categoria": "CORSET",
-      "disponible": 2,
-      "valor_costo": 60000.0
-    },
-    {
-      "referencia": "BUZO DUO LILY ANIMAL PRINT NEGRO",
-      "categoria": "BUZOS",
-      "disponible": 3,
-      "valor_costo": 60000.0
-    },
-    {
-      "referencia": "BLUSA MALLA AMELIA NEGRO",
-      "categoria": "BLUSAS",
-      "disponible": 3,
-      "valor_costo": 60000.0
-    },
-    {
-      "referencia": "BLUSA MALLA AMELIA VINOTINTO",
-      "categoria": "BLUSAS",
-      "disponible": 3,
-      "valor_costo": 60000.0
-    },
-    {
-      "referencia": "CORSET SERENA ROJO",
-      "categoria": "CORSET",
-      "disponible": 2,
-      "valor_costo": 60000.0
-    },
-    {
-      "referencia": "JEAN BOTA RECTA MAOS GRIS",
+      "referencia": "JEAN BOTA RECTA MAOS",
       "categoria": "PANTALONES",
       "disponible": 1,
       "valor_costo": 60000.0
     },
     {
-      "referencia": "BLUSA MALLA AMELIA BLANCO",
-      "categoria": "BLUSAS",
+      "referencia": "BUZO DUO LILY ANIMAL PRINT",
+      "categoria": "BUZOS",
       "disponible": 3,
       "valor_costo": 60000.0
     },
     {
-      "referencia": "BUZO NALA MORADO",
-      "categoria": "BUZOS",
-      "disponible": 2,
-      "valor_costo": 56000.0
-    },
-    {
-      "referencia": "BLUSA THALIA PUNTOS CAFE",
-      "categoria": "SIN CATEGORÍA",
-      "disponible": 2,
-      "valor_costo": 56000.0
-    },
-    {
-      "referencia": "BLUSA THALIA PUNTOS NEGRO",
-      "categoria": "SIN CATEGORÍA",
-      "disponible": 2,
-      "valor_costo": 56000.0
-    },
-    {
-      "referencia": "BODY BASICO ESQUELETO REDONDO NEGRO",
-      "categoria": "BODYS",
-      "disponible": 3,
-      "valor_costo": 54000.0
-    },
-    {
-      "referencia": "BODY BASICO ESQUELETO REDONDO BLANCO",
-      "categoria": "BODYS",
-      "disponible": 3,
-      "valor_costo": 54000.0
-    },
-    {
-      "referencia": "BODY BASICO ESQUELETO REDONDO GRIS CLARO",
-      "categoria": "BODYS",
-      "disponible": 3,
-      "valor_costo": 54000.0
-    },
-    {
-      "referencia": "BLUSA GLOBO AZUL",
-      "categoria": "BLUSAS",
-      "disponible": 2,
-      "valor_costo": 50000.0
-    },
-    {
-      "referencia": "BODY BASICO ESCOTE ESPALDA VINOTINTO",
-      "categoria": "BODYS",
-      "disponible": 2,
-      "valor_costo": 50000.0
-    },
-    {
-      "referencia": "CORSET OLIVIA MALLA BLANCO",
-      "categoria": "SIN CATEGORÍA",
-      "disponible": 2,
-      "valor_costo": 50000.0
-    },
-    {
-      "referencia": "CORSET PETITE ROSA TL",
-      "categoria": "CORSET",
-      "disponible": 1,
-      "valor_costo": 48000.0
-    },
-    {
-      "referencia": "CORSET PETITE BLANCO TL",
-      "categoria": "CORSET",
-      "disponible": 1,
-      "valor_costo": 48000.0
-    },
-    {
-      "referencia": "CORSET PETITE AMARILLO  TL",
-      "categoria": "CORSET",
-      "disponible": 1,
-      "valor_costo": 48000.0
-    },
-    {
-      "referencia": "FALDA CORTA ANIMAL PRINT",
+      "referencia": "FALDA CORTA",
       "categoria": "FALDAS",
       "disponible": 1,
       "valor_costo": 47000.0
     },
     {
-      "referencia": "FALDA CLASICA GRIS",
+      "referencia": "FALDA CLASICA",
       "categoria": "FALDAS",
       "disponible": 1,
       "valor_costo": 47000.0
-    },
-    {
-      "referencia": "OVERZISE EDNA NEGRO",
-      "categoria": "BLUSAS",
-      "disponible": 1,
-      "valor_costo": 45500.0
     },
     {
       "referencia": "FALDA SHORT BELLA CAFÉ",
@@ -1096,250 +298,28 @@
       "valor_costo": 45000.0
     },
     {
-      "referencia": "FALDA CUERO ANNA NEGRO",
-      "categoria": "FALDAS",
-      "disponible": 2,
-      "valor_costo": 44000.0
-    },
-    {
-      "referencia": "FALDA CUERO ANNA BEIGE",
-      "categoria": "FALDAS",
-      "disponible": 2,
-      "valor_costo": 44000.0
-    },
-    {
-      "referencia": "BODY MALLA MIA ROSA",
-      "categoria": "BODYS",
-      "disponible": 2,
-      "valor_costo": 40000.0
-    },
-    {
-      "referencia": "FALDA CARGO NEGRO",
-      "categoria": "FALDAS",
-      "disponible": 1,
-      "valor_costo": 40000.0
-    },
-    {
-      "referencia": "BODY PETRA ROSA",
-      "categoria": "BODYS",
-      "disponible": 2,
-      "valor_costo": 40000.0
-    },
-    {
-      "referencia": "BLUSA MALLA AMELIA AZUL BEBE",
-      "categoria": "BLUSAS",
-      "disponible": 2,
-      "valor_costo": 40000.0
-    },
-    {
-      "referencia": "BODY PETRA VERDE",
-      "categoria": "BODYS",
-      "disponible": 2,
-      "valor_costo": 40000.0
-    },
-    {
-      "referencia": "BODY PETRA ROJO",
-      "categoria": "BODYS",
-      "disponible": 2,
-      "valor_costo": 40000.0
-    },
-    {
-      "referencia": "BODY PETRA VINOTINTO",
-      "categoria": "BODYS",
-      "disponible": 2,
-      "valor_costo": 40000.0
-    },
-    {
-      "referencia": "BLUSA MALLA AMELIA CAFE",
-      "categoria": "BLUSAS",
-      "disponible": 2,
-      "valor_costo": 40000.0
-    },
-    {
-      "referencia": "BODY PETRA AZUL NOCHE",
-      "categoria": "BODYS",
-      "disponible": 2,
-      "valor_costo": 40000.0
-    },
-    {
-      "referencia": "BODY PETRA AMARILLO",
-      "categoria": "BODYS",
-      "disponible": 2,
-      "valor_costo": 40000.0
-    },
-    {
-      "referencia": "BODY PETRA BEIGE",
-      "categoria": "BODYS",
-      "disponible": 2,
-      "valor_costo": 40000.0
-    },
-    {
-      "referencia": "BODY MALLA MAR MULTICOLOR",
+      "referencia": "BODY MALLA MAR",
       "categoria": "CORSET",
       "disponible": 2,
       "valor_costo": 40000.0
     },
     {
-      "referencia": "BODY BASICO BANDEJA ROJO",
-      "categoria": "BODYS",
-      "disponible": 2,
-      "valor_costo": 38000.0
+      "referencia": "FALDA CARGO",
+      "categoria": "FALDAS",
+      "disponible": 1,
+      "valor_costo": 40000.0
     },
     {
-      "referencia": "VESTIDO BOLERO NEGRO",
+      "referencia": "VESTIDO BOLERO",
       "categoria": "VESTIDOS",
       "disponible": 1,
       "valor_costo": 38000.0
     },
     {
-      "referencia": "BODY BASICO BANDEJA CAFE",
-      "categoria": "BODYS",
-      "disponible": 2,
-      "valor_costo": 38000.0
-    },
-    {
-      "referencia": "BODY BASICO BANDEJA BEIGE",
-      "categoria": "BODYS",
-      "disponible": 2,
-      "valor_costo": 38000.0
-    },
-    {
-      "referencia": "BODY BASICO ESQUELETO VINOTINTO",
+      "referencia": "BODY BASICO ESQUELETO VERDE",
       "categoria": "BODYS",
       "disponible": 2,
       "valor_costo": 36000.0
-    },
-    {
-      "referencia": "BODY BASICO ESQUELETO REDONDO BEIGE",
-      "categoria": "BODYS",
-      "disponible": 2,
-      "valor_costo": 36000.0
-    },
-    {
-      "referencia": "BODY BASICO ESQUELETO VERDE ESMERALDA TL",
-      "categoria": "BODYS",
-      "disponible": 2,
-      "valor_costo": 36000.0
-    },
-    {
-      "referencia": "BODY BARBIE CAFE",
-      "categoria": "BODYS",
-      "disponible": 1,
-      "valor_costo": 35000.0
-    },
-    {
-      "referencia": "CAMISA PERLA  AZUL OSCURO",
-      "categoria": "BLUSAS",
-      "disponible": 1,
-      "valor_costo": 35000.0
-    },
-    {
-      "referencia": "VESTIDO NOA  VINOTINTO",
-      "categoria": "VESTIDOS",
-      "disponible": 1,
-      "valor_costo": 35000.0
-    },
-    {
-      "referencia": "VESTIDO NOA  NEGRO",
-      "categoria": "VESTIDOS",
-      "disponible": 1,
-      "valor_costo": 35000.0
-    },
-    {
-      "referencia": "BODY ESTRELLA TIRA NEGRO",
-      "categoria": "BODYS",
-      "disponible": 1,
-      "valor_costo": 32000.0
-    },
-    {
-      "referencia": "BODY ESTRELLA TIRA CAMEL",
-      "categoria": "BODYS",
-      "disponible": 1,
-      "valor_costo": 32000.0
-    },
-    {
-      "referencia": "BODY ENCAJE W BLANCO",
-      "categoria": "CORSET",
-      "disponible": 1,
-      "valor_costo": 32000.0
-    },
-    {
-      "referencia": "CORSET SERENA VINOTINTO",
-      "categoria": "CORSET",
-      "disponible": 1,
-      "valor_costo": 30000.0
-    },
-    {
-      "referencia": "BLUSA ZOE PUNTA BEIGE",
-      "categoria": "BLUSAS",
-      "disponible": 1,
-      "valor_costo": 30000.0
-    },
-    {
-      "referencia": "BUZO NALA AMARILLO",
-      "categoria": "BUZOS",
-      "disponible": 1,
-      "valor_costo": 28000.0
-    },
-    {
-      "referencia": "VESTIDO GLOBO VINOTINTO",
-      "categoria": "VESTIDOS",
-      "disponible": 1,
-      "valor_costo": 25000.0
-    },
-    {
-      "referencia": "BANDEJA MALLA CAFE",
-      "categoria": "BLUSAS",
-      "disponible": 1,
-      "valor_costo": 20000.0
-    },
-    {
-      "referencia": "BODY BASICO CUELLO V MANGA CORTA AMARILLO",
-      "categoria": "BODYS",
-      "disponible": 1,
-      "valor_costo": 18000.0
-    },
-    {
-      "referencia": "BODY BASICO CUELLO V MANGA CORTA AZUL NOCHE",
-      "categoria": "BODYS",
-      "disponible": 1,
-      "valor_costo": 18000.0
-    },
-    {
-      "referencia": "BODY BASICO CUELLO V MANGA CORTA CAFE",
-      "categoria": "BODYS",
-      "disponible": 1,
-      "valor_costo": 18000.0
-    },
-    {
-      "referencia": "BODY BASICO CUELLO V MANGA CORTA MARFIL",
-      "categoria": "BODYS",
-      "disponible": 1,
-      "valor_costo": 18000.0
-    },
-    {
-      "referencia": "BODY BASICO CUELLO V MANGA CORTA NEGRO",
-      "categoria": "BODYS",
-      "disponible": 1,
-      "valor_costo": 18000.0
-    },
-    {
-      "referencia": "BODY BASICO CUELLO V MANGA CORTA VINOTINTO",
-      "categoria": "BODYS",
-      "disponible": 1,
-      "valor_costo": 18000.0
-    },
-    {
-      "referencia": "BODY BASICO ESQUELETO GRIS",
-      "categoria": "BODYS",
-      "disponible": 1,
-      "valor_costo": 18000.0
-    },
-    {
-      "referencia": "ESQUELETO VINOTINTO",
-      "categoria": "BLUSAS",
-      "disponible": 1,
-      "valor_costo": 13000.0
     }
   ]
 }

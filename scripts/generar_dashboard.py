@@ -467,15 +467,19 @@ def _fila_reorden_ref(ref: dict) -> str:
 
 
 def _seccion_categoria_reorden(cat: dict) -> str:
-    accionables = [r for r in cat["referencias"] if r["estado"] in ("critico", "alerta")]
+    """Solo se listan referencias con unidades sugeridas > 0: una referencia puede
+    salir "Crítico" (cobertura ≤ 7 días) pero con una venta tan baja que el
+    objetivo de cobertura redondea a 0 unidades sugeridas -- listarla igual es
+    ruido, no dice nada accionable sobre qué pedir."""
+    accionables = [r for r in cat["referencias"] if r["sugerido"] > 0]
     otros = len(cat["referencias"]) - len(accionables)
     filas = "".join(_fila_reorden_ref(r) for r in accionables)
     nota_otros = (
-        f'<div class="detalle-vacio">+{_miles(otros)} referencias más sin alerta de cobertura (ok, sin rotación o nuevas).</div>'
+        f'<div class="detalle-vacio">+{_miles(otros)} referencias más sin unidades sugeridas por ahora.</div>'
         if otros > 0 else ""
     )
     if not accionables:
-        filas = '<div class="detalle-vacio">Sin referencias críticas o en alerta en esta categoría.</div>'
+        filas = '<div class="detalle-vacio">Nada que pedir en esta categoría por ahora.</div>'
 
     badges = (
         _badge_reorden(cat["num_criticos"], "crítico", "critico")

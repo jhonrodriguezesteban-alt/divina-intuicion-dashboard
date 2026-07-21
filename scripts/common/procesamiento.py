@@ -19,24 +19,58 @@ _COLUMNAS_CONCEPTOS = [
 ]
 
 _RE_TALLA_GRANDE = re.compile(r"\s+TALLA\s+\w+(\s+\w+)?$", re.IGNORECASE)
-_RE_TALLA = re.compile(r"\s+T(U|S|\d{1,2})$", re.IGNORECASE)
+_RE_TALLA = re.compile(r"\s+T-?(XXL|XS|XL|U|S|M|L|\d{1,2})$", re.IGNORECASE)
+
+# Vocabulario de color detectado analizando reportes/raw/raw_articulos.xlsx real
+# (ver sesión de ajuste de referencia_base) -- una base ("VERDE") opcionalmente
+# seguida de un segundo color separado por "/" ("NEGRO/BLANCO") y/o un
+# modificador ("VERDE OLIVA", "AZUL CLARO", "ANIMAL PRINT").
+_COLORES_BASE = [
+    "NEGRO", "BLANCO", "BEIGE", "CAFE", "MARFIL", "VINOTINTO", "CAMEL", "GRIS",
+    "AMARILLO", "VERDE", "ROSA", "ROSADO", "AZUL", "ROJO", "MULTICOLOR",
+    "MORADO", "AVENA", "TERRACOTA", "NARANJA", "FUCSIA", "TURQUESA", "LILA",
+    "CORAL", "PERLA", "PLATA", "DORADO", "CHOCOLATE", "KAKI", "CAQUI",
+    "MOSTAZA", "VINO", "PLOMO", "HUESO", "CRUDO", "NUDE", "ARENA",
+    "PETROLEO", "ESMERALDA", "GUAYABA", "LADRILLO", "TABACO", "ANIMAL",
+]
+_COLOR_MODIFICADORES = [
+    "CLARO", "CLARA", "OSCURO", "OSCURA", "BEBE", "MILITAR", "NOCHE",
+    "BRILLANTE", "REY", "OLIVA", "BOTELLA", "PINO", "PRINT",
+]
+_colores_pat = "|".join(sorted(_COLORES_BASE, key=len, reverse=True))
+_mod_pat = "|".join(sorted(_COLOR_MODIFICADORES, key=len, reverse=True))
+_RE_COLOR = re.compile(
+    rf"\s+(?:{_colores_pat})(?:/(?:{_colores_pat}))?(?:\s+(?:{_mod_pat}))?$",
+    re.IGNORECASE,
+)
 
 
 def referencia_base(nombre: str) -> str:
-    """Nombre del artículo sin el sufijo de talla (T6, T10, TU, "TALLA GRANDE"...).
-    Effi trae una fila por combinación artículo+talla — sin esto, el mismo diseño en
-    varias tallas aparece repetido como si fueran productos distintos en cualquier
-    listado (top referencias, rentabilidad por categoría, reorden de inventario).
-    Mantiene el color: dos colores del mismo diseño quedan como referencias separadas,
-    que es lo útil para decidir qué pedir a proveedores o qué se vende más."""
+    """Nombre del artículo sin el sufijo de talla (T6, T10, TU, TL, TXS,
+    "TALLA GRANDE"...) NI de color (NEGRO, AZUL CLARO, ANIMAL PRINT...).
+    Effi trae una fila por combinación artículo+talla+color — sin esto, el
+    mismo diseño en varias tallas/colores aparece repetido como si fueran
+    productos distintos en cualquier listado (top referencias, rentabilidad
+    por categoría, reorden de inventario). talla_de() se encarga de mostrar
+    lo que sobra (color + talla juntos) como detalle expandible por variante.
+
+    A propósito NO toca sufijos "$precio" pegados al nombre (error de
+    captura de Effi en algunos accesorios, ej. "CADENA $12000"): si se
+    quitara el precio, decenas de accesorios distintos que solo se
+    diferencian por ese precio quedarían fusionados en una sola referencia
+    genérica ("CADENA") -- verificado contra el catálogo real."""
     n = (nombre or "").strip()
     n = _RE_TALLA_GRANDE.sub("", n)
     n = _RE_TALLA.sub("", n)
+    n = _RE_COLOR.sub("", n)
     return n.strip() or (nombre or "").strip()
 
 
 def talla_de(nombre: str, referencia: str) -> str:
-    """Lo que sobra del nombre completo al quitarle la referencia — la talla."""
+    """Lo que sobra del nombre completo al quitarle la referencia -- ahora que
+    referencia_base() también quita el color, esto devuelve color+talla juntos
+    (ej. "Negro T8"), que es justo la etiqueta de variante que se muestra al
+    desplegar una referencia."""
     resto = (nombre or "").strip()
     if resto.startswith(referencia):
         resto = resto[len(referencia):].strip()
