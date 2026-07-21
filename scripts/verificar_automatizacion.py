@@ -23,7 +23,7 @@ from common.estado_automatizacion import ultima_ok, hay_internet
 SCRIPTS_DIR = Path(__file__).resolve().parent
 PYTHON = sys.executable
 
-HORA_INICIO = 9
+HORA_INICIO = 8
 HORA_FIN = 19  # última corrida horaria programada
 HORA_CIERRE = 20  # a partir de aquí, se busca hacer el cierre si no ha corrido
 VENTANA_HORA_MIN = 50  # si el último "hora" OK fue hace menos de esto, no repetir

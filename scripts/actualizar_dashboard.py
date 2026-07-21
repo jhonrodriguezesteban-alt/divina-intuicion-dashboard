@@ -1,5 +1,5 @@
 """
-Corrida automática horaria (LaunchAgent, 9am-7pm): reutiliza la sesión
+Corrida automática horaria (vía verificar_automatizacion.py, 8am-7pm): reutiliza la sesión
 guardada, descarga las remisiones y facturas completas (rápido, son
 downloads directos — no async), reprocesa ventas y publica. NO refresca
 inventario ni el detalle por artículo (más pesado, se reserva para el

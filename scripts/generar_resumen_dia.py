@@ -54,13 +54,14 @@ def generar_texto() -> str:
         f"Año en curso: {_cop(anio['ingreso_total'])} · {anio['num_transacciones']} ventas · margen {round(anio['margen_promedio']*100,1)}%",
     ]
 
-    if reorden:
-        r = reorden["resumen"]
+    if reorden and "ropa" in reorden:
+        ropa = reorden["ropa"]["resumen"]
+        acc = reorden["accesorios"]["resumen"]
         lineas += [
             "",
             "Inventario / pedidos a proveedores:",
-            f"  - Referencias críticas: {r['criticos']} · en alerta: {r['alerta']}",
-            f"  - Unidades sugeridas a pedir: {r['unidades_sugeridas_total']}",
+            f"  - Ropa: {ropa['criticos']} críticas · {ropa['alerta']} en alerta · {ropa['unidades_sugeridas_total']} und. sugeridas",
+            f"  - Accesorios: {acc['criticos']} categorías críticas · {acc['alerta']} en alerta · {acc['unidades_sugeridas_total']} und. sugeridas",
         ]
 
     lineas.append("")
