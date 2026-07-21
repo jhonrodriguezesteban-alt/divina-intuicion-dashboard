@@ -1,6 +1,6 @@
 {
   "ventana_dias": 90,
-  "generado_al": "2026-07-20",
+  "generado_al": "2026-07-21",
   "ropa": {
     "resumen": {
       "total_referencias": 635,
@@ -2507,50 +2507,6 @@
             ]
           },
           {
-            "referencia": "JEAN BAGGY",
-            "categoria": "PANTALONES",
-            "disponible": 5,
-            "venta_90d": 10,
-            "rotacion_anualizada": 41,
-            "dias_cobertura": 45.0,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "num_variantes": 6,
-            "variantes": [
-              {
-                "id": 2397,
-                "talla": "ANIMAL PRINT T10",
-                "disponible": 0
-              },
-              {
-                "id": 2405,
-                "talla": "ANIMAL PRINT T12",
-                "disponible": 0
-              },
-              {
-                "id": 2394,
-                "talla": "ANIMAL PRINT T4",
-                "disponible": 2
-              },
-              {
-                "id": 2395,
-                "talla": "ANIMAL PRINT T6",
-                "disponible": 1
-              },
-              {
-                "id": 2396,
-                "talla": "ANIMAL PRINT T8",
-                "disponible": 2
-              },
-              {
-                "id": 1814,
-                "talla": "VERDE T6",
-                "disponible": 0
-              }
-            ]
-          },
-          {
             "referencia": "JEAN GAMUZA",
             "categoria": "PANTALONES",
             "disponible": 3,
@@ -2629,75 +2585,6 @@
             ]
           },
           {
-            "referencia": "PANT VIENA PRENSES",
-            "categoria": "PANTALONES",
-            "disponible": 2,
-            "venta_90d": 4,
-            "rotacion_anualizada": 16,
-            "dias_cobertura": 45.0,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "num_variantes": 11,
-            "variantes": [
-              {
-                "id": 398,
-                "talla": "BEIGE T10",
-                "disponible": 1
-              },
-              {
-                "id": 1482,
-                "talla": "BEIGE T12",
-                "disponible": 0
-              },
-              {
-                "id": 399,
-                "talla": "BEIGE T6",
-                "disponible": 0
-              },
-              {
-                "id": 400,
-                "talla": "BEIGE T8",
-                "disponible": 0
-              },
-              {
-                "id": 1937,
-                "talla": "CAFE T6",
-                "disponible": 0
-              },
-              {
-                "id": 1938,
-                "talla": "CAFE T8",
-                "disponible": 0
-              },
-              {
-                "id": 397,
-                "talla": "NEGRO T10",
-                "disponible": 0
-              },
-              {
-                "id": 1926,
-                "talla": "NEGRO T12",
-                "disponible": 0
-              },
-              {
-                "id": 1927,
-                "talla": "NEGRO T14",
-                "disponible": 1
-              },
-              {
-                "id": 395,
-                "talla": "NEGRO T6",
-                "disponible": 0
-              },
-              {
-                "id": 396,
-                "talla": "NEGRO T8",
-                "disponible": 0
-              }
-            ]
-          },
-          {
             "referencia": "FALDA JEAN CLASICA UZI",
             "categoria": "PANTALONES",
             "disponible": 11,
@@ -2738,6 +2625,50 @@
                 "id": 2468,
                 "talla": "T8",
                 "disponible": 1
+              }
+            ]
+          },
+          {
+            "referencia": "JEAN BAGGY",
+            "categoria": "PANTALONES",
+            "disponible": 5,
+            "venta_90d": 9,
+            "rotacion_anualizada": 36,
+            "dias_cobertura": 50.0,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "num_variantes": 6,
+            "variantes": [
+              {
+                "id": 2397,
+                "talla": "ANIMAL PRINT T10",
+                "disponible": 0
+              },
+              {
+                "id": 2405,
+                "talla": "ANIMAL PRINT T12",
+                "disponible": 0
+              },
+              {
+                "id": 2394,
+                "talla": "ANIMAL PRINT T4",
+                "disponible": 2
+              },
+              {
+                "id": 2395,
+                "talla": "ANIMAL PRINT T6",
+                "disponible": 1
+              },
+              {
+                "id": 2396,
+                "talla": "ANIMAL PRINT T8",
+                "disponible": 2
+              },
+              {
+                "id": 1814,
+                "talla": "VERDE T6",
+                "disponible": 0
               }
             ]
           },
@@ -3109,6 +3040,75 @@
             ]
           },
           {
+            "referencia": "PANT VIENA PRENSES",
+            "categoria": "PANTALONES",
+            "disponible": 2,
+            "venta_90d": 3,
+            "rotacion_anualizada": 12,
+            "dias_cobertura": 60.0,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "num_variantes": 11,
+            "variantes": [
+              {
+                "id": 398,
+                "talla": "BEIGE T10",
+                "disponible": 1
+              },
+              {
+                "id": 1482,
+                "talla": "BEIGE T12",
+                "disponible": 0
+              },
+              {
+                "id": 399,
+                "talla": "BEIGE T6",
+                "disponible": 0
+              },
+              {
+                "id": 400,
+                "talla": "BEIGE T8",
+                "disponible": 0
+              },
+              {
+                "id": 1937,
+                "talla": "CAFE T6",
+                "disponible": 0
+              },
+              {
+                "id": 1938,
+                "talla": "CAFE T8",
+                "disponible": 0
+              },
+              {
+                "id": 397,
+                "talla": "NEGRO T10",
+                "disponible": 0
+              },
+              {
+                "id": 1926,
+                "talla": "NEGRO T12",
+                "disponible": 0
+              },
+              {
+                "id": 1927,
+                "talla": "NEGRO T14",
+                "disponible": 1
+              },
+              {
+                "id": 395,
+                "talla": "NEGRO T6",
+                "disponible": 0
+              },
+              {
+                "id": 396,
+                "talla": "NEGRO T8",
+                "disponible": 0
+              }
+            ]
+          },
+          {
             "referencia": "PANTALON PRETINA",
             "categoria": "PANTALONES",
             "disponible": 4,
@@ -3222,12 +3222,56 @@
             ]
           },
           {
+            "referencia": "FALDA JEAN",
+            "categoria": "PANTALONES",
+            "disponible": 23,
+            "venta_90d": 32,
+            "rotacion_anualizada": 130,
+            "dias_cobertura": 64.7,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "num_variantes": 6,
+            "variantes": [
+              {
+                "id": 643,
+                "talla": "AZUL T10",
+                "disponible": 9
+              },
+              {
+                "id": 644,
+                "talla": "AZUL T12",
+                "disponible": 8
+              },
+              {
+                "id": 641,
+                "talla": "AZUL T6",
+                "disponible": 2
+              },
+              {
+                "id": 642,
+                "talla": "AZUL T8",
+                "disponible": 4
+              },
+              {
+                "id": 691,
+                "talla": "GRIS T6",
+                "disponible": 0
+              },
+              {
+                "id": 2498,
+                "talla": "GRIS T8",
+                "disponible": 0
+              }
+            ]
+          },
+          {
             "referencia": "JEAN CHERRY",
             "categoria": "PANTALONES",
             "disponible": 12,
-            "venta_90d": 17,
-            "rotacion_anualizada": 69,
-            "dias_cobertura": 63.5,
+            "venta_90d": 16,
+            "rotacion_anualizada": 65,
+            "dias_cobertura": 67.5,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -3292,50 +3336,6 @@
                 "id": 2054,
                 "talla": "GRIS T8",
                 "disponible": 3
-              }
-            ]
-          },
-          {
-            "referencia": "FALDA JEAN",
-            "categoria": "PANTALONES",
-            "disponible": 23,
-            "venta_90d": 32,
-            "rotacion_anualizada": 130,
-            "dias_cobertura": 64.7,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "num_variantes": 6,
-            "variantes": [
-              {
-                "id": 643,
-                "talla": "AZUL T10",
-                "disponible": 9
-              },
-              {
-                "id": 644,
-                "talla": "AZUL T12",
-                "disponible": 8
-              },
-              {
-                "id": 641,
-                "talla": "AZUL T6",
-                "disponible": 2
-              },
-              {
-                "id": 642,
-                "talla": "AZUL T8",
-                "disponible": 4
-              },
-              {
-                "id": 691,
-                "talla": "GRIS T6",
-                "disponible": 0
-              },
-              {
-                "id": 2498,
-                "talla": "GRIS T8",
-                "disponible": 0
               }
             ]
           },
@@ -11261,9 +11261,9 @@
             "referencia": "BLUSA GLOBO",
             "categoria": "BLUSAS",
             "disponible": 37,
-            "venta_90d": 80,
-            "rotacion_anualizada": 324,
-            "dias_cobertura": 41.6,
+            "venta_90d": 79,
+            "rotacion_anualizada": 320,
+            "dias_cobertura": 42.2,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -11525,9 +11525,9 @@
             "referencia": "BLUSA GABY",
             "categoria": "BLUSAS",
             "disponible": 35,
-            "venta_90d": 57,
-            "rotacion_anualizada": 231,
-            "dias_cobertura": 55.3,
+            "venta_90d": 56,
+            "rotacion_anualizada": 227,
+            "dias_cobertura": 56.2,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -11949,9 +11949,9 @@
             "referencia": "BLUSA VALE",
             "categoria": "BLUSAS",
             "disponible": 12,
-            "venta_90d": 11,
-            "rotacion_anualizada": 45,
-            "dias_cobertura": 98.2,
+            "venta_90d": 10,
+            "rotacion_anualizada": 41,
+            "dias_cobertura": 108.0,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -13345,9 +13345,9 @@
             "referencia": "BUZO TEJIDO CAMPANA",
             "categoria": "BUZOS",
             "disponible": 26,
-            "venta_90d": 50,
-            "rotacion_anualizada": 203,
-            "dias_cobertura": 46.8,
+            "venta_90d": 49,
+            "rotacion_anualizada": 199,
+            "dias_cobertura": 47.8,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -14478,9 +14478,9 @@
             "referencia": "VESTIDO FLORES",
             "categoria": "VESTIDOS",
             "disponible": 7,
-            "venta_90d": 17,
-            "rotacion_anualizada": 69,
-            "dias_cobertura": 37.1,
+            "venta_90d": 16,
+            "rotacion_anualizada": 65,
+            "dias_cobertura": 39.4,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -17077,8 +17077,8 @@
             "referencia": "BODY ESTRAPLE MALLA",
             "categoria": "BODYS",
             "disponible": 0,
-            "venta_90d": 4,
-            "rotacion_anualizada": 16,
+            "venta_90d": 3,
+            "rotacion_anualizada": 12,
             "dias_cobertura": 0.0,
             "estado": "critico",
             "estado_label": "Crítico",
@@ -19223,9 +19223,9 @@
             "referencia": "FALDA ENCAJE CORTA",
             "categoria": "CORSET",
             "disponible": 17,
-            "venta_90d": 43,
-            "rotacion_anualizada": 174,
-            "dias_cobertura": 35.6,
+            "venta_90d": 42,
+            "rotacion_anualizada": 170,
+            "dias_cobertura": 36.4,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -19267,9 +19267,9 @@
             "referencia": "CORSET COPA LARGO",
             "categoria": "CORSET",
             "disponible": 45,
-            "venta_90d": 110,
-            "rotacion_anualizada": 446,
-            "dias_cobertura": 36.8,
+            "venta_90d": 108,
+            "rotacion_anualizada": 438,
+            "dias_cobertura": 37.5,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -20394,9 +20394,9 @@
             "referencia": "SUDADERA ZOE",
             "categoria": "CONJUNTOS",
             "disponible": 45,
-            "venta_90d": 72,
-            "rotacion_anualizada": 292,
-            "dias_cobertura": 56.2,
+            "venta_90d": 71,
+            "rotacion_anualizada": 288,
+            "dias_cobertura": 57.0,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -20923,30 +20923,6 @@
             ]
           },
           {
-            "referencia": "JUEGOS $43000",
-            "categoria": "JUEGOS",
-            "disponible": 2,
-            "venta_90d": 6,
-            "rotacion_anualizada": 24,
-            "dias_cobertura": 30.0,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "num_variantes": 2,
-            "variantes": [
-              {
-                "id": 2208,
-                "talla": "Única",
-                "disponible": 2
-              },
-              {
-                "id": 2210,
-                "talla": "Única",
-                "disponible": 0
-              }
-            ]
-          },
-          {
             "referencia": "JUEGOS $44000",
             "categoria": "JUEGOS",
             "disponible": 1,
@@ -20962,6 +20938,30 @@
                 "id": 2206,
                 "talla": "Única",
                 "disponible": 1
+              }
+            ]
+          },
+          {
+            "referencia": "JUEGOS $43000",
+            "categoria": "JUEGOS",
+            "disponible": 2,
+            "venta_90d": 5,
+            "rotacion_anualizada": 20,
+            "dias_cobertura": 36.0,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "num_variantes": 2,
+            "variantes": [
+              {
+                "id": 2208,
+                "talla": "Única",
+                "disponible": 2
+              },
+              {
+                "id": 2210,
+                "talla": "Única",
+                "disponible": 0
               }
             ]
           },
@@ -21320,9 +21320,9 @@
             "referencia": "PROMOCIONES",
             "categoria": "GENERICOS",
             "disponible": 83,
-            "venta_90d": 48,
-            "rotacion_anualizada": 195,
-            "dias_cobertura": 155.6,
+            "venta_90d": 46,
+            "rotacion_anualizada": 187,
+            "dias_cobertura": 162.4,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -21424,9 +21424,9 @@
       {
         "categoria": "ARETES",
         "disponible": 407,
-        "venta_90d": 360,
-        "rotacion_anualizada": 1460,
-        "dias_cobertura": 101.8,
+        "venta_90d": 359,
+        "rotacion_anualizada": 1456,
+        "dias_cobertura": 102.0,
         "estado": "ok",
         "estado_label": "Cobertura ok",
         "sugerido": 0,
@@ -21446,9 +21446,9 @@
       {
         "categoria": "PULSERAS",
         "disponible": 248,
-        "venta_90d": 214,
-        "rotacion_anualizada": 868,
-        "dias_cobertura": 104.3,
+        "venta_90d": 212,
+        "rotacion_anualizada": 860,
+        "dias_cobertura": 105.3,
         "estado": "ok",
         "estado_label": "Cobertura ok",
         "sugerido": 0,
@@ -21457,9 +21457,9 @@
       {
         "categoria": "TOPOS",
         "disponible": 140,
-        "venta_90d": 120,
-        "rotacion_anualizada": 487,
-        "dias_cobertura": 105.0,
+        "venta_90d": 118,
+        "rotacion_anualizada": 479,
+        "dias_cobertura": 106.8,
         "estado": "ok",
         "estado_label": "Cobertura ok",
         "sugerido": 0,
@@ -21468,9 +21468,9 @@
       {
         "categoria": "EARCUF",
         "disponible": 107,
-        "venta_90d": 81,
-        "rotacion_anualizada": 328,
-        "dias_cobertura": 118.9,
+        "venta_90d": 79,
+        "rotacion_anualizada": 320,
+        "dias_cobertura": 121.9,
         "estado": "ok",
         "estado_label": "Cobertura ok",
         "sugerido": 0,
