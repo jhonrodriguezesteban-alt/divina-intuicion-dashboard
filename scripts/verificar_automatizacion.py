@@ -18,7 +18,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from common.estado_automatizacion import ultima_ok
+from common.estado_automatizacion import ultima_ok, hay_internet
 
 SCRIPTS_DIR = Path(__file__).resolve().parent
 PYTHON = sys.executable
@@ -36,19 +36,33 @@ def _ejecutar(script: str):
 
 def main():
     ahora = datetime.now()
+    hace_falta_hora = HORA_INICIO <= ahora.hour <= HORA_FIN and (
+        not (u := ultima_ok("hora")) or (ahora - u) > timedelta(minutes=VENTANA_HORA_MIN)
+    )
+    hace_falta_cierre = ahora.hour >= HORA_CIERRE and (
+        not (c := ultima_ok("cierre")) or c.date() != ahora.date()
+    )
+
+    if (hace_falta_hora or hace_falta_cierre) and not hay_internet():
+        # Sin esto, un intento justo al despertar el Mac (wifi reconectando)
+        # se cuelga hasta el timeout de descarga (900s) en vez de fallar
+        # rápido -- eso bloqueaba el ciclo entero por 15 min en vez de
+        # reintentar limpio en el siguiente tick (10 min).
+        print(f"[{ahora:%H:%M:%S}] Sin internet todavía, se reintenta en el próximo ciclo.")
+        return
 
     if HORA_INICIO <= ahora.hour <= HORA_FIN:
-        ultima = ultima_ok("hora")
-        if not ultima or (ahora - ultima) > timedelta(minutes=VENTANA_HORA_MIN):
+        if hace_falta_hora:
             _ejecutar("actualizar_dashboard.py")
         else:
+            ultima = ultima_ok("hora")
             print(f"[{ahora:%H:%M:%S}] Reporte horario al día (última corrida OK: {ultima:%H:%M}).")
 
     if ahora.hour >= HORA_CIERRE:
-        ultimo_cierre = ultima_ok("cierre")
-        if not ultimo_cierre or ultimo_cierre.date() != ahora.date():
+        if hace_falta_cierre:
             _ejecutar("cierre_dia.py")
         else:
+            ultimo_cierre = ultima_ok("cierre")
             print(f"[{ahora:%H:%M:%S}] Cierre del día ya hecho ({ultimo_cierre:%H:%M}).")
 
 
