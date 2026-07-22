@@ -39,8 +39,13 @@ def main():
     hace_falta_hora = HORA_INICIO <= ahora.hour <= HORA_FIN and (
         not (u := ultima_ok("hora")) or (ahora - u) > timedelta(minutes=VENTANA_HORA_MIN)
     )
+    # "c.hour < HORA_CIERRE" cubre el caso de correr cierre_dia.py a mano en la
+    # mañana para ponerse al día por una falla de días anteriores: eso marca
+    # "cierre" con la fecha de HOY pero a una hora temprana, que no es el
+    # cierre real de hoy -- sin este chequeo, el cierre real de las 8pm (con
+    # las cifras finales del día y el aviso de martes/viernes) se saltaría.
     hace_falta_cierre = ahora.hour >= HORA_CIERRE and (
-        not (c := ultima_ok("cierre")) or c.date() != ahora.date()
+        not (c := ultima_ok("cierre")) or c.date() != ahora.date() or c.hour < HORA_CIERRE
     )
 
     if (hace_falta_hora or hace_falta_cierre) and not hay_internet():
