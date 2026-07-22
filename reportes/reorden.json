@@ -14,7 +14,7 @@
       {
         "categoria": "PANTALONES",
         "num_refs": 151,
-        "uds_disponibles": 712,
+        "uds_disponibles": 709,
         "num_criticos": 18,
         "num_alerta": 1,
         "unidades_sugeridas": 30,
@@ -2068,6 +2068,100 @@
             ]
           },
           {
+            "referencia": "JEAN FROSTEADO",
+            "categoria": "PANTALONES",
+            "disponible": 17,
+            "venta_90d": 46,
+            "rotacion_anualizada": 187,
+            "dias_cobertura": 33.3,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "num_variantes": 16,
+            "variantes": [
+              {
+                "id": 1911,
+                "talla": "BEIGE T10",
+                "disponible": 0
+              },
+              {
+                "id": 1912,
+                "talla": "BEIGE T12",
+                "disponible": 1
+              },
+              {
+                "id": 1908,
+                "talla": "BEIGE T4",
+                "disponible": 1
+              },
+              {
+                "id": 1909,
+                "talla": "BEIGE T6",
+                "disponible": 1
+              },
+              {
+                "id": 1910,
+                "talla": "BEIGE T8",
+                "disponible": 0
+              },
+              {
+                "id": 1027,
+                "talla": "GRIS T10",
+                "disponible": 4
+              },
+              {
+                "id": 1028,
+                "talla": "GRIS T12",
+                "disponible": 1
+              },
+              {
+                "id": 1436,
+                "talla": "GRIS T14",
+                "disponible": 0
+              },
+              {
+                "id": 1024,
+                "talla": "GRIS T4",
+                "disponible": 0
+              },
+              {
+                "id": 1025,
+                "talla": "GRIS T6",
+                "disponible": 0
+              },
+              {
+                "id": 1026,
+                "talla": "GRIS T8",
+                "disponible": 0
+              },
+              {
+                "id": 1022,
+                "talla": "ROSA T10",
+                "disponible": 2
+              },
+              {
+                "id": 1023,
+                "talla": "ROSA T12",
+                "disponible": 0
+              },
+              {
+                "id": 1019,
+                "talla": "ROSA T4",
+                "disponible": 4
+              },
+              {
+                "id": 1020,
+                "talla": "ROSA T6",
+                "disponible": 2
+              },
+              {
+                "id": 1021,
+                "talla": "ROSA T8",
+                "disponible": 1
+              }
+            ]
+          },
+          {
             "referencia": "JEAN BORDADO FLOR",
             "categoria": "PANTALONES",
             "disponible": 5,
@@ -2152,100 +2246,6 @@
                 "id": 3168,
                 "talla": "AZUL CLARO T8",
                 "disponible": 2
-              }
-            ]
-          },
-          {
-            "referencia": "JEAN FROSTEADO",
-            "categoria": "PANTALONES",
-            "disponible": 18,
-            "venta_90d": 45,
-            "rotacion_anualizada": 182,
-            "dias_cobertura": 36.0,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "num_variantes": 16,
-            "variantes": [
-              {
-                "id": 1911,
-                "talla": "BEIGE T10",
-                "disponible": 0
-              },
-              {
-                "id": 1912,
-                "talla": "BEIGE T12",
-                "disponible": 1
-              },
-              {
-                "id": 1908,
-                "talla": "BEIGE T4",
-                "disponible": 1
-              },
-              {
-                "id": 1909,
-                "talla": "BEIGE T6",
-                "disponible": 1
-              },
-              {
-                "id": 1910,
-                "talla": "BEIGE T8",
-                "disponible": 0
-              },
-              {
-                "id": 1027,
-                "talla": "GRIS T10",
-                "disponible": 4
-              },
-              {
-                "id": 1028,
-                "talla": "GRIS T12",
-                "disponible": 1
-              },
-              {
-                "id": 1436,
-                "talla": "GRIS T14",
-                "disponible": 0
-              },
-              {
-                "id": 1024,
-                "talla": "GRIS T4",
-                "disponible": 0
-              },
-              {
-                "id": 1025,
-                "talla": "GRIS T6",
-                "disponible": 1
-              },
-              {
-                "id": 1026,
-                "talla": "GRIS T8",
-                "disponible": 0
-              },
-              {
-                "id": 1022,
-                "talla": "ROSA T10",
-                "disponible": 2
-              },
-              {
-                "id": 1023,
-                "talla": "ROSA T12",
-                "disponible": 0
-              },
-              {
-                "id": 1019,
-                "talla": "ROSA T4",
-                "disponible": 4
-              },
-              {
-                "id": 1020,
-                "talla": "ROSA T6",
-                "disponible": 2
-              },
-              {
-                "id": 1021,
-                "talla": "ROSA T8",
-                "disponible": 1
               }
             ]
           },
@@ -3772,6 +3772,50 @@
             ]
           },
           {
+            "referencia": "JEAN BAGGY MERAKI",
+            "categoria": "PANTALONES",
+            "disponible": 24,
+            "venta_90d": 24,
+            "rotacion_anualizada": 97,
+            "dias_cobertura": 90.0,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "num_variantes": 6,
+            "variantes": [
+              {
+                "id": 1176,
+                "talla": "T10",
+                "disponible": 6
+              },
+              {
+                "id": 1177,
+                "talla": "T12",
+                "disponible": 4
+              },
+              {
+                "id": 1376,
+                "talla": "T14",
+                "disponible": 0
+              },
+              {
+                "id": 1173,
+                "talla": "T4",
+                "disponible": 2
+              },
+              {
+                "id": 1174,
+                "talla": "T6",
+                "disponible": 4
+              },
+              {
+                "id": 1175,
+                "talla": "T8",
+                "disponible": 8
+              }
+            ]
+          },
+          {
             "referencia": "JEAN BOTA RECTA MAOS",
             "categoria": "PANTALONES",
             "disponible": 1,
@@ -4093,50 +4137,6 @@
             ]
           },
           {
-            "referencia": "JEAN BAGGY MERAKI",
-            "categoria": "PANTALONES",
-            "disponible": 25,
-            "venta_90d": 23,
-            "rotacion_anualizada": 93,
-            "dias_cobertura": 97.8,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "num_variantes": 6,
-            "variantes": [
-              {
-                "id": 1176,
-                "talla": "T10",
-                "disponible": 6
-              },
-              {
-                "id": 1177,
-                "talla": "T12",
-                "disponible": 4
-              },
-              {
-                "id": 1376,
-                "talla": "T14",
-                "disponible": 0
-              },
-              {
-                "id": 1173,
-                "talla": "T4",
-                "disponible": 2
-              },
-              {
-                "id": 1174,
-                "talla": "T6",
-                "disponible": 5
-              },
-              {
-                "id": 1175,
-                "talla": "T8",
-                "disponible": 8
-              }
-            ]
-          },
-          {
             "referencia": "PANTALON LINO",
             "categoria": "PANTALONES",
             "disponible": 22,
@@ -4324,6 +4324,130 @@
               {
                 "id": 3414,
                 "talla": "GRIS OSCURO T8",
+                "disponible": 1
+              }
+            ]
+          },
+          {
+            "referencia": "PANT PANA",
+            "categoria": "PANTALONES",
+            "disponible": 13,
+            "venta_90d": 11,
+            "rotacion_anualizada": 45,
+            "dias_cobertura": 106.4,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "num_variantes": 22,
+            "variantes": [
+              {
+                "id": 944,
+                "talla": "BEIGE T10",
+                "disponible": 0
+              },
+              {
+                "id": 945,
+                "talla": "BEIGE T12",
+                "disponible": 0
+              },
+              {
+                "id": 942,
+                "talla": "BEIGE T6",
+                "disponible": 0
+              },
+              {
+                "id": 943,
+                "talla": "BEIGE T8",
+                "disponible": 0
+              },
+              {
+                "id": 3434,
+                "talla": "CAFE T10",
+                "disponible": 2
+              },
+              {
+                "id": 3435,
+                "talla": "CAFE T12",
+                "disponible": 1
+              },
+              {
+                "id": 1153,
+                "talla": "CAFE T6",
+                "disponible": 2
+              },
+              {
+                "id": 3433,
+                "talla": "CAFE T8",
+                "disponible": 2
+              },
+              {
+                "id": 934,
+                "talla": "CAMEL T10",
+                "disponible": 0
+              },
+              {
+                "id": 935,
+                "talla": "CAMEL T12",
+                "disponible": 0
+              },
+              {
+                "id": 932,
+                "talla": "CAMEL T6",
+                "disponible": 0
+              },
+              {
+                "id": 933,
+                "talla": "CAMEL T8",
+                "disponible": 0
+              },
+              {
+                "id": 976,
+                "talla": "GRIS T10",
+                "disponible": 0
+              },
+              {
+                "id": 977,
+                "talla": "GRIS T12",
+                "disponible": 0
+              },
+              {
+                "id": 1001,
+                "talla": "GRIS T14",
+                "disponible": 0
+              },
+              {
+                "id": 973,
+                "talla": "GRIS T4",
+                "disponible": 0
+              },
+              {
+                "id": 974,
+                "talla": "GRIS T6",
+                "disponible": 0
+              },
+              {
+                "id": 975,
+                "talla": "GRIS T8",
+                "disponible": 0
+              },
+              {
+                "id": 930,
+                "talla": "NEGRO T10",
+                "disponible": 3
+              },
+              {
+                "id": 931,
+                "talla": "NEGRO T12",
+                "disponible": 1
+              },
+              {
+                "id": 928,
+                "talla": "NEGRO T6",
+                "disponible": 1
+              },
+              {
+                "id": 929,
+                "talla": "NEGRO T8",
                 "disponible": 1
               }
             ]
@@ -4632,130 +4756,6 @@
                 "id": 2827,
                 "talla": "T8",
                 "disponible": 0
-              }
-            ]
-          },
-          {
-            "referencia": "PANT PANA",
-            "categoria": "PANTALONES",
-            "disponible": 14,
-            "venta_90d": 10,
-            "rotacion_anualizada": 41,
-            "dias_cobertura": 126.0,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "num_variantes": 22,
-            "variantes": [
-              {
-                "id": 944,
-                "talla": "BEIGE T10",
-                "disponible": 0
-              },
-              {
-                "id": 945,
-                "talla": "BEIGE T12",
-                "disponible": 0
-              },
-              {
-                "id": 942,
-                "talla": "BEIGE T6",
-                "disponible": 0
-              },
-              {
-                "id": 943,
-                "talla": "BEIGE T8",
-                "disponible": 0
-              },
-              {
-                "id": 3434,
-                "talla": "CAFE T10",
-                "disponible": 2
-              },
-              {
-                "id": 3435,
-                "talla": "CAFE T12",
-                "disponible": 1
-              },
-              {
-                "id": 1153,
-                "talla": "CAFE T6",
-                "disponible": 2
-              },
-              {
-                "id": 3433,
-                "talla": "CAFE T8",
-                "disponible": 2
-              },
-              {
-                "id": 934,
-                "talla": "CAMEL T10",
-                "disponible": 0
-              },
-              {
-                "id": 935,
-                "talla": "CAMEL T12",
-                "disponible": 0
-              },
-              {
-                "id": 932,
-                "talla": "CAMEL T6",
-                "disponible": 0
-              },
-              {
-                "id": 933,
-                "talla": "CAMEL T8",
-                "disponible": 0
-              },
-              {
-                "id": 976,
-                "talla": "GRIS T10",
-                "disponible": 0
-              },
-              {
-                "id": 977,
-                "talla": "GRIS T12",
-                "disponible": 0
-              },
-              {
-                "id": 1001,
-                "talla": "GRIS T14",
-                "disponible": 0
-              },
-              {
-                "id": 973,
-                "talla": "GRIS T4",
-                "disponible": 0
-              },
-              {
-                "id": 974,
-                "talla": "GRIS T6",
-                "disponible": 0
-              },
-              {
-                "id": 975,
-                "talla": "GRIS T8",
-                "disponible": 0
-              },
-              {
-                "id": 930,
-                "talla": "NEGRO T10",
-                "disponible": 3
-              },
-              {
-                "id": 931,
-                "talla": "NEGRO T12",
-                "disponible": 1
-              },
-              {
-                "id": 928,
-                "talla": "NEGRO T6",
-                "disponible": 1
-              },
-              {
-                "id": 929,
-                "talla": "NEGRO T8",
-                "disponible": 2
               }
             ]
           },
@@ -7542,7 +7542,7 @@
       {
         "categoria": "CHAQUETAS",
         "num_refs": 57,
-        "uds_disponibles": 183,
+        "uds_disponibles": 182,
         "num_criticos": 7,
         "num_alerta": 2,
         "unidades_sugeridas": 27,
@@ -8420,6 +8420,55 @@
             ]
           },
           {
+            "referencia": "CHAQUETA TENNIS",
+            "categoria": "CHAQUETAS",
+            "disponible": 6,
+            "venta_90d": 13,
+            "rotacion_anualizada": 53,
+            "dias_cobertura": 41.5,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "num_variantes": 7,
+            "variantes": [
+              {
+                "id": 1191,
+                "talla": "AZUL BEBE TU",
+                "disponible": 0
+              },
+              {
+                "id": 1195,
+                "talla": "BEIGE TU",
+                "disponible": 0
+              },
+              {
+                "id": 1230,
+                "talla": "CAFE TU",
+                "disponible": 1
+              },
+              {
+                "id": 1542,
+                "talla": "GRIS TU",
+                "disponible": 3
+              },
+              {
+                "id": 1193,
+                "talla": "MARFIL TU",
+                "disponible": 0
+              },
+              {
+                "id": 1192,
+                "talla": "NEGRO TU",
+                "disponible": 1
+              },
+              {
+                "id": 1194,
+                "talla": "VERDE TU",
+                "disponible": 1
+              }
+            ]
+          },
+          {
             "referencia": "CHAMARRA HOMBRO BOLSILLO",
             "categoria": "CHAQUETAS",
             "disponible": 2,
@@ -8493,55 +8542,6 @@
                 "id": 2647,
                 "talla": "NEGRO TU",
                 "disponible": 4
-              }
-            ]
-          },
-          {
-            "referencia": "CHAQUETA TENNIS",
-            "categoria": "CHAQUETAS",
-            "disponible": 7,
-            "venta_90d": 12,
-            "rotacion_anualizada": 49,
-            "dias_cobertura": 52.5,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "num_variantes": 7,
-            "variantes": [
-              {
-                "id": 1191,
-                "talla": "AZUL BEBE TU",
-                "disponible": 0
-              },
-              {
-                "id": 1195,
-                "talla": "BEIGE TU",
-                "disponible": 1
-              },
-              {
-                "id": 1230,
-                "talla": "CAFE TU",
-                "disponible": 1
-              },
-              {
-                "id": 1542,
-                "talla": "GRIS TU",
-                "disponible": 3
-              },
-              {
-                "id": 1193,
-                "talla": "MARFIL TU",
-                "disponible": 0
-              },
-              {
-                "id": 1192,
-                "talla": "NEGRO TU",
-                "disponible": 1
-              },
-              {
-                "id": 1194,
-                "talla": "VERDE TU",
-                "disponible": 1
               }
             ]
           },
@@ -9140,7 +9140,7 @@
       {
         "categoria": "BLUSAS",
         "num_refs": 114,
-        "uds_disponibles": 578,
+        "uds_disponibles": 577,
         "num_criticos": 7,
         "num_alerta": 1,
         "unidades_sugeridas": 34,
@@ -11793,10 +11793,10 @@
           {
             "referencia": "BLUSA CORSET",
             "categoria": "BLUSAS",
-            "disponible": 49,
-            "venta_90d": 50,
-            "rotacion_anualizada": 203,
-            "dias_cobertura": 88.2,
+            "disponible": 48,
+            "venta_90d": 51,
+            "rotacion_anualizada": 207,
+            "dias_cobertura": 84.7,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -11815,7 +11815,7 @@
               {
                 "id": 128,
                 "talla": "BLANCO/VINOTINTO TU",
-                "disponible": 23
+                "disponible": 22
               },
               {
                 "id": 126,
@@ -12721,7 +12721,7 @@
       {
         "categoria": "BUZOS",
         "num_refs": 45,
-        "uds_disponibles": 259,
+        "uds_disponibles": 257,
         "num_criticos": 5,
         "num_alerta": 0,
         "unidades_sugeridas": 6,
@@ -13344,10 +13344,10 @@
           {
             "referencia": "BUZO TEJIDO CAMPANA",
             "categoria": "BUZOS",
-            "disponible": 26,
-            "venta_90d": 49,
-            "rotacion_anualizada": 199,
-            "dias_cobertura": 47.8,
+            "disponible": 25,
+            "venta_90d": 50,
+            "rotacion_anualizada": 203,
+            "dias_cobertura": 45.0,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -13366,7 +13366,7 @@
               {
                 "id": 1586,
                 "talla": "MARFIL TU",
-                "disponible": 8
+                "disponible": 7
               },
               {
                 "id": 1570,
@@ -13590,6 +13590,35 @@
             ]
           },
           {
+            "referencia": "BUZO NALA",
+            "categoria": "BUZOS",
+            "disponible": 2,
+            "venta_90d": 2,
+            "rotacion_anualizada": 8,
+            "dias_cobertura": 90.0,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "num_variantes": 3,
+            "variantes": [
+              {
+                "id": 3419,
+                "talla": "AMARILLO TU",
+                "disponible": 0
+              },
+              {
+                "id": 3420,
+                "talla": "CAFE TU",
+                "disponible": 0
+              },
+              {
+                "id": 3418,
+                "talla": "MORADO TU",
+                "disponible": 2
+              }
+            ]
+          },
+          {
             "referencia": "TEJIDO CREMALLERA LINEA",
             "categoria": "BUZOS",
             "disponible": 2,
@@ -13799,35 +13828,6 @@
                 "id": 3190,
                 "talla": "NEGRO TU",
                 "disponible": 3
-              }
-            ]
-          },
-          {
-            "referencia": "BUZO NALA",
-            "categoria": "BUZOS",
-            "disponible": 3,
-            "venta_90d": 1,
-            "rotacion_anualizada": 4,
-            "dias_cobertura": 270.0,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "num_variantes": 3,
-            "variantes": [
-              {
-                "id": 3419,
-                "talla": "AMARILLO TU",
-                "disponible": 1
-              },
-              {
-                "id": 3420,
-                "talla": "CAFE TU",
-                "disponible": 0
-              },
-              {
-                "id": 3418,
-                "talla": "MORADO TU",
-                "disponible": 2
               }
             ]
           },
@@ -14940,7 +14940,7 @@
       {
         "categoria": "FALDAS",
         "num_refs": 51,
-        "uds_disponibles": 147,
+        "uds_disponibles": 146,
         "num_criticos": 4,
         "num_alerta": 3,
         "unidades_sugeridas": 15,
@@ -16171,6 +16171,40 @@
             ]
           },
           {
+            "referencia": "FALDA SHORT CLASICA",
+            "categoria": "FALDAS",
+            "disponible": 13,
+            "venta_90d": 5,
+            "rotacion_anualizada": 20,
+            "dias_cobertura": 234.0,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "num_variantes": 4,
+            "variantes": [
+              {
+                "id": 3270,
+                "talla": "TERRACOTA T10",
+                "disponible": 2
+              },
+              {
+                "id": 3271,
+                "talla": "TERRACOTA T12",
+                "disponible": 4
+              },
+              {
+                "id": 3268,
+                "talla": "TERRACOTA T6",
+                "disponible": 3
+              },
+              {
+                "id": 3269,
+                "talla": "TERRACOTA T8",
+                "disponible": 4
+              }
+            ]
+          },
+          {
             "referencia": "FALDA SHORT PRENSES TELA",
             "categoria": "FALDAS",
             "disponible": 18,
@@ -16220,40 +16254,6 @@
               {
                 "id": 3285,
                 "talla": "VINOTINTO TU",
-                "disponible": 4
-              }
-            ]
-          },
-          {
-            "referencia": "FALDA SHORT CLASICA",
-            "categoria": "FALDAS",
-            "disponible": 14,
-            "venta_90d": 4,
-            "rotacion_anualizada": 16,
-            "dias_cobertura": 315.0,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "num_variantes": 4,
-            "variantes": [
-              {
-                "id": 3270,
-                "talla": "TERRACOTA T10",
-                "disponible": 3
-              },
-              {
-                "id": 3271,
-                "talla": "TERRACOTA T12",
-                "disponible": 4
-              },
-              {
-                "id": 3268,
-                "talla": "TERRACOTA T6",
-                "disponible": 3
-              },
-              {
-                "id": 3269,
-                "talla": "TERRACOTA T8",
                 "disponible": 4
               }
             ]
@@ -16619,7 +16619,7 @@
       {
         "categoria": "BODYS",
         "num_refs": 57,
-        "uds_disponibles": 413,
+        "uds_disponibles": 412,
         "num_criticos": 4,
         "num_alerta": 2,
         "unidades_sugeridas": 6,
@@ -17372,6 +17372,50 @@
             ]
           },
           {
+            "referencia": "BODY BASICO CUADRADO",
+            "categoria": "BODYS",
+            "disponible": 17,
+            "venta_90d": 23,
+            "rotacion_anualizada": 93,
+            "dias_cobertura": 66.5,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "num_variantes": 6,
+            "variantes": [
+              {
+                "id": 2994,
+                "talla": "AMARILLO TU",
+                "disponible": 0
+              },
+              {
+                "id": 2514,
+                "talla": "BLANCO TU",
+                "disponible": 0
+              },
+              {
+                "id": 2995,
+                "talla": "CAFE TU",
+                "disponible": 1
+              },
+              {
+                "id": 2568,
+                "talla": "MARFIL T-U",
+                "disponible": 7
+              },
+              {
+                "id": 2513,
+                "talla": "NEGRO TU",
+                "disponible": 4
+              },
+              {
+                "id": 2993,
+                "talla": "VINOTINTO TU",
+                "disponible": 5
+              }
+            ]
+          },
+          {
             "referencia": "BODY BRILLANTE",
             "categoria": "BODYS",
             "disponible": 6,
@@ -17490,50 +17534,6 @@
                 "id": 2509,
                 "talla": "VINOTINTO TU",
                 "disponible": 1
-              }
-            ]
-          },
-          {
-            "referencia": "BODY BASICO CUADRADO",
-            "categoria": "BODYS",
-            "disponible": 18,
-            "venta_90d": 22,
-            "rotacion_anualizada": 89,
-            "dias_cobertura": 73.6,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "num_variantes": 6,
-            "variantes": [
-              {
-                "id": 2994,
-                "talla": "AMARILLO TU",
-                "disponible": 0
-              },
-              {
-                "id": 2514,
-                "talla": "BLANCO TU",
-                "disponible": 0
-              },
-              {
-                "id": 2995,
-                "talla": "CAFE TU",
-                "disponible": 2
-              },
-              {
-                "id": 2568,
-                "talla": "MARFIL T-U",
-                "disponible": 7
-              },
-              {
-                "id": 2513,
-                "talla": "NEGRO TU",
-                "disponible": 4
-              },
-              {
-                "id": 2993,
-                "talla": "VINOTINTO TU",
-                "disponible": 5
               }
             ]
           },
@@ -18804,7 +18804,7 @@
       {
         "categoria": "CORSET",
         "num_refs": 31,
-        "uds_disponibles": 273,
+        "uds_disponibles": 270,
         "num_criticos": 1,
         "num_alerta": 1,
         "unidades_sugeridas": 5,
@@ -19220,56 +19220,12 @@
             ]
           },
           {
-            "referencia": "FALDA ENCAJE CORTA",
-            "categoria": "CORSET",
-            "disponible": 17,
-            "venta_90d": 42,
-            "rotacion_anualizada": 170,
-            "dias_cobertura": 36.4,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "num_variantes": 6,
-            "variantes": [
-              {
-                "id": 2694,
-                "talla": "AMARILLO",
-                "disponible": 2
-              },
-              {
-                "id": 738,
-                "talla": "BLANCO TU",
-                "disponible": 0
-              },
-              {
-                "id": 2692,
-                "talla": "CAFE",
-                "disponible": 0
-              },
-              {
-                "id": 2693,
-                "talla": "MARFIL",
-                "disponible": 10
-              },
-              {
-                "id": 1539,
-                "talla": "NEGRO TU",
-                "disponible": 4
-              },
-              {
-                "id": 2691,
-                "talla": "ROSA",
-                "disponible": 1
-              }
-            ]
-          },
-          {
             "referencia": "CORSET COPA LARGO",
             "categoria": "CORSET",
-            "disponible": 45,
-            "venta_90d": 108,
-            "rotacion_anualizada": 438,
-            "dias_cobertura": 37.5,
+            "disponible": 44,
+            "venta_90d": 110,
+            "rotacion_anualizada": 446,
+            "dias_cobertura": 36.0,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -19358,7 +19314,7 @@
               {
                 "id": 2909,
                 "talla": "NEGRO TM",
-                "disponible": 2
+                "disponible": 1
               },
               {
                 "id": 2904,
@@ -19439,6 +19395,50 @@
                 "id": 2900,
                 "talla": "VINOTINTO TXS",
                 "disponible": 2
+              }
+            ]
+          },
+          {
+            "referencia": "FALDA ENCAJE CORTA",
+            "categoria": "CORSET",
+            "disponible": 17,
+            "venta_90d": 42,
+            "rotacion_anualizada": 170,
+            "dias_cobertura": 36.4,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "num_variantes": 6,
+            "variantes": [
+              {
+                "id": 2694,
+                "talla": "AMARILLO",
+                "disponible": 2
+              },
+              {
+                "id": 738,
+                "talla": "BLANCO TU",
+                "disponible": 0
+              },
+              {
+                "id": 2692,
+                "talla": "CAFE",
+                "disponible": 0
+              },
+              {
+                "id": 2693,
+                "talla": "MARFIL",
+                "disponible": 10
+              },
+              {
+                "id": 1539,
+                "talla": "NEGRO TU",
+                "disponible": 4
+              },
+              {
+                "id": 2691,
+                "talla": "ROSA",
+                "disponible": 1
               }
             ]
           },
@@ -19615,10 +19615,10 @@
           {
             "referencia": "BODY CELESTE MALLA",
             "categoria": "CORSET",
-            "disponible": 40,
-            "venta_90d": 40,
-            "rotacion_anualizada": 162,
-            "dias_cobertura": 90.0,
+            "disponible": 39,
+            "venta_90d": 41,
+            "rotacion_anualizada": 166,
+            "dias_cobertura": 85.6,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -19662,7 +19662,7 @@
               {
                 "id": 2414,
                 "talla": "VINOTINTO TU",
-                "disponible": 2
+                "disponible": 1
               }
             ]
           },
@@ -19746,10 +19746,10 @@
           {
             "referencia": "CORSET PETITE",
             "categoria": "CORSET",
-            "disponible": 40,
-            "venta_90d": 20,
-            "rotacion_anualizada": 81,
-            "dias_cobertura": 180.0,
+            "disponible": 39,
+            "venta_90d": 21,
+            "rotacion_anualizada": 85,
+            "dias_cobertura": 167.1,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -19763,7 +19763,7 @@
               {
                 "id": 3228,
                 "talla": "AMARILLO  TM",
-                "disponible": 1
+                "disponible": 0
               },
               {
                 "id": 3222,
@@ -20033,7 +20033,7 @@
       {
         "categoria": "CONJUNTOS",
         "num_refs": 25,
-        "uds_disponibles": 235,
+        "uds_disponibles": 234,
         "num_criticos": 1,
         "num_alerta": 0,
         "unidades_sugeridas": 2,
@@ -20393,10 +20393,10 @@
           {
             "referencia": "SUDADERA ZOE",
             "categoria": "CONJUNTOS",
-            "disponible": 45,
-            "venta_90d": 71,
-            "rotacion_anualizada": 288,
-            "dias_cobertura": 57.0,
+            "disponible": 44,
+            "venta_90d": 72,
+            "rotacion_anualizada": 292,
+            "dias_cobertura": 55.0,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -20420,7 +20420,7 @@
               {
                 "id": 782,
                 "talla": "CAMEL TU",
-                "disponible": 10
+                "disponible": 9
               },
               {
                 "id": 1256,
@@ -21390,10 +21390,10 @@
     "categorias": [
       {
         "categoria": "ANILLOS",
-        "disponible": 136,
-        "venta_90d": 221,
-        "rotacion_anualizada": 896,
-        "dias_cobertura": 55.4,
+        "disponible": 135,
+        "venta_90d": 222,
+        "rotacion_anualizada": 900,
+        "dias_cobertura": 54.7,
         "estado": "ok",
         "estado_label": "Cobertura ok",
         "sugerido": 0,
@@ -21423,10 +21423,10 @@
       },
       {
         "categoria": "ARETES",
-        "disponible": 407,
-        "venta_90d": 359,
-        "rotacion_anualizada": 1456,
-        "dias_cobertura": 102.0,
+        "disponible": 405,
+        "venta_90d": 361,
+        "rotacion_anualizada": 1464,
+        "dias_cobertura": 101.0,
         "estado": "ok",
         "estado_label": "Cobertura ok",
         "sugerido": 0,
@@ -21434,10 +21434,10 @@
       },
       {
         "categoria": "CADENAS",
-        "disponible": 384,
-        "venta_90d": 336,
-        "rotacion_anualizada": 1363,
-        "dias_cobertura": 102.9,
+        "disponible": 383,
+        "venta_90d": 337,
+        "rotacion_anualizada": 1367,
+        "dias_cobertura": 102.3,
         "estado": "ok",
         "estado_label": "Cobertura ok",
         "sugerido": 0,
@@ -21445,10 +21445,10 @@
       },
       {
         "categoria": "PULSERAS",
-        "disponible": 248,
-        "venta_90d": 212,
-        "rotacion_anualizada": 860,
-        "dias_cobertura": 105.3,
+        "disponible": 246,
+        "venta_90d": 214,
+        "rotacion_anualizada": 868,
+        "dias_cobertura": 103.5,
         "estado": "ok",
         "estado_label": "Cobertura ok",
         "sugerido": 0,
@@ -21478,10 +21478,10 @@
       },
       {
         "categoria": "TOBILLERAS",
-        "disponible": 45,
-        "venta_90d": 29,
-        "rotacion_anualizada": 118,
-        "dias_cobertura": 139.7,
+        "disponible": 44,
+        "venta_90d": 30,
+        "rotacion_anualizada": 122,
+        "dias_cobertura": 132.0,
         "estado": "ok",
         "estado_label": "Cobertura ok",
         "sugerido": 0,
@@ -21489,10 +21489,10 @@
       },
       {
         "categoria": "ACCESORIOS",
-        "disponible": 111,
-        "venta_90d": 49,
-        "rotacion_anualizada": 199,
-        "dias_cobertura": 203.9,
+        "disponible": 109,
+        "venta_90d": 51,
+        "rotacion_anualizada": 207,
+        "dias_cobertura": 192.4,
         "estado": "ok",
         "estado_label": "Cobertura ok",
         "sugerido": 0,
