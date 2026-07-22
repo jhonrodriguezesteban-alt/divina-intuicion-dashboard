@@ -550,6 +550,81 @@ def _seccion_reorden_accesorios(accesorios: dict) -> str:
   <div class="reo-cat-detalle" style="display:block; margin-top:1rem;">{filas_html}</div>"""
 
 
+def _seccion_surtido(reorden: dict) -> str:
+    """Versión "sin clics" de la solicitud de pedidos: una tabla plana, sin
+    acordeones ni categorías para desplegar -- solo lo que hay que pedir,
+    ordenado por categoría. El detalle por talla/color (para quien lo
+    necesite) sigue disponible en Inventario > Solicitud de pedidos."""
+    if not reorden:
+        return '<div class="nota">Sugerencia de pedidos aún no procesada. Corre scripts/procesar_reorden.py.</div>'
+
+    hoy_dt = datetime.now()
+    es_dia_pedido = hoy_dt.weekday() in (1, 4)  # martes=1, viernes=4
+    aviso_html = (
+        '<div class="reo-aviso-dia">📦 Hoy toca revisar pedidos a proveedores (martes/viernes).</div>'
+        if es_dia_pedido else ""
+    )
+
+    items_ropa = [
+        r for cat in reorden["ropa"]["categorias"] for r in cat["referencias"] if r["sugerido"] > 0
+    ]
+    items_ropa.sort(key=lambda r: (r["categoria"], -r["sugerido"]))
+
+    items_acc = [c for c in reorden["accesorios"]["categorias"] if c["sugerido"] > 0]
+    items_acc.sort(key=lambda c: -c["sugerido"])
+
+    total_uds = sum(r["sugerido"] for r in items_ropa) + sum(c["sugerido"] for c in items_acc)
+    kpis_html = "".join([
+        _tarjeta_kpi("Productos de ropa a pedir", _miles(len(items_ropa))),
+        _tarjeta_kpi("Categorías de accesorios a pedir", _miles(len(items_acc))),
+        _tarjeta_kpi("Unidades sugeridas en total", _miles(total_uds)),
+    ])
+
+    def _fila(nombre, categoria, disponible, estado, estado_label, sugerido):
+        return f"""<tr>
+      <td>{nombre}</td>
+      <td>{categoria}</td>
+      <td class="num">{_miles(disponible)}</td>
+      <td class="num"><span class="reo-estado {estado}">{estado_label}</span></td>
+      <td class="num" style="font-weight:700;">+{_miles(sugerido)}</td>
+    </tr>"""
+
+    filas_ropa = "".join(
+        _fila(r["referencia"].title(), r["categoria"], r["disponible"], r["estado"], r["estado_label"], r["sugerido"])
+        for r in items_ropa
+    ) or '<tr><td colspan="5" class="detalle-vacio">Nada que pedir en ropa por ahora.</td></tr>'
+
+    filas_acc = "".join(
+        _fila(c["categoria"], f'{_miles(c["num_referencias"])} referencias', c["disponible"], c["estado"], c["estado_label"], c["sugerido"])
+        for c in items_acc
+    ) or '<tr><td colspan="5" class="detalle-vacio">Nada que pedir en accesorios por ahora.</td></tr>'
+
+    return f"""
+  <h2>Qué surtir</h2>
+  <div class="subtitulo" style="margin-bottom:1rem;">
+    Lista directa de lo que hay que pedir a proveedores ahora mismo, sin necesidad de hacer clic en nada.
+    El detalle por talla/color de cada producto sigue en Inventario · Solicitud de pedidos.
+  </div>
+  {aviso_html}
+  <div class="kpi-grid">{kpis_html}</div>
+
+  <h3 class="subseccion">Ropa</h3>
+  <div class="tabla-scroll">
+    <table class="tabla-categorias">
+      <thead><tr><th>Producto</th><th>Categoría</th><th class="num">Disponible</th><th class="num">Estado</th><th class="num">A pedir</th></tr></thead>
+      <tbody>{filas_ropa}</tbody>
+    </table>
+  </div>
+
+  <h3 class="subseccion">Accesorios</h3>
+  <div class="tabla-scroll">
+    <table class="tabla-categorias">
+      <thead><tr><th>Categoría</th><th></th><th class="num">Disponible</th><th class="num">Estado</th><th class="num">A pedir</th></tr></thead>
+      <tbody>{filas_acc}</tbody>
+    </table>
+  </div>"""
+
+
 def _seccion_reorden(reorden: dict) -> str:
     if not reorden:
         return '<div class="nota">Sugerencia de pedidos aún no procesada. Corre scripts/procesar_reorden.py.</div>'
@@ -1745,6 +1820,7 @@ def generar_dashboard_html(datos: dict = None) -> str:
     inventario_resumen_html = _seccion_inventario_resumen(inventario)
     liquidacion_html = _seccion_liquidacion(liquidacion)
     reorden_html = _seccion_reorden(reorden)
+    surtido_html = _seccion_surtido(reorden)
 
     generado = datetime.now().strftime("%Y-%m-%d %H:%M")
     diarias_json = json.dumps(ventas_diarias, ensure_ascii=False)
@@ -1773,6 +1849,7 @@ def generar_dashboard_html(datos: dict = None) -> str:
   <div class="nav-panel" id="nav-panel">
     <div class="nav-panel-titulo">Divina Intuición</div>
     <div class="nav-item activo" data-nav="gerencia" onclick="navTo('gerencia')">🏛️&nbsp; Mesa de Gerencia</div>
+    <div class="nav-item" data-nav="surtido" onclick="navTo('surtido')">🛒&nbsp; Qué surtir</div>
     <div class="nav-item" data-nav="inventario" onclick="navTo('inventario')">📦&nbsp; Inventario</div>
     <div class="nav-item" data-nav="comisiones" onclick="navTo('comisiones')">💼&nbsp; Comisiones</div>
   </div>
@@ -1858,6 +1935,10 @@ def generar_dashboard_html(datos: dict = None) -> str:
       Cartera: {_miles(cartera["num_pendiente_de_cobro"])} documentos (remisiones + facturas) pendientes de cobro por {_cop(cartera["pendiente_de_cobro"])} ·
       {_miles(cartera["num_anuladas_historico"])} documentos anulados excluidos del histórico.
     </div>
+  </div>
+
+  <div id="sec-surtido" class="seccion" style="display:none">
+    {surtido_html}
   </div>
 
   <div id="sec-inventario" class="seccion" style="display:none">

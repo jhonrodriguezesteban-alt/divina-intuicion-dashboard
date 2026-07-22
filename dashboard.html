@@ -408,6 +408,7 @@
   <div class="nav-panel" id="nav-panel">
     <div class="nav-panel-titulo">Divina Intuición</div>
     <div class="nav-item activo" data-nav="gerencia" onclick="navTo('gerencia')">🏛️&nbsp; Mesa de Gerencia</div>
+    <div class="nav-item" data-nav="surtido" onclick="navTo('surtido')">🛒&nbsp; Qué surtir</div>
     <div class="nav-item" data-nav="inventario" onclick="navTo('inventario')">📦&nbsp; Inventario</div>
     <div class="nav-item" data-nav="comisiones" onclick="navTo('comisiones')">💼&nbsp; Comisiones</div>
   </div>
@@ -11549,6 +11550,528 @@
     </div>
   </div>
 
+  <div id="sec-surtido" class="seccion" style="display:none">
+    
+  <h2>Qué surtir</h2>
+  <div class="subtitulo" style="margin-bottom:1rem;">
+    Lista directa de lo que hay que pedir a proveedores ahora mismo, sin necesidad de hacer clic en nada.
+    El detalle por talla/color de cada producto sigue en Inventario · Solicitud de pedidos.
+  </div>
+  <div class="reo-aviso-dia">📦 Hoy toca revisar pedidos a proveedores (martes/viernes).</div>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Productos de ropa a pedir</div>
+      <div class="kpi-valor">80</div>
+      
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Categorías de accesorios a pedir</div>
+      <div class="kpi-valor">0</div>
+      
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Unidades sugeridas en total</div>
+      <div class="kpi-valor">187</div>
+      
+    </div></div>
+
+  <h3 class="subseccion">Ropa</h3>
+  <div class="tabla-scroll">
+    <table class="tabla-categorias">
+      <thead><tr><th>Producto</th><th>Categoría</th><th class="num">Disponible</th><th class="num">Estado</th><th class="num">A pedir</th></tr></thead>
+      <tbody><tr>
+      <td>Camisa Overzise Basic</td>
+      <td>BLUSAS</td>
+      <td class="num">2</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+7</td>
+    </tr><tr>
+      <td>Body Tira Cuello</td>
+      <td>BLUSAS</td>
+      <td class="num">8</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+6</td>
+    </tr><tr>
+      <td>Blusa Body Encaje</td>
+      <td>BLUSAS</td>
+      <td class="num">2</td>
+      <td class="num"><span class="reo-estado alerta">Alerta</span></td>
+      <td class="num" style="font-weight:700;">+4</td>
+    </tr><tr>
+      <td>Camisa Colombia W</td>
+      <td>BLUSAS</td>
+      <td class="num">9</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+3</td>
+    </tr><tr>
+      <td>Camisa Colombia Bordada</td>
+      <td>BLUSAS</td>
+      <td class="num">4</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+2</td>
+    </tr><tr>
+      <td>Blusa Globo Larga</td>
+      <td>BLUSAS</td>
+      <td class="num">9</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+2</td>
+    </tr><tr>
+      <td>Bandeja Malla Corta</td>
+      <td>BLUSAS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Blusa Bahia</td>
+      <td>BLUSAS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Body</td>
+      <td>BLUSAS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Camisa Malla Flor</td>
+      <td>BLUSAS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Overzise Salmos</td>
+      <td>BLUSAS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Blusa Mariposa</td>
+      <td>BLUSAS</td>
+      <td class="num">2</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Overzise Boston</td>
+      <td>BLUSAS</td>
+      <td class="num">1</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Top Rib</td>
+      <td>BLUSAS</td>
+      <td class="num">2</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Camisa Perla</td>
+      <td>BLUSAS</td>
+      <td class="num">3</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Blusa Radical</td>
+      <td>BLUSAS</td>
+      <td class="num">4</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Body Estraple Lau</td>
+      <td>BODYS</td>
+      <td class="num">2</td>
+      <td class="num"><span class="reo-estado alerta">Alerta</span></td>
+      <td class="num" style="font-weight:700;">+2</td>
+    </tr><tr>
+      <td>Body Cuadrado Manga Corta</td>
+      <td>BODYS</td>
+      <td class="num">1</td>
+      <td class="num"><span class="reo-estado alerta">Alerta</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Body Basico Cuadrado Verde</td>
+      <td>BODYS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Body Estraple Malla</td>
+      <td>BODYS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Body Estraple Malla Like</td>
+      <td>BODYS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Buzo Top</td>
+      <td>BUZOS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+3</td>
+    </tr><tr>
+      <td>Buzo Tejido Cebra</td>
+      <td>BUZOS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+2</td>
+    </tr><tr>
+      <td>Buzo Moka</td>
+      <td>BUZOS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Chaleco Peluche Santa</td>
+      <td>CHALECOS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+3</td>
+    </tr><tr>
+      <td>Chaqueta Santa</td>
+      <td>CHALECOS</td>
+      <td class="num">2</td>
+      <td class="num"><span class="reo-estado alerta">Alerta</span></td>
+      <td class="num" style="font-weight:700;">+2</td>
+    </tr><tr>
+      <td>Chamarra Hombro</td>
+      <td>CHAQUETAS</td>
+      <td class="num">1</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+11</td>
+    </tr><tr>
+      <td>Chamarra Hombro Correa</td>
+      <td>CHAQUETAS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+4</td>
+    </tr><tr>
+      <td>Chamarra Cuero Corta</td>
+      <td>CHAQUETAS</td>
+      <td class="num">5</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+4</td>
+    </tr><tr>
+      <td>Chaqueta Jean Maos</td>
+      <td>CHAQUETAS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+3</td>
+    </tr><tr>
+      <td>Chaqueta Ovejera</td>
+      <td>CHAQUETAS</td>
+      <td class="num">1</td>
+      <td class="num"><span class="reo-estado alerta">Alerta</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Chaqueta Tokio</td>
+      <td>CHAQUETAS</td>
+      <td class="num">1</td>
+      <td class="num"><span class="reo-estado alerta">Alerta</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Chaqueta Chill</td>
+      <td>CHAQUETAS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Chaqueta Peluche</td>
+      <td>CHAQUETAS</td>
+      <td class="num">1</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Chaqueta Paño Sofia</td>
+      <td>CHAQUETAS</td>
+      <td class="num">5</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Sudadera Luna</td>
+      <td>CONJUNTOS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Sudadera Clohe</td>
+      <td>CONJUNTOS</td>
+      <td class="num">1</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Falda Satin Encaje</td>
+      <td>CORSET</td>
+      <td class="num">1</td>
+      <td class="num"><span class="reo-estado alerta">Alerta</span></td>
+      <td class="num" style="font-weight:700;">+3</td>
+    </tr><tr>
+      <td>Corset Encaje Princesa</td>
+      <td>CORSET</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+2</td>
+    </tr><tr>
+      <td>Falda Short Georgina</td>
+      <td>FALDAS</td>
+      <td class="num">4</td>
+      <td class="num"><span class="reo-estado alerta">Alerta</span></td>
+      <td class="num" style="font-weight:700;">+6</td>
+    </tr><tr>
+      <td>Correas</td>
+      <td>FALDAS</td>
+      <td class="num">6</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+3</td>
+    </tr><tr>
+      <td>Falda Short Prenses Viena</td>
+      <td>FALDAS</td>
+      <td class="num">2</td>
+      <td class="num"><span class="reo-estado alerta">Alerta</span></td>
+      <td class="num" style="font-weight:700;">+2</td>
+    </tr><tr>
+      <td>Falda Short Berska</td>
+      <td>FALDAS</td>
+      <td class="num">1</td>
+      <td class="num"><span class="reo-estado alerta">Alerta</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Jean Tou Palazo Oscuro Rotos</td>
+      <td>FALDAS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Falda Jean Correa</td>
+      <td>FALDAS</td>
+      <td class="num">2</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Falda Satin</td>
+      <td>FALDAS</td>
+      <td class="num">1</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Juegos $55000</td>
+      <td>JUEGOS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Jean Animal Print</td>
+      <td>PANTALONES</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+5</td>
+    </tr><tr>
+      <td>Pant Cuerina Negro Tercio</td>
+      <td>PANTALONES</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+4</td>
+    </tr><tr>
+      <td>Jean Nube</td>
+      <td>PANTALONES</td>
+      <td class="num">9</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+4</td>
+    </tr><tr>
+      <td>Falda Malla</td>
+      <td>PANTALONES</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+3</td>
+    </tr><tr>
+      <td>Jean Melisa</td>
+      <td>PANTALONES</td>
+      <td class="num">1</td>
+      <td class="num"><span class="reo-estado alerta">Alerta</span></td>
+      <td class="num" style="font-weight:700;">+2</td>
+    </tr><tr>
+      <td>Chaleco Jean Ada</td>
+      <td>PANTALONES</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Jean Acanalado</td>
+      <td>PANTALONES</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Jean Blanco Latente</td>
+      <td>PANTALONES</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Jean Glox Palazo Clasico Jean</td>
+      <td>PANTALONES</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Pantalon Satinado Tiras</td>
+      <td>PANTALONES</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Pantalon Zebra</td>
+      <td>PANTALONES</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Jean Bless</td>
+      <td>PANTALONES</td>
+      <td class="num">2</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Jean Ada Palazo</td>
+      <td>PANTALONES</td>
+      <td class="num">3</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Pant Cuerina Vibora</td>
+      <td>PANTALONES</td>
+      <td class="num">4</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Pantalon Encaje</td>
+      <td>PANTALONES</td>
+      <td class="num">4</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Jean Acanalado Bota Recta</td>
+      <td>PANTALONES</td>
+      <td class="num">6</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Short Jean Uzi</td>
+      <td>PANTALONES</td>
+      <td class="num">4</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Blusa Emma Encaje</td>
+      <td>SIN CATEGORÍA</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+3</td>
+    </tr><tr>
+      <td>Jean Gris Mandala</td>
+      <td>SIN CATEGORÍA</td>
+      <td class="num">1</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+3</td>
+    </tr><tr>
+      <td>Body Multicolor A/B</td>
+      <td>SIN CATEGORÍA</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Body Multicolor B/Ab</td>
+      <td>SIN CATEGORÍA</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Body Multicolor B/N</td>
+      <td>SIN CATEGORÍA</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Body Multicolor C/B</td>
+      <td>SIN CATEGORÍA</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Brazalete $23000</td>
+      <td>SIN CATEGORÍA</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Chaleco Santa Cafe S/M</td>
+      <td>SIN CATEGORÍA</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Jean Baggy Clasico</td>
+      <td>SIN CATEGORÍA</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Capa Jean</td>
+      <td>VESTIDOS</td>
+      <td class="num">1</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+34</td>
+    </tr><tr>
+      <td>Jean Vintage</td>
+      <td>VESTIDOS</td>
+      <td class="num">6</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+3</td>
+    </tr><tr>
+      <td>Vestido Liz</td>
+      <td>VESTIDOS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+2</td>
+    </tr><tr>
+      <td>Capa Jean Gamuza</td>
+      <td>VESTIDOS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Vestido Coqueta Jean Oscuro</td>
+      <td>VESTIDOS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Vestido Malla Bandeja Largo</td>
+      <td>VESTIDOS</td>
+      <td class="num">0</td>
+      <td class="num"><span class="reo-estado critico">Crítico</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr><tr>
+      <td>Vestido Globo</td>
+      <td>VESTIDOS</td>
+      <td class="num">3</td>
+      <td class="num"><span class="reo-estado ok">Cobertura ok</span></td>
+      <td class="num" style="font-weight:700;">+1</td>
+    </tr></tbody>
+    </table>
+  </div>
+
+  <h3 class="subseccion">Accesorios</h3>
+  <div class="tabla-scroll">
+    <table class="tabla-categorias">
+      <thead><tr><th>Categoría</th><th></th><th class="num">Disponible</th><th class="num">Estado</th><th class="num">A pedir</th></tr></thead>
+      <tbody><tr><td colspan="5" class="detalle-vacio">Nada que pedir en accesorios por ahora.</td></tr></tbody>
+    </table>
+  </div>
+  </div>
+
   <div id="sec-inventario" class="seccion" style="display:none">
     <h2>Inventario</h2>
     
@@ -13079,7 +13602,7 @@
   <script>document.addEventListener('DOMContentLoaded', function(){ renderComisiones(7); });</script>
   </div>
 
-  <footer>Generado el 2026-07-21 19:06 · datos de Effi Systems</footer>
+  <footer>Generado el 2026-07-21 19:34 · datos de Effi Systems</footer>
   <div class="powered-by">Powered by Divina Intuición IA</div>
 
   </div>
