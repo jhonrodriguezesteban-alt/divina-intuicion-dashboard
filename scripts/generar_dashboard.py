@@ -479,7 +479,11 @@ def _fila_reorden_ref(ref: dict) -> str:
     detalle = ""
     if tiene_tallas:
         items = "".join(
-            f'<div class="detalle-item"><span>{v["talla"]}</span><span>{_miles(v["disponible"])} disp.</span></div>'
+            f'<div class="detalle-item{" detalle-item-surtir" if v["sugerido"] > 0 else ""}">'
+            f'<span>{v["talla"]}</span>'
+            f'<span>{_miles(v["disponible"])} disp.'
+            + (f' · <span class="reo-variante-sug">pedir {_miles(v["sugerido"])}</span>' if v["sugerido"] > 0 else '')
+            + '</span></div>'
             for v in variantes
         )
         detalle = f'<div class="reo-variantes">{items}</div>'
@@ -1715,7 +1719,12 @@ _CSS = """
   .reo-tallas-count { color: var(--texto-sub); font-weight: 400; font-size: .78em; }
   .reo-variantes { display: none; padding: .4rem 0 .6rem 1.6rem; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: .3rem .8rem; }
   .reo-ref-wrap.abierto .reo-variantes { display: grid; }
-  .reo-variantes .detalle-item { border-bottom: none; padding: .15rem 0; font-size: .78rem; }
+  .reo-variantes .detalle-item {
+    border-bottom: none; padding: .15rem 0; font-size: .78rem;
+    flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: .1rem;
+  }
+  .reo-variantes .detalle-item-surtir { font-weight: 600; }
+  .reo-variante-sug { color: var(--verde); font-weight: 700; }
 
   .ref-suc-wrap.expandible { cursor: pointer; }
   .ref-suc-wrap.expandible:hover .detalle-item { background: var(--destacado-bg); }

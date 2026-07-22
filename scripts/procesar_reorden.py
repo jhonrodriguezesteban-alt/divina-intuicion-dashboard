@@ -102,6 +102,54 @@ def _costo_unitario(grupo: pd.DataFrame) -> float:
     return float(costos_validos.mean()) if len(costos_validos) else 0.0
 
 
+def _distribuir_sugerido_variantes(disponibles: list, sugerido: int) -> list:
+    """El sugerido se calcula por REFERENCIA (ej. "Jean Melisa: +2"), pero
+    Jenifer necesita saber qué talla/color pedir, no solo cuántas unidades
+    en total -- "+2" sin más no dice si son 2 de la misma talla o una de
+    cada una. Se reparte nivelando primero las variantes con menos stock
+    (como llenar de agua los vasos más vacíos hasta que quedan parejos),
+    sin usar venta por variante: con 90 días de ventana, la venta de una
+    sola combinación color+talla es demasiado poca para proyectar algo
+    confiable -- el nivel de stock ya disponible sí es un dato sólido."""
+    n = len(disponibles)
+    if n == 0 or sugerido <= 0:
+        return [0] * n
+    if n == 1:
+        return [sugerido]
+
+    orden = sorted(range(n), key=lambda i: disponibles[i])
+    niveles = [float(disponibles[i]) for i in orden]
+    restante = float(sugerido)
+    nivel_actual = niveles[0]
+    i = 0
+    while i < n - 1 and restante > 0:
+        siguiente = niveles[i + 1]
+        tam_grupo = i + 1
+        necesario = (siguiente - nivel_actual) * tam_grupo
+        if restante >= necesario:
+            restante -= necesario
+            nivel_actual = siguiente
+            i += 1
+        else:
+            nivel_actual += restante / tam_grupo
+            restante = 0
+    if restante > 0:
+        nivel_actual += restante / n
+        restante = 0
+
+    asignado_orden = [max(0.0, nivel_actual - niveles[k]) for k in range(n)]
+    base = [int(a) for a in asignado_orden]  # trunca; se completa abajo por mayor resto
+    falta = sugerido - sum(base)
+    restos_desc = sorted(range(n), key=lambda k: (asignado_orden[k] - base[k]), reverse=True)
+    for k in restos_desc[:falta]:
+        base[k] += 1
+
+    resultado = [0] * n
+    for pos, idx_original in enumerate(orden):
+        resultado[idx_original] = base[pos]
+    return resultado
+
+
 def _limpiar_nan(obj):
     """pandas convierte los None de dias_cobertura/tendencia_interanual en
     NaN al pasar por un DataFrame (aunque la columna venga de una lista de
@@ -137,13 +185,17 @@ def _procesar_ropa(articulos: pd.DataFrame, cfg: dict) -> dict:
         sugerido = int(_sugerido(venta_diaria_ajustada, disponible, cfg))
         costo_unitario = _costo_unitario(grupo)
 
+        filas_variantes = grupo.sort_values("Nombre")
+        disponibles_variantes = [int(v) for v in filas_variantes["Stock total empresa"]]
+        sugerido_por_variante = _distribuir_sugerido_variantes(disponibles_variantes, sugerido)
         variantes = [
             {
                 "id": int(r["ID"]),
                 "talla": talla_de(r["Nombre"], referencia),
                 "disponible": int(r["Stock total empresa"]),
+                "sugerido": sugerido_por_variante[idx],
             }
-            for _, r in grupo.sort_values("Nombre").iterrows()
+            for idx, (_, r) in enumerate(filas_variantes.iterrows())
         ]
 
         filas.append({
