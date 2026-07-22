@@ -38,7 +38,7 @@
     padding: 2.5rem 3rem 4rem;
   }
   header.header-top { margin-bottom: 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-  .header-badges { display: flex; align-items: center; gap: .7rem; }
+  .header-badges { display: flex; align-items: center; gap: .7rem; margin-left: auto; }
   .live-badge {
     display: flex; align-items: center; gap: .45rem; font-size: .74rem; color: var(--texto-sub);
     text-transform: uppercase; letter-spacing: .04em; padding: .4rem .8rem;
@@ -67,9 +67,11 @@
     font-size: .7rem; letter-spacing: .04em; color: var(--texto-sub); text-transform: uppercase;
   }
   .nav-hamburger {
-    width: 42px; height: 42px; flex-shrink: 0;
-    border-radius: 8px; border: 1px solid var(--borde);
-    background: var(--card); cursor: pointer; font-size: 1.15rem;
+    position: fixed; top: 1.5rem; left: 1.5rem; z-index: 41;
+    width: 54px; height: 54px; flex-shrink: 0;
+    border-radius: 10px; border: 1px solid var(--borde);
+    background: var(--card); cursor: pointer; font-size: 1.5rem;
+    box-shadow: 0 2px 10px rgba(30, 27, 22, .1);
   }
   .nav-hamburger:hover { background: var(--destacado-bg); }
   .nav-overlay {
@@ -255,16 +257,32 @@
   .reo-badge + .reo-badge { margin-left: .4rem; }
   .reo-badge.critico { background: var(--rojo-bg); color: var(--rojo); margin-left: auto; }
   .reo-badge.alerta { background: var(--ambar-bg); color: var(--ambar); }
-  .reo-badge.sugerido { background: var(--verde-bg); color: var(--verde); }
+  .reo-badge.sugerido, .reo-badge.inversion { background: var(--verde-bg); color: var(--verde); }
   .reo-cat-detalle { display: none; border-top: 1px solid var(--borde); padding: .3rem 1.1rem .8rem; }
   .reo-cat-wrap.abierto .reo-cat-detalle { display: block; }
-  .reo-fila { display: grid; grid-template-columns: 1fr 100px 120px 110px 70px; gap: .7rem; align-items: center; padding: .5rem 0; border-bottom: 1px dotted var(--borde); font-size: .82rem; }
+  .reo-fila {
+    display: grid; grid-template-columns: 1.4fr 85px 125px 90px 135px 75px 100px;
+    gap: .6rem; align-items: center; padding: .55rem 0; border-bottom: 1px dotted var(--borde); font-size: .8rem;
+  }
+  .reo-fila-header {
+    border-bottom: 1px solid var(--borde); padding-bottom: .5rem; cursor: default;
+  }
+  .reo-fila-header > div {
+    text-transform: uppercase; letter-spacing: .02em; font-size: .66rem; font-weight: 700;
+    color: var(--texto-sub); background: none; padding: 0;
+  }
   .reo-nombre { font-weight: 500; }
   .reo-disp, .reo-rot { color: var(--texto-sub); text-align: right; }
+  .reo-rot-sub { font-size: .68rem; color: var(--texto-sub); opacity: .8; }
+  .reo-tendencia-col, .reo-tendencia { text-align: center; font-size: .78rem; font-weight: 700; }
+  .reo-tendencia.pos { color: var(--verde); }
+  .reo-tendencia.neg { color: var(--rojo); }
+  .reo-tendencia.neutral { color: var(--texto-sub); font-weight: 400; }
   .reo-estado { text-align: center; font-weight: 700; font-size: .72rem; padding: .2rem .4rem; border-radius: 6px; }
   .reo-estado.critico { background: var(--rojo-bg); color: var(--rojo); }
   .reo-estado.alerta { background: var(--ambar-bg); color: var(--ambar); }
   .reo-sug { text-align: right; font-weight: 700; }
+  .reo-inversion { text-align: right; color: var(--texto-sub); }
   .reo-ref-wrap.expandible { cursor: pointer; }
   .reo-ref-wrap.expandible:hover .reo-fila { background: var(--destacado-bg); }
   .reo-tallas-count { color: var(--texto-sub); font-weight: 400; font-size: .78em; }
@@ -346,6 +364,7 @@
   @media (max-width: 640px) {
     body { padding: 1.4rem 1rem 3rem; }
     header.header-top { gap: .6rem; }
+    .nav-hamburger { top: 1rem; left: 1rem; width: 46px; height: 46px; font-size: 1.3rem; }
     .live-badge { font-size: .68rem; padding: .35rem .6rem; }
     .logout-btn { padding: .4rem .8rem; font-size: .72rem; }
     .marca-central { margin: 1.1rem 0 1.6rem; }
@@ -369,8 +388,9 @@
       grid-template-columns: 1fr !important; row-gap: .3rem; padding: .8rem 0;
     }
     .suc-cifras, .cat-valor, .cat-margen, .ref-unidades, .ref-valor,
-    .reo-disp, .reo-rot, .reo-sug, .liq-disp, .liq-valor { text-align: left; }
-    .reo-estado { justify-self: start; }
+    .reo-disp, .reo-rot, .reo-sug, .reo-inversion, .liq-disp, .liq-valor { text-align: left; }
+    .reo-estado, .reo-tendencia { justify-self: start; }
+    .reo-fila-header { display: none; } /* columnas fijas no aportan apiladas en 1 columna; cada dato mobile ya trae su unidad como sufijo */
 
     .reo-cat-header { flex-direction: column; align-items: flex-start; gap: .4rem; }
     .reo-badge, .reo-badge + .reo-badge { margin-left: 0; }
@@ -11563,7 +11583,7 @@
   <div class="kpi-grid">
     <div class="kpi-card">
       <div class="kpi-label">Críticas</div>
-      <div class="kpi-valor">68</div>
+      <div class="kpi-valor">67</div>
       <div class="kpi-sub">cobertura ≤ 7 días</div>
     </div>
     <div class="kpi-card">
@@ -11583,8 +11603,13 @@
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Unidades sugeridas</div>
-      <div class="kpi-valor">187</div>
+      <div class="kpi-valor">324</div>
       <div class="kpi-sub">a pedir a proveedores</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Inversión sugerida</div>
+      <div class="kpi-valor">$16.738.732</div>
+      <div class="kpi-sub">costo del surtido sugerido</div>
     </div></div>
   <div style="margin-top:1.2rem;">
     <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
@@ -11592,17 +11617,31 @@
         <span class="chevron">▶</span>
         <span class="reo-cat-nombre">PANTALONES</span>
         <span class="reo-cat-meta">151 refs · 709 uds disponibles</span>
-        <span class="reo-badge critico">18 crítico</span><span class="reo-badge alerta">1 alerta</span><span class="reo-badge sugerido">Sugerido: 30 uds</span>
+        <span class="reo-badge critico">18 crítico</span><span class="reo-badge alerta">1 alerta</span><span class="reo-badge sugerido">Sugerido: 70 uds</span><span class="reo-badge inversion">Inversión: $3.798.811</span>
       </div>
       <div class="reo-cat-detalle">
+        
+      <div class="reo-fila reo-fila-header">
+        <div class="reo-nombre">Referencia</div>
+        <div class="reo-disp">Disponible</div>
+        <div class="reo-rot">Rotación (año proy.)</div>
+        <div class="reo-tendencia-col">Tendencia vs año pasado</div>
+        <div class="reo-estado">Cobertura</div>
+        <div class="reo-sug">Sugerido</div>
+        <div class="reo-inversion">Inversión</div>
+      </div>
         
       <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Jean Melisa <span class="reo-tallas-count">· 4 tallas</span></div>
           <div class="reo-disp">1 disp.</div>
-          <div class="reo-rot">41 uds/año</div>
-          <div class="reo-estado alerta">Alerta</div>
+          <div class="reo-rot">41 uds/año
+            <div class="reo-rot-sub">19 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado alerta">9d · Alerta</div>
           <div class="reo-sug">+2</div>
+          <div class="reo-inversion">$130.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>AZUL T10</span><span>1 disp.</span></div><div class="detalle-item"><span>AZUL T12</span><span>0 disp.</span></div><div class="detalle-item"><span>AZUL T6</span><span>0 disp.</span></div><div class="detalle-item"><span>AZUL T8</span><span>0 disp.</span></div></div>
       </div>
@@ -11610,9 +11649,13 @@
         <div class="reo-fila">
           <div class="reo-nombre">Chaleco Jean Ada</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">8 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">8 uds/año
+            <div class="reo-rot-sub">10 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$52.000</div>
         </div>
         
       </div>
@@ -11620,9 +11663,13 @@
         <div class="reo-fila">
           <div class="reo-nombre">Falda Malla</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">32 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">32 uds/año
+            <div class="reo-rot-sub">19 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+3</div>
+          <div class="reo-inversion">$120.000</div>
         </div>
         
       </div>
@@ -11630,9 +11677,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Jean Acanalado <span class="reo-tallas-count">· 5 tallas</span></div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">12 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">12 uds/año
+            <div class="reo-rot-sub">5 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$80.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>T12</span><span>0 disp.</span></div><div class="detalle-item"><span>T10</span><span>0 disp.</span></div><div class="detalle-item"><span>T4</span><span>0 disp.</span></div><div class="detalle-item"><span>T6</span><span>0 disp.</span></div><div class="detalle-item"><span>T8</span><span>0 disp.</span></div></div>
       </div>
@@ -11640,9 +11691,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Jean Animal Print <span class="reo-tallas-count">· 6 tallas</span></div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">57 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">57 uds/año
+            <div class="reo-rot-sub">70 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+5</div>
+          <div class="reo-inversion">$425.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>GRIS T10</span><span>0 disp.</span></div><div class="detalle-item"><span>GRIS T12</span><span>0 disp.</span></div><div class="detalle-item"><span>GRIS T14</span><span>0 disp.</span></div><div class="detalle-item"><span>GRIS T4</span><span>0 disp.</span></div><div class="detalle-item"><span>GRIS T6</span><span>0 disp.</span></div><div class="detalle-item"><span>GRIS T8</span><span>0 disp.</span></div></div>
       </div>
@@ -11650,49 +11705,41 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Jean Blanco Latente <span class="reo-tallas-count">· 4 tallas</span></div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">12 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">12 uds/año
+            <div class="reo-rot-sub">10 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$52.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>T10</span><span>0 disp.</span></div><div class="detalle-item"><span>T4</span><span>0 disp.</span></div><div class="detalle-item"><span>T6</span><span>0 disp.</span></div><div class="detalle-item"><span>T8</span><span>0 disp.</span></div></div>
-      </div>
-      <div class="reo-ref-wrap">
-        <div class="reo-fila">
-          <div class="reo-nombre">Jean Glox Palazo Clasico Jean</div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">8 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+1</div>
-        </div>
-        
       </div>
       <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Pant Cuerina Negro Tercio <span class="reo-tallas-count">· 4 tallas</span></div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">53 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">53 uds/año
+            <div class="reo-rot-sub">13 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+4</div>
+          <div class="reo-inversion">$200.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>T10</span><span>0 disp.</span></div><div class="detalle-item"><span>T12</span><span>0 disp.</span></div><div class="detalle-item"><span>T6</span><span>0 disp.</span></div><div class="detalle-item"><span>T8</span><span>0 disp.</span></div></div>
       </div>
       <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
         <div class="reo-fila">
-          <div class="reo-nombre"><span class="chevron">▶</span> Pantalon Satinado Tiras <span class="reo-tallas-count">· 3 tallas</span></div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">12 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+1</div>
-        </div>
-        <div class="reo-variantes"><div class="detalle-item"><span>NEGRO TALLA GRANDE</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TALLA PEQUEÑO</span><span>0 disp.</span></div><div class="detalle-item"><span>VINOTINTO TALLA PEQUEÑA</span><span>0 disp.</span></div></div>
-      </div>
-      <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
-        <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Pantalon Zebra <span class="reo-tallas-count">· 4 tallas</span></div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">8 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">8 uds/año
+            <div class="reo-rot-sub">2 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$58.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>NEGRO TL</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TM</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TS</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TXL</span><span>0 disp.</span></div></div>
       </div>
@@ -11700,9 +11747,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Jean Bless <span class="reo-tallas-count">· 11 tallas</span></div>
           <div class="reo-disp">2 disp.</div>
-          <div class="reo-rot">36 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">36 uds/año
+            <div class="reo-rot-sub">14 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">20d · Cobertura ok</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$57.455</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>T6</span><span>0 disp.</span></div><div class="detalle-item"><span>AZUL T10</span><span>0 disp.</span></div><div class="detalle-item"><span>AZUL T12</span><span>0 disp.</span></div><div class="detalle-item"><span>AZUL T4</span><span>1 disp.</span></div><div class="detalle-item"><span>AZUL T6</span><span>1 disp.</span></div><div class="detalle-item"><span>AZUL T8</span><span>0 disp.</span></div><div class="detalle-item"><span>T10</span><span>0 disp.</span></div><div class="detalle-item"><span>T12</span><span>0 disp.</span></div><div class="detalle-item"><span>T14</span><span>0 disp.</span></div><div class="detalle-item"><span>T4</span><span>0 disp.</span></div><div class="detalle-item"><span>T8</span><span>0 disp.</span></div></div>
       </div>
@@ -11710,9 +11761,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Jean Ada Palazo <span class="reo-tallas-count">· 5 tallas</span></div>
           <div class="reo-disp">3 disp.</div>
-          <div class="reo-rot">53 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">53 uds/año
+            <div class="reo-rot-sub">31 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">20.8d · Cobertura ok</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$65.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>T10</span><span>0 disp.</span></div><div class="detalle-item"><span>T12</span><span>3 disp.</span></div><div class="detalle-item"><span>T4</span><span>0 disp.</span></div><div class="detalle-item"><span>T6</span><span>0 disp.</span></div><div class="detalle-item"><span>T8</span><span>0 disp.</span></div></div>
       </div>
@@ -11720,9 +11775,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Jean Nube <span class="reo-tallas-count">· 5 tallas</span></div>
           <div class="reo-disp">9 disp.</div>
-          <div class="reo-rot">158 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">158 uds/año
+            <div class="reo-rot-sub">49 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">20.8d · Cobertura ok</div>
           <div class="reo-sug">+4</div>
+          <div class="reo-inversion">$336.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>BLANCO T10</span><span>2 disp.</span></div><div class="detalle-item"><span>BLANCO T12</span><span>6 disp.</span></div><div class="detalle-item"><span>BLANCO T4</span><span>0 disp.</span></div><div class="detalle-item"><span>BLANCO T6</span><span>1 disp.</span></div><div class="detalle-item"><span>BLANCO T8</span><span>0 disp.</span></div></div>
       </div>
@@ -11730,9 +11789,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Pant Cuerina Vibora <span class="reo-tallas-count">· 11 tallas</span></div>
           <div class="reo-disp">4 disp.</div>
-          <div class="reo-rot">65 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">65 uds/año
+            <div class="reo-rot-sub">16 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">22.5d · Cobertura ok</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$58.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>BEIGE T10</span><span>1 disp.</span></div><div class="detalle-item"><span>BEIGE T6</span><span>0 disp.</span></div><div class="detalle-item"><span>BEIGE T8</span><span>0 disp.</span></div><div class="detalle-item"><span>CAFE T10</span><span>1 disp.</span></div><div class="detalle-item"><span>CAFE T12</span><span>1 disp.</span></div><div class="detalle-item"><span>CAFE T6</span><span>0 disp.</span></div><div class="detalle-item"><span>CAFE T8</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO T10</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO T12</span><span>1 disp.</span></div><div class="detalle-item"><span>NEGRO T6</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO T8</span><span>0 disp.</span></div></div>
       </div>
@@ -11740,9 +11803,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Pantalon Encaje <span class="reo-tallas-count">· 2 tallas</span></div>
           <div class="reo-disp">4 disp.</div>
-          <div class="reo-rot">65 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">65 uds/año
+            <div class="reo-rot-sub">16 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">22.5d · Cobertura ok</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$35.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>MARFIL TU</span><span>2 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>2 disp.</span></div></div>
       </div>
@@ -11750,9 +11817,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Jean Acanalado Bota Recta <span class="reo-tallas-count">· 6 tallas</span></div>
           <div class="reo-disp">6 disp.</div>
-          <div class="reo-rot">85 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">85 uds/año
+            <div class="reo-rot-sub">21 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">25.7d · Cobertura ok</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$70.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>AZUL CLARO T10</span><span>1 disp.</span></div><div class="detalle-item"><span>AZUL CLARO T12</span><span>0 disp.</span></div><div class="detalle-item"><span>AZUL CLARO T4</span><span>1 disp.</span></div><div class="detalle-item"><span>AZUL CLARO T6</span><span>1 disp.</span></div><div class="detalle-item"><span>AZUL CLARO T8</span><span>3 disp.</span></div><div class="detalle-item"><span>VERDE T6</span><span>0 disp.</span></div></div>
       </div>
@@ -11760,13 +11831,59 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Short Jean Uzi <span class="reo-tallas-count">· 5 tallas</span></div>
           <div class="reo-disp">4 disp.</div>
-          <div class="reo-rot">57 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">57 uds/año
+            <div class="reo-rot-sub">14 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">25.7d · Cobertura ok</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$38</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>T10</span><span>0 disp.</span></div><div class="detalle-item"><span>T12</span><span>1 disp.</span></div><div class="detalle-item"><span>T14</span><span>2 disp.</span></div><div class="detalle-item"><span>T6</span><span>1 disp.</span></div><div class="detalle-item"><span>T8</span><span>0 disp.</span></div></div>
       </div>
-        <div class="detalle-vacio">+134 referencias más sin unidades sugeridas por ahora.</div>
+      <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
+        <div class="reo-fila">
+          <div class="reo-nombre"><span class="chevron">▶</span> Jean Frosteado <span class="reo-tallas-count">· 16 tallas</span></div>
+          <div class="reo-disp">17 disp.</div>
+          <div class="reo-rot">187 uds/año
+            <div class="reo-rot-sub">64 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia pos">+200%</span>
+          <div class="reo-estado ok">33.3d · Cobertura ok</div>
+          <div class="reo-sug">+29</div>
+          <div class="reo-inversion">$1.544.250</div>
+        </div>
+        <div class="reo-variantes"><div class="detalle-item"><span>BEIGE T10</span><span>0 disp.</span></div><div class="detalle-item"><span>BEIGE T12</span><span>1 disp.</span></div><div class="detalle-item"><span>BEIGE T4</span><span>1 disp.</span></div><div class="detalle-item"><span>BEIGE T6</span><span>1 disp.</span></div><div class="detalle-item"><span>BEIGE T8</span><span>0 disp.</span></div><div class="detalle-item"><span>GRIS T10</span><span>4 disp.</span></div><div class="detalle-item"><span>GRIS T12</span><span>1 disp.</span></div><div class="detalle-item"><span>GRIS T14</span><span>0 disp.</span></div><div class="detalle-item"><span>GRIS T4</span><span>0 disp.</span></div><div class="detalle-item"><span>GRIS T6</span><span>0 disp.</span></div><div class="detalle-item"><span>GRIS T8</span><span>0 disp.</span></div><div class="detalle-item"><span>ROSA T10</span><span>2 disp.</span></div><div class="detalle-item"><span>ROSA T12</span><span>0 disp.</span></div><div class="detalle-item"><span>ROSA T4</span><span>4 disp.</span></div><div class="detalle-item"><span>ROSA T6</span><span>2 disp.</span></div><div class="detalle-item"><span>ROSA T8</span><span>1 disp.</span></div></div>
+      </div>
+      <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
+        <div class="reo-fila">
+          <div class="reo-nombre"><span class="chevron">▶</span> Falda Jean <span class="reo-tallas-count">· 6 tallas</span></div>
+          <div class="reo-disp">23 disp.</div>
+          <div class="reo-rot">130 uds/año
+            <div class="reo-rot-sub">36 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia pos">+200%</span>
+          <div class="reo-estado ok">64.7d · Cobertura ok</div>
+          <div class="reo-sug">+9</div>
+          <div class="reo-inversion">$336.068</div>
+        </div>
+        <div class="reo-variantes"><div class="detalle-item"><span>AZUL T10</span><span>9 disp.</span></div><div class="detalle-item"><span>AZUL T12</span><span>8 disp.</span></div><div class="detalle-item"><span>AZUL T6</span><span>2 disp.</span></div><div class="detalle-item"><span>AZUL T8</span><span>4 disp.</span></div><div class="detalle-item"><span>GRIS T6</span><span>0 disp.</span></div><div class="detalle-item"><span>GRIS T8</span><span>0 disp.</span></div></div>
+      </div>
+      <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
+        <div class="reo-fila">
+          <div class="reo-nombre"><span class="chevron">▶</span> Chaqueta Jean <span class="reo-tallas-count">· 3 tallas</span></div>
+          <div class="reo-disp">15 disp.</div>
+          <div class="reo-rot">77 uds/año
+            <div class="reo-rot-sub">19 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia pos">+200%</span>
+          <div class="reo-estado ok">71.1d · Cobertura ok</div>
+          <div class="reo-sug">+4</div>
+          <div class="reo-inversion">$180.000</div>
+        </div>
+        <div class="reo-variantes"><div class="detalle-item"><span>AZUL TL</span><span>2 disp.</span></div><div class="detalle-item"><span>AZUL TM</span><span>5 disp.</span></div><div class="detalle-item"><span>AZUL TS</span><span>8 disp.</span></div></div>
+      </div>
+        <div class="detalle-vacio">+133 referencias más sin unidades sugeridas por ahora.</div>
       </div>
     </div>
     <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
@@ -11774,17 +11891,31 @@
         <span class="chevron">▶</span>
         <span class="reo-cat-nombre">SIN CATEGORÍA</span>
         <span class="reo-cat-meta">46 refs · 296 uds disponibles</span>
-        <span class="reo-badge critico">12 crítico</span><span class="reo-badge sugerido">Sugerido: 13 uds</span>
+        <span class="reo-badge critico">12 crítico</span><span class="reo-badge sugerido">Sugerido: 13 uds</span><span class="reo-badge inversion">Inversión: $505.000</span>
       </div>
       <div class="reo-cat-detalle">
+        
+      <div class="reo-fila reo-fila-header">
+        <div class="reo-nombre">Referencia</div>
+        <div class="reo-disp">Disponible</div>
+        <div class="reo-rot">Rotación (año proy.)</div>
+        <div class="reo-tendencia-col">Tendencia vs año pasado</div>
+        <div class="reo-estado">Cobertura</div>
+        <div class="reo-sug">Sugerido</div>
+        <div class="reo-inversion">Inversión</div>
+      </div>
         
       <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Blusa Emma Encaje <span class="reo-tallas-count">· 2 tallas</span></div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">32 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">32 uds/año
+            <div class="reo-rot-sub">8 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+3</div>
+          <div class="reo-inversion">$90.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>BLANCO</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO</span><span>0 disp.</span></div></div>
       </div>
@@ -11792,9 +11923,13 @@
         <div class="reo-fila">
           <div class="reo-nombre">Body Multicolor A/B</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">8 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">8 uds/año
+            <div class="reo-rot-sub">2 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$20.000</div>
         </div>
         
       </div>
@@ -11802,9 +11937,13 @@
         <div class="reo-fila">
           <div class="reo-nombre">Body Multicolor B/Ab</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">12 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">12 uds/año
+            <div class="reo-rot-sub">3 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$20.000</div>
         </div>
         
       </div>
@@ -11812,9 +11951,13 @@
         <div class="reo-fila">
           <div class="reo-nombre">Body Multicolor B/N</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">16 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">16 uds/año
+            <div class="reo-rot-sub">4 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$20.000</div>
         </div>
         
       </div>
@@ -11822,9 +11965,13 @@
         <div class="reo-fila">
           <div class="reo-nombre">Body Multicolor C/B</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">12 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">12 uds/año
+            <div class="reo-rot-sub">3 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$20.000</div>
         </div>
         
       </div>
@@ -11832,9 +11979,13 @@
         <div class="reo-fila">
           <div class="reo-nombre">Brazalete $23000</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">16 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">16 uds/año
+            <div class="reo-rot-sub">4 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$9.000</div>
         </div>
         
       </div>
@@ -11842,9 +11993,13 @@
         <div class="reo-fila">
           <div class="reo-nombre">Chaleco Santa Cafe S/M</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">12 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">12 uds/año
+            <div class="reo-rot-sub">3 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$60.000</div>
         </div>
         
       </div>
@@ -11852,9 +12007,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Jean Baggy Clasico <span class="reo-tallas-count">· 2 tallas</span></div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">12 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">12 uds/año
+            <div class="reo-rot-sub">3 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$56.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>GRIS T4</span><span>0 disp.</span></div><div class="detalle-item"><span>GRIS T6</span><span>0 disp.</span></div></div>
       </div>
@@ -11862,9 +12021,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Jean Gris Mandala <span class="reo-tallas-count">· 4 tallas</span></div>
           <div class="reo-disp">1 disp.</div>
-          <div class="reo-rot">53 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">53 uds/año
+            <div class="reo-rot-sub">13 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">6.9d · Crítico</div>
           <div class="reo-sug">+3</div>
+          <div class="reo-inversion">$210.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>T10</span><span>0 disp.</span></div><div class="detalle-item"><span>T12</span><span>0 disp.</span></div><div class="detalle-item"><span>T6</span><span>0 disp.</span></div><div class="detalle-item"><span>T8</span><span>1 disp.</span></div></div>
       </div>
@@ -11876,27 +12039,31 @@
         <span class="chevron">▶</span>
         <span class="reo-cat-nombre">CHAQUETAS</span>
         <span class="reo-cat-meta">57 refs · 182 uds disponibles</span>
-        <span class="reo-badge critico">7 crítico</span><span class="reo-badge alerta">2 alerta</span><span class="reo-badge sugerido">Sugerido: 27 uds</span>
+        <span class="reo-badge critico">7 crítico</span><span class="reo-badge alerta">2 alerta</span><span class="reo-badge sugerido">Sugerido: 22 uds</span><span class="reo-badge inversion">Inversión: $1.893.400</span>
       </div>
       <div class="reo-cat-detalle">
         
-      <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
-        <div class="reo-fila">
-          <div class="reo-nombre"><span class="chevron">▶</span> Chaqueta Ovejera <span class="reo-tallas-count">· 7 tallas</span></div>
-          <div class="reo-disp">1 disp.</div>
-          <div class="reo-rot">28 uds/año</div>
-          <div class="reo-estado alerta">Alerta</div>
-          <div class="reo-sug">+1</div>
-        </div>
-        <div class="reo-variantes"><div class="detalle-item"><span>BEIGE TU</span><span>1 disp.</span></div><div class="detalle-item"><span>BLANCO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>CAFE TU</span><span>0 disp.</span></div><div class="detalle-item"><span>CAMEL TU</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO/BLANCO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>VINOTINTO</span><span>0 disp.</span></div></div>
+      <div class="reo-fila reo-fila-header">
+        <div class="reo-nombre">Referencia</div>
+        <div class="reo-disp">Disponible</div>
+        <div class="reo-rot">Rotación (año proy.)</div>
+        <div class="reo-tendencia-col">Tendencia vs año pasado</div>
+        <div class="reo-estado">Cobertura</div>
+        <div class="reo-sug">Sugerido</div>
+        <div class="reo-inversion">Inversión</div>
       </div>
+        
       <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Chaqueta Tokio <span class="reo-tallas-count">· 2 tallas</span></div>
           <div class="reo-disp">1 disp.</div>
-          <div class="reo-rot">28 uds/año</div>
-          <div class="reo-estado alerta">Alerta</div>
-          <div class="reo-sug">+1</div>
+          <div class="reo-rot">28 uds/año
+            <div class="reo-rot-sub">7 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia pos">+75%</span>
+          <div class="reo-estado alerta">12.9d · Alerta</div>
+          <div class="reo-sug">+3</div>
+          <div class="reo-inversion">$225.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>Única</span><span>1 disp.</span></div><div class="detalle-item"><span>MARFIL TU</span><span>0 disp.</span></div></div>
       </div>
@@ -11904,29 +12071,27 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Chamarra Hombro Correa <span class="reo-tallas-count">· 4 tallas</span></div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">49 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">49 uds/año
+            <div class="reo-rot-sub">19 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+4</div>
+          <div class="reo-inversion">$380.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>BLANCO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>CAFE TU</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>VERDE TU</span><span>0 disp.</span></div></div>
       </div>
       <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
         <div class="reo-fila">
-          <div class="reo-nombre"><span class="chevron">▶</span> Chaqueta Chill <span class="reo-tallas-count">· 3 tallas</span></div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">8 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+1</div>
-        </div>
-        <div class="reo-variantes"><div class="detalle-item"><span>BEIGE</span><span>0 disp.</span></div><div class="detalle-item"><span>CAFE TU</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>0 disp.</span></div></div>
-      </div>
-      <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
-        <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Chaqueta Jean Maos <span class="reo-tallas-count">· 2 tallas</span></div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">41 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">41 uds/año
+            <div class="reo-rot-sub">11 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+3</div>
+          <div class="reo-inversion">$195.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>TM</span><span>0 disp.</span></div><div class="detalle-item"><span>TS</span><span>0 disp.</span></div></div>
       </div>
@@ -11934,43 +12099,31 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Chamarra Hombro <span class="reo-tallas-count">· 5 tallas</span></div>
           <div class="reo-disp">1 disp.</div>
-          <div class="reo-rot">150 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">150 uds/año
+            <div class="reo-rot-sub">83 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">2.4d · Crítico</div>
           <div class="reo-sug">+11</div>
+          <div class="reo-inversion">$1.038.400</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>BEIGE</span><span>0 disp.</span></div><div class="detalle-item"><span>CAFE TU</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>1 disp.</span></div><div class="detalle-item"><span>VERDE TU</span><span>0 disp.</span></div><div class="detalle-item"><span>VINOTINTO TU</span><span>0 disp.</span></div></div>
       </div>
       <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
         <div class="reo-fila">
-          <div class="reo-nombre"><span class="chevron">▶</span> Chamarra Cuero Corta <span class="reo-tallas-count">· 3 tallas</span></div>
-          <div class="reo-disp">5 disp.</div>
-          <div class="reo-rot">110 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
-          <div class="reo-sug">+4</div>
-        </div>
-        <div class="reo-variantes"><div class="detalle-item"><span>CAFE TU</span><span>2 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>2 disp.</span></div><div class="detalle-item"><span>VINOTINTO TU</span><span>1 disp.</span></div></div>
-      </div>
-      <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
-        <div class="reo-fila">
-          <div class="reo-nombre"><span class="chevron">▶</span> Chaqueta Peluche <span class="reo-tallas-count">· 4 tallas</span></div>
-          <div class="reo-disp">1 disp.</div>
-          <div class="reo-rot">20 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
-          <div class="reo-sug">+1</div>
-        </div>
-        <div class="reo-variantes"><div class="detalle-item"><span>BEIGE TU</span><span>0 disp.</span></div><div class="detalle-item"><span>CAFE TU</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO</span><span>1 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>0 disp.</span></div></div>
-      </div>
-      <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
-        <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Chaqueta Paño Sofia <span class="reo-tallas-count">· 3 tallas</span></div>
           <div class="reo-disp">5 disp.</div>
-          <div class="reo-rot">69 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">69 uds/año
+            <div class="reo-rot-sub">17 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">26.5d · Cobertura ok</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$55.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>BEIGE</span><span>3 disp.</span></div><div class="detalle-item"><span>CAFE</span><span>0 disp.</span></div><div class="detalle-item"><span>GRIS CLARO</span><span>2 disp.</span></div></div>
       </div>
-        <div class="detalle-vacio">+48 referencias más sin unidades sugeridas por ahora.</div>
+        <div class="detalle-vacio">+52 referencias más sin unidades sugeridas por ahora.</div>
       </div>
     </div>
     <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
@@ -11978,37 +12131,45 @@
         <span class="chevron">▶</span>
         <span class="reo-cat-nombre">BLUSAS</span>
         <span class="reo-cat-meta">114 refs · 577 uds disponibles</span>
-        <span class="reo-badge critico">7 crítico</span><span class="reo-badge alerta">1 alerta</span><span class="reo-badge sugerido">Sugerido: 34 uds</span>
+        <span class="reo-badge critico">7 crítico</span><span class="reo-badge alerta">1 alerta</span><span class="reo-badge sugerido">Sugerido: 73 uds</span><span class="reo-badge inversion">Inversión: $2.816.267</span>
       </div>
       <div class="reo-cat-detalle">
+        
+      <div class="reo-fila reo-fila-header">
+        <div class="reo-nombre">Referencia</div>
+        <div class="reo-disp">Disponible</div>
+        <div class="reo-rot">Rotación (año proy.)</div>
+        <div class="reo-tendencia-col">Tendencia vs año pasado</div>
+        <div class="reo-estado">Cobertura</div>
+        <div class="reo-sug">Sugerido</div>
+        <div class="reo-inversion">Inversión</div>
+      </div>
         
       <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Blusa Body Encaje <span class="reo-tallas-count">· 6 tallas</span></div>
           <div class="reo-disp">2 disp.</div>
-          <div class="reo-rot">73 uds/año</div>
-          <div class="reo-estado alerta">Alerta</div>
-          <div class="reo-sug">+4</div>
+          <div class="reo-rot">73 uds/año
+            <div class="reo-rot-sub">51 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia pos">+200%</span>
+          <div class="reo-estado alerta">10d · Alerta</div>
+          <div class="reo-sug">+16</div>
+          <div class="reo-inversion">$512.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>BEIGE</span><span>0 disp.</span></div><div class="detalle-item"><span>BLANCO TU</span><span>1 disp.</span></div><div class="detalle-item"><span>CAFE</span><span>0 disp.</span></div><div class="detalle-item"><span>MARFIL TU</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>1 disp.</span></div><div class="detalle-item"><span>VINOTINTO</span><span>0 disp.</span></div></div>
       </div>
       <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
         <div class="reo-fila">
-          <div class="reo-nombre"><span class="chevron">▶</span> Bandeja Malla Corta <span class="reo-tallas-count">· 3 tallas</span></div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">12 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+1</div>
-        </div>
-        <div class="reo-variantes"><div class="detalle-item"><span>CAMEL TU</span><span>0 disp.</span></div><div class="detalle-item"><span>MARFIL TU</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>0 disp.</span></div></div>
-      </div>
-      <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
-        <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Blusa Bahia <span class="reo-tallas-count">· 4 tallas</span></div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">8 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">8 uds/año
+            <div class="reo-rot-sub">7 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$55.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>BEIGE</span><span>0 disp.</span></div><div class="detalle-item"><span>CAMEL TU</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>ROJO</span><span>0 disp.</span></div></div>
       </div>
@@ -12016,19 +12177,13 @@
         <div class="reo-fila">
           <div class="reo-nombre">Body</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">12 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">12 uds/año
+            <div class="reo-rot-sub">9 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
-        </div>
-        
-      </div>
-      <div class="reo-ref-wrap">
-        <div class="reo-fila">
-          <div class="reo-nombre">Camisa Malla Flor</div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">8 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$24.000</div>
         </div>
         
       </div>
@@ -12036,9 +12191,13 @@
         <div class="reo-fila">
           <div class="reo-nombre">Overzise Salmos</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">8 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">8 uds/año
+            <div class="reo-rot-sub">2 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$45.500</div>
         </div>
         
       </div>
@@ -12046,9 +12205,13 @@
         <div class="reo-fila">
           <div class="reo-nombre">Camisa Overzise Basic</div>
           <div class="reo-disp">2 disp.</div>
-          <div class="reo-rot">105 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+7</div>
+          <div class="reo-rot">105 uds/año
+            <div class="reo-rot-sub">50 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia pos">+200%</span>
+          <div class="reo-estado critico">6.9d · Crítico</div>
+          <div class="reo-sug">+24</div>
+          <div class="reo-inversion">$1.080.000</div>
         </div>
         
       </div>
@@ -12056,9 +12219,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Body Tira Cuello <span class="reo-tallas-count">· 5 tallas</span></div>
           <div class="reo-disp">8 disp.</div>
-          <div class="reo-rot">166 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">166 uds/año
+            <div class="reo-rot-sub">67 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">17.6d · Cobertura ok</div>
           <div class="reo-sug">+6</div>
+          <div class="reo-inversion">$261.600</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>BEIGE TU</span><span>6 disp.</span></div><div class="detalle-item"><span>CAFE TU</span><span>0 disp.</span></div><div class="detalle-item"><span>MARFIL TU</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>VINOTINTO TU</span><span>2 disp.</span></div></div>
       </div>
@@ -12066,9 +12233,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Blusa Mariposa <span class="reo-tallas-count">· 2 tallas</span></div>
           <div class="reo-disp">2 disp.</div>
-          <div class="reo-rot">41 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
-          <div class="reo-sug">+1</div>
+          <div class="reo-rot">41 uds/año
+            <div class="reo-rot-sub">24 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia pos">+200%</span>
+          <div class="reo-estado ok">18d · Cobertura ok</div>
+          <div class="reo-sug">+8</div>
+          <div class="reo-inversion">$288.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>MARFIL TU</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>2 disp.</span></div></div>
       </div>
@@ -12076,9 +12247,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Overzise Boston <span class="reo-tallas-count">· 2 tallas</span></div>
           <div class="reo-disp">1 disp.</div>
-          <div class="reo-rot">20 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">20 uds/año
+            <div class="reo-rot-sub">5 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">18d · Cobertura ok</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$40.500</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>MARFIL TU</span><span>1 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>0 disp.</span></div></div>
       </div>
@@ -12086,9 +12261,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Top Rib <span class="reo-tallas-count">· 3 tallas</span></div>
           <div class="reo-disp">2 disp.</div>
-          <div class="reo-rot">36 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
-          <div class="reo-sug">+1</div>
+          <div class="reo-rot">36 uds/año
+            <div class="reo-rot-sub">16 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia pos">+50%</span>
+          <div class="reo-estado ok">20d · Cobertura ok</div>
+          <div class="reo-sug">+3</div>
+          <div class="reo-inversion">$48.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>BEIGE TU</span><span>0 disp.</span></div><div class="detalle-item"><span>BLANCO TU</span><span>2 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>0 disp.</span></div></div>
       </div>
@@ -12096,9 +12275,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Camisa Perla <span class="reo-tallas-count">· 6 tallas</span></div>
           <div class="reo-disp">3 disp.</div>
-          <div class="reo-rot">53 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">53 uds/año
+            <div class="reo-rot-sub">13 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">20.8d · Cobertura ok</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$35.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>AMARILLO  TU</span><span>0 disp.</span></div><div class="detalle-item"><span>AZUL OSCURO TU</span><span>1 disp.</span></div><div class="detalle-item"><span>MARFIL TU</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>2 disp.</span></div><div class="detalle-item"><span>VERDE TU</span><span>0 disp.</span></div><div class="detalle-item"><span>VINOTINTO TU</span><span>0 disp.</span></div></div>
       </div>
@@ -12106,9 +12289,13 @@
         <div class="reo-fila">
           <div class="reo-nombre">Camisa Colombia Bordada</div>
           <div class="reo-disp">4 disp.</div>
-          <div class="reo-rot">69 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">69 uds/año
+            <div class="reo-rot-sub">17 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">21.2d · Cobertura ok</div>
           <div class="reo-sug">+2</div>
+          <div class="reo-inversion">$100.000</div>
         </div>
         
       </div>
@@ -12116,9 +12303,13 @@
         <div class="reo-fila">
           <div class="reo-nombre">Camisa Colombia W</div>
           <div class="reo-disp">9 disp.</div>
-          <div class="reo-rot">150 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">150 uds/año
+            <div class="reo-rot-sub">37 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">21.9d · Cobertura ok</div>
           <div class="reo-sug">+3</div>
+          <div class="reo-inversion">$135.000</div>
         </div>
         
       </div>
@@ -12126,9 +12317,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Blusa Radical <span class="reo-tallas-count">· 3 tallas</span></div>
           <div class="reo-disp">4 disp.</div>
-          <div class="reo-rot">61 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">61 uds/año
+            <div class="reo-rot-sub">31 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">24d · Cobertura ok</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$46.667</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>TU</span><span>4 disp.</span></div><div class="detalle-item"><span>CAFE TU</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>0 disp.</span></div></div>
       </div>
@@ -12136,13 +12331,31 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Blusa Globo Larga <span class="reo-tallas-count">· 6 tallas</span></div>
           <div class="reo-disp">9 disp.</div>
-          <div class="reo-rot">130 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">130 uds/año
+            <div class="reo-rot-sub">32 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">25.3d · Cobertura ok</div>
           <div class="reo-sug">+2</div>
+          <div class="reo-inversion">$52.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>AZUL BEBE TU</span><span>2 disp.</span></div><div class="detalle-item"><span>CAFE TU</span><span>0 disp.</span></div><div class="detalle-item"><span>MARFIL TU</span><span>2 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>4 disp.</span></div><div class="detalle-item"><span>ROSA TU</span><span>1 disp.</span></div><div class="detalle-item"><span>VERDE PINO TU</span><span>0 disp.</span></div></div>
       </div>
-        <div class="detalle-vacio">+98 referencias más sin unidades sugeridas por ahora.</div>
+      <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
+        <div class="reo-fila">
+          <div class="reo-nombre"><span class="chevron">▶</span> Blusa Corset <span class="reo-tallas-count">· 5 tallas</span></div>
+          <div class="reo-disp">48 disp.</div>
+          <div class="reo-rot">207 uds/año
+            <div class="reo-rot-sub">92 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia pos">+200%</span>
+          <div class="reo-estado ok">84.7d · Cobertura ok</div>
+          <div class="reo-sug">+3</div>
+          <div class="reo-inversion">$93.000</div>
+        </div>
+        <div class="reo-variantes"><div class="detalle-item"><span>BLANCO/CAFE TU</span><span>11 disp.</span></div><div class="detalle-item"><span>BLANCO/NEGRO TU</span><span>2 disp.</span></div><div class="detalle-item"><span>BLANCO/VINOTINTO TU</span><span>22 disp.</span></div><div class="detalle-item"><span>CAFE/BLANCO TU</span><span>4 disp.</span></div><div class="detalle-item"><span>NEGRO/BLANCO TU</span><span>9 disp.</span></div></div>
+      </div>
+        <div class="detalle-vacio">+99 referencias más sin unidades sugeridas por ahora.</div>
       </div>
     </div>
     <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
@@ -12150,17 +12363,31 @@
         <span class="chevron">▶</span>
         <span class="reo-cat-nombre">BUZOS</span>
         <span class="reo-cat-meta">45 refs · 257 uds disponibles</span>
-        <span class="reo-badge critico">5 crítico</span><span class="reo-badge sugerido">Sugerido: 6 uds</span>
+        <span class="reo-badge critico">5 crítico</span><span class="reo-badge sugerido">Sugerido: 24 uds</span><span class="reo-badge inversion">Inversión: $942.000</span>
       </div>
       <div class="reo-cat-detalle">
+        
+      <div class="reo-fila reo-fila-header">
+        <div class="reo-nombre">Referencia</div>
+        <div class="reo-disp">Disponible</div>
+        <div class="reo-rot">Rotación (año proy.)</div>
+        <div class="reo-tendencia-col">Tendencia vs año pasado</div>
+        <div class="reo-estado">Cobertura</div>
+        <div class="reo-sug">Sugerido</div>
+        <div class="reo-inversion">Inversión</div>
+      </div>
         
       <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Buzo Moka <span class="reo-tallas-count">· 3 tallas</span></div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">8 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">8 uds/año
+            <div class="reo-rot-sub">2 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$28.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>BEIGE TU</span><span>0 disp.</span></div><div class="detalle-item"><span>CAFE TU</span><span>0 disp.</span></div><div class="detalle-item"><span>MARFIL TU</span><span>0 disp.</span></div></div>
       </div>
@@ -12168,9 +12395,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Buzo Tejido Cebra <span class="reo-tallas-count">· 4 tallas</span></div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">20 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">20 uds/año
+            <div class="reo-rot-sub">8 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral">0%</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+2</div>
+          <div class="reo-inversion">$117.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>CAFE/MARFIL</span><span>0 disp.</span></div><div class="detalle-item"><span>MARFIL/AZUL</span><span>0 disp.</span></div><div class="detalle-item"><span>MARFIL/NEGRO</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO/BLANCO</span><span>0 disp.</span></div></div>
       </div>
@@ -12178,13 +12409,59 @@
         <div class="reo-fila">
           <div class="reo-nombre">Buzo Top</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">36 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">36 uds/año
+            <div class="reo-rot-sub">9 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+3</div>
+          <div class="reo-inversion">$90.000</div>
         </div>
         
       </div>
-        <div class="detalle-vacio">+42 referencias más sin unidades sugeridas por ahora.</div>
+      <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
+        <div class="reo-fila">
+          <div class="reo-nombre"><span class="chevron">▶</span> Buzo Basico Rib <span class="reo-tallas-count">· 2 tallas</span></div>
+          <div class="reo-disp">6 disp.</div>
+          <div class="reo-rot">53 uds/año
+            <div class="reo-rot-sub">24 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia pos">+200%</span>
+          <div class="reo-estado ok">41.5d · Cobertura ok</div>
+          <div class="reo-sug">+7</div>
+          <div class="reo-inversion">$112.000</div>
+        </div>
+        <div class="reo-variantes"><div class="detalle-item"><span>BLANCO TU</span><span>3 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>3 disp.</span></div></div>
+      </div>
+      <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
+        <div class="reo-fila">
+          <div class="reo-nombre"><span class="chevron">▶</span> Buzo Borrego Urban <span class="reo-tallas-count">· 4 tallas</span></div>
+          <div class="reo-disp">9 disp.</div>
+          <div class="reo-rot">73 uds/año
+            <div class="reo-rot-sub">54 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia pos">+200%</span>
+          <div class="reo-estado ok">45d · Cobertura ok</div>
+          <div class="reo-sug">+9</div>
+          <div class="reo-inversion">$495.000</div>
+        </div>
+        <div class="reo-variantes"><div class="detalle-item"><span>CAMEL TU</span><span>1 disp.</span></div><div class="detalle-item"><span>GRIS OSCURO TU</span><span>5 disp.</span></div><div class="detalle-item"><span>MARFIL TU</span><span>2 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>1 disp.</span></div></div>
+      </div>
+      <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
+        <div class="reo-fila">
+          <div class="reo-nombre"><span class="chevron">▶</span> Buzo Tejido Boton <span class="reo-tallas-count">· 8 tallas</span></div>
+          <div class="reo-disp">11 disp.</div>
+          <div class="reo-rot">53 uds/año
+            <div class="reo-rot-sub">18 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia pos">+200%</span>
+          <div class="reo-estado ok">76.2d · Cobertura ok</div>
+          <div class="reo-sug">+2</div>
+          <div class="reo-inversion">$100.000</div>
+        </div>
+        <div class="reo-variantes"><div class="detalle-item"><span>TU</span><span>1 disp.</span></div><div class="detalle-item"><span>AMARILLO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>AZUL BEBE TU</span><span>1 disp.</span></div><div class="detalle-item"><span>CAFE TU</span><span>3 disp.</span></div><div class="detalle-item"><span>MARFIL TU</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>3 disp.</span></div><div class="detalle-item"><span>ROJO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>ROSA TU</span><span>3 disp.</span></div></div>
+      </div>
+        <div class="detalle-vacio">+39 referencias más sin unidades sugeridas por ahora.</div>
       </div>
     </div>
     <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
@@ -12192,17 +12469,31 @@
         <span class="chevron">▶</span>
         <span class="reo-cat-nombre">VESTIDOS</span>
         <span class="reo-cat-meta">31 refs · 90 uds disponibles</span>
-        <span class="reo-badge critico">5 crítico</span><span class="reo-badge sugerido">Sugerido: 43 uds</span>
+        <span class="reo-badge critico">5 crítico</span><span class="reo-badge sugerido">Sugerido: 43 uds</span><span class="reo-badge inversion">Inversión: $2.662.000</span>
       </div>
       <div class="reo-cat-detalle">
+        
+      <div class="reo-fila reo-fila-header">
+        <div class="reo-nombre">Referencia</div>
+        <div class="reo-disp">Disponible</div>
+        <div class="reo-rot">Rotación (año proy.)</div>
+        <div class="reo-tendencia-col">Tendencia vs año pasado</div>
+        <div class="reo-estado">Cobertura</div>
+        <div class="reo-sug">Sugerido</div>
+        <div class="reo-inversion">Inversión</div>
+      </div>
         
       <div class="reo-ref-wrap">
         <div class="reo-fila">
           <div class="reo-nombre">Capa Jean Gamuza</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">16 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">16 uds/año
+            <div class="reo-rot-sub">33 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$90.000</div>
         </div>
         
       </div>
@@ -12210,9 +12501,13 @@
         <div class="reo-fila">
           <div class="reo-nombre">Vestido Coqueta Jean Oscuro</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">12 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">12 uds/año
+            <div class="reo-rot-sub">3 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$48.000</div>
         </div>
         
       </div>
@@ -12220,9 +12515,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Vestido Liz <span class="reo-tallas-count">· 4 tallas</span></div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">24 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">24 uds/año
+            <div class="reo-rot-sub">6 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+2</div>
+          <div class="reo-inversion">$80.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>CAFE TU</span><span>0 disp.</span></div><div class="detalle-item"><span>MARFIL TU</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>VERDE PINO TU</span><span>0 disp.</span></div></div>
       </div>
@@ -12230,9 +12529,13 @@
         <div class="reo-fila">
           <div class="reo-nombre">Vestido Malla Bandeja Largo</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">16 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">16 uds/año
+            <div class="reo-rot-sub">16 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$48.000</div>
         </div>
         
       </div>
@@ -12240,9 +12543,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Capa Jean <span class="reo-tallas-count">· 2 tallas</span></div>
           <div class="reo-disp">1 disp.</div>
-          <div class="reo-rot">422 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">422 uds/año
+            <div class="reo-rot-sub">159 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0.9d · Crítico</div>
           <div class="reo-sug">+34</div>
+          <div class="reo-inversion">$2.176.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>AZUL CLARA TU</span><span>0 disp.</span></div><div class="detalle-item"><span>AZUL OSCURO TU</span><span>1 disp.</span></div></div>
       </div>
@@ -12250,9 +12557,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Jean Vintage <span class="reo-tallas-count">· 6 tallas</span></div>
           <div class="reo-disp">6 disp.</div>
-          <div class="reo-rot">105 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">105 uds/año
+            <div class="reo-rot-sub">26 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">20.8d · Cobertura ok</div>
           <div class="reo-sug">+3</div>
+          <div class="reo-inversion">$195.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>T10</span><span>0 disp.</span></div><div class="detalle-item"><span>T12</span><span>0 disp.</span></div><div class="detalle-item"><span>T14</span><span>1 disp.</span></div><div class="detalle-item"><span>T6</span><span>4 disp.</span></div><div class="detalle-item"><span>T8</span><span>0 disp.</span></div><div class="detalle-item"><span>T4</span><span>1 disp.</span></div></div>
       </div>
@@ -12260,9 +12571,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Vestido Globo <span class="reo-tallas-count">· 5 tallas</span></div>
           <div class="reo-disp">3 disp.</div>
-          <div class="reo-rot">49 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">49 uds/año
+            <div class="reo-rot-sub">13 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">22.5d · Cobertura ok</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$25.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>AZUL TU</span><span>0 disp.</span></div><div class="detalle-item"><span>BLANCO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>2 disp.</span></div><div class="detalle-item"><span>VERDE TU</span><span>0 disp.</span></div><div class="detalle-item"><span>VINOTINTO TU</span><span>1 disp.</span></div></div>
       </div>
@@ -12274,17 +12589,31 @@
         <span class="chevron">▶</span>
         <span class="reo-cat-nombre">FALDAS</span>
         <span class="reo-cat-meta">51 refs · 146 uds disponibles</span>
-        <span class="reo-badge critico">4 crítico</span><span class="reo-badge alerta">3 alerta</span><span class="reo-badge sugerido">Sugerido: 15 uds</span>
+        <span class="reo-badge critico">4 crítico</span><span class="reo-badge alerta">3 alerta</span><span class="reo-badge sugerido">Sugerido: 34 uds</span><span class="reo-badge inversion">Inversión: $1.033.032</span>
       </div>
       <div class="reo-cat-detalle">
+        
+      <div class="reo-fila reo-fila-header">
+        <div class="reo-nombre">Referencia</div>
+        <div class="reo-disp">Disponible</div>
+        <div class="reo-rot">Rotación (año proy.)</div>
+        <div class="reo-tendencia-col">Tendencia vs año pasado</div>
+        <div class="reo-estado">Cobertura</div>
+        <div class="reo-sug">Sugerido</div>
+        <div class="reo-inversion">Inversión</div>
+      </div>
         
       <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Falda Short Georgina <span class="reo-tallas-count">· 4 tallas</span></div>
           <div class="reo-disp">4 disp.</div>
-          <div class="reo-rot">126 uds/año</div>
-          <div class="reo-estado alerta">Alerta</div>
-          <div class="reo-sug">+6</div>
+          <div class="reo-rot">126 uds/año
+            <div class="reo-rot-sub">70 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia pos">+138%</span>
+          <div class="reo-estado alerta">11.6d · Alerta</div>
+          <div class="reo-sug">+21</div>
+          <div class="reo-inversion">$630.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>BLANCO TU</span><span>1 disp.</span></div><div class="detalle-item"><span>CAFE TU</span><span>1 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>VINOTINTO TU</span><span>2 disp.</span></div></div>
       </div>
@@ -12292,9 +12621,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Falda Short Berska <span class="reo-tallas-count">· 2 tallas</span></div>
           <div class="reo-disp">1 disp.</div>
-          <div class="reo-rot">24 uds/año</div>
-          <div class="reo-estado alerta">Alerta</div>
+          <div class="reo-rot">24 uds/año
+            <div class="reo-rot-sub">9 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado alerta">15d · Alerta</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$16.032</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>TU</span><span>1 disp.</span></div><div class="detalle-item"><span>TU</span><span>0 disp.</span></div></div>
       </div>
@@ -12302,53 +12635,45 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Falda Short Prenses Viena <span class="reo-tallas-count">· 3 tallas</span></div>
           <div class="reo-disp">2 disp.</div>
-          <div class="reo-rot">49 uds/año</div>
-          <div class="reo-estado alerta">Alerta</div>
-          <div class="reo-sug">+2</div>
+          <div class="reo-rot">49 uds/año
+            <div class="reo-rot-sub">12 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia pos">+140%</span>
+          <div class="reo-estado alerta">15d · Alerta</div>
+          <div class="reo-sug">+8</div>
+          <div class="reo-inversion">$280.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>T10</span><span>0 disp.</span></div><div class="detalle-item"><span>T8</span><span>2 disp.</span></div><div class="detalle-item"><span>NEGRO T6</span><span>0 disp.</span></div></div>
       </div>
       <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
         <div class="reo-fila">
-          <div class="reo-nombre"><span class="chevron">▶</span> Jean Tou Palazo Oscuro Rotos <span class="reo-tallas-count">· 5 tallas</span></div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">8 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+1</div>
-        </div>
-        <div class="reo-variantes"><div class="detalle-item"><span>T6</span><span>0 disp.</span></div><div class="detalle-item"><span>T10</span><span>0 disp.</span></div><div class="detalle-item"><span>T12</span><span>0 disp.</span></div><div class="detalle-item"><span>T4</span><span>0 disp.</span></div><div class="detalle-item"><span>T8</span><span>0 disp.</span></div></div>
-      </div>
-      <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
-        <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Falda Jean Correa <span class="reo-tallas-count">· 11 tallas</span></div>
           <div class="reo-disp">2 disp.</div>
-          <div class="reo-rot">41 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">41 uds/año
+            <div class="reo-rot-sub">33 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">18d · Cobertura ok</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$47.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>T12</span><span>0 disp.</span></div><div class="detalle-item"><span>T6</span><span>0 disp.</span></div><div class="detalle-item"><span>BLANCO T10</span><span>0 disp.</span></div><div class="detalle-item"><span>BLANCO T12</span><span>1 disp.</span></div><div class="detalle-item"><span>BLANCO T14</span><span>0 disp.</span></div><div class="detalle-item"><span>BLANCO T6</span><span>0 disp.</span></div><div class="detalle-item"><span>BLANCO T8</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO T6</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO T8</span><span>1 disp.</span></div><div class="detalle-item"><span>T10</span><span>0 disp.</span></div><div class="detalle-item"><span>T8</span><span>0 disp.</span></div></div>
       </div>
       <div class="reo-ref-wrap">
         <div class="reo-fila">
-          <div class="reo-nombre">Falda Satin</div>
-          <div class="reo-disp">1 disp.</div>
-          <div class="reo-rot">20 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
-          <div class="reo-sug">+1</div>
-        </div>
-        
-      </div>
-      <div class="reo-ref-wrap">
-        <div class="reo-fila">
           <div class="reo-nombre">Correas</div>
           <div class="reo-disp">6 disp.</div>
-          <div class="reo-rot">110 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">110 uds/año
+            <div class="reo-rot-sub">35 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">20d · Cobertura ok</div>
           <div class="reo-sug">+3</div>
+          <div class="reo-inversion">$60.000</div>
         </div>
         
       </div>
-        <div class="detalle-vacio">+44 referencias más sin unidades sugeridas por ahora.</div>
+        <div class="detalle-vacio">+46 referencias más sin unidades sugeridas por ahora.</div>
       </div>
     </div>
     <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
@@ -12356,17 +12681,31 @@
         <span class="chevron">▶</span>
         <span class="reo-cat-nombre">BODYS</span>
         <span class="reo-cat-meta">57 refs · 412 uds disponibles</span>
-        <span class="reo-badge critico">4 crítico</span><span class="reo-badge alerta">2 alerta</span><span class="reo-badge sugerido">Sugerido: 6 uds</span>
+        <span class="reo-badge critico">4 crítico</span><span class="reo-badge alerta">2 alerta</span><span class="reo-badge sugerido">Sugerido: 5 uds</span><span class="reo-badge inversion">Inversión: $104.000</span>
       </div>
       <div class="reo-cat-detalle">
+        
+      <div class="reo-fila reo-fila-header">
+        <div class="reo-nombre">Referencia</div>
+        <div class="reo-disp">Disponible</div>
+        <div class="reo-rot">Rotación (año proy.)</div>
+        <div class="reo-tendencia-col">Tendencia vs año pasado</div>
+        <div class="reo-estado">Cobertura</div>
+        <div class="reo-sug">Sugerido</div>
+        <div class="reo-inversion">Inversión</div>
+      </div>
         
       <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Body Estraple Lau <span class="reo-tallas-count">· 6 tallas</span></div>
           <div class="reo-disp">2 disp.</div>
-          <div class="reo-rot">53 uds/año</div>
-          <div class="reo-estado alerta">Alerta</div>
+          <div class="reo-rot">53 uds/año
+            <div class="reo-rot-sub">13 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado alerta">13.8d · Alerta</div>
           <div class="reo-sug">+2</div>
+          <div class="reo-inversion">$36.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>AMARILLO T-U</span><span>0 disp.</span></div><div class="detalle-item"><span>BLANCO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>MARFIL TU</span><span>2 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>ROSA T-U</span><span>0 disp.</span></div><div class="detalle-item"><span>VINOTINTO TU</span><span>0 disp.</span></div></div>
       </div>
@@ -12374,9 +12713,13 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Body Cuadrado Manga Corta <span class="reo-tallas-count">· 3 tallas</span></div>
           <div class="reo-disp">1 disp.</div>
-          <div class="reo-rot">24 uds/año</div>
-          <div class="reo-estado alerta">Alerta</div>
+          <div class="reo-rot">24 uds/año
+            <div class="reo-rot-sub">6 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado alerta">15d · Alerta</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$18.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>AMARILLO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>CAFE TU</span><span>1 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>0 disp.</span></div></div>
       </div>
@@ -12384,33 +12727,31 @@
         <div class="reo-fila">
           <div class="reo-nombre">Body Basico Cuadrado Verde</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">8 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">8 uds/año
+            <div class="reo-rot-sub">2 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$18.000</div>
         </div>
         
-      </div>
-      <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
-        <div class="reo-fila">
-          <div class="reo-nombre"><span class="chevron">▶</span> Body Estraple Malla <span class="reo-tallas-count">· 7 tallas</span></div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">12 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+1</div>
-        </div>
-        <div class="reo-variantes"><div class="detalle-item"><span>AMARILLO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>AZUL</span><span>0 disp.</span></div><div class="detalle-item"><span>CAFE</span><span>0 disp.</span></div><div class="detalle-item"><span>MARFIL TU</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>ROJO</span><span>0 disp.</span></div><div class="detalle-item"><span>VINOTINTO TU</span><span>0 disp.</span></div></div>
       </div>
       <div class="reo-ref-wrap">
         <div class="reo-fila">
           <div class="reo-nombre">Body Estraple Malla Like</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">8 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">8 uds/año
+            <div class="reo-rot-sub">5 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$32.000</div>
         </div>
         
       </div>
-        <div class="detalle-vacio">+52 referencias más sin unidades sugeridas por ahora.</div>
+        <div class="detalle-vacio">+53 referencias más sin unidades sugeridas por ahora.</div>
       </div>
     </div>
     <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
@@ -12418,17 +12759,31 @@
         <span class="chevron">▶</span>
         <span class="reo-cat-nombre">CHALECOS</span>
         <span class="reo-cat-meta">13 refs · 33 uds disponibles</span>
-        <span class="reo-badge critico">3 crítico</span><span class="reo-badge alerta">1 alerta</span><span class="reo-badge sugerido">Sugerido: 5 uds</span>
+        <span class="reo-badge critico">3 crítico</span><span class="reo-badge alerta">1 alerta</span><span class="reo-badge sugerido">Sugerido: 5 uds</span><span class="reo-badge inversion">Inversión: $275.000</span>
       </div>
       <div class="reo-cat-detalle">
+        
+      <div class="reo-fila reo-fila-header">
+        <div class="reo-nombre">Referencia</div>
+        <div class="reo-disp">Disponible</div>
+        <div class="reo-rot">Rotación (año proy.)</div>
+        <div class="reo-tendencia-col">Tendencia vs año pasado</div>
+        <div class="reo-estado">Cobertura</div>
+        <div class="reo-sug">Sugerido</div>
+        <div class="reo-inversion">Inversión</div>
+      </div>
         
       <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Chaqueta Santa <span class="reo-tallas-count">· 3 tallas</span></div>
           <div class="reo-disp">2 disp.</div>
-          <div class="reo-rot">49 uds/año</div>
-          <div class="reo-estado alerta">Alerta</div>
+          <div class="reo-rot">49 uds/año
+            <div class="reo-rot-sub">29 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado alerta">15d · Alerta</div>
           <div class="reo-sug">+2</div>
+          <div class="reo-inversion">$110.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>AZUL CLARO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>AZUL OSCURO TU</span><span>2 disp.</span></div><div class="detalle-item"><span>BLANCO TU</span><span>0 disp.</span></div></div>
       </div>
@@ -12436,9 +12791,13 @@
         <div class="reo-fila">
           <div class="reo-nombre">Chaleco Peluche Santa</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">32 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">32 uds/año
+            <div class="reo-rot-sub">9 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+3</div>
+          <div class="reo-inversion">$165.000</div>
         </div>
         
       </div>
@@ -12450,17 +12809,31 @@
         <span class="chevron">▶</span>
         <span class="reo-cat-nombre">CORSET</span>
         <span class="reo-cat-meta">31 refs · 270 uds disponibles</span>
-        <span class="reo-badge critico">1 crítico</span><span class="reo-badge alerta">1 alerta</span><span class="reo-badge sugerido">Sugerido: 5 uds</span>
+        <span class="reo-badge critico">1 crítico</span><span class="reo-badge alerta">1 alerta</span><span class="reo-badge sugerido">Sugerido: 5 uds</span><span class="reo-badge inversion">Inversión: $175.000</span>
       </div>
       <div class="reo-cat-detalle">
+        
+      <div class="reo-fila reo-fila-header">
+        <div class="reo-nombre">Referencia</div>
+        <div class="reo-disp">Disponible</div>
+        <div class="reo-rot">Rotación (año proy.)</div>
+        <div class="reo-tendencia-col">Tendencia vs año pasado</div>
+        <div class="reo-estado">Cobertura</div>
+        <div class="reo-sug">Sugerido</div>
+        <div class="reo-inversion">Inversión</div>
+      </div>
         
       <div class="reo-ref-wrap">
         <div class="reo-fila">
           <div class="reo-nombre">Falda Satin Encaje</div>
           <div class="reo-disp">1 disp.</div>
-          <div class="reo-rot">49 uds/año</div>
-          <div class="reo-estado alerta">Alerta</div>
+          <div class="reo-rot">49 uds/año
+            <div class="reo-rot-sub">17 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado alerta">7.5d · Alerta</div>
           <div class="reo-sug">+3</div>
+          <div class="reo-inversion">$75.000</div>
         </div>
         
       </div>
@@ -12468,9 +12841,13 @@
         <div class="reo-fila">
           <div class="reo-nombre">Corset Encaje Princesa</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">24 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">24 uds/año
+            <div class="reo-rot-sub">18 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral">0%</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+2</div>
+          <div class="reo-inversion">$100.000</div>
         </div>
         
       </div>
@@ -12482,17 +12859,31 @@
         <span class="chevron">▶</span>
         <span class="reo-cat-nombre">CONJUNTOS</span>
         <span class="reo-cat-meta">25 refs · 234 uds disponibles</span>
-        <span class="reo-badge critico">1 crítico</span><span class="reo-badge sugerido">Sugerido: 2 uds</span>
+        <span class="reo-badge critico">1 crítico</span><span class="reo-badge sugerido">Sugerido: 30 uds</span><span class="reo-badge inversion">Inversión: $2.534.222</span>
       </div>
       <div class="reo-cat-detalle">
+        
+      <div class="reo-fila reo-fila-header">
+        <div class="reo-nombre">Referencia</div>
+        <div class="reo-disp">Disponible</div>
+        <div class="reo-rot">Rotación (año proy.)</div>
+        <div class="reo-tendencia-col">Tendencia vs año pasado</div>
+        <div class="reo-estado">Cobertura</div>
+        <div class="reo-sug">Sugerido</div>
+        <div class="reo-inversion">Inversión</div>
+      </div>
         
       <div class="reo-ref-wrap">
         <div class="reo-fila">
           <div class="reo-nombre">Sudadera Luna</div>
           <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">8 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
+          <div class="reo-rot">8 uds/año
+            <div class="reo-rot-sub">2 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado critico">0d · Crítico</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$0</div>
         </div>
         
       </div>
@@ -12500,35 +12891,31 @@
         <div class="reo-fila">
           <div class="reo-nombre"><span class="chevron">▶</span> Sudadera Clohe <span class="reo-tallas-count">· 6 tallas</span></div>
           <div class="reo-disp">1 disp.</div>
-          <div class="reo-rot">20 uds/año</div>
-          <div class="reo-estado ok">Cobertura ok</div>
+          <div class="reo-rot">20 uds/año
+            <div class="reo-rot-sub">17 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+          <div class="reo-estado ok">18d · Cobertura ok</div>
           <div class="reo-sug">+1</div>
+          <div class="reo-inversion">$92.000</div>
         </div>
         <div class="reo-variantes"><div class="detalle-item"><span>AZUL BEBE</span><span>0 disp.</span></div><div class="detalle-item"><span>BEIGE TU</span><span>0 disp.</span></div><div class="detalle-item"><span>GRIS CLARO TU</span><span>0 disp.</span></div><div class="detalle-item"><span>GRIS OSCURO TU</span><span>1 disp.</span></div><div class="detalle-item"><span>VERDE TU</span><span>0 disp.</span></div><div class="detalle-item"><span>VINOTINTO TU</span><span>0 disp.</span></div></div>
       </div>
-        <div class="detalle-vacio">+23 referencias más sin unidades sugeridas por ahora.</div>
-      </div>
-    </div>
-    <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
-      <div class="reo-cat-header">
-        <span class="chevron">▶</span>
-        <span class="reo-cat-nombre">JUEGOS</span>
-        <span class="reo-cat-meta">6 refs · 10 uds disponibles</span>
-        <span class="reo-badge critico">1 crítico</span><span class="reo-badge sugerido">Sugerido: 1 uds</span>
-      </div>
-      <div class="reo-cat-detalle">
-        
-      <div class="reo-ref-wrap">
+      <div class="reo-ref-wrap expandible" onclick="toggleAbierto(this, event)">
         <div class="reo-fila">
-          <div class="reo-nombre">Juegos $55000</div>
-          <div class="reo-disp">0 disp.</div>
-          <div class="reo-rot">8 uds/año</div>
-          <div class="reo-estado critico">Crítico</div>
-          <div class="reo-sug">+1</div>
+          <div class="reo-nombre"><span class="chevron">▶</span> Sudadera Zoe <span class="reo-tallas-count">· 9 tallas</span></div>
+          <div class="reo-disp">44 disp.</div>
+          <div class="reo-rot">292 uds/año
+            <div class="reo-rot-sub">118 vendidas en 2026</div>
+          </div>
+          <span class="reo-tendencia pos">+200%</span>
+          <div class="reo-estado ok">55d · Cobertura ok</div>
+          <div class="reo-sug">+28</div>
+          <div class="reo-inversion">$2.442.222</div>
         </div>
-        
+        <div class="reo-variantes"><div class="detalle-item"><span>AZUL OSCURO TU</span><span>1 disp.</span></div><div class="detalle-item"><span>BLANCO TU</span><span>1 disp.</span></div><div class="detalle-item"><span>CAFE TU</span><span>14 disp.</span></div><div class="detalle-item"><span>CAMEL TU</span><span>9 disp.</span></div><div class="detalle-item"><span>GRIS TU</span><span>0 disp.</span></div><div class="detalle-item"><span>NEGRO TU</span><span>13 disp.</span></div><div class="detalle-item"><span>ROJO TU</span><span>2 disp.</span></div><div class="detalle-item"><span>VERDE PINO TU</span><span>4 disp.</span></div><div class="detalle-item"><span>VINOTINTO TU</span><span>0 disp.</span></div></div>
       </div>
-        <div class="detalle-vacio">+5 referencias más sin unidades sugeridas por ahora.</div>
+        <div class="detalle-vacio">+22 referencias más sin unidades sugeridas por ahora.</div>
       </div>
     </div>
     <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
@@ -12539,6 +12926,7 @@
         
       </div>
       <div class="reo-cat-detalle">
+        
         <div class="detalle-vacio">Nada que pedir en esta categoría por ahora.</div>
         <div class="detalle-vacio">+3 referencias más sin unidades sugeridas por ahora.</div>
       </div>
@@ -12551,6 +12939,7 @@
         
       </div>
       <div class="reo-cat-detalle">
+        
         <div class="detalle-vacio">Nada que pedir en esta categoría por ahora.</div>
         <div class="detalle-vacio">+2 referencias más sin unidades sugeridas por ahora.</div>
       </div>
@@ -12563,6 +12952,7 @@
         
       </div>
       <div class="reo-cat-detalle">
+        
         <div class="detalle-vacio">Nada que pedir en esta categoría por ahora.</div>
         <div class="detalle-vacio">+2 referencias más sin unidades sugeridas por ahora.</div>
       </div>
@@ -12575,6 +12965,7 @@
         
       </div>
       <div class="reo-cat-detalle">
+        
         <div class="detalle-vacio">Nada que pedir en esta categoría por ahora.</div>
         <div class="detalle-vacio">+1 referencias más sin unidades sugeridas por ahora.</div>
       </div>
@@ -12583,7 +12974,8 @@
   <h3 class="subseccion">Accesorios · por categoría</h3>
   <div class="subtitulo" style="margin-bottom:1rem;">
     Mucha variedad de diseño por categoría (aretes, anillos, pulseras...) para rastrear uno por uno —
-    acá se mide el ritmo de la categoría completa.
+    acá se mide el ritmo de la categoría completa. "Rotación" proyecta a un año desde los últimos 90 días de venta;
+    "Tendencia" compara esos 90 días contra la misma ventana de hace un año.
   </div>
   <div class="kpi-grid">
     <div class="kpi-card">
@@ -12605,78 +12997,146 @@
       <div class="kpi-label">Unidades sugeridas</div>
       <div class="kpi-valor">0</div>
       <div class="kpi-sub">a pedir a proveedores</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Inversión sugerida</div>
+      <div class="kpi-valor">$0</div>
+      <div class="kpi-sub">costo del surtido sugerido</div>
     </div></div>
   <div class="reo-cat-detalle" style="display:block; margin-top:1rem;">
+    
+      <div class="reo-fila reo-fila-header">
+        <div class="reo-nombre">Referencia</div>
+        <div class="reo-disp">Disponible</div>
+        <div class="reo-rot">Rotación (año proy.)</div>
+        <div class="reo-tendencia-col">Tendencia vs año pasado</div>
+        <div class="reo-estado">Cobertura</div>
+        <div class="reo-sug">Sugerido</div>
+        <div class="reo-inversion">Inversión</div>
+      </div>
+    
+      <div class="reo-fila">
+        <div class="reo-nombre">JUEGOS <span class="reo-tallas-count">· 6 referencias</span></div>
+        <div class="reo-disp">10 disp.</div>
+        <div class="reo-rot">69 uds/año
+          <div class="reo-rot-sub">25 vendidas en 2026</div>
+        </div>
+        <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+        <div class="reo-estado ok">52.9d · Cobertura ok</div>
+        <div class="reo-sug">—</div>
+        <div class="reo-inversion">—</div>
+      </div>
       <div class="reo-fila">
         <div class="reo-nombre">ANILLOS <span class="reo-tallas-count">· 16 referencias</span></div>
         <div class="reo-disp">135 disp.</div>
-        <div class="reo-rot">900 uds/año</div>
-        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-rot">900 uds/año
+          <div class="reo-rot-sub">268 vendidas en 2026</div>
+        </div>
+        <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+        <div class="reo-estado ok">54.7d · Cobertura ok</div>
         <div class="reo-sug">—</div>
+        <div class="reo-inversion">—</div>
       </div>
       <div class="reo-fila">
         <div class="reo-nombre">GARGANTILLAS <span class="reo-tallas-count">· 6 referencias</span></div>
         <div class="reo-disp">11 disp.</div>
-        <div class="reo-rot">65 uds/año</div>
-        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-rot">65 uds/año
+          <div class="reo-rot-sub">22 vendidas en 2026</div>
+        </div>
+        <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+        <div class="reo-estado ok">61.9d · Cobertura ok</div>
         <div class="reo-sug">—</div>
+        <div class="reo-inversion">—</div>
       </div>
       <div class="reo-fila">
         <div class="reo-nombre">BRAZALETE <span class="reo-tallas-count">· 8 referencias</span></div>
         <div class="reo-disp">25 disp.</div>
-        <div class="reo-rot">97 uds/año</div>
-        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-rot">97 uds/año
+          <div class="reo-rot-sub">34 vendidas en 2026</div>
+        </div>
+        <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+        <div class="reo-estado ok">93.8d · Cobertura ok</div>
         <div class="reo-sug">—</div>
+        <div class="reo-inversion">—</div>
       </div>
       <div class="reo-fila">
         <div class="reo-nombre">ARETES <span class="reo-tallas-count">· 24 referencias</span></div>
         <div class="reo-disp">405 disp.</div>
-        <div class="reo-rot">1.464 uds/año</div>
-        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-rot">1.464 uds/año
+          <div class="reo-rot-sub">462 vendidas en 2026</div>
+        </div>
+        <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+        <div class="reo-estado ok">101d · Cobertura ok</div>
         <div class="reo-sug">—</div>
+        <div class="reo-inversion">—</div>
       </div>
       <div class="reo-fila">
         <div class="reo-nombre">CADENAS <span class="reo-tallas-count">· 35 referencias</span></div>
         <div class="reo-disp">383 disp.</div>
-        <div class="reo-rot">1.367 uds/año</div>
-        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-rot">1.367 uds/año
+          <div class="reo-rot-sub">408 vendidas en 2026</div>
+        </div>
+        <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+        <div class="reo-estado ok">102.3d · Cobertura ok</div>
         <div class="reo-sug">—</div>
+        <div class="reo-inversion">—</div>
       </div>
       <div class="reo-fila">
         <div class="reo-nombre">PULSERAS <span class="reo-tallas-count">· 27 referencias</span></div>
         <div class="reo-disp">246 disp.</div>
-        <div class="reo-rot">868 uds/año</div>
-        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-rot">868 uds/año
+          <div class="reo-rot-sub">251 vendidas en 2026</div>
+        </div>
+        <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+        <div class="reo-estado ok">103.5d · Cobertura ok</div>
         <div class="reo-sug">—</div>
+        <div class="reo-inversion">—</div>
       </div>
       <div class="reo-fila">
         <div class="reo-nombre">TOPOS <span class="reo-tallas-count">· 21 referencias</span></div>
         <div class="reo-disp">140 disp.</div>
-        <div class="reo-rot">479 uds/año</div>
-        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-rot">479 uds/año
+          <div class="reo-rot-sub">148 vendidas en 2026</div>
+        </div>
+        <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+        <div class="reo-estado ok">106.8d · Cobertura ok</div>
         <div class="reo-sug">—</div>
+        <div class="reo-inversion">—</div>
       </div>
       <div class="reo-fila">
         <div class="reo-nombre">EARCUF <span class="reo-tallas-count">· 10 referencias</span></div>
         <div class="reo-disp">107 disp.</div>
-        <div class="reo-rot">320 uds/año</div>
-        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-rot">320 uds/año
+          <div class="reo-rot-sub">95 vendidas en 2026</div>
+        </div>
+        <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+        <div class="reo-estado ok">121.9d · Cobertura ok</div>
         <div class="reo-sug">—</div>
+        <div class="reo-inversion">—</div>
       </div>
       <div class="reo-fila">
         <div class="reo-nombre">TOBILLERAS <span class="reo-tallas-count">· 3 referencias</span></div>
         <div class="reo-disp">44 disp.</div>
-        <div class="reo-rot">122 uds/año</div>
-        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-rot">122 uds/año
+          <div class="reo-rot-sub">34 vendidas en 2026</div>
+        </div>
+        <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+        <div class="reo-estado ok">132d · Cobertura ok</div>
         <div class="reo-sug">—</div>
+        <div class="reo-inversion">—</div>
       </div>
       <div class="reo-fila">
         <div class="reo-nombre">ACCESORIOS <span class="reo-tallas-count">· 16 referencias</span></div>
         <div class="reo-disp">109 disp.</div>
-        <div class="reo-rot">207 uds/año</div>
-        <div class="reo-estado ok">Cobertura ok</div>
+        <div class="reo-rot">207 uds/año
+          <div class="reo-rot-sub">61 vendidas en 2026</div>
+        </div>
+        <span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>
+        <div class="reo-estado ok">192.4d · Cobertura ok</div>
         <div class="reo-sug">—</div>
-      </div></div>
+        <div class="reo-inversion">—</div>
+      </div>
+  </div>
   </div>
 
   <div id="sec-inventario" class="seccion" style="display:none">
@@ -12790,8 +13250,8 @@
   <div class="kpi-grid">
     <div class="kpi-card">
       <div class="kpi-label">Activas</div>
-      <div class="kpi-valor">352</div>
-      <div class="kpi-sub">3.170 und. · $154.309.452</div>
+      <div class="kpi-valor">347</div>
+      <div class="kpi-sub">3.160 und. · $154.124.152</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Inactivas · liquidar</div>
@@ -13083,7 +13543,7 @@
   <script>document.addEventListener('DOMContentLoaded', function(){ renderComisiones(7); });</script>
   </div>
 
-  <footer>Generado el 2026-07-21 20:53 · datos de Effi Systems</footer>
+  <footer>Generado el 2026-07-21 21:27 · datos de Effi Systems</footer>
   <div class="powered-by">Powered by Divina Intuición IA</div>
 
   </div>

@@ -433,10 +433,44 @@ def _badge_reorden(cantidad: int, etiqueta: str, clase: str) -> str:
     return f'<span class="reo-badge {clase}">{cantidad} {etiqueta}</span>'
 
 
+def _fmt_cobertura(dias_cobertura, etiqueta: str) -> str:
+    """Días de cobertura + la etiqueta de estado juntos (ej. "23d · Alerta")
+    -- antes solo se mostraba la etiqueta, sin el número, y no se podía
+    saber qué tan cerca está del umbral. Sin ventas 90d/nuevo/agotado no
+    tienen un número de días real, así que ahí solo se ve la etiqueta."""
+    if dias_cobertura is None:
+        return etiqueta
+    dias_txt = "999+" if dias_cobertura > 999 else f"{dias_cobertura:g}"
+    return f"{dias_txt}d · {etiqueta}"
+
+
+def _fmt_tendencia(pct) -> str:
+    if pct is None:
+        return '<span class="reo-tendencia neutral" title="Sin venta comparable el año pasado">s/d</span>'
+    clase = "pos" if pct > 0 else ("neg" if pct < 0 else "neutral")
+    signo = "+" if pct > 0 else ""
+    return f'<span class="reo-tendencia {clase}">{signo}{round(pct)}%</span>'
+
+
+def _fila_reorden_header() -> str:
+    return """
+      <div class="reo-fila reo-fila-header">
+        <div class="reo-nombre">Referencia</div>
+        <div class="reo-disp">Disponible</div>
+        <div class="reo-rot">Rotación (año proy.)</div>
+        <div class="reo-tendencia-col">Tendencia vs año pasado</div>
+        <div class="reo-estado">Cobertura</div>
+        <div class="reo-sug">Sugerido</div>
+        <div class="reo-inversion">Inversión</div>
+      </div>"""
+
+
 def _fila_reorden_ref(ref: dict) -> str:
     estado = ref["estado"]
     rot = f'{_miles(ref["rotacion_anualizada"])} uds/año' if ref["rotacion_anualizada"] else "sin ventas 90d"
     sug = f'+{_miles(ref["sugerido"])}' if ref["sugerido"] > 0 else "—"
+    inversion = _cop(ref["inversion_sugerida"]) if ref["sugerido"] > 0 else "—"
+    cobertura_txt = _fmt_cobertura(ref["dias_cobertura"], ref["estado_label"])
     variantes = ref.get("variantes", [])
     tiene_tallas = len(variantes) > 1
 
@@ -458,9 +492,13 @@ def _fila_reorden_ref(ref: dict) -> str:
         <div class="reo-fila">
           <div class="reo-nombre">{chevron}{ref["referencia"].title()}{conteo}</div>
           <div class="reo-disp">{_miles(ref["disponible"])} disp.</div>
-          <div class="reo-rot">{rot}</div>
-          <div class="reo-estado {estado}">{ref["estado_label"]}</div>
+          <div class="reo-rot">{rot}
+            <div class="reo-rot-sub">{_miles(ref["venta_ytd"])} vendidas en {datetime.now().year}</div>
+          </div>
+          {_fmt_tendencia(ref["tendencia_interanual"])}
+          <div class="reo-estado {estado}">{cobertura_txt}</div>
           <div class="reo-sug">{sug}</div>
+          <div class="reo-inversion">{inversion}</div>
         </div>
         {detalle}
       </div>"""
@@ -485,6 +523,7 @@ def _seccion_categoria_reorden(cat: dict) -> str:
         _badge_reorden(cat["num_criticos"], "crítico", "critico")
         + _badge_reorden(cat["num_alerta"], "alerta", "alerta")
         + (f'<span class="reo-badge sugerido">Sugerido: {_miles(cat["unidades_sugeridas"])} uds</span>' if cat["unidades_sugeridas"] > 0 else "")
+        + (f'<span class="reo-badge inversion">Inversión: {_cop(cat["inversion_sugerida"])}</span>' if cat["inversion_sugerida"] > 0 else "")
     )
 
     return f"""
@@ -496,6 +535,7 @@ def _seccion_categoria_reorden(cat: dict) -> str:
         {badges}
       </div>
       <div class="reo-cat-detalle">
+        {_fila_reorden_header() if accionables else ""}
         {filas}
         {nota_otros}
       </div>
@@ -505,13 +545,19 @@ def _seccion_categoria_reorden(cat: dict) -> str:
 def _fila_reorden_categoria_accesorio(cat: dict) -> str:
     rot = f'{_miles(cat["rotacion_anualizada"])} uds/año' if cat["rotacion_anualizada"] else "sin ventas 90d"
     sug = f'+{_miles(cat["sugerido"])}' if cat["sugerido"] > 0 else "—"
+    inversion = _cop(cat["inversion_sugerida"]) if cat["sugerido"] > 0 else "—"
+    cobertura_txt = _fmt_cobertura(cat["dias_cobertura"], cat["estado_label"])
     return f"""
       <div class="reo-fila">
         <div class="reo-nombre">{cat["categoria"]} <span class="reo-tallas-count">· {_miles(cat["num_referencias"])} referencias</span></div>
         <div class="reo-disp">{_miles(cat["disponible"])} disp.</div>
-        <div class="reo-rot">{rot}</div>
-        <div class="reo-estado {cat["estado"]}">{cat["estado_label"]}</div>
+        <div class="reo-rot">{rot}
+          <div class="reo-rot-sub">{_miles(cat["venta_ytd"])} vendidas en {datetime.now().year}</div>
+        </div>
+        {_fmt_tendencia(cat["tendencia_interanual"])}
+        <div class="reo-estado {cat["estado"]}">{cobertura_txt}</div>
         <div class="reo-sug">{sug}</div>
+        <div class="reo-inversion">{inversion}</div>
       </div>"""
 
 
@@ -523,6 +569,7 @@ def _seccion_reorden_ropa(ropa: dict) -> str:
         _tarjeta_kpi("Sin rotación 90d", _miles(r["sin_rotacion"]), "candidatas a liquidar"),
         _tarjeta_kpi("Nuevas / sin evaluar", _miles(r["nuevos"])),
         _tarjeta_kpi("Unidades sugeridas", _miles(r["unidades_sugeridas_total"]), "a pedir a proveedores"),
+        _tarjeta_kpi("Inversión sugerida", _cop(r["inversion_sugerida_total"]), "costo del surtido sugerido"),
     ])
     categorias_html = "".join(_seccion_categoria_reorden(c) for c in ropa["categorias"])
     return f"""
@@ -538,16 +585,21 @@ def _seccion_reorden_accesorios(accesorios: dict) -> str:
         _tarjeta_kpi("En alerta", _miles(r["alerta"]), "cobertura ≤ 30 días"),
         _tarjeta_kpi("Sin rotación 90d", _miles(r["sin_rotacion"])),
         _tarjeta_kpi("Unidades sugeridas", _miles(r["unidades_sugeridas_total"]), "a pedir a proveedores"),
+        _tarjeta_kpi("Inversión sugerida", _cop(r["inversion_sugerida_total"]), "costo del surtido sugerido"),
     ])
     filas_html = "".join(_fila_reorden_categoria_accesorio(c) for c in accesorios["categorias"])
     return f"""
   <h3 class="subseccion">Accesorios · por categoría</h3>
   <div class="subtitulo" style="margin-bottom:1rem;">
     Mucha variedad de diseño por categoría (aretes, anillos, pulseras...) para rastrear uno por uno —
-    acá se mide el ritmo de la categoría completa.
+    acá se mide el ritmo de la categoría completa. "Rotación" proyecta a un año desde los últimos 90 días de venta;
+    "Tendencia" compara esos 90 días contra la misma ventana de hace un año.
   </div>
   <div class="kpi-grid">{kpis_html}</div>
-  <div class="reo-cat-detalle" style="display:block; margin-top:1rem;">{filas_html}</div>"""
+  <div class="reo-cat-detalle" style="display:block; margin-top:1rem;">
+    {_fila_reorden_header()}
+    {filas_html}
+  </div>"""
 
 
 def _seccion_reorden(reorden: dict) -> str:
@@ -1312,7 +1364,7 @@ _CSS = """
     padding: 2.5rem 3rem 4rem;
   }
   header.header-top { margin-bottom: 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-  .header-badges { display: flex; align-items: center; gap: .7rem; }
+  .header-badges { display: flex; align-items: center; gap: .7rem; margin-left: auto; }
   .live-badge {
     display: flex; align-items: center; gap: .45rem; font-size: .74rem; color: var(--texto-sub);
     text-transform: uppercase; letter-spacing: .04em; padding: .4rem .8rem;
@@ -1341,9 +1393,11 @@ _CSS = """
     font-size: .7rem; letter-spacing: .04em; color: var(--texto-sub); text-transform: uppercase;
   }
   .nav-hamburger {
-    width: 42px; height: 42px; flex-shrink: 0;
-    border-radius: 8px; border: 1px solid var(--borde);
-    background: var(--card); cursor: pointer; font-size: 1.15rem;
+    position: fixed; top: 1.5rem; left: 1.5rem; z-index: 41;
+    width: 54px; height: 54px; flex-shrink: 0;
+    border-radius: 10px; border: 1px solid var(--borde);
+    background: var(--card); cursor: pointer; font-size: 1.5rem;
+    box-shadow: 0 2px 10px rgba(30, 27, 22, .1);
   }
   .nav-hamburger:hover { background: var(--destacado-bg); }
   .nav-overlay {
@@ -1529,16 +1583,32 @@ _CSS = """
   .reo-badge + .reo-badge { margin-left: .4rem; }
   .reo-badge.critico { background: var(--rojo-bg); color: var(--rojo); margin-left: auto; }
   .reo-badge.alerta { background: var(--ambar-bg); color: var(--ambar); }
-  .reo-badge.sugerido { background: var(--verde-bg); color: var(--verde); }
+  .reo-badge.sugerido, .reo-badge.inversion { background: var(--verde-bg); color: var(--verde); }
   .reo-cat-detalle { display: none; border-top: 1px solid var(--borde); padding: .3rem 1.1rem .8rem; }
   .reo-cat-wrap.abierto .reo-cat-detalle { display: block; }
-  .reo-fila { display: grid; grid-template-columns: 1fr 100px 120px 110px 70px; gap: .7rem; align-items: center; padding: .5rem 0; border-bottom: 1px dotted var(--borde); font-size: .82rem; }
+  .reo-fila {
+    display: grid; grid-template-columns: 1.4fr 85px 125px 90px 135px 75px 100px;
+    gap: .6rem; align-items: center; padding: .55rem 0; border-bottom: 1px dotted var(--borde); font-size: .8rem;
+  }
+  .reo-fila-header {
+    border-bottom: 1px solid var(--borde); padding-bottom: .5rem; cursor: default;
+  }
+  .reo-fila-header > div {
+    text-transform: uppercase; letter-spacing: .02em; font-size: .66rem; font-weight: 700;
+    color: var(--texto-sub); background: none; padding: 0;
+  }
   .reo-nombre { font-weight: 500; }
   .reo-disp, .reo-rot { color: var(--texto-sub); text-align: right; }
+  .reo-rot-sub { font-size: .68rem; color: var(--texto-sub); opacity: .8; }
+  .reo-tendencia-col, .reo-tendencia { text-align: center; font-size: .78rem; font-weight: 700; }
+  .reo-tendencia.pos { color: var(--verde); }
+  .reo-tendencia.neg { color: var(--rojo); }
+  .reo-tendencia.neutral { color: var(--texto-sub); font-weight: 400; }
   .reo-estado { text-align: center; font-weight: 700; font-size: .72rem; padding: .2rem .4rem; border-radius: 6px; }
   .reo-estado.critico { background: var(--rojo-bg); color: var(--rojo); }
   .reo-estado.alerta { background: var(--ambar-bg); color: var(--ambar); }
   .reo-sug { text-align: right; font-weight: 700; }
+  .reo-inversion { text-align: right; color: var(--texto-sub); }
   .reo-ref-wrap.expandible { cursor: pointer; }
   .reo-ref-wrap.expandible:hover .reo-fila { background: var(--destacado-bg); }
   .reo-tallas-count { color: var(--texto-sub); font-weight: 400; font-size: .78em; }
@@ -1620,6 +1690,7 @@ _CSS = """
   @media (max-width: 640px) {
     body { padding: 1.4rem 1rem 3rem; }
     header.header-top { gap: .6rem; }
+    .nav-hamburger { top: 1rem; left: 1rem; width: 46px; height: 46px; font-size: 1.3rem; }
     .live-badge { font-size: .68rem; padding: .35rem .6rem; }
     .logout-btn { padding: .4rem .8rem; font-size: .72rem; }
     .marca-central { margin: 1.1rem 0 1.6rem; }
@@ -1643,8 +1714,9 @@ _CSS = """
       grid-template-columns: 1fr !important; row-gap: .3rem; padding: .8rem 0;
     }
     .suc-cifras, .cat-valor, .cat-margen, .ref-unidades, .ref-valor,
-    .reo-disp, .reo-rot, .reo-sug, .liq-disp, .liq-valor { text-align: left; }
-    .reo-estado { justify-self: start; }
+    .reo-disp, .reo-rot, .reo-sug, .reo-inversion, .liq-disp, .liq-valor { text-align: left; }
+    .reo-estado, .reo-tendencia { justify-self: start; }
+    .reo-fila-header { display: none; } /* columnas fijas no aportan apiladas en 1 columna; cada dato mobile ya trae su unidad como sufijo */
 
     .reo-cat-header { flex-direction: column; align-items: flex-start; gap: .4rem; }
     .reo-badge, .reo-badge + .reo-badge { margin-left: 0; }

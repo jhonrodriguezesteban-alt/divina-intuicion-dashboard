@@ -19,6 +19,15 @@ Estructura de salida inspirada en el acordeón de Programación del
 dashboard de referencia (Grupo Bentley): categoría -> lista de
 referencias con estado (crítico/alerta/ok/sin rotación/nuevo) y sugerido.
 
+La cantidad sugerida no solo mira el ritmo plano de los últimos 90 días:
+se ajusta por la tendencia interanual (misma ventana de 90 días vs hace un
+año, ver _tendencia_interanual) para no quedarse corto pidiendo si un
+producto viene creciendo, ni sobre-pedir si viene cayendo. Los días de
+cobertura (para saber qué tan urgente es) sí usan el ritmo real reciente,
+sin ajustar -- son preguntas distintas. También se calcula el costo/
+inversión sugerida (Costo manual x sugerido) para dimensionar en pesos
+cuánto implica surtir lo que aparece en la lista.
+
 Umbrales en config/inventario_config.json.
 """
 
@@ -35,6 +44,11 @@ OUT = Path(__file__).resolve().parent.parent / "reportes" / "reorden.json"
 HOY = pd.Timestamp.now().normalize()
 VENTANA_DIAS = 90
 INICIO_VENTANA = HOY - pd.Timedelta(days=VENTANA_DIAS)
+# Misma ventana de 90 días pero de hace un año, para comparar manzanas con
+# manzanas (estacionalidad) al medir si un producto viene creciendo o cayendo.
+INICIO_VENTANA_ANIO_PASADO = INICIO_VENTANA - pd.Timedelta(days=365)
+FIN_VENTANA_ANIO_PASADO = HOY - pd.Timedelta(days=365)
+INICIO_ANIO = pd.Timestamp(year=HOY.year, month=1, day=1)
 
 
 def _clasificar(disponible, venta_diaria, dias_cobertura, cfg):
@@ -53,11 +67,54 @@ def _estado_fila(disponible, venta_diaria, dias_cobertura, vendido_alguna_vez, c
     return _clasificar(disponible, venta_diaria, dias_cobertura or 0, cfg)
 
 
-def _sugerido(venta_diaria, disponible, cfg):
-    if venta_diaria <= 0:
+def _tendencia_interanual(venta_actual, venta_anio_pasado, minimo_base=3, tope=(-0.6, 2.0)):
+    """% de crecimiento comparando la ventana de 90 días actual contra la
+    misma ventana de hace un año. Un promedio plano de los últimos 90 días
+    no distingue un producto que viene en caída de uno que viene en alza --
+    esto captura esa tendencia para ajustar cuánto pedir, no solo cuánto se
+    vendió últimamente. Se exige una base mínima el año pasado (si no, un
+    salto de 1 a 4 unidades "creciera" 300% sin significar nada) y se acota
+    el rango para que un caso extremo no dispare el sugerido."""
+    if venta_anio_pasado < minimo_base:
+        return None
+    crecimiento = (venta_actual - venta_anio_pasado) / venta_anio_pasado
+    return max(tope[0], min(tope[1], crecimiento))
+
+
+def _venta_diaria_ajustada(venta_diaria, crecimiento):
+    """Cuánto pedir mira hacia adelante, así que se ajusta por la tendencia
+    interanual; cuántos días de cobertura quedan (_clasificar) sigue usando
+    el ritmo real de los últimos 90 días -- son preguntas distintas."""
+    if crecimiento is None:
+        return venta_diaria
+    return venta_diaria * (1 + crecimiento)
+
+
+def _sugerido(venta_diaria_ajustada, disponible, cfg):
+    if venta_diaria_ajustada <= 0:
         return 0
-    objetivo = venta_diaria * cfg["dias_cobertura_objetivo"]
+    objetivo = venta_diaria_ajustada * cfg["dias_cobertura_objetivo"]
     return max(0, round(objetivo - disponible))
+
+
+def _costo_unitario(grupo: pd.DataFrame) -> float:
+    costos_validos = grupo.loc[grupo["Costo manual"] > 0, "Costo manual"]
+    return float(costos_validos.mean()) if len(costos_validos) else 0.0
+
+
+def _limpiar_nan(obj):
+    """pandas convierte los None de dias_cobertura/tendencia_interanual en
+    NaN al pasar por un DataFrame (aunque la columna venga de una lista de
+    dicts con None explícito) -- json.dumps escribe eso como el literal
+    `NaN`, que rompe el contrato "null = sin dato" que espera el dashboard.
+    Se limpia recursivo justo antes de guardar, ya con todo en dicts/listas."""
+    if isinstance(obj, float) and pd.isna(obj):
+        return None
+    if isinstance(obj, dict):
+        return {k: _limpiar_nan(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_limpiar_nan(v) for v in obj]
+    return obj
 
 
 def _procesar_ropa(articulos: pd.DataFrame, cfg: dict) -> dict:
@@ -66,6 +123,8 @@ def _procesar_ropa(articulos: pd.DataFrame, cfg: dict) -> dict:
         disponible = int(grupo["Stock total empresa"].sum())
         venta_ventana = float(grupo["venta_90d"].sum())
         venta_diaria = venta_ventana / VENTANA_DIAS
+        venta_ventana_anio_pasado = float(grupo["venta_90d_anio_pasado"].sum())
+        venta_ytd = int(grupo["venta_ytd"].sum())
         dias_cobertura = (disponible / venta_diaria) if venta_diaria > 0 else None
         vendido_alguna_vez = bool(grupo["vendido_alguna_vez"].any())
 
@@ -73,6 +132,10 @@ def _procesar_ropa(articulos: pd.DataFrame, cfg: dict) -> dict:
             continue  # sin stock, nunca vendido: no aporta al reorden
 
         estado, etiqueta = _estado_fila(disponible, venta_diaria, dias_cobertura, vendido_alguna_vez, cfg)
+        crecimiento = _tendencia_interanual(venta_ventana, venta_ventana_anio_pasado)
+        venta_diaria_ajustada = _venta_diaria_ajustada(venta_diaria, crecimiento)
+        sugerido = int(_sugerido(venta_diaria_ajustada, disponible, cfg))
+        costo_unitario = _costo_unitario(grupo)
 
         variantes = [
             {
@@ -88,11 +151,15 @@ def _procesar_ropa(articulos: pd.DataFrame, cfg: dict) -> dict:
             "categoria": categoria,
             "disponible": disponible,
             "venta_90d": int(venta_ventana),
+            "venta_ytd": venta_ytd,
             "rotacion_anualizada": round(venta_diaria * 365) if venta_diaria > 0 else 0,
             "dias_cobertura": round(dias_cobertura, 1) if dias_cobertura is not None else None,
+            "tendencia_interanual": round(crecimiento * 100) if crecimiento is not None else None,
             "estado": estado,
             "estado_label": etiqueta,
-            "sugerido": int(_sugerido(venta_diaria, disponible, cfg)),
+            "sugerido": sugerido,
+            "costo_unitario": round(costo_unitario),
+            "inversion_sugerida": round(sugerido * costo_unitario),
             "num_variantes": len(variantes),
             "variantes": variantes,
         })
@@ -100,7 +167,8 @@ def _procesar_ropa(articulos: pd.DataFrame, cfg: dict) -> dict:
     df = pd.DataFrame(filas)
     if not len(df):
         return {"resumen": {"total_referencias": 0, "criticos": 0, "alerta": 0, "sin_rotacion": 0,
-                             "nuevos": 0, "unidades_sugeridas_total": 0}, "categorias": []}
+                             "nuevos": 0, "unidades_sugeridas_total": 0, "inversion_sugerida_total": 0},
+                "categorias": []}
 
     categorias = []
     for cat, grupo in df.groupby("categoria"):
@@ -111,6 +179,7 @@ def _procesar_ropa(articulos: pd.DataFrame, cfg: dict) -> dict:
             "num_criticos": int((grupo["estado"] == "critico").sum()),
             "num_alerta": int((grupo["estado"] == "alerta").sum()),
             "unidades_sugeridas": int(grupo["sugerido"].sum()),
+            "inversion_sugerida": round(float(grupo["inversion_sugerida"].sum())),
             "referencias": grupo.sort_values(
                 by=["estado", "dias_cobertura"], key=lambda s: s if s.name != "dias_cobertura" else s.fillna(999999)
             ).to_dict(orient="records"),
@@ -125,8 +194,9 @@ def _procesar_ropa(articulos: pd.DataFrame, cfg: dict) -> dict:
             "sin_rotacion": int((df["estado"] == "sin_rotacion").sum()),
             "nuevos": int((df["estado"] == "nuevo").sum()),
             "unidades_sugeridas_total": int(df["sugerido"].sum()),
+            "inversion_sugerida_total": round(float(df["inversion_sugerida"].sum())),
         },
-        "categorias": categorias,
+        "categorias": _limpiar_nan(categorias),
     }
 
 
@@ -136,6 +206,8 @@ def _procesar_accesorios(articulos: pd.DataFrame, cfg: dict) -> dict:
         disponible = int(grupo["Stock total empresa"].sum())
         venta_ventana = float(grupo["venta_90d"].sum())
         venta_diaria = venta_ventana / VENTANA_DIAS
+        venta_ventana_anio_pasado = float(grupo["venta_90d_anio_pasado"].sum())
+        venta_ytd = int(grupo["venta_ytd"].sum())
         dias_cobertura = (disponible / venta_diaria) if venta_diaria > 0 else None
         vendido_alguna_vez = bool(grupo["vendido_alguna_vez"].any())
 
@@ -143,23 +215,32 @@ def _procesar_accesorios(articulos: pd.DataFrame, cfg: dict) -> dict:
             continue
 
         estado, etiqueta = _estado_fila(disponible, venta_diaria, dias_cobertura, vendido_alguna_vez, cfg)
+        crecimiento = _tendencia_interanual(venta_ventana, venta_ventana_anio_pasado)
+        venta_diaria_ajustada = _venta_diaria_ajustada(venta_diaria, crecimiento)
+        sugerido = int(_sugerido(venta_diaria_ajustada, disponible, cfg))
+        costo_unitario = _costo_unitario(grupo)
 
         filas.append({
             "categoria": categoria,
             "disponible": disponible,
             "venta_90d": int(venta_ventana),
+            "venta_ytd": venta_ytd,
             "rotacion_anualizada": round(venta_diaria * 365) if venta_diaria > 0 else 0,
             "dias_cobertura": round(dias_cobertura, 1) if dias_cobertura is not None else None,
+            "tendencia_interanual": round(crecimiento * 100) if crecimiento is not None else None,
             "estado": estado,
             "estado_label": etiqueta,
-            "sugerido": int(_sugerido(venta_diaria, disponible, cfg)),
+            "sugerido": sugerido,
+            "costo_unitario": round(costo_unitario),
+            "inversion_sugerida": round(sugerido * costo_unitario),
             "num_referencias": int(grupo["referencia"].nunique()),
         })
 
     df = pd.DataFrame(filas)
     if not len(df):
         return {"resumen": {"total_categorias": 0, "criticos": 0, "alerta": 0, "sin_rotacion": 0,
-                             "nuevos": 0, "unidades_sugeridas_total": 0}, "categorias": []}
+                             "nuevos": 0, "unidades_sugeridas_total": 0, "inversion_sugerida_total": 0},
+                "categorias": []}
 
     df = df.sort_values(
         by=["estado", "dias_cobertura"], key=lambda s: s if s.name != "dias_cobertura" else s.fillna(999999)
@@ -173,8 +254,9 @@ def _procesar_accesorios(articulos: pd.DataFrame, cfg: dict) -> dict:
             "sin_rotacion": int((df["estado"] == "sin_rotacion").sum()),
             "nuevos": int((df["estado"] == "nuevo").sum()),
             "unidades_sugeridas_total": int(df["sugerido"].sum()),
+            "inversion_sugerida_total": round(float(df["inversion_sugerida"].sum())),
         },
-        "categorias": df.to_dict(orient="records"),
+        "categorias": _limpiar_nan(df.to_dict(orient="records")),
     }
 
 
@@ -191,13 +273,24 @@ def main():
 
     conceptos = cargar_conceptos_combinados()
     conceptos["Fecha creación"] = pd.to_datetime(conceptos["Fecha creación"])
-    ventas_recientes = conceptos[
-        (conceptos["Estado CXC"] == "Pago total") & (conceptos["Fecha creación"] >= INICIO_VENTANA)
-    ]
+    pagadas = conceptos[conceptos["Estado CXC"] == "Pago total"]
+
+    ventas_recientes = pagadas[pagadas["Fecha creación"] >= INICIO_VENTANA]
     venta_por_sku = ventas_recientes.groupby("Cod. artículo")["Cantidad"].sum()
-    algo_vendido_historico = set(conceptos.loc[conceptos["Estado CXC"] == "Pago total", "Cod. artículo"].unique())
+
+    ventas_anio_pasado = pagadas[
+        (pagadas["Fecha creación"] >= INICIO_VENTANA_ANIO_PASADO) & (pagadas["Fecha creación"] < FIN_VENTANA_ANIO_PASADO)
+    ]
+    venta_por_sku_anio_pasado = ventas_anio_pasado.groupby("Cod. artículo")["Cantidad"].sum()
+
+    ventas_ytd = pagadas[pagadas["Fecha creación"] >= INICIO_ANIO]
+    venta_por_sku_ytd = ventas_ytd.groupby("Cod. artículo")["Cantidad"].sum()
+
+    algo_vendido_historico = set(pagadas["Cod. artículo"].unique())
 
     articulos["venta_90d"] = articulos["ID"].map(venta_por_sku).fillna(0)
+    articulos["venta_90d_anio_pasado"] = articulos["ID"].map(venta_por_sku_anio_pasado).fillna(0)
+    articulos["venta_ytd"] = articulos["ID"].map(venta_por_sku_ytd).fillna(0)
     articulos["vendido_alguna_vez"] = articulos["ID"].isin(algo_vendido_historico)
 
     ropa_salida = _procesar_ropa(articulos[~articulos["es_accesorio"]], cfg)
