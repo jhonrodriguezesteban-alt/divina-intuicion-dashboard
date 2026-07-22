@@ -550,96 +550,6 @@ def _seccion_reorden_accesorios(accesorios: dict) -> str:
   <div class="reo-cat-detalle" style="display:block; margin-top:1rem;">{filas_html}</div>"""
 
 
-def _tabla_surtido(items: list, col_categoria_extra: bool = False) -> str:
-    """Tabla plana sin columna de estado -- el grupo (urgente/recomendado) ya
-    lo dice el encabezado, repetir "Crítico"/"Alerta"/"Cobertura ok" fila por
-    fila solo genera ruido y, peor, suena contradictorio ("ok" al lado de
-    una cantidad a pedir)."""
-    if not items:
-        return '<div class="detalle-vacio">Nada en este grupo por ahora.</div>'
-    filas = "".join(f"""<tr>
-      <td>{nombre}</td>
-      <td>{categoria}</td>
-      <td class="num">{_miles(disponible)}</td>
-      <td class="num" style="font-weight:700;">+{_miles(sugerido)}</td>
-    </tr>""" for nombre, categoria, disponible, sugerido in items)
-    return f"""<div class="tabla-scroll">
-    <table class="tabla-categorias">
-      <thead><tr><th>Producto</th><th>Categoría</th><th class="num">Disponible</th><th class="num">A pedir</th></tr></thead>
-      <tbody>{filas}</tbody>
-    </table>
-  </div>"""
-
-
-def _seccion_surtido(reorden: dict) -> str:
-    """Versión "sin clics" de la solicitud de pedidos: lista plana, sin
-    acordeones ni categorías para desplegar, dividida en dos grupos claros
-    -- Urgente (crítico/alerta) y Recomendado (cobertura ok pero por debajo
-    del objetivo de 30 días) -- en vez de mezclarlos con una etiqueta de
-    estado por fila que resultaba confusa ("Cobertura ok" junto a una
-    cantidad a pedir se lee como una contradicción). El detalle por
-    talla/color sigue disponible en Inventario > Solicitud de pedidos."""
-    if not reorden:
-        return '<div class="nota">Sugerencia de pedidos aún no procesada. Corre scripts/procesar_reorden.py.</div>'
-
-    hoy_dt = datetime.now()
-    es_dia_pedido = hoy_dt.weekday() in (1, 4)  # martes=1, viernes=4
-    aviso_html = (
-        '<div class="reo-aviso-dia">📦 Hoy toca revisar pedidos a proveedores (martes/viernes).</div>'
-        if es_dia_pedido else ""
-    )
-
-    items_ropa = [
-        r for cat in reorden["ropa"]["categorias"] for r in cat["referencias"] if r["sugerido"] > 0
-    ]
-    items_acc = [c for c in reorden["accesorios"]["categorias"] if c["sugerido"] > 0]
-
-    urgente_ropa = sorted(
-        (r for r in items_ropa if r["estado"] in ("critico", "alerta")),
-        key=lambda r: (r["estado"] != "critico", r["categoria"], -r["sugerido"]),
-    )
-    recomendado_ropa = sorted(
-        (r for r in items_ropa if r["estado"] not in ("critico", "alerta")),
-        key=lambda r: (r["categoria"], -r["sugerido"]),
-    )
-    urgente_acc = sorted(
-        (c for c in items_acc if c["estado"] in ("critico", "alerta")),
-        key=lambda c: (c["estado"] != "critico", -c["sugerido"]),
-    )
-    recomendado_acc = sorted(
-        (c for c in items_acc if c["estado"] not in ("critico", "alerta")),
-        key=lambda c: -c["sugerido"],
-    )
-
-    total_uds = sum(r["sugerido"] for r in items_ropa) + sum(c["sugerido"] for c in items_acc)
-    kpis_html = "".join([
-        _tarjeta_kpi("Urgente", _miles(len(urgente_ropa) + len(urgente_acc)), "reponer ya"),
-        _tarjeta_kpi("Recomendado", _miles(len(recomendado_ropa) + len(recomendado_acc)), "completar a 30 días"),
-        _tarjeta_kpi("Unidades sugeridas en total", _miles(total_uds)),
-    ])
-
-    def _items_ropa_tabla(refs):
-        return [(r["referencia"].title(), r["categoria"], r["disponible"], r["sugerido"]) for r in refs]
-
-    def _items_acc_tabla(cats):
-        return [(c["categoria"], f'{_miles(c["num_referencias"])} referencias', c["disponible"], c["sugerido"]) for c in cats]
-
-    return f"""
-  <h2>Qué surtir</h2>
-  <div class="subtitulo" style="margin-bottom:1rem;">
-    Lista directa de lo que hay que pedir a proveedores ahora mismo, sin necesidad de hacer clic en nada.
-    El detalle por talla/color de cada producto sigue en Inventario · Solicitud de pedidos.
-  </div>
-  {aviso_html}
-  <div class="kpi-grid">{kpis_html}</div>
-
-  <h3 class="subseccion">🔴 Urgente — reponer ya</h3>
-  {_tabla_surtido(_items_ropa_tabla(urgente_ropa) + _items_acc_tabla(urgente_acc))}
-
-  <h3 class="subseccion">🟡 Recomendado — completar a 30 días (no urgente)</h3>
-  {_tabla_surtido(_items_ropa_tabla(recomendado_ropa) + _items_acc_tabla(recomendado_acc))}"""
-
-
 def _seccion_reorden(reorden: dict) -> str:
     if not reorden:
         return '<div class="nota">Sugerencia de pedidos aún no procesada. Corre scripts/procesar_reorden.py.</div>'
@@ -1835,7 +1745,6 @@ def generar_dashboard_html(datos: dict = None) -> str:
     inventario_resumen_html = _seccion_inventario_resumen(inventario)
     liquidacion_html = _seccion_liquidacion(liquidacion)
     reorden_html = _seccion_reorden(reorden)
-    surtido_html = _seccion_surtido(reorden)
 
     generado = datetime.now().strftime("%Y-%m-%d %H:%M")
     diarias_json = json.dumps(ventas_diarias, ensure_ascii=False)
@@ -1953,14 +1862,13 @@ def generar_dashboard_html(datos: dict = None) -> str:
   </div>
 
   <div id="sec-surtido" class="seccion" style="display:none">
-    {surtido_html}
+    {reorden_html}
   </div>
 
   <div id="sec-inventario" class="seccion" style="display:none">
     <h2>Inventario</h2>
     {inventario_resumen_html}
     {liquidacion_html}
-    {reorden_html}
   </div>
 
   <div id="sec-comisiones" class="seccion" style="display:none">
