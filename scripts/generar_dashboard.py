@@ -550,11 +550,35 @@ def _seccion_reorden_accesorios(accesorios: dict) -> str:
   <div class="reo-cat-detalle" style="display:block; margin-top:1rem;">{filas_html}</div>"""
 
 
+def _tabla_surtido(items: list, col_categoria_extra: bool = False) -> str:
+    """Tabla plana sin columna de estado -- el grupo (urgente/recomendado) ya
+    lo dice el encabezado, repetir "Crítico"/"Alerta"/"Cobertura ok" fila por
+    fila solo genera ruido y, peor, suena contradictorio ("ok" al lado de
+    una cantidad a pedir)."""
+    if not items:
+        return '<div class="detalle-vacio">Nada en este grupo por ahora.</div>'
+    filas = "".join(f"""<tr>
+      <td>{nombre}</td>
+      <td>{categoria}</td>
+      <td class="num">{_miles(disponible)}</td>
+      <td class="num" style="font-weight:700;">+{_miles(sugerido)}</td>
+    </tr>""" for nombre, categoria, disponible, sugerido in items)
+    return f"""<div class="tabla-scroll">
+    <table class="tabla-categorias">
+      <thead><tr><th>Producto</th><th>Categoría</th><th class="num">Disponible</th><th class="num">A pedir</th></tr></thead>
+      <tbody>{filas}</tbody>
+    </table>
+  </div>"""
+
+
 def _seccion_surtido(reorden: dict) -> str:
-    """Versión "sin clics" de la solicitud de pedidos: una tabla plana, sin
-    acordeones ni categorías para desplegar -- solo lo que hay que pedir,
-    ordenado por categoría. El detalle por talla/color (para quien lo
-    necesite) sigue disponible en Inventario > Solicitud de pedidos."""
+    """Versión "sin clics" de la solicitud de pedidos: lista plana, sin
+    acordeones ni categorías para desplegar, dividida en dos grupos claros
+    -- Urgente (crítico/alerta) y Recomendado (cobertura ok pero por debajo
+    del objetivo de 30 días) -- en vez de mezclarlos con una etiqueta de
+    estado por fila que resultaba confusa ("Cobertura ok" junto a una
+    cantidad a pedir se lee como una contradicción). El detalle por
+    talla/color sigue disponible en Inventario > Solicitud de pedidos."""
     if not reorden:
         return '<div class="nota">Sugerencia de pedidos aún no procesada. Corre scripts/procesar_reorden.py.</div>'
 
@@ -568,36 +592,37 @@ def _seccion_surtido(reorden: dict) -> str:
     items_ropa = [
         r for cat in reorden["ropa"]["categorias"] for r in cat["referencias"] if r["sugerido"] > 0
     ]
-    items_ropa.sort(key=lambda r: (r["categoria"], -r["sugerido"]))
-
     items_acc = [c for c in reorden["accesorios"]["categorias"] if c["sugerido"] > 0]
-    items_acc.sort(key=lambda c: -c["sugerido"])
+
+    urgente_ropa = sorted(
+        (r for r in items_ropa if r["estado"] in ("critico", "alerta")),
+        key=lambda r: (r["estado"] != "critico", r["categoria"], -r["sugerido"]),
+    )
+    recomendado_ropa = sorted(
+        (r for r in items_ropa if r["estado"] not in ("critico", "alerta")),
+        key=lambda r: (r["categoria"], -r["sugerido"]),
+    )
+    urgente_acc = sorted(
+        (c for c in items_acc if c["estado"] in ("critico", "alerta")),
+        key=lambda c: (c["estado"] != "critico", -c["sugerido"]),
+    )
+    recomendado_acc = sorted(
+        (c for c in items_acc if c["estado"] not in ("critico", "alerta")),
+        key=lambda c: -c["sugerido"],
+    )
 
     total_uds = sum(r["sugerido"] for r in items_ropa) + sum(c["sugerido"] for c in items_acc)
     kpis_html = "".join([
-        _tarjeta_kpi("Productos de ropa a pedir", _miles(len(items_ropa))),
-        _tarjeta_kpi("Categorías de accesorios a pedir", _miles(len(items_acc))),
+        _tarjeta_kpi("Urgente", _miles(len(urgente_ropa) + len(urgente_acc)), "reponer ya"),
+        _tarjeta_kpi("Recomendado", _miles(len(recomendado_ropa) + len(recomendado_acc)), "completar a 30 días"),
         _tarjeta_kpi("Unidades sugeridas en total", _miles(total_uds)),
     ])
 
-    def _fila(nombre, categoria, disponible, estado, estado_label, sugerido):
-        return f"""<tr>
-      <td>{nombre}</td>
-      <td>{categoria}</td>
-      <td class="num">{_miles(disponible)}</td>
-      <td class="num"><span class="reo-estado {estado}">{estado_label}</span></td>
-      <td class="num" style="font-weight:700;">+{_miles(sugerido)}</td>
-    </tr>"""
+    def _items_ropa_tabla(refs):
+        return [(r["referencia"].title(), r["categoria"], r["disponible"], r["sugerido"]) for r in refs]
 
-    filas_ropa = "".join(
-        _fila(r["referencia"].title(), r["categoria"], r["disponible"], r["estado"], r["estado_label"], r["sugerido"])
-        for r in items_ropa
-    ) or '<tr><td colspan="5" class="detalle-vacio">Nada que pedir en ropa por ahora.</td></tr>'
-
-    filas_acc = "".join(
-        _fila(c["categoria"], f'{_miles(c["num_referencias"])} referencias', c["disponible"], c["estado"], c["estado_label"], c["sugerido"])
-        for c in items_acc
-    ) or '<tr><td colspan="5" class="detalle-vacio">Nada que pedir en accesorios por ahora.</td></tr>'
+    def _items_acc_tabla(cats):
+        return [(c["categoria"], f'{_miles(c["num_referencias"])} referencias', c["disponible"], c["sugerido"]) for c in cats]
 
     return f"""
   <h2>Qué surtir</h2>
@@ -608,21 +633,11 @@ def _seccion_surtido(reorden: dict) -> str:
   {aviso_html}
   <div class="kpi-grid">{kpis_html}</div>
 
-  <h3 class="subseccion">Ropa</h3>
-  <div class="tabla-scroll">
-    <table class="tabla-categorias">
-      <thead><tr><th>Producto</th><th>Categoría</th><th class="num">Disponible</th><th class="num">Estado</th><th class="num">A pedir</th></tr></thead>
-      <tbody>{filas_ropa}</tbody>
-    </table>
-  </div>
+  <h3 class="subseccion">🔴 Urgente — reponer ya</h3>
+  {_tabla_surtido(_items_ropa_tabla(urgente_ropa) + _items_acc_tabla(urgente_acc))}
 
-  <h3 class="subseccion">Accesorios</h3>
-  <div class="tabla-scroll">
-    <table class="tabla-categorias">
-      <thead><tr><th>Categoría</th><th></th><th class="num">Disponible</th><th class="num">Estado</th><th class="num">A pedir</th></tr></thead>
-      <tbody>{filas_acc}</tbody>
-    </table>
-  </div>"""
+  <h3 class="subseccion">🟡 Recomendado — completar a 30 días (no urgente)</h3>
+  {_tabla_surtido(_items_ropa_tabla(recomendado_ropa) + _items_acc_tabla(recomendado_acc))}"""
 
 
 def _seccion_reorden(reorden: dict) -> str:
