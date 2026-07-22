@@ -504,24 +504,52 @@ def _fila_reorden_ref(ref: dict) -> str:
       </div>"""
 
 
-def _seccion_categoria_reorden(cat: dict) -> str:
+def _stats_accionables_ropa(cat: dict) -> dict:
+    """Mismas cuentas que trae la categoría (num_refs/uds_disponibles/
+    num_criticos/num_alerta) pero recalculadas solo sobre las referencias
+    con sugerido > 0 -- para la vista de Inventario (todo el catálogo)
+    interesa el total de la categoría; para "Qué surtir" (solo lo
+    accionable) mostrar el total completo confunde, porque incluye
+    referencias que ya están bien."""
+    accionables = [r for r in cat["referencias"] if r["sugerido"] > 0]
+    return {
+        "num_refs": len(accionables),
+        "uds_disponibles": sum(r["disponible"] for r in accionables),
+        "num_criticos": sum(1 for r in accionables if r["estado"] == "critico"),
+        "num_alerta": sum(1 for r in accionables if r["estado"] == "alerta"),
+    }
+
+
+def _seccion_categoria_reorden(cat: dict, solo_accionables: bool = False) -> str:
     """Solo se listan referencias con unidades sugeridas > 0: una referencia puede
     salir "Crítico" (cobertura ≤ 7 días) pero con una venta tan baja que el
     objetivo de cobertura redondea a 0 unidades sugeridas -- listarla igual es
-    ruido, no dice nada accionable sobre qué pedir."""
+    ruido, no dice nada accionable sobre qué pedir.
+
+    solo_accionables controla el ENCABEZADO de la categoría (refs/disponibles/
+    crítico/alerta): False muestra el total de la categoría (Inventario, vista
+    de catálogo completo); True muestra esos mismos números pero contados solo
+    sobre lo accionable (Qué surtir, lista de compra pura -- ver
+    _stats_accionables_ropa)."""
     accionables = [r for r in cat["referencias"] if r["sugerido"] > 0]
     otros = len(cat["referencias"]) - len(accionables)
     filas = "".join(_fila_reorden_ref(r) for r in accionables)
     nota_otros = (
         f'<div class="detalle-vacio">+{_miles(otros)} referencias más sin unidades sugeridas por ahora.</div>'
-        if otros > 0 else ""
+        if otros > 0 and not solo_accionables else ""
     )
     if not accionables:
         filas = '<div class="detalle-vacio">Nada que pedir en esta categoría por ahora.</div>'
 
+    if solo_accionables:
+        meta = _stats_accionables_ropa(cat)
+    else:
+        meta = {"num_refs": cat["num_refs"], "uds_disponibles": cat["uds_disponibles"],
+                "num_criticos": cat["num_criticos"], "num_alerta": cat["num_alerta"]}
+
     badges = (
-        _badge_reorden(cat["num_criticos"], "crítico", "critico")
-        + _badge_reorden(cat["num_alerta"], "alerta", "alerta")
+        _badge_reorden(meta["num_criticos"], "crítico", "critico")
+        + _badge_reorden(meta["num_alerta"], "alerta", "alerta")
         + (f'<span class="reo-badge sugerido">Sugerido: {_miles(cat["unidades_sugeridas"])} uds</span>' if cat["unidades_sugeridas"] > 0 else "")
         + (f'<span class="reo-badge inversion">Inversión: {_cop(cat["inversion_sugerida"])}</span>' if cat["inversion_sugerida"] > 0 else "")
     )
@@ -531,7 +559,7 @@ def _seccion_categoria_reorden(cat: dict) -> str:
       <div class="reo-cat-header">
         <span class="chevron">▶</span>
         <span class="reo-cat-nombre">{cat["categoria"]}</span>
-        <span class="reo-cat-meta">{_miles(cat["num_refs"])} refs · {_miles(cat["uds_disponibles"])} uds disponibles</span>
+        <span class="reo-cat-meta">{_miles(meta["num_refs"])} refs · {_miles(meta["uds_disponibles"])} uds disponibles</span>
         {badges}
       </div>
       <div class="reo-cat-detalle">
@@ -633,15 +661,15 @@ def _seccion_surtido_ropa(ropa: dict) -> str:
     if not cats:
         return '<h3 class="subseccion">Ropa · por referencia</h3><div class="detalle-vacio">Nada que surtir en ropa por ahora.</div>'
 
-    num_refs = sum(len([r for r in c["referencias"] if r["sugerido"] > 0]) for c in cats)
+    stats_por_cat = [_stats_accionables_ropa(c) for c in cats]
     kpis_html = "".join([
-        _tarjeta_kpi("Referencias a surtir", _miles(num_refs)),
-        _tarjeta_kpi("Críticas", _miles(sum(c["num_criticos"] for c in cats)), "cobertura ≤ 7 días"),
-        _tarjeta_kpi("En alerta", _miles(sum(c["num_alerta"] for c in cats)), "cobertura ≤ 30 días"),
+        _tarjeta_kpi("Referencias a surtir", _miles(sum(s["num_refs"] for s in stats_por_cat))),
+        _tarjeta_kpi("Críticas", _miles(sum(s["num_criticos"] for s in stats_por_cat)), "cobertura ≤ 7 días"),
+        _tarjeta_kpi("En alerta", _miles(sum(s["num_alerta"] for s in stats_por_cat)), "cobertura ≤ 30 días"),
         _tarjeta_kpi("Unidades sugeridas", _miles(sum(c["unidades_sugeridas"] for c in cats)), "a pedir a proveedores"),
         _tarjeta_kpi("Inversión sugerida", _cop(sum(c["inversion_sugerida"] for c in cats)), "costo del surtido sugerido"),
     ])
-    categorias_html = "".join(_seccion_categoria_reorden(c) for c in cats)
+    categorias_html = "".join(_seccion_categoria_reorden(c, solo_accionables=True) for c in cats)
     return f"""
   <h3 class="subseccion">Ropa · por referencia</h3>
   <div class="kpi-grid">{kpis_html}</div>
