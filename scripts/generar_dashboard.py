@@ -625,6 +625,79 @@ def _seccion_reorden(reorden: dict) -> str:
   {_seccion_reorden_accesorios(reorden["accesorios"])}"""
 
 
+def _seccion_surtido_ropa(ropa: dict) -> str:
+    """A diferencia de _seccion_reorden_ropa (todo el catálogo, para
+    Inventario), acá solo entran categorías con algo realmente sugerido --
+    "Qué surtir" es una lista de compra, no un inventario completo."""
+    cats = [c for c in ropa["categorias"] if c["unidades_sugeridas"] > 0]
+    if not cats:
+        return '<h3 class="subseccion">Ropa · por referencia</h3><div class="detalle-vacio">Nada que surtir en ropa por ahora.</div>'
+
+    num_refs = sum(len([r for r in c["referencias"] if r["sugerido"] > 0]) for c in cats)
+    kpis_html = "".join([
+        _tarjeta_kpi("Referencias a surtir", _miles(num_refs)),
+        _tarjeta_kpi("Críticas", _miles(sum(c["num_criticos"] for c in cats)), "cobertura ≤ 7 días"),
+        _tarjeta_kpi("En alerta", _miles(sum(c["num_alerta"] for c in cats)), "cobertura ≤ 30 días"),
+        _tarjeta_kpi("Unidades sugeridas", _miles(sum(c["unidades_sugeridas"] for c in cats)), "a pedir a proveedores"),
+        _tarjeta_kpi("Inversión sugerida", _cop(sum(c["inversion_sugerida"] for c in cats)), "costo del surtido sugerido"),
+    ])
+    categorias_html = "".join(_seccion_categoria_reorden(c) for c in cats)
+    return f"""
+  <h3 class="subseccion">Ropa · por referencia</h3>
+  <div class="kpi-grid">{kpis_html}</div>
+  <div style="margin-top:1.2rem;">{categorias_html}</div>"""
+
+
+def _seccion_surtido_accesorios(accesorios: dict) -> str:
+    cats = [c for c in accesorios["categorias"] if c["sugerido"] > 0]
+    if not cats:
+        return '<h3 class="subseccion">Accesorios · por categoría</h3><div class="detalle-vacio">Nada que surtir en accesorios por ahora.</div>'
+
+    kpis_html = "".join([
+        _tarjeta_kpi("Categorías a surtir", _miles(len(cats))),
+        _tarjeta_kpi("Críticas", _miles(sum(1 for c in cats if c["estado"] == "critico")), "cobertura ≤ 7 días"),
+        _tarjeta_kpi("En alerta", _miles(sum(1 for c in cats if c["estado"] == "alerta")), "cobertura ≤ 30 días"),
+        _tarjeta_kpi("Unidades sugeridas", _miles(sum(c["sugerido"] for c in cats)), "a pedir a proveedores"),
+        _tarjeta_kpi("Inversión sugerida", _cop(sum(c["inversion_sugerida"] for c in cats)), "costo del surtido sugerido"),
+    ])
+    filas_html = "".join(_fila_reorden_categoria_accesorio(c) for c in cats)
+    return f"""
+  <h3 class="subseccion">Accesorios · por categoría</h3>
+  <div class="kpi-grid">{kpis_html}</div>
+  <div class="reo-cat-detalle" style="display:block; margin-top:1rem;">
+    {_fila_reorden_header()}
+    {filas_html}
+  </div>"""
+
+
+def _seccion_surtido(reorden: dict) -> str:
+    """Versión estrictamente filtrada de _seccion_reorden: solo lo que hay
+    que comprar ahora (unidades sugeridas > 0), no el catálogo completo.
+    Esa vista completa (con todas las categorías, se necesite pedir o no)
+    vive en Inventario -- son preguntas distintas: "cómo está todo mi
+    inventario" vs. "qué tengo que pedir ya"."""
+    if not reorden:
+        return '<div class="nota">Sugerencia de pedidos aún no procesada. Corre scripts/procesar_reorden.py.</div>'
+
+    hoy_dt = datetime.now()
+    es_dia_pedido = hoy_dt.weekday() in (1, 4)  # martes=1, viernes=4
+    aviso_html = (
+        '<div class="reo-aviso-dia">📦 Hoy toca revisar pedidos a proveedores (martes/viernes).</div>'
+        if es_dia_pedido else ""
+    )
+
+    return f"""
+  <h2>Qué surtir</h2>
+  <div class="subtitulo" style="margin-bottom:1rem;">
+    Solo las referencias/categorías con unidades sugeridas &gt; 0, calculado sobre venta de los últimos
+    {reorden["ventana_dias"]} días, al {reorden["generado_al"]}. Clic en una categoría para ver sus
+    referencias, clic en una referencia para ver color y talla.
+  </div>
+  {aviso_html}
+  {_seccion_surtido_ropa(reorden["ropa"])}
+  {_seccion_surtido_accesorios(reorden["accesorios"])}"""
+
+
 # ---------- sección: comparativo histórico ----------
 
 MESES_UP = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"]
@@ -1817,6 +1890,7 @@ def generar_dashboard_html(datos: dict = None) -> str:
     inventario_resumen_html = _seccion_inventario_resumen(inventario)
     liquidacion_html = _seccion_liquidacion(liquidacion)
     reorden_html = _seccion_reorden(reorden)
+    surtido_html = _seccion_surtido(reorden)
 
     generado = datetime.now().strftime("%Y-%m-%d %H:%M")
     diarias_json = json.dumps(ventas_diarias, ensure_ascii=False)
@@ -1934,13 +2008,14 @@ def generar_dashboard_html(datos: dict = None) -> str:
   </div>
 
   <div id="sec-surtido" class="seccion" style="display:none">
-    {reorden_html}
+    {surtido_html}
   </div>
 
   <div id="sec-inventario" class="seccion" style="display:none">
     <h2>Inventario</h2>
     {inventario_resumen_html}
     {liquidacion_html}
+    {reorden_html}
   </div>
 
   <div id="sec-comisiones" class="seccion" style="display:none">
