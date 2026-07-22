@@ -1717,13 +1717,13 @@ _CSS = """
   .reo-ref-wrap.expandible { cursor: pointer; }
   .reo-ref-wrap.expandible:hover .reo-fila { background: var(--destacado-bg); }
   .reo-tallas-count { color: var(--texto-sub); font-weight: 400; font-size: .78em; }
-  .reo-variantes { display: none; padding: .4rem 0 .6rem 1.6rem; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: .3rem .8rem; }
-  .reo-ref-wrap.abierto .reo-variantes { display: grid; }
+  .reo-variantes { display: none; padding: .2rem 0 .6rem 1.6rem; }
+  .reo-ref-wrap.abierto .reo-variantes { display: block; }
   .reo-variantes .detalle-item {
-    border-bottom: none; padding: .15rem 0; font-size: .78rem;
-    flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: .1rem;
+    border-bottom: 1px dotted var(--borde); padding: .45rem .3rem; font-size: .82rem;
   }
-  .reo-variantes .detalle-item-surtir { font-weight: 600; }
+  .reo-variantes .detalle-item:last-child { border-bottom: none; }
+  .reo-variantes .detalle-item-surtir { font-weight: 600; background: var(--destacado-bg); border-radius: 6px; }
   .reo-variante-sug { color: var(--verde); font-weight: 700; }
 
   .ref-suc-wrap.expandible { cursor: pointer; }
@@ -1830,7 +1830,6 @@ _CSS = """
 
     .reo-cat-header { flex-direction: column; align-items: flex-start; gap: .4rem; }
     .reo-badge, .reo-badge + .reo-badge { margin-left: 0; }
-    .reo-variantes { grid-template-columns: 1fr 1fr; }
     .ref-variantes { grid-template-columns: 1fr 1fr; }
 
     .donut-legend { max-width: 100%; }
