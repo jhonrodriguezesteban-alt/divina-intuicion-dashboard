@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-07-21",
+  "generado_al": "2026-07-22",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 347,
-      "unidades": 3160,
-      "valor_costo": 154124152.0
+      "num_referencias": 348,
+      "unidades": 3152,
+      "valor_costo": 153588152.0
     },
     "inactivas": {
       "num_referencias": 13,
@@ -13,9 +13,9 @@
       "valor_costo": 1160000.0
     },
     "nuevas": {
-      "num_referencias": 37,
-      "unidades": 139,
-      "valor_costo": 5831500.0
+      "num_referencias": 36,
+      "unidades": 134,
+      "valor_costo": 5731500.0
     }
   },
   "inactivas": [
@@ -184,12 +184,6 @@
       "valor_costo": 108000.0
     },
     {
-      "referencia": "BODY DUO LILY ANIMAL PRINT",
-      "categoria": "BODYS",
-      "disponible": 5,
-      "valor_costo": 100000.0
-    },
-    {
       "referencia": "BODY DUO LILY",
       "categoria": "BODYS",
       "disponible": 5,
@@ -202,13 +196,13 @@
       "valor_costo": 100000.0
     },
     {
-      "referencia": "OVERZISE RUGE",
+      "referencia": "OVERZISE LOVE",
       "categoria": "BLUSAS",
       "disponible": 2,
       "valor_costo": 91000.0
     },
     {
-      "referencia": "OVERZISE LOVE",
+      "referencia": "OVERZISE RUGE",
       "categoria": "BLUSAS",
       "disponible": 2,
       "valor_costo": 91000.0
@@ -218,18 +212,6 @@
       "categoria": "CAMISAS",
       "disponible": 2,
       "valor_costo": 90000.0
-    },
-    {
-      "referencia": "FALDA MAXI",
-      "categoria": "FALDAS",
-      "disponible": 2,
-      "valor_costo": 80000.0
-    },
-    {
-      "referencia": "BUZO DUO LILY CAMEL FROSTEADO",
-      "categoria": "BUZOS",
-      "disponible": 4,
-      "valor_costo": 80000.0
     },
     {
       "referencia": "BODY MALLA DADOS",
@@ -244,8 +226,20 @@
       "valor_costo": 80000.0
     },
     {
+      "referencia": "FALDA MAXI",
+      "categoria": "FALDAS",
+      "disponible": 2,
+      "valor_costo": 80000.0
+    },
+    {
       "referencia": "BODY DUO LILY CAMEL FROSTEADO",
       "categoria": "BODYS",
+      "disponible": 4,
+      "valor_costo": 80000.0
+    },
+    {
+      "referencia": "BUZO DUO LILY CAMEL FROSTEADO",
+      "categoria": "BUZOS",
       "disponible": 4,
       "valor_costo": 80000.0
     },
@@ -268,15 +262,15 @@
       "valor_costo": 64000.0
     },
     {
-      "referencia": "JEAN BOTA RECTA MAOS",
-      "categoria": "PANTALONES",
-      "disponible": 1,
-      "valor_costo": 60000.0
-    },
-    {
       "referencia": "BUZO DUO LILY ANIMAL PRINT",
       "categoria": "BUZOS",
       "disponible": 3,
+      "valor_costo": 60000.0
+    },
+    {
+      "referencia": "JEAN BOTA RECTA MAOS",
+      "categoria": "PANTALONES",
+      "disponible": 1,
       "valor_costo": 60000.0
     },
     {
@@ -298,15 +292,15 @@
       "valor_costo": 45000.0
     },
     {
-      "referencia": "BODY MALLA MAR",
-      "categoria": "CORSET",
-      "disponible": 2,
-      "valor_costo": 40000.0
-    },
-    {
       "referencia": "FALDA CARGO",
       "categoria": "FALDAS",
       "disponible": 1,
+      "valor_costo": 40000.0
+    },
+    {
+      "referencia": "BODY MALLA MAR",
+      "categoria": "CORSET",
+      "disponible": 2,
       "valor_costo": 40000.0
     },
     {
