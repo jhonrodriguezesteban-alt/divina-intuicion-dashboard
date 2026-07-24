@@ -26,7 +26,20 @@ COL_STOCK_POR_SUCURSAL = {
 def main():
     df = leer_excel_effi(RAW)
 
-    for col in ["Stock total empresa", "Costo manual", *COL_STOCK_POR_SUCURSAL.values()]:
+    # Effi puede renombrar/reorganizar bodegas (ya pasó: la columna de
+    # DIVINA ACCESORIOS desapareció y salió una "BODEGA PRINCIPAL" nueva) --
+    # sin este chequeo, una columna faltante tumbaba todo el cierre en vez
+    # de solo dejar esa sucursal en 0 y avisar.
+    cols_presentes = {c: col for c, col in COL_STOCK_POR_SUCURSAL.items() if col in df.columns}
+    cols_faltantes = [col for c, col in COL_STOCK_POR_SUCURSAL.items() if c not in cols_presentes]
+    if cols_faltantes:
+        print(f"AVISO: no se encontraron estas columnas de stock por bodega en Effi "
+              f"(¿se renombró o reorganizó la bodega?): {cols_faltantes}")
+        otras_bodegas = [c for c in df.columns if c.startswith("Stock bodega:") and c not in COL_STOCK_POR_SUCURSAL.values()]
+        if otras_bodegas:
+            print(f"Columnas de bodega presentes sin mapear a ninguna sucursal: {otras_bodegas}")
+
+    for col in ["Stock total empresa", "Costo manual", *cols_presentes.values()]:
         df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0)
 
     df["valor_costo"] = df["Costo manual"] * df["Stock total empresa"]
@@ -34,8 +47,8 @@ def main():
     sucursales_cfg = {s["codigo"]: s["nombre"] for s in cargar_config("sucursales.json")["sucursales"]}
 
     stock_por_sucursal = {
-        sucursales_cfg[codigo]: int(df[col].sum())
-        for codigo, col in COL_STOCK_POR_SUCURSAL.items()
+        sucursales_cfg[codigo]: (int(df[cols_presentes[codigo]].sum()) if codigo in cols_presentes else 0)
+        for codigo in COL_STOCK_POR_SUCURSAL
     }
 
     top_categorias = (
