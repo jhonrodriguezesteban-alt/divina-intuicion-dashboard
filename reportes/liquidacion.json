@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-07-25",
+  "generado_al": "2026-07-27",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 337,
-      "unidades": 2853,
-      "valor_costo": 130829038.0
+      "num_referencias": 336,
+      "unidades": 2832,
+      "valor_costo": 129254038.0
     },
     "inactivas": {
       "num_referencias": 11,
@@ -13,9 +13,9 @@
       "valor_costo": 1000000.0
     },
     "nuevas": {
-      "num_referencias": 44,
-      "unidades": 243,
-      "valor_costo": 11690000.0
+      "num_referencias": 43,
+      "unidades": 230,
+      "valor_costo": 11439000.0
     }
   },
   "inactivas": [
@@ -202,18 +202,6 @@
       "valor_costo": 240000.0
     },
     {
-      "referencia": "BODY BASICO CUELLO V MANGA CORTA",
-      "categoria": "BODYS",
-      "disponible": 12,
-      "valor_costo": 216000.0
-    },
-    {
-      "referencia": "CHALECO JEAN RAYAS",
-      "categoria": "FALDAS",
-      "disponible": 6,
-      "valor_costo": 210000.0
-    },
-    {
       "referencia": "BLUSA GLOBO PUNTOS",
       "categoria": "BLUSAS",
       "disponible": 8,
@@ -224,6 +212,12 @@
       "categoria": "FALDAS",
       "disponible": 5,
       "valor_costo": 200000.0
+    },
+    {
+      "referencia": "CHALECO JEAN RAYAS",
+      "categoria": "FALDAS",
+      "disponible": 5,
+      "valor_costo": 175000.0
     },
     {
       "referencia": "CHALECO SANTA AZUL FROSTEADO OSCURO",
