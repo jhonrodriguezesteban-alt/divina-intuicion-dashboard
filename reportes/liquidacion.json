@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-07-27",
+  "generado_al": "2026-07-28",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 336,
-      "unidades": 2832,
-      "valor_costo": 129254038.0
+      "num_referencias": 338,
+      "unidades": 2830,
+      "valor_costo": 129336038.0
     },
     "inactivas": {
       "num_referencias": 11,
@@ -13,9 +13,9 @@
       "valor_costo": 1000000.0
     },
     "nuevas": {
-      "num_referencias": 43,
-      "unidades": 230,
-      "valor_costo": 11439000.0
+      "num_referencias": 40,
+      "unidades": 197,
+      "valor_costo": 9337000.0
     }
   },
   "inactivas": [
@@ -88,12 +88,6 @@
   ],
   "nuevas": [
     {
-      "referencia": "JEAN SEMILICRADO AGUA",
-      "categoria": "PANTALONES",
-      "disponible": 19,
-      "valor_costo": 1330000.0
-    },
-    {
       "referencia": "BRAGA JEAN AZUL FROSTEADO",
       "categoria": "PANTALONES",
       "disponible": 12,
@@ -104,12 +98,6 @@
       "categoria": "PANTALONES",
       "disponible": 10,
       "valor_costo": 750000.0
-    },
-    {
-      "referencia": "JEAN ARTEMISA",
-      "categoria": "PANTALONES",
-      "disponible": 10,
-      "valor_costo": 700000.0
     },
     {
       "referencia": "BODY MANUELA",
@@ -184,6 +172,12 @@
       "valor_costo": 260000.0
     },
     {
+      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/CAFE",
+      "categoria": "BUZOS",
+      "disponible": 4,
+      "valor_costo": 240000.0
+    },
+    {
       "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/AZUL",
       "categoria": "BUZOS",
       "disponible": 4,
@@ -191,12 +185,6 @@
     },
     {
       "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
-      "categoria": "BUZOS",
-      "disponible": 4,
-      "valor_costo": 240000.0
-    },
-    {
-      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/CAFE",
       "categoria": "BUZOS",
       "disponible": 4,
       "valor_costo": 240000.0
@@ -256,16 +244,22 @@
       "valor_costo": 96000.0
     },
     {
+      "referencia": "OVERZISE LOVE",
+      "categoria": "BLUSAS",
+      "disponible": 2,
+      "valor_costo": 91000.0
+    },
+    {
       "referencia": "OVERZISE RUGE",
       "categoria": "BLUSAS",
       "disponible": 2,
       "valor_costo": 91000.0
     },
     {
-      "referencia": "OVERZISE LOVE",
-      "categoria": "BLUSAS",
-      "disponible": 2,
-      "valor_costo": 91000.0
+      "referencia": "BODY DUO LILY CAMEL FROSTEADO",
+      "categoria": "BODYS",
+      "disponible": 4,
+      "valor_costo": 80000.0
     },
     {
       "referencia": "BODY MALLA DADOS",
@@ -280,33 +274,21 @@
       "valor_costo": 80000.0
     },
     {
-      "referencia": "BODY DUO LILY CAMEL FROSTEADO",
-      "categoria": "BODYS",
-      "disponible": 4,
-      "valor_costo": 80000.0
-    },
-    {
       "referencia": "VESTIDO BOLERO",
       "categoria": "VESTIDOS",
       "disponible": 2,
       "valor_costo": 76000.0
     },
     {
-      "referencia": "BODY BASICO REDONDO GRIS CEMENTO",
-      "categoria": "BODYS",
-      "disponible": 4,
-      "valor_costo": 72000.0
+      "referencia": "BUZO DUO LILY ANIMAL PRINT",
+      "categoria": "BUZOS",
+      "disponible": 3,
+      "valor_costo": 60000.0
     },
     {
       "referencia": "JEAN BOTA RECTA MAOS",
       "categoria": "PANTALONES",
       "disponible": 1,
-      "valor_costo": 60000.0
-    },
-    {
-      "referencia": "BUZO DUO LILY ANIMAL PRINT",
-      "categoria": "BUZOS",
-      "disponible": 3,
       "valor_costo": 60000.0
     },
     {
@@ -322,15 +304,15 @@
       "valor_costo": 47000.0
     },
     {
-      "referencia": "BODY MALLA MAR",
-      "categoria": "CORSET",
-      "disponible": 2,
-      "valor_costo": 40000.0
-    },
-    {
       "referencia": "FALDA CARGO",
       "categoria": "FALDAS",
       "disponible": 1,
+      "valor_costo": 40000.0
+    },
+    {
+      "referencia": "BODY MALLA MAR",
+      "categoria": "CORSET",
+      "disponible": 2,
       "valor_costo": 40000.0
     },
     {

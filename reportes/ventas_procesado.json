@@ -1,28 +1,28 @@
 {
-  "actualizado_hasta": "2026-07-28 14:51:23",
+  "actualizado_hasta": "2026-07-28 19:01:15",
   "historico": {
     "kpis": {
-      "ingreso_total": 1747591448.73,
-      "num_transacciones": 12517,
-      "ticket_promedio": 139617.44,
-      "utilidad_total": 762706824.51,
+      "ingreso_total": 1750397448.73,
+      "num_transacciones": 12537,
+      "ticket_promedio": 139618.53,
+      "utilidad_total": 763875903.51,
       "margen_promedio": 0.4506
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 1143222700.0,
-        "transacciones": 7914
+        "ingreso": 1145212700.0,
+        "transacciones": 7924
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 562442000.02,
-        "transacciones": 3687
+        "ingreso": 563082000.02,
+        "transacciones": 3691
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 41926748.71,
-        "transacciones": 916
+        "ingreso": 42102748.71,
+        "transacciones": 922
       }
     ],
     "rango_fechas": {
@@ -32,91 +32,91 @@
   },
   "anio_actual": {
     "kpis": {
-      "ingreso_total": 640903448.73,
-      "num_transacciones": 4641,
-      "ticket_promedio": 138095.98,
-      "utilidad_total": 289162824.51,
+      "ingreso_total": 643709448.73,
+      "num_transacciones": 4661,
+      "ticket_promedio": 138105.44,
+      "utilidad_total": 290331903.51,
       "margen_promedio": 0.4691
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 404437700.0,
-        "transacciones": 2530
+        "ingreso": 406427700.0,
+        "transacciones": 2540
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 194539000.02,
-        "transacciones": 1195
+        "ingreso": 195179000.02,
+        "transacciones": 1199
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 41926748.71,
-        "transacciones": 916
+        "ingreso": 42102748.71,
+        "transacciones": 922
       }
     ],
     "composicion": {
       "facturado": 13895000.0,
-      "remisionado": 627008448.73,
+      "remisionado": 629814448.73,
       "num_facturado": 94,
-      "num_remisionado": 4547
+      "num_remisionado": 4567
     }
   },
   "mes_actual": {
     "kpis": {
-      "ingreso_total": 115681599.86,
-      "num_transacciones": 819,
-      "ticket_promedio": 141247.37,
-      "utilidad_total": 49644402.49,
-      "margen_promedio": 0.4541
+      "ingreso_total": 118487599.86,
+      "num_transacciones": 839,
+      "ticket_promedio": 141224.79,
+      "utilidad_total": 50813481.49,
+      "margen_promedio": 0.4546
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 71865000.0,
-        "transacciones": 421
+        "ingreso": 73855000.0,
+        "transacciones": 431
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 33842000.0,
-        "transacciones": 193
+        "ingreso": 34482000.0,
+        "transacciones": 197
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 9974599.86,
-        "transacciones": 205
+        "ingreso": 10150599.86,
+        "transacciones": 211
       }
     ]
   },
   "hoy": {
     "kpis": {
-      "ingreso_total": 1106000.0,
-      "num_transacciones": 10,
-      "ticket_promedio": 110600.0,
-      "utilidad_total": 504376.47,
-      "margen_promedio": 0.492
+      "ingreso_total": 3912000.0,
+      "num_transacciones": 30,
+      "ticket_promedio": 130400.0,
+      "utilidad_total": 1673455.47,
+      "margen_promedio": 0.479
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 655000.0,
-        "transacciones": 2
+        "ingreso": 2645000.0,
+        "transacciones": 12
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 355000.0,
-        "transacciones": 4
+        "ingreso": 995000.0,
+        "transacciones": 8
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 96000.0,
-        "transacciones": 4
+        "ingreso": 272000.0,
+        "transacciones": 10
       }
     ],
     "ingreso_ayer": 2265999.98
   },
   "cartera": {
-    "num_anuladas_historico": 341,
+    "num_anuladas_historico": 342,
     "pendiente_de_cobro": 7301800.27,
     "num_pendiente_de_cobro": 34
   }
