@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-07-28",
+  "generado_al": "2026-07-29",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 338,
-      "unidades": 2830,
-      "valor_costo": 129336038.0
+      "num_referencias": 340,
+      "unidades": 2812,
+      "valor_costo": 128570038.0
     },
     "inactivas": {
       "num_referencias": 11,
@@ -14,8 +14,8 @@
     },
     "nuevas": {
       "num_referencias": 40,
-      "unidades": 197,
-      "valor_costo": 9337000.0
+      "unidades": 196,
+      "valor_costo": 9307000.0
     }
   },
   "inactivas": [
@@ -94,21 +94,15 @@
       "valor_costo": 816000.0
     },
     {
-      "referencia": "JEAN RAYAS",
+      "referencia": "JEAN FIRE",
       "categoria": "PANTALONES",
-      "disponible": 10,
-      "valor_costo": 750000.0
+      "disponible": 6,
+      "valor_costo": 570000.0
     },
     {
       "referencia": "BODY MANUELA",
       "categoria": "BODYS",
       "disponible": 15,
-      "valor_costo": 570000.0
-    },
-    {
-      "referencia": "JEAN FIRE",
-      "categoria": "PANTALONES",
-      "disponible": 6,
       "valor_costo": 570000.0
     },
     {
@@ -128,6 +122,18 @@
       "categoria": "CHAQUETAS",
       "disponible": 6,
       "valor_costo": 480000.0
+    },
+    {
+      "referencia": "CAPA JEAN HIELO CLARA",
+      "categoria": "CHAQUETAS",
+      "disponible": 6,
+      "valor_costo": 390000.0
+    },
+    {
+      "referencia": "CAPA JEAN VERDOSA OSCURA",
+      "categoria": "CHAQUETAS",
+      "disponible": 6,
+      "valor_costo": 390000.0
     },
     {
       "referencia": "FALDA JEAN RAYAS",
@@ -172,12 +178,6 @@
       "valor_costo": 260000.0
     },
     {
-      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/CAFE",
-      "categoria": "BUZOS",
-      "disponible": 4,
-      "valor_costo": 240000.0
-    },
-    {
       "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/AZUL",
       "categoria": "BUZOS",
       "disponible": 4,
@@ -190,15 +190,21 @@
       "valor_costo": 240000.0
     },
     {
-      "referencia": "BLUSA GLOBO PUNTOS",
-      "categoria": "BLUSAS",
-      "disponible": 8,
-      "valor_costo": 200000.0
+      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/CAFE",
+      "categoria": "BUZOS",
+      "disponible": 4,
+      "valor_costo": 240000.0
     },
     {
       "referencia": "FALDA JEAN RUEDO",
       "categoria": "FALDAS",
       "disponible": 5,
+      "valor_costo": 200000.0
+    },
+    {
+      "referencia": "BLUSA GLOBO PUNTOS",
+      "categoria": "BLUSAS",
+      "disponible": 8,
       "valor_costo": 200000.0
     },
     {
@@ -226,14 +232,14 @@
       "valor_costo": 130000.0
     },
     {
-      "referencia": "BODY DUO LILY",
-      "categoria": "BODYS",
+      "referencia": "BUZO DUO LILY",
+      "categoria": "BUZOS",
       "disponible": 5,
       "valor_costo": 100000.0
     },
     {
-      "referencia": "BUZO DUO LILY",
-      "categoria": "BUZOS",
+      "referencia": "BODY DUO LILY",
+      "categoria": "BODYS",
       "disponible": 5,
       "valor_costo": 100000.0
     },
@@ -256,12 +262,6 @@
       "valor_costo": 91000.0
     },
     {
-      "referencia": "BODY DUO LILY CAMEL FROSTEADO",
-      "categoria": "BODYS",
-      "disponible": 4,
-      "valor_costo": 80000.0
-    },
-    {
       "referencia": "BODY MALLA DADOS",
       "categoria": "CORSET",
       "disponible": 4,
@@ -274,16 +274,16 @@
       "valor_costo": 80000.0
     },
     {
+      "referencia": "BODY DUO LILY CAMEL FROSTEADO",
+      "categoria": "BODYS",
+      "disponible": 4,
+      "valor_costo": 80000.0
+    },
+    {
       "referencia": "VESTIDO BOLERO",
       "categoria": "VESTIDOS",
       "disponible": 2,
       "valor_costo": 76000.0
-    },
-    {
-      "referencia": "BUZO DUO LILY ANIMAL PRINT",
-      "categoria": "BUZOS",
-      "disponible": 3,
-      "valor_costo": 60000.0
     },
     {
       "referencia": "JEAN BOTA RECTA MAOS",
