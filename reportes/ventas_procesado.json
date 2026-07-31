@@ -1,28 +1,28 @@
 {
-  "actualizado_hasta": "2026-07-31 13:35:58",
+  "actualizado_hasta": "2026-07-31 14:59:40",
   "historico": {
     "kpis": {
-      "ingreso_total": 1759778448.75,
-      "num_transacciones": 12602,
-      "ticket_promedio": 139642.79,
-      "utilidad_total": 767996979.99,
+      "ingreso_total": 1760140448.73,
+      "num_transacciones": 12605,
+      "ticket_promedio": 139638.27,
+      "utilidad_total": 768149206.02,
       "margen_promedio": 0.4507
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 1151135700.0,
-        "transacciones": 7955
+        "ingreso": 1151285700.0,
+        "transacciones": 7956
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 566032000.02,
-        "transacciones": 3708
+        "ingreso": 566097000.02,
+        "transacciones": 3709
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 42610748.73,
-        "transacciones": 939
+        "ingreso": 42757748.71,
+        "transacciones": 940
       }
     ],
     "rango_fechas": {
@@ -32,80 +32,85 @@
   },
   "anio_actual": {
     "kpis": {
-      "ingreso_total": 653090448.75,
-      "num_transacciones": 4726,
-      "ticket_promedio": 138190.95,
-      "utilidad_total": 294452979.99,
+      "ingreso_total": 653452448.73,
+      "num_transacciones": 4729,
+      "ticket_promedio": 138179.84,
+      "utilidad_total": 294605206.02,
       "margen_promedio": 0.469
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 412350700.0,
-        "transacciones": 2571
+        "ingreso": 412500700.0,
+        "transacciones": 2572
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 198129000.02,
-        "transacciones": 1216
+        "ingreso": 198194000.02,
+        "transacciones": 1217
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 42610748.73,
-        "transacciones": 939
+        "ingreso": 42757748.71,
+        "transacciones": 940
       }
     ],
     "composicion": {
       "facturado": 13895000.0,
-      "remisionado": 639195448.75,
+      "remisionado": 639557448.73,
       "num_facturado": 94,
-      "num_remisionado": 4632
+      "num_remisionado": 4635
     }
   },
   "mes_actual": {
     "kpis": {
-      "ingreso_total": 127868599.88,
-      "num_transacciones": 904,
-      "ticket_promedio": 141447.57,
-      "utilidad_total": 54934557.97,
+      "ingreso_total": 128230599.86,
+      "num_transacciones": 907,
+      "ticket_promedio": 141378.83,
+      "utilidad_total": 55086784.0,
       "margen_promedio": 0.4549
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 79778000.0,
-        "transacciones": 462
+        "ingreso": 79928000.0,
+        "transacciones": 463
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 37432000.0,
-        "transacciones": 214
+        "ingreso": 37497000.0,
+        "transacciones": 215
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 10658599.88,
-        "transacciones": 228
+        "ingreso": 10805599.86,
+        "transacciones": 229
       }
     ]
   },
   "hoy": {
     "kpis": {
-      "ingreso_total": 1468000.0,
-      "num_transacciones": 8,
-      "ticket_promedio": 183500.0,
-      "utilidad_total": 607736.13,
-      "margen_promedio": 0.4437
+      "ingreso_total": 1829999.98,
+      "num_transacciones": 11,
+      "ticket_promedio": 166363.63,
+      "utilidad_total": 759962.16,
+      "margen_promedio": 0.45
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 1385000.0,
-        "transacciones": 4
+        "ingreso": 1535000.0,
+        "transacciones": 5
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 83000.0,
-        "transacciones": 4
+        "ingreso": 229999.98,
+        "transacciones": 5
+      },
+      {
+        "sucursal": "Local 433",
+        "ingreso": 65000.0,
+        "transacciones": 1
       }
     ],
     "ingreso_ayer": 3271000.01
