@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-07-29",
+  "generado_al": "2026-07-31",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 340,
-      "unidades": 2812,
-      "valor_costo": 128570038.0
+      "num_referencias": 345,
+      "unidades": 3139,
+      "valor_costo": 151031538.0
     },
     "inactivas": {
       "num_referencias": 11,
@@ -13,9 +13,9 @@
       "valor_costo": 1000000.0
     },
     "nuevas": {
-      "num_referencias": 40,
-      "unidades": 196,
-      "valor_costo": 9307000.0
+      "num_referencias": 41,
+      "unidades": 235,
+      "valor_costo": 10895000.0
     }
   },
   "inactivas": [
@@ -88,10 +88,34 @@
   ],
   "nuevas": [
     {
-      "referencia": "BRAGA JEAN AZUL FROSTEADO",
-      "categoria": "PANTALONES",
-      "disponible": 12,
-      "valor_costo": 816000.0
+      "referencia": "CHAQUETA TEDDY",
+      "categoria": "CHAQUETAS",
+      "disponible": 18,
+      "valor_costo": 1440000.0
+    },
+    {
+      "referencia": "BODY BRILLANTE MARIA",
+      "categoria": "BODYS",
+      "disponible": 36,
+      "valor_costo": 900000.0
+    },
+    {
+      "referencia": "CAPA JEAN VERDOSA OSCURA",
+      "categoria": "CHAQUETAS",
+      "disponible": 13,
+      "valor_costo": 845000.0
+    },
+    {
+      "referencia": "CAPA JEAN HIELO CLARA",
+      "categoria": "CHAQUETAS",
+      "disponible": 13,
+      "valor_costo": 845000.0
+    },
+    {
+      "referencia": "CHAQUETA BOMBER ANIMAL PRINT",
+      "categoria": "CHAQUETAS",
+      "disponible": 8,
+      "valor_costo": 680000.0
     },
     {
       "referencia": "JEAN FIRE",
@@ -100,40 +124,10 @@
       "valor_costo": 570000.0
     },
     {
-      "referencia": "BODY MANUELA",
-      "categoria": "BODYS",
-      "disponible": 15,
-      "valor_costo": 570000.0
-    },
-    {
       "referencia": "CHAQUETA PELUCHE ALASKA",
       "categoria": "CHAQUETAS",
       "disponible": 6,
       "valor_costo": 528000.0
-    },
-    {
-      "referencia": "CHAQUETA BOMBER ANIMAL PRINT",
-      "categoria": "CHAQUETAS",
-      "disponible": 6,
-      "valor_costo": 510000.0
-    },
-    {
-      "referencia": "CHAQUETA TEDDY",
-      "categoria": "CHAQUETAS",
-      "disponible": 6,
-      "valor_costo": 480000.0
-    },
-    {
-      "referencia": "CAPA JEAN HIELO CLARA",
-      "categoria": "CHAQUETAS",
-      "disponible": 6,
-      "valor_costo": 390000.0
-    },
-    {
-      "referencia": "CAPA JEAN VERDOSA OSCURA",
-      "categoria": "CHAQUETAS",
-      "disponible": 6,
-      "valor_costo": 390000.0
     },
     {
       "referencia": "FALDA JEAN RAYAS",
@@ -146,12 +140,6 @@
       "categoria": "BLUSAS",
       "disponible": 17,
       "valor_costo": 340000.0
-    },
-    {
-      "referencia": "CHALECO SANTA AZUL FROSTEADO CLARO",
-      "categoria": "CHALECOS",
-      "disponible": 6,
-      "valor_costo": 330000.0
     },
     {
       "referencia": "OVERZISE BRA",
@@ -184,16 +172,22 @@
       "valor_costo": 240000.0
     },
     {
+      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/CAFE",
+      "categoria": "BUZOS",
+      "disponible": 4,
+      "valor_costo": 240000.0
+    },
+    {
       "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
       "categoria": "BUZOS",
       "disponible": 4,
       "valor_costo": 240000.0
     },
     {
-      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/CAFE",
-      "categoria": "BUZOS",
-      "disponible": 4,
-      "valor_costo": 240000.0
+      "referencia": "BLUSA GLOBO PUNTOS",
+      "categoria": "BLUSAS",
+      "disponible": 8,
+      "valor_costo": 200000.0
     },
     {
       "referencia": "FALDA JEAN RUEDO",
@@ -202,10 +196,10 @@
       "valor_costo": 200000.0
     },
     {
-      "referencia": "BLUSA GLOBO PUNTOS",
+      "referencia": "OVERZISE PUNTOS",
       "categoria": "BLUSAS",
-      "disponible": 8,
-      "valor_costo": 200000.0
+      "disponible": 4,
+      "valor_costo": 182000.0
     },
     {
       "referencia": "CHALECO JEAN RAYAS",
@@ -232,14 +226,14 @@
       "valor_costo": 130000.0
     },
     {
-      "referencia": "BUZO DUO LILY",
-      "categoria": "BUZOS",
+      "referencia": "BODY DUO LILY",
+      "categoria": "BODYS",
       "disponible": 5,
       "valor_costo": 100000.0
     },
     {
-      "referencia": "BODY DUO LILY",
-      "categoria": "BODYS",
+      "referencia": "BUZO DUO LILY",
+      "categoria": "BUZOS",
       "disponible": 5,
       "valor_costo": 100000.0
     },
@@ -256,10 +250,28 @@
       "valor_costo": 91000.0
     },
     {
+      "referencia": "OVERZISE PARADISE",
+      "categoria": "BLUSAS",
+      "disponible": 2,
+      "valor_costo": 91000.0
+    },
+    {
+      "referencia": "OVERZISE SUNDRIME",
+      "categoria": "BLUSAS",
+      "disponible": 2,
+      "valor_costo": 91000.0
+    },
+    {
       "referencia": "OVERZISE RUGE",
       "categoria": "BLUSAS",
       "disponible": 2,
       "valor_costo": 91000.0
+    },
+    {
+      "referencia": "BODY DUO LILY CAMEL FROSTEADO",
+      "categoria": "BODYS",
+      "disponible": 4,
+      "valor_costo": 80000.0
     },
     {
       "referencia": "BODY MALLA DADOS",
@@ -270,12 +282,6 @@
     {
       "referencia": "BODY MALLA BESO",
       "categoria": "CORSET",
-      "disponible": 4,
-      "valor_costo": 80000.0
-    },
-    {
-      "referencia": "BODY DUO LILY CAMEL FROSTEADO",
-      "categoria": "BODYS",
       "disponible": 4,
       "valor_costo": 80000.0
     },
@@ -304,15 +310,15 @@
       "valor_costo": 47000.0
     },
     {
-      "referencia": "FALDA CARGO",
-      "categoria": "FALDAS",
-      "disponible": 1,
-      "valor_costo": 40000.0
-    },
-    {
       "referencia": "BODY MALLA MAR",
       "categoria": "CORSET",
       "disponible": 2,
+      "valor_costo": 40000.0
+    },
+    {
+      "referencia": "FALDA CARGO",
+      "categoria": "FALDAS",
+      "disponible": 1,
       "valor_costo": 40000.0
     },
     {
