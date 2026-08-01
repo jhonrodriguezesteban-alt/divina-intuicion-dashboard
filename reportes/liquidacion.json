@@ -3,9 +3,9 @@
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 345,
-      "unidades": 3139,
-      "valor_costo": 151031538.0
+      "num_referencias": 352,
+      "unidades": 3195,
+      "valor_costo": 153298538.0
     },
     "inactivas": {
       "num_referencias": 11,
@@ -13,9 +13,9 @@
       "valor_costo": 1000000.0
     },
     "nuevas": {
-      "num_referencias": 41,
-      "unidades": 235,
-      "valor_costo": 10895000.0
+      "num_referencias": 36,
+      "unidades": 165,
+      "valor_costo": 8510000.0
     }
   },
   "inactivas": [
@@ -94,19 +94,7 @@
       "valor_costo": 1440000.0
     },
     {
-      "referencia": "BODY BRILLANTE MARIA",
-      "categoria": "BODYS",
-      "disponible": 36,
-      "valor_costo": 900000.0
-    },
-    {
       "referencia": "CAPA JEAN VERDOSA OSCURA",
-      "categoria": "CHAQUETAS",
-      "disponible": 13,
-      "valor_costo": 845000.0
-    },
-    {
-      "referencia": "CAPA JEAN HIELO CLARA",
       "categoria": "CHAQUETAS",
       "disponible": 13,
       "valor_costo": 845000.0
@@ -128,12 +116,6 @@
       "categoria": "CHAQUETAS",
       "disponible": 6,
       "valor_costo": 528000.0
-    },
-    {
-      "referencia": "FALDA JEAN RAYAS",
-      "categoria": "FALDAS",
-      "disponible": 9,
-      "valor_costo": 360000.0
     },
     {
       "referencia": "BLUSA MALLA AMELIA",
@@ -184,12 +166,6 @@
       "valor_costo": 240000.0
     },
     {
-      "referencia": "BLUSA GLOBO PUNTOS",
-      "categoria": "BLUSAS",
-      "disponible": 8,
-      "valor_costo": 200000.0
-    },
-    {
       "referencia": "FALDA JEAN RUEDO",
       "categoria": "FALDAS",
       "disponible": 5,
@@ -226,14 +202,14 @@
       "valor_costo": 130000.0
     },
     {
-      "referencia": "BODY DUO LILY",
-      "categoria": "BODYS",
+      "referencia": "BUZO DUO LILY",
+      "categoria": "BUZOS",
       "disponible": 5,
       "valor_costo": 100000.0
     },
     {
-      "referencia": "BUZO DUO LILY",
-      "categoria": "BUZOS",
+      "referencia": "BODY DUO LILY",
+      "categoria": "BODYS",
       "disponible": 5,
       "valor_costo": 100000.0
     },
@@ -244,7 +220,7 @@
       "valor_costo": 96000.0
     },
     {
-      "referencia": "OVERZISE LOVE",
+      "referencia": "OVERZISE SUNDRIME",
       "categoria": "BLUSAS",
       "disponible": 2,
       "valor_costo": 91000.0
@@ -256,22 +232,16 @@
       "valor_costo": 91000.0
     },
     {
-      "referencia": "OVERZISE SUNDRIME",
-      "categoria": "BLUSAS",
-      "disponible": 2,
-      "valor_costo": 91000.0
-    },
-    {
       "referencia": "OVERZISE RUGE",
       "categoria": "BLUSAS",
       "disponible": 2,
       "valor_costo": 91000.0
     },
     {
-      "referencia": "BODY DUO LILY CAMEL FROSTEADO",
-      "categoria": "BODYS",
-      "disponible": 4,
-      "valor_costo": 80000.0
+      "referencia": "OVERZISE LOVE",
+      "categoria": "BLUSAS",
+      "disponible": 2,
+      "valor_costo": 91000.0
     },
     {
       "referencia": "BODY MALLA DADOS",
@@ -298,27 +268,27 @@
       "valor_costo": 60000.0
     },
     {
-      "referencia": "FALDA CLASICA",
-      "categoria": "FALDAS",
-      "disponible": 1,
-      "valor_costo": 47000.0
-    },
-    {
       "referencia": "FALDA CORTA",
       "categoria": "FALDAS",
       "disponible": 1,
       "valor_costo": 47000.0
     },
     {
-      "referencia": "BODY MALLA MAR",
-      "categoria": "CORSET",
-      "disponible": 2,
-      "valor_costo": 40000.0
+      "referencia": "FALDA CLASICA",
+      "categoria": "FALDAS",
+      "disponible": 1,
+      "valor_costo": 47000.0
     },
     {
       "referencia": "FALDA CARGO",
       "categoria": "FALDAS",
       "disponible": 1,
+      "valor_costo": 40000.0
+    },
+    {
+      "referencia": "BODY MALLA MAR",
+      "categoria": "CORSET",
+      "disponible": 2,
       "valor_costo": 40000.0
     },
     {
