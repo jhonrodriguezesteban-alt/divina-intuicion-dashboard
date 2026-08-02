@@ -77,6 +77,57 @@ def talla_de(nombre: str, referencia: str) -> str:
     return resto or "Única"
 
 
+_COLUMNAS_BODEGA_CONOCIDAS = [
+    "Stock bodega: DIVINA INTUCION 144 (Sucursal: DIVINA INTUCION 144)",
+    "Stock bodega: DIVINA INTUICION 433 (Sucursal: DIVINA INTUCION 433)",
+    "Stock bodega: DIVINA ACCESORIOS (Sucursal: DIVINA ACCESORIOS)",
+]
+
+
+def asegurar_columnas_articulos(df: pd.DataFrame) -> pd.DataFrame:
+    """El "Reporte de artículos" en segundo plano de Effi (catálogo grande,
+    2800+ items) a veces omite columnas aunque queden marcadas en el modal
+    de exportación al momento de generarlo -- confirmado en vivo el
+    2026-08-01: "Stock total empresa" y "Costo manual" (y a veces el stock
+    de alguna bodega puntual) faltan de forma consistente en varios
+    intentos seguidos, sin que reintentar la descarga lo arregle. Es un
+    problema del lado de Effi, no de este scraper.
+
+    Se usan aquí respaldos razonables para que procesar_inventario.py /
+    procesar_reorden.py / procesar_liquidacion.py no truenen con KeyError:
+    - "Stock total empresa" ausente -> se suma lo que sí haya de las
+      columnas "Stock bodega: ..." conocidas (puede quedar incompleto si
+      falta también alguna bodega puntual, pero es mejor que reventar).
+    - "Costo manual" ausente -> se deja en 0 (sin costo, no se puede
+      inventar un valor) y se avisa por log.
+    - "Categoría" ausente -> "SIN CATEGORÍA" (mismo respaldo que ya se
+      usaba para categorías vacías fila por fila)."""
+    df = df.copy()
+
+    if "Stock total empresa" not in df.columns:
+        bodegas_presentes = [c for c in _COLUMNAS_BODEGA_CONOCIDAS if c in df.columns]
+        print(f"AVISO: falta 'Stock total empresa' en el Excel de artículos -- se calcula sumando "
+              f"las bodegas presentes ({len(bodegas_presentes)}/{len(_COLUMNAS_BODEGA_CONOCIDAS)}), "
+              f"puede quedar incompleto si también falta el stock de alguna bodega.")
+        if bodegas_presentes:
+            df["Stock total empresa"] = sum(
+                pd.to_numeric(df[c], errors="coerce").fillna(0) for c in bodegas_presentes
+            )
+        else:
+            df["Stock total empresa"] = 0
+
+    if "Costo manual" not in df.columns:
+        print("AVISO: falta 'Costo manual' en el Excel de artículos -- se deja en 0 "
+              "(valor de inventario e inversión sugerida van a quedar subestimados hasta que Effi lo vuelva a traer).")
+        df["Costo manual"] = 0
+
+    if "Categoría" not in df.columns:
+        print("AVISO: falta 'Categoría' en el Excel de artículos -- todo queda como 'SIN CATEGORÍA'.")
+        df["Categoría"] = "SIN CATEGORÍA"
+
+    return df
+
+
 def leer_excel_effi(ruta: Path) -> pd.DataFrame:
     """
     Effi tiene DOS formatos de exportación según el flujo:

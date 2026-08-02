@@ -11,7 +11,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from common.procesamiento import leer_excel_effi, cargar_config
+from common.procesamiento import leer_excel_effi, cargar_config, asegurar_columnas_articulos
 
 RAW = Path(__file__).resolve().parent.parent / "reportes" / "raw" / "raw_articulos.xlsx"
 OUT = Path(__file__).resolve().parent.parent / "reportes" / "inventario_procesado.json"
@@ -24,7 +24,7 @@ COL_STOCK_POR_SUCURSAL = {
 
 
 def main():
-    df = leer_excel_effi(RAW)
+    df = asegurar_columnas_articulos(leer_excel_effi(RAW))
 
     # Effi puede renombrar/reorganizar bodegas (ya pasó: la columna de
     # DIVINA ACCESORIOS desapareció y salió una "BODEGA PRINCIPAL" nueva) --

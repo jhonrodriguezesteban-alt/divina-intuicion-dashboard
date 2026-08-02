@@ -36,7 +36,10 @@ from pathlib import Path
 
 import pandas as pd
 
-from common.procesamiento import leer_excel_effi, cargar_conceptos_combinados, cargar_config, referencia_base, talla_de
+from common.procesamiento import (
+    leer_excel_effi, cargar_conceptos_combinados, cargar_config, referencia_base, talla_de,
+    asegurar_columnas_articulos,
+)
 
 RAW_ARTICULOS = Path(__file__).resolve().parent.parent / "reportes" / "raw" / "raw_articulos.xlsx"
 OUT = Path(__file__).resolve().parent.parent / "reportes" / "reorden.json"
@@ -316,7 +319,7 @@ def main():
     cfg = cargar_config("inventario_config.json")
     categorias_accesorios = set(cargar_config("categorias_accesorios.json")["categorias"])
 
-    articulos = leer_excel_effi(RAW_ARTICULOS)
+    articulos = asegurar_columnas_articulos(leer_excel_effi(RAW_ARTICULOS))
     articulos["Stock total empresa"] = pd.to_numeric(articulos["Stock total empresa"], errors="coerce").fillna(0)
     articulos["Costo manual"] = pd.to_numeric(articulos["Costo manual"], errors="coerce").fillna(0)
     articulos["Categoría"] = articulos["Categoría"].fillna("SIN CATEGORÍA")
