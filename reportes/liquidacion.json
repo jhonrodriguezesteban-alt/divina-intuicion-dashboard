@@ -1,307 +1,253 @@
 {
-  "generado_al": "2026-07-31",
+  "generado_al": "2026-08-01",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 352,
-      "unidades": 3195,
-      "valor_costo": 153298538.0
+      "num_referencias": 313,
+      "unidades": 1450,
+      "valor_costo": 0.0
     },
     "inactivas": {
-      "num_referencias": 11,
-      "unidades": 18,
-      "valor_costo": 1000000.0
+      "num_referencias": 7,
+      "unidades": 7,
+      "valor_costo": 0.0
     },
     "nuevas": {
-      "num_referencias": 36,
-      "unidades": 165,
-      "valor_costo": 8510000.0
+      "num_referencias": 31,
+      "unidades": 55,
+      "valor_costo": 0.0
     }
   },
   "inactivas": [
     {
-      "referencia": "JEAN MOMFIT MERAKI",
-      "categoria": "PANTALONES",
-      "disponible": 5,
-      "valor_costo": 260000.0
-    },
-    {
-      "referencia": "JEAN PALAZO",
-      "categoria": "PANTALONES",
-      "disponible": 3,
-      "valor_costo": 186000.0
-    },
-    {
-      "referencia": "JEAN MAOS MOÑOS",
-      "categoria": "PANTALONES",
-      "disponible": 2,
-      "valor_costo": 130000.0
-    },
-    {
       "referencia": "ENTERIZO JEAN SHORT",
       "categoria": "PANTALONES",
       "disponible": 1,
-      "valor_costo": 65000.0
-    },
-    {
-      "referencia": "JEAN BOLSILLO BRILLANTE",
-      "categoria": "PANTALONES",
-      "disponible": 1,
-      "valor_costo": 65000.0
-    },
-    {
-      "referencia": "JEAN TOU TRIANGULO",
-      "categoria": "PANTALONES",
-      "disponible": 1,
-      "valor_costo": 65000.0
-    },
-    {
-      "referencia": "JEAN CORAZON DESGASTE",
-      "categoria": "PANTALONES",
-      "disponible": 1,
-      "valor_costo": 60000.0
-    },
-    {
-      "referencia": "JEAN PALAZO ROTOS",
-      "categoria": "PANTALONES",
-      "disponible": 1,
-      "valor_costo": 48000.0
-    },
-    {
-      "referencia": "FALDA JEAN MURREN",
-      "categoria": "FALDAS",
-      "disponible": 1,
-      "valor_costo": 47000.0
+      "valor_costo": 0.0
     },
     {
       "referencia": "FALDA CROMA PALO DE",
       "categoria": "FALDAS",
       "disponible": 1,
-      "valor_costo": 39000.0
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "JEAN MAOS MOÑOS",
+      "categoria": "PANTALONES",
+      "disponible": 1,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "JEAN MOMFIT MERAKI",
+      "categoria": "PANTALONES",
+      "disponible": 1,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "JEAN PALAZO",
+      "categoria": "PANTALONES",
+      "disponible": 1,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "JEAN TOU TRIANGULO",
+      "categoria": "PANTALONES",
+      "disponible": 1,
+      "valor_costo": 0.0
     },
     {
       "referencia": "VESTIDO FLORENCIA",
       "categoria": "VESTIDOS",
       "disponible": 1,
-      "valor_costo": 35000.0
+      "valor_costo": 0.0
     }
   ],
   "nuevas": [
     {
-      "referencia": "CHAQUETA TEDDY",
-      "categoria": "CHAQUETAS",
-      "disponible": 18,
-      "valor_costo": 1440000.0
-    },
-    {
-      "referencia": "CAPA JEAN VERDOSA OSCURA",
-      "categoria": "CHAQUETAS",
-      "disponible": 13,
-      "valor_costo": 845000.0
-    },
-    {
-      "referencia": "CHAQUETA BOMBER ANIMAL PRINT",
-      "categoria": "CHAQUETAS",
-      "disponible": 8,
-      "valor_costo": 680000.0
-    },
-    {
-      "referencia": "JEAN FIRE",
-      "categoria": "PANTALONES",
-      "disponible": 6,
-      "valor_costo": 570000.0
-    },
-    {
-      "referencia": "CHAQUETA PELUCHE ALASKA",
-      "categoria": "CHAQUETAS",
-      "disponible": 6,
-      "valor_costo": 528000.0
-    },
-    {
-      "referencia": "BLUSA MALLA AMELIA",
-      "categoria": "BLUSAS",
-      "disponible": 17,
-      "valor_costo": 340000.0
-    },
-    {
-      "referencia": "OVERZISE BRA",
-      "categoria": "BLUSAS",
-      "disponible": 8,
-      "valor_costo": 324000.0
+      "referencia": "BLAZER CUADROS TREN",
+      "categoria": "CONJUNTOS",
+      "disponible": 1,
+      "valor_costo": 0.0
     },
     {
       "referencia": "FALDA JEAN GRIS JASPEADO",
       "categoria": "FALDAS",
-      "disponible": 8,
-      "valor_costo": 320000.0
-    },
-    {
-      "referencia": "CAPA FIRE",
-      "categoria": "PANTALONES",
-      "disponible": 3,
-      "valor_costo": 300000.0
-    },
-    {
-      "referencia": "JEAN BAGGY SANTA",
-      "categoria": "PANTALONES",
       "disponible": 4,
-      "valor_costo": 260000.0
-    },
-    {
-      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/AZUL",
-      "categoria": "BUZOS",
-      "disponible": 4,
-      "valor_costo": 240000.0
-    },
-    {
-      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/CAFE",
-      "categoria": "BUZOS",
-      "disponible": 4,
-      "valor_costo": 240000.0
+      "valor_costo": 0.0
     },
     {
       "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
       "categoria": "BUZOS",
-      "disponible": 4,
-      "valor_costo": 240000.0
-    },
-    {
-      "referencia": "FALDA JEAN RUEDO",
-      "categoria": "FALDAS",
-      "disponible": 5,
-      "valor_costo": 200000.0
-    },
-    {
-      "referencia": "OVERZISE PUNTOS",
-      "categoria": "BLUSAS",
-      "disponible": 4,
-      "valor_costo": 182000.0
-    },
-    {
-      "referencia": "CHALECO JEAN RAYAS",
-      "categoria": "FALDAS",
-      "disponible": 5,
-      "valor_costo": 175000.0
-    },
-    {
-      "referencia": "CHALECO SANTA AZUL FROSTEADO OSCURO",
-      "categoria": "CHALECOS",
-      "disponible": 3,
-      "valor_costo": 165000.0
-    },
-    {
-      "referencia": "CAMISA LONDON LINEAS",
-      "categoria": "CAMISAS",
-      "disponible": 3,
-      "valor_costo": 135000.0
-    },
-    {
-      "referencia": "BLAZER CUADROS TREN",
-      "categoria": "CONJUNTOS",
       "disponible": 2,
-      "valor_costo": 130000.0
+      "valor_costo": 0.0
     },
     {
-      "referencia": "BUZO DUO LILY",
+      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/CAFE",
       "categoria": "BUZOS",
-      "disponible": 5,
-      "valor_costo": 100000.0
+      "disponible": 2,
+      "valor_costo": 0.0
     },
     {
-      "referencia": "BODY DUO LILY",
-      "categoria": "BODYS",
-      "disponible": 5,
-      "valor_costo": 100000.0
-    },
-    {
-      "referencia": "BLUSA CARO VERDE",
-      "categoria": "BLUSAS",
-      "disponible": 3,
-      "valor_costo": 96000.0
+      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/AZUL",
+      "categoria": "BUZOS",
+      "disponible": 2,
+      "valor_costo": 0.0
     },
     {
       "referencia": "OVERZISE SUNDRIME",
       "categoria": "BLUSAS",
-      "disponible": 2,
-      "valor_costo": 91000.0
-    },
-    {
-      "referencia": "OVERZISE PARADISE",
-      "categoria": "BLUSAS",
-      "disponible": 2,
-      "valor_costo": 91000.0
+      "disponible": 1,
+      "valor_costo": 0.0
     },
     {
       "referencia": "OVERZISE RUGE",
       "categoria": "BLUSAS",
-      "disponible": 2,
-      "valor_costo": 91000.0
+      "disponible": 1,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "OVERZISE PUNTOS",
+      "categoria": "BLUSAS",
+      "disponible": 1,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "OVERZISE PARADISE",
+      "categoria": "BLUSAS",
+      "disponible": 1,
+      "valor_costo": 0.0
     },
     {
       "referencia": "OVERZISE LOVE",
       "categoria": "BLUSAS",
-      "disponible": 2,
-      "valor_costo": 91000.0
+      "disponible": 1,
+      "valor_costo": 0.0
     },
     {
-      "referencia": "BODY MALLA DADOS",
-      "categoria": "CORSET",
+      "referencia": "OVERZISE BRA",
+      "categoria": "BLUSAS",
       "disponible": 4,
-      "valor_costo": 80000.0
+      "valor_costo": 0.0
     },
     {
-      "referencia": "BODY MALLA BESO",
-      "categoria": "CORSET",
-      "disponible": 4,
-      "valor_costo": 80000.0
-    },
-    {
-      "referencia": "VESTIDO BOLERO",
-      "categoria": "VESTIDOS",
-      "disponible": 2,
-      "valor_costo": 76000.0
-    },
-    {
-      "referencia": "JEAN BOTA RECTA MAOS",
+      "referencia": "JEAN FIRE",
       "categoria": "PANTALONES",
       "disponible": 1,
-      "valor_costo": 60000.0
+      "valor_costo": 0.0
     },
     {
-      "referencia": "FALDA CORTA",
-      "categoria": "FALDAS",
-      "disponible": 1,
-      "valor_costo": 47000.0
-    },
-    {
-      "referencia": "FALDA CLASICA",
-      "categoria": "FALDAS",
-      "disponible": 1,
-      "valor_costo": 47000.0
-    },
-    {
-      "referencia": "FALDA CARGO",
-      "categoria": "FALDAS",
-      "disponible": 1,
-      "valor_costo": 40000.0
-    },
-    {
-      "referencia": "BODY MALLA MAR",
-      "categoria": "CORSET",
+      "referencia": "JEAN BAGGY SANTA",
+      "categoria": "PANTALONES",
       "disponible": 2,
-      "valor_costo": 40000.0
-    },
-    {
-      "referencia": "BODY BASICO ESQUELETO VERDE",
-      "categoria": "BODYS",
-      "disponible": 2,
-      "valor_costo": 36000.0
+      "valor_costo": 0.0
     },
     {
       "referencia": "FALDA SHORT GEORGINA CUERINA",
       "categoria": "FALDAS",
       "disponible": 1,
-      "valor_costo": 30000.0
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "FALDA JEAN RUEDO",
+      "categoria": "FALDAS",
+      "disponible": 2,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "FALDA CARGO",
+      "categoria": "FALDAS",
+      "disponible": 1,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "BLUSA CARO VERDE",
+      "categoria": "BLUSAS",
+      "disponible": 1,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "CHAQUETA TEDDY",
+      "categoria": "CHAQUETAS",
+      "disponible": 3,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "CHAQUETA BOMBER ANIMAL PRINT",
+      "categoria": "CHAQUETAS",
+      "disponible": 2,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "CHALECO SANTA AZUL FROSTEADO OSCURO",
+      "categoria": "CHALECOS",
+      "disponible": 1,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "CHALECO JEAN RAYAS",
+      "categoria": "FALDAS",
+      "disponible": 2,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "CAPA FIRE",
+      "categoria": "PANTALONES",
+      "disponible": 1,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "CAMISA LONDON LINEAS",
+      "categoria": "CAMISAS",
+      "disponible": 1,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "BUZO DUO LILY",
+      "categoria": "BUZOS",
+      "disponible": 2,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "BODY MALLA MAR",
+      "categoria": "CORSET",
+      "disponible": 1,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "BODY MALLA DADOS",
+      "categoria": "CORSET",
+      "disponible": 2,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "BODY MALLA BESO",
+      "categoria": "CORSET",
+      "disponible": 2,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "BODY DUO LILY",
+      "categoria": "BODYS",
+      "disponible": 2,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "BODY BASICO ESQUELETO VERDE",
+      "categoria": "BODYS",
+      "disponible": 1,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "BLUSA MALLA AMELIA",
+      "categoria": "BLUSAS",
+      "disponible": 6,
+      "valor_costo": 0.0
+    },
+    {
+      "referencia": "VESTIDO BOLERO",
+      "categoria": "VESTIDOS",
+      "disponible": 1,
+      "valor_costo": 0.0
     }
   ]
 }
