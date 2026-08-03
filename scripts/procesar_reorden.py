@@ -388,9 +388,11 @@ def _procesar_accesorios_por_precio(articulos: pd.DataFrame, cfg: dict) -> dict:
 
     categorias_salida = []
     for categoria, grupo in df.groupby("categoria"):
-        # rangos ordenados por lo que más se vende primero -- responde
-        # directamente "qué rango de precio prefiere la gente en esta categoría"
-        grupo_ordenado = grupo.sort_values("venta_90d", ascending=False)
+        # rangos ordenados por lo que más se vende en el año (no en la ventana
+        # de 90 días) -- John pidió explícitamente mirar rotación de todo
+        # 2026, no solo lo reciente, para saber qué rango de precio prefiere
+        # la gente en esta categoría con una base de tiempo más completa.
+        grupo_ordenado = grupo.sort_values("venta_ytd", ascending=False)
         rangos_salida = grupo_ordenado.to_dict(orient="records")
         for r in rangos_salida:
             # el join con la categoría-nivel df (con filas "sin precio" en None)
@@ -404,8 +406,8 @@ def _procesar_accesorios_por_precio(articulos: pd.DataFrame, cfg: dict) -> dict:
             "venta_ytd_total": int(grupo["venta_ytd"].sum()),
             "rangos": rangos_salida,
         })
-    # categorías ordenadas por la que más rota primero -- "cuál categoría se vende más"
-    categorias_salida.sort(key=lambda c: -c["venta_90d_total"])
+    # categorías ordenadas por la que más rota en el año -- "cuál categoría se vende más"
+    categorias_salida.sort(key=lambda c: -c["venta_ytd_total"])
 
     return {
         "ancho_rango": ANCHO_RANGO_PRECIO_ACCESORIOS,

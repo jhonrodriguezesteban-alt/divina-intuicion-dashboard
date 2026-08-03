@@ -452,12 +452,12 @@ def _fmt_tendencia(pct) -> str:
     return f'<span class="reo-tendencia {clase}">{signo}{round(pct)}%</span>'
 
 
-def _fila_reorden_header(etiqueta_nombre: str = "Referencia") -> str:
+def _fila_reorden_header(etiqueta_nombre: str = "Referencia", etiqueta_rotacion: str = "Rotación (año proy.)") -> str:
     return f"""
       <div class="reo-fila reo-fila-header">
         <div class="reo-nombre">{etiqueta_nombre}</div>
         <div class="reo-disp">Disponible</div>
-        <div class="reo-rot">Rotación (año proy.)</div>
+        <div class="reo-rot">{etiqueta_rotacion}</div>
         <div class="reo-tendencia-col">Tendencia vs año pasado</div>
         <div class="reo-estado">Cobertura</div>
         <div class="reo-sug">Sugerido</div>
@@ -707,7 +707,8 @@ def _fila_accesorio_precio(rango: dict) -> str:
         nombre = "Sin precio definido"
     else:
         nombre = f'{_cop(rango["precio_min"])} - {_cop(rango["precio_max"])}'
-    rot = f'{_miles(rango["rotacion_anualizada"])} uds/año' if rango["rotacion_anualizada"] else "sin ventas 90d"
+    anio = datetime.now().year
+    ytd = f'{_miles(rango["venta_ytd"])} vendidas en {anio}' if rango["venta_ytd"] else f"sin ventas en {anio}"
     sug = f'+{_miles(rango["sugerido"])}' if rango["sugerido"] > 0 else "—"
     inversion = _cop(rango["inversion_sugerida"]) if rango["sugerido"] > 0 else "—"
     cobertura_txt = _fmt_cobertura(rango["dias_cobertura"], rango["estado_label"])
@@ -715,8 +716,8 @@ def _fila_accesorio_precio(rango: dict) -> str:
       <div class="reo-fila">
         <div class="reo-nombre">{nombre} <span class="reo-tallas-count">· {_miles(rango["num_referencias"])} refs</span></div>
         <div class="reo-disp">{_miles(rango["disponible"])} disp.</div>
-        <div class="reo-rot">{rot}
-          <div class="reo-rot-sub">{_miles(rango["venta_ytd"])} vendidas en {datetime.now().year}</div>
+        <div class="reo-rot">{ytd}
+          <div class="reo-rot-sub">{_miles(rango["rotacion_anualizada"])} uds/año proy. (90d)</div>
         </div>
         {_fmt_tendencia(rango["tendencia_interanual"])}
         <div class="reo-estado {rango["estado"]}">{cobertura_txt}</div>
@@ -726,10 +727,11 @@ def _fila_accesorio_precio(rango: dict) -> str:
 
 
 def _seccion_categoria_accesorio_precio(cat: dict) -> str:
+    anio = datetime.now().year
     total_sugerido = sum(r["sugerido"] for r in cat["rangos"])
     total_inversion = sum(r["inversion_sugerida"] for r in cat["rangos"])
     badges = (
-        f'<span class="reo-badge info">{_miles(cat["venta_90d_total"])} vendidas · 90d</span>'
+        f'<span class="reo-badge info">{_miles(cat["venta_ytd_total"])} vendidas en {anio}</span>'
         + (f'<span class="reo-badge sugerido">Sugerido: {_miles(total_sugerido)} uds</span>' if total_sugerido > 0 else "")
         + (f'<span class="reo-badge inversion">Inversión: {_cop(total_inversion)}</span>' if total_inversion > 0 else "")
     )
@@ -739,38 +741,45 @@ def _seccion_categoria_accesorio_precio(cat: dict) -> str:
       <div class="reo-cat-header">
         <span class="chevron">▶</span>
         <span class="reo-cat-nombre">{cat["categoria"]}</span>
-        <span class="reo-cat-meta">{_miles(len(cat["rangos"]))} rangos de precio · {_miles(cat["venta_ytd_total"])} vendidas en {datetime.now().year}</span>
+        <span class="reo-cat-meta">{_miles(len(cat["rangos"]))} rangos de precio · {_miles(cat["venta_90d_total"])} vendidas en 90d</span>
         {badges}
       </div>
       <div class="reo-cat-detalle">
-        {_fila_reorden_header("Rango de precio")}
+        {_fila_reorden_header("Rango de precio", f"Vendidas en {datetime.now().year}")}
         {filas}
       </div>
     </div>"""
 
 
 def _seccion_accesorios_precio(datos: dict) -> str:
-    """Sección pedida por John (2026-08-01): dentro de accesorios, qué
-    categoría rota más y, dentro de esa categoría, qué rango de precio de
-    venta prefiere la gente -- _procesar_accesorios (por categoría
-    completa) ya dice qué categoría surtir, pero no a qué precio apunta la
-    demanda real dentro de ella."""
+    """Sección pedida por John (2026-08-01, ajustada 2026-08-03 para mirar
+    rotación de todo el año en vez de solo la ventana de 90 días): dentro
+    de accesorios, qué categoría rota más y, dentro de esa categoría, qué
+    rango de precio de venta prefiere la gente -- _procesar_accesorios
+    (por categoría completa) ya dice qué categoría surtir, pero no a qué
+    precio apunta la demanda real dentro de ella. El ranking y el orden de
+    los rangos usan venta_ytd (todo 2026), no venta_90d -- la cobertura y
+    el sugerido de cada fila sí se siguen calculando con la ventana de 90
+    días, porque esa es la pregunta de "qué tan urgente es", distinta de
+    "qué se vende más en el año"."""
     if not datos or not datos.get("categorias"):
         return ""
 
+    anio = datetime.now().year
     ancho = datos["ancho_rango"]
     ranking_html = "".join(
-        f'<li><strong>{c["categoria"]}</strong> — {_miles(c["venta_90d_total"])} vendidas (90d) '
-        f'· {_miles(c["venta_ytd_total"])} en {datetime.now().year}</li>'
+        f'<li><strong>{c["categoria"]}</strong> — {_miles(c["venta_ytd_total"])} vendidas en {anio} '
+        f'· {_miles(c["venta_90d_total"])} en los últimos 90 días</li>'
         for c in datos["categorias"]
     )
     categorias_html = "".join(_seccion_categoria_accesorio_precio(c) for c in datos["categorias"])
     return f"""
   <h3 class="subseccion">Accesorios · rotación y precio preferido por categoría</h3>
   <div class="subtitulo" style="margin-bottom:1rem;">
-    Categorías ordenadas por lo que más se vende en los últimos 90 días; clic en una categoría para ver
-    sus rangos de precio de venta (de {_cop(ancho)} en {_cop(ancho)}), también ordenados por lo que más
-    se vende -- para saber qué rango de precio prefiere la gente en cada categoría.
+    Categorías ordenadas por lo que más se vende en todo {anio}; clic en una categoría para ver sus rangos
+    de precio de venta (de {_cop(ancho)} en {_cop(ancho)}), también ordenados por lo que más se vende en el
+    año -- para saber qué rango de precio prefiere la gente en cada categoría. La cobertura y el sugerido de
+    cada rango siguen calculándose sobre los últimos 90 días (qué tan urgente es surtirlo ya).
   </div>
   <ol class="accesorios-ranking">{ranking_html}</ol>
   <div style="margin-top:1rem;">{categorias_html}</div>"""
