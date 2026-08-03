@@ -53,6 +53,10 @@ INICIO_VENTANA_ANIO_PASADO = INICIO_VENTANA - pd.Timedelta(days=365)
 FIN_VENTANA_ANIO_PASADO = HOY - pd.Timedelta(days=365)
 INICIO_ANIO = pd.Timestamp(year=HOY.year, month=1, day=1)
 
+# Ancho del rango de precio para el desglose de accesorios (ver
+# _procesar_accesorios_por_precio) -- $5.000 según lo pedido, ajustable.
+ANCHO_RANGO_PRECIO_ACCESORIOS = 5000
+
 
 def _clasificar(disponible, venta_diaria, dias_cobertura, cfg):
     if venta_diaria == 0:
@@ -315,6 +319,100 @@ def _procesar_accesorios(articulos: pd.DataFrame, cfg: dict) -> dict:
     }
 
 
+def _rango_precio(precio, ancho: int):
+    """(precio_min, precio_max) del rango al que pertenece `precio`, o
+    (None, None) si no tiene un precio de venta válido registrado."""
+    if precio is None or pd.isna(precio) or precio <= 0:
+        return None, None
+    base = int(precio // ancho) * ancho
+    return base, base + ancho
+
+
+def _procesar_accesorios_por_precio(articulos: pd.DataFrame, cfg: dict) -> dict:
+    """Desglose de accesorios por categoría Y rango de precio de venta
+    (Precio: DETAL) -- pedido explícito para entender, dentro de la
+    categoría que más rota (anillos, aretes...), qué rango de precio es
+    el que la gente prefiere llevar, no solo el ritmo de la categoría
+    completa (eso ya lo cubre _procesar_accesorios). Misma lógica de
+    cobertura/sugerido que el resto del archivo, solo que agrupada un
+    nivel más fino."""
+    articulos = articulos.copy()
+    articulos["precio_detal"] = pd.to_numeric(articulos.get("Precio: DETAL"), errors="coerce")
+    rangos = articulos["precio_detal"].apply(lambda p: _rango_precio(p, ANCHO_RANGO_PRECIO_ACCESORIOS))
+    articulos["precio_min"] = [r[0] for r in rangos]
+    articulos["precio_max"] = [r[1] for r in rangos]
+
+    filas = []
+    for (categoria, precio_min, precio_max), grupo in articulos.groupby(
+        ["Categoría", "precio_min", "precio_max"], dropna=False
+    ):
+        disponible = int(grupo["Stock total empresa"].sum())
+        venta_ventana = float(grupo["venta_90d"].sum())
+        venta_diaria = venta_ventana / VENTANA_DIAS
+        venta_ventana_anio_pasado = float(grupo["venta_90d_anio_pasado"].sum())
+        venta_ytd = int(grupo["venta_ytd"].sum())
+        dias_cobertura = (disponible / venta_diaria) if venta_diaria > 0 else None
+        vendido_alguna_vez = bool(grupo["vendido_alguna_vez"].any())
+
+        if disponible == 0 and venta_diaria == 0 and not vendido_alguna_vez:
+            continue
+
+        estado, etiqueta = _estado_fila(disponible, venta_diaria, dias_cobertura, vendido_alguna_vez, cfg)
+        crecimiento = _tendencia_interanual(venta_ventana, venta_ventana_anio_pasado)
+        venta_diaria_ajustada = _venta_diaria_ajustada(venta_diaria, crecimiento)
+        sugerido = int(_sugerido(venta_diaria_ajustada, disponible, cfg))
+        costo_unitario = _costo_unitario(grupo)
+
+        filas.append({
+            "categoria": categoria,
+            "precio_min": None if pd.isna(precio_min) else int(precio_min),
+            "precio_max": None if pd.isna(precio_max) else int(precio_max),
+            "disponible": disponible,
+            "venta_90d": int(venta_ventana),
+            "venta_ytd": venta_ytd,
+            "rotacion_anualizada": round(venta_diaria * 365) if venta_diaria > 0 else 0,
+            "dias_cobertura": round(dias_cobertura, 1) if dias_cobertura is not None else None,
+            "tendencia_interanual": round(crecimiento * 100) if crecimiento is not None else None,
+            "estado": estado,
+            "estado_label": etiqueta,
+            "sugerido": sugerido,
+            "costo_unitario": round(costo_unitario),
+            "inversion_sugerida": round(sugerido * costo_unitario),
+            "num_referencias": int(grupo["referencia"].nunique()),
+        })
+
+    if not filas:
+        return {"ancho_rango": ANCHO_RANGO_PRECIO_ACCESORIOS, "categorias": []}
+
+    df = pd.DataFrame(filas)
+
+    categorias_salida = []
+    for categoria, grupo in df.groupby("categoria"):
+        # rangos ordenados por lo que más se vende primero -- responde
+        # directamente "qué rango de precio prefiere la gente en esta categoría"
+        grupo_ordenado = grupo.sort_values("venta_90d", ascending=False)
+        rangos_salida = grupo_ordenado.to_dict(orient="records")
+        for r in rangos_salida:
+            # el join con la categoría-nivel df (con filas "sin precio" en None)
+            # vuelve a subir precio_min/max a float64 -- se re-castea a int limpio.
+            if r["precio_min"] is not None and not pd.isna(r["precio_min"]):
+                r["precio_min"] = int(r["precio_min"])
+                r["precio_max"] = int(r["precio_max"])
+        categorias_salida.append({
+            "categoria": categoria,
+            "venta_90d_total": int(grupo["venta_90d"].sum()),
+            "venta_ytd_total": int(grupo["venta_ytd"].sum()),
+            "rangos": rangos_salida,
+        })
+    # categorías ordenadas por la que más rota primero -- "cuál categoría se vende más"
+    categorias_salida.sort(key=lambda c: -c["venta_90d_total"])
+
+    return {
+        "ancho_rango": ANCHO_RANGO_PRECIO_ACCESORIOS,
+        "categorias": _limpiar_nan(categorias_salida),
+    }
+
+
 def main():
     cfg = cargar_config("inventario_config.json")
     categorias_accesorios = set(cargar_config("categorias_accesorios.json")["categorias"])
@@ -350,19 +448,23 @@ def main():
 
     ropa_salida = _procesar_ropa(articulos[~articulos["es_accesorio"]], cfg)
     accesorios_salida = _procesar_accesorios(articulos[articulos["es_accesorio"]], cfg)
+    accesorios_precio_salida = _procesar_accesorios_por_precio(articulos[articulos["es_accesorio"]], cfg)
 
     salida = {
         "ventana_dias": VENTANA_DIAS,
         "generado_al": str(HOY.date()),
         "ropa": ropa_salida,
         "accesorios": accesorios_salida,
+        "accesorios_por_precio": accesorios_precio_salida,
     }
 
     OUT.write_text(json.dumps(salida, ensure_ascii=False, indent=2), encoding="utf-8")
     print("Ropa:", json.dumps(ropa_salida["resumen"], ensure_ascii=False))
     print("Accesorios:", json.dumps(accesorios_salida["resumen"], ensure_ascii=False))
     print(f"{len(ropa_salida['categorias'])} categorías de ropa, "
-          f"{len(accesorios_salida['categorias'])} categorías de accesorios. Guardado en {OUT}")
+          f"{len(accesorios_salida['categorias'])} categorías de accesorios, "
+          f"{len(accesorios_precio_salida['categorias'])} categorías de accesorios con desglose de precio. "
+          f"Guardado en {OUT}")
 
 
 if __name__ == "__main__":

@@ -452,10 +452,10 @@ def _fmt_tendencia(pct) -> str:
     return f'<span class="reo-tendencia {clase}">{signo}{round(pct)}%</span>'
 
 
-def _fila_reorden_header() -> str:
-    return """
+def _fila_reorden_header(etiqueta_nombre: str = "Referencia") -> str:
+    return f"""
       <div class="reo-fila reo-fila-header">
-        <div class="reo-nombre">Referencia</div>
+        <div class="reo-nombre">{etiqueta_nombre}</div>
         <div class="reo-disp">Disponible</div>
         <div class="reo-rot">Rotación (año proy.)</div>
         <div class="reo-tendencia-col">Tendencia vs año pasado</div>
@@ -702,6 +702,80 @@ def _seccion_surtido_accesorios(accesorios: dict) -> str:
   </div>"""
 
 
+def _fila_accesorio_precio(rango: dict) -> str:
+    if rango["precio_min"] is None:
+        nombre = "Sin precio definido"
+    else:
+        nombre = f'{_cop(rango["precio_min"])} - {_cop(rango["precio_max"])}'
+    rot = f'{_miles(rango["rotacion_anualizada"])} uds/año' if rango["rotacion_anualizada"] else "sin ventas 90d"
+    sug = f'+{_miles(rango["sugerido"])}' if rango["sugerido"] > 0 else "—"
+    inversion = _cop(rango["inversion_sugerida"]) if rango["sugerido"] > 0 else "—"
+    cobertura_txt = _fmt_cobertura(rango["dias_cobertura"], rango["estado_label"])
+    return f"""
+      <div class="reo-fila">
+        <div class="reo-nombre">{nombre} <span class="reo-tallas-count">· {_miles(rango["num_referencias"])} refs</span></div>
+        <div class="reo-disp">{_miles(rango["disponible"])} disp.</div>
+        <div class="reo-rot">{rot}
+          <div class="reo-rot-sub">{_miles(rango["venta_ytd"])} vendidas en {datetime.now().year}</div>
+        </div>
+        {_fmt_tendencia(rango["tendencia_interanual"])}
+        <div class="reo-estado {rango["estado"]}">{cobertura_txt}</div>
+        <div class="reo-sug">{sug}</div>
+        <div class="reo-inversion">{inversion}</div>
+      </div>"""
+
+
+def _seccion_categoria_accesorio_precio(cat: dict) -> str:
+    total_sugerido = sum(r["sugerido"] for r in cat["rangos"])
+    total_inversion = sum(r["inversion_sugerida"] for r in cat["rangos"])
+    badges = (
+        f'<span class="reo-badge info">{_miles(cat["venta_90d_total"])} vendidas · 90d</span>'
+        + (f'<span class="reo-badge sugerido">Sugerido: {_miles(total_sugerido)} uds</span>' if total_sugerido > 0 else "")
+        + (f'<span class="reo-badge inversion">Inversión: {_cop(total_inversion)}</span>' if total_inversion > 0 else "")
+    )
+    filas = "".join(_fila_accesorio_precio(r) for r in cat["rangos"])
+    return f"""
+    <div class="expandible reo-cat-wrap" onclick="toggleAbierto(this)">
+      <div class="reo-cat-header">
+        <span class="chevron">▶</span>
+        <span class="reo-cat-nombre">{cat["categoria"]}</span>
+        <span class="reo-cat-meta">{_miles(len(cat["rangos"]))} rangos de precio · {_miles(cat["venta_ytd_total"])} vendidas en {datetime.now().year}</span>
+        {badges}
+      </div>
+      <div class="reo-cat-detalle">
+        {_fila_reorden_header("Rango de precio")}
+        {filas}
+      </div>
+    </div>"""
+
+
+def _seccion_accesorios_precio(datos: dict) -> str:
+    """Sección pedida por John (2026-08-01): dentro de accesorios, qué
+    categoría rota más y, dentro de esa categoría, qué rango de precio de
+    venta prefiere la gente -- _procesar_accesorios (por categoría
+    completa) ya dice qué categoría surtir, pero no a qué precio apunta la
+    demanda real dentro de ella."""
+    if not datos or not datos.get("categorias"):
+        return ""
+
+    ancho = datos["ancho_rango"]
+    ranking_html = "".join(
+        f'<li><strong>{c["categoria"]}</strong> — {_miles(c["venta_90d_total"])} vendidas (90d) '
+        f'· {_miles(c["venta_ytd_total"])} en {datetime.now().year}</li>'
+        for c in datos["categorias"]
+    )
+    categorias_html = "".join(_seccion_categoria_accesorio_precio(c) for c in datos["categorias"])
+    return f"""
+  <h3 class="subseccion">Accesorios · rotación y precio preferido por categoría</h3>
+  <div class="subtitulo" style="margin-bottom:1rem;">
+    Categorías ordenadas por lo que más se vende en los últimos 90 días; clic en una categoría para ver
+    sus rangos de precio de venta (de {_cop(ancho)} en {_cop(ancho)}), también ordenados por lo que más
+    se vende -- para saber qué rango de precio prefiere la gente en cada categoría.
+  </div>
+  <ol class="accesorios-ranking">{ranking_html}</ol>
+  <div style="margin-top:1rem;">{categorias_html}</div>"""
+
+
 def _seccion_surtido(reorden: dict) -> str:
     """Versión estrictamente filtrada de _seccion_reorden: solo lo que hay
     que comprar ahora (unidades sugeridas > 0), no el catálogo completo.
@@ -727,7 +801,8 @@ def _seccion_surtido(reorden: dict) -> str:
   </div>
   {aviso_html}
   {_seccion_surtido_ropa(reorden["ropa"])}
-  {_seccion_surtido_accesorios(reorden["accesorios"])}"""
+  {_seccion_surtido_accesorios(reorden["accesorios"])}
+  {_seccion_accesorios_precio(reorden.get("accesorios_por_precio"))}"""
 
 
 # ---------- sección: comparativo histórico ----------
@@ -1689,6 +1764,9 @@ _CSS = """
   .reo-badge.critico { background: var(--rojo-bg); color: var(--rojo); margin-left: auto; }
   .reo-badge.alerta { background: var(--ambar-bg); color: var(--ambar); }
   .reo-badge.sugerido, .reo-badge.inversion { background: var(--verde-bg); color: var(--verde); }
+  .reo-badge.info { background: var(--destacado-bg); color: var(--texto-sub); margin-left: auto; }
+  .accesorios-ranking { margin: 0 0 1rem 1.3rem; padding: 0; font-size: .88rem; }
+  .accesorios-ranking li { margin-bottom: .3rem; }
   .reo-cat-detalle { display: none; border-top: 1px solid var(--borde); padding: .3rem 1.1rem .8rem; }
   .reo-cat-wrap.abierto .reo-cat-detalle { display: block; }
   .reo-fila {
