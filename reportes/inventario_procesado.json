@@ -1,24 +1,24 @@
 {
   "total_articulos": 2911,
-  "articulos_sin_stock": 1759,
-  "unidades_totales": 2922,
+  "articulos_sin_stock": 1775,
+  "unidades_totales": 2878,
   "valor_total_costo": 0.0,
   "stock_por_sucursal": {
     "Local 144": 0,
-    "Local 433": 1537,
-    "Local 107": 1385
+    "Local 433": 1513,
+    "Local 107": 1365
   },
   "top_categorias_por_valor": [
     {
       "Categoría": "ACCESORIOS",
       "articulos": 20,
-      "stock_total": 53.0,
+      "stock_total": 51.0,
       "valor_costo": 0.0
     },
     {
       "Categoría": "CORSET",
       "articulos": 158,
-      "stock_total": 123.0,
+      "stock_total": 122.0,
       "valor_costo": 0.0
     },
     {
@@ -42,19 +42,19 @@
     {
       "Categoría": "PULSERAS",
       "articulos": 48,
-      "stock_total": 227.0,
+      "stock_total": 222.0,
       "valor_costo": 0.0
     },
     {
       "Categoría": "PANTALONES",
       "articulos": 871,
-      "stock_total": 302.0,
+      "stock_total": 292.0,
       "valor_costo": 0.0
     },
     {
       "Categoría": "JUEGOS",
       "articulos": 7,
-      "stock_total": 10.0,
+      "stock_total": 9.0,
       "valor_costo": 0.0
     }
   ]
