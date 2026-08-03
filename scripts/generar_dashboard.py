@@ -785,7 +785,75 @@ def _seccion_accesorios_precio(datos: dict) -> str:
   <div style="margin-top:1rem;">{categorias_html}</div>"""
 
 
-def _seccion_surtido(reorden: dict) -> str:
+def _fila_rentabilidad_accesorio(cat: dict) -> str:
+    clase = _clase_margen(cat["margen"])
+    return f"""
+    <tr>
+      <td>{cat["categoria"]}</td>
+      <td class="num">{_miles(cat["unidades"])}</td>
+      <td class="num">{_cop(cat["ventas_netas"])}</td>
+      <td class="num">{_cop(cat["costo"])}</td>
+      <td class="num">{_cop(cat["utilidad"])}</td>
+      <td class="num {clase}">{_pct(cat["margen"])}</td>
+    </tr>"""
+
+
+def _seccion_rentabilidad_accesorios(categorias_todas: list, categorias_accesorios: set) -> str:
+    """Pedido explícito de John (2026-08-03): rentabilidad de joyería/
+    accesorios por categoría -- unidades vendidas, venta al público,
+    cuánto se recaudó vs cuánto quedó de utilidad, y el costo. Usa la
+    misma fuente que "Rentabilidad por categoría" de Mesa de Gerencia
+    (categorias_referencias.json, año actual), solo que filtrada a
+    accesorios y con el costo como columna explícita en vez de solo la
+    barra de margen -- acá interesa la tabla completa, no el ranking
+    visual. Ordenado por utilidad (cuánto deja cada categoría), no por
+    venta, porque la pregunta es rentabilidad."""
+    cats = [c for c in categorias_todas if c["categoria"] in categorias_accesorios]
+    if not cats:
+        return ""
+
+    cats = sorted(cats, key=lambda c: -c["utilidad"])
+    anio = datetime.now().year
+
+    unidades_total = sum(c["unidades"] for c in cats)
+    ventas_total = sum(c["ventas_netas"] for c in cats)
+    costo_total = sum(c["costo"] for c in cats)
+    utilidad_total = sum(c["utilidad"] for c in cats)
+    margen_total = (utilidad_total / ventas_total) if ventas_total else 0
+
+    kpis_html = "".join([
+        _tarjeta_kpi("Unidades vendidas", _miles(unidades_total), f"accesorios · año {anio}"),
+        _tarjeta_kpi("Venta al público", _cop(ventas_total)),
+        _tarjeta_kpi("Costo", _cop(costo_total)),
+        _tarjeta_kpi("Utilidad", _cop(utilidad_total)),
+        _tarjeta_kpi("Margen", _pct(margen_total)),
+    ])
+    filas_html = "".join(_fila_rentabilidad_accesorio(c) for c in cats)
+
+    return f"""
+  <h3 class="subseccion">Accesorios · rentabilidad por categoría</h3>
+  <div class="subtitulo" style="margin-bottom:1rem;">
+    Año {anio}, ordenado por utilidad (cuánto deja cada categoría, no solo cuánto vende).
+  </div>
+  <div class="kpi-grid">{kpis_html}</div>
+  <div style="overflow-x:auto; margin-top:1rem;">
+    <table class="tabla-categorias" style="min-width:640px;">
+      <thead>
+        <tr>
+          <th>Categoría</th>
+          <th class="num">Unidades</th>
+          <th class="num">Venta al público</th>
+          <th class="num">Costo</th>
+          <th class="num">Utilidad</th>
+          <th class="num">Margen</th>
+        </tr>
+      </thead>
+      <tbody>{filas_html}</tbody>
+    </table>
+  </div>"""
+
+
+def _seccion_surtido(reorden: dict, rentabilidad_accesorios_html: str = "") -> str:
     """Versión estrictamente filtrada de _seccion_reorden: solo lo que hay
     que comprar ahora (unidades sugeridas > 0), no el catálogo completo.
     Esa vista completa (con todas las categorías, se necesite pedir o no)
@@ -811,7 +879,8 @@ def _seccion_surtido(reorden: dict) -> str:
   {aviso_html}
   {_seccion_surtido_ropa(reorden["ropa"])}
   {_seccion_surtido_accesorios(reorden["accesorios"])}
-  {_seccion_accesorios_precio(reorden.get("accesorios_por_precio"))}"""
+  {_seccion_accesorios_precio(reorden.get("accesorios_por_precio"))}
+  {rentabilidad_accesorios_html}"""
 
 
 # ---------- sección: comparativo histórico ----------
@@ -1688,6 +1757,9 @@ _CSS = """
   .cat-margen.margen-alto { color: var(--verde); }
   .cat-margen.margen-medio { color: var(--ambar); }
   .cat-margen.margen-bajo { color: var(--rojo); }
+  .tabla-categorias td.margen-alto { color: var(--verde); font-weight: 600; }
+  .tabla-categorias td.margen-medio { color: var(--ambar); font-weight: 600; }
+  .tabla-categorias td.margen-bajo { color: var(--rojo); font-weight: 600; }
   .cat-detalle, .ref-detalle { display: none; padding: 0 .4rem .6rem 2.2rem; }
   .cat-wrap.abierto .cat-detalle, .ref-wrap.abierto .ref-detalle { display: block; }
 
@@ -1998,6 +2070,7 @@ def generar_dashboard_html(datos: dict = None) -> str:
 
     rentabilidad_html = ""
     referencias_html = ""
+    rentabilidad_accesorios_html = ""
     if cat_ref:
         productos_por_categoria = cat_ref["anio_actual"].get("productos_por_categoria", {})
         categorias = cat_ref["anio_actual"]["categorias"]
@@ -2008,12 +2081,15 @@ def generar_dashboard_html(datos: dict = None) -> str:
         referencias = cat_ref["anio_actual"]["top_referencias"]
         referencias_html = "".join(_fila_referencia(i + 1, r, por_sucursal_ref) for i, r in enumerate(referencias))
 
+        categorias_accesorios_set = set(_cargar_json(CONFIG_DIR / "categorias_accesorios.json", {"categorias": []})["categorias"])
+        rentabilidad_accesorios_html = _seccion_rentabilidad_accesorios(categorias, categorias_accesorios_set)
+
     comparativo_html = _seccion_comparativo_historico(historico_mensual, metas_cfg, sucursales_cfg, datetime.now())
     comisiones_html = _seccion_comisiones(comisiones_cfg, sucursales_cfg, datetime.now())
     inventario_resumen_html = _seccion_inventario_resumen(inventario)
     liquidacion_html = _seccion_liquidacion(liquidacion)
     reorden_html = _seccion_reorden(reorden)
-    surtido_html = _seccion_surtido(reorden)
+    surtido_html = _seccion_surtido(reorden, rentabilidad_accesorios_html)
 
     generado = datetime.now().strftime("%Y-%m-%d %H:%M")
     diarias_json = json.dumps(ventas_diarias, ensure_ascii=False)

@@ -110,6 +110,10 @@ def _resumen(validas: pd.DataFrame, nombre_map: dict) -> dict:
                 "categoria": r["Categoría artículo"],
                 "ventas_netas": round(float(r["ventas_netas"]), 2),
                 "utilidad": round(float(r["utilidad"]), 2),
+                # costo = venta - utilidad (Effi ya trae la utilidad calculada con costo
+                # manual por línea al momento de la venta -- no depende del export de
+                # artículos, que es el que ha venido fallando aparte, ver procesar_inventario.py)
+                "costo": round(float(r["ventas_netas"] - r["utilidad"]), 2),
                 "unidades": int(r["unidades"]),
                 "margen": float(r["margen"]) if r["margen"] == r["margen"] else 0,
             }

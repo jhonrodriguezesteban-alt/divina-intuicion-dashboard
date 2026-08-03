@@ -6,6 +6,7 @@
         "categoria": "PANTALONES",
         "ventas_netas": 184334700.05,
         "utilidad": 78122863.4,
+        "costo": 106211836.65,
         "unidades": 1591,
         "margen": 0.4238
       },
@@ -13,6 +14,7 @@
         "categoria": "BLUSAS",
         "ventas_netas": 99405600.0,
         "utilidad": 54597891.9,
+        "costo": 44807708.1,
         "unidades": 1546,
         "margen": 0.5492
       },
@@ -20,6 +22,7 @@
         "categoria": "CHAQUETAS",
         "ventas_netas": 80217249.99,
         "utilidad": 31913227.01,
+        "costo": 48304022.98,
         "unidades": 621,
         "margen": 0.3978
       },
@@ -27,6 +30,7 @@
         "categoria": "CONJUNTOS",
         "ventas_netas": 50019000.0,
         "utilidad": 18074529.68,
+        "costo": 31944470.32,
         "unidades": 343,
         "margen": 0.3614
       },
@@ -34,6 +38,7 @@
         "categoria": "CORSET",
         "ventas_netas": 45426000.0,
         "utilidad": 19998975.0,
+        "costo": 25427025.0,
         "unidades": 625,
         "margen": 0.4403
       },
@@ -41,6 +46,7 @@
         "categoria": "VESTIDOS",
         "ventas_netas": 44808150.23,
         "utilidad": 20230605.2,
+        "costo": 24577545.03,
         "unidades": 394,
         "margen": 0.4515
       },
@@ -48,6 +54,7 @@
         "categoria": "BODYS",
         "ventas_netas": 39839000.2,
         "utilidad": 22612193.9,
+        "costo": 17226806.3,
         "unidades": 611,
         "margen": 0.5676
       },
@@ -55,6 +62,7 @@
         "categoria": "BUZOS",
         "ventas_netas": 30303000.0,
         "utilidad": 14769386.7,
+        "costo": 15533613.3,
         "unidades": 389,
         "margen": 0.4874
       },
@@ -62,6 +70,7 @@
         "categoria": "FALDAS",
         "ventas_netas": 25915000.0,
         "utilidad": 12103706.2,
+        "costo": 13811293.8,
         "unidades": 328,
         "margen": 0.4671
       },
@@ -69,6 +78,7 @@
         "categoria": "CADENAS",
         "ventas_netas": 13350999.66,
         "utilidad": 5253265.26,
+        "costo": 8097734.4,
         "unidades": 458,
         "margen": 0.3935
       },
@@ -76,6 +86,7 @@
         "categoria": "CHALECOS",
         "ventas_netas": 9785000.0,
         "utilidad": 4194428.6,
+        "costo": 5590571.4,
         "unidades": 104,
         "margen": 0.4287
       },
@@ -83,6 +94,7 @@
         "categoria": "ARETES",
         "ventas_netas": 9388499.62,
         "utilidad": 3656492.96,
+        "costo": 5732006.66,
         "unidades": 501,
         "margen": 0.3895
       },
@@ -90,6 +102,7 @@
         "categoria": "PULSERAS",
         "ventas_netas": 7597999.64,
         "utilidad": 2807069.18,
+        "costo": 4790930.46,
         "unidades": 276,
         "margen": 0.3694
       },
@@ -97,6 +110,7 @@
         "categoria": "ANILLOS",
         "ventas_netas": 4842249.44,
         "utilidad": 2306753.31,
+        "costo": 2535496.13,
         "unidades": 296,
         "margen": 0.4764
       },
@@ -104,6 +118,7 @@
         "categoria": "BLAZER",
         "ventas_netas": 3040000.0,
         "utilidad": 1231092.4,
+        "costo": 1808907.6,
         "unidades": 34,
         "margen": 0.405
       },
@@ -111,6 +126,7 @@
         "categoria": "ACCESORIOS",
         "ventas_netas": 2930000.02,
         "utilidad": 1632589.13,
+        "costo": 1297410.89,
         "unidades": 83,
         "margen": 0.5572
       },
@@ -118,6 +134,7 @@
         "categoria": "GENERICOS",
         "ventas_netas": 2717000.0,
         "utilidad": 1611000.0,
+        "costo": 1106000.0,
         "unidades": 79,
         "margen": 0.5929
       },
@@ -125,6 +142,7 @@
         "categoria": "TOPOS",
         "ventas_netas": 2593000.04,
         "utilidad": 969390.79,
+        "costo": 1623609.25,
         "unidades": 155,
         "margen": 0.3738
       },
@@ -132,6 +150,7 @@
         "categoria": "EARCUF",
         "ventas_netas": 1974999.96,
         "utilidad": 749570.81,
+        "costo": 1225429.15,
         "unidades": 113,
         "margen": 0.3795
       },
@@ -139,6 +158,7 @@
         "categoria": "JUEGOS",
         "ventas_netas": 1043999.98,
         "utilidad": 366239.48,
+        "costo": 677760.5,
         "unidades": 26,
         "margen": 0.3508
       },
@@ -146,6 +166,7 @@
         "categoria": "GARGANTILLAS",
         "ventas_netas": 939000.02,
         "utilidad": 332675.65,
+        "costo": 606324.37,
         "unidades": 24,
         "margen": 0.3543
       },
@@ -153,6 +174,7 @@
         "categoria": "SHORTS",
         "ventas_netas": 895000.0,
         "utilidad": 510000.0,
+        "costo": 385000.0,
         "unidades": 11,
         "margen": 0.5698
       },
@@ -160,6 +182,7 @@
         "categoria": "BRAZALETE",
         "ventas_netas": 889999.95,
         "utilidad": 336971.39,
+        "costo": 553028.56,
         "unidades": 36,
         "margen": 0.3786
       },
@@ -167,6 +190,7 @@
         "categoria": "TOBILLERAS",
         "ventas_netas": 600000.05,
         "utilidad": 248705.0,
+        "costo": 351295.05,
         "unidades": 44,
         "margen": 0.4145
       },
@@ -174,6 +198,7 @@
         "categoria": "CAMISAS",
         "ventas_netas": 300000.0,
         "utilidad": 120000.0,
+        "costo": 180000.0,
         "unidades": 4,
         "margen": 0.4
       }
@@ -27852,6 +27877,7 @@
         "categoria": "PANTALONES",
         "ventas_netas": 557404700.05,
         "utilidad": 226215863.4,
+        "costo": 331188836.65,
         "unidades": 5165,
         "margen": 0.4058
       },
@@ -27859,6 +27885,7 @@
         "categoria": "BLUSAS",
         "ventas_netas": 295696600.0,
         "utilidad": 151526891.9,
+        "costo": 144169708.1,
         "unidades": 5063,
         "margen": 0.5124
       },
@@ -27866,6 +27893,7 @@
         "categoria": "CHAQUETAS",
         "ventas_netas": 212998249.99,
         "utilidad": 84417227.01,
+        "costo": 128581022.98,
         "unidades": 1804,
         "margen": 0.3963
       },
@@ -27873,6 +27901,7 @@
         "categoria": "CORSET",
         "ventas_netas": 129134000.0,
         "utilidad": 53580975.0,
+        "costo": 75553025.0,
         "unidades": 1846,
         "margen": 0.4149
       },
@@ -27880,6 +27909,7 @@
         "categoria": "BODYS",
         "ventas_netas": 116677000.2,
         "utilidad": 65320193.9,
+        "costo": 51356806.3,
         "unidades": 2086,
         "margen": 0.5598
       },
@@ -27887,6 +27917,7 @@
         "categoria": "CONJUNTOS",
         "ventas_netas": 104797000.0,
         "utilidad": 36172529.68,
+        "costo": 68624470.32,
         "unidades": 829,
         "margen": 0.3452
       },
@@ -27894,6 +27925,7 @@
         "categoria": "BUZOS",
         "ventas_netas": 91161000.0,
         "utilidad": 40611386.7,
+        "costo": 50549613.3,
         "unidades": 1244,
         "margen": 0.4455
       },
@@ -27901,6 +27933,7 @@
         "categoria": "VESTIDOS",
         "ventas_netas": 90724150.23,
         "utilidad": 41876605.2,
+        "costo": 48847545.03,
         "unidades": 886,
         "margen": 0.4616
       },
@@ -27908,6 +27941,7 @@
         "categoria": "FALDAS",
         "ventas_netas": 81829000.0,
         "utilidad": 36705706.2,
+        "costo": 45123293.8,
         "unidades": 1099,
         "margen": 0.4486
       },
@@ -27915,6 +27949,7 @@
         "categoria": "CHALECOS",
         "ventas_netas": 31612000.0,
         "utilidad": 12647428.6,
+        "costo": 18964571.4,
         "unidades": 423,
         "margen": 0.4001
       },
@@ -27922,6 +27957,7 @@
         "categoria": "BLAZER",
         "ventas_netas": 14190000.0,
         "utilidad": 5081092.4,
+        "costo": 9108907.6,
         "unidades": 180,
         "margen": 0.3581
       },
@@ -27929,6 +27965,7 @@
         "categoria": "CADENAS",
         "ventas_netas": 13350999.66,
         "utilidad": 5253265.26,
+        "costo": 8097734.4,
         "unidades": 458,
         "margen": 0.3935
       },
@@ -27936,6 +27973,7 @@
         "categoria": "ARETES",
         "ventas_netas": 9388499.62,
         "utilidad": 3656492.96,
+        "costo": 5732006.66,
         "unidades": 501,
         "margen": 0.3895
       },
@@ -27943,6 +27981,7 @@
         "categoria": "GENERICOS",
         "ventas_netas": 9226000.0,
         "utilidad": 4842000.0,
+        "costo": 4384000.0,
         "unidades": 287,
         "margen": 0.5248
       },
@@ -27950,6 +27989,7 @@
         "categoria": "PULSERAS",
         "ventas_netas": 7597999.64,
         "utilidad": 2807069.18,
+        "costo": 4790930.46,
         "unidades": 276,
         "margen": 0.3694
       },
@@ -27957,6 +27997,7 @@
         "categoria": "ANILLOS",
         "ventas_netas": 4842249.44,
         "utilidad": 2306753.31,
+        "costo": 2535496.13,
         "unidades": 296,
         "margen": 0.4764
       },
@@ -27964,6 +28005,7 @@
         "categoria": "ACCESORIOS",
         "ventas_netas": 3095000.02,
         "utilidad": 1725589.13,
+        "costo": 1369410.89,
         "unidades": 89,
         "margen": 0.5575
       },
@@ -27971,6 +28013,7 @@
         "categoria": "TOPOS",
         "ventas_netas": 2593000.04,
         "utilidad": 969390.79,
+        "costo": 1623609.25,
         "unidades": 155,
         "margen": 0.3738
       },
@@ -27978,6 +28021,7 @@
         "categoria": "CAMISAS",
         "ventas_netas": 2429000.0,
         "utilidad": 805000.0,
+        "costo": 1624000.0,
         "unidades": 42,
         "margen": 0.3314
       },
@@ -27985,6 +28029,7 @@
         "categoria": "EARCUF",
         "ventas_netas": 1974999.96,
         "utilidad": 749570.81,
+        "costo": 1225429.15,
         "unidades": 113,
         "margen": 0.3795
       },
@@ -27992,6 +28037,7 @@
         "categoria": "JUEGOS",
         "ventas_netas": 1043999.98,
         "utilidad": 366239.48,
+        "costo": 677760.5,
         "unidades": 26,
         "margen": 0.3508
       },
@@ -27999,6 +28045,7 @@
         "categoria": "GARGANTILLAS",
         "ventas_netas": 939000.02,
         "utilidad": 332675.65,
+        "costo": 606324.37,
         "unidades": 24,
         "margen": 0.3543
       },
@@ -28006,6 +28053,7 @@
         "categoria": "SHORTS",
         "ventas_netas": 895000.0,
         "utilidad": 510000.0,
+        "costo": 385000.0,
         "unidades": 11,
         "margen": 0.5698
       },
@@ -28013,6 +28061,7 @@
         "categoria": "BRAZALETE",
         "ventas_netas": 889999.95,
         "utilidad": 336971.39,
+        "costo": 553028.56,
         "unidades": 36,
         "margen": 0.3786
       },
@@ -28020,6 +28069,7 @@
         "categoria": "TOBILLERAS",
         "ventas_netas": 600000.05,
         "utilidad": 248705.0,
+        "costo": 351295.05,
         "unidades": 44,
         "margen": 0.4145
       }
