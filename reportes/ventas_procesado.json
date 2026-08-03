@@ -1,5 +1,5 @@
 {
-  "actualizado_hasta": "2026-08-03 09:55:16",
+  "actualizado_hasta": "2026-08-03 10:10:17",
   "historico": {
     "kpis": {
       "ingreso_total": 1774401448.72,
@@ -90,23 +90,28 @@
   },
   "hoy": {
     "kpis": {
-      "ingreso_total": 305000.0,
-      "num_transacciones": 1,
-      "ticket_promedio": 305000.0,
-      "utilidad_total": 164000.0,
-      "margen_promedio": 0.54
+      "ingreso_total": 445000.0,
+      "num_transacciones": 2,
+      "ticket_promedio": 222500.0,
+      "utilidad_total": 219000.0,
+      "margen_promedio": 0.465
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
         "ingreso": 305000.0,
         "transacciones": 1
+      },
+      {
+        "sucursal": "Local 433",
+        "ingreso": 140000.0,
+        "transacciones": 1
       }
     ],
-    "ingreso_ayer": 4595000.0
+    "ingreso_ayer": 4455000.0
   },
   "cartera": {
-    "num_anuladas_historico": 354,
+    "num_anuladas_historico": 355,
     "pendiente_de_cobro": 7301800.27,
     "num_pendiente_de_cobro": 34
   }
