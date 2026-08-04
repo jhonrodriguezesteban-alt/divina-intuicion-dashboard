@@ -1,61 +1,61 @@
 {
   "total_articulos": 2911,
-  "articulos_sin_stock": 1775,
-  "unidades_totales": 2878,
-  "valor_total_costo": 0.0,
+  "articulos_sin_stock": 1484,
+  "unidades_totales": 4686,
+  "valor_total_costo": 173521895.5,
   "stock_por_sucursal": {
-    "Local 144": 0,
-    "Local 433": 1513,
-    "Local 107": 1365
+    "Local 144": 1516,
+    "Local 433": 1482,
+    "Local 107": 1360
   },
   "top_categorias_por_valor": [
     {
-      "Categoría": "ACCESORIOS",
-      "articulos": 20,
-      "stock_total": 51.0,
-      "valor_costo": 0.0
+      "Categoría": "PANTALONES",
+      "articulos": 871,
+      "stock_total": 721.0,
+      "valor_costo": 47188038.0
+    },
+    {
+      "Categoría": "CONJUNTOS",
+      "articulos": 101,
+      "stock_total": 217.0,
+      "valor_costo": 20692000.0
+    },
+    {
+      "Categoría": "CHAQUETAS",
+      "articulos": 169,
+      "stock_total": 248.0,
+      "valor_costo": 17864000.0
+    },
+    {
+      "Categoría": "BLUSAS",
+      "articulos": 407,
+      "stock_total": 495.0,
+      "valor_costo": 14022000.0
+    },
+    {
+      "Categoría": "BODYS",
+      "articulos": 229,
+      "stock_total": 445.0,
+      "valor_costo": 11569000.0
+    },
+    {
+      "Categoría": "BUZOS",
+      "articulos": 118,
+      "stock_total": 227.0,
+      "valor_costo": 9176000.0
     },
     {
       "Categoría": "CORSET",
       "articulos": 158,
-      "stock_total": 122.0,
-      "valor_costo": 0.0
+      "stock_total": 239.0,
+      "valor_costo": 8567000.0
     },
     {
-      "Categoría": "TOPOS",
-      "articulos": 31,
-      "stock_total": 133.0,
-      "valor_costo": 0.0
-    },
-    {
-      "Categoría": "TOBILLERAS",
-      "articulos": 7,
-      "stock_total": 34.0,
-      "valor_costo": 0.0
-    },
-    {
-      "Categoría": "SHORTS",
-      "articulos": 7,
-      "stock_total": 12.0,
-      "valor_costo": 0.0
-    },
-    {
-      "Categoría": "PULSERAS",
-      "articulos": 48,
-      "stock_total": 222.0,
-      "valor_costo": 0.0
-    },
-    {
-      "Categoría": "PANTALONES",
-      "articulos": 871,
-      "stock_total": 292.0,
-      "valor_costo": 0.0
-    },
-    {
-      "Categoría": "JUEGOS",
-      "articulos": 7,
-      "stock_total": 9.0,
-      "valor_costo": 0.0
+      "Categoría": "FALDAS",
+      "articulos": 211,
+      "stock_total": 156.0,
+      "valor_costo": 7135000.0
     }
   ]
 }
