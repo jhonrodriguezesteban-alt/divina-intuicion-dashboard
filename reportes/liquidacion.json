@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-08-03",
+  "generado_al": "2026-08-05",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 354,
-      "unidades": 3109,
-      "valor_costo": 148940038.0
+      "num_referencias": 355,
+      "unidades": 3072,
+      "valor_costo": 147314038.0
     },
     "inactivas": {
       "num_referencias": 11,
@@ -13,9 +13,9 @@
       "valor_costo": 1000000.0
     },
     "nuevas": {
-      "num_referencias": 33,
-      "unidades": 141,
-      "valor_costo": 6962000.0
+      "num_referencias": 28,
+      "unidades": 125,
+      "valor_costo": 6334000.0
     }
   },
   "inactivas": [
@@ -118,12 +118,6 @@
       "valor_costo": 324000.0
     },
     {
-      "referencia": "FALDA JEAN GRIS JASPEADO",
-      "categoria": "FALDAS",
-      "disponible": 8,
-      "valor_costo": 320000.0
-    },
-    {
       "referencia": "CAPA FIRE",
       "categoria": "PANTALONES",
       "disponible": 3,
@@ -196,31 +190,13 @@
       "valor_costo": 100000.0
     },
     {
-      "referencia": "BLUSA CARO VERDE",
-      "categoria": "BLUSAS",
-      "disponible": 3,
-      "valor_costo": 96000.0
-    },
-    {
-      "referencia": "OVERZISE SUNDRIME",
-      "categoria": "BLUSAS",
-      "disponible": 2,
-      "valor_costo": 91000.0
-    },
-    {
-      "referencia": "OVERZISE PARADISE",
+      "referencia": "OVERZISE LOVE",
       "categoria": "BLUSAS",
       "disponible": 2,
       "valor_costo": 91000.0
     },
     {
       "referencia": "OVERZISE RUGE",
-      "categoria": "BLUSAS",
-      "disponible": 2,
-      "valor_costo": 91000.0
-    },
-    {
-      "referencia": "OVERZISE LOVE",
       "categoria": "BLUSAS",
       "disponible": 2,
       "valor_costo": 91000.0
@@ -250,13 +226,13 @@
       "valor_costo": 60000.0
     },
     {
-      "referencia": "FALDA CLASICA",
+      "referencia": "FALDA CORTA",
       "categoria": "FALDAS",
       "disponible": 1,
       "valor_costo": 47000.0
     },
     {
-      "referencia": "FALDA CORTA",
+      "referencia": "FALDA CLASICA",
       "categoria": "FALDAS",
       "disponible": 1,
       "valor_costo": 47000.0
@@ -278,12 +254,6 @@
       "categoria": "BODYS",
       "disponible": 2,
       "valor_costo": 36000.0
-    },
-    {
-      "referencia": "FALDA SHORT GEORGINA CUERINA",
-      "categoria": "FALDAS",
-      "disponible": 1,
-      "valor_costo": 30000.0
     }
   ]
 }
