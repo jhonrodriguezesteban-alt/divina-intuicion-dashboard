@@ -16818,7 +16818,7 @@
   <script>document.addEventListener('DOMContentLoaded', function(){ renderComisiones(8); });</script>
   </div>
 
-  <footer>Generado el 2026-08-08 13:10 · datos de Effi Systems</footer>
+  <footer>Generado el 2026-08-08 13:18 · datos de Effi Systems</footer>
   <div class="powered-by">Powered by Divina Intuición IA</div>
 
   </div>
@@ -17271,22 +17271,48 @@ function _comisionLineChart(puntos, meta, diasEnMes, diaCorte, esMesActual){
 
   var metaLabel = '<text x="' + Math.max(metaX - 4, plotW * 0.5) + '" y="' + Math.max(metaY - 8, 11) + '" class="com-chart-label com-chart-label-meta" text-anchor="end">Meta ' + _copCorto(meta) + '</text>';
 
-  // Siempre a un LADO del punto (nunca centrada encima) -- el punto de hoy
-  // cae justo sobre la línea vertical punteada de "hoy", y una etiqueta
-  // centrada ahí queda partida en dos por la línea, ilegible.
-  var realArriba = dotY > padT + 20;
-  var realY = realArriba ? (dotY - 11) : (dotY + 16);
+  // El punto "hoy" (venta real) y el punto "meta hoy" (dónde debería ir la
+  // línea punteada hoy) caen sobre la misma columna X y a veces muy cerca en
+  // Y (cuando el ritmo real está cerca de la meta) -- si cada etiqueta se
+  // posiciona sola en base a su propio punto, se encima con la otra. Por eso
+  // se decide en conjunto: el punto que quede más arriba (menor Y = más
+  // venta) empuja su etiqueta hacia arriba, y el que quede más abajo empuja
+  // la suya hacia abajo, garantizando separación entre AMBAS etiquetas sin
+  // importar qué tan cerca estén los puntos entre sí.
   var haciaLaDerecha = dotX < plotW * 0.62;
-  var realAnchor = haciaLaDerecha ? 'start' : 'end';
-  var realX = haciaLaDerecha ? (dotX + 7) : (dotX - 7);
-  var realLabel = '<text x="' + realX + '" y="' + realY + '" class="com-chart-label com-chart-label-real" text-anchor="' + realAnchor + '">Hoy ' + _copCorto(ultimoReal) + '</text>';
+  var anchorLados = haciaLaDerecha ? 'start' : 'end';
+  var xLados = haciaLaDerecha ? (dotX + 7) : (dotX - 7);
+
+  var metaHoyMarker = '', metaHoyLabel = '', metaHoyY = null;
+  if (esMesActual && diaCorte >= 1 && diaCorte <= diasEnMes){
+    var metaHoyValor = meta * diaCorte / diasEnMes;
+    metaHoyY = yFor(metaHoyValor);
+    metaHoyMarker = '<circle cx="' + dotX + '" cy="' + metaHoyY + '" r="3" fill="var(--verde)"/>';
+  }
+
+  var realY, metaHoyLabelY;
+  if (metaHoyY !== null){
+    var realEsSuperior = dotY <= metaHoyY;
+    realY = realEsSuperior ? (dotY - 11) : (dotY + 16);
+    metaHoyLabelY = realEsSuperior ? (metaHoyY + 14) : (metaHoyY - 9);
+  } else {
+    realY = (dotY > padT + 20) ? (dotY - 11) : (dotY + 16);
+  }
+  realY = Math.max(realY, 11);
+  var realLabel = '<text x="' + xLados + '" y="' + realY + '" class="com-chart-label com-chart-label-real" text-anchor="' + anchorLados + '">Hoy ' + _copCorto(ultimoReal) + '</text>';
+
+  if (metaHoyY !== null){
+    metaHoyLabelY = Math.max(metaHoyLabelY, 11);
+    metaHoyLabel = '<text x="' + xLados + '" y="' + metaHoyLabelY + '" class="com-chart-label com-chart-label-meta" text-anchor="' + anchorLados + '">Meta hoy ' + _copCorto(meta * diaCorte / diasEnMes) + '</text>';
+  }
 
   return '<svg viewBox="0 0 ' + w + ' ' + h + '" class="com-chart" preserveAspectRatio="none">' +
     ejeX + hoyMarker +
     '<polyline points="' + presupuestoPts + '" fill="none" stroke="var(--verde)" stroke-width="2" stroke-dasharray="6 4"/>' +
     '<polyline points="' + realPts + '" fill="none" stroke="var(--acento)" stroke-width="2.5"/>' +
+    metaHoyMarker +
     '<circle cx="' + dotX + '" cy="' + dotY + '" r="4" fill="var(--acento)"/>' +
-    metaLabel + realLabel +
+    metaLabel + realLabel + metaHoyLabel +
     '</svg>';
 }
 
