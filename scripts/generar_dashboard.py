@@ -981,43 +981,30 @@ def _seccion_comparativo_historico(historico_mensual: dict, metas_cfg: dict, suc
 
 # ---------- sección: comisiones ----------
 
-def _seccion_comisiones(comisiones_cfg: dict, sucursales_cfg: list, hoy: "datetime") -> str:
-    """Tarjetas por sucursal (meta/venta/% cumplimiento/comisión + mini gráfico
-    presupuesto vs. real acumulado), calcadas del módulo "Comisiones Asesoras" del
-    dashboard de referencia. A diferencia de Bentley (escalafón 0.5%-3% por asesora),
-    Divina paga una tasa plana a la administradora de cada punto -- ver
-    config/comisiones_config.json. Todo el cálculo día a día corre en JS puro sobre
-    los datos ya embebidos (data-diarias, data-historico), sin generar un JSON nuevo
-    por mes -- mismo patrón de la sección de filtros de Ventas por Punto de Venta."""
-    if not comisiones_cfg:
-        return '<div class="nota">Falta config/comisiones_config.json (tasa de comisión y administradoras por sucursal).</div>'
-
-    tasa = comisiones_cfg.get("tasa_comision", 0.01)
-    admins_por_codigo = comisiones_cfg.get("administradoras", {})
-    nombre_por_codigo = {s["codigo"]: s["nombre"] for s in sucursales_cfg}
-    administradoras = {nombre_por_codigo.get(cod, cod): nom for cod, nom in admins_por_codigo.items()}
-
+def _seccion_comisiones(sucursales_cfg: list, hoy: "datetime") -> str:
+    """Tarjetas por sucursal: cumplimiento de meta de ventas vs. presupuesto
+    (config/metas_mensuales.json), con avance diario -- desglosado en "primeros
+    N días (a la fecha de ayer)" + "meta de hoy" para que quede claro exactamente
+    cuánto falta vender hoy, no un solo número mezclado. Ya NO calcula comisión
+    por administradora (se quitó a pedido explícito, 2026-08-08 -- por ahora solo
+    interesa el cumplimiento de meta). Todo el cálculo día a día corre en JS puro
+    sobre los datos ya embebidos (data-diarias, data-historico), sin generar un
+    JSON nuevo por mes -- mismo patrón de la sección de filtros de Ventas por
+    Punto de Venta."""
     botones_mes = "".join(
         f'<button class="com-mes-btn{" com-mes-on" if i + 1 == hoy.month else ""}" '
         f'data-mes="{i + 1}" onclick="renderComisiones({i + 1}, this)">{MESES_ES[i]}</button>'
         for i in range(hoy.month)
     )
 
-    comisiones_json = json.dumps({"tasaComision": tasa, "administradoras": administradoras}, ensure_ascii=False)
-
     return f"""
-  <h2>Comisiones · Administradoras de punto</h2>
+  <h2>Cumplimiento de meta de ventas</h2>
   <div class="subtitulo" style="margin-bottom:1.2rem;">
-    Comisión del {tasa * 100:.0f}% sobre la venta neta del mes (Estado CXC = Pago total),
-    medida contra la meta fijada en config/metas_mensuales.json.
+    Venta real vs. meta fijada en config/metas_mensuales.json, con el avance día a día del mes en curso --
+    cuánto se llevaba hasta ayer y cuánto falta vender hoy para no perder el ritmo.
   </div>
   <div class="com-meses">{botones_mes}</div>
-  <div class="com-total-card">
-    <div class="kpi-label" id="comisiones-total-label">Total comisiones</div>
-    <div class="com-total-valor" id="comisiones-total">—</div>
-  </div>
   <div class="com-grid" id="comisiones-tarjetas"></div>
-  <script type="application/json" id="data-comisiones">{comisiones_json}</script>
   <script>document.addEventListener('DOMContentLoaded', function(){{ renderComisiones({hoy.month}); }});</script>"""
 
 
@@ -1460,8 +1447,8 @@ function renderHist(){
 
 if (document.getElementById('hist-table')) renderHist();
 
-function _comisionLineChart(puntos, meta, diasEnMes){
-  var w = 400, h = 130, padL = 4, padR = 6, padT = 10, padB = 18;
+function _comisionLineChart(puntos, meta, diasEnMes, diaCorte, esMesActual){
+  var w = 400, h = 130, padL = 4, padR = 6, padT = 14, padB = 18;
   var plotW = w - padL - padR, plotH = h - padT - padB;
   var ultimoReal = puntos.length ? puntos[puntos.length - 1].real : 0;
   var maxVal = Math.max(meta, ultimoReal, 1) * 1.05;
@@ -1478,15 +1465,33 @@ function _comisionLineChart(puntos, meta, diasEnMes){
     return '<text x="' + xFor(d) + '" y="' + (h - 3) + '" class="com-chart-eje" text-anchor="middle">' + d + '</text>';
   }).join('');
 
+  // Marcador vertical del día de hoy + la cifra real acumulada al lado del
+  // punto -- pedido explícito para que la gráfica misma sea más específica,
+  // no solo el texto de abajo.
+  var hoyMarker = '';
+  if (esMesActual && diaCorte >= 1 && diaCorte <= diasEnMes){
+    var hx = xFor(diaCorte);
+    hoyMarker = '<line x1="' + hx + '" y1="' + padT + '" x2="' + hx + '" y2="' + (padT + plotH) + '" stroke="var(--texto-sub)" stroke-width="1" stroke-dasharray="2 2"/>' +
+      '<text x="' + hx + '" y="' + (padT - 4) + '" class="com-chart-eje" text-anchor="middle">HOY</text>';
+  }
+  var valorReal = puntos.length ? '<text x="' + dotX + '" y="' + (dotY - 7) + '" class="com-chart-eje" text-anchor="middle" font-weight="700">' + _copCorto(ultimoReal) + '</text>' : '';
+
   return '<svg viewBox="0 0 ' + w + ' ' + h + '" class="com-chart" preserveAspectRatio="none">' +
-    ejeX +
+    ejeX + hoyMarker +
     '<polyline points="' + presupuestoPts + '" fill="none" stroke="var(--verde)" stroke-width="2" stroke-dasharray="6 4"/>' +
     '<polyline points="' + realPts + '" fill="none" stroke="var(--acento)" stroke-width="2.5"/>' +
     '<circle cx="' + dotX + '" cy="' + dotY + '" r="4" fill="var(--acento)"/>' +
+    valorReal +
     '</svg>';
 }
 
-function _tarjetaComision(suc, admin, tasaPct, venta, meta, comision, puntos, diaCorte, mesLbl, diasEnMes, esMesActual){
+function _copCorto(v){
+  if (Math.abs(v) >= 1000000) return '$' + (v / 1000000).toFixed(1).replace('.0', '') + 'M';
+  if (Math.abs(v) >= 1000) return '$' + Math.round(v / 1000) + 'k';
+  return _cop(v);
+}
+
+function _tarjetaMeta(suc, venta, meta, puntos, diaCorte, mesLbl, diasEnMes, esMesActual){
   if (meta <= 0 && venta <= 0){
     return '<div class="comision-card"><div class="comision-card-top"><span class="comision-suc">' + suc + '</span></div>' +
       '<div class="detalle-vacio">Sin datos ni meta fijada para este mes.</div></div>';
@@ -1496,18 +1501,44 @@ function _tarjetaComision(suc, admin, tasaPct, venta, meta, comision, puntos, di
   var claseP = sinMeta ? '' : (pct >= 100 ? 'pos' : (pct >= 70 ? '' : 'neg'));
   var pctTxt = sinMeta ? '—' : pct.toFixed(1) + '%';
   var barraPct = sinMeta ? 0 : Math.max(0, Math.min(100, pct));
-  var deberiamos = meta * (diaCorte / diasEnMes);
-  var diff = venta - deberiamos;
 
   var avance;
   if (sinMeta){
     avance = '<div class="comision-avance-sub">Sin meta de referencia este mes</div>' +
       '<div class="comision-avance-meta"><span class="comision-meta-txt">Fija una meta manual en config/metas_mensuales.json para comparar el ritmo.</span></div>';
   } else if (esMesActual){
-    avance = '<div class="comision-avance-sub">Primeros ' + diaCorte + ' días de ' + mesLbl + '</div>' +
-      '<div class="comision-avance-meta">' + (diff >= 0
-        ? '<span class="pos">✓ Vas ' + _cop(Math.abs(diff)) + ' arriba del ritmo</span>'
-        : '<span class="neg">⚠ Deberíamos tener ' + _cop(deberiamos) + ' · Falta ' + _cop(Math.abs(diff)) + '</span>') + '</div>';
+    // Desglose explícito en vez de un solo número mezclado: primero los días
+    // YA cerrados (acumulado a la fecha de ayer), y aparte la meta puntual
+    // de hoy -- así "cuánto falta vender hoy" queda inequívoco.
+    var metaDiaria = meta / diasEnMes;
+    var diaAnterior = diaCorte - 1;
+    var metaAyer = metaDiaria * diaAnterior;
+    var ventaAyer = diaAnterior > 0 ? puntos[diaAnterior - 1].real : 0;
+    var diffAyer = ventaAyer - metaAyer;
+    var metaAcumHoy = metaAyer + metaDiaria;
+    var ventaHoy = puntos[diaCorte - 1].real;
+    var faltaHoy = metaAcumHoy - ventaHoy;
+
+    var bloqueAyer = diaAnterior > 0
+      ? '<div class="comision-avance-bloque">' +
+          '<div class="comision-avance-sub">Primeros ' + diaAnterior + ' días de ' + mesLbl + ' (acumulado a la fecha de ayer)</div>' +
+          '<div class="comision-avance-fila"><span>Vendido</span><span>' + _cop(ventaAyer) + '</span></div>' +
+          '<div class="comision-avance-fila"><span>Meta acumulada</span><span>' + _cop(metaAyer) + '</span></div>' +
+          '<div class="comision-avance-fila comision-avance-diff"><span>' + (diffAyer >= 0 ? 'Arriba del ritmo' : 'Atrás del ritmo') + '</span>' +
+            '<span class="' + (diffAyer >= 0 ? 'pos' : 'neg') + '">' + (diffAyer >= 0 ? '+' : '-') + _cop(Math.abs(diffAyer)) + '</span></div>' +
+        '</div>'
+      : '';
+
+    avance = bloqueAyer +
+      '<div class="comision-avance-bloque comision-avance-hoy">' +
+        '<div class="comision-avance-sub">Día ' + diaCorte + ' de ' + mesLbl + ' (hoy)</div>' +
+        '<div class="comision-avance-fila"><span>Meta de hoy</span><span>' + _cop(metaDiaria) + '</span></div>' +
+        '<div class="comision-avance-fila"><span>Meta acumulada + hoy</span><span>' + _cop(metaAcumHoy) + '</span></div>' +
+        '<div class="comision-avance-fila"><span>Vendido hasta ahora</span><span>' + _cop(ventaHoy) + '</span></div>' +
+        '<div class="comision-avance-meta">' + (faltaHoy > 0
+          ? '<span class="neg">⚠ Falta vender ' + _cop(faltaHoy) + ' hoy para ir al ritmo</span>'
+          : '<span class="pos">✓ Meta acumulada del día ya cubierta (+' + _cop(Math.abs(faltaHoy)) + ')</span>') + '</div>' +
+      '</div>';
   } else {
     avance = '<div class="comision-avance-sub">Mes cerrado</div>' +
       '<div class="comision-avance-meta">' + (venta >= meta
@@ -1519,30 +1550,20 @@ function _tarjetaComision(suc, admin, tasaPct, venta, meta, comision, puntos, di
     '<div class="comision-card-top"><span class="comision-suc">' + suc + '</span><span class="comision-pct ' + claseP + '">' + pctTxt + '</span></div>' +
     '<div class="comision-cifras">' + _cop(venta) + ' <span class="comision-meta-txt">/ ' + (sinMeta ? 'sin meta' : _cop(meta)) + '</span></div>' +
     '<div class="comision-barra-wrap"><div class="comision-barra" style="width:' + barraPct + '%"></div></div>' +
-    '<div class="comision-admin"><span>' + admin + '</span><span>' + pctTxt + '</span></div>' +
-    '<div class="comision-desglose">' +
-      '<div><span class="comision-desglose-lbl">Meta</span><span>' + (sinMeta ? '—' : _cop(meta)) + '</span></div>' +
-      '<div><span class="comision-desglose-lbl">Venta</span><span>' + _cop(venta) + '</span></div>' +
-      '<div><span class="comision-desglose-lbl">% Comisión</span><span>' + tasaPct + '%</span></div>' +
-      '<div><span class="comision-desglose-lbl">Comisión</span><span class="pos">' + _cop(comision) + '</span></div>' +
-    '</div>' +
-    '<div class="comision-total-linea">Total comisión ' + suc + '<span class="pos">' + _cop(comision) + '</span></div>' +
     '<div class="comision-chart-legend"><span><i class="com-dot-dash"></i>Presupuesto</span><span><i class="com-dot-solid"></i>Real acumulado</span></div>' +
-    _comisionLineChart(puntos, meta, diasEnMes) +
+    _comisionLineChart(puntos, meta, diasEnMes, diaCorte, esMesActual) +
     avance +
   '</div>';
 }
 
 function renderComisiones(mesIdx, btn){
-  var cfgEl = document.getElementById('data-comisiones');
   var histEl = document.getElementById('data-historico');
   var diariosEl = document.getElementById('data-diarias');
-  if (!cfgEl || !histEl || !diariosEl) return;
+  if (!histEl || !diariosEl) return;
 
   document.querySelectorAll('.com-mes-btn').forEach(function(b){ b.classList.remove('com-mes-on'); });
   if (btn) btn.classList.add('com-mes-on');
 
-  var cfg = JSON.parse(cfgEl.textContent);
   var hist = JSON.parse(histEl.textContent);
   var diarios = JSON.parse(diariosEl.textContent);
 
@@ -1555,9 +1576,7 @@ function renderComisiones(mesIdx, btn){
   var esMesActual = (mesIdx === hoy.getMonth() + 1) && (Number(anioActual) === hoy.getFullYear());
   var diasEnMes = new Date(Number(anioActual), mesIdx, 0).getDate();
   var diaCorte = esMesActual ? hoy.getDate() : diasEnMes;
-  var tasaPct = (cfg.tasaComision * 100).toFixed(cfg.tasaComision * 100 % 1 === 0 ? 0 : 1);
 
-  var totalComisiones = 0;
   var tarjetas = '';
 
   diarios.sucursales.forEach(function(suc){
@@ -1576,16 +1595,9 @@ function renderComisiones(mesIdx, btn){
       puntos.push({dia: d, real: acumulado});
     }
 
-    var comision = venta * cfg.tasaComision;
-    totalComisiones += comision;
-
-    tarjetas += _tarjetaComision(suc, cfg.administradoras[suc] || ('Administradora ' + suc), tasaPct, venta, meta, comision, puntos, diaCorte, mesLbl, diasEnMes, esMesActual);
+    tarjetas += _tarjetaMeta(suc, venta, meta, puntos, diaCorte, mesLbl, diasEnMes, esMesActual);
   });
 
-  var totalEl = document.getElementById('comisiones-total');
-  if (totalEl) totalEl.textContent = _cop(totalComisiones);
-  var lblEl = document.getElementById('comisiones-total-label');
-  if (lblEl) lblEl.textContent = 'Total comisiones ' + mesLbl + ' ' + anioActual;
   var cont = document.getElementById('comisiones-tarjetas');
   if (cont) cont.innerHTML = tarjetas;
 }
@@ -1922,8 +1934,6 @@ _CSS = """
   .com-meses { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
   .com-mes-btn { padding: .4rem .9rem; border-radius: 999px; border: 1px solid var(--borde); background: var(--card); color: var(--texto-sub); font-size: .82rem; cursor: pointer; }
   .com-mes-btn.com-mes-on { background: var(--acento); color: #fff; border-color: var(--acento); }
-  .com-total-card { background: var(--destacado-bg); border: 1px solid var(--acento-suave); border-radius: 12px; padding: 1.1rem 1.4rem; margin-bottom: 1.5rem; max-width: 320px; }
-  .com-total-valor { font-size: 1.8rem; font-weight: 700; margin-top: .2rem; }
   .com-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
   .comision-card { background: var(--card); border: 1px solid var(--borde); border-radius: 12px; padding: 1.3rem 1.4rem; }
   .comision-card-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .3rem; }
@@ -1935,16 +1945,18 @@ _CSS = """
   .comision-meta-txt { color: var(--texto-sub); }
   .comision-barra-wrap { background: #ece7dd; border-radius: 6px; height: 10px; overflow: hidden; margin-bottom: 1rem; }
   .comision-barra { background: var(--acento); height: 100%; border-radius: 6px; }
-  .comision-admin { display: flex; justify-content: space-between; font-size: .85rem; font-weight: 600; padding-bottom: .6rem; border-bottom: 1px solid var(--borde); margin-bottom: .6rem; }
-  .comision-desglose { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem .8rem; font-size: .82rem; margin-bottom: .6rem; }
-  .comision-desglose > div { display: flex; justify-content: space-between; }
-  .comision-desglose-lbl { color: var(--texto-sub); }
-  .comision-total-linea { display: flex; justify-content: space-between; font-weight: 700; font-size: .88rem; padding: .6rem 0; border-top: 1px solid var(--borde); margin-bottom: .8rem; }
   .comision-chart-legend { display: flex; gap: 1rem; font-size: .74rem; color: var(--texto-sub); margin-bottom: .3rem; }
   .comision-chart-legend span { display: flex; align-items: center; gap: .3rem; }
   .com-dot-dash, .com-dot-solid { width: 10px; height: 2px; display: inline-block; }
   .com-dot-dash { background: repeating-linear-gradient(to right, var(--verde) 0 3px, transparent 3px 5px); }
   .com-dot-solid { background: var(--acento); height: 2.5px; }
+  .comision-avance-bloque { padding: .6rem 0; border-top: 1px solid var(--borde); }
+  .comision-avance-bloque:first-of-type { border-top: 1px solid var(--borde); margin-top: .3rem; }
+  .comision-avance-hoy { background: var(--destacado-bg); border-radius: 8px; padding: .6rem .7rem; border-top: none; margin-top: .5rem; }
+  .comision-avance-fila { display: flex; justify-content: space-between; font-size: .82rem; padding: .15rem 0; }
+  .comision-avance-fila span:first-child { color: var(--texto-sub); }
+  .comision-avance-diff { font-weight: 700; }
+  .comision-avance-diff span:first-child { color: var(--texto); font-weight: 400; }
   .com-chart { width: 100%; height: auto; display: block; margin-bottom: .5rem; }
   .com-chart-eje { font-size: 7px; fill: var(--texto-sub); }
   .comision-avance-sub { font-size: .74rem; color: var(--texto-sub); text-transform: uppercase; letter-spacing: .02em; }
@@ -1995,7 +2007,6 @@ _CSS = """
     .hist-controles { flex-direction: column; align-items: flex-start; }
     .nav-panel { width: 84vw; max-width: 300px; }
 
-    .com-total-card { max-width: 100%; }
     .com-grid { grid-template-columns: 1fr; }
   }
 """
@@ -2013,7 +2024,6 @@ def generar_dashboard_html(datos: dict = None) -> str:
     liquidacion = _cargar_json(REPORTES_DIR / "liquidacion.json")
     metas_cfg = _cargar_json(CONFIG_DIR / "metas_mensuales.json", {})
     sucursales_cfg = _cargar_json(CONFIG_DIR / "sucursales.json", {"sucursales": []})["sucursales"]
-    comisiones_cfg = _cargar_json(CONFIG_DIR / "comisiones_config.json", {})
 
     if not ventas:
         return _html_sin_datos()
@@ -2085,7 +2095,7 @@ def generar_dashboard_html(datos: dict = None) -> str:
         rentabilidad_accesorios_html = _seccion_rentabilidad_accesorios(categorias, categorias_accesorios_set)
 
     comparativo_html = _seccion_comparativo_historico(historico_mensual, metas_cfg, sucursales_cfg, datetime.now())
-    comisiones_html = _seccion_comisiones(comisiones_cfg, sucursales_cfg, datetime.now())
+    comisiones_html = _seccion_comisiones(sucursales_cfg, datetime.now())
     inventario_resumen_html = _seccion_inventario_resumen(inventario)
     liquidacion_html = _seccion_liquidacion(liquidacion)
     reorden_html = _seccion_reorden(reorden)
@@ -2120,7 +2130,7 @@ def generar_dashboard_html(datos: dict = None) -> str:
     <div class="nav-item activo" data-nav="gerencia" onclick="navTo('gerencia')">🏛️&nbsp; Mesa de Gerencia</div>
     <div class="nav-item" data-nav="surtido" onclick="navTo('surtido')">🛒&nbsp; Qué surtir</div>
     <div class="nav-item" data-nav="inventario" onclick="navTo('inventario')">📦&nbsp; Inventario</div>
-    <div class="nav-item" data-nav="comisiones" onclick="navTo('comisiones')">💼&nbsp; Comisiones</div>
+    <div class="nav-item" data-nav="comisiones" onclick="navTo('comisiones')">🎯&nbsp; Meta de ventas</div>
   </div>
 
   <header class="header-top">
