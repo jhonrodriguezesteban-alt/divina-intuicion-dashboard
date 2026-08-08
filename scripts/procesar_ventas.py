@@ -11,9 +11,19 @@ factura -- Effi anula automáticamente la remisión original al hacerlo. Esa
 remisión Anulada ya se excluye (correcto), pero si solo se lee remisiones,
 la factura resultante nunca se cuenta en ningún lado. Se suman ambas
 fuentes sin riesgo de doble conteo porque la remisión que originó una
-factura siempre queda Anulada -- verificado contra el histórico real
-(117 de 125 facturas no anuladas tienen una remisión Anulada exacta del
-mismo cliente y monto).
+factura siempre queda Anulada -- confirmado con el texto exacto que Effi
+deja en "Observación de anulación" ("Remisión convertida a factura de
+venta #ID").
+
+OJO -- fecha de la venta, no de la factura: contabilidad no convierte cada
+remisión a factura al momento de la venta, lo hace en lote tiempo después
+(confirmado 2026-08-08: un lote facturado el 2 de julio correspondía a
+~90 ventas reales de enero, en ambos locales). Si se usa la fecha de
+creación de la factura tal cual, esa venta se cuenta en el mes en que
+contabilidad hizo el papeleo en vez del mes en que ocurrió -- distorsiona
+histórico, metas y comisiones. Por eso _cargar_documentos() re-fecha esas
+facturas con mapa_fecha_original_facturas/corregir_fecha_facturas
+(common/procesamiento.py) antes de sumar nada.
 
 "Composición de venta" (Facturado vs Remisionado) usa exactamente esta
 distinción de fuente -- reemplaza la versión anterior (Cobrado vs
@@ -30,7 +40,9 @@ from pathlib import Path
 
 import pandas as pd
 
-from common.procesamiento import leer_excel_effi, cargar_config
+from common.procesamiento import (
+    leer_excel_effi, cargar_config, mapa_fecha_original_facturas, corregir_fecha_facturas,
+)
 
 RAW_DIR = Path(__file__).resolve().parent.parent / "reportes" / "raw"
 RAW_REMISIONES = RAW_DIR / "raw_remisiones_completo.xlsx"
@@ -52,6 +64,7 @@ def _cargar_documentos() -> pd.DataFrame:
     if RAW_FACTURAS.exists():
         facturas = leer_excel_effi(RAW_FACTURAS)
         facturas["Fecha de creación"] = pd.to_datetime(facturas["Fecha de creación"])
+        facturas = corregir_fecha_facturas(facturas, mapa_fecha_original_facturas(remisiones))
         facturas["fuente"] = "factura"
         marcos.append(facturas)
 

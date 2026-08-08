@@ -193,6 +193,45 @@ def calcular_cobertura_inventario(df_inventario: pd.DataFrame, df_ventas: pd.Dat
     return resultado
 
 
+def mapa_fecha_original_facturas(remisiones: pd.DataFrame) -> dict:
+    """{ID interno de factura: fecha de creación de la remisión que la
+    originó}, solo para facturas que vienen de una remisión convertida
+    (Effi deja el rastro en "Observación de anulación": "Remisión
+    convertida a factura de venta #ID").
+
+    Por qué existe: contabilidad no convierte remisiones a factura al
+    momento de la venta -- lo hace en lote, tiempo después (confirmado
+    2026-08-08: un lote facturado el 2 de julio correspondía a ~90 ventas
+    de enero). Si se usa la fecha de creación de la factura tal cual, esa
+    venta se cuenta en el mes en que contabilidad hizo el papeleo en vez
+    del mes en que realmente ocurrió -- distorsiona histórico mes a mes,
+    metas y comisiones. `corregir_fecha_facturas` usa este mapa para
+    re-fechar esas facturas a la fecha real de la venta.
+    """
+    conv = remisiones[remisiones["Observación de anulación"].astype(str).str.contains(
+        "convertida a factura de venta", case=False, na=False
+    )].copy()
+    if not len(conv):
+        return {}
+    ids_crudo = conv["Observación de anulación"].str.extract(r"#(\S+)")[0]
+    conv["factura_id"] = ids_crudo.str.replace(r"^([A-Za-z]+)(\d+)$", r"\1-\2", regex=True)
+    return dict(zip(conv["factura_id"], pd.to_datetime(conv["Fecha de creación"])))
+
+
+def corregir_fecha_facturas(facturas: pd.DataFrame, mapa: dict, col_fecha: str = "Fecha de creación") -> pd.DataFrame:
+    """Sobrescribe col_fecha con la fecha real de venta (ver
+    mapa_fecha_original_facturas) para las facturas que vienen de una
+    remisión convertida -- las genuinamente directas (sin remisión previa)
+    quedan con su propia fecha de creación, intacta."""
+    if not mapa:
+        return facturas
+    facturas = facturas.copy()
+    facturas[col_fecha] = pd.to_datetime(facturas[col_fecha])
+    fecha_original = facturas["ID interno"].map(mapa)
+    facturas[col_fecha] = fecha_original.combine_first(facturas[col_fecha])
+    return facturas
+
+
 def cargar_conceptos_combinados() -> pd.DataFrame:
     """Detalle por línea/artículo, remisiones + facturas, con el mismo esquema
     de columnas (Sucursal, Estado CXC, Fecha creación, Categoría artículo,
@@ -203,18 +242,24 @@ def cargar_conceptos_combinados() -> pd.DataFrame:
     "Vigencia factura": Vigente/Anulada) -- se cruza con el documento
     (raw_facturas_completo.xlsx, por "ID interno") para traer el Estado CXC
     real y poder filtrar "Pago total" igual que en remisiones. Sin esto, una
-    factura "Pendiente de cobro" contaría como venta cerrada.
+    factura "Pendiente de cobro" contaría como venta cerrada. También se
+    re-fecha con mapa_fecha_original_facturas cuando la factura viene de una
+    remisión convertida en lote (ver esa función).
     """
     remisiones = leer_excel_effi(RAW_DIR / "raw_conceptos.xlsx")[_COLUMNAS_CONCEPTOS].copy()
     marcos = [remisiones]
 
     ruta_conceptos_facturas = RAW_DIR / "raw_conceptos_facturas.xlsx"
     ruta_facturas = RAW_DIR / "raw_facturas_completo.xlsx"
+    ruta_remisiones_doc = RAW_DIR / "raw_remisiones_completo.xlsx"
     if ruta_conceptos_facturas.exists() and ruta_facturas.exists():
         conceptos_f = leer_excel_effi(ruta_conceptos_facturas)
         facturas = leer_excel_effi(ruta_facturas)[["ID interno", "Estado CXC"]]
         conceptos_f = conceptos_f.merge(facturas, on="ID interno", how="left")
         conceptos_f = conceptos_f.rename(columns={"Fecha creación factura": "Fecha creación"})
+        if ruta_remisiones_doc.exists():
+            mapa = mapa_fecha_original_facturas(leer_excel_effi(ruta_remisiones_doc))
+            conceptos_f = corregir_fecha_facturas(conceptos_f, mapa, col_fecha="Fecha creación")
         conceptos_f = conceptos_f[_COLUMNAS_CONCEPTOS]
         marcos.append(conceptos_f)
 

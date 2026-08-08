@@ -11,6 +11,11 @@ existen dos fuentes y por qué sumarlas no duplica nada. Va aparte de
 "por_dia" -a propósito- porque este último se recorre en JS con
 Object.keys(dia) para sumar por sucursal (ver filtrarRango en el JS
 embebido); mezclar ahí una clave que no es de sucursal rompería esa suma.
+
+Las facturas que vienen de una remisión convertida en lote (ver
+procesar_ventas.py) se re-fechan a la venta real antes de agregar por
+día -- si no, un lote facturado meses después aparecería como un pico de
+ventas ese día, que nunca ocurrió.
 """
 
 import json
@@ -18,7 +23,9 @@ from pathlib import Path
 
 import pandas as pd
 
-from common.procesamiento import leer_excel_effi, cargar_config
+from common.procesamiento import (
+    leer_excel_effi, cargar_config, mapa_fecha_original_facturas, corregir_fecha_facturas,
+)
 
 RAW_DIR = Path(__file__).resolve().parent.parent / "reportes" / "raw"
 RAW_REMISIONES = RAW_DIR / "raw_remisiones_completo.xlsx"
@@ -28,16 +35,18 @@ OUT = Path(__file__).resolve().parent.parent / "reportes" / "ventas_diarias.json
 
 def _cargar_documentos() -> pd.DataFrame:
     remisiones = leer_excel_effi(RAW_REMISIONES)
+    remisiones["Fecha de creación"] = pd.to_datetime(remisiones["Fecha de creación"])
     remisiones["fuente"] = "remision"
     marcos = [remisiones]
 
     if RAW_FACTURAS.exists():
         facturas = leer_excel_effi(RAW_FACTURAS)
+        facturas["Fecha de creación"] = pd.to_datetime(facturas["Fecha de creación"])
+        facturas = corregir_fecha_facturas(facturas, mapa_fecha_original_facturas(remisiones))
         facturas["fuente"] = "factura"
         marcos.append(facturas)
 
     df_full = pd.concat(marcos, ignore_index=True)
-    df_full["Fecha de creación"] = pd.to_datetime(df_full["Fecha de creación"])
     df_full["dia"] = df_full["Fecha de creación"].dt.date.astype(str)
     return df_full
 

@@ -10,6 +10,14 @@ Effi para facturas, que tiene un bug confirmado: sigue incluyendo
 documentos Anulados aunque se filtre por Estado CXC = Pago total). Ver
 la nota en procesar_ventas.py sobre por qué sumar remisiones + facturas
 no duplica ninguna venta.
+
+Antes de agregar por mes, cada factura se re-fecha a la venta real cuando
+viene de una remisión convertida en lote (mapa_fecha_original_facturas,
+common/procesamiento.py) -- confirmado 2026-08-08: contabilidad facturó el
+2 de julio un lote de ~90 remisiones que en realidad eran ventas de enero,
+lo que inflaba julio y desinflaba enero en este comparativo. Sin esto, el
+histórico mes a mes, las metas y el análisis de crecimiento quedan mal
+clasificados aunque el total global (todo el año) no cambie.
 """
 
 import json
@@ -17,10 +25,13 @@ from pathlib import Path
 
 import pandas as pd
 
-from common.procesamiento import leer_excel_effi, cargar_config
+from common.procesamiento import (
+    leer_excel_effi, cargar_config, mapa_fecha_original_facturas, corregir_fecha_facturas,
+)
 
 RAW_DIR = Path(__file__).resolve().parent.parent / "reportes" / "raw"
 RAW_FACTURAS = RAW_DIR / "raw_facturas_completo.xlsx"
+RAW_REMISIONES = RAW_DIR / "raw_remisiones_completo.xlsx"
 OUT = Path(__file__).resolve().parent.parent / "reportes" / "historico_mensual.json"
 
 MESES_ES = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
@@ -35,6 +46,9 @@ def _facturas_por_sucursal_mes(nombre_effi_a_codigo: dict) -> dict:
     if not len(df):
         return {}
     df["Fecha de creación"] = pd.to_datetime(df["Fecha de creación"])
+    if RAW_REMISIONES.exists():
+        mapa = mapa_fecha_original_facturas(leer_excel_effi(RAW_REMISIONES))
+        df = corregir_fecha_facturas(df, mapa)
     df["anio"] = df["Fecha de creación"].dt.year.astype(str)
     df["mes_idx"] = df["Fecha de creación"].dt.month - 1
 
