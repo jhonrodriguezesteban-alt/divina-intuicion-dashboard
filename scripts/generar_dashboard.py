@@ -983,14 +983,16 @@ def _seccion_comparativo_historico(historico_mensual: dict, metas_cfg: dict, suc
 
 def _seccion_comisiones(sucursales_cfg: list, hoy: "datetime") -> str:
     """Tarjetas por sucursal: cumplimiento de meta de ventas vs. presupuesto
-    (config/metas_mensuales.json), con avance diario -- desglosado en "primeros
-    N días (a la fecha de ayer)" + "meta de hoy" para que quede claro exactamente
-    cuánto falta vender hoy, no un solo número mezclado. Ya NO calcula comisión
-    por administradora (se quitó a pedido explícito, 2026-08-08 -- por ahora solo
-    interesa el cumplimiento de meta). Todo el cálculo día a día corre en JS puro
-    sobre los datos ya embebidos (data-diarias, data-historico), sin generar un
-    JSON nuevo por mes -- mismo patrón de la sección de filtros de Ventas por
-    Punto de Venta."""
+    (config/metas_mensuales.json). Para el mes en curso, TODAS las cifras
+    (número principal, gráfica, desglose) se congelan en el último día YA
+    CERRADO (ayer) y solo avanzan una vez por día calendario -- a propósito,
+    2026-08-08, porque el reporte se reenvía por WhatsApp y mezclar venta del
+    mismo día (todavía incompleta) confunde al lector. No se muestra ningún
+    dato "en vivo" de hoy. Ya NO calcula comisión por administradora (se quitó
+    a pedido explícito, 2026-08-08 -- por ahora solo interesa el cumplimiento
+    de meta). Todo el cálculo día a día corre en JS puro sobre los datos ya
+    embebidos (data-diarias, data-historico), sin generar un JSON nuevo por
+    mes -- mismo patrón de la sección de filtros de Ventas por Punto de Venta."""
     botones_mes = "".join(
         f'<button class="com-mes-btn{" com-mes-on" if i + 1 == hoy.month else ""}" '
         f'data-mes="{i + 1}" onclick="renderComisiones({i + 1}, this)">{MESES_ES[i]}</button>'
@@ -1000,8 +1002,9 @@ def _seccion_comisiones(sucursales_cfg: list, hoy: "datetime") -> str:
     return f"""
   <h2>Cumplimiento de meta de ventas</h2>
   <div class="subtitulo" style="margin-bottom:1.2rem;">
-    Venta real vs. meta fijada en config/metas_mensuales.json, con el avance día a día del mes en curso --
-    cuánto se llevaba hasta ayer y cuánto falta vender hoy para no perder el ritmo.
+    Venta real vs. meta fijada en config/metas_mensuales.json. Datos hasta el cierre de ayer --
+    se actualiza una sola vez al día, sin mezclar venta de hoy (aún incompleta), para que el
+    reporte se pueda reenviar por WhatsApp sin confusión.
   </div>
   <div class="com-meses">{botones_mes}</div>
   <div class="com-grid" id="comisiones-tarjetas"></div>
@@ -1284,11 +1287,16 @@ function _histCop(v){
 // en el cierre de las 8pm) -- fuente única para el mes en curso, usada
 // tanto en el comparativo histórico como en las tarjetas de meta de venta,
 // para que no muestren tres cifras distintas para el mismo mes.
-function _ventaMesDesdeDiario(diarios, anio, mesIdx, suc){
+// diaMax (opcional): si se pasa, ignora cualquier día del mes posterior a
+// ese número -- así el mes en curso se puede congelar en el último día YA
+// CERRADO (ayer) en vez de incluir la venta parcial de hoy, que cambia
+// mientras avanza el día y confunde en reportes que se reenvían por WhatsApp.
+function _ventaMesDesdeDiario(diarios, anio, mesIdx, suc, diaMax){
   var total = 0;
   var prefijo = anio + '-' + String(mesIdx).padStart(2, '0') + '-';
   Object.keys(diarios.por_dia || {}).forEach(function(key){
     if (key.indexOf(prefijo) === 0){
+      if (diaMax !== undefined && parseInt(key.slice(8, 10), 10) > diaMax) return;
       var dia = diarios.por_dia[key];
       if (dia && dia[suc]) total += dia[suc].ingreso;
     }
@@ -1352,16 +1360,21 @@ function renderHist(){
   // Corrige el mes en curso con la fuente fresca (ver _ventaMesDesdeDiario)
   // antes de que nada más lea MD/CD -- así la celda, la fila, el pie y el
   // total general quedan unificados sin tocar cada fórmula por separado.
+  // Recortado al último día YA CERRADO (ayer), igual que las tarjetas de
+  // Meta de ventas -- para que ambas vistas siempre muestren el mismo
+  // número del mes en curso y ninguna mezcle venta de hoy (incompleta).
   var diariosElH = document.getElementById('data-diarias');
   var diariosH = diariosElH ? JSON.parse(diariosElH.textContent) : null;
   if (diariosH){
     var mesActualUp = MESES[MES_ACTUAL - 1];
+    var hoyH = new Date(document.body.getAttribute('data-hoy') + 'T00:00:00');
+    var diaCierreH = hoyH.getDate() - 1;
     [[yr, MD], [cmp, CD]].forEach(function(par){
       var anioSel = par[0], bloque = par[1];
       if (anioSel === ANIO_ACTUAL && bloque){
         Object.keys(bloque).forEach(function(s){
           bloque[s] = bloque[s] || {};
-          bloque[s][mesActualUp] = _ventaMesDesdeDiario(diariosH, ANIO_ACTUAL, MES_ACTUAL, s);
+          bloque[s][mesActualUp] = _ventaMesDesdeDiario(diariosH, ANIO_ACTUAL, MES_ACTUAL, s, diaCierreH);
         });
       }
     });
@@ -1501,10 +1514,10 @@ function _comisionLineChart(puntos, meta, diasEnMes, diaCorte, esMesActual){
     return '<text x="' + xFor(d) + '" y="' + (h - 3) + '" class="com-chart-eje" text-anchor="middle">' + d + '</text>';
   }).join('');
 
-  // Solo una marca sutil de "hoy" (sin texto propio compitiendo por espacio) --
-  // las únicas DOS etiquetas grandes de la gráfica son Meta y Hoy (venta real),
-  // pedido explícito porque antes el valor real quedaba chiquito y pegado al
-  // punto/línea de hoy, ilegible.
+  // Solo una marca sutil del corte (sin texto propio compitiendo por espacio) --
+  // las únicas DOS etiquetas grandes de la gráfica son Meta y Real (venta
+  // acumulada al último día cerrado), pedido explícito porque antes el valor
+  // real quedaba chiquito y pegado al punto/línea, ilegible.
   var hoyMarker = '';
   if (esMesActual && diaCorte >= 1 && diaCorte <= diasEnMes){
     var hx = xFor(diaCorte);
@@ -1513,14 +1526,15 @@ function _comisionLineChart(puntos, meta, diasEnMes, diaCorte, esMesActual){
 
   var metaLabel = '<text x="' + Math.max(metaX - 4, plotW * 0.5) + '" y="' + Math.max(metaY - 8, 11) + '" class="com-chart-label com-chart-label-meta" text-anchor="end">Meta ' + _copCorto(meta) + '</text>';
 
-  // El punto "hoy" (venta real) y el punto "meta hoy" (dónde debería ir la
-  // línea punteada hoy) caen sobre la misma columna X y a veces muy cerca en
-  // Y (cuando el ritmo real está cerca de la meta) -- si cada etiqueta se
-  // posiciona sola en base a su propio punto, se encima con la otra. Por eso
-  // se decide en conjunto: el punto que quede más arriba (menor Y = más
-  // venta) empuja su etiqueta hacia arriba, y el que quede más abajo empuja
-  // la suya hacia abajo, garantizando separación entre AMBAS etiquetas sin
-  // importar qué tan cerca estén los puntos entre sí.
+  // El punto "real" (venta acumulada al día de corte) y el punto "meta al
+  // día" (dónde debería ir la línea punteada en ese mismo día) caen sobre la
+  // misma columna X y a veces muy cerca en Y (cuando el ritmo real está
+  // cerca de la meta) -- si cada etiqueta se posiciona sola en base a su
+  // propio punto, se encima con la otra. Por eso se decide en conjunto: el
+  // punto que quede más arriba (menor Y = más venta) empuja su etiqueta hacia
+  // arriba, y el que quede más abajo empuja la suya hacia abajo, garantizando
+  // separación entre AMBAS etiquetas sin importar qué tan cerca estén los
+  // puntos entre sí.
   var haciaLaDerecha = dotX < plotW * 0.62;
   var anchorLados = haciaLaDerecha ? 'start' : 'end';
   var xLados = haciaLaDerecha ? (dotX + 7) : (dotX - 7);
@@ -1541,11 +1555,11 @@ function _comisionLineChart(puntos, meta, diasEnMes, diaCorte, esMesActual){
     realY = (dotY > padT + 20) ? (dotY - 11) : (dotY + 16);
   }
   realY = Math.max(realY, 11);
-  var realLabel = '<text x="' + xLados + '" y="' + realY + '" class="com-chart-label com-chart-label-real" text-anchor="' + anchorLados + '">Hoy ' + _copCorto(ultimoReal) + '</text>';
+  var realLabel = '<text x="' + xLados + '" y="' + realY + '" class="com-chart-label com-chart-label-real" text-anchor="' + anchorLados + '">Real ' + _copCorto(ultimoReal) + '</text>';
 
   if (metaHoyY !== null){
     metaHoyLabelY = Math.max(metaHoyLabelY, 11);
-    metaHoyLabel = '<text x="' + xLados + '" y="' + metaHoyLabelY + '" class="com-chart-label com-chart-label-meta" text-anchor="' + anchorLados + '">Meta hoy ' + _copCorto(meta * diaCorte / diasEnMes) + '</text>';
+    metaHoyLabel = '<text x="' + xLados + '" y="' + metaHoyLabelY + '" class="com-chart-label com-chart-label-meta" text-anchor="' + anchorLados + '">Meta al día ' + diaCorte + ' ' + _copCorto(meta * diaCorte / diasEnMes) + '</text>';
   }
 
   return '<svg viewBox="0 0 ' + w + ' ' + h + '" class="com-chart" preserveAspectRatio="none">' +
@@ -1579,38 +1593,22 @@ function _tarjetaMeta(suc, venta, meta, puntos, diaCorte, mesLbl, diasEnMes, esM
   if (sinMeta){
     avance = '<div class="comision-avance-sub">Sin meta de referencia este mes</div>' +
       '<div class="comision-avance-meta"><span class="comision-meta-txt">Fija una meta manual en config/metas_mensuales.json para comparar el ritmo.</span></div>';
+  } else if (esMesActual && diaCorte < 1){
+    // Día 1 del mes: todavía no hay ni un día cerrado que reportar.
+    avance = '<div class="comision-avance-sub">Aún no hay un día cerrado este mes</div>' +
+      '<div class="comision-avance-meta"><span class="comision-meta-txt">El primer corte aparece mañana.</span></div>';
   } else if (esMesActual){
-    // Desglose explícito en vez de un solo número mezclado: primero los días
-    // YA cerrados (acumulado a la fecha de ayer), y aparte la meta puntual
-    // de hoy -- así "cuánto falta vender hoy" queda inequívoco.
+    // Un solo bloque, siempre a día cerrado (ayer) -- nunca mezcla venta de
+    // hoy, que todavía está incompleta y cambia hasta el cierre.
     var metaDiaria = meta / diasEnMes;
-    var diaAnterior = diaCorte - 1;
-    var metaAyer = metaDiaria * diaAnterior;
-    var ventaAyer = diaAnterior > 0 ? puntos[diaAnterior - 1].real : 0;
-    var diffAyer = ventaAyer - metaAyer;
-    var metaAcumHoy = metaAyer + metaDiaria;
-    var ventaHoy = puntos[diaCorte - 1].real;
-    var faltaHoy = metaAcumHoy - ventaHoy;
-
-    var bloqueAyer = diaAnterior > 0
-      ? '<div class="comision-avance-bloque">' +
-          '<div class="comision-avance-sub">Primeros ' + diaAnterior + ' días de ' + mesLbl + ' (acumulado a la fecha de ayer)</div>' +
-          '<div class="comision-avance-fila"><span>Vendido</span><span>' + _cop(ventaAyer) + '</span></div>' +
-          '<div class="comision-avance-fila"><span>Meta acumulada</span><span>' + _cop(metaAyer) + '</span></div>' +
-          '<div class="comision-avance-fila comision-avance-diff"><span>' + (diffAyer >= 0 ? 'Arriba del ritmo' : 'Atrás del ritmo') + '</span>' +
-            '<span class="' + (diffAyer >= 0 ? 'pos' : 'neg') + '">' + (diffAyer >= 0 ? '+' : '-') + _cop(Math.abs(diffAyer)) + '</span></div>' +
-        '</div>'
-      : '';
-
-    avance = bloqueAyer +
-      '<div class="comision-avance-bloque comision-avance-hoy">' +
-        '<div class="comision-avance-sub">Día ' + diaCorte + ' de ' + mesLbl + ' (hoy)</div>' +
-        '<div class="comision-avance-fila"><span>Meta de hoy</span><span>' + _cop(metaDiaria) + '</span></div>' +
-        '<div class="comision-avance-fila"><span>Meta acumulada + hoy</span><span>' + _cop(metaAcumHoy) + '</span></div>' +
-        '<div class="comision-avance-fila"><span>Vendido hasta ahora</span><span>' + _cop(ventaHoy) + '</span></div>' +
-        '<div class="comision-avance-meta">' + (faltaHoy > 0
-          ? '<span class="neg">⚠ Falta vender ' + _cop(faltaHoy) + ' hoy para ir al ritmo</span>'
-          : '<span class="pos">✓ Meta acumulada del día ya cubierta (+' + _cop(Math.abs(faltaHoy)) + ')</span>') + '</div>' +
+    var metaAcum = metaDiaria * diaCorte;
+    var diff = venta - metaAcum;
+    avance = '<div class="comision-avance-bloque">' +
+        '<div class="comision-avance-sub">Acumulado al ' + diaCorte + ' de ' + mesLbl + ' (último día cerrado)</div>' +
+        '<div class="comision-avance-fila"><span>Vendido</span><span>' + _cop(venta) + '</span></div>' +
+        '<div class="comision-avance-fila"><span>Meta acumulada</span><span>' + _cop(metaAcum) + '</span></div>' +
+        '<div class="comision-avance-fila comision-avance-diff"><span>' + (diff >= 0 ? 'Arriba del ritmo' : 'Atrás del ritmo') + '</span>' +
+          '<span class="' + (diff >= 0 ? 'pos' : 'neg') + '">' + (diff >= 0 ? '+' : '-') + _cop(Math.abs(diff)) + '</span></div>' +
       '</div>';
   } else {
     avance = '<div class="comision-avance-sub">Mes cerrado</div>' +
@@ -1648,17 +1646,21 @@ function renderComisiones(mesIdx, btn){
   var hoy = new Date(document.body.getAttribute('data-hoy') + 'T00:00:00');
   var esMesActual = (mesIdx === hoy.getMonth() + 1) && (Number(anioActual) === hoy.getFullYear());
   var diasEnMes = new Date(Number(anioActual), mesIdx, 0).getDate();
-  var diaCorte = esMesActual ? hoy.getDate() : diasEnMes;
+  // diaCorte = último día YA CERRADO del mes en curso (ayer) -- nunca hoy.
+  // El reporte se reenvía por WhatsApp y la venta de hoy todavía está
+  // incompleta/cambiando, así que estas tarjetas se congelan un día atrás y
+  // solo avanzan una vez por día calendario (cuando "hoy" pasa a ser mañana).
+  var diaCorte = esMesActual ? hoy.getDate() - 1 : diasEnMes;
 
   var tarjetas = '';
 
   diarios.sucursales.forEach(function(suc){
     // Mismo fix que renderHist: el mes en curso en historico_mensual.json
     // solo se refresca en el cierre de las 8pm -- para el mes actual se usa
-    // la fuente que se refresca cada hora, así esta cifra y "Vendido hasta
-    // ahora" (más abajo, calculado de la misma fuente) siempre coinciden.
+    // la fuente que se refresca cada hora, pero recortada a diaCorte (ayer)
+    // para no mezclar la venta parcial de hoy.
     var venta = esMesActual
-      ? _ventaMesDesdeDiario(diarios, anioActual, mesIdx, suc)
+      ? _ventaMesDesdeDiario(diarios, anioActual, mesIdx, suc, diaCorte)
       : ((histActual[suc] || {})[mesUp] || 0);
     var metaCfg = hist.metas[suc];
     var metaManual = metaCfg && metaCfg[mesIdx] !== undefined ? metaCfg[mesIdx] : null;
@@ -2031,14 +2033,17 @@ _CSS = """
   .com-dot-solid { background: var(--acento); height: 2.5px; }
   .comision-avance-bloque { padding: .6rem 0; border-top: 1px solid var(--borde); }
   .comision-avance-bloque:first-of-type { border-top: 1px solid var(--borde); margin-top: .3rem; }
-  .comision-avance-hoy { background: var(--destacado-bg); border-radius: 8px; padding: .6rem .7rem; border-top: none; margin-top: .5rem; }
   .comision-avance-fila { display: flex; justify-content: space-between; font-size: .82rem; padding: .15rem 0; }
   .comision-avance-fila span:first-child { color: var(--texto-sub); }
   .comision-avance-diff { font-weight: 700; }
   .comision-avance-diff span:first-child { color: var(--texto); font-weight: 400; }
   .com-chart { width: 100%; height: auto; display: block; margin-bottom: .5rem; }
   .com-chart-eje { font-size: 7px; fill: var(--texto-sub); }
-  .com-chart-label { font-size: 12px; font-weight: 700; }
+  /* halo detrás del texto (stroke del color de fondo, dibujado antes del
+     relleno) para que las líneas/puntos de la gráfica que pasen por detrás
+     de una etiqueta nunca la crucen visualmente -- más robusto que calcular
+     a mano el desplazamiento exacto para esquivar la línea punteada. */
+  .com-chart-label { font-size: 12px; font-weight: 700; paint-order: stroke; stroke: var(--card); stroke-width: 4px; stroke-linejoin: round; }
   .com-chart-label-meta { fill: var(--verde); }
   .com-chart-label-real { fill: var(--acento); }
   .comision-avance-sub { font-size: .74rem; color: var(--texto-sub); text-transform: uppercase; letter-spacing: .02em; }
