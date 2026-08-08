@@ -1279,6 +1279,23 @@ function _histCop(v){
   return '$' + Math.round(v).toLocaleString('es-CO');
 }
 
+// Suma la venta de un mes/sucursal directo de ventas_diarias.json (se
+// refresca cada hora) en vez de historico_mensual.json (solo se refresca
+// en el cierre de las 8pm) -- fuente única para el mes en curso, usada
+// tanto en el comparativo histórico como en las tarjetas de meta de venta,
+// para que no muestren tres cifras distintas para el mismo mes.
+function _ventaMesDesdeDiario(diarios, anio, mesIdx, suc){
+  var total = 0;
+  var prefijo = anio + '-' + String(mesIdx).padStart(2, '0') + '-';
+  Object.keys(diarios.por_dia || {}).forEach(function(key){
+    if (key.indexOf(prefijo) === 0){
+      var dia = diarios.por_dia[key];
+      if (dia && dia[suc]) total += dia[suc].ingreso;
+    }
+  });
+  return total;
+}
+
 function colorSelect(el){
   var c = el.id === 'hist-yr-main' ? 'var(--acento)' : 'var(--ambar)';
   el.style.color = c;
@@ -1331,6 +1348,24 @@ function renderHist(){
   var MESES = datos.meses, MES_LABELS = datos.mesLabels, MES_ACTUAL = datos.mesActual;
   var ANIO_ACTUAL = datos.anioActual, METAS = datos.metas;
   var yc = 'var(--acento)', cc = 'var(--ambar)';
+
+  // Corrige el mes en curso con la fuente fresca (ver _ventaMesDesdeDiario)
+  // antes de que nada más lea MD/CD -- así la celda, la fila, el pie y el
+  // total general quedan unificados sin tocar cada fórmula por separado.
+  var diariosElH = document.getElementById('data-diarias');
+  var diariosH = diariosElH ? JSON.parse(diariosElH.textContent) : null;
+  if (diariosH){
+    var mesActualUp = MESES[MES_ACTUAL - 1];
+    [[yr, MD], [cmp, CD]].forEach(function(par){
+      var anioSel = par[0], bloque = par[1];
+      if (anioSel === ANIO_ACTUAL && bloque){
+        Object.keys(bloque).forEach(function(s){
+          bloque[s] = bloque[s] || {};
+          bloque[s][mesActualUp] = _ventaMesDesdeDiario(diariosH, ANIO_ACTUAL, MES_ACTUAL, s);
+        });
+      }
+    });
+  }
 
   var visMes = MESES.filter(function(m){ return visibleMes.has(m); });
   var visMesLbl = MES_LABELS.filter(function(_, i){ return visibleMes.has(MESES[i]); });
@@ -1618,7 +1653,13 @@ function renderComisiones(mesIdx, btn){
   var tarjetas = '';
 
   diarios.sucursales.forEach(function(suc){
-    var venta = (histActual[suc] || {})[mesUp] || 0;
+    // Mismo fix que renderHist: el mes en curso en historico_mensual.json
+    // solo se refresca en el cierre de las 8pm -- para el mes actual se usa
+    // la fuente que se refresca cada hora, así esta cifra y "Vendido hasta
+    // ahora" (más abajo, calculado de la misma fuente) siempre coinciden.
+    var venta = esMesActual
+      ? _ventaMesDesdeDiario(diarios, anioActual, mesIdx, suc)
+      : ((histActual[suc] || {})[mesUp] || 0);
     var metaCfg = hist.metas[suc];
     var metaManual = metaCfg && metaCfg[mesIdx] !== undefined ? metaCfg[mesIdx] : null;
     var ventaPrevYear = (histPrev[suc] || {})[mesUp] || 0;
