@@ -27,7 +27,7 @@
     ],
     "rango_fechas": {
       "desde": "2025-04-01",
-      "hasta": "2026-08-07"
+      "hasta": "2026-08-08"
     }
   },
   "anio_actual": {
@@ -97,7 +97,7 @@
       "margen_promedio": 0
     },
     "por_sucursal": [],
-    "ingreso_ayer": 2562000.0
+    "ingreso_ayer": 0.0
   },
   "cartera": {
     "num_anuladas_historico": 358,
