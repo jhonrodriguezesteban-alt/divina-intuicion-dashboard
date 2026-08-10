@@ -1581,6 +1581,58 @@ function _copCorto(v){
   return _cop(v);
 }
 
+// Mensaje corto y listo para pegar en el grupo de WhatsApp de cada local --
+// mismas cifras que ya muestra la tarjeta (al día cerrado, nunca venta de
+// hoy en vivo), para que el número que Jenifer/Aleja leen en el chat sea
+// siempre el mismo que el de la tarjeta.
+function _mensajeWhatsapp(suc, venta, meta, diaCorte, mesLbl, diasEnMes){
+  var metaDiaria = meta / diasEnMes;
+  var metaAcum = metaDiaria * diaCorte;
+  var diff = venta - metaAcum;
+  var faltante = meta - venta;
+  var diasRestantes = diasEnMes - diaCorte;
+
+  var lineaCifras = 'Al ' + diaCorte + ' de ' + mesLbl + ': vendido ' + _cop(venta) +
+    ' / meta acumulada ' + _cop(metaAcum) + ' (' + (diff >= 0 ? '+' : '-') +
+    _cop(Math.abs(diff)) + ', ' + (diff >= 0 ? 'arriba del ritmo' : 'atrás del ritmo') + ')';
+
+  var lineaCierre;
+  if (faltante <= 0){
+    lineaCierre = '🎉 Meta del mes ya cumplida -- sigamos sumando.';
+  } else if (diasRestantes <= 0){
+    lineaCierre = 'Último día del mes: faltan ' + _cop(faltante) + ' para la meta.';
+  } else {
+    lineaCierre = 'Para cerrar la meta necesitamos vender ' + _cop(faltante / diasRestantes) +
+      '/día en lo que queda de ' + mesLbl + ' (' + diasRestantes + ' días).';
+  }
+
+  return '📍 *' + suc + '* — meta de ' + mesLbl + ': ' + _cop(meta) + '\\n' +
+    lineaCifras + '\\n' +
+    lineaCierre + '\\n' +
+    'Cuenta con nosotros 🤍 vamos con todo.';
+}
+
+function _copiarMensajeWsp(btn){
+  var textarea = btn.previousElementSibling;
+  textarea.select();
+  var txtOriginal = btn.textContent;
+  function marcarCopiado(){
+    btn.textContent = '✓ Copiado';
+    setTimeout(function(){ btn.textContent = txtOriginal; }, 1500);
+  }
+  function pedirCopiaManual(){
+    // Sin permiso de portapapeles (ej. navegador embebido dentro de otra
+    // app) -- el texto ya quedó seleccionado arriba, solo falta Ctrl/Cmd+C.
+    btn.textContent = 'Selecciona y copia (Ctrl/Cmd+C)';
+    setTimeout(function(){ btn.textContent = txtOriginal; }, 2500);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(textarea.value).then(marcarCopiado).catch(pedirCopiaManual);
+  } else {
+    pedirCopiaManual();
+  }
+}
+
 function _tarjetaMeta(suc, venta, meta, puntos, diaCorte, mesLbl, diasEnMes, esMesActual){
   if (meta <= 0 && venta <= 0){
     return '<div class="comision-card"><div class="comision-card-top"><span class="comision-suc">' + suc + '</span></div>' +
@@ -1606,12 +1658,18 @@ function _tarjetaMeta(suc, venta, meta, puntos, diaCorte, mesLbl, diasEnMes, esM
     var metaDiaria = meta / diasEnMes;
     var metaAcum = metaDiaria * diaCorte;
     var diff = venta - metaAcum;
+    var mensajeWsp = _mensajeWhatsapp(suc, venta, meta, diaCorte, mesLbl, diasEnMes);
     avance = '<div class="comision-avance-bloque">' +
         '<div class="comision-avance-sub">Acumulado al ' + diaCorte + ' de ' + mesLbl + ' (último día cerrado)</div>' +
         '<div class="comision-avance-fila"><span>Vendido</span><span>' + _cop(venta) + '</span></div>' +
         '<div class="comision-avance-fila"><span>Meta acumulada</span><span>' + _cop(metaAcum) + '</span></div>' +
         '<div class="comision-avance-fila comision-avance-diff"><span>' + (diff >= 0 ? 'Arriba del ritmo' : 'Atrás del ritmo') + '</span>' +
           '<span class="' + (diff >= 0 ? 'pos' : 'neg') + '">' + (diff >= 0 ? '+' : '-') + _cop(Math.abs(diff)) + '</span></div>' +
+      '</div>' +
+      '<div class="wsp-msg-wrap">' +
+        '<div class="wsp-msg-label">Mensaje para el grupo de WhatsApp</div>' +
+        '<textarea class="wsp-msg-txt" readonly rows="5">' + mensajeWsp + '</textarea>' +
+        '<button class="wsp-msg-btn" onclick="_copiarMensajeWsp(this)">📋 Copiar mensaje</button>' +
       '</div>';
   } else {
     avance = '<div class="comision-avance-sub">Mes cerrado</div>' +
@@ -2043,6 +2101,11 @@ _CSS = """
   .comision-avance-fila span:first-child { color: var(--texto-sub); }
   .comision-avance-diff { font-weight: 700; }
   .comision-avance-diff span:first-child { color: var(--texto); font-weight: 400; }
+  .wsp-msg-wrap { margin-top: 1rem; padding-top: .8rem; border-top: 1px dashed var(--borde); }
+  .wsp-msg-label { font-size: .74rem; color: var(--texto-sub); text-transform: uppercase; letter-spacing: .02em; margin-bottom: .35rem; }
+  .wsp-msg-txt { width: 100%; box-sizing: border-box; resize: vertical; font: inherit; font-size: .82rem; line-height: 1.4; color: var(--texto); background: var(--destacado-bg); border: 1px solid var(--borde); border-radius: 8px; padding: .6rem .7rem; margin-bottom: .5rem; }
+  .wsp-msg-btn { width: 100%; padding: .55rem; border-radius: 8px; border: 1px solid var(--verde); background: transparent; color: var(--verde); font-size: .84rem; font-weight: 600; cursor: pointer; }
+  .wsp-msg-btn:hover { background: var(--verde); color: #fff; }
   .com-chart { width: 100%; height: auto; display: block; margin-bottom: .5rem; }
   .com-chart-eje { font-size: 7px; fill: var(--texto-sub); }
   /* halo detrás del texto (stroke del color de fondo, dibujado antes del
