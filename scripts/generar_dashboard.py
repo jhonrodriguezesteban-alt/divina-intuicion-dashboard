@@ -1367,7 +1367,10 @@ function renderHist(){
   var diariosH = diariosElH ? JSON.parse(diariosElH.textContent) : null;
   if (diariosH){
     var mesActualUp = MESES[MES_ACTUAL - 1];
-    var hoyH = new Date(document.body.getAttribute('data-hoy') + 'T00:00:00');
+    // data-hoy-real (calendario real), NO data-hoy (último día con datos) --
+    // si la automatización de hoy todavía no corre, data-hoy ya viene atrasado
+    // a ayer, y restarle otro día más aquí dejaría el corte en anteayer.
+    var hoyH = new Date(document.body.getAttribute('data-hoy-real') + 'T00:00:00');
     var diaCierreH = hoyH.getDate() - 1;
     [[yr, MD], [cmp, CD]].forEach(function(par){
       var anioSel = par[0], bloque = par[1];
@@ -1643,7 +1646,10 @@ function renderComisiones(mesIdx, btn){
   var histPrev = hist.histData[String(Number(anioActual) - 1)] || {};
   var mesUp = hist.meses[mesIdx - 1];
   var mesLbl = hist.mesLabels[mesIdx - 1];
-  var hoy = new Date(document.body.getAttribute('data-hoy') + 'T00:00:00');
+  // data-hoy-real (calendario real), NO data-hoy (último día con datos) -- ver
+  // nota en renderHist. Si se usa data-hoy aquí, el corte queda un día atrás
+  // de más cada vez que la automatización de hoy todavía no ha corrido.
+  var hoy = new Date(document.body.getAttribute('data-hoy-real') + 'T00:00:00');
   var esMesActual = (mesIdx === hoy.getMonth() + 1) && (Number(anioActual) === hoy.getFullYear());
   var diasEnMes = new Date(Number(anioActual), mesIdx, 0).getDate();
   // diaCorte = último día YA CERRADO del mes en curso (ayer) -- nunca hoy.
@@ -2119,6 +2125,13 @@ def generar_dashboard_html(datos: dict = None) -> str:
     mes = ventas["mes_actual"]
     hoy = ventas["hoy"]
     cartera = ventas["cartera"]
+    # fecha_ref = último día con ALGÚN dato (remisión o factura), no necesariamente
+    # hoy calendario -- se queda atrás si la automatización de hoy aún no corre o
+    # todavía no hay ventas hoy. Sirve para los filtros rápidos de Ventas por Punto
+    # de Venta (Hoy/Ayer/7 días leen data-hoy). Para "congelar al último día CERRADO"
+    # en Meta de ventas / Comparativo histórico se necesita el calendario real
+    # (data-hoy-real, más abajo) -- usar fecha_ref ahí resta un día de más cuando
+    # la automatización va atrasada.
     fecha_ref = ventas["actualizado_hasta"].split(" ")[0]
     anio_num = int(fecha_ref.split("-")[0])
     hoy_dt = datetime.now()
@@ -2207,7 +2220,7 @@ def generar_dashboard_html(datos: dict = None) -> str:
 <title>Divina Intuición — Dashboard Gerencial</title>
 <style>{_CSS}</style>
 </head>
-<body data-hoy="{fecha_ref}" style="{body_style}">
+<body data-hoy="{fecha_ref}" data-hoy-real="{hoy_dt.date()}" style="{body_style}">
   {_LOGIN_HTML}
   <div id="app-contenido" style="display:none">
 
