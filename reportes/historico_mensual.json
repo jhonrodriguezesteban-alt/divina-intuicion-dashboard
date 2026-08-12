@@ -102,10 +102,10 @@
           "margen": 0.4406
         },
         "Ago": {
-          "neto": 9424000.0,
-          "cantidad": 59,
-          "utilidad": 4521924.37,
-          "margen": 0.48
+          "neto": 17474000.0,
+          "cantidad": 113,
+          "utilidad": 8254668.07,
+          "margen": 0.47
         }
       }
     }
@@ -213,9 +213,9 @@
           "margen": 0.47
         },
         "Ago": {
-          "neto": 7175000.0,
-          "cantidad": 41,
-          "utilidad": 3441121.85,
+          "neto": 12560000.0,
+          "cantidad": 72,
+          "utilidad": 5982621.85,
           "margen": 0.48
         }
       }
@@ -250,10 +250,10 @@
           "margen": 0.49
         },
         "Ago": {
-          "neto": 2004299.99,
-          "cantidad": 37,
-          "utilidad": 775147.2,
-          "margen": 0.43
+          "neto": 3674300.0,
+          "cantidad": 68,
+          "utilidad": 1383009.79,
+          "margen": 0.42
         }
       }
     }
