@@ -1,43 +1,43 @@
 {
   "total_articulos": 2989,
-  "articulos_sin_stock": 1491,
-  "unidades_totales": 4970,
-  "valor_total_costo": 189500745.5,
+  "articulos_sin_stock": 1495,
+  "unidades_totales": 4939,
+  "valor_total_costo": 188215745.5,
   "stock_por_sucursal": {
-    "Local 144": 1679,
-    "Local 433": 1576,
-    "Local 107": 1267
+    "Local 144": 1668,
+    "Local 433": 1564,
+    "Local 107": 1259
   },
   "top_categorias_por_valor": [
     {
       "Categoría": "PANTALONES",
       "articulos": 900,
-      "stock_total": 772.0,
-      "valor_costo": 50610038.0
+      "stock_total": 765.0,
+      "valor_costo": 50184038.0
     },
     {
       "Categoría": "CONJUNTOS",
       "articulos": 103,
-      "stock_total": 258.0,
-      "valor_costo": 24491000.0
+      "stock_total": 257.0,
+      "valor_costo": 24399000.0
     },
     {
       "Categoría": "BLUSAS",
       "articulos": 431,
-      "stock_total": 734.0,
-      "valor_costo": 21416000.0
+      "stock_total": 726.0,
+      "valor_costo": 21172000.0
     },
     {
       "Categoría": "CHAQUETAS",
       "articulos": 177,
-      "stock_total": 253.0,
-      "valor_costo": 18387000.0
+      "stock_total": 251.0,
+      "valor_costo": 18247000.0
     },
     {
       "Categoría": "BODYS",
       "articulos": 229,
-      "stock_total": 428.0,
-      "valor_costo": 11145000.0
+      "stock_total": 427.0,
+      "valor_costo": 11089000.0
     },
     {
       "Categoría": "BUZOS",
@@ -48,8 +48,8 @@
     {
       "Categoría": "CORSET",
       "articulos": 161,
-      "stock_total": 285.0,
-      "valor_costo": 10352000.0
+      "stock_total": 284.0,
+      "valor_costo": 10304000.0
     },
     {
       "Categoría": "FALDAS",

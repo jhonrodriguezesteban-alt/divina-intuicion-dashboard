@@ -1,28 +1,28 @@
 {
-  "actualizado_hasta": "2026-08-12 12:36:57",
+  "actualizado_hasta": "2026-08-12 18:57:50",
   "historico": {
     "kpis": {
-      "ingreso_total": 1797909748.73,
-      "num_transacciones": 12882,
-      "ticket_promedio": 139567.59,
-      "utilidad_total": 785638496.49,
+      "ingreso_total": 1800464748.72,
+      "num_transacciones": 12898,
+      "ticket_promedio": 139592.55,
+      "utilidad_total": 786827195.64,
       "margen_promedio": 0.4508
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 1171580700.0,
-        "transacciones": 8085
+        "ingreso": 1172478700.0,
+        "transacciones": 8092
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 579752000.02,
-        "transacciones": 3786
+        "ingreso": 581307000.02,
+        "transacciones": 3791
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 46577048.71,
-        "transacciones": 1011
+        "ingreso": 46679048.7,
+        "transacciones": 1015
       }
     ],
     "rango_fechas": {
@@ -32,80 +32,85 @@
   },
   "anio_actual": {
     "kpis": {
-      "ingreso_total": 691221748.73,
-      "num_transacciones": 5006,
-      "ticket_promedio": 138078.66,
-      "utilidad_total": 312094496.49,
+      "ingreso_total": 693776748.72,
+      "num_transacciones": 5022,
+      "ticket_promedio": 138147.5,
+      "utilidad_total": 313283195.64,
       "margen_promedio": 0.4682
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 432795700.0,
-        "transacciones": 2701
+        "ingreso": 433693700.0,
+        "transacciones": 2708
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 211849000.02,
-        "transacciones": 1294
+        "ingreso": 213404000.02,
+        "transacciones": 1299
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 46577048.71,
-        "transacciones": 1011
+        "ingreso": 46679048.7,
+        "transacciones": 1015
       }
     ],
     "composicion": {
       "facturado": 14035000.0,
-      "remisionado": 677186748.73,
+      "remisionado": 679741748.72,
       "num_facturado": 95,
-      "num_remisionado": 4911
+      "num_remisionado": 4927
     }
   },
   "mes_actual": {
     "kpis": {
-      "ingreso_total": 33967300.0,
-      "num_transacciones": 256,
-      "ticket_promedio": 132684.77,
-      "utilidad_total": 15732928.28,
-      "margen_promedio": 0.4527
+      "ingreso_total": 36522299.99,
+      "num_transacciones": 272,
+      "ticket_promedio": 134273.16,
+      "utilidad_total": 16921627.43,
+      "margen_promedio": 0.4542
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 17474000.0,
-        "transacciones": 113
+        "ingreso": 18372000.0,
+        "transacciones": 120
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 12755000.0,
-        "transacciones": 74
+        "ingreso": 14310000.0,
+        "transacciones": 79
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 3738300.0,
-        "transacciones": 69
+        "ingreso": 3840299.99,
+        "transacciones": 73
       }
     ]
   },
   "hoy": {
     "kpis": {
-      "ingreso_total": 259000.0,
-      "num_transacciones": 3,
-      "ticket_promedio": 86333.33,
-      "utilidad_total": 134981.51,
-      "margen_promedio": 0.53
+      "ingreso_total": 2813999.99,
+      "num_transacciones": 19,
+      "ticket_promedio": 148105.26,
+      "utilidad_total": 1323680.66,
+      "margen_promedio": 0.4853
     },
     "por_sucursal": [
       {
         "sucursal": "Local 433",
-        "ingreso": 195000.0,
-        "transacciones": 2
+        "ingreso": 1750000.0,
+        "transacciones": 7
+      },
+      {
+        "sucursal": "Local 144",
+        "ingreso": 898000.0,
+        "transacciones": 7
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 64000.0,
-        "transacciones": 1
+        "ingreso": 165999.99,
+        "transacciones": 5
       }
     ],
     "ingreso_ayer": 1770999.99
