@@ -1,61 +1,61 @@
 {
   "total_articulos": 2989,
-  "articulos_sin_stock": 1495,
-  "unidades_totales": 4939,
-  "valor_total_costo": 188215745.5,
+  "articulos_sin_stock": 1523,
+  "unidades_totales": 4733,
+  "valor_total_costo": 180627807.5,
   "stock_por_sucursal": {
-    "Local 144": 1668,
-    "Local 433": 1564,
-    "Local 107": 1259
+    "Local 144": 1600,
+    "Local 433": 1498,
+    "Local 107": 1188
   },
   "top_categorias_por_valor": [
     {
       "Categoría": "PANTALONES",
       "articulos": 900,
-      "stock_total": 765.0,
-      "valor_costo": 50184038.0
+      "stock_total": 745.0,
+      "valor_costo": 48505000.0
     },
     {
       "Categoría": "CONJUNTOS",
       "articulos": 103,
-      "stock_total": 257.0,
-      "valor_costo": 24399000.0
+      "stock_total": 244.0,
+      "valor_costo": 23166000.0
     },
     {
       "Categoría": "BLUSAS",
-      "articulos": 431,
-      "stock_total": 726.0,
-      "valor_costo": 21172000.0
+      "articulos": 432,
+      "stock_total": 687.0,
+      "valor_costo": 20031500.0
     },
     {
       "Categoría": "CHAQUETAS",
       "articulos": 177,
-      "stock_total": 251.0,
-      "valor_costo": 18247000.0
+      "stock_total": 256.0,
+      "valor_costo": 18492000.0
     },
     {
       "Categoría": "BODYS",
       "articulos": 229,
-      "stock_total": 427.0,
-      "valor_costo": 11089000.0
+      "stock_total": 417.0,
+      "valor_costo": 10847000.0
     },
     {
       "Categoría": "BUZOS",
       "articulos": 127,
-      "stock_total": 264.0,
-      "valor_costo": 10461000.0
+      "stock_total": 247.0,
+      "valor_costo": 9924000.0
     },
     {
       "Categoría": "CORSET",
       "articulos": 161,
-      "stock_total": 284.0,
-      "valor_costo": 10304000.0
+      "stock_total": 268.0,
+      "valor_costo": 9680000.0
     },
     {
       "Categoría": "FALDAS",
-      "articulos": 217,
-      "stock_total": 168.0,
-      "valor_costo": 7782000.0
+      "articulos": 216,
+      "stock_total": 153.0,
+      "valor_costo": 7049000.0
     }
   ]
 }

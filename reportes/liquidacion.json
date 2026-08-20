@@ -1,21 +1,21 @@
 {
-  "generado_al": "2026-08-12",
+  "generado_al": "2026-08-19",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 372,
-      "unidades": 3420,
-      "valor_costo": 162798038.0
+      "num_referencias": 380,
+      "unidades": 3371,
+      "valor_costo": 160014500.0
     },
     "inactivas": {
-      "num_referencias": 11,
-      "unidades": 18,
-      "valor_costo": 1000000.0
+      "num_referencias": 10,
+      "unidades": 17,
+      "valor_costo": 940000.0
     },
     "nuevas": {
-      "num_referencias": 31,
-      "unidades": 193,
-      "valor_costo": 9303000.0
+      "num_referencias": 22,
+      "unidades": 99,
+      "valor_costo": 5242000.0
     }
   },
   "inactivas": [
@@ -56,12 +56,6 @@
       "valor_costo": 65000.0
     },
     {
-      "referencia": "JEAN CORAZON DESGASTE",
-      "categoria": "PANTALONES",
-      "disponible": 1,
-      "valor_costo": 60000.0
-    },
-    {
       "referencia": "JEAN PALAZO ROTOS",
       "categoria": "PANTALONES",
       "disponible": 1,
@@ -94,18 +88,6 @@
       "valor_costo": 1440000.0
     },
     {
-      "referencia": "JEAN COQUETTE",
-      "categoria": "PANTALONES",
-      "disponible": 14,
-      "valor_costo": 980000.0
-    },
-    {
-      "referencia": "BLUSA PANDORA",
-      "categoria": "BLUSAS",
-      "disponible": 32,
-      "valor_costo": 960000.0
-    },
-    {
       "referencia": "JEAN DESGASTE LATERAL",
       "categoria": "PANTALONES",
       "disponible": 8,
@@ -118,28 +100,10 @@
       "valor_costo": 680000.0
     },
     {
-      "referencia": "SUDADERA CLASICA CAPOTA",
-      "categoria": "CONJUNTOS",
-      "disponible": 6,
-      "valor_costo": 570000.0
-    },
-    {
-      "referencia": "BLUSA VAINILLA",
-      "categoria": "BLUSAS",
-      "disponible": 18,
-      "valor_costo": 540000.0
-    },
-    {
       "referencia": "BLUSA MALLA AMELIA",
       "categoria": "BLUSAS",
       "disponible": 17,
       "valor_costo": 340000.0
-    },
-    {
-      "referencia": "OVERZISE BRA",
-      "categoria": "BLUSAS",
-      "disponible": 8,
-      "valor_costo": 324000.0
     },
     {
       "referencia": "CAPA FIRE",
@@ -149,12 +113,6 @@
     },
     {
       "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
-      "categoria": "BUZOS",
-      "disponible": 4,
-      "valor_costo": 240000.0
-    },
-    {
-      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/CAFE",
       "categoria": "BUZOS",
       "disponible": 4,
       "valor_costo": 240000.0
@@ -170,18 +128,6 @@
       "categoria": "FALDAS",
       "disponible": 5,
       "valor_costo": 200000.0
-    },
-    {
-      "referencia": "OVERZISE PUNTOS",
-      "categoria": "BLUSAS",
-      "disponible": 4,
-      "valor_costo": 182000.0
-    },
-    {
-      "referencia": "CHALECO SANTA AZUL FROSTEADO OSCURO",
-      "categoria": "CHALECOS",
-      "disponible": 3,
-      "valor_costo": 165000.0
     },
     {
       "referencia": "CAMISA LONDON LINEAS",
@@ -202,12 +148,6 @@
       "valor_costo": 120000.0
     },
     {
-      "referencia": "BUZO DUO LILY",
-      "categoria": "BUZOS",
-      "disponible": 5,
-      "valor_costo": 100000.0
-    },
-    {
       "referencia": "BODY DUO LILY",
       "categoria": "BODYS",
       "disponible": 5,
@@ -220,13 +160,13 @@
       "valor_costo": 91000.0
     },
     {
-      "referencia": "BODY MALLA DADOS",
+      "referencia": "BODY MALLA BESO",
       "categoria": "CORSET",
       "disponible": 4,
       "valor_costo": 80000.0
     },
     {
-      "referencia": "BODY MALLA BESO",
+      "referencia": "BODY MALLA DADOS",
       "categoria": "CORSET",
       "disponible": 4,
       "valor_costo": 80000.0
