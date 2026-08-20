@@ -1,28 +1,28 @@
 {
-  "actualizado_hasta": "2026-08-19 18:41:43",
+  "actualizado_hasta": "2026-08-20 11:32:45",
   "historico": {
     "kpis": {
-      "ingreso_total": 1822521748.67,
-      "num_transacciones": 13067,
-      "ticket_promedio": 139475.15,
-      "utilidad_total": 797047095.42,
-      "margen_promedio": 0.451
+      "ingreso_total": 1822803748.67,
+      "num_transacciones": 13070,
+      "ticket_promedio": 139464.71,
+      "utilidad_total": 797200526.51,
+      "margen_promedio": 0.4511
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 1186248700.0,
-        "transacciones": 8177
+        "ingreso": 1186313700.0,
+        "transacciones": 8178
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 587666000.02,
-        "transacciones": 3836
+        "ingreso": 587796000.02,
+        "transacciones": 3837
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 48607048.65,
-        "transacciones": 1054
+        "ingreso": 48694048.65,
+        "transacciones": 1055
       }
     ],
     "rango_fechas": {
@@ -32,71 +32,87 @@
   },
   "anio_actual": {
     "kpis": {
-      "ingreso_total": 715833748.67,
-      "num_transacciones": 5191,
-      "ticket_promedio": 137899.01,
-      "utilidad_total": 323503095.42,
-      "margen_promedio": 0.4682
+      "ingreso_total": 716115748.67,
+      "num_transacciones": 5194,
+      "ticket_promedio": 137873.65,
+      "utilidad_total": 323656526.51,
+      "margen_promedio": 0.4683
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 447463700.0,
-        "transacciones": 2793
+        "ingreso": 447528700.0,
+        "transacciones": 2794
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 219763000.02,
-        "transacciones": 1344
+        "ingreso": 219893000.02,
+        "transacciones": 1345
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 48607048.65,
-        "transacciones": 1054
+        "ingreso": 48694048.65,
+        "transacciones": 1055
       }
     ],
     "composicion": {
       "facturado": 14035000.0,
-      "remisionado": 701798748.67,
+      "remisionado": 702080748.67,
       "num_facturado": 95,
-      "num_remisionado": 5096
+      "num_remisionado": 5099
     }
   },
   "mes_actual": {
     "kpis": {
-      "ingreso_total": 58579299.94,
-      "num_transacciones": 441,
-      "ticket_promedio": 132832.88,
-      "utilidad_total": 27141527.21,
-      "margen_promedio": 0.4596
+      "ingreso_total": 58861299.94,
+      "num_transacciones": 444,
+      "ticket_promedio": 132570.5,
+      "utilidad_total": 27294958.3,
+      "margen_promedio": 0.4605
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 32142000.0,
-        "transacciones": 205
+        "ingreso": 32207000.0,
+        "transacciones": 206
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 20669000.0,
-        "transacciones": 124
+        "ingreso": 20799000.0,
+        "transacciones": 125
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 5768299.94,
-        "transacciones": 112
+        "ingreso": 5855299.94,
+        "transacciones": 113
       }
     ]
   },
   "hoy": {
     "kpis": {
-      "ingreso_total": 0,
-      "num_transacciones": 0,
-      "ticket_promedio": 0,
-      "utilidad_total": 0,
-      "margen_promedio": 0
+      "ingreso_total": 282000.0,
+      "num_transacciones": 3,
+      "ticket_promedio": 94000.0,
+      "utilidad_total": 153431.09,
+      "margen_promedio": 0.59
     },
-    "por_sucursal": [],
+    "por_sucursal": [
+      {
+        "sucursal": "Local 433",
+        "ingreso": 130000.0,
+        "transacciones": 1
+      },
+      {
+        "sucursal": "Local 107",
+        "ingreso": 87000.0,
+        "transacciones": 1
+      },
+      {
+        "sucursal": "Local 144",
+        "ingreso": 65000.0,
+        "transacciones": 1
+      }
+    ],
     "ingreso_ayer": 2807999.98
   },
   "cartera": {
