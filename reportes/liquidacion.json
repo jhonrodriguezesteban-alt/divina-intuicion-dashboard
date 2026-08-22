@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-08-19",
+  "generado_al": "2026-08-21",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 380,
-      "unidades": 3371,
-      "valor_costo": 160014500.0
+      "num_referencias": 386,
+      "unidades": 3413,
+      "valor_costo": 162461000.0
     },
     "inactivas": {
       "num_referencias": 10,
@@ -13,9 +13,9 @@
       "valor_costo": 940000.0
     },
     "nuevas": {
-      "num_referencias": 22,
-      "unidades": 99,
-      "valor_costo": 5242000.0
+      "num_referencias": 28,
+      "unidades": 152,
+      "valor_costo": 8480000.0
     }
   },
   "inactivas": [
@@ -88,16 +88,46 @@
       "valor_costo": 1440000.0
     },
     {
+      "referencia": "JEAN BOTA RECTA AZUL",
+      "categoria": "PANTALONES",
+      "disponible": 12,
+      "valor_costo": 840000.0
+    },
+    {
       "referencia": "JEAN DESGASTE LATERAL",
       "categoria": "PANTALONES",
       "disponible": 8,
       "valor_costo": 720000.0
     },
     {
+      "referencia": "JEAN BOTA RECTA AZUL FROSTEADO OSCURO",
+      "categoria": "PANTALONES",
+      "disponible": 10,
+      "valor_costo": 700000.0
+    },
+    {
       "referencia": "CHAQUETA BOMBER ANIMAL PRINT",
       "categoria": "CHAQUETAS",
       "disponible": 8,
       "valor_costo": 680000.0
+    },
+    {
+      "referencia": "CHAQUETA MOÑO CINTURON",
+      "categoria": "CHAQUETAS",
+      "disponible": 6,
+      "valor_costo": 510000.0
+    },
+    {
+      "referencia": "JEAN BAGGY BAMBI",
+      "categoria": "PANTALONES",
+      "disponible": 9,
+      "valor_costo": 468000.0
+    },
+    {
+      "referencia": "FALDA ANIMAL PRINT TUTTI",
+      "categoria": "FALDAS",
+      "disponible": 10,
+      "valor_costo": 430000.0
     },
     {
       "referencia": "BLUSA MALLA AMELIA",
@@ -110,6 +140,12 @@
       "categoria": "PANTALONES",
       "disponible": 3,
       "valor_costo": 300000.0
+    },
+    {
+      "referencia": "FALDA SATIN LARGA",
+      "categoria": "FALDAS",
+      "disponible": 7,
+      "valor_costo": 245000.0
     },
     {
       "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
@@ -130,10 +166,10 @@
       "valor_costo": 200000.0
     },
     {
-      "referencia": "CAMISA LONDON LINEAS",
-      "categoria": "CAMISAS",
-      "disponible": 3,
-      "valor_costo": 135000.0
+      "referencia": "CHAMARRA CUERO SARINA",
+      "categoria": "CHAQUETAS",
+      "disponible": 2,
+      "valor_costo": 180000.0
     },
     {
       "referencia": "BLAZER CUADROS TREN",
@@ -160,13 +196,13 @@
       "valor_costo": 91000.0
     },
     {
-      "referencia": "BODY MALLA BESO",
+      "referencia": "BODY MALLA DADOS",
       "categoria": "CORSET",
       "disponible": 4,
       "valor_costo": 80000.0
     },
     {
-      "referencia": "BODY MALLA DADOS",
+      "referencia": "BODY MALLA BESO",
       "categoria": "CORSET",
       "disponible": 4,
       "valor_costo": 80000.0
@@ -196,15 +232,15 @@
       "valor_costo": 47000.0
     },
     {
-      "referencia": "BODY MALLA MAR",
-      "categoria": "CORSET",
-      "disponible": 2,
-      "valor_costo": 40000.0
-    },
-    {
       "referencia": "FALDA CARGO",
       "categoria": "FALDAS",
       "disponible": 1,
+      "valor_costo": 40000.0
+    },
+    {
+      "referencia": "BODY MALLA MAR",
+      "categoria": "CORSET",
+      "disponible": 2,
       "valor_costo": 40000.0
     },
     {
