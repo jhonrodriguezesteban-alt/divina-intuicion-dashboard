@@ -27,7 +27,7 @@
     ],
     "rango_fechas": {
       "desde": "2025-04-01",
-      "hasta": "2026-08-25"
+      "hasta": "2026-08-26"
     }
   },
   "anio_actual": {
@@ -90,30 +90,14 @@
   },
   "hoy": {
     "kpis": {
-      "ingreso_total": 2555000.0,
-      "num_transacciones": 20,
-      "ticket_promedio": 127750.0,
-      "utilidad_total": 1175943.7,
-      "margen_promedio": 0.485
+      "ingreso_total": 0,
+      "num_transacciones": 0,
+      "ticket_promedio": 0,
+      "utilidad_total": 0,
+      "margen_promedio": 0
     },
-    "por_sucursal": [
-      {
-        "sucursal": "Local 433",
-        "ingreso": 965000.0,
-        "transacciones": 6
-      },
-      {
-        "sucursal": "Local 107",
-        "ingreso": 835000.0,
-        "transacciones": 8
-      },
-      {
-        "sucursal": "Local 144",
-        "ingreso": 755000.0,
-        "transacciones": 6
-      }
-    ],
-    "ingreso_ayer": 755000.0
+    "por_sucursal": [],
+    "ingreso_ayer": 2555000.0
   },
   "cartera": {
     "num_anuladas_historico": 427,
