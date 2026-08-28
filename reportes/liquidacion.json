@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-08-26",
+  "generado_al": "2026-08-27",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 385,
-      "unidades": 3377,
-      "valor_costo": 160659500.0
+      "num_referencias": 388,
+      "unidades": 3527,
+      "valor_costo": 166136000.0
     },
     "inactivas": {
       "num_referencias": 10,
@@ -13,9 +13,9 @@
       "valor_costo": 940000.0
     },
     "nuevas": {
-      "num_referencias": 28,
-      "unidades": 266,
-      "valor_costo": 11957000.0
+      "num_referencias": 27,
+      "unidades": 125,
+      "valor_costo": 7821000.0
     }
   },
   "inactivas": [
@@ -82,18 +82,6 @@
   ],
   "nuevas": [
     {
-      "referencia": "BASICA ROLEX",
-      "categoria": "BLUSAS",
-      "disponible": 66,
-      "valor_costo": 2310000.0
-    },
-    {
-      "referencia": "BLUSA ISLA",
-      "categoria": "BLUSAS",
-      "disponible": 59,
-      "valor_costo": 1652000.0
-    },
-    {
       "referencia": "CHAQUETA TEDDY",
       "categoria": "CHAQUETAS",
       "disponible": 18,
@@ -124,12 +112,6 @@
       "valor_costo": 510000.0
     },
     {
-      "referencia": "JEAN BAGGY BAMBI",
-      "categoria": "PANTALONES",
-      "disponible": 9,
-      "valor_costo": 468000.0
-    },
-    {
       "referencia": "FALDA ANIMAL PRINT TUTTI",
       "categoria": "FALDAS",
       "disponible": 10,
@@ -142,16 +124,16 @@
       "valor_costo": 360000.0
     },
     {
-      "referencia": "BLUSA MALLA AMELIA",
-      "categoria": "BLUSAS",
-      "disponible": 17,
-      "valor_costo": 340000.0
-    },
-    {
       "referencia": "CAPA FIRE",
       "categoria": "PANTALONES",
       "disponible": 3,
       "valor_costo": 300000.0
+    },
+    {
+      "referencia": "SUDADERA DERT",
+      "categoria": "CONJUNTOS",
+      "disponible": 2,
+      "valor_costo": 270000.0
     },
     {
       "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
@@ -170,6 +152,18 @@
       "categoria": "FALDAS",
       "disponible": 5,
       "valor_costo": 200000.0
+    },
+    {
+      "referencia": "OVERSIZE ESTRELLA PRINT",
+      "categoria": "BLUSAS",
+      "disponible": 4,
+      "valor_costo": 182000.0
+    },
+    {
+      "referencia": "OVERSIZE MOÑOS PRINT",
+      "categoria": "BLUSAS",
+      "disponible": 4,
+      "valor_costo": 182000.0
     },
     {
       "referencia": "BLAZER CUADROS TREN",
@@ -196,13 +190,13 @@
       "valor_costo": 91000.0
     },
     {
-      "referencia": "BODY MALLA BESO",
+      "referencia": "BODY MALLA DADOS",
       "categoria": "CORSET",
       "disponible": 4,
       "valor_costo": 80000.0
     },
     {
-      "referencia": "BODY MALLA DADOS",
+      "referencia": "BODY MALLA BESO",
       "categoria": "CORSET",
       "disponible": 4,
       "valor_costo": 80000.0
@@ -220,13 +214,13 @@
       "valor_costo": 60000.0
     },
     {
-      "referencia": "FALDA CLASICA",
+      "referencia": "FALDA CORTA",
       "categoria": "FALDAS",
       "disponible": 1,
       "valor_costo": 47000.0
     },
     {
-      "referencia": "FALDA CORTA",
+      "referencia": "FALDA CLASICA",
       "categoria": "FALDAS",
       "disponible": 1,
       "valor_costo": 47000.0
