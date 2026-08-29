@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-08-27",
+  "generado_al": "2026-08-28",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 388,
-      "unidades": 3527,
-      "valor_costo": 166136000.0
+      "num_referencias": 391,
+      "unidades": 3484,
+      "valor_costo": 164403500.0
     },
     "inactivas": {
       "num_referencias": 10,
@@ -13,9 +13,9 @@
       "valor_costo": 940000.0
     },
     "nuevas": {
-      "num_referencias": 27,
-      "unidades": 125,
-      "valor_costo": 7821000.0
+      "num_referencias": 24,
+      "unidades": 101,
+      "valor_costo": 6201000.0
     }
   },
   "inactivas": [
@@ -100,24 +100,6 @@
       "valor_costo": 720000.0
     },
     {
-      "referencia": "CHAQUETA BOMBER ANIMAL PRINT",
-      "categoria": "CHAQUETAS",
-      "disponible": 8,
-      "valor_costo": 680000.0
-    },
-    {
-      "referencia": "CHAQUETA MOÑO CINTURON",
-      "categoria": "CHAQUETAS",
-      "disponible": 6,
-      "valor_costo": 510000.0
-    },
-    {
-      "referencia": "FALDA ANIMAL PRINT TUTTI",
-      "categoria": "FALDAS",
-      "disponible": 10,
-      "valor_costo": 430000.0
-    },
-    {
       "referencia": "CHAMARRA CUERO SARINA",
       "categoria": "CHAQUETAS",
       "disponible": 4,
@@ -154,13 +136,13 @@
       "valor_costo": 200000.0
     },
     {
-      "referencia": "OVERSIZE ESTRELLA PRINT",
+      "referencia": "OVERSIZE MOÑOS PRINT",
       "categoria": "BLUSAS",
       "disponible": 4,
       "valor_costo": 182000.0
     },
     {
-      "referencia": "OVERSIZE MOÑOS PRINT",
+      "referencia": "OVERSIZE ESTRELLA PRINT",
       "categoria": "BLUSAS",
       "disponible": 4,
       "valor_costo": 182000.0
