@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-08-28",
+  "generado_al": "2026-08-29",
   "anio": 2026,
   "resumen": {
     "activas": {
       "num_referencias": 391,
-      "unidades": 3484,
-      "valor_costo": 164403500.0
+      "unidades": 3425,
+      "valor_costo": 161830000.0
     },
     "inactivas": {
       "num_referencias": 10,
@@ -13,9 +13,9 @@
       "valor_costo": 940000.0
     },
     "nuevas": {
-      "num_referencias": 24,
-      "unidades": 101,
-      "valor_costo": 6201000.0
+      "num_referencias": 20,
+      "unidades": 68,
+      "valor_costo": 3901000.0
     }
   },
   "inactivas": [
@@ -88,24 +88,6 @@
       "valor_costo": 1440000.0
     },
     {
-      "referencia": "JEAN BOTA RECTA AZUL FROSTEADO OSCURO",
-      "categoria": "PANTALONES",
-      "disponible": 16,
-      "valor_costo": 1120000.0
-    },
-    {
-      "referencia": "JEAN DESGASTE LATERAL",
-      "categoria": "PANTALONES",
-      "disponible": 8,
-      "valor_costo": 720000.0
-    },
-    {
-      "referencia": "CHAMARRA CUERO SARINA",
-      "categoria": "CHAQUETAS",
-      "disponible": 4,
-      "valor_costo": 360000.0
-    },
-    {
       "referencia": "CAPA FIRE",
       "categoria": "PANTALONES",
       "disponible": 3,
@@ -136,13 +118,13 @@
       "valor_costo": 200000.0
     },
     {
-      "referencia": "OVERSIZE MOÑOS PRINT",
+      "referencia": "OVERSIZE ESTRELLA PRINT",
       "categoria": "BLUSAS",
       "disponible": 4,
       "valor_costo": 182000.0
     },
     {
-      "referencia": "OVERSIZE ESTRELLA PRINT",
+      "referencia": "OVERSIZE MOÑOS PRINT",
       "categoria": "BLUSAS",
       "disponible": 4,
       "valor_costo": 182000.0
@@ -158,12 +140,6 @@
       "categoria": "BUZOS",
       "disponible": 2,
       "valor_costo": 120000.0
-    },
-    {
-      "referencia": "BODY DUO LILY",
-      "categoria": "BODYS",
-      "disponible": 5,
-      "valor_costo": 100000.0
     },
     {
       "referencia": "OVERZISE LOVE",
