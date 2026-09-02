@@ -102,10 +102,16 @@
           "margen": 0.4406
         },
         "Ago": {
-          "neto": 47491000.0,
-          "cantidad": 300,
-          "utilidad": 22498756.13,
-          "margen": 0.4737
+          "neto": 48635000.0,
+          "cantidad": 305,
+          "utilidad": 23087756.13,
+          "margen": 0.4747
+        },
+        "Sep": {
+          "neto": 1620000.0,
+          "cantidad": 7,
+          "utilidad": 862487.4,
+          "margen": 0.55
         }
       }
     }
@@ -213,10 +219,16 @@
           "margen": 0.47
         },
         "Ago": {
-          "neto": 34759000.0,
-          "cantidad": 203,
-          "utilidad": 16348710.09,
+          "neto": 37549000.0,
+          "cantidad": 219,
+          "utilidad": 17686710.09,
           "margen": 0.47
+        },
+        "Sep": {
+          "neto": 842000.0,
+          "cantidad": 5,
+          "utilidad": 449210.08,
+          "margen": 0.54
         }
       }
     }
@@ -250,10 +262,16 @@
           "margen": 0.49
         },
         "Ago": {
-          "neto": 16794299.88,
-          "cantidad": 203,
-          "utilidad": 7233985.48,
+          "neto": 19701299.88,
+          "cantidad": 225,
+          "utilidad": 8646607.32,
           "margen": 0.46
+        },
+        "Sep": {
+          "neto": 1273999.99,
+          "cantidad": 11,
+          "utilidad": 578747.9,
+          "margen": 0.48
         }
       }
     }
