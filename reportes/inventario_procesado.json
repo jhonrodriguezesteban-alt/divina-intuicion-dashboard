@@ -1,61 +1,61 @@
 {
-  "total_articulos": 3079,
-  "articulos_sin_stock": 1593,
-  "unidades_totales": 4660,
-  "valor_total_costo": 176261167.5,
+  "total_articulos": 3074,
+  "articulos_sin_stock": 1600,
+  "unidades_totales": 4609,
+  "valor_total_costo": 174068067.5,
   "stock_por_sucursal": {
-    "Local 144": 1366,
-    "Local 433": 1396,
-    "Local 107": 1503
+    "Local 144": 1350,
+    "Local 433": 1378,
+    "Local 107": 1490
   },
   "top_categorias_por_valor": [
     {
       "Categoría": "PANTALONES",
       "articulos": 930,
-      "stock_total": 768.0,
-      "valor_costo": 50467000.0
-    },
-    {
-      "Categoría": "CONJUNTOS",
-      "articulos": 104,
-      "stock_total": 229.0,
-      "valor_costo": 21860000.0
+      "stock_total": 760.0,
+      "valor_costo": 49932000.0
     },
     {
       "Categoría": "BLUSAS",
       "articulos": 447,
-      "stock_total": 727.0,
-      "valor_costo": 21658000.0
+      "stock_total": 718.0,
+      "valor_costo": 21352500.0
+    },
+    {
+      "Categoría": "CONJUNTOS",
+      "articulos": 104,
+      "stock_total": 220.0,
+      "valor_costo": 21141000.0
     },
     {
       "Categoría": "CHAQUETAS",
-      "articulos": 189,
+      "articulos": 187,
       "stock_total": 210.0,
       "valor_costo": 14888000.0
     },
     {
       "Categoría": "BUZOS",
-      "articulos": 128,
+      "articulos": 127,
       "stock_total": 261.0,
       "valor_costo": 10023000.0
     },
     {
       "Categoría": "BODYS",
       "articulos": 230,
-      "stock_total": 384.0,
-      "valor_costo": 10014000.0
+      "stock_total": 373.0,
+      "valor_costo": 9765000.0
     },
     {
       "Categoría": "CORSET",
       "articulos": 162,
-      "stock_total": 237.0,
-      "valor_costo": 8601000.0
+      "stock_total": 234.0,
+      "valor_costo": 8496000.0
     },
     {
       "Categoría": "FALDAS",
-      "articulos": 234,
-      "stock_total": 170.0,
-      "valor_costo": 8021000.0
+      "articulos": 232,
+      "stock_total": 168.0,
+      "valor_costo": 7936000.0
     }
   ]
 }
