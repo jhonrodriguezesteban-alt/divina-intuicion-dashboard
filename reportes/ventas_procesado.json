@@ -1,11 +1,11 @@
 {
-  "actualizado_hasta": "2026-09-04 10:42:51",
+  "actualizado_hasta": "2026-09-04 11:36:52",
   "historico": {
     "kpis": {
-      "ingreso_total": 1880790748.6,
-      "num_transacciones": 13459,
-      "ticket_promedio": 139742.24,
-      "utilidad_total": 823668836.76,
+      "ingreso_total": 1880855748.6,
+      "num_transacciones": 13460,
+      "ticket_promedio": 139736.68,
+      "utilidad_total": 823697836.76,
       "margen_promedio": 0.4518
     },
     "por_sucursal": [
@@ -21,8 +21,8 @@
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 66326048.58,
-        "transacciones": 1204
+        "ingreso": 66391048.58,
+        "transacciones": 1205
       }
     ],
     "rango_fechas": {
@@ -32,10 +32,10 @@
   },
   "anio_actual": {
     "kpis": {
-      "ingreso_total": 774102748.6,
-      "num_transacciones": 5583,
-      "ticket_promedio": 138653.55,
-      "utilidad_total": 350124836.76,
+      "ingreso_total": 774167748.6,
+      "num_transacciones": 5584,
+      "ticket_promedio": 138640.36,
+      "utilidad_total": 350153836.76,
       "margen_promedio": 0.4688
     },
     "por_sucursal": [
@@ -51,24 +51,24 @@
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 66326048.58,
-        "transacciones": 1204
+        "ingreso": 66391048.58,
+        "transacciones": 1205
       }
     ],
     "composicion": {
       "facturado": 20544000.0,
-      "remisionado": 753558748.6,
+      "remisionado": 753623748.6,
       "num_facturado": 146,
-      "num_remisionado": 5437
+      "num_remisionado": 5438
     }
   },
   "mes_actual": {
     "kpis": {
-      "ingreso_total": 13797999.99,
-      "num_transacciones": 96,
-      "ticket_promedio": 143729.17,
-      "utilidad_total": 6715447.06,
-      "margen_promedio": 0.5047
+      "ingreso_total": 13862999.99,
+      "num_transacciones": 97,
+      "ticket_promedio": 142917.53,
+      "utilidad_total": 6744447.06,
+      "margen_promedio": 0.5041
     },
     "por_sucursal": [
       {
@@ -83,18 +83,18 @@
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 3785999.99,
-        "transacciones": 37
+        "ingreso": 3850999.99,
+        "transacciones": 38
       }
     ]
   },
   "hoy": {
     "kpis": {
-      "ingreso_total": 218000.0,
-      "num_transacciones": 3,
-      "ticket_promedio": 72666.67,
-      "utilidad_total": 124924.37,
-      "margen_promedio": 0.5433
+      "ingreso_total": 283000.0,
+      "num_transacciones": 4,
+      "ticket_promedio": 70750.0,
+      "utilidad_total": 153924.37,
+      "margen_promedio": 0.52
     },
     "por_sucursal": [
       {
@@ -103,13 +103,13 @@
         "transacciones": 1
       },
       {
-        "sucursal": "Local 433",
-        "ingreso": 75000.0,
-        "transacciones": 1
+        "sucursal": "Local 107",
+        "ingreso": 78000.0,
+        "transacciones": 2
       },
       {
-        "sucursal": "Local 107",
-        "ingreso": 13000.0,
+        "sucursal": "Local 433",
+        "ingreso": 75000.0,
         "transacciones": 1
       }
     ],
