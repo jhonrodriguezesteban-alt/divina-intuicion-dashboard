@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-09-02",
+  "generado_al": "2026-09-03",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 386,
-      "unidades": 3277,
-      "valor_costo": 154961500.0
+      "num_referencias": 391,
+      "unidades": 3496,
+      "valor_costo": 167455000.0
     },
     "inactivas": {
       "num_referencias": 10,
@@ -13,9 +13,9 @@
       "valor_costo": 940000.0
     },
     "nuevas": {
-      "num_referencias": 20,
-      "unidades": 68,
-      "valor_costo": 3901000.0
+      "num_referencias": 33,
+      "unidades": 208,
+      "valor_costo": 10973000.0
     }
   },
   "inactivas": [
@@ -88,16 +88,76 @@
       "valor_costo": 1440000.0
     },
     {
+      "referencia": "JEAN BAGGY DAVINCI",
+      "categoria": "PANTALONES",
+      "disponible": 21,
+      "valor_costo": 1260000.0
+    },
+    {
+      "referencia": "BLUSA REGINA",
+      "categoria": "BLUSAS",
+      "disponible": 43,
+      "valor_costo": 1247000.0
+    },
+    {
+      "referencia": "JEAN TERCEOPELO",
+      "categoria": "PANTALONES",
+      "disponible": 12,
+      "valor_costo": 1080000.0
+    },
+    {
+      "referencia": "FALDA CLASICA",
+      "categoria": "FALDAS",
+      "disponible": 12,
+      "valor_costo": 520000.0
+    },
+    {
+      "referencia": "CHAQUETA JEAN FOX",
+      "categoria": "CHAQUETAS",
+      "disponible": 6,
+      "valor_costo": 510000.0
+    },
+    {
+      "referencia": "CHAQUETA JEAN HUMO",
+      "categoria": "CHAQUETAS",
+      "disponible": 6,
+      "valor_costo": 450000.0
+    },
+    {
+      "referencia": "CHAMARRA CORTA CORREA",
+      "categoria": "CHAQUETAS",
+      "disponible": 5,
+      "valor_costo": 425000.0
+    },
+    {
+      "referencia": "CHALECO NAPOLEON",
+      "categoria": "SIN CATEGORÍA",
+      "disponible": 9,
+      "valor_costo": 342000.0
+    },
+    {
       "referencia": "CAPA FIRE",
       "categoria": "PANTALONES",
       "disponible": 3,
       "valor_costo": 300000.0
     },
     {
+      "referencia": "VESTIDO LORENZO",
+      "categoria": "VESTIDOS",
+      "disponible": 10,
+      "valor_costo": 280000.0
+    },
+    {
       "referencia": "SUDADERA DERT",
       "categoria": "CONJUNTOS",
       "disponible": 2,
       "valor_costo": 270000.0
+    },
+    {
+      "referencia": "CHAMARRA CORTA CORREA  GRIS JASPEADO",
+      "categoria": "CHAQUETAS",
+      "disponible": 3,
+      "valor_costo": 255000.0
     },
     {
       "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
@@ -112,10 +172,28 @@
       "valor_costo": 240000.0
     },
     {
+      "referencia": "TEJIDO TE RAYA",
+      "categoria": "BUZOS",
+      "disponible": 4,
+      "valor_costo": 220000.0
+    },
+    {
       "referencia": "FALDA JEAN RUEDO",
       "categoria": "FALDAS",
       "disponible": 5,
       "valor_costo": 200000.0
+    },
+    {
+      "referencia": "FALDA MALLA ZEBRA",
+      "categoria": "FALDAS",
+      "disponible": 5,
+      "valor_costo": 200000.0
+    },
+    {
+      "referencia": "OVERSIZE MOÑOS PRINT",
+      "categoria": "BLUSAS",
+      "disponible": 4,
+      "valor_costo": 182000.0
     },
     {
       "referencia": "OVERSIZE ESTRELLA PRINT",
@@ -124,10 +202,16 @@
       "valor_costo": 182000.0
     },
     {
-      "referencia": "OVERSIZE MOÑOS PRINT",
-      "categoria": "BLUSAS",
-      "disponible": 4,
-      "valor_costo": 182000.0
+      "referencia": "CHAQUETA KONGA",
+      "categoria": "CHAQUETAS",
+      "disponible": 3,
+      "valor_costo": 180000.0
+    },
+    {
+      "referencia": "CHAQUETA JEAN HUMO MANTEQUILLA",
+      "categoria": "CHAQUETAS",
+      "disponible": 2,
+      "valor_costo": 150000.0
     },
     {
       "referencia": "BLAZER CUADROS TREN",
@@ -148,13 +232,13 @@
       "valor_costo": 91000.0
     },
     {
-      "referencia": "BODY MALLA DADOS",
+      "referencia": "BODY MALLA BESO",
       "categoria": "CORSET",
       "disponible": 4,
       "valor_costo": 80000.0
     },
     {
-      "referencia": "BODY MALLA BESO",
+      "referencia": "BODY MALLA DADOS",
       "categoria": "CORSET",
       "disponible": 4,
       "valor_costo": 80000.0
@@ -173,12 +257,6 @@
     },
     {
       "referencia": "FALDA CORTA",
-      "categoria": "FALDAS",
-      "disponible": 1,
-      "valor_costo": 47000.0
-    },
-    {
-      "referencia": "FALDA CLASICA",
       "categoria": "FALDAS",
       "disponible": 1,
       "valor_costo": 47000.0

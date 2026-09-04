@@ -1,61 +1,61 @@
 {
-  "total_articulos": 3074,
-  "articulos_sin_stock": 1600,
-  "unidades_totales": 4609,
-  "valor_total_costo": 174068067.5,
+  "total_articulos": 3170,
+  "articulos_sin_stock": 1584,
+  "unidades_totales": 4962,
+  "valor_total_costo": 193516967.5,
   "stock_por_sucursal": {
-    "Local 144": 1350,
-    "Local 433": 1378,
-    "Local 107": 1490
+    "Local 144": 1483,
+    "Local 433": 1492,
+    "Local 107": 1602
   },
   "top_categorias_por_valor": [
     {
       "Categoría": "PANTALONES",
-      "articulos": 930,
-      "stock_total": 760.0,
-      "valor_costo": 49932000.0
+      "articulos": 954,
+      "stock_total": 815.0,
+      "valor_costo": 53957000.0
     },
     {
       "Categoría": "BLUSAS",
-      "articulos": 447,
-      "stock_total": 718.0,
-      "valor_costo": 21352500.0
+      "articulos": 457,
+      "stock_total": 782.0,
+      "valor_costo": 23094000.0
     },
     {
       "Categoría": "CONJUNTOS",
-      "articulos": 104,
-      "stock_total": 220.0,
-      "valor_costo": 21141000.0
+      "articulos": 110,
+      "stock_total": 231.0,
+      "valor_costo": 22537000.0
     },
     {
       "Categoría": "CHAQUETAS",
-      "articulos": 187,
-      "stock_total": 210.0,
-      "valor_costo": 14888000.0
+      "articulos": 210,
+      "stock_total": 278.0,
+      "valor_costo": 20068000.0
+    },
+    {
+      "Categoría": "FALDAS",
+      "articulos": 246,
+      "stock_total": 242.0,
+      "valor_costo": 11799000.0
     },
     {
       "Categoría": "BUZOS",
-      "articulos": 127,
-      "stock_total": 261.0,
-      "valor_costo": 10023000.0
+      "articulos": 135,
+      "stock_total": 294.0,
+      "valor_costo": 11222000.0
+    },
+    {
+      "Categoría": "CORSET",
+      "articulos": 164,
+      "stock_total": 274.0,
+      "valor_costo": 10072000.0
     },
     {
       "Categoría": "BODYS",
       "articulos": 230,
-      "stock_total": 373.0,
-      "valor_costo": 9765000.0
-    },
-    {
-      "Categoría": "CORSET",
-      "articulos": 162,
-      "stock_total": 234.0,
-      "valor_costo": 8496000.0
-    },
-    {
-      "Categoría": "FALDAS",
-      "articulos": 232,
-      "stock_total": 168.0,
-      "valor_costo": 7936000.0
+      "stock_total": 365.0,
+      "valor_costo": 9558000.0
     }
   ]
 }
