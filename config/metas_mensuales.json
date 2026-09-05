@@ -2,10 +2,11 @@
   "_comentario": "Meta de ventas por sucursal y mes (índice 1=Enero..12=Diciembre). Si un mes no tiene meta manual aquí, el dashboard usa automáticamente el 110% de lo vendido ese mismo mes el año anterior (igual que el dashboard de referencia de Grupo Bentley). Completa los valores que quieras fijar manualmente; deja null o el mes ausente para usar el respaldo automático.",
   "_metodologia_jul_dic_2026": "Metas Jul-Dic 2026 calculadas el 2026-07-18 a partir del crecimiento interanual real de los últimos 3 meses cerrados (Abr-Jun): Local 144 ~70% YoY (venía desacelerando de 85.7% a 68.2%), Local 433 ~85% YoY (estable ~86-98%). Fórmula: mismo mes 2025 x (1+tasa) -- así se conserva la estacionalidad de diciembre. Local 107 no tiene año anterior (abrió abr-2026): meta mes a mes con crecimiento decreciente (15% -> 8%) según su propia tendencia reciente, más un salto de temporada en diciembre. Revisar y ajustar mes a mes según el comportamiento real.",
   "_metodologia_ago_2026": "Meta de agosto 2026 ajustada a mano por John el 2026-08-03 tras ver que julio frenó fuerte (144 +22.6% YoY, 433 +12.6% YoY, muy por debajo del ~70-85% usado en la proyección original) -- decisión propia de negocio, no la proyección automática por tendencia. Local 433 ajustada de nuevo el 2026-08-08 (de 45M a 55M).",
+  "_metodologia_sep_2026": "Meta de septiembre 2026 ajustada a mano por John el 2026-09-05, reemplazando la proyección original del 18-jul (que asumía que el +68-87% YoY de junio se sostendría). Con julio y agosto ya cerrados el panorama cambió: Local 144 cayó a +9.0% YoY en julio y -36.1% YoY en agosto (caída sostenida día a día, no un problema de datos) -- meta bajada de $116.010.000 a $75.000.000. Local 433 se mantuvo más estable (+0.8% jul, +22.9% ago) -- meta bajada de $52.390.000 a $40.000.000, en línea con su rango real de los últimos 3 meses ($34-42M). Local 107 pasó de $17.306.000 a $45.000.000 -- más del doble de su mejor mes histórico (Ago: $19.7M) -- confirmado explícitamente por John como meta ambiciosa a propósito, no proyección de tendencia.",
   "144": {
     "7": 114738000,
     "8": 100000000,
-    "9": 116010000,
+    "9": 75000000,
     "10": 150525000,
     "11": 170434000,
     "12": 367127000
@@ -13,7 +14,7 @@
   "433": {
     "7": 63081000,
     "8": 55000000,
-    "9": 52390000,
+    "9": 40000000,
     "10": 63779000,
     "11": 100544000,
     "12": 241149000
@@ -21,7 +22,7 @@
   "107": {
     "7": 14047000,
     "8": 14000000,
-    "9": 17306000,
+    "9": 45000000,
     "10": 18690000,
     "11": 20185000,
     "12": 26240000
