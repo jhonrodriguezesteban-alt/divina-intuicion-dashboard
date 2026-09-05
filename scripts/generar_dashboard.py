@@ -1357,6 +1357,14 @@ function renderHist(){
   var ANIO_ACTUAL = datos.anioActual, METAS = datos.metas;
   var yc = 'var(--acento)', cc = 'var(--ambar)';
 
+  // Calendario real (NO data-hoy, que es el último día con datos y se
+  // atrasa si la automatización de hoy no ha corrido) -- necesario tanto
+  // para recortar el mes en curso como para saber contra cuántos días
+  // comparar el año/meta de referencia más abajo.
+  var hoyH = new Date(document.body.getAttribute('data-hoy-real') + 'T00:00:00');
+  var diaCierreH = hoyH.getDate() - 1;
+  var diasEnMesActualH = new Date(Number(ANIO_ACTUAL), MES_ACTUAL, 0).getDate();
+
   // Corrige el mes en curso con la fuente fresca (ver _ventaMesDesdeDiario)
   // antes de que nada más lea MD/CD -- así la celda, la fila, el pie y el
   // total general quedan unificados sin tocar cada fórmula por separado.
@@ -1367,11 +1375,6 @@ function renderHist(){
   var diariosH = diariosElH ? JSON.parse(diariosElH.textContent) : null;
   if (diariosH){
     var mesActualUp = MESES[MES_ACTUAL - 1];
-    // data-hoy-real (calendario real), NO data-hoy (último día con datos) --
-    // si la automatización de hoy todavía no corre, data-hoy ya viene atrasado
-    // a ayer, y restarle otro día más aquí dejaría el corte en anteayer.
-    var hoyH = new Date(document.body.getAttribute('data-hoy-real') + 'T00:00:00');
-    var diaCierreH = hoyH.getDate() - 1;
     [[yr, MD], [cmp, CD]].forEach(function(par){
       var anioSel = par[0], bloque = par[1];
       if (anioSel === ANIO_ACTUAL && bloque){
@@ -1381,6 +1384,29 @@ function renderHist(){
         });
       }
     });
+  }
+
+  // El mes en curso, dentro de la columna "año principal" == ANIO_ACTUAL,
+  // ya queda recortado al día cerrado (arriba). Compararlo tal cual contra
+  // el AÑO/meta de referencia COMPLETO hace ver una caída falsa (ej. -90%)
+  // simplemente porque septiembre apenas empieza -- estas dos funciones
+  // recortan también el lado de comparación al mismo rango de días, para
+  // que la variación % sea real (día contra día), no mes parcial contra
+  // mes completo.
+  function _esMesEnCursoH(mIdx){
+    return yr === ANIO_ACTUAL && mIdx === MES_ACTUAL;
+  }
+  function _vcComparableH(s, mIdx, vcRaw){
+    if (_esMesEnCursoH(mIdx) && cmp && diariosH){
+      return _ventaMesDesdeDiario(diariosH, cmp, mIdx, s, diaCierreH);
+    }
+    return vcRaw;
+  }
+  function _metaComparableH(mIdx, metaVRaw){
+    if (_esMesEnCursoH(mIdx) && diasEnMesActualH){
+      return metaVRaw * diaCierreH / diasEnMesActualH;
+    }
+    return metaVRaw;
   }
 
   var visMes = MESES.filter(function(m){ return visibleMes.has(m); });
@@ -1412,12 +1438,14 @@ function renderHist(){
             : '<td class="hist-td-meta">\\u2014</td>';
         } else {
           var cell = '<span class="hist-v-main" style="color:' + yc + '">' + _histCop(v) + '</span>';
-          if (CD && vc > 0) {
-            var p = (v - vc) / vc * 100, cl = p >= 0 ? 'hist-var-up' : 'hist-var-dn';
-            cell += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(vc) + '</span><span class="' + cl + '">' + (p >= 0 ? '+' : '') + p.toFixed(1) + '%</span>';
-          } else if (metaV > 0) {
-            var p2 = (v / metaV - 1) * 100, cl2 = p2 >= 0 ? 'hist-var-up' : 'hist-var-dn';
-            cell += '<span class="hist-v-cmp">' + _histCop(metaV) + '</span><span class="' + cl2 + '">' + (p2 >= 0 ? '+' : '') + p2.toFixed(1) + '%</span>';
+          var vcCmp = _vcComparableH(s, mIdx, vc);
+          var metaVCmp = _metaComparableH(mIdx, metaV);
+          if (CD && vcCmp > 0) {
+            var p = (v - vcCmp) / vcCmp * 100, cl = p >= 0 ? 'hist-var-up' : 'hist-var-dn';
+            cell += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(vcCmp) + '</span><span class="' + cl + '">' + (p >= 0 ? '+' : '') + p.toFixed(1) + '%</span>';
+          } else if (metaVCmp > 0) {
+            var p2 = (v / metaVCmp - 1) * 100, cl2 = p2 >= 0 ? 'hist-var-up' : 'hist-var-dn';
+            cell += '<span class="hist-v-cmp">' + _histCop(metaVCmp) + '</span><span class="' + cl2 + '">' + (p2 >= 0 ? '+' : '') + p2.toFixed(1) + '%</span>';
           }
           h += '<td>' + cell + '</td>';
         }
@@ -1436,8 +1464,9 @@ function renderHist(){
 
     var vt = 0, vtc = 0;
     visMes.forEach(function(m){
+      var mIdxT = MESES.indexOf(m) + 1;
       var mv = (MD[s] || {})[m] || 0; if (mv > 0) vt += mv;
-      if (CD) { var mvc = (CD[s] || {})[m] || 0; if (mvc > 0) vtc += mvc; }
+      if (CD) { var mvc = _vcComparableH(s, mIdxT, (CD[s] || {})[m] || 0); if (mvc > 0) vtc += mvc; }
     });
     var tc = '<span class="hist-v-main" style="color:' + yc + '">' + _histCop(vt) + '</span>';
     if (CD) {
@@ -1452,9 +1481,12 @@ function renderHist(){
 
   h += '</tbody><tfoot><tr><td>TOTAL MES</td>';
   visMes.forEach(function(m){
-    var t = 0, tc2 = 0;
-    sucs.forEach(function(s){ t += (MD[s] || {})[m] || 0; if (CD) tc2 += (CD[s] || {})[m] || 0; });
     var mIdxF = MESES.indexOf(m) + 1;
+    var t = 0, tc2 = 0;
+    sucs.forEach(function(s){
+      t += (MD[s] || {})[m] || 0;
+      if (CD) tc2 += _vcComparableH(s, mIdxF, (CD[s] || {})[m] || 0);
+    });
     if (yr === ANIO_ACTUAL) {
       var tMeta = 0;
       sucs.forEach(function(s){
@@ -1467,13 +1499,14 @@ function renderHist(){
           ? '<td class="hist-td-meta"><span class="hist-v-meta">' + _histCop(tMeta) + '</span><span class="hist-meta-lbl"> META</span></td>'
           : '<td class="hist-td-meta">\\u2014</td>';
       } else {
+        var tMetaCmp = _metaComparableH(mIdxF, tMeta);
         var fc = '<span style="color:' + yc + '">' + _histCop(t) + '</span>';
         if (CD && tc2 > 0) {
           var p5 = (t - tc2) / tc2 * 100, cl5 = p5 >= 0 ? 'hist-var-up' : 'hist-var-dn';
           fc += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(tc2) + '</span><span class="' + cl5 + '">' + (p5 >= 0 ? '+' : '') + p5.toFixed(1) + '%</span>';
-        } else if (tMeta > 0) {
-          var p6 = (t / tMeta - 1) * 100, cl6 = p6 >= 0 ? 'hist-var-up' : 'hist-var-dn';
-          fc += '<span class="hist-v-cmp">' + _histCop(tMeta) + '</span><span class="' + cl6 + '">' + (p6 >= 0 ? '+' : '') + p6.toFixed(1) + '%</span>';
+        } else if (tMetaCmp > 0) {
+          var p6 = (t / tMetaCmp - 1) * 100, cl6 = p6 >= 0 ? 'hist-var-up' : 'hist-var-dn';
+          fc += '<span class="hist-v-cmp">' + _histCop(tMetaCmp) + '</span><span class="' + cl6 + '">' + (p6 >= 0 ? '+' : '') + p6.toFixed(1) + '%</span>';
         }
         h += '<td>' + fc + '</td>';
       }
@@ -1487,7 +1520,9 @@ function renderHist(){
   var g = 0, gc = 0;
   sucs.forEach(function(s){
     visMes.forEach(function(m){ var mv2 = (MD[s] || {})[m] || 0; if (mv2 > 0) g += mv2; });
-    if (CD) visMes.forEach(function(m){ var mvc2 = (CD[s] || {})[m] || 0; if (mvc2 > 0) gc += mvc2; });
+    if (CD) visMes.forEach(function(m){
+      var mvc2 = _vcComparableH(s, MESES.indexOf(m) + 1, (CD[s] || {})[m] || 0); if (mvc2 > 0) gc += mvc2;
+    });
   });
   var gfc = '<span style="color:' + yc + '">' + _histCop(g) + '</span>';
   if (CD && gc > 0) gfc += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(gc) + '</span>';
