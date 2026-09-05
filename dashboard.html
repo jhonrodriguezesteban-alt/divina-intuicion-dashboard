@@ -13406,7 +13406,10 @@
   <div class="nota">
     Las celdas en gris con "META" son meses sin cerrar o sin meta fijada manualmente en
     config/metas_mensuales.json — se calculan automáticamente como +10% de lo vendido ese
-    mismo mes el año anterior, igual que el dashboard de referencia.
+    mismo mes el año anterior, igual que el dashboard de referencia. En el mes en curso, si
+    no hay año de comparación seleccionado, la cifra bajo "META A LA FECHA" es la meta del
+    mes completa prorrateada a los días ya cerrados (ej. meta mensual ÷ días del mes × días
+    transcurridos) — no la meta total del mes.
   </div>
   <script type="application/json" id="data-historico">{"histData": {"2025": {"Local 144": {"ENE": 0, "FEB": 0, "MAR": 0, "ABR": 28637000.0, "MAY": 38333000.0, "JUN": 55238000.0, "JUL": 67493000.0, "AGO": 76087000.0, "SEP": 68241000.0, "OCT": 88544000.0, "NOV": 100255000.0, "DIC": 215957000.0, "TOTAL": 738785000.0}, "Local 433": {"ENE": 0, "FEB": 0, "MAR": 0, "ABR": 13716000.0, "MAY": 19603000.0, "JUN": 22437000.0, "JUL": 34098000.0, "AGO": 30556000.0, "SEP": 28319000.0, "OCT": 34475000.0, "NOV": 54348000.0, "DIC": 130351000.0, "TOTAL": 367903000.0}}, "2026": {"Local 144": {"ENE": 33144000.0, "FEB": 41119000.0, "MAR": 52025000.0, "ABR": 53181000.0, "MAY": 67611700.0, "JUN": 92907000.0, "JUL": 73584000.0, "AGO": 48635000.0, "SEP": 5570000.0, "OCT": 0, "NOV": 0, "DIC": 0, "TOTAL": 467776700.0}, "Local 433": {"ENE": 13254000.0, "FEB": 16608000.0, "MAR": 26841000.0, "ABR": 26158000.0, "MAY": 38744000.02, "JUN": 42022000.0, "JUL": 34382000.0, "AGO": 37549000.0, "SEP": 4237000.0, "OCT": 0, "NOV": 0, "DIC": 0, "TOTAL": 239795000.02}, "Local 107": {"ENE": 0, "FEB": 0, "MAR": 0, "ABR": 9212100.02, "MAY": 10525249.2, "JUN": 12214799.63, "JUL": 10886599.86, "AGO": 19701299.88, "SEP": 3772999.99, "OCT": 0, "NOV": 0, "DIC": 0, "TOTAL": 66313048.58}}}, "metas": {"Local 144": {"7": 114738000, "8": 100000000, "9": 75000000, "10": 150525000, "11": 170434000, "12": 367127000}, "Local 433": {"7": 63081000, "8": 55000000, "9": 40000000, "10": 63779000, "11": 100544000, "12": 241149000}, "Local 107": {"7": 14047000, "8": 14000000, "9": 45000000, "10": 18690000, "11": 20185000, "12": 26240000}}, "meses": ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"], "mesLabels": ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"], "mesActual": 9, "anioActual": "2026"}</script>
 
@@ -17632,7 +17635,7 @@
   <script>document.addEventListener('DOMContentLoaded', function(){ renderComisiones(9); });</script>
   </div>
 
-  <footer>Generado el 2026-09-05 09:27 · datos de Effi Systems</footer>
+  <footer>Generado el 2026-09-05 09:40 · datos de Effi Systems</footer>
   <div class="powered-by">Powered by Divina Intuición IA</div>
 
   </div>
@@ -18049,7 +18052,12 @@ function renderHist(){
             cell += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(vcCmp) + '</span><span class="' + cl + '">' + (p >= 0 ? '+' : '') + p.toFixed(1) + '%</span>';
           } else if (metaVCmp > 0) {
             var p2 = (v / metaVCmp - 1) * 100, cl2 = p2 >= 0 ? 'hist-var-up' : 'hist-var-dn';
-            cell += '<span class="hist-v-cmp">' + _histCop(metaVCmp) + '</span><span class="' + cl2 + '">' + (p2 >= 0 ? '+' : '') + p2.toFixed(1) + '%</span>';
+            // Rótulo "META A LA FECHA" solo cuando el número está prorrateado
+            // (mes en curso) -- si no, se ve como una cifra rara que no
+            // coincide con la meta mensual que se pactó (ej. $10.000.000 en
+            // vez de $75.000.000), aunque el cálculo sea correcto.
+            var lblMetaFecha = _esMesEnCursoH(mIdx) ? ' <span class="hist-meta-lbl">META A LA FECHA</span>' : '';
+            cell += '<span class="hist-v-cmp">' + _histCop(metaVCmp) + lblMetaFecha + '</span><span class="' + cl2 + '">' + (p2 >= 0 ? '+' : '') + p2.toFixed(1) + '%</span>';
           }
           h += '<td>' + cell + '</td>';
         }
@@ -18110,7 +18118,8 @@ function renderHist(){
           fc += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(tc2) + '</span><span class="' + cl5 + '">' + (p5 >= 0 ? '+' : '') + p5.toFixed(1) + '%</span>';
         } else if (tMetaCmp > 0) {
           var p6 = (t / tMetaCmp - 1) * 100, cl6 = p6 >= 0 ? 'hist-var-up' : 'hist-var-dn';
-          fc += '<span class="hist-v-cmp">' + _histCop(tMetaCmp) + '</span><span class="' + cl6 + '">' + (p6 >= 0 ? '+' : '') + p6.toFixed(1) + '%</span>';
+          var lblMetaFechaF = _esMesEnCursoH(mIdxF) ? ' <span class="hist-meta-lbl">META A LA FECHA</span>' : '';
+          fc += '<span class="hist-v-cmp">' + _histCop(tMetaCmp) + lblMetaFechaF + '</span><span class="' + cl6 + '">' + (p6 >= 0 ? '+' : '') + p6.toFixed(1) + '%</span>';
         }
         h += '<td>' + fc + '</td>';
       }

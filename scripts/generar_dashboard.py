@@ -974,7 +974,10 @@ def _seccion_comparativo_historico(historico_mensual: dict, metas_cfg: dict, suc
   <div class="nota">
     Las celdas en gris con "META" son meses sin cerrar o sin meta fijada manualmente en
     config/metas_mensuales.json — se calculan automáticamente como +10% de lo vendido ese
-    mismo mes el año anterior, igual que el dashboard de referencia.
+    mismo mes el año anterior, igual que el dashboard de referencia. En el mes en curso, si
+    no hay año de comparación seleccionado, la cifra bajo "META A LA FECHA" es la meta del
+    mes completa prorrateada a los días ya cerrados (ej. meta mensual ÷ días del mes × días
+    transcurridos) — no la meta total del mes.
   </div>
   <script type="application/json" id="data-historico">{datos_json}</script>"""
 
@@ -1445,7 +1448,12 @@ function renderHist(){
             cell += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(vcCmp) + '</span><span class="' + cl + '">' + (p >= 0 ? '+' : '') + p.toFixed(1) + '%</span>';
           } else if (metaVCmp > 0) {
             var p2 = (v / metaVCmp - 1) * 100, cl2 = p2 >= 0 ? 'hist-var-up' : 'hist-var-dn';
-            cell += '<span class="hist-v-cmp">' + _histCop(metaVCmp) + '</span><span class="' + cl2 + '">' + (p2 >= 0 ? '+' : '') + p2.toFixed(1) + '%</span>';
+            // Rótulo "META A LA FECHA" solo cuando el número está prorrateado
+            // (mes en curso) -- si no, se ve como una cifra rara que no
+            // coincide con la meta mensual que se pactó (ej. $10.000.000 en
+            // vez de $75.000.000), aunque el cálculo sea correcto.
+            var lblMetaFecha = _esMesEnCursoH(mIdx) ? ' <span class="hist-meta-lbl">META A LA FECHA</span>' : '';
+            cell += '<span class="hist-v-cmp">' + _histCop(metaVCmp) + lblMetaFecha + '</span><span class="' + cl2 + '">' + (p2 >= 0 ? '+' : '') + p2.toFixed(1) + '%</span>';
           }
           h += '<td>' + cell + '</td>';
         }
@@ -1506,7 +1514,8 @@ function renderHist(){
           fc += '<span class="hist-v-cmp" style="color:' + cc + '">' + _histCop(tc2) + '</span><span class="' + cl5 + '">' + (p5 >= 0 ? '+' : '') + p5.toFixed(1) + '%</span>';
         } else if (tMetaCmp > 0) {
           var p6 = (t / tMetaCmp - 1) * 100, cl6 = p6 >= 0 ? 'hist-var-up' : 'hist-var-dn';
-          fc += '<span class="hist-v-cmp">' + _histCop(tMetaCmp) + '</span><span class="' + cl6 + '">' + (p6 >= 0 ? '+' : '') + p6.toFixed(1) + '%</span>';
+          var lblMetaFechaF = _esMesEnCursoH(mIdxF) ? ' <span class="hist-meta-lbl">META A LA FECHA</span>' : '';
+          fc += '<span class="hist-v-cmp">' + _histCop(tMetaCmp) + lblMetaFechaF + '</span><span class="' + cl6 + '">' + (p6 >= 0 ? '+' : '') + p6.toFixed(1) + '%</span>';
         }
         h += '<td>' + fc + '</td>';
       }
