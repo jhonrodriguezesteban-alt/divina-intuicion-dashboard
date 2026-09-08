@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-09-06",
+  "generado_al": "2026-09-07",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 395,
-      "unidades": 3493,
-      "valor_costo": 167079000.0
+      "num_referencias": 396,
+      "unidades": 3445,
+      "valor_costo": 165030500.0
     },
     "inactivas": {
       "num_referencias": 10,
@@ -13,9 +13,9 @@
       "valor_costo": 940000.0
     },
     "nuevas": {
-      "num_referencias": 27,
-      "unidades": 118,
-      "valor_costo": 7482000.0
+      "num_referencias": 26,
+      "unidades": 113,
+      "valor_costo": 7057000.0
     }
   },
   "inactivas": [
@@ -112,12 +112,6 @@
       "valor_costo": 450000.0
     },
     {
-      "referencia": "CHAMARRA CORTA CORREA",
-      "categoria": "CHAQUETAS",
-      "disponible": 5,
-      "valor_costo": 425000.0
-    },
-    {
       "referencia": "CAPA FIRE",
       "categoria": "PANTALONES",
       "disponible": 3,
@@ -136,13 +130,13 @@
       "valor_costo": 255000.0
     },
     {
-      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
+      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/AZUL",
       "categoria": "BUZOS",
       "disponible": 4,
       "valor_costo": 240000.0
     },
     {
-      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/AZUL",
+      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
       "categoria": "BUZOS",
       "disponible": 4,
       "valor_costo": 240000.0
