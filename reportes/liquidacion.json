@@ -1,16 +1,16 @@
 {
-  "generado_al": "2026-09-07",
+  "generado_al": "2026-09-08",
   "anio": 2026,
   "resumen": {
     "activas": {
       "num_referencias": 396,
-      "unidades": 3445,
-      "valor_costo": 165030500.0
+      "unidades": 3409,
+      "valor_costo": 163183500.0
     },
     "inactivas": {
-      "num_referencias": 10,
-      "unidades": 17,
-      "valor_costo": 940000.0
+      "num_referencias": 9,
+      "unidades": 16,
+      "valor_costo": 905000.0
     },
     "nuevas": {
       "num_referencias": 26,
@@ -72,12 +72,6 @@
       "categoria": "FALDAS",
       "disponible": 1,
       "valor_costo": 39000.0
-    },
-    {
-      "referencia": "VESTIDO FLORENCIA",
-      "categoria": "VESTIDOS",
-      "disponible": 1,
-      "valor_costo": 35000.0
     }
   ],
   "nuevas": [
