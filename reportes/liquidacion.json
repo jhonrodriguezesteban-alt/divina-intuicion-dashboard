@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-09-08",
+  "generado_al": "2026-09-10",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 396,
-      "unidades": 3409,
-      "valor_costo": 163183500.0
+      "num_referencias": 399,
+      "unidades": 3533,
+      "valor_costo": 168932500.0
     },
     "inactivas": {
       "num_referencias": 9,
@@ -13,9 +13,9 @@
       "valor_costo": 905000.0
     },
     "nuevas": {
-      "num_referencias": 26,
-      "unidades": 113,
-      "valor_costo": 7057000.0
+      "num_referencias": 32,
+      "unidades": 201,
+      "valor_costo": 12206000.0
     }
   },
   "inactivas": [
@@ -76,6 +76,12 @@
   ],
   "nuevas": [
     {
+      "referencia": "JEAN ICONIC PRINT",
+      "categoria": "PANTALONES",
+      "disponible": 31,
+      "valor_costo": 2480000.0
+    },
+    {
       "referencia": "CHAQUETA TEDDY",
       "categoria": "CHAQUETAS",
       "disponible": 18,
@@ -88,16 +94,34 @@
       "valor_costo": 1080000.0
     },
     {
-      "referencia": "FALDA CLASICA",
+      "referencia": "CORSET SAMANTA MALLA",
+      "categoria": "CORSET",
+      "disponible": 16,
+      "valor_costo": 1040000.0
+    },
+    {
+      "referencia": "FALDA SHORT CLASICA AZUL FROSTEADO CLARO",
       "categoria": "FALDAS",
       "disponible": 12,
-      "valor_costo": 520000.0
+      "valor_costo": 780000.0
+    },
+    {
+      "referencia": "CHAQUETA CAPOTA GOLDEN",
+      "categoria": "CHAQUETAS",
+      "disponible": 9,
+      "valor_costo": 648000.0
     },
     {
       "referencia": "CHAQUETA JEAN FOX",
       "categoria": "CHAQUETAS",
       "disponible": 6,
       "valor_costo": 510000.0
+    },
+    {
+      "referencia": "BLUSA VERO GLOBO",
+      "categoria": "BLUSAS",
+      "disponible": 21,
+      "valor_costo": 462000.0
     },
     {
       "referencia": "CHAQUETA JEAN HUMO",
@@ -142,13 +166,13 @@
       "valor_costo": 220000.0
     },
     {
-      "referencia": "FALDA MALLA ZEBRA",
+      "referencia": "FALDA JEAN RUEDO",
       "categoria": "FALDAS",
       "disponible": 5,
       "valor_costo": 200000.0
     },
     {
-      "referencia": "FALDA JEAN RUEDO",
+      "referencia": "FALDA MALLA ZEBRA",
       "categoria": "FALDAS",
       "disponible": 5,
       "valor_costo": 200000.0
@@ -163,6 +187,12 @@
       "referencia": "CHAQUETA JEAN HUMO MANTEQUILLA",
       "categoria": "CHAQUETAS",
       "disponible": 2,
+      "valor_costo": 150000.0
+    },
+    {
+      "referencia": "BODY CELESTE MALLA CEREZA",
+      "categoria": "CORSET",
+      "disponible": 6,
       "valor_costo": 150000.0
     },
     {
@@ -184,6 +214,12 @@
       "valor_costo": 91000.0
     },
     {
+      "referencia": "BUZO PABLITO VERDE",
+      "categoria": "BUZOS",
+      "disponible": 3,
+      "valor_costo": 90000.0
+    },
+    {
       "referencia": "BODY MALLA DADOS",
       "categoria": "CORSET",
       "disponible": 4,
@@ -202,16 +238,16 @@
       "valor_costo": 76000.0
     },
     {
+      "referencia": "BLUSA VERO GLOBO MARFIL U",
+      "categoria": "BLUSAS",
+      "disponible": 3,
+      "valor_costo": 66000.0
+    },
+    {
       "referencia": "JEAN BOTA RECTA MAOS",
       "categoria": "PANTALONES",
       "disponible": 1,
       "valor_costo": 60000.0
-    },
-    {
-      "referencia": "FALDA CORTA",
-      "categoria": "FALDAS",
-      "disponible": 1,
-      "valor_costo": 47000.0
     },
     {
       "referencia": "FALDA CARGO",
