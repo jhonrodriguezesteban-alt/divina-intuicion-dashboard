@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-09-10",
+  "generado_al": "2026-09-11",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 399,
-      "unidades": 3533,
-      "valor_costo": 168932500.0
+      "num_referencias": 401,
+      "unidades": 3540,
+      "valor_costo": 169161500.0
     },
     "inactivas": {
       "num_referencias": 9,
@@ -13,9 +13,9 @@
       "valor_costo": 905000.0
     },
     "nuevas": {
-      "num_referencias": 32,
-      "unidades": 201,
-      "valor_costo": 12206000.0
+      "num_referencias": 29,
+      "unidades": 165,
+      "valor_costo": 10874000.0
     }
   },
   "inactivas": [
@@ -100,12 +100,6 @@
       "valor_costo": 1040000.0
     },
     {
-      "referencia": "FALDA SHORT CLASICA AZUL FROSTEADO CLARO",
-      "categoria": "FALDAS",
-      "disponible": 12,
-      "valor_costo": 780000.0
-    },
-    {
       "referencia": "CHAQUETA CAPOTA GOLDEN",
       "categoria": "CHAQUETAS",
       "disponible": 9,
@@ -116,12 +110,6 @@
       "categoria": "CHAQUETAS",
       "disponible": 6,
       "valor_costo": 510000.0
-    },
-    {
-      "referencia": "BLUSA VERO GLOBO",
-      "categoria": "BLUSAS",
-      "disponible": 21,
-      "valor_costo": 462000.0
     },
     {
       "referencia": "CHAQUETA JEAN HUMO",
@@ -212,12 +200,6 @@
       "categoria": "BLUSAS",
       "disponible": 2,
       "valor_costo": 91000.0
-    },
-    {
-      "referencia": "BUZO PABLITO VERDE",
-      "categoria": "BUZOS",
-      "disponible": 3,
-      "valor_costo": 90000.0
     },
     {
       "referencia": "BODY MALLA DADOS",
