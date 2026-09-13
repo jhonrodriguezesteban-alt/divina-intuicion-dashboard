@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-09-11",
+  "generado_al": "2026-09-12",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 401,
-      "unidades": 3540,
-      "valor_costo": 169161500.0
+      "num_referencias": 406,
+      "unidades": 3624,
+      "valor_costo": 177232000.0
     },
     "inactivas": {
       "num_referencias": 9,
@@ -13,9 +13,9 @@
       "valor_costo": 905000.0
     },
     "nuevas": {
-      "num_referencias": 29,
-      "unidades": 165,
-      "valor_costo": 10874000.0
+      "num_referencias": 25,
+      "unidades": 114,
+      "valor_costo": 6880000.0
     }
   },
   "inactivas": [
@@ -76,22 +76,10 @@
   ],
   "nuevas": [
     {
-      "referencia": "JEAN ICONIC PRINT",
-      "categoria": "PANTALONES",
-      "disponible": 31,
-      "valor_costo": 2480000.0
-    },
-    {
       "referencia": "CHAQUETA TEDDY",
       "categoria": "CHAQUETAS",
       "disponible": 18,
       "valor_costo": 1440000.0
-    },
-    {
-      "referencia": "JEAN TERCEOPELO",
-      "categoria": "PANTALONES",
-      "disponible": 12,
-      "valor_costo": 1080000.0
     },
     {
       "referencia": "CORSET SAMANTA MALLA",
@@ -102,20 +90,14 @@
     {
       "referencia": "CHAQUETA CAPOTA GOLDEN",
       "categoria": "CHAQUETAS",
-      "disponible": 9,
-      "valor_costo": 648000.0
+      "disponible": 12,
+      "valor_costo": 864000.0
     },
     {
       "referencia": "CHAQUETA JEAN FOX",
       "categoria": "CHAQUETAS",
       "disponible": 6,
       "valor_costo": 510000.0
-    },
-    {
-      "referencia": "CHAQUETA JEAN HUMO",
-      "categoria": "CHAQUETAS",
-      "disponible": 6,
-      "valor_costo": 450000.0
     },
     {
       "referencia": "CAPA FIRE",
@@ -136,13 +118,13 @@
       "valor_costo": 255000.0
     },
     {
-      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/AZUL",
+      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
       "categoria": "BUZOS",
       "disponible": 4,
       "valor_costo": 240000.0
     },
     {
-      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
+      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/AZUL",
       "categoria": "BUZOS",
       "disponible": 4,
       "valor_costo": 240000.0
@@ -160,27 +142,21 @@
       "valor_costo": 200000.0
     },
     {
-      "referencia": "FALDA MALLA ZEBRA",
-      "categoria": "FALDAS",
-      "disponible": 5,
-      "valor_costo": 200000.0
-    },
-    {
       "referencia": "OVERSIZE ESTRELLA PRINT",
       "categoria": "BLUSAS",
       "disponible": 4,
       "valor_costo": 182000.0
     },
     {
-      "referencia": "CHAQUETA JEAN HUMO MANTEQUILLA",
-      "categoria": "CHAQUETAS",
-      "disponible": 2,
-      "valor_costo": 150000.0
-    },
-    {
       "referencia": "BODY CELESTE MALLA CEREZA",
       "categoria": "CORSET",
       "disponible": 6,
+      "valor_costo": 150000.0
+    },
+    {
+      "referencia": "CHAQUETA JEAN HUMO MANTEQUILLA",
+      "categoria": "CHAQUETAS",
+      "disponible": 2,
       "valor_costo": 150000.0
     },
     {
