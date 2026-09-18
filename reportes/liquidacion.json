@@ -3,9 +3,9 @@
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 405,
-      "unidades": 3471,
-      "valor_costo": 170128000.0
+      "num_referencias": 407,
+      "unidades": 3449,
+      "valor_costo": 169482000.0
     },
     "inactivas": {
       "num_referencias": 9,
@@ -13,9 +13,9 @@
       "valor_costo": 905000.0
     },
     "nuevas": {
-      "num_referencias": 25,
-      "unidades": 114,
-      "valor_costo": 6880000.0
+      "num_referencias": 22,
+      "unidades": 93,
+      "valor_costo": 5251000.0
     }
   },
   "inactivas": [
@@ -88,18 +88,6 @@
       "valor_costo": 1040000.0
     },
     {
-      "referencia": "CHAQUETA CAPOTA GOLDEN",
-      "categoria": "CHAQUETAS",
-      "disponible": 12,
-      "valor_costo": 864000.0
-    },
-    {
-      "referencia": "CHAQUETA JEAN FOX",
-      "categoria": "CHAQUETAS",
-      "disponible": 6,
-      "valor_costo": 510000.0
-    },
-    {
       "referencia": "CAPA FIRE",
       "categoria": "PANTALONES",
       "disponible": 3,
@@ -110,12 +98,6 @@
       "categoria": "CONJUNTOS",
       "disponible": 2,
       "valor_costo": 270000.0
-    },
-    {
-      "referencia": "CHAMARRA CORTA CORREA  GRIS JASPEADO",
-      "categoria": "CHAQUETAS",
-      "disponible": 3,
-      "valor_costo": 255000.0
     },
     {
       "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
@@ -178,13 +160,13 @@
       "valor_costo": 91000.0
     },
     {
-      "referencia": "BODY MALLA DADOS",
+      "referencia": "BODY MALLA BESO",
       "categoria": "CORSET",
       "disponible": 4,
       "valor_costo": 80000.0
     },
     {
-      "referencia": "BODY MALLA BESO",
+      "referencia": "BODY MALLA DADOS",
       "categoria": "CORSET",
       "disponible": 4,
       "valor_costo": 80000.0
@@ -208,15 +190,15 @@
       "valor_costo": 60000.0
     },
     {
-      "referencia": "FALDA CARGO",
-      "categoria": "FALDAS",
-      "disponible": 1,
-      "valor_costo": 40000.0
-    },
-    {
       "referencia": "BODY MALLA MAR",
       "categoria": "CORSET",
       "disponible": 2,
+      "valor_costo": 40000.0
+    },
+    {
+      "referencia": "FALDA CARGO",
+      "categoria": "FALDAS",
+      "disponible": 1,
       "valor_costo": 40000.0
     },
     {
