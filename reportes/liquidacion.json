@@ -1,21 +1,21 @@
 {
-  "generado_al": "2026-09-17",
+  "generado_al": "2026-09-21",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 407,
-      "unidades": 3449,
-      "valor_costo": 169482000.0
+      "num_referencias": 408,
+      "unidades": 3382,
+      "valor_costo": 165869500.0
     },
     "inactivas": {
-      "num_referencias": 9,
-      "unidades": 16,
-      "valor_costo": 905000.0
+      "num_referencias": 8,
+      "unidades": 13,
+      "valor_costo": 719000.0
     },
     "nuevas": {
       "num_referencias": 22,
-      "unidades": 93,
-      "valor_costo": 5251000.0
+      "unidades": 97,
+      "valor_costo": 5149000.0
     }
   },
   "inactivas": [
@@ -24,12 +24,6 @@
       "categoria": "PANTALONES",
       "disponible": 5,
       "valor_costo": 260000.0
-    },
-    {
-      "referencia": "JEAN PALAZO",
-      "categoria": "PANTALONES",
-      "disponible": 3,
-      "valor_costo": 186000.0
     },
     {
       "referencia": "JEAN MAOS MOÑOS",
@@ -94,12 +88,6 @@
       "valor_costo": 300000.0
     },
     {
-      "referencia": "SUDADERA DERT",
-      "categoria": "CONJUNTOS",
-      "disponible": 2,
-      "valor_costo": 270000.0
-    },
-    {
       "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
       "categoria": "BUZOS",
       "disponible": 4,
@@ -128,6 +116,12 @@
       "categoria": "BLUSAS",
       "disponible": 4,
       "valor_costo": 182000.0
+    },
+    {
+      "referencia": "FALDA PECAS BOLERO",
+      "categoria": "FALDAS",
+      "disponible": 6,
+      "valor_costo": 168000.0
     },
     {
       "referencia": "BODY CELESTE MALLA CEREZA",
