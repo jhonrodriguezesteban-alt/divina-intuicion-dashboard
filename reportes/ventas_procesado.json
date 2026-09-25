@@ -1,28 +1,28 @@
 {
-  "actualizado_hasta": "2026-09-25 10:18:02",
+  "actualizado_hasta": "2026-09-25 13:11:34",
   "historico": {
     "kpis": {
-      "ingreso_total": 1983741748.57,
-      "num_transacciones": 14133,
-      "ticket_promedio": 140362.4,
-      "utilidad_total": 870316266.43,
+      "ingreso_total": 1984806748.57,
+      "num_transacciones": 14139,
+      "ticket_promedio": 140378.16,
+      "utilidad_total": 870790766.43,
       "margen_promedio": 0.4526
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 1241560699.98,
-        "transacciones": 8521
+        "ingreso": 1241660699.98,
+        "transacciones": 8522
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 639598000.0,
-        "transacciones": 4131
+        "ingreso": 639938000.0,
+        "transacciones": 4133
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 102583048.59,
-        "transacciones": 1481
+        "ingreso": 103208048.59,
+        "transacciones": 1484
       }
     ],
     "rango_fechas": {
@@ -32,75 +32,85 @@
   },
   "anio_actual": {
     "kpis": {
-      "ingreso_total": 877053748.57,
-      "num_transacciones": 6257,
-      "ticket_promedio": 140171.61,
-      "utilidad_total": 396772266.43,
-      "margen_promedio": 0.4689
+      "ingreso_total": 878118748.57,
+      "num_transacciones": 6263,
+      "ticket_promedio": 140207.37,
+      "utilidad_total": 397246766.43,
+      "margen_promedio": 0.4688
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 502775699.98,
-        "transacciones": 3137
+        "ingreso": 502875699.98,
+        "transacciones": 3138
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 271695000.0,
-        "transacciones": 1639
+        "ingreso": 272035000.0,
+        "transacciones": 1641
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 102583048.59,
-        "transacciones": 1481
+        "ingreso": 103208048.59,
+        "transacciones": 1484
       }
     ],
     "composicion": {
       "facturado": 33774999.96,
-      "remisionado": 843278748.61,
+      "remisionado": 844343748.61,
       "num_facturado": 256,
-      "num_remisionado": 6001
+      "num_remisionado": 6007
     }
   },
   "mes_actual": {
     "kpis": {
-      "ingreso_total": 118544000.0,
-      "num_transacciones": 779,
-      "ticket_promedio": 152174.58,
-      "utilidad_total": 56425389.26,
-      "margen_promedio": 0.4894
+      "ingreso_total": 119609000.0,
+      "num_transacciones": 785,
+      "ticket_promedio": 152368.15,
+      "utilidad_total": 56899889.26,
+      "margen_promedio": 0.4892
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 41609000.0,
-        "transacciones": 259
+        "ingreso": 41709000.0,
+        "transacciones": 260
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 40043000.0,
-        "transacciones": 314
+        "ingreso": 40668000.0,
+        "transacciones": 317
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 36892000.0,
-        "transacciones": 206
+        "ingreso": 37232000.0,
+        "transacciones": 208
       }
     ]
   },
   "hoy": {
     "kpis": {
-      "ingreso_total": 150000.0,
-      "num_transacciones": 1,
-      "ticket_promedio": 150000.0,
-      "utilidad_total": 58000.0,
-      "margen_promedio": 0.39
+      "ingreso_total": 1215000.0,
+      "num_transacciones": 7,
+      "ticket_promedio": 173571.43,
+      "utilidad_total": 532500.0,
+      "margen_promedio": 0.45
     },
     "por_sucursal": [
       {
+        "sucursal": "Local 107",
+        "ingreso": 625000.0,
+        "transacciones": 3
+      },
+      {
+        "sucursal": "Local 433",
+        "ingreso": 340000.0,
+        "transacciones": 2
+      },
+      {
         "sucursal": "Local 144",
-        "ingreso": 150000.0,
-        "transacciones": 1
+        "ingreso": 250000.0,
+        "transacciones": 2
       }
     ],
     "ingreso_ayer": 4443000.0
