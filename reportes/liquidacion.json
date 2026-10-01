@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-09-21",
+  "generado_al": "2026-10-01",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 408,
-      "unidades": 3382,
-      "valor_costo": 165869500.0
+      "num_referencias": 414,
+      "unidades": 3400,
+      "valor_costo": 166878500.0
     },
     "inactivas": {
       "num_referencias": 8,
@@ -13,9 +13,9 @@
       "valor_costo": 719000.0
     },
     "nuevas": {
-      "num_referencias": 22,
-      "unidades": 97,
-      "valor_costo": 5149000.0
+      "num_referencias": 16,
+      "unidades": 79,
+      "valor_costo": 4140000.0
     }
   },
   "inactivas": [
@@ -82,10 +82,10 @@
       "valor_costo": 1040000.0
     },
     {
-      "referencia": "CAPA FIRE",
-      "categoria": "PANTALONES",
-      "disponible": 3,
-      "valor_costo": 300000.0
+      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/AZUL",
+      "categoria": "BUZOS",
+      "disponible": 4,
+      "valor_costo": 240000.0
     },
     {
       "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
@@ -94,28 +94,10 @@
       "valor_costo": 240000.0
     },
     {
-      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/AZUL",
-      "categoria": "BUZOS",
-      "disponible": 4,
-      "valor_costo": 240000.0
-    },
-    {
-      "referencia": "TEJIDO TE RAYA",
-      "categoria": "BUZOS",
-      "disponible": 4,
-      "valor_costo": 220000.0
-    },
-    {
       "referencia": "FALDA JEAN RUEDO",
       "categoria": "FALDAS",
       "disponible": 5,
       "valor_costo": 200000.0
-    },
-    {
-      "referencia": "OVERSIZE ESTRELLA PRINT",
-      "categoria": "BLUSAS",
-      "disponible": 4,
-      "valor_costo": 182000.0
     },
     {
       "referencia": "FALDA PECAS BOLERO",
@@ -130,12 +112,6 @@
       "valor_costo": 150000.0
     },
     {
-      "referencia": "CHAQUETA JEAN HUMO MANTEQUILLA",
-      "categoria": "CHAQUETAS",
-      "disponible": 2,
-      "valor_costo": 150000.0
-    },
-    {
       "referencia": "BLAZER CUADROS TREN",
       "categoria": "CONJUNTOS",
       "disponible": 2,
@@ -146,12 +122,6 @@
       "categoria": "BUZOS",
       "disponible": 2,
       "valor_costo": 120000.0
-    },
-    {
-      "referencia": "OVERZISE LOVE",
-      "categoria": "BLUSAS",
-      "disponible": 2,
-      "valor_costo": 91000.0
     },
     {
       "referencia": "BODY MALLA BESO",
@@ -170,12 +140,6 @@
       "categoria": "VESTIDOS",
       "disponible": 2,
       "valor_costo": 76000.0
-    },
-    {
-      "referencia": "BLUSA VERO GLOBO MARFIL U",
-      "categoria": "BLUSAS",
-      "disponible": 3,
-      "valor_costo": 66000.0
     },
     {
       "referencia": "JEAN BOTA RECTA MAOS",

@@ -127,7 +127,7 @@ def _intentar_descarga(page, context, ruta: Path) -> bool:
         return False
 
     print(f"Reporte listo: {nuevo_link['texto']}")
-    resp = context.request.get(nuevo_link["href"])
+    resp = context.request.get(nuevo_link["href"], timeout=60_000)
     ruta.write_bytes(resp.body())
     print(f"Descargado en {ruta} ({len(resp.body())} bytes)")
     return True
@@ -140,7 +140,19 @@ def main():
 
         for intento in range(1, MAX_INTENTOS + 1):
             print(f"--- intento {intento}/{MAX_INTENTOS} ---")
-            if not _intentar_descarga(page, context, ruta):
+            try:
+                ok = _intentar_descarga(page, context, ruta)
+            except Exception as e:
+                # Un error de red a mitad de intento (timeout, conexión caída,
+                # etc.) se escapaba sin que este bucle de reintentos alcanzara
+                # a actuar -- mataba el script entero y, con eso, el cierre de
+                # TODA la noche (confirmado 2026-10-01: así estuvo fallando 10
+                # días seguidos en el mismo paso sin que nadie se enterara,
+                # porque el parche de "mes en curso" disimulaba el dato
+                # faltante mientras el mes seguía en curso).
+                print(f"Intento {intento} falló con un error de red/Playwright: {e}")
+                ok = False
+            if not ok:
                 continue
             faltantes = _columnas_faltantes(ruta)
             if not faltantes:
