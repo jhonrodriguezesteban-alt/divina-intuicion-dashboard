@@ -3,11 +3,12 @@
   "_metodologia_jul_dic_2026": "Metas Jul-Dic 2026 calculadas el 2026-07-18 a partir del crecimiento interanual real de los últimos 3 meses cerrados (Abr-Jun): Local 144 ~70% YoY (venía desacelerando de 85.7% a 68.2%), Local 433 ~85% YoY (estable ~86-98%). Fórmula: mismo mes 2025 x (1+tasa) -- así se conserva la estacionalidad de diciembre. Local 107 no tiene año anterior (abrió abr-2026): meta mes a mes con crecimiento decreciente (15% -> 8%) según su propia tendencia reciente, más un salto de temporada en diciembre. Revisar y ajustar mes a mes según el comportamiento real.",
   "_metodologia_ago_2026": "Meta de agosto 2026 ajustada a mano por John el 2026-08-03 tras ver que julio frenó fuerte (144 +22.6% YoY, 433 +12.6% YoY, muy por debajo del ~70-85% usado en la proyección original) -- decisión propia de negocio, no la proyección automática por tendencia. Local 433 ajustada de nuevo el 2026-08-08 (de 45M a 55M).",
   "_metodologia_sep_2026": "Meta de septiembre 2026 ajustada a mano por John el 2026-09-05, reemplazando la proyección original del 18-jul (que asumía que el +68-87% YoY de junio se sostendría). Con julio y agosto ya cerrados el panorama cambió: Local 144 cayó a +9.0% YoY en julio y -36.1% YoY en agosto (caída sostenida día a día, no un problema de datos) -- meta bajada de $116.010.000 a $75.000.000. Local 433 se mantuvo más estable (+0.8% jul, +22.9% ago) -- meta bajada de $52.390.000 a $40.000.000, en línea con su rango real de los últimos 3 meses ($34-42M). Local 107 pasó de $17.306.000 a $45.000.000 -- más del doble de su mejor mes histórico (Ago: $19.7M) -- confirmado explícitamente por John como meta ambiciosa a propósito, no proyección de tendencia.",
+  "_metodologia_oct_2026": "Meta de octubre 2026 recalculada el 2026-10-01 usando el factor estacional propio de cada local (sep->oct 2025) sobre septiembre 2026 YA CORREGIDO (ver nota: historico_mensual.json estuvo congelado del 1 al 21-sep por una falla de 10 días en cierre_dia.py, septiembre real quedó en $51.000.000/144, $45.297.000/433, $50.967.000/107, no los parciales que se vieron antes). Local 144: sep-2025 $68.241.000 -> oct-2025 $88.544.000 = factor +29.8%, aplicado a $51.000.000 = ~$66.2M, redondeado a $66.000.000 (reemplaza los $150.525.000 de la proyección original de julio, ya totalmente desactualizada). Local 433: factor propio +21.7% sobre $45.297.000 = ~$55.1M -> $55.000.000 (reemplaza $63.779.000). Local 107 no tiene octubre-2025 propio (abrió abr-2026) -- se usa el promedio de los factores de 144 y 433 (+25.7%) sobre $50.967.000 = ~$64.1M -> $64.000.000 (reemplaza $18.690.000, muy por debajo de lo que ya está vendiendo).",
   "144": {
     "7": 114738000,
     "8": 100000000,
     "9": 75000000,
-    "10": 150525000,
+    "10": 66000000,
     "11": 170434000,
     "12": 367127000
   },
@@ -15,7 +16,7 @@
     "7": 63081000,
     "8": 55000000,
     "9": 40000000,
-    "10": 63779000,
+    "10": 55000000,
     "11": 100544000,
     "12": 241149000
   },
@@ -23,7 +24,7 @@
     "7": 14047000,
     "8": 14000000,
     "9": 45000000,
-    "10": 18690000,
+    "10": 64000000,
     "11": 20185000,
     "12": 26240000
   }
