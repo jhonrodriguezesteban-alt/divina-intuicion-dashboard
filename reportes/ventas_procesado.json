@@ -1,28 +1,28 @@
 {
-  "actualizado_hasta": "2026-10-02 10:19:12",
+  "actualizado_hasta": "2026-10-02 11:30:08",
   "historico": {
     "kpis": {
-      "ingreso_total": 2010372748.41,
-      "num_transacciones": 14351,
-      "ticket_promedio": 140085.9,
-      "utilidad_total": 876191814.67,
+      "ingreso_total": 2010742748.41,
+      "num_transacciones": 14356,
+      "ticket_promedio": 140062.88,
+      "utilidad_total": 876353814.67,
       "margen_promedio": 0.451
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 1247536699.86,
-        "transacciones": 8579
+        "ingreso": 1247711699.86,
+        "transacciones": 8581
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 645548999.95,
-        "transacciones": 4175
+        "ingreso": 645643999.95,
+        "transacciones": 4176
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 117287048.6,
-        "transacciones": 1597
+        "ingreso": 117387048.6,
+        "transacciones": 1599
       }
     ],
     "rango_fechas": {
@@ -32,79 +32,84 @@
   },
   "anio_actual": {
     "kpis": {
-      "ingreso_total": 903684748.41,
-      "num_transacciones": 6475,
-      "ticket_promedio": 139565.21,
-      "utilidad_total": 402647814.67,
+      "ingreso_total": 904054748.41,
+      "num_transacciones": 6480,
+      "ticket_promedio": 139514.62,
+      "utilidad_total": 402809814.67,
       "margen_promedio": 0.4646
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 508751699.86,
-        "transacciones": 3195
+        "ingreso": 508926699.86,
+        "transacciones": 3197
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 277645999.95,
-        "transacciones": 1683
+        "ingreso": 277740999.95,
+        "transacciones": 1684
       },
       {
         "sucursal": "Local 107",
-        "ingreso": 117287048.6,
-        "transacciones": 1597
+        "ingreso": 117387048.6,
+        "transacciones": 1599
       }
     ],
     "composicion": {
       "facturado": 80533799.76,
-      "remisionado": 823150948.65,
+      "remisionado": 823520948.65,
       "num_facturado": 679,
-      "num_remisionado": 5796
+      "num_remisionado": 5801
     }
   },
   "mes_actual": {
     "kpis": {
-      "ingreso_total": 7859000.0,
-      "num_transacciones": 67,
-      "ticket_promedio": 117298.51,
-      "utilidad_total": 3726374.91,
-      "margen_promedio": 0.4831
+      "ingreso_total": 8229000.0,
+      "num_transacciones": 72,
+      "ticket_promedio": 114291.67,
+      "utilidad_total": 3888374.91,
+      "margen_promedio": 0.4821
     },
     "por_sucursal": [
       {
         "sucursal": "Local 107",
-        "ingreso": 3780000.0,
-        "transacciones": 35
+        "ingreso": 3880000.0,
+        "transacciones": 37
       },
       {
         "sucursal": "Local 144",
-        "ingreso": 2533000.0,
-        "transacciones": 21
+        "ingreso": 2708000.0,
+        "transacciones": 23
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 1546000.0,
-        "transacciones": 11
+        "ingreso": 1641000.0,
+        "transacciones": 12
       }
     ]
   },
   "hoy": {
     "kpis": {
-      "ingreso_total": 270000.0,
-      "num_transacciones": 2,
-      "ticket_promedio": 135000.0,
-      "utilidad_total": 135000.0,
-      "margen_promedio": 0.5
+      "ingreso_total": 640000.0,
+      "num_transacciones": 7,
+      "ticket_promedio": 91428.57,
+      "utilidad_total": 297000.0,
+      "margen_promedio": 0.4771
     },
     "por_sucursal": [
       {
-        "sucursal": "Local 107",
-        "ingreso": 140000.0,
-        "transacciones": 1
+        "sucursal": "Local 144",
+        "ingreso": 305000.0,
+        "transacciones": 3
       },
       {
-        "sucursal": "Local 144",
-        "ingreso": 130000.0,
+        "sucursal": "Local 107",
+        "ingreso": 240000.0,
+        "transacciones": 3
+      },
+      {
+        "sucursal": "Local 433",
+        "ingreso": 95000.0,
         "transacciones": 1
       }
     ],
