@@ -1016,6 +1016,11 @@ def _seccion_comisiones(sucursales_cfg: list, hoy: "datetime") -> str:
 
 # ---------- sección: planeación de temporada ----------
 
+def _txt_gradual(plan: dict) -> str:
+    en_caida = [l["nombre"] for l in plan["locales"] if l.get("pct_meses", {}).get("gradual") != l.get("pct_meses", {}).get("tendencia")]
+    return f"{' y '.join(en_caida)} cerrando su caída" if en_caida else "Recuperación gradual"
+
+
 def _seccion_temporada(plan: dict) -> str:
     """Estructura vacía + datos embebidos -- todo el cálculo (venta estimada
     por escenario, compra neta de stock, inversión mes a mes, reparto por
@@ -1030,15 +1035,24 @@ def _seccion_temporada(plan: dict) -> str:
     inputs = []
     notas_locales = []
     for l in plan["locales"]:
-        referencia = f"vs {anio_prev}" if l["metodo"] == "anio_anterior" else "vs ritmo actual"
+        referencia = f"% vs {anio_prev}" if l["metodo"] == "anio_anterior" else "% vs ritmo actual"
+        campos = "".join(
+            f'<span class="tmp-mes-campo">{m["lbl"]}<input type="number" step="1" id="tmp-pct-{l["codigo"]}-{i}" '
+            f'value="{l["pct_tendencia"] * 100:.1f}" oninput="renderTemporada()"></span>'
+            for i, m in enumerate(plan["meses"])
+        )
         inputs.append(
-            f'<label class="tmp-input">{l["nombre"]}'
-            f'<span><input type="number" step="1" id="tmp-pct-{l["codigo"]}" '
-            f'value="{l["pct_tendencia"] * 100:.1f}" oninput="renderTemporada()"> % {referencia}</span></label>'
+            f'<div class="tmp-input">{l["nombre"]} <span class="tmp-sub">({referencia}, en unidades)</span>'
+            f'<div class="tmp-meses-campos">{campos}</div></div>'
         )
         meta_txt = f'{l["pct_meta"] * 100:+.1f}%' if l["pct_meta"] is not None else "—"
+        pm = l.get("pct_meses", {})
+        gradual_txt = ""
+        if pm.get("gradual") and pm["gradual"] != pm.get("tendencia"):
+            pasos = " → ".join(f'{m["lbl"]} {x * 100:+.1f}%' for m, x in zip(plan["meses"], pm["gradual"]))
+            gradual_txt = f' · cerrando su caída {pasos} (llega al ritmo de la meta en el último mes)'
         notas_locales.append(
-            f'<li><b>{l["nombre"]}</b> — tendencia {l["pct_tendencia"] * 100:+.1f}% · metas {meta_txt}. {l["detalle"]}</li>'
+            f'<li><b>{l["nombre"]}</b> — tendencia {l["pct_tendencia"] * 100:+.1f}%{gradual_txt} · metas {meta_txt}. {l["detalle"]}</li>'
         )
     datos_json = json.dumps(plan, ensure_ascii=False, separators=(",", ":"))
 
@@ -1055,6 +1069,7 @@ def _seccion_temporada(plan: dict) -> str:
     <div class="tmp-escenarios">
       <span class="tmp-lbl">Escenario</span>
       <button class="tmp-esc-btn tmp-esc-on" data-esc="tendencia" onclick="temporadaEscenario('tendencia', this)">Tendencia actual</button>
+      <button class="tmp-esc-btn" data-esc="gradual" onclick="temporadaEscenario('gradual', this)">{_txt_gradual(plan)}</button>
       <button class="tmp-esc-btn" data-esc="meta" onclick="temporadaEscenario('meta', this)">Ritmo de las metas de octubre</button>
     </div>
     <div class="tmp-inputs">
@@ -1065,6 +1080,14 @@ def _seccion_temporada(plan: dict) -> str:
   </div>
 
   <div class="kpi-grid" id="tmp-kpis"></div>
+
+  <h2>Venta y utilidad esperada por local</h2>
+  <div class="tabla-scroll"><table class="tabla-categorias" id="tmp-utilidad"></table></div>
+  <div class="subtitulo" style="margin-top:.5rem;font-size:.8rem;">
+    Unidades estimadas × precio actual de cada familia (últimos 90 días), ajustado a la mezcla de cada local
+    (verificado contra septiembre real: ±1%). Utilidad bruta = venta − costo de la mercancía vendida, con el margen
+    actual de cada familia; no descuenta arriendo, nómina ni demás gastos.
+  </div>
 
   <h2>Mes a mes</h2>
   <div class="tabla-scroll"><table class="tabla-categorias" id="tmp-meses"></table></div>
@@ -1887,9 +1910,11 @@ function _tmpEsc(s){ return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;
 function temporadaEscenario(esc, btn){
   var d = _tmpDatos(); if (!d) return;
   d.locales.forEach(function(l){
-    var pct = (esc === 'meta' && l.pct_meta !== null) ? l.pct_meta : l.pct_tendencia;
-    var inp = document.getElementById('tmp-pct-' + l.codigo);
-    if (inp) inp.value = (pct * 100).toFixed(1);
+    var pcts = (l.pct_meses && l.pct_meses[esc]) || d.meses.map(function(){ return l.pct_tendencia; });
+    pcts.forEach(function(pct, i){
+      var inp = document.getElementById('tmp-pct-' + l.codigo + '-' + i);
+      if (inp) inp.value = (pct * 100).toFixed(1);
+    });
   });
   document.querySelectorAll('.tmp-esc-btn').forEach(function(b){ b.classList.remove('tmp-esc-on'); });
   if (btn) btn.classList.add('tmp-esc-on');
@@ -1913,18 +1938,32 @@ function _tmpCompra(demanda, stock, colchon){
 function _tmpCalcular(){
   var d = _tmpDatos();
   var colchon = (parseFloat(document.getElementById('tmp-colchon').value) || 0) / 100;
-  var mult = {};
-  d.locales.forEach(function(l){
-    var v = parseFloat(document.getElementById('tmp-pct-' + l.codigo).value);
-    var pct = isNaN(v) ? l.pct_tendencia : v / 100;
-    mult[l.nombre] = (1 + pct) / (1 + l.pct_tendencia);
-  });
   var n = d.meses.length;
+  var mult = {}, ajustePrecio = {};
+  d.locales.forEach(function(l){
+    mult[l.nombre] = d.meses.map(function(m, i){
+      var v = parseFloat(document.getElementById('tmp-pct-' + l.codigo + '-' + i).value);
+      var pct = isNaN(v) ? l.pct_tendencia : v / 100;
+      return (1 + pct) / (1 + l.pct_tendencia);
+    });
+    ajustePrecio[l.nombre] = l.ajuste_precio || 1;
+  });
+  // Venta en pesos y utilidad bruta por local y mes (suma de todas las familias)
+  var pesosLocal = {}, utilLocal = {};
+  d.locales.forEach(function(l){ pesosLocal[l.nombre] = new Array(n).fill(0); utilLocal[l.nombre] = new Array(n).fill(0); });
   var familias = d.familias.map(function(f){
     var venta = new Array(n).fill(0), porLocal = {};
     Object.keys(f.base).forEach(function(loc){
-      porLocal[loc] = f.base[loc].map(function(u){ return u * (mult[loc] || 1); });
-      porLocal[loc].forEach(function(u, i){ venta[i] += u; });
+      var ml = mult[loc] || new Array(n).fill(1);
+      porLocal[loc] = f.base[loc].map(function(u, i){ return u * ml[i]; });
+      porLocal[loc].forEach(function(u, i){
+        venta[i] += u;
+        if (pesosLocal[loc]){
+          var pesos = u * (f.precio_actual || f.precio_promedio) * (ajustePrecio[loc] || 1);
+          pesosLocal[loc][i] += pesos;
+          utilLocal[loc][i] += pesos * (f.margen || 0);
+        }
+      });
     });
     var grupos = f.items.map(function(it){
       return {nombre: it.nombre, item: it, part: it.participacion, stock: it.stock, costo: it.costo_unitario || f.costo_unitario};
@@ -1942,7 +1981,28 @@ function _tmpCalcular(){
             ventaTotal: sum(venta), compraTotal: sum(compraMes), invTotal: sum(invMes)};
   });
   familias.sort(function(a, b){ return b.invTotal - a.invTotal; });
-  return {familias: familias, colchon: colchon};
+  return {familias: familias, colchon: colchon, pesosLocal: pesosLocal, utilLocal: utilLocal};
+}
+
+function _tmpTablaUtilidad(r, d){
+  var sum = function(a){ return a.reduce(function(x, y){ return x + y; }, 0); };
+  var n = d.meses.length, totV = new Array(n).fill(0), totU = new Array(n).fill(0);
+  var filas = d.locales.map(function(l){
+    var v = r.pesosLocal[l.nombre], u = r.utilLocal[l.nombre];
+    v.forEach(function(x, i){ totV[i] += x; totU[i] += u[i]; });
+    var vt = sum(v), ut = sum(u);
+    return '<tr><td><b>' + l.nombre + '</b></td>' + v.map(function(x){ return '<td class="num">' + _cop(x) + '</td>'; }).join('') +
+      '<td class="num"><b>' + _cop(vt) + '</b></td><td class="num">' + _cop(ut) + '</td>' +
+      '<td class="num">' + (vt ? Math.round(ut / vt * 1000) / 10 : 0) + '%</td></tr>';
+  }).join('');
+  var vt = sum(totV), ut = sum(totU);
+  var total = '<tr class="tmp-fila-total"><td>Total</td>' + totV.map(function(x){ return '<td class="num">' + _cop(x) + '</td>'; }).join('') +
+    '<td class="num">' + _cop(vt) + '</td><td class="num">' + _cop(ut) + '</td><td class="num">' + (vt ? Math.round(ut / vt * 1000) / 10 : 0) + '%</td></tr>';
+  var utilMes = '<tr class="tmp-fila-sub"><td>Utilidad bruta del mes</td>' + totU.map(function(x){ return '<td class="num">' + _cop(x) + '</td>'; }).join('') +
+    '<td class="num"></td><td class="num"></td><td class="num"></td></tr>';
+  return '<thead><tr><th>Venta esperada</th>' + d.meses.map(function(m){ return '<th class="num">' + m.lbl + '</th>'; }).join('') +
+    '<th class="num">Temporada</th><th class="num">Utilidad bruta</th><th class="num">Margen</th></tr></thead><tbody>' +
+    filas + total + utilMes + '</tbody>';
 }
 
 function _tmpMix(mix, unidades){
@@ -2020,11 +2080,16 @@ function renderTemporada(){
     return '<div class="kpi-card"><div class="kpi-label">' + lbl + '</div><div class="kpi-valor">' + val + '</div>' +
       (sub ? '<div class="kpi-sub">' + sub + '</div>' : '') + '</div>';
   };
+  var ventaPesos = 0, utilidad = 0;
+  d.locales.forEach(function(l){ ventaPesos += sum(r.pesosLocal[l.nombre]); utilidad += sum(r.utilLocal[l.nombre]); });
   document.getElementById('tmp-kpis').innerHTML =
     kpi('Venta estimada temporada', _tmpU(sum(venta)) + ' u', d.meses.map(function(m, i){ return m.lbl + ' ' + _tmpU(venta[i]); }).join(' · ')) +
+    kpi('Venta esperada en pesos', _cop(ventaPesos), 'los tres locales, ' + d.meses.map(function(m){ return m.lbl; }).join('–')) +
+    kpi('Utilidad bruta esperada', _cop(utilidad), 'margen ' + (ventaPesos ? Math.round(utilidad / ventaPesos * 1000) / 10 : 0) + '% · antes de gastos') +
     kpi('Stock con rotación hoy', _tmpU(stock) + ' u', 'referencias con venta en los últimos 12 meses') +
     kpi('Compra sugerida', _tmpU(sum(compra)) + ' u', 'incluye colchón de ' + Math.round(r.colchon * 100) + '%') +
     kpi('Inversión estimada (a costo)', _cop(sum(inv)), d.meses.map(function(m, i){ return m.lbl + ' ' + _cop(inv[i]); }).join(' · '));
+  document.getElementById('tmp-utilidad').innerHTML = _tmpTablaUtilidad(r, d);
 
   var th = '<thead><tr><th></th>' + d.meses.map(function(m){ return '<th class="num">' + m.lbl + '</th>'; }).join('') + '<th class="num">Total</th></tr></thead>';
   var fila = function(lbl, arr, fmt){
@@ -2366,6 +2431,11 @@ _CSS = """
   .tmp-celda-chips { min-width: 11rem; }
   .tmp-tabla-ref td:first-child { min-width: 11rem; }
   .tmp-fila-otros td { color: var(--texto-sub); font-style: italic; }
+  .tmp-fila-total td { font-weight: 700; border-top: 2px solid var(--borde); }
+  .tmp-fila-sub td { color: var(--texto-sub); font-size: .8rem; }
+  .tmp-meses-campos { display: flex; gap: .4rem; margin-top: .3rem; }
+  .tmp-mes-campo { display: flex; flex-direction: column; font-size: .7rem; font-weight: 400; color: var(--texto-sub); gap: .15rem; }
+  .tmp-mes-campo input { width: 4.4rem; }
   .tmp-mix { margin-top: .9rem; }
   .tmp-mix-titulo { font-size: .74rem; color: var(--texto-sub); text-transform: uppercase; letter-spacing: .02em; margin-bottom: .35rem; }
   footer { margin-top: 2rem; font-size: .75rem; color: var(--texto-sub); }

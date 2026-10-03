@@ -235,9 +235,9 @@ def main():
                 "pct_tendencia": round(tendencia - 1, 4),
                 "pct_meta": round(factor_meta - 1, 4) if factor_meta else None,
                 "alza_precio_unidad": round(alza_precio - 1, 4),
-                "detalle": (f"Mismo mes {anio - 1} x tendencia jul-sep ({(tendencia - 1) * 100:+.1f}% en unidades). "
-                            f"Escenario metas: la meta de octubre ({_pesos(meta_oct)}) en unidades, descontando "
-                            f"que el precio por prenda subió {(alza_precio - 1) * 100:.0f}%."),
+                "detalle": (f"Mismo mes {anio - 1} x tendencia jul-sep ({(tendencia - 1) * 100:+.1f}% en unidades; "
+                            f"el precio por prenda subió {(alza_precio - 1) * 100:.0f}%). Escenario metas: las unidades "
+                            f"que hacen que octubre llegue a la meta ({_pesos(meta_oct)})."),
             })
         else:
             pesos_sep = historico[cod]["por_anio_mes"][str(anio)]["Sep"]["neto"]
@@ -246,14 +246,17 @@ def main():
             esperado_oct = pesos_sep * pesos_oct_hist / pesos_sep_hist
             factor_meta = meta_oct / esperado_oct if meta_oct else None
             tendencia_local[cod] = 1.0
+            sep_local = sep_act[sep_act["cod"] == cod]
+            pct_ropa = (sep_local[sep_local["familia"] != "ACCESORIOS"]["unid"].sum() / sep_local["unid"].sum()) if sep_local["unid"].sum() else 0
             locales_out.append({
                 "codigo": cod, "nombre": s["nombre"], "metodo": "ritmo_actual",
                 "pct_tendencia": 0.0,
                 "pct_meta": round(factor_meta - 1, 4) if factor_meta else None,
                 "alza_precio_unidad": None,
-                "detalle": (f"Sin año anterior: venta de septiembre {anio} x el salto estacional sep->oct/nov/dic "
-                            f"que tuvieron 144+433 en {anio - 1}. Escenario metas: meta de octubre ({_pesos(meta_oct)}) "
-                            f"vs lo que da ese mismo método en pesos."),
+                "detalle": (f"Sin año anterior: venta de septiembre {anio} categoría por categoría (en septiembre "
+                            f"{pct_ropa * 100:.0f}% de sus unidades ya fueron ropa) x el salto estacional sep->oct/nov/dic "
+                            f"que tuvieron 144+433 en {anio - 1}. Escenario metas: las unidades que hacen que octubre "
+                            f"llegue a la meta ({_pesos(meta_oct)})."),
             })
 
     # Stock actual (catálogo)
@@ -297,13 +300,13 @@ def main():
                     for i, m in enumerate(MESES_TEMPORADA):
                         meses_out[i] += prev_cat[prev_cat["mes"] == m]["unid"].sum() * t_local * relativo
                 else:
-                    # Ritmo actual: mezcla de jul-sep (estable) a nivel de septiembre (actual)
-                    js_cat = js_act[(js_act["cod"] == cod) & (js_act["Categoría artículo"] == cat)]["unid"].sum()
-                    js_total = js_act[js_act["cod"] == cod]["unid"].sum()
-                    sep_total = sep_act[sep_act["cod"] == cod]["unid"].sum()
-                    if js_total <= 0 or js_cat <= 0:
+                    # Ritmo actual: la venta de septiembre tal cual, categoría por
+                    # categoría. NO un promedio jul-sep: el 107 cambió de formato
+                    # en sep-2026 (jul: 99% accesorios; sep: 78% ropa) y promediar
+                    # proyectaba una tienda de accesorios que ya no existe.
+                    nivel = sep_act[(sep_act["cod"] == cod) & (sep_act["Categoría artículo"] == cat)]["unid"].sum()
+                    if nivel <= 0:
                         continue
-                    nivel = sep_total * js_cat / js_total
                     for i, ix in enumerate(idx_categoria(cat)):
                         meses_out[i] += nivel * ix
             base[nombre] = [round(v, 1) for v in meses_out]
@@ -321,6 +324,15 @@ def main():
 
         v90 = ventana_90[ventana_90["familia"] == familia]
         muestra_mix = v90 if v90["unid"].sum() >= 50 else v_ytd
+
+        # Precio y margen ACTUALES (90 días) para pasar unidades a pesos -- el
+        # precio por prenda viene subiendo en el año, el promedio YTD lo
+        # subestima. Margen solo con líneas que tienen costo registrado (las
+        # de costo 0 inflarían la utilidad al 100%).
+        muestra_precio = v90 if v90["Cantidad"].sum() >= 30 else v_ytd
+        precio_actual = float(muestra_precio["Precio neto total"].sum() / muestra_precio["Cantidad"].sum()) if muestra_precio["Cantidad"].sum() else precio_u
+        con_c = muestra_precio[muestra_precio["Costo manual unitario"] > 0]
+        margen = float(1 - con_c["Costo manual total"].sum() / con_c["Precio neto total"].sum()) if con_c["Precio neto total"].sum() > 0 else 0.0
 
         # Referencias (ropa) o subcategorías (accesorios -- demasiados SKU para ir uno por uno)
         clave = "Categoría artículo" if es_acc else "ref"
@@ -365,6 +377,8 @@ def main():
             "stock_vivo": stock_vivo,
             "costo_unitario": round(costo_u),
             "precio_promedio": round(precio_u),
+            "precio_actual": round(precio_actual),
+            "margen": round(margen, 4),
             "items": items,
             "otros": {"participacion": round(otros_part, 4), "stock": max(0, stock_vivo - stock_items)},
             "mix_colores": [] if es_acc else _mix(muestra_mix[muestra_mix["color"].notna()].groupby("color")["unid"].sum(), 8),
@@ -372,6 +386,39 @@ def main():
         })
 
     familias_out.sort(key=lambda f: -sum(sum(v) for v in f["base"].values()))
+
+    # Unidades -> pesos por local: precio actual de cada familia x un ajuste
+    # por local calibrado contra septiembre real (cada local tiene su propia
+    # mezcla de precios dentro de la familia). Verificado 2026-10-02: el
+    # método sin ajuste ya daba +-1% de la venta real de septiembre.
+    precio_fam = {f["familia"]: f["precio_actual"] for f in familias_out}
+    for l in locales_out:
+        sub = sep_act[sep_act["cod"] == l["codigo"]]
+        estimado = sum(u * precio_fam.get(fam, 0) for fam, u in sub.groupby("familia")["unid"].sum().items())
+        real = historico[l["codigo"]]["por_anio_mes"][str(anio)]["Sep"]["neto"]
+        l["ajuste_precio"] = round(real / estimado, 4) if estimado else 1.0
+
+        # Escenario metas calibrado en pesos: el % en unidades que hace que
+        # OCTUBRE llegue exactamente a la meta, con los mismos precios que usa
+        # el dashboard para la venta esperada. Antes se calculaba con el alza
+        # de precio promedio del local y quedaba en ~93% de la meta.
+        meta_oct = (metas.get(l["codigo"]) or {}).get("10")
+        oct_tendencia = sum(f["base"].get(l["nombre"], [0])[0] * precio_fam[f["familia"]] for f in familias_out) * l["ajuste_precio"]
+        if meta_oct and oct_tendencia > 0:
+            l["pct_meta"] = round((1 + l["pct_tendencia"]) * meta_oct / oct_tendencia - 1, 4)
+            l["detalle"] += f" Con la tendencia, octubre daría {_pesos(oct_tendencia)}."
+
+        # % vs base por mes en cada escenario. "gradual": para un local que
+        # viene cayendo, la caída se va cerrando de la tendencia actual hasta
+        # el ritmo de su meta de octubre en diciembre (1/3, 2/3, 3/3 del camino).
+        t = l["pct_tendencia"]
+        m = l["pct_meta"] if l["pct_meta"] is not None else t
+        gradual = [t + (m - t) * k / 3 for k in (1, 2, 3)] if (t < 0 and m > t) else [t] * 3
+        l["pct_meses"] = {
+            "tendencia": [round(t, 4)] * 3,
+            "gradual": [round(x, 4) for x in gradual],
+            "meta": [round(m, 4)] * 3,
+        }
 
     salida = {
         "generado_al": str(hoy.date()),
@@ -386,7 +433,8 @@ def main():
     print(f"Estacionalidad sep->oct/nov/dic {anio - 1} (144+433): {[round(x, 2) for x in idx_total]}")
     for l in locales_out:
         meta = f"{l['pct_meta'] * 100:+.1f}%" if l["pct_meta"] is not None else "-"
-        print(f"{l['nombre']}: tendencia {l['pct_tendencia'] * 100:+.1f}%  |  escenario metas {meta}")
+        gradual = " / ".join(f"{x * 100:+.1f}%" for x in l["pct_meses"]["gradual"])
+        print(f"{l['nombre']}: tendencia {l['pct_tendencia'] * 100:+.1f}%  |  gradual {gradual}  |  metas {meta}  |  ajuste precio {l['ajuste_precio']}")
     print(f"\n{'Familia':<14}{'Oct':>8}{'Nov':>8}{'Dic':>8}{'Stock vivo':>12}{'Costo u.':>12}")
     for f in familias_out:
         tot = [sum(v[i] for v in f["base"].values()) for i in range(3)]

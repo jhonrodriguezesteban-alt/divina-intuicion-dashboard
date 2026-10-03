@@ -26,176 +26,84 @@
       "nombre": "Local 144",
       "metodo": "anio_anterior",
       "pct_tendencia": -0.3463,
-      "pct_meta": -0.2006,
+      "pct_meta": -0.1427,
       "alza_precio_unidad": 0.251,
-      "detalle": "Mismo mes 2025 x tendencia jul-sep (-34.6% en unidades). Escenario metas: la meta de octubre ($88.544.000) en unidades, descontando que el precio por prenda subió 25%."
+      "detalle": "Mismo mes 2025 x tendencia jul-sep (-34.6% en unidades; el precio por prenda subió 25%). Escenario metas: las unidades que hacen que octubre llegue a la meta ($88.544.000). Con la tendencia, octubre daría $67.517.851.",
+      "ajuste_precio": 1.0057,
+      "pct_meses": {
+        "tendencia": [
+          -0.3463,
+          -0.3463,
+          -0.3463
+        ],
+        "gradual": [
+          -0.2784,
+          -0.2106,
+          -0.1427
+        ],
+        "meta": [
+          -0.1427,
+          -0.1427,
+          -0.1427
+        ]
+      }
     },
     {
       "codigo": "433",
       "nombre": "Local 433",
       "metodo": "anio_anterior",
       "pct_tendencia": 0.007,
-      "pct_meta": 0.2741,
+      "pct_meta": 0.3684,
       "alza_precio_unidad": 0.2521,
-      "detalle": "Mismo mes 2025 x tendencia jul-sep (+0.7% en unidades). Escenario metas: la meta de octubre ($55.000.000) en unidades, descontando que el precio por prenda subió 25%."
+      "detalle": "Mismo mes 2025 x tendencia jul-sep (+0.7% en unidades; el precio por prenda subió 25%). Escenario metas: las unidades que hacen que octubre llegue a la meta ($55.000.000). Con la tendencia, octubre daría $40.474.731.",
+      "ajuste_precio": 0.9898,
+      "pct_meses": {
+        "tendencia": [
+          0.007,
+          0.007,
+          0.007
+        ],
+        "gradual": [
+          0.007,
+          0.007,
+          0.007
+        ],
+        "meta": [
+          0.3684,
+          0.3684,
+          0.3684
+        ]
+      }
     },
     {
       "codigo": "107",
       "nombre": "Local 107",
       "metodo": "ritmo_actual",
       "pct_tendencia": 0.0,
-      "pct_meta": 0.001,
+      "pct_meta": 0.0093,
       "alza_precio_unidad": null,
-      "detalle": "Sin año anterior: venta de septiembre 2026 x el salto estacional sep->oct/nov/dic que tuvieron 144+433 en 2025. Escenario metas: meta de octubre ($65.000.000) vs lo que da ese mismo método en pesos."
+      "detalle": "Sin año anterior: venta de septiembre 2026 categoría por categoría (en septiembre 78% de sus unidades ya fueron ropa) x el salto estacional sep->oct/nov/dic que tuvieron 144+433 en 2025. Escenario metas: las unidades que hacen que octubre llegue a la meta ($65.000.000). Con la tendencia, octubre daría $64.402.666.",
+      "ajuste_precio": 1.0119,
+      "pct_meses": {
+        "tendencia": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "gradual": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "meta": [
+          0.0093,
+          0.0093,
+          0.0093
+        ]
+      }
     }
   ],
   "familias": [
-    {
-      "familia": "ACCESORIOS",
-      "es_accesorio": true,
-      "base": {
-        "Local 144": [
-          0.4,
-          0.5,
-          2.9
-        ],
-        "Local 433": [
-          3.7,
-          4.4,
-          12.4
-        ],
-        "Local 107": [
-          489.2,
-          586.1,
-          1256.2
-        ]
-      },
-      "venta_90d": 1056,
-      "venta_ytd": 2548,
-      "venta_temporada_anterior": 6,
-      "stock_total": 1162,
-      "stock_vivo": 1125,
-      "costo_unitario": 10956,
-      "precio_promedio": 23516,
-      "items": [
-        {
-          "nombre": "CADENAS",
-          "participacion": 0.252,
-          "venta_90d": 266,
-          "venta_ytd": 592,
-          "stock": 283,
-          "costo_unitario": 14274,
-          "precio_promedio": 28962,
-          "colores": [],
-          "tallas": []
-        },
-        {
-          "nombre": "ARETES",
-          "participacion": 0.2053,
-          "venta_90d": 217,
-          "venta_ytd": 604,
-          "stock": 294,
-          "costo_unitario": 8943,
-          "precio_promedio": 18594,
-          "colores": [],
-          "tallas": []
-        },
-        {
-          "nombre": "ACCESORIOS",
-          "participacion": 0.1866,
-          "venta_90d": 197,
-          "venta_ytd": 224,
-          "stock": 82,
-          "costo_unitario": 21457,
-          "precio_promedio": 36647,
-          "colores": [],
-          "tallas": []
-        },
-        {
-          "nombre": "PULSERAS",
-          "participacion": 0.11,
-          "venta_90d": 116,
-          "venta_ytd": 328,
-          "stock": 173,
-          "costo_unitario": 16501,
-          "precio_promedio": 27224,
-          "colores": [],
-          "tallas": []
-        },
-        {
-          "nombre": "ANILLOS",
-          "participacion": 0.1072,
-          "venta_90d": 113,
-          "venta_ytd": 336,
-          "stock": 84,
-          "costo_unitario": 6971,
-          "precio_promedio": 16245,
-          "colores": [],
-          "tallas": []
-        },
-        {
-          "nombre": "EARCUF",
-          "participacion": 0.0541,
-          "venta_90d": 57,
-          "venta_ytd": 133,
-          "stock": 70,
-          "costo_unitario": 7408,
-          "precio_promedio": 17706,
-          "colores": [],
-          "tallas": []
-        },
-        {
-          "nombre": "TOPOS",
-          "participacion": 0.0429,
-          "venta_90d": 45,
-          "venta_ytd": 178,
-          "stock": 118,
-          "costo_unitario": 8238,
-          "precio_promedio": 16705,
-          "colores": [],
-          "tallas": []
-        },
-        {
-          "nombre": "TOBILLERAS",
-          "participacion": 0.0289,
-          "venta_90d": 31,
-          "venta_ytd": 60,
-          "stock": 20,
-          "costo_unitario": 6170,
-          "precio_promedio": 13476,
-          "colores": [],
-          "tallas": []
-        },
-        {
-          "nombre": "BRAZALETE",
-          "participacion": 0.0074,
-          "venta_90d": 8,
-          "venta_ytd": 39,
-          "stock": 22,
-          "costo_unitario": 10511,
-          "precio_promedio": 24333,
-          "colores": [],
-          "tallas": []
-        },
-        {
-          "nombre": "JUEGOS",
-          "participacion": 0.0038,
-          "venta_90d": 4,
-          "venta_ytd": 29,
-          "stock": 6,
-          "costo_unitario": 21571,
-          "precio_promedio": 37676,
-          "colores": [],
-          "tallas": []
-        }
-      ],
-      "otros": {
-        "participacion": 0.0018,
-        "stock": 0
-      },
-      "mix_colores": [],
-      "mix_tallas": []
-    },
     {
       "familia": "BLUSAS",
       "es_accesorio": false,
@@ -211,9 +119,9 @@
           492.6
         ],
         "Local 107": [
-          77.7,
-          94.6,
-          221.7
+          146.2,
+          177.8,
+          416.8
         ]
       },
       "venta_90d": 771,
@@ -223,6 +131,8 @@
       "stock_vivo": 658,
       "costo_unitario": 29171,
       "precio_promedio": 65155,
+      "precio_actual": 66668,
+      "margen": 0.5534,
       "items": [
         {
           "nombre": "BLUSA SANTORINI",
@@ -657,9 +567,9 @@
           313.4
         ],
         "Local 107": [
-          47.9,
-          68.3,
-          147.4
+          94.1,
+          134.2,
+          289.9
         ]
       },
       "venta_90d": 776,
@@ -669,6 +579,8 @@
       "stock_vivo": 852,
       "costo_unitario": 66379,
       "precio_promedio": 117668,
+      "precio_actual": 123284,
+      "margen": 0.4285,
       "items": [
         {
           "nombre": "JEAN BORDADO",
@@ -1217,453 +1129,152 @@
       ]
     },
     {
-      "familia": "CHAQUETAS",
-      "es_accesorio": false,
+      "familia": "ACCESORIOS",
+      "es_accesorio": true,
       "base": {
         "Local 144": [
-          58.1,
-          77.5,
-          142.3
+          1.3,
+          1.5,
+          5.2
         ],
         "Local 433": [
-          34.2,
-          65.7,
-          133.6
+          5.0,
+          5.9,
+          15.6
         ],
         "Local 107": [
-          25.6,
-          38.6,
-          73.8
+          182.0,
+          218.1,
+          467.5
         ]
       },
-      "venta_90d": 472,
-      "venta_ytd": 977,
-      "venta_temporada_anterior": 576,
-      "stock_total": 245,
-      "stock_vivo": 227,
-      "costo_unitario": 75780,
-      "precio_promedio": 130962,
+      "venta_90d": 1056,
+      "venta_ytd": 2548,
+      "venta_temporada_anterior": 6,
+      "stock_total": 1162,
+      "stock_vivo": 1125,
+      "costo_unitario": 10956,
+      "precio_promedio": 23516,
+      "precio_actual": 25509,
+      "margen": 0.5436,
       "items": [
         {
-          "nombre": "CAPA JEAN",
-          "participacion": 0.1659,
-          "venta_90d": 78,
-          "venta_ytd": 87,
-          "stock": 29,
-          "costo_unitario": 67500,
-          "precio_promedio": 130562,
-          "colores": [
-            [
-              "GRIS OSCURO",
-              0.6237
-            ],
-            [
-              "MARFIL",
-              0.1641
-            ],
-            [
-              "CAFE",
-              0.0747
-            ],
-            [
-              "ANIMAL PRINT",
-              0.0508
-            ]
-          ],
-          "tallas": [
-            [
-              "Única",
-              1.0
-            ]
-          ]
-        },
-        {
-          "nombre": "CAPA JEAN GAMUZA",
-          "participacion": 0.0602,
-          "venta_90d": 28,
-          "venta_ytd": 28,
-          "stock": 10,
-          "costo_unitario": 90000,
-          "precio_promedio": 140000,
-          "colores": [
-            [
-              "NEGRO",
-              0.8257
-            ],
-            [
-              "AZUL",
-              0.1743
-            ]
-          ],
-          "tallas": [
-            [
-              "Única",
-              1.0
-            ]
-          ]
-        },
-        {
-          "nombre": "CAPA JEAN HIELO CLARA",
-          "participacion": 0.06,
-          "venta_90d": 28,
-          "venta_ytd": 28,
-          "stock": 1,
-          "costo_unitario": 65000,
-          "precio_promedio": 130345,
+          "nombre": "CADENAS",
+          "participacion": 0.252,
+          "venta_90d": 266,
+          "venta_ytd": 592,
+          "stock": 283,
+          "costo_unitario": 14274,
+          "precio_promedio": 28962,
           "colores": [],
-          "tallas": [
-            [
-              "Única",
-              1.0
-            ]
-          ]
+          "tallas": []
         },
         {
-          "nombre": "CHAQUETA QUEEN",
-          "participacion": 0.0599,
-          "venta_90d": 28,
-          "venta_ytd": 31,
-          "stock": 11,
-          "costo_unitario": 65000,
-          "precio_promedio": 132188,
-          "colores": [
-            [
-              "NEGRO",
-              0.4829
-            ],
-            [
-              "CAFE",
-              0.3798
-            ],
-            [
-              "BEIGE",
-              0.0692
-            ],
-            [
-              "CAMEL",
-              0.0682
-            ]
-          ],
-          "tallas": [
-            [
-              "Única",
-              1.0
-            ]
-          ]
+          "nombre": "ARETES",
+          "participacion": 0.2053,
+          "venta_90d": 217,
+          "venta_ytd": 604,
+          "stock": 294,
+          "costo_unitario": 8943,
+          "precio_promedio": 18594,
+          "colores": [],
+          "tallas": []
         },
         {
-          "nombre": "CHAMARRA GLOBO HOMBRO",
-          "participacion": 0.0581,
-          "venta_90d": 27,
-          "venta_ytd": 30,
-          "stock": 2,
-          "costo_unitario": 65000,
-          "precio_promedio": 136774,
-          "colores": [
-            [
-              "VINOTINTO",
-              0.4305
-            ],
-            [
-              "CAFE",
-              0.3203
-            ],
-            [
-              "NEGRO",
-              0.2492
-            ]
-          ],
-          "tallas": [
-            [
-              "Única",
-              1.0
-            ]
-          ]
+          "nombre": "ACCESORIOS",
+          "participacion": 0.1866,
+          "venta_90d": 197,
+          "venta_ytd": 224,
+          "stock": 82,
+          "costo_unitario": 21457,
+          "precio_promedio": 36647,
+          "colores": [],
+          "tallas": []
         },
         {
-          "nombre": "CHAQUETA PAÑO SOFIA",
-          "participacion": 0.0521,
-          "venta_90d": 25,
-          "venta_ytd": 40,
+          "nombre": "PULSERAS",
+          "participacion": 0.11,
+          "venta_90d": 116,
+          "venta_ytd": 328,
+          "stock": 173,
+          "costo_unitario": 16501,
+          "precio_promedio": 27224,
+          "colores": [],
+          "tallas": []
+        },
+        {
+          "nombre": "ANILLOS",
+          "participacion": 0.1072,
+          "venta_90d": 113,
+          "venta_ytd": 336,
+          "stock": 84,
+          "costo_unitario": 6971,
+          "precio_promedio": 16245,
+          "colores": [],
+          "tallas": []
+        },
+        {
+          "nombre": "EARCUF",
+          "participacion": 0.0541,
+          "venta_90d": 57,
+          "venta_ytd": 133,
+          "stock": 70,
+          "costo_unitario": 7408,
+          "precio_promedio": 17706,
+          "colores": [],
+          "tallas": []
+        },
+        {
+          "nombre": "TOPOS",
+          "participacion": 0.0429,
+          "venta_90d": 45,
+          "venta_ytd": 178,
+          "stock": 118,
+          "costo_unitario": 8238,
+          "precio_promedio": 16705,
+          "colores": [],
+          "tallas": []
+        },
+        {
+          "nombre": "TOBILLERAS",
+          "participacion": 0.0289,
+          "venta_90d": 31,
+          "venta_ytd": 60,
+          "stock": 20,
+          "costo_unitario": 6170,
+          "precio_promedio": 13476,
+          "colores": [],
+          "tallas": []
+        },
+        {
+          "nombre": "BRAZALETE",
+          "participacion": 0.0074,
+          "venta_90d": 8,
+          "venta_ytd": 39,
           "stock": 22,
-          "costo_unitario": 55000,
-          "precio_promedio": 134878,
-          "colores": [
-            [
-              "GRIS CLARO",
-              0.361
-            ],
-            [
-              "BEIGE",
-              0.3607
-            ],
-            [
-              "MARFIL",
-              0.2388
-            ],
-            [
-              "CAFE",
-              0.0395
-            ]
-          ],
-          "tallas": [
-            [
-              "Única",
-              1.0
-            ]
-          ]
+          "costo_unitario": 10511,
+          "precio_promedio": 24333,
+          "colores": [],
+          "tallas": []
         },
         {
-          "nombre": "CHAQUETA CAPOTA CALIFORNIA",
-          "participacion": 0.0396,
-          "venta_90d": 19,
-          "venta_ytd": 19,
-          "stock": 3,
-          "costo_unitario": 90000,
-          "precio_promedio": 140526,
-          "colores": [
-            [
-              "VINOTINTO",
-              0.4227
-            ],
-            [
-              "CAFE",
-              0.3165
-            ],
-            [
-              "NEGRO",
-              0.2608
-            ]
-          ],
-          "tallas": [
-            [
-              "Única",
-              1.0
-            ]
-          ]
-        },
-        {
-          "nombre": "CHAQUETA POLAR",
-          "participacion": 0.037,
-          "venta_90d": 17,
-          "venta_ytd": 40,
-          "stock": 7,
-          "costo_unitario": 75000,
-          "precio_promedio": 129222,
-          "colores": [
-            [
-              "VINOTINTO",
-              0.3348
-            ],
-            [
-              "CAFE",
-              0.2783
-            ],
-            [
-              "NEGRO",
-              0.2764
-            ],
-            [
-              "MARFIL",
-              0.0558
-            ]
-          ],
-          "tallas": [
-            [
-              "Única",
-              1.0
-            ]
-          ]
-        },
-        {
-          "nombre": "CHAMARRA CUERO CORTA",
-          "participacion": 0.0352,
-          "venta_90d": 17,
-          "venta_ytd": 85,
-          "stock": 13,
-          "costo_unitario": 63750,
-          "precio_promedio": 130095,
-          "colores": [
-            [
-              "CAFE",
-              0.3561
-            ],
-            [
-              "VINOTINTO",
-              0.2923
-            ],
-            [
-              "NEGRO",
-              0.233
-            ],
-            [
-              "VERDE PINO",
-              0.1186
-            ]
-          ],
-          "tallas": [
-            [
-              "Única",
-              1.0
-            ]
-          ]
-        },
-        {
-          "nombre": "CHAQUETA PAÑO TINA",
-          "participacion": 0.0349,
-          "venta_90d": 16,
-          "venta_ytd": 27,
-          "stock": 4,
-          "costo_unitario": 90000,
-          "precio_promedio": 146071,
-          "colores": [
-            [
-              "BEIGE",
-              0.5893
-            ],
-            [
-              "VERDE PINO",
-              0.1773
-            ],
-            [
-              "AVENA",
-              0.116
-            ],
-            [
-              "CAMEL",
-              0.0589
-            ]
-          ],
-          "tallas": [
-            [
-              "Única",
-              1.0
-            ]
-          ]
-        },
-        {
-          "nombre": "CHAQUETA OSLO PELUCHE",
-          "participacion": 0.0226,
-          "venta_90d": 11,
-          "venta_ytd": 11,
-          "stock": 5,
-          "costo_unitario": 75000,
-          "precio_promedio": 137273,
-          "colores": [
-            [
-              "MARFIL",
-              0.4525
-            ],
-            [
-              "AVENA",
-              0.3668
-            ],
-            [
-              "CAMEL",
-              0.1807
-            ]
-          ],
-          "tallas": [
-            [
-              "Única",
-              1.0
-            ]
-          ]
-        },
-        {
-          "nombre": "CAPA CUERINA",
-          "participacion": 0.021,
-          "venta_90d": 10,
-          "venta_ytd": 10,
-          "stock": 7,
-          "costo_unitario": 60000,
-          "precio_promedio": 129000,
-          "colores": [
-            [
-              "CAFE",
-              0.3993
-            ],
-            [
-              "NEGRO",
-              0.3005
-            ],
-            [
-              "VINOTINTO",
-              0.3002
-            ]
-          ],
-          "tallas": [
-            [
-              "Única",
-              1.0
-            ]
-          ]
+          "nombre": "JUEGOS",
+          "participacion": 0.0038,
+          "venta_90d": 4,
+          "venta_ytd": 29,
+          "stock": 6,
+          "costo_unitario": 21571,
+          "precio_promedio": 37676,
+          "colores": [],
+          "tallas": []
         }
       ],
       "otros": {
-        "participacion": 0.3535,
-        "stock": 113
+        "participacion": 0.0018,
+        "stock": 0
       },
-      "mix_colores": [
-        [
-          "NEGRO",
-          0.2474
-        ],
-        [
-          "CAFE",
-          0.1928
-        ],
-        [
-          "VINOTINTO",
-          0.1314
-        ],
-        [
-          "GRIS OSCURO",
-          0.1213
-        ],
-        [
-          "BEIGE",
-          0.0926
-        ],
-        [
-          "MARFIL",
-          0.0741
-        ],
-        [
-          "GRIS CLARO",
-          0.024
-        ],
-        [
-          "CAMEL",
-          0.0235
-        ]
-      ],
-      "mix_tallas": [
-        [
-          "S",
-          0.0084
-        ],
-        [
-          "M",
-          0.0083
-        ],
-        [
-          "L",
-          0.0021
-        ],
-        [
-          "6",
-          0.0042
-        ],
-        [
-          "10",
-          0.0021
-        ],
-        [
-          "Única",
-          0.975
-        ]
-      ]
+      "mix_colores": [],
+      "mix_tallas": []
     },
     {
       "familia": "BODYS",
@@ -1680,9 +1291,9 @@
           85.6
         ],
         "Local 107": [
-          39.9,
-          53.7,
-          108.5
+          78.4,
+          105.5,
+          213.2
         ]
       },
       "venta_90d": 330,
@@ -1692,6 +1303,8 @@
       "stock_vivo": 328,
       "costo_unitario": 25719,
       "precio_promedio": 65133,
+      "precio_actual": 64611,
+      "margen": 0.6179,
       "items": [
         {
           "nombre": "BODY BASICO REDONDO",
@@ -2144,6 +1757,457 @@
       ]
     },
     {
+      "familia": "CHAQUETAS",
+      "es_accesorio": false,
+      "base": {
+        "Local 144": [
+          58.1,
+          77.5,
+          142.3
+        ],
+        "Local 433": [
+          34.2,
+          65.7,
+          133.6
+        ],
+        "Local 107": [
+          46.0,
+          69.4,
+          132.6
+        ]
+      },
+      "venta_90d": 472,
+      "venta_ytd": 977,
+      "venta_temporada_anterior": 576,
+      "stock_total": 245,
+      "stock_vivo": 227,
+      "costo_unitario": 75780,
+      "precio_promedio": 130962,
+      "precio_actual": 133054,
+      "margen": 0.4517,
+      "items": [
+        {
+          "nombre": "CAPA JEAN",
+          "participacion": 0.1659,
+          "venta_90d": 78,
+          "venta_ytd": 87,
+          "stock": 29,
+          "costo_unitario": 67500,
+          "precio_promedio": 130562,
+          "colores": [
+            [
+              "GRIS OSCURO",
+              0.6237
+            ],
+            [
+              "MARFIL",
+              0.1641
+            ],
+            [
+              "CAFE",
+              0.0747
+            ],
+            [
+              "ANIMAL PRINT",
+              0.0508
+            ]
+          ],
+          "tallas": [
+            [
+              "Única",
+              1.0
+            ]
+          ]
+        },
+        {
+          "nombre": "CAPA JEAN GAMUZA",
+          "participacion": 0.0602,
+          "venta_90d": 28,
+          "venta_ytd": 28,
+          "stock": 10,
+          "costo_unitario": 90000,
+          "precio_promedio": 140000,
+          "colores": [
+            [
+              "NEGRO",
+              0.8257
+            ],
+            [
+              "AZUL",
+              0.1743
+            ]
+          ],
+          "tallas": [
+            [
+              "Única",
+              1.0
+            ]
+          ]
+        },
+        {
+          "nombre": "CAPA JEAN HIELO CLARA",
+          "participacion": 0.06,
+          "venta_90d": 28,
+          "venta_ytd": 28,
+          "stock": 1,
+          "costo_unitario": 65000,
+          "precio_promedio": 130345,
+          "colores": [],
+          "tallas": [
+            [
+              "Única",
+              1.0
+            ]
+          ]
+        },
+        {
+          "nombre": "CHAQUETA QUEEN",
+          "participacion": 0.0599,
+          "venta_90d": 28,
+          "venta_ytd": 31,
+          "stock": 11,
+          "costo_unitario": 65000,
+          "precio_promedio": 132188,
+          "colores": [
+            [
+              "NEGRO",
+              0.4829
+            ],
+            [
+              "CAFE",
+              0.3798
+            ],
+            [
+              "BEIGE",
+              0.0692
+            ],
+            [
+              "CAMEL",
+              0.0682
+            ]
+          ],
+          "tallas": [
+            [
+              "Única",
+              1.0
+            ]
+          ]
+        },
+        {
+          "nombre": "CHAMARRA GLOBO HOMBRO",
+          "participacion": 0.0581,
+          "venta_90d": 27,
+          "venta_ytd": 30,
+          "stock": 2,
+          "costo_unitario": 65000,
+          "precio_promedio": 136774,
+          "colores": [
+            [
+              "VINOTINTO",
+              0.4305
+            ],
+            [
+              "CAFE",
+              0.3203
+            ],
+            [
+              "NEGRO",
+              0.2492
+            ]
+          ],
+          "tallas": [
+            [
+              "Única",
+              1.0
+            ]
+          ]
+        },
+        {
+          "nombre": "CHAQUETA PAÑO SOFIA",
+          "participacion": 0.0521,
+          "venta_90d": 25,
+          "venta_ytd": 40,
+          "stock": 22,
+          "costo_unitario": 55000,
+          "precio_promedio": 134878,
+          "colores": [
+            [
+              "GRIS CLARO",
+              0.361
+            ],
+            [
+              "BEIGE",
+              0.3607
+            ],
+            [
+              "MARFIL",
+              0.2388
+            ],
+            [
+              "CAFE",
+              0.0395
+            ]
+          ],
+          "tallas": [
+            [
+              "Única",
+              1.0
+            ]
+          ]
+        },
+        {
+          "nombre": "CHAQUETA CAPOTA CALIFORNIA",
+          "participacion": 0.0396,
+          "venta_90d": 19,
+          "venta_ytd": 19,
+          "stock": 3,
+          "costo_unitario": 90000,
+          "precio_promedio": 140526,
+          "colores": [
+            [
+              "VINOTINTO",
+              0.4227
+            ],
+            [
+              "CAFE",
+              0.3165
+            ],
+            [
+              "NEGRO",
+              0.2608
+            ]
+          ],
+          "tallas": [
+            [
+              "Única",
+              1.0
+            ]
+          ]
+        },
+        {
+          "nombre": "CHAQUETA POLAR",
+          "participacion": 0.037,
+          "venta_90d": 17,
+          "venta_ytd": 40,
+          "stock": 7,
+          "costo_unitario": 75000,
+          "precio_promedio": 129222,
+          "colores": [
+            [
+              "VINOTINTO",
+              0.3348
+            ],
+            [
+              "CAFE",
+              0.2783
+            ],
+            [
+              "NEGRO",
+              0.2764
+            ],
+            [
+              "MARFIL",
+              0.0558
+            ]
+          ],
+          "tallas": [
+            [
+              "Única",
+              1.0
+            ]
+          ]
+        },
+        {
+          "nombre": "CHAMARRA CUERO CORTA",
+          "participacion": 0.0352,
+          "venta_90d": 17,
+          "venta_ytd": 85,
+          "stock": 13,
+          "costo_unitario": 63750,
+          "precio_promedio": 130095,
+          "colores": [
+            [
+              "CAFE",
+              0.3561
+            ],
+            [
+              "VINOTINTO",
+              0.2923
+            ],
+            [
+              "NEGRO",
+              0.233
+            ],
+            [
+              "VERDE PINO",
+              0.1186
+            ]
+          ],
+          "tallas": [
+            [
+              "Única",
+              1.0
+            ]
+          ]
+        },
+        {
+          "nombre": "CHAQUETA PAÑO TINA",
+          "participacion": 0.0349,
+          "venta_90d": 16,
+          "venta_ytd": 27,
+          "stock": 4,
+          "costo_unitario": 90000,
+          "precio_promedio": 146071,
+          "colores": [
+            [
+              "BEIGE",
+              0.5893
+            ],
+            [
+              "VERDE PINO",
+              0.1773
+            ],
+            [
+              "AVENA",
+              0.116
+            ],
+            [
+              "CAMEL",
+              0.0589
+            ]
+          ],
+          "tallas": [
+            [
+              "Única",
+              1.0
+            ]
+          ]
+        },
+        {
+          "nombre": "CHAQUETA OSLO PELUCHE",
+          "participacion": 0.0226,
+          "venta_90d": 11,
+          "venta_ytd": 11,
+          "stock": 5,
+          "costo_unitario": 75000,
+          "precio_promedio": 137273,
+          "colores": [
+            [
+              "MARFIL",
+              0.4525
+            ],
+            [
+              "AVENA",
+              0.3668
+            ],
+            [
+              "CAMEL",
+              0.1807
+            ]
+          ],
+          "tallas": [
+            [
+              "Única",
+              1.0
+            ]
+          ]
+        },
+        {
+          "nombre": "CAPA CUERINA",
+          "participacion": 0.021,
+          "venta_90d": 10,
+          "venta_ytd": 10,
+          "stock": 7,
+          "costo_unitario": 60000,
+          "precio_promedio": 129000,
+          "colores": [
+            [
+              "CAFE",
+              0.3993
+            ],
+            [
+              "NEGRO",
+              0.3005
+            ],
+            [
+              "VINOTINTO",
+              0.3002
+            ]
+          ],
+          "tallas": [
+            [
+              "Única",
+              1.0
+            ]
+          ]
+        }
+      ],
+      "otros": {
+        "participacion": 0.3535,
+        "stock": 113
+      },
+      "mix_colores": [
+        [
+          "NEGRO",
+          0.2474
+        ],
+        [
+          "CAFE",
+          0.1928
+        ],
+        [
+          "VINOTINTO",
+          0.1314
+        ],
+        [
+          "GRIS OSCURO",
+          0.1213
+        ],
+        [
+          "BEIGE",
+          0.0926
+        ],
+        [
+          "MARFIL",
+          0.0741
+        ],
+        [
+          "GRIS CLARO",
+          0.024
+        ],
+        [
+          "CAMEL",
+          0.0235
+        ]
+      ],
+      "mix_tallas": [
+        [
+          "S",
+          0.0084
+        ],
+        [
+          "M",
+          0.0083
+        ],
+        [
+          "L",
+          0.0021
+        ],
+        [
+          "6",
+          0.0042
+        ],
+        [
+          "10",
+          0.0021
+        ],
+        [
+          "Única",
+          0.975
+        ]
+      ]
+    },
+    {
       "familia": "CORSET",
       "es_accesorio": false,
       "base": {
@@ -2158,9 +2222,9 @@
           93.1
         ],
         "Local 107": [
-          52.1,
-          42.0,
-          62.3
+          102.0,
+          82.2,
+          121.9
         ]
       },
       "venta_90d": 354,
@@ -2170,6 +2234,8 @@
       "stock_vivo": 303,
       "costo_unitario": 40082,
       "precio_promedio": 72975,
+      "precio_actual": 75025,
+      "margen": 0.4614,
       "items": [
         {
           "nombre": "CORSET PETITE",
@@ -2482,9 +2548,9 @@
           128.4
         ],
         "Local 107": [
-          33.5,
-          34.3,
-          80.6
+          69.8,
+          71.6,
+          168.3
         ]
       },
       "venta_90d": 254,
@@ -2494,6 +2560,8 @@
       "stock_vivo": 191,
       "costo_unitario": 46382,
       "precio_promedio": 82831,
+      "precio_actual": 85236,
+      "margen": 0.4179,
       "items": [
         {
           "nombre": "FALDA GLOBO",
@@ -2982,9 +3050,9 @@
           96.0
         ],
         "Local 107": [
-          15.9,
-          17.9,
-          44.1
+          33.8,
+          37.9,
+          93.6
         ]
       },
       "venta_90d": 237,
@@ -2994,6 +3062,8 @@
       "stock_vivo": 298,
       "costo_unitario": 39657,
       "precio_promedio": 77986,
+      "precio_actual": 76074,
+      "margen": 0.5186,
       "items": [
         {
           "nombre": "BUZO TEJIDO CAMPANA",
@@ -3423,9 +3493,9 @@
           35.7
         ],
         "Local 107": [
-          24.0,
-          21.8,
-          30.1
+          49.5,
+          44.9,
+          62.0
         ]
       },
       "venta_90d": 194,
@@ -3435,6 +3505,8 @@
       "stock_vivo": 179,
       "costo_unitario": 93156,
       "precio_promedio": 148040,
+      "precio_actual": 157940,
+      "margen": 0.3827,
       "items": [
         {
           "nombre": "SUDADERA ZOE",
@@ -3702,9 +3774,9 @@
           72.9
         ],
         "Local 107": [
-          4.6,
-          5.5,
-          11.9
+          10.1,
+          12.1,
+          26.0
         ]
       },
       "venta_90d": 96,
@@ -3714,6 +3786,8 @@
       "stock_vivo": 72,
       "costo_unitario": 57293,
       "precio_promedio": 113139,
+      "precio_actual": 113711,
+      "margen": 0.5127,
       "items": [
         {
           "nombre": "CAPA JEAN",
@@ -3973,9 +4047,9 @@
           20.8
         ],
         "Local 107": [
-          3.1,
-          3.7,
-          7.9
+          7.6,
+          9.1,
+          19.5
         ]
       },
       "venta_90d": 37,
@@ -3985,6 +4059,8 @@
       "stock_vivo": 19,
       "costo_unitario": 54519,
       "precio_promedio": 96403,
+      "precio_actual": 106447,
+      "margen": 0.4519,
       "items": [
         {
           "nombre": "CHALECO SANTA",
@@ -4154,9 +4230,9 @@
           17.6
         ],
         "Local 107": [
-          0.5,
-          0.6,
-          1.3
+          1.3,
+          1.5,
+          3.2
         ]
       },
       "venta_90d": 26,
@@ -4166,6 +4242,8 @@
       "stock_vivo": 90,
       "costo_unitario": 14059,
       "precio_promedio": 34267,
+      "precio_actual": 34267,
+      "margen": 0.5897,
       "items": [],
       "otros": {
         "participacion": 1,
@@ -4180,23 +4258,98 @@
       ]
     },
     {
+      "familia": "BLAZER",
+      "es_accesorio": false,
+      "base": {
+        "Local 144": [
+          7.0,
+          7.0,
+          9.6
+        ],
+        "Local 433": [
+          6.9,
+          2.9,
+          5.8
+        ],
+        "Local 107": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "venta_90d": 3,
+      "venta_ytd": 32,
+      "venta_temporada_anterior": 52,
+      "stock_total": 7,
+      "stock_vivo": 7,
+      "costo_unitario": 51860,
+      "precio_promedio": 89070,
+      "precio_actual": 89070,
+      "margen": 0.4178,
+      "items": [],
+      "otros": {
+        "participacion": 1,
+        "stock": 7
+      },
+      "mix_colores": [
+        [
+          "NEGRO",
+          0.5383
+        ],
+        [
+          "CAMEL",
+          0.2406
+        ],
+        [
+          "BLANCO",
+          0.1831
+        ],
+        [
+          "CAFE",
+          0.038
+        ]
+      ],
+      "mix_tallas": [
+        [
+          "6",
+          0.2503
+        ],
+        [
+          "8",
+          0.0402
+        ],
+        [
+          "10",
+          0.3745
+        ],
+        [
+          "12",
+          0.1965
+        ],
+        [
+          "14",
+          0.1385
+        ]
+      ]
+    },
+    {
       "familia": "SIN CATEGORÍA",
       "es_accesorio": false,
       "base": {
         "Local 144": [
-          4.8,
-          5.7,
-          12.3
+          1.3,
+          1.5,
+          3.2
         ],
         "Local 433": [
-          3.2,
-          3.9,
-          8.3
+          1.2,
+          1.5,
+          3.2
         ],
         "Local 107": [
-          1.5,
-          1.8,
-          4.0
+          2.5,
+          3.0,
+          6.5
         ]
       },
       "venta_90d": 24,
@@ -4206,6 +4359,8 @@
       "stock_vivo": 20,
       "costo_unitario": 24857,
       "precio_promedio": 64209,
+      "precio_actual": 64209,
+      "margen": 0.6129,
       "items": [
         {
           "nombre": "BODY FLOWER",
@@ -4279,96 +4434,23 @@
       ]
     },
     {
-      "familia": "BLAZER",
-      "es_accesorio": false,
-      "base": {
-        "Local 144": [
-          7.0,
-          7.0,
-          9.6
-        ],
-        "Local 433": [
-          6.9,
-          2.9,
-          5.8
-        ],
-        "Local 107": [
-          0.0,
-          0.0,
-          0.0
-        ]
-      },
-      "venta_90d": 3,
-      "venta_ytd": 32,
-      "venta_temporada_anterior": 52,
-      "stock_total": 7,
-      "stock_vivo": 7,
-      "costo_unitario": 51860,
-      "precio_promedio": 89070,
-      "items": [],
-      "otros": {
-        "participacion": 1,
-        "stock": 7
-      },
-      "mix_colores": [
-        [
-          "NEGRO",
-          0.5383
-        ],
-        [
-          "CAMEL",
-          0.2406
-        ],
-        [
-          "BLANCO",
-          0.1831
-        ],
-        [
-          "CAFE",
-          0.038
-        ]
-      ],
-      "mix_tallas": [
-        [
-          "6",
-          0.2503
-        ],
-        [
-          "8",
-          0.0402
-        ],
-        [
-          "10",
-          0.3745
-        ],
-        [
-          "12",
-          0.1965
-        ],
-        [
-          "14",
-          0.1385
-        ]
-      ]
-    },
-    {
       "familia": "SHORTS",
       "es_accesorio": false,
       "base": {
         "Local 144": [
+          1.3,
           1.5,
-          1.8,
-          3.8
+          3.2
         ],
         "Local 433": [
-          1.4,
-          1.7,
-          3.6
+          1.2,
+          1.5,
+          3.2
         ],
         "Local 107": [
-          0.5,
-          0.6,
-          1.3
+          1.3,
+          1.5,
+          3.2
         ]
       },
       "venta_90d": 8,
@@ -4378,6 +4460,8 @@
       "stock_vivo": 14,
       "costo_unitario": 36250,
       "precio_promedio": 78750,
+      "precio_actual": 78750,
+      "margen": 0.5397,
       "items": [
         {
           "nombre": "SHORT CORREA CLOHE",
@@ -4461,9 +4545,9 @@
           1.0
         ],
         "Local 107": [
-          1.5,
-          1.8,
-          4.0
+          2.5,
+          3.0,
+          6.5
         ]
       },
       "venta_90d": 17,
@@ -4473,6 +4557,8 @@
       "stock_vivo": 25,
       "costo_unitario": 46286,
       "precio_promedio": 85000,
+      "precio_actual": 85000,
+      "margen": 0.4414,
       "items": [
         {
           "nombre": "CAMISA TEJIDA ROMA",
