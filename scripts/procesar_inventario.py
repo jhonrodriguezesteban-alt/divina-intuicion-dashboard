@@ -50,6 +50,12 @@ def main():
         sucursales_cfg[codigo]: (int(df[cols_presentes[codigo]].sum()) if codigo in cols_presentes else 0)
         for codigo in COL_STOCK_POR_SUCURSAL
     }
+    # Bodegas que no son un local (ej. "BODEGA PRINCIPAL 413", que apareció en
+    # oct-2026) -- se muestran aparte con su propio nombre en vez de perderse.
+    for col in df.columns:
+        if col.startswith("Stock bodega:") and col not in COL_STOCK_POR_SUCURSAL.values():
+            nombre = col.split("Stock bodega:")[1].split("(")[0].strip().title()
+            stock_por_sucursal[nombre] = int(pd.to_numeric(df[col], errors="coerce").fillna(0).sum())
 
     top_categorias = (
         df.groupby("Categoría")

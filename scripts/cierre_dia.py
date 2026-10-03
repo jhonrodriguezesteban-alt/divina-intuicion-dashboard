@@ -66,15 +66,33 @@ def main():
         "descargar_mensual_por_sucursal.py",
         "procesar_historico_mensual.py",
         "procesar_reorden.py",
+        "procesar_planeacion_temporada.py",
         "generar_resumen_dia.py",
         "generar_dashboard.py",
     ]
+    # Pasos cuya falla NO debe tumbar el cierre completo: si el catálogo de
+    # artículos no baja, los procesadores siguen con el último archivo bueno
+    # -- abortar ahí congelaba también ventas e histórico (pasó 10 días
+    # seguidos en sep-2026). Se avisa igual para que no quede en silencio.
+    no_bloqueantes = {"descargar_articulos.py", "procesar_planeacion_temporada.py"}
+    advertencias = []
+
     for paso in pasos:
         print(f"--- {paso} ---")
         if not _run(paso):
+            if paso in no_bloqueantes:
+                print(f"Falló '{paso}' (no bloqueante) -- se sigue con el último archivo disponible.")
+                advertencias.append(paso)
+                continue
             print(f"Falló '{paso}'. Abortando sin publicar el cierre.")
             notificar_mac("Divina Intuición — Cierre falló", f"'{paso}' falló. Revisar manualmente.")
             return
+
+    if advertencias:
+        notificar_mac(
+            "Divina Intuición — Cierre con advertencias",
+            f"Falló: {', '.join(advertencias)}. Se publicó con los últimos datos disponibles de ese paso.",
+        )
 
     marcar_ok("cierre")
     hora = datetime.now().strftime("%Y-%m-%d %H:%M")

@@ -31,6 +31,7 @@ volver a abrir el modal, volver a marcar) unas cuantas veces antes de
 darse por vencido.
 """
 
+import sys
 from datetime import datetime
 from pathlib import Path
 
@@ -48,13 +49,19 @@ MAX_INTENTOS = 3
 
 # Columnas que procesar_inventario.py / procesar_reorden.py / procesar_liquidacion.py
 # leen del Excel -- si Effi las desmarca, hay que volver a marcarlas antes de exportar.
+# Effi renombró "Stock total empresa" -> "Stock disponible empresa" (detectado
+# 2026-10-02: el modal ya no trae el nombre viejo, y así estuvo fallando la
+# descarga en silencio desde el 21-sep) y agregó "BODEGA PRINCIPAL 413".
+# asegurar_columnas_articulos() mapea el nombre nuevo al viejo para los
+# procesadores de abajo.
 COLUMNAS_REQUERIDAS = [
     "ID",
     "Nombre",
     "Categoría",
     "Costo manual",
-    "Stock total empresa",
+    "Stock disponible empresa",
     "Stock bodega: DIVINA INTUCION 144",
+    "Stock bodega: BODEGA PRINCIPAL 413",
     "Stock bodega: DIVINA INTUICION 433",
     "Stock bodega: DIVINA ACCESORIOS",
 ]
@@ -135,6 +142,7 @@ def _intentar_descarga(page, context, ruta: Path) -> bool:
 
 def main():
     ruta = RAW_DIR / "raw_articulos.xlsx"
+    hubo_descarga = False
     with sync_playwright() as p:
         browser, context, page = obtener_contexto(p, headless=True)
 
@@ -154,6 +162,7 @@ def main():
                 ok = False
             if not ok:
                 continue
+            hubo_descarga = True
             faltantes = _columnas_faltantes(ruta)
             if not faltantes:
                 print("Columnas requeridas OK.")
@@ -161,9 +170,20 @@ def main():
                 return
             print(f"AVISO: el Excel descargado no trae estas columnas requeridas: {faltantes}. Reintentando...")
 
-        print(f"No se logró que Effi incluyera todas las columnas requeridas tras {MAX_INTENTOS} intentos. "
-              f"Se deja el último archivo descargado en {ruta}; procesar_inventario.py avisará qué falta.")
         browser.close()
+
+    if not hubo_descarga:
+        # Sin descarga nueva, raw_articulos.xlsx sigue siendo el de la última
+        # vez que sí funcionó -- antes esto salía con código 0 y el inventario
+        # quedaba congelado sin que nadie se enterara (11 días, sep-oct 2026,
+        # por una columna renombrada en Effi). Código 1 para que cierre_dia.py
+        # lo reporte; allá no bloquea el resto del cierre.
+        print(f"ERROR: no se logró descargar el catálogo de artículos en {MAX_INTENTOS} intentos. "
+              f"{ruta} quedó con la versión anterior.")
+        sys.exit(1)
+
+    print(f"No se logró que Effi incluyera todas las columnas requeridas tras {MAX_INTENTOS} intentos. "
+          f"Se deja el último archivo descargado en {ruta}; procesar_inventario.py avisará qué falta.")
 
 
 if __name__ == "__main__":
