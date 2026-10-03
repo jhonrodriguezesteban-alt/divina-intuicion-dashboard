@@ -3,9 +3,9 @@
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 414,
-      "unidades": 3400,
-      "valor_costo": 166878500.0
+      "num_referencias": 418,
+      "unidades": 3271,
+      "valor_costo": 159266500.0
     },
     "inactivas": {
       "num_referencias": 8,
@@ -13,9 +13,9 @@
       "valor_costo": 719000.0
     },
     "nuevas": {
-      "num_referencias": 16,
-      "unidades": 79,
-      "valor_costo": 4140000.0
+      "num_referencias": 19,
+      "unidades": 98,
+      "valor_costo": 4766000.0
     }
   },
   "inactivas": [
@@ -82,13 +82,19 @@
       "valor_costo": 1040000.0
     },
     {
-      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/AZUL",
+      "referencia": "CORSET ENCAJE MELISA",
+      "categoria": "CORSET",
+      "disponible": 11,
+      "valor_costo": 550000.0
+    },
+    {
+      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
       "categoria": "BUZOS",
       "disponible": 4,
       "valor_costo": 240000.0
     },
     {
-      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
+      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/AZUL",
       "categoria": "BUZOS",
       "disponible": 4,
       "valor_costo": 240000.0
@@ -124,13 +130,13 @@
       "valor_costo": 120000.0
     },
     {
-      "referencia": "BODY MALLA BESO",
+      "referencia": "BODY MALLA DADOS",
       "categoria": "CORSET",
       "disponible": 4,
       "valor_costo": 80000.0
     },
     {
-      "referencia": "BODY MALLA DADOS",
+      "referencia": "BODY MALLA BESO",
       "categoria": "CORSET",
       "disponible": 4,
       "valor_costo": 80000.0
@@ -142,16 +148,16 @@
       "valor_costo": 76000.0
     },
     {
+      "referencia": "VESTIDO GLOBO MALLA",
+      "categoria": "VESTIDOS",
+      "disponible": 2,
+      "valor_costo": 76000.0
+    },
+    {
       "referencia": "JEAN BOTA RECTA MAOS",
       "categoria": "PANTALONES",
       "disponible": 1,
       "valor_costo": 60000.0
-    },
-    {
-      "referencia": "BODY MALLA MAR",
-      "categoria": "CORSET",
-      "disponible": 2,
-      "valor_costo": 40000.0
     },
     {
       "referencia": "FALDA CARGO",
@@ -160,10 +166,22 @@
       "valor_costo": 40000.0
     },
     {
+      "referencia": "BODY MALLA MAR",
+      "categoria": "CORSET",
+      "disponible": 2,
+      "valor_costo": 40000.0
+    },
+    {
       "referencia": "BODY BASICO ESQUELETO VERDE",
       "categoria": "BODYS",
       "disponible": 2,
       "valor_costo": 36000.0
+    },
+    {
+      "referencia": "CAMISA RAYAS  AZUL BEBE/CAFE",
+      "categoria": "CAMISAS",
+      "disponible": 6,
+      "valor_costo": 0.0
     }
   ]
 }

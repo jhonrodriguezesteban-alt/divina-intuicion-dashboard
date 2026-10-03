@@ -32,6 +32,11 @@ _COLORES_BASE = [
     "CORAL", "PERLA", "PLATA", "DORADO", "CHOCOLATE", "KAKI", "CAQUI",
     "MOSTAZA", "VINO", "PLOMO", "HUESO", "CRUDO", "NUDE", "ARENA",
     "PETROLEO", "ESMERALDA", "GUAYABA", "LADRILLO", "TABACO", "ANIMAL",
+    # variantes que aparecen en ventas reales (femenino / con tilde) --
+    # sin ellas "FALDA SHORT GEORGINA NEGRA" no se agrupaba con su versión
+    # "NEGRO" ni se reconocía el color en la planeación de temporada.
+    "NEGRA", "BLANCA", "ROJA", "AMARILLA", "MORADA", "CAFÉ", "DORADA",
+    "PLATEADO", "PLATEADA",
 ]
 _COLOR_MODIFICADORES = [
     "CLARO", "CLARA", "OSCURO", "OSCURA", "BEBE", "MILITAR", "NOCHE",
@@ -79,6 +84,7 @@ def talla_de(nombre: str, referencia: str) -> str:
 
 _COLUMNAS_BODEGA_CONOCIDAS = [
     "Stock bodega: DIVINA INTUCION 144 (Sucursal: DIVINA INTUCION 144)",
+    "Stock bodega: BODEGA PRINCIPAL 413 (Sucursal: DIVINA INTUCION 144)",
     "Stock bodega: DIVINA INTUICION 433 (Sucursal: DIVINA INTUCION 433)",
     "Stock bodega: DIVINA ACCESORIOS (Sucursal: DIVINA ACCESORIOS)",
 ]
@@ -103,6 +109,11 @@ def asegurar_columnas_articulos(df: pd.DataFrame) -> pd.DataFrame:
     - "Categoría" ausente -> "SIN CATEGORÍA" (mismo respaldo que ya se
       usaba para categorías vacías fila por fila)."""
     df = df.copy()
+
+    # Effi renombró la columna (detectado 2026-10-02) -- los procesadores
+    # siguen leyendo el nombre viejo.
+    if "Stock total empresa" not in df.columns and "Stock disponible empresa" in df.columns:
+        df = df.rename(columns={"Stock disponible empresa": "Stock total empresa"})
 
     if "Stock total empresa" not in df.columns:
         bodegas_presentes = [c for c in _COLUMNAS_BODEGA_CONOCIDAS if c in df.columns]

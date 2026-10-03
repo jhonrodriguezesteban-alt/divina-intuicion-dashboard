@@ -1014,6 +1014,79 @@ def _seccion_comisiones(sucursales_cfg: list, hoy: "datetime") -> str:
   <script>document.addEventListener('DOMContentLoaded', function(){{ renderComisiones({hoy.month}); }});</script>"""
 
 
+# ---------- sección: planeación de temporada ----------
+
+def _seccion_temporada(plan: dict) -> str:
+    """Estructura vacía + datos embebidos -- todo el cálculo (venta estimada
+    por escenario, compra neta de stock, inversión mes a mes, reparto por
+    referencia/color/talla) corre en JS (renderTemporada) para que los % de
+    crecimiento por local y el colchón se puedan ajustar en vivo sin volver
+    a correr Python. Ver procesar_planeacion_temporada.py para el método."""
+    if not plan:
+        return '<h2>Planeación de temporada</h2><div class="detalle-vacio">Aún sin datos -- corre procesar_planeacion_temporada.py.</div>'
+
+    meses_lbl = " – ".join(m["lbl"] for m in plan["meses"])
+    anio_prev = plan["anio"] - 1
+    inputs = []
+    notas_locales = []
+    for l in plan["locales"]:
+        referencia = f"vs {anio_prev}" if l["metodo"] == "anio_anterior" else "vs ritmo actual"
+        inputs.append(
+            f'<label class="tmp-input">{l["nombre"]}'
+            f'<span><input type="number" step="1" id="tmp-pct-{l["codigo"]}" '
+            f'value="{l["pct_tendencia"] * 100:.1f}" oninput="renderTemporada()"> % {referencia}</span></label>'
+        )
+        meta_txt = f'{l["pct_meta"] * 100:+.1f}%' if l["pct_meta"] is not None else "—"
+        notas_locales.append(
+            f'<li><b>{l["nombre"]}</b> — tendencia {l["pct_tendencia"] * 100:+.1f}% · metas {meta_txt}. {l["detalle"]}</li>'
+        )
+    datos_json = json.dumps(plan, ensure_ascii=False, separators=(",", ":"))
+
+    return f"""
+  <h2>Planeación de temporada · {meses_lbl} {plan["anio"]}</h2>
+  <div class="subtitulo" style="margin-bottom:1.2rem;">
+    Cuántas unidades se estima vender por familia en cada mes de la temporada, cuánto hay que comprar
+    descontando el stock que ya hay (solo el de referencias con venta en los últimos 12 meses), en qué
+    referencias, colores y tallas, y cuánto cuesta (a costo) mes a mes. Ajusta el crecimiento de cada
+    local y el colchón: todo se recalcula al instante.
+  </div>
+
+  <div class="tmp-controles">
+    <div class="tmp-escenarios">
+      <span class="tmp-lbl">Escenario</span>
+      <button class="tmp-esc-btn tmp-esc-on" data-esc="tendencia" onclick="temporadaEscenario('tendencia', this)">Tendencia actual</button>
+      <button class="tmp-esc-btn" data-esc="meta" onclick="temporadaEscenario('meta', this)">Ritmo de las metas de octubre</button>
+    </div>
+    <div class="tmp-inputs">
+      {''.join(inputs)}
+      <label class="tmp-input">Colchón de seguridad<span><input type="number" step="1" min="0" id="tmp-colchon" value="10" oninput="renderTemporada()"> % sobre la venta</span></label>
+    </div>
+    <ul class="tmp-notas-locales">{''.join(notas_locales)}</ul>
+  </div>
+
+  <div class="kpi-grid" id="tmp-kpis"></div>
+
+  <h2>Mes a mes</h2>
+  <div class="tabla-scroll"><table class="tabla-categorias" id="tmp-meses"></table></div>
+  <div class="subtitulo" style="margin-top:.5rem;font-size:.8rem;">
+    La compra de cada mes es lo que debe estar en tienda al empezar ese mes — pídela con el tiempo de entrega del proveedor de anticipación.
+  </div>
+
+  <h2>Por familia</h2>
+  <div id="tmp-familias"></div>
+
+  <div class="nota">
+    Venta estimada en unidades (no en pesos: el precio por prenda subió en {plan["anio"]}). 144 y 433: mismo mes de {anio_prev}
+    ajustado por la tendencia de cada categoría en jul–sep. 107 y lo que no tiene historia (ej. accesorios en 144/433):
+    venta de septiembre × el salto estacional que hubo en {anio_prev} (oct ×{plan["estacionalidad_total"][0]:.2f},
+    nov ×{plan["estacionalidad_total"][1]:.2f}, dic ×{plan["estacionalidad_total"][2]:.2f}).
+    La compra sugerida por referencia descuenta el stock de esa misma referencia; "Otras / nuevas referencias" es la
+    parte de la venta que hoy no está concentrada en las referencias top. Los artículos sin categoría en Effi se
+    clasificaron por el nombre (ej. "BLUSA ..." → BLUSAS) — conviene asignarles categoría en Effi.
+  </div>
+  <script type="application/json" id="data-temporada">{datos_json}</script>"""
+
+
 # ---------- login (pantalla de acceso, protección de fricción — ver nota en el README) ----------
 # Credenciales de acceso al dashboard (no las de Effi). Cambiar aquí si hace falta.
 LOGIN_USUARIO = "divina"
@@ -1795,6 +1868,189 @@ filtrarRango(0, 0, document.querySelector('.filtro-btn[data-desde="0"][data-hast
 """
 
 
+# ---------- JS de planeación de temporada ----------
+# Cadena cruda (r"""): sin el doble escape de _JS, que es una cadena normal.
+
+_JS_TEMPORADA = r"""
+var _TMP = null;
+function _tmpDatos(){
+  if (_TMP) return _TMP;
+  var el = document.getElementById('data-temporada');
+  if (!el) return null;
+  _TMP = JSON.parse(el.textContent);
+  return _TMP;
+}
+function _tmpU(v){ return Math.round(v).toLocaleString('es-CO'); }
+function _tmpPct(v){ return Math.round(v * 100) + '%'; }
+function _tmpEsc(s){ return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+
+function temporadaEscenario(esc, btn){
+  var d = _tmpDatos(); if (!d) return;
+  d.locales.forEach(function(l){
+    var pct = (esc === 'meta' && l.pct_meta !== null) ? l.pct_meta : l.pct_tendencia;
+    var inp = document.getElementById('tmp-pct-' + l.codigo);
+    if (inp) inp.value = (pct * 100).toFixed(1);
+  });
+  document.querySelectorAll('.tmp-esc-btn').forEach(function(b){ b.classList.remove('tmp-esc-on'); });
+  if (btn) btn.classList.add('tmp-esc-on');
+  renderTemporada();
+}
+
+// Compra mes a mes de un grupo (referencia o "otras"): la venta de cada mes
+// (+ colchón) se cubre primero con el stock que quede; lo que falte se compra
+// para ese mes. Así una referencia agotada pide desde octubre y una con
+// stock de sobra no pide nada aunque la familia en total sí necesite.
+function _tmpCompra(demanda, stock, colchon){
+  var restante = stock, out = [];
+  for (var i = 0; i < demanda.length; i++){
+    var necesita = demanda[i] * (1 + colchon);
+    out.push(Math.max(0, necesita - restante));
+    restante = Math.max(0, restante - necesita);
+  }
+  return out;
+}
+
+function _tmpCalcular(){
+  var d = _tmpDatos();
+  var colchon = (parseFloat(document.getElementById('tmp-colchon').value) || 0) / 100;
+  var mult = {};
+  d.locales.forEach(function(l){
+    var v = parseFloat(document.getElementById('tmp-pct-' + l.codigo).value);
+    var pct = isNaN(v) ? l.pct_tendencia : v / 100;
+    mult[l.nombre] = (1 + pct) / (1 + l.pct_tendencia);
+  });
+  var n = d.meses.length;
+  var familias = d.familias.map(function(f){
+    var venta = new Array(n).fill(0), porLocal = {};
+    Object.keys(f.base).forEach(function(loc){
+      porLocal[loc] = f.base[loc].map(function(u){ return u * (mult[loc] || 1); });
+      porLocal[loc].forEach(function(u, i){ venta[i] += u; });
+    });
+    var grupos = f.items.map(function(it){
+      return {nombre: it.nombre, item: it, part: it.participacion, stock: it.stock, costo: it.costo_unitario || f.costo_unitario};
+    });
+    grupos.push({nombre: 'Otras / nuevas referencias', item: null, part: f.otros.participacion, stock: f.otros.stock, costo: f.costo_unitario});
+    var compraMes = new Array(n).fill(0), invMes = new Array(n).fill(0);
+    grupos.forEach(function(g){
+      g.compra = _tmpCompra(venta.map(function(v){ return v * g.part; }), g.stock, colchon);
+      g.compraTotal = g.compra.reduce(function(a, b){ return a + b; }, 0);
+      g.inversion = g.compraTotal * g.costo;
+      g.compra.forEach(function(u, i){ compraMes[i] += u; invMes[i] += u * g.costo; });
+    });
+    var sum = function(a){ return a.reduce(function(x, y){ return x + y; }, 0); };
+    return {f: f, venta: venta, porLocal: porLocal, grupos: grupos, compraMes: compraMes, invMes: invMes,
+            ventaTotal: sum(venta), compraTotal: sum(compraMes), invTotal: sum(invMes)};
+  });
+  familias.sort(function(a, b){ return b.invTotal - a.invTotal; });
+  return {familias: familias, colchon: colchon};
+}
+
+function _tmpMix(mix, unidades){
+  if (!mix || !mix.length) return '<span class="tmp-sub">—</span>';
+  return mix.map(function(kv){
+    return '<span class="tmp-chip">' + _tmpEsc(kv[0]) + ' <b>' + _tmpPct(kv[1]) + '</b>' +
+      (unidades ? ' · ' + _tmpU(unidades * kv[1]) + ' u' : '') + '</span>';
+  }).join('');
+}
+
+function _tmpFamiliaHtml(r, meses){
+  var f = r.f;
+  var filasLocal = Object.keys(r.porLocal).map(function(loc){
+    var u = r.porLocal[loc], tot = u.reduce(function(a, b){ return a + b; }, 0);
+    if (tot < 0.5) return '';
+    return '<tr><td>' + loc + '</td>' + u.map(function(x){ return '<td class="num">' + _tmpU(x) + '</td>'; }).join('') +
+      '<td class="num"><b>' + _tmpU(tot) + '</b></td></tr>';
+  }).join('');
+  var tablaLocal = '<table class="tabla-categorias tmp-tabla-mini"><thead><tr><th>Venta estimada</th>' +
+    meses.map(function(m){ return '<th class="num">' + m.lbl + '</th>'; }).join('') + '<th class="num">Total</th></tr></thead><tbody>' +
+    filasLocal + '</tbody></table>';
+
+  var etiqueta = f.es_accesorio ? 'Subcategoría' : 'Referencia';
+  var filasRef = r.grupos.map(function(g){
+    var it = g.item;
+    var colores = it && it.colores.length ? _tmpMix(it.colores) : '<span class="tmp-sub">—</span>';
+    var tallas = it && it.tallas.length ? _tmpMix(it.tallas) : '<span class="tmp-sub">—</span>';
+    return '<tr' + (it ? '' : ' class="tmp-fila-otros"') + '>' +
+      '<td>' + _tmpEsc(g.nombre) + '</td>' +
+      '<td class="num">' + _tmpPct(g.part) + '</td>' +
+      '<td class="num">' + (it ? _tmpU(it.venta_90d) : '—') + '</td>' +
+      '<td class="num">' + (it ? _tmpU(it.venta_ytd) : '—') + '</td>' +
+      '<td class="num">' + _tmpU(g.stock) + '</td>' +
+      '<td class="num"><b>' + _tmpU(g.compraTotal) + '</b></td>' +
+      '<td class="num">' + _cop(g.costo) + '</td>' +
+      '<td class="num">' + _cop(g.inversion) + '</td>' +
+      (f.es_accesorio ? '' : '<td class="tmp-celda-chips">' + colores + '</td><td class="tmp-celda-chips">' + tallas + '</td>') +
+      '</tr>';
+  }).join('');
+  var tablaRef = '<div class="tabla-scroll"><table class="tabla-categorias tmp-tabla-ref"><thead><tr>' +
+    '<th>' + etiqueta + '</th><th class="num">Part.</th><th class="num">Vend. 90 días</th><th class="num">Vend. ' + _tmpDatos().anio + '</th>' +
+    '<th class="num">Stock</th><th class="num">Comprar</th><th class="num">Costo u.</th><th class="num">Inversión</th>' +
+    (f.es_accesorio ? '' : '<th>Colores</th><th>Tallas</th>') + '</tr></thead><tbody>' + filasRef + '</tbody></table></div>';
+
+  var mixes = f.es_accesorio ? '' :
+    '<div class="tmp-mix"><div class="tmp-mix-titulo">Colores a surtir (mezcla de los últimos 90 días)</div>' + _tmpMix(f.mix_colores, r.compraTotal) + '</div>' +
+    '<div class="tmp-mix"><div class="tmp-mix-titulo">Curva de tallas</div>' + _tmpMix(f.mix_tallas, r.compraTotal) + '</div>';
+
+  var mesesTxt = meses.map(function(m, i){ return m.lbl + ' ' + _tmpU(r.compraMes[i]) + ' u / ' + _cop(r.invMes[i]); }).join(' · ');
+  return '<div class="reo-cat-wrap" data-fam="' + _tmpEsc(f.familia) + '" onclick="toggleAbierto(this, event)">' +
+    '<div class="reo-cat-header">' +
+      '<span class="reo-cat-nombre">' + _tmpEsc(f.familia) + '</span>' +
+      '<span class="reo-cat-meta">Venta temporada ' + _tmpU(r.ventaTotal) + ' u · stock con rotación ' + _tmpU(f.stock_vivo) +
+        ' · costo prom. ' + _cop(f.costo_unitario) + '</span>' +
+      '<span class="reo-badge sugerido">Comprar ' + _tmpU(r.compraTotal) + ' u</span>' +
+      '<span class="reo-badge inversion">' + _cop(r.invTotal) + '</span>' +
+    '</div>' +
+    '<div class="reo-cat-detalle" onclick="event.stopPropagation()">' +
+      '<div class="tmp-sub" style="margin:.6rem 0;">Compra por mes: ' + mesesTxt + '</div>' +
+      tablaLocal + tablaRef + mixes +
+    '</div></div>';
+}
+
+function renderTemporada(){
+  var d = _tmpDatos(); if (!d) return;
+  var r = _tmpCalcular(), n = d.meses.length;
+  var venta = new Array(n).fill(0), compra = new Array(n).fill(0), inv = new Array(n).fill(0), stock = 0;
+  r.familias.forEach(function(x){
+    for (var i = 0; i < n; i++){ venta[i] += x.venta[i]; compra[i] += x.compraMes[i]; inv[i] += x.invMes[i]; }
+    stock += x.f.stock_vivo;
+  });
+  var sum = function(a){ return a.reduce(function(x, y){ return x + y; }, 0); };
+
+  var kpi = function(lbl, val, sub){
+    return '<div class="kpi-card"><div class="kpi-label">' + lbl + '</div><div class="kpi-valor">' + val + '</div>' +
+      (sub ? '<div class="kpi-sub">' + sub + '</div>' : '') + '</div>';
+  };
+  document.getElementById('tmp-kpis').innerHTML =
+    kpi('Venta estimada temporada', _tmpU(sum(venta)) + ' u', d.meses.map(function(m, i){ return m.lbl + ' ' + _tmpU(venta[i]); }).join(' · ')) +
+    kpi('Stock con rotación hoy', _tmpU(stock) + ' u', 'referencias con venta en los últimos 12 meses') +
+    kpi('Compra sugerida', _tmpU(sum(compra)) + ' u', 'incluye colchón de ' + Math.round(r.colchon * 100) + '%') +
+    kpi('Inversión estimada (a costo)', _cop(sum(inv)), d.meses.map(function(m, i){ return m.lbl + ' ' + _cop(inv[i]); }).join(' · '));
+
+  var th = '<thead><tr><th></th>' + d.meses.map(function(m){ return '<th class="num">' + m.lbl + '</th>'; }).join('') + '<th class="num">Total</th></tr></thead>';
+  var fila = function(lbl, arr, fmt){
+    return '<tr><td>' + lbl + '</td>' + arr.map(function(v){ return '<td class="num">' + fmt(v) + '</td>'; }).join('') +
+      '<td class="num"><b>' + fmt(sum(arr)) + '</b></td></tr>';
+  };
+  document.getElementById('tmp-meses').innerHTML = th + '<tbody>' +
+    fila('Venta estimada (unidades)', venta, _tmpU) +
+    fila('Compra sugerida (unidades)', compra, _tmpU) +
+    fila('Inversión a costo', inv, _cop) + '</tbody>';
+
+  var cont = document.getElementById('tmp-familias');
+  var abiertas = {};
+  cont.querySelectorAll('.reo-cat-wrap.abierto').forEach(function(el){ abiertas[el.getAttribute('data-fam')] = true; });
+  cont.innerHTML = r.familias
+    .filter(function(x){ return x.ventaTotal >= 1; })
+    .map(function(x){ return _tmpFamiliaHtml(x, d.meses); }).join('');
+  cont.querySelectorAll('.reo-cat-wrap').forEach(function(el){
+    if (abiertas[el.getAttribute('data-fam')]) el.classList.add('abierto');
+  });
+}
+
+if (document.getElementById('data-temporada')) renderTemporada();
+"""
+
+
 # ---------- CSS estático ----------
 
 _CSS = """
@@ -2093,6 +2349,25 @@ _CSS = """
   .ref-variantes .detalle-item { border-bottom: none; padding: .12rem 0; font-size: .76rem; }
 
   .nota { margin-top: 1.5rem; padding: 1rem 1.2rem; border: 1px dashed var(--acento-suave); border-radius: 8px; font-size: .85rem; color: var(--texto-sub); }
+  .tmp-controles { background: var(--card); border: 1px solid var(--borde); border-radius: 12px; padding: 1.1rem 1.3rem; margin-bottom: 1.4rem; }
+  .tmp-escenarios { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .tmp-lbl { font-size: .74rem; color: var(--texto-sub); text-transform: uppercase; letter-spacing: .03em; margin-right: .3rem; }
+  .tmp-esc-btn { padding: .4rem .9rem; border-radius: 999px; border: 1px solid var(--borde); background: var(--card); color: var(--texto-sub); font-size: .82rem; cursor: pointer; }
+  .tmp-esc-btn.tmp-esc-on { background: var(--acento); color: #fff; border-color: var(--acento); }
+  .tmp-inputs { display: flex; flex-wrap: wrap; gap: .8rem 1.4rem; }
+  .tmp-input { display: flex; flex-direction: column; gap: .25rem; font-size: .82rem; font-weight: 600; }
+  .tmp-input span { font-weight: 400; color: var(--texto-sub); font-size: .78rem; }
+  .tmp-input input { width: 5.5rem; padding: .35rem .5rem; border: 1px solid var(--borde); border-radius: 6px; font: inherit; font-size: .88rem; color: var(--texto); background: var(--bg); }
+  .tmp-notas-locales { margin: 1rem 0 0; padding-left: 1.1rem; font-size: .78rem; color: var(--texto-sub); line-height: 1.5; }
+  .tmp-sub { font-size: .8rem; color: var(--texto-sub); }
+  .tmp-chip { display: inline-block; font-size: .74rem; padding: .15rem .5rem; margin: .1rem .25rem .1rem 0; border-radius: 999px; background: var(--destacado-bg); white-space: nowrap; }
+  .tmp-tabla-mini { margin-bottom: .9rem; }
+  .tmp-tabla-ref td, .tmp-tabla-ref th { padding: .45rem .7rem; font-size: .8rem; }
+  .tmp-celda-chips { min-width: 11rem; }
+  .tmp-tabla-ref td:first-child { min-width: 11rem; }
+  .tmp-fila-otros td { color: var(--texto-sub); font-style: italic; }
+  .tmp-mix { margin-top: .9rem; }
+  .tmp-mix-titulo { font-size: .74rem; color: var(--texto-sub); text-transform: uppercase; letter-spacing: .02em; margin-bottom: .35rem; }
   footer { margin-top: 2rem; font-size: .75rem; color: var(--texto-sub); }
 
   .login-overlay {
@@ -2307,6 +2582,7 @@ def generar_dashboard_html(datos: dict = None) -> str:
     liquidacion_html = _seccion_liquidacion(liquidacion)
     reorden_html = _seccion_reorden(reorden)
     surtido_html = _seccion_surtido(reorden, rentabilidad_accesorios_html)
+    temporada_html = _seccion_temporada(_cargar_json(REPORTES_DIR / "planeacion_temporada.json"))
 
     generado = datetime.now().strftime("%Y-%m-%d %H:%M")
     diarias_json = json.dumps(ventas_diarias, ensure_ascii=False)
@@ -2336,6 +2612,7 @@ def generar_dashboard_html(datos: dict = None) -> str:
     <div class="nav-panel-titulo">Divina Intuición</div>
     <div class="nav-item activo" data-nav="gerencia" onclick="navTo('gerencia')">🏛️&nbsp; Mesa de Gerencia</div>
     <div class="nav-item" data-nav="surtido" onclick="navTo('surtido')">🛒&nbsp; Qué surtir</div>
+    <div class="nav-item" data-nav="temporada" onclick="navTo('temporada')">🧭&nbsp; Planeación de temporada</div>
     <div class="nav-item" data-nav="inventario" onclick="navTo('inventario')">📦&nbsp; Inventario</div>
     <div class="nav-item" data-nav="comisiones" onclick="navTo('comisiones')">🎯&nbsp; Meta de ventas</div>
   </div>
@@ -2427,6 +2704,10 @@ def generar_dashboard_html(datos: dict = None) -> str:
     {surtido_html}
   </div>
 
+  <div id="sec-temporada" class="seccion" style="display:none">
+    {temporada_html}
+  </div>
+
   <div id="sec-inventario" class="seccion" style="display:none">
     <h2>Inventario</h2>
     {inventario_resumen_html}
@@ -2446,6 +2727,7 @@ def generar_dashboard_html(datos: dict = None) -> str:
   <script type="application/json" id="data-diarias">{diarias_json}</script>
   <script>var LOGIN_USUARIO = {json.dumps(LOGIN_USUARIO)}; var LOGIN_CLAVE = {json.dumps(LOGIN_CLAVE)};</script>
   <script>{_JS}</script>
+  <script>{_JS_TEMPORADA}</script>
 </body>
 </html>
 """
