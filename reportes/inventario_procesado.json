@@ -1,62 +1,62 @@
 {
-  "total_articulos": 3314,
-  "articulos_sin_stock": 1738,
-  "unidades_totales": 4544,
-  "valor_total_costo": 177896535.0,
+  "total_articulos": 3326,
+  "articulos_sin_stock": 1747,
+  "unidades_totales": 4662,
+  "valor_total_costo": 179697335.0,
   "stock_por_sucursal": {
-    "Local 144": 1295,
-    "Local 433": 1366,
-    "Local 107": 1530,
-    "Bodega Principal 413": 353
+    "Local 144": 1324,
+    "Local 433": 1398,
+    "Local 107": 1557,
+    "Bodega Principal 413": 383
   },
   "top_categorias_por_valor": [
     {
       "Categoría": "PANTALONES",
       "articulos": 993,
-      "stock_total": 815.0,
-      "valor_costo": 55215000.0
-    },
-    {
-      "Categoría": "CONJUNTOS",
-      "articulos": 114,
-      "stock_total": 181.0,
-      "valor_costo": 17946000.0
-    },
-    {
-      "Categoría": "BLUSAS",
-      "articulos": 470,
-      "stock_total": 611.0,
-      "valor_costo": 17787500.0
+      "stock_total": 793.0,
+      "valor_costo": 53828000.0
     },
     {
       "Categoría": "CHAQUETAS",
       "articulos": 222,
-      "stock_total": 240.0,
-      "valor_costo": 17239000.0
+      "stock_total": 254.0,
+      "valor_costo": 18094000.0
+    },
+    {
+      "Categoría": "CONJUNTOS",
+      "articulos": 114,
+      "stock_total": 178.0,
+      "valor_costo": 17698000.0
+    },
+    {
+      "Categoría": "BLUSAS",
+      "articulos": 470,
+      "stock_total": 590.0,
+      "valor_costo": 17170500.0
     },
     {
       "Categoría": "CORSET",
       "articulos": 202,
-      "stock_total": 342.0,
-      "valor_costo": 13633000.0
+      "stock_total": 322.0,
+      "valor_costo": 12785000.0
     },
     {
       "Categoría": "BUZOS",
-      "articulos": 142,
-      "stock_total": 288.0,
-      "valor_costo": 10909000.0
+      "articulos": 148,
+      "stock_total": 335.0,
+      "valor_costo": 12713000.0
     },
     {
       "Categoría": "FALDAS",
-      "articulos": 264,
-      "stock_total": 185.0,
-      "valor_costo": 8499000.0
+      "articulos": 270,
+      "stock_total": 216.0,
+      "valor_costo": 9511000.0
     },
     {
       "Categoría": "BODYS",
       "articulos": 231,
-      "stock_total": 330.0,
-      "valor_costo": 8378000.0
+      "stock_total": 320.0,
+      "valor_costo": 8104000.0
     }
   ]
 }

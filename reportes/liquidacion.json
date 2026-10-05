@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-10-02",
+  "generado_al": "2026-10-04",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 418,
-      "unidades": 3271,
-      "valor_costo": 159266500.0
+      "num_referencias": 416,
+      "unidades": 3269,
+      "valor_costo": 159090500.0
     },
     "inactivas": {
       "num_referencias": 8,
@@ -13,9 +13,9 @@
       "valor_costo": 719000.0
     },
     "nuevas": {
-      "num_referencias": 19,
-      "unidades": 98,
-      "valor_costo": 4766000.0
+      "num_referencias": 23,
+      "unidades": 113,
+      "valor_costo": 5156000.0
     }
   },
   "inactivas": [
@@ -82,10 +82,10 @@
       "valor_costo": 1040000.0
     },
     {
-      "referencia": "CORSET ENCAJE MELISA",
-      "categoria": "CORSET",
-      "disponible": 11,
-      "valor_costo": 550000.0
+      "referencia": "FALDA SHORT MARA",
+      "categoria": "FALDAS",
+      "disponible": 8,
+      "valor_costo": 280000.0
     },
     {
       "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
@@ -100,10 +100,22 @@
       "valor_costo": 240000.0
     },
     {
+      "referencia": "TEJIDO CHICLE",
+      "categoria": "BUZOS",
+      "disponible": 6,
+      "valor_costo": 228000.0
+    },
+    {
       "referencia": "FALDA JEAN RUEDO",
       "categoria": "FALDAS",
       "disponible": 5,
       "valor_costo": 200000.0
+    },
+    {
+      "referencia": "FALDA SHORT APLIQUE",
+      "categoria": "FALDAS",
+      "disponible": 5,
+      "valor_costo": 175000.0
     },
     {
       "referencia": "FALDA PECAS BOLERO",
@@ -130,6 +142,24 @@
       "valor_costo": 120000.0
     },
     {
+      "referencia": "TEJIDO CHICLE AMARILLO/",
+      "categoria": "BUZOS",
+      "disponible": 3,
+      "valor_costo": 114000.0
+    },
+    {
+      "referencia": "TEJIDO CHICLE AZUL BEBE/CAFE",
+      "categoria": "BUZOS",
+      "disponible": 3,
+      "valor_costo": 114000.0
+    },
+    {
+      "referencia": "FALDA SHORT MARA MIEL",
+      "categoria": "FALDAS",
+      "disponible": 3,
+      "valor_costo": 105000.0
+    },
+    {
       "referencia": "BODY MALLA DADOS",
       "categoria": "CORSET",
       "disponible": 4,
@@ -143,12 +173,6 @@
     },
     {
       "referencia": "VESTIDO BOLERO",
-      "categoria": "VESTIDOS",
-      "disponible": 2,
-      "valor_costo": 76000.0
-    },
-    {
-      "referencia": "VESTIDO GLOBO MALLA",
       "categoria": "VESTIDOS",
       "disponible": 2,
       "valor_costo": 76000.0
