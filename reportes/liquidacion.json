@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-10-04",
+  "generado_al": "2026-10-05",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 416,
-      "unidades": 3269,
-      "valor_costo": 159090500.0
+      "num_referencias": 415,
+      "unidades": 3252,
+      "valor_costo": 158095500.0
     },
     "inactivas": {
       "num_referencias": 8,
@@ -13,9 +13,9 @@
       "valor_costo": 719000.0
     },
     "nuevas": {
-      "num_referencias": 23,
-      "unidades": 113,
-      "valor_costo": 5156000.0
+      "num_referencias": 22,
+      "unidades": 107,
+      "valor_costo": 4928000.0
     }
   },
   "inactivas": [
@@ -98,12 +98,6 @@
       "categoria": "BUZOS",
       "disponible": 4,
       "valor_costo": 240000.0
-    },
-    {
-      "referencia": "TEJIDO CHICLE",
-      "categoria": "BUZOS",
-      "disponible": 6,
-      "valor_costo": 228000.0
     },
     {
       "referencia": "FALDA JEAN RUEDO",

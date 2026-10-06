@@ -1,62 +1,62 @@
 {
   "total_articulos": 3326,
-  "articulos_sin_stock": 1747,
-  "unidades_totales": 4662,
-  "valor_total_costo": 179697335.0,
+  "articulos_sin_stock": 1750,
+  "unidades_totales": 4632,
+  "valor_total_costo": 178382235.0,
   "stock_por_sucursal": {
-    "Local 144": 1324,
-    "Local 433": 1398,
-    "Local 107": 1557,
-    "Bodega Principal 413": 383
+    "Local 144": 1314,
+    "Local 433": 1390,
+    "Local 107": 1547,
+    "Bodega Principal 413": 381
   },
   "top_categorias_por_valor": [
     {
       "Categoría": "PANTALONES",
       "articulos": 993,
-      "stock_total": 793.0,
-      "valor_costo": 53828000.0
+      "stock_total": 790.0,
+      "valor_costo": 53628000.0
     },
     {
       "Categoría": "CHAQUETAS",
       "articulos": 222,
-      "stock_total": 254.0,
-      "valor_costo": 18094000.0
+      "stock_total": 250.0,
+      "valor_costo": 17819000.0
     },
     {
       "Categoría": "CONJUNTOS",
       "articulos": 114,
-      "stock_total": 178.0,
-      "valor_costo": 17698000.0
+      "stock_total": 176.0,
+      "valor_costo": 17502000.0
     },
     {
       "Categoría": "BLUSAS",
       "articulos": 470,
-      "stock_total": 590.0,
-      "valor_costo": 17170500.0
+      "stock_total": 584.0,
+      "valor_costo": 16956500.0
     },
     {
       "Categoría": "CORSET",
       "articulos": 202,
-      "stock_total": 322.0,
-      "valor_costo": 12785000.0
+      "stock_total": 320.0,
+      "valor_costo": 12689000.0
     },
     {
       "Categoría": "BUZOS",
       "articulos": 148,
-      "stock_total": 335.0,
-      "valor_costo": 12713000.0
+      "stock_total": 333.0,
+      "valor_costo": 12615000.0
     },
     {
       "Categoría": "FALDAS",
       "articulos": 270,
-      "stock_total": 216.0,
-      "valor_costo": 9511000.0
+      "stock_total": 214.0,
+      "valor_costo": 9411000.0
     },
     {
       "Categoría": "BODYS",
       "articulos": 231,
-      "stock_total": 320.0,
-      "valor_costo": 8104000.0
+      "stock_total": 318.0,
+      "valor_costo": 8060000.0
     }
   ]
 }
