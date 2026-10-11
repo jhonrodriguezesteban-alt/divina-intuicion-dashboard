@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-10-08",
+  "generado_al": "2026-10-10",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 415,
-      "unidades": 3183,
-      "valor_costo": 154581500.0
+      "num_referencias": 423,
+      "unidades": 3632,
+      "valor_costo": 171411500.0
     },
     "inactivas": {
       "num_referencias": 8,
@@ -13,9 +13,9 @@
       "valor_costo": 719000.0
     },
     "nuevas": {
-      "num_referencias": 20,
-      "unidades": 99,
-      "valor_costo": 4639000.0
+      "num_referencias": 31,
+      "unidades": 213,
+      "valor_costo": 12945000.0
     }
   },
   "inactivas": [
@@ -70,10 +70,22 @@
   ],
   "nuevas": [
     {
+      "referencia": "SET TEJIDO LONDRES",
+      "categoria": "CONJUNTOS",
+      "disponible": 24,
+      "valor_costo": 2856000.0
+    },
+    {
       "referencia": "CHAQUETA TEDDY",
       "categoria": "CHAQUETAS",
       "disponible": 18,
       "valor_costo": 1440000.0
+    },
+    {
+      "referencia": "SUDADERA GACEL",
+      "categoria": "CONJUNTOS",
+      "disponible": 11,
+      "valor_costo": 1045000.0
     },
     {
       "referencia": "CORSET SAMANTA MALLA",
@@ -82,10 +94,58 @@
       "valor_costo": 1040000.0
     },
     {
+      "referencia": "JEAN CLASICO AZUL MEDIO",
+      "categoria": "PANTALONES",
+      "disponible": 12,
+      "valor_costo": 900000.0
+    },
+    {
+      "referencia": "JEAN VINTAGE BAGGY",
+      "categoria": "PANTALONES",
+      "disponible": 12,
+      "valor_costo": 780000.0
+    },
+    {
+      "referencia": "CAPA MILITAR  AZUL MEDIO",
+      "categoria": "CHAQUETAS",
+      "disponible": 11,
+      "valor_costo": 737000.0
+    },
+    {
+      "referencia": "FALDA BRILLO LENTEJUELA",
+      "categoria": "FALDAS",
+      "disponible": 13,
+      "valor_costo": 624000.0
+    },
+    {
+      "referencia": "BLUSA SALOME ENCAJE",
+      "categoria": "BLUSAS",
+      "disponible": 15,
+      "valor_costo": 375000.0
+    },
+    {
+      "referencia": "BERMUDA JEAN AZUL MEDIO",
+      "categoria": "PANTALONES",
+      "disponible": 6,
+      "valor_costo": 330000.0
+    },
+    {
+      "referencia": "SUDADERA STREED",
+      "categoria": "CONJUNTOS",
+      "disponible": 3,
+      "valor_costo": 294000.0
+    },
+    {
       "referencia": "FALDA SHORT MARA",
       "categoria": "FALDAS",
       "disponible": 8,
       "valor_costo": 280000.0
+    },
+    {
+      "referencia": "CORSET DENIM",
+      "categoria": "CORSET",
+      "disponible": 6,
+      "valor_costo": 270000.0
     },
     {
       "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
@@ -140,6 +200,12 @@
       "categoria": "FALDAS",
       "disponible": 3,
       "valor_costo": 105000.0
+    },
+    {
+      "referencia": "SUDADERA GACEL AZUL OSCUROTU",
+      "categoria": "CONJUNTOS",
+      "disponible": 1,
+      "valor_costo": 95000.0
     },
     {
       "referencia": "BODY MALLA DADOS",
