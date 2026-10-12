@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-10-10",
+  "generado_al": "2026-10-11",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 423,
-      "unidades": 3632,
-      "valor_costo": 171411500.0
+      "num_referencias": 425,
+      "unidades": 3637,
+      "valor_costo": 173306500.0
     },
     "inactivas": {
       "num_referencias": 8,
@@ -13,9 +13,9 @@
       "valor_costo": 719000.0
     },
     "nuevas": {
-      "num_referencias": 31,
-      "unidades": 213,
-      "valor_costo": 12945000.0
+      "num_referencias": 28,
+      "unidades": 162,
+      "valor_costo": 8312000.0
     }
   },
   "inactivas": [
@@ -70,12 +70,6 @@
   ],
   "nuevas": [
     {
-      "referencia": "SET TEJIDO LONDRES",
-      "categoria": "CONJUNTOS",
-      "disponible": 24,
-      "valor_costo": 2856000.0
-    },
-    {
       "referencia": "CHAQUETA TEDDY",
       "categoria": "CHAQUETAS",
       "disponible": 18,
@@ -88,12 +82,6 @@
       "valor_costo": 1045000.0
     },
     {
-      "referencia": "CORSET SAMANTA MALLA",
-      "categoria": "CORSET",
-      "disponible": 16,
-      "valor_costo": 1040000.0
-    },
-    {
       "referencia": "JEAN CLASICO AZUL MEDIO",
       "categoria": "PANTALONES",
       "disponible": 12,
@@ -104,12 +92,6 @@
       "categoria": "PANTALONES",
       "disponible": 12,
       "valor_costo": 780000.0
-    },
-    {
-      "referencia": "CAPA MILITAR  AZUL MEDIO",
-      "categoria": "CHAQUETAS",
-      "disponible": 11,
-      "valor_costo": 737000.0
     },
     {
       "referencia": "FALDA BRILLO LENTEJUELA",
