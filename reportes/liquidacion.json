@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-10-11",
+  "generado_al": "2026-10-13",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 425,
-      "unidades": 3637,
-      "valor_costo": 173306500.0
+      "num_referencias": 426,
+      "unidades": 3626,
+      "valor_costo": 173594500.0
     },
     "inactivas": {
       "num_referencias": 8,
@@ -13,9 +13,9 @@
       "valor_costo": 719000.0
     },
     "nuevas": {
-      "num_referencias": 28,
-      "unidades": 162,
-      "valor_costo": 8312000.0
+      "num_referencias": 26,
+      "unidades": 147,
+      "valor_costo": 7118000.0
     }
   },
   "inactivas": [
@@ -82,12 +82,6 @@
       "valor_costo": 1045000.0
     },
     {
-      "referencia": "JEAN CLASICO AZUL MEDIO",
-      "categoria": "PANTALONES",
-      "disponible": 12,
-      "valor_costo": 900000.0
-    },
-    {
       "referencia": "JEAN VINTAGE BAGGY",
       "categoria": "PANTALONES",
       "disponible": 12,
@@ -110,12 +104,6 @@
       "categoria": "PANTALONES",
       "disponible": 6,
       "valor_costo": 330000.0
-    },
-    {
-      "referencia": "SUDADERA STREED",
-      "categoria": "CONJUNTOS",
-      "disponible": 3,
-      "valor_costo": 294000.0
     },
     {
       "referencia": "FALDA SHORT MARA",
