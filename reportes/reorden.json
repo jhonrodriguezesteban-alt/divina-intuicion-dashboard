@@ -1,21 +1,21 @@
 {
   "ventana_dias": 90,
-  "generado_al": "2026-10-13",
+  "generado_al": "2026-10-14",
   "ropa": {
     "resumen": {
       "total_referencias": 751,
       "criticos": 70,
       "alerta": 6,
-      "sin_rotacion": 71,
+      "sin_rotacion": 72,
       "nuevos": 26,
-      "unidades_sugeridas_total": 166,
-      "inversion_sugerida_total": 10117278
+      "unidades_sugeridas_total": 158,
+      "inversion_sugerida_total": 9514389
     },
     "categorias": [
       {
         "categoria": "BLUSAS",
         "num_refs": 137,
-        "uds_disponibles": 681,
+        "uds_disponibles": 678,
         "num_criticos": 16,
         "num_alerta": 1,
         "unidades_sugeridas": 22,
@@ -767,7 +767,7 @@
             "venta_ytd": 0,
             "rotacion_anualizada": 0,
             "dias_cobertura": null,
-            "tendencia_interanual": null,
+            "tendencia_interanual": -60.0,
             "estado": "agotado",
             "estado_label": "Agotado, sin rotación",
             "sugerido": 0,
@@ -2590,49 +2590,13 @@
             ]
           },
           {
-            "referencia": "BLUSA RADICAL",
-            "categoria": "BLUSAS",
-            "disponible": 1,
-            "venta_90d": 5,
-            "venta_ytd": 40,
-            "rotacion_anualizada": 20,
-            "dias_cobertura": 18.0,
-            "tendencia_interanual": -60.0,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 46667,
-            "inversion_sugerida": 0,
-            "num_variantes": 3,
-            "variantes": [
-              {
-                "id": 1215,
-                "talla": "TU",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 3203,
-                "talla": "CAFE TU",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 3202,
-                "talla": "NEGRO TU",
-                "disponible": 0,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
             "referencia": "BLUSA SALOME",
             "categoria": "BLUSAS",
-            "disponible": 10,
-            "venta_90d": 48,
-            "venta_ytd": 208,
-            "rotacion_anualizada": 195,
-            "dias_cobertura": 18.8,
+            "disponible": 9,
+            "venta_90d": 50,
+            "venta_ytd": 210,
+            "rotacion_anualizada": 203,
+            "dias_cobertura": 16.2,
             "tendencia_interanual": -60.0,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -2644,7 +2608,7 @@
               {
                 "id": 1411,
                 "talla": "AMARILLO TU",
-                "disponible": 1,
+                "disponible": 0,
                 "sugerido": 0
               },
               {
@@ -2722,14 +2686,50 @@
             ]
           },
           {
+            "referencia": "BLUSA RADICAL",
+            "categoria": "BLUSAS",
+            "disponible": 1,
+            "venta_90d": 5,
+            "venta_ytd": 40,
+            "rotacion_anualizada": 20,
+            "dias_cobertura": 18.0,
+            "tendencia_interanual": -60.0,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 46667,
+            "inversion_sugerida": 0,
+            "num_variantes": 3,
+            "variantes": [
+              {
+                "id": 1215,
+                "talla": "TU",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 3203,
+                "talla": "CAFE TU",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 3202,
+                "talla": "NEGRO TU",
+                "disponible": 0,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
             "referencia": "BASICA RIB",
             "categoria": "BLUSAS",
             "disponible": 7,
-            "venta_90d": 29,
+            "venta_90d": 28,
             "venta_ytd": 66,
-            "rotacion_anualizada": 118,
-            "dias_cobertura": 21.7,
-            "tendencia_interanual": -41.0,
+            "rotacion_anualizada": 114,
+            "dias_cobertura": 22.5,
+            "tendencia_interanual": -39.0,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -2884,13 +2884,67 @@
             ]
           },
           {
+            "referencia": "BLUSA BODY ENCAJE",
+            "categoria": "BLUSAS",
+            "disponible": 1,
+            "venta_90d": 2,
+            "venta_ytd": 59,
+            "rotacion_anualizada": 8,
+            "dias_cobertura": 45.0,
+            "tendencia_interanual": -60.0,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 32000,
+            "inversion_sugerida": 0,
+            "num_variantes": 6,
+            "variantes": [
+              {
+                "id": 1460,
+                "talla": "BEIGE",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 2575,
+                "talla": "BLANCO TU",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 1245,
+                "talla": "CAFE",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 1006,
+                "talla": "MARFIL TU",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 991,
+                "talla": "NEGRO TU",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 1244,
+                "talla": "VINOTINTO",
+                "disponible": 0,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
             "referencia": "BLUSA GABY",
             "categoria": "BLUSAS",
             "disponible": 18,
-            "venta_90d": 37,
+            "venta_90d": 35,
             "venta_ytd": 188,
-            "rotacion_anualizada": 150,
-            "dias_cobertura": 43.8,
+            "rotacion_anualizada": 142,
+            "dias_cobertura": 46.3,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -2962,60 +3016,6 @@
             ]
           },
           {
-            "referencia": "BLUSA BODY ENCAJE",
-            "categoria": "BLUSAS",
-            "disponible": 1,
-            "venta_90d": 2,
-            "venta_ytd": 59,
-            "rotacion_anualizada": 8,
-            "dias_cobertura": 45.0,
-            "tendencia_interanual": -60.0,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 32000,
-            "inversion_sugerida": 0,
-            "num_variantes": 6,
-            "variantes": [
-              {
-                "id": 1460,
-                "talla": "BEIGE",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 2575,
-                "talla": "BLANCO TU",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 1245,
-                "talla": "CAFE",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 1006,
-                "talla": "MARFIL TU",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 991,
-                "talla": "NEGRO TU",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 1244,
-                "talla": "VINOTINTO",
-                "disponible": 0,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
             "referencia": "BASICA ROLEX",
             "categoria": "BLUSAS",
             "disponible": 26,
@@ -3072,11 +3072,11 @@
           {
             "referencia": "BLUSA CASCADA",
             "categoria": "BLUSAS",
-            "disponible": 20,
-            "venta_90d": 27,
-            "venta_ytd": 27,
-            "rotacion_anualizada": 110,
-            "dias_cobertura": 66.7,
+            "disponible": 19,
+            "venta_90d": 28,
+            "venta_ytd": 28,
+            "rotacion_anualizada": 114,
+            "dias_cobertura": 61.1,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -3094,7 +3094,7 @@
               {
                 "id": 3624,
                 "talla": "CAFE TU",
-                "disponible": 6,
+                "disponible": 5,
                 "sugerido": 0
               },
               {
@@ -3316,49 +3316,49 @@
             ]
           },
           {
-            "referencia": "BLUSA CORSET",
+            "referencia": "BLUSA JASPEADA MATILDA",
             "categoria": "BLUSAS",
-            "disponible": 27,
-            "venta_90d": 30,
-            "venta_ytd": 131,
-            "rotacion_anualizada": 122,
-            "dias_cobertura": 81.0,
-            "tendencia_interanual": -45.0,
+            "disponible": 39,
+            "venta_90d": 44,
+            "venta_ytd": 44,
+            "rotacion_anualizada": 178,
+            "dias_cobertura": 79.8,
+            "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
-            "costo_unitario": 31000,
+            "costo_unitario": 30000,
             "inversion_sugerida": 0,
             "num_variantes": 5,
             "variantes": [
               {
-                "id": 3293,
-                "talla": "BLANCO/CAFE TU",
-                "disponible": 4,
-                "sugerido": 0
-              },
-              {
-                "id": 768,
-                "talla": "BLANCO/NEGRO TU",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 128,
-                "talla": "BLANCO/VINOTINTO TU",
-                "disponible": 17,
-                "sugerido": 0
-              },
-              {
-                "id": 126,
-                "talla": "CAFE/BLANCO TU",
+                "id": 3630,
+                "talla": "AZUL TU",
                 "disponible": 5,
                 "sugerido": 0
               },
               {
-                "id": 127,
-                "talla": "NEGRO/BLANCO TU",
-                "disponible": 0,
+                "id": 3628,
+                "talla": "CAFE TU",
+                "disponible": 5,
+                "sugerido": 0
+              },
+              {
+                "id": 3627,
+                "talla": "NEGRO TU",
+                "disponible": 8,
+                "sugerido": 0
+              },
+              {
+                "id": 3626,
+                "talla": "VERDE TU",
+                "disponible": 14,
+                "sugerido": 0
+              },
+              {
+                "id": 3629,
+                "talla": "VINOTINTO TU",
+                "disponible": 7,
                 "sugerido": 0
               }
             ]
@@ -3400,49 +3400,49 @@
             ]
           },
           {
-            "referencia": "BLUSA JASPEADA MATILDA",
+            "referencia": "BLUSA CORSET",
             "categoria": "BLUSAS",
-            "disponible": 40,
-            "venta_90d": 43,
-            "venta_ytd": 43,
-            "rotacion_anualizada": 174,
-            "dias_cobertura": 83.7,
-            "tendencia_interanual": null,
+            "disponible": 27,
+            "venta_90d": 28,
+            "venta_ytd": 131,
+            "rotacion_anualizada": 114,
+            "dias_cobertura": 86.8,
+            "tendencia_interanual": -49.0,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
-            "costo_unitario": 30000,
+            "costo_unitario": 31000,
             "inversion_sugerida": 0,
             "num_variantes": 5,
             "variantes": [
               {
-                "id": 3630,
-                "talla": "AZUL TU",
+                "id": 3293,
+                "talla": "BLANCO/CAFE TU",
+                "disponible": 4,
+                "sugerido": 0
+              },
+              {
+                "id": 768,
+                "talla": "BLANCO/NEGRO TU",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 128,
+                "talla": "BLANCO/VINOTINTO TU",
+                "disponible": 17,
+                "sugerido": 0
+              },
+              {
+                "id": 126,
+                "talla": "CAFE/BLANCO TU",
                 "disponible": 5,
                 "sugerido": 0
               },
               {
-                "id": 3628,
-                "talla": "CAFE TU",
-                "disponible": 6,
-                "sugerido": 0
-              },
-              {
-                "id": 3627,
-                "talla": "NEGRO TU",
-                "disponible": 8,
-                "sugerido": 0
-              },
-              {
-                "id": 3626,
-                "talla": "VERDE TU",
-                "disponible": 14,
-                "sugerido": 0
-              },
-              {
-                "id": 3629,
-                "talla": "VINOTINTO TU",
-                "disponible": 7,
+                "id": 127,
+                "talla": "NEGRO/BLANCO TU",
+                "disponible": 0,
                 "sugerido": 0
               }
             ]
@@ -4054,102 +4054,6 @@
             ]
           },
           {
-            "referencia": "BLUSA ITALIA",
-            "categoria": "BLUSAS",
-            "disponible": 5,
-            "venta_90d": 4,
-            "venta_ytd": 55,
-            "rotacion_anualizada": 16,
-            "dias_cobertura": 112.5,
-            "tendencia_interanual": -60.0,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 25000,
-            "inversion_sugerida": 0,
-            "num_variantes": 6,
-            "variantes": [
-              {
-                "id": 284,
-                "talla": "BLANCO TU",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 992,
-                "talla": "CAFE TU",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 923,
-                "talla": "CAMEL TU",
-                "disponible": 4,
-                "sugerido": 0
-              },
-              {
-                "id": 283,
-                "talla": "NEGRO TU",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 922,
-                "talla": "VERDE TU",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 1101,
-                "talla": "VINOTINTO",
-                "disponible": 0,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
-            "referencia": "BLUSA VIOLETA",
-            "categoria": "BLUSAS",
-            "disponible": 14,
-            "venta_90d": 10,
-            "venta_ytd": 52,
-            "rotacion_anualizada": 41,
-            "dias_cobertura": 126.0,
-            "tendencia_interanual": null,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 20000,
-            "inversion_sugerida": 0,
-            "num_variantes": 4,
-            "variantes": [
-              {
-                "id": 1735,
-                "talla": "AMARILLO",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 1732,
-                "talla": "CAFE TU",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 1733,
-                "talla": "MARFIL TU",
-                "disponible": 6,
-                "sugerido": 0
-              },
-              {
-                "id": 1734,
-                "talla": "NEGRO TU",
-                "disponible": 8,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
             "referencia": "BLUSA SELENA",
             "categoria": "BLUSAS",
             "disponible": 3,
@@ -4193,6 +4097,48 @@
                 "id": 3705,
                 "talla": "MARFIL TU",
                 "disponible": 3,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
+            "referencia": "BLUSA VIOLETA",
+            "categoria": "BLUSAS",
+            "disponible": 14,
+            "venta_90d": 9,
+            "venta_ytd": 52,
+            "rotacion_anualizada": 36,
+            "dias_cobertura": 140.0,
+            "tendencia_interanual": null,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 20000,
+            "inversion_sugerida": 0,
+            "num_variantes": 4,
+            "variantes": [
+              {
+                "id": 1735,
+                "talla": "AMARILLO",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 1732,
+                "talla": "CAFE TU",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 1733,
+                "talla": "MARFIL TU",
+                "disponible": 6,
+                "sugerido": 0
+              },
+              {
+                "id": 1734,
+                "talla": "NEGRO TU",
+                "disponible": 8,
                 "sugerido": 0
               }
             ]
@@ -4306,37 +4252,55 @@
             ]
           },
           {
-            "referencia": "OVERZISE MATCHA",
+            "referencia": "BLUSA ITALIA",
             "categoria": "BLUSAS",
-            "disponible": 8,
-            "venta_90d": 5,
-            "venta_ytd": 10,
-            "rotacion_anualizada": 20,
-            "dias_cobertura": 144.0,
-            "tendencia_interanual": null,
+            "disponible": 5,
+            "venta_90d": 3,
+            "venta_ytd": 55,
+            "rotacion_anualizada": 12,
+            "dias_cobertura": 150.0,
+            "tendencia_interanual": -60.0,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
-            "costo_unitario": 40500,
+            "costo_unitario": 25000,
             "inversion_sugerida": 0,
-            "num_variantes": 3,
+            "num_variantes": 6,
             "variantes": [
               {
-                "id": 2895,
-                "talla": "GRIS TU",
-                "disponible": 3,
+                "id": 284,
+                "talla": "BLANCO TU",
+                "disponible": 0,
                 "sugerido": 0
               },
               {
-                "id": 2893,
-                "talla": "MARFIL TU",
-                "disponible": 2,
+                "id": 992,
+                "talla": "CAFE TU",
+                "disponible": 0,
                 "sugerido": 0
               },
               {
-                "id": 2894,
+                "id": 923,
+                "talla": "CAMEL TU",
+                "disponible": 4,
+                "sugerido": 0
+              },
+              {
+                "id": 283,
                 "talla": "NEGRO TU",
-                "disponible": 3,
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 922,
+                "talla": "VERDE TU",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 1101,
+                "talla": "VINOTINTO",
+                "disponible": 0,
                 "sugerido": 0
               }
             ]
@@ -4505,6 +4469,42 @@
                 "id": 2604,
                 "talla": "MARFIL TU",
                 "disponible": 2,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
+            "referencia": "OVERZISE MATCHA",
+            "categoria": "BLUSAS",
+            "disponible": 8,
+            "venta_90d": 4,
+            "venta_ytd": 10,
+            "rotacion_anualizada": 16,
+            "dias_cobertura": 180.0,
+            "tendencia_interanual": null,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 40500,
+            "inversion_sugerida": 0,
+            "num_variantes": 3,
+            "variantes": [
+              {
+                "id": 2895,
+                "talla": "GRIS TU",
+                "disponible": 3,
+                "sugerido": 0
+              },
+              {
+                "id": 2893,
+                "talla": "MARFIL TU",
+                "disponible": 2,
+                "sugerido": 0
+              },
+              {
+                "id": 2894,
+                "talla": "NEGRO TU",
+                "disponible": 3,
                 "sugerido": 0
               }
             ]
@@ -4750,13 +4750,37 @@
             ]
           },
           {
+            "referencia": "BLUSA ESTRAPLE APLIQUE",
+            "categoria": "BLUSAS",
+            "disponible": 6,
+            "venta_90d": 1,
+            "venta_ytd": 14,
+            "rotacion_anualizada": 4,
+            "dias_cobertura": 540.0,
+            "tendencia_interanual": null,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 24000,
+            "inversion_sugerida": 0,
+            "num_variantes": 1,
+            "variantes": [
+              {
+                "id": 1922,
+                "talla": "TU",
+                "disponible": 6,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
             "referencia": "BASICA TANK",
             "categoria": "BLUSAS",
             "disponible": 22,
-            "venta_90d": 4,
+            "venta_90d": 3,
             "venta_ytd": 9,
-            "rotacion_anualizada": 16,
-            "dias_cobertura": 495.0,
+            "rotacion_anualizada": 12,
+            "dias_cobertura": 660.0,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -4798,30 +4822,6 @@
             ]
           },
           {
-            "referencia": "BLUSA ESTRAPLE APLIQUE",
-            "categoria": "BLUSAS",
-            "disponible": 6,
-            "venta_90d": 1,
-            "venta_ytd": 14,
-            "rotacion_anualizada": 4,
-            "dias_cobertura": 540.0,
-            "tendencia_interanual": null,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 24000,
-            "inversion_sugerida": 0,
-            "num_variantes": 1,
-            "variantes": [
-              {
-                "id": 1922,
-                "talla": "TU",
-                "disponible": 6,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
             "referencia": "BLUSA VERO GLOBO MARFIL U",
             "categoria": "BLUSAS",
             "disponible": 8,
@@ -4849,11 +4849,11 @@
             "referencia": "BLUSA RECOGIDA",
             "categoria": "BLUSAS",
             "disponible": 28,
-            "venta_90d": 3,
+            "venta_90d": 2,
             "venta_ytd": 18,
-            "rotacion_anualizada": 12,
-            "dias_cobertura": 840.0,
-            "tendencia_interanual": -25.0,
+            "rotacion_anualizada": 8,
+            "dias_cobertura": 1260.0,
+            "tendencia_interanual": -50.0,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -5318,7 +5318,7 @@
       {
         "categoria": "CHAQUETAS",
         "num_refs": 78,
-        "uds_disponibles": 262,
+        "uds_disponibles": 259,
         "num_criticos": 11,
         "num_alerta": 2,
         "unidades_sugeridas": 32,
@@ -6204,9 +6204,9 @@
             "referencia": "CHAQUETA ZOULT",
             "categoria": "CHAQUETAS",
             "disponible": 0,
-            "venta_90d": 4,
+            "venta_90d": 3,
             "venta_ytd": 20,
-            "rotacion_anualizada": 16,
+            "rotacion_anualizada": 12,
             "dias_cobertura": 0.0,
             "tendencia_interanual": null,
             "estado": "critico",
@@ -6333,6 +6333,36 @@
             ]
           },
           {
+            "referencia": "CAPA JEAN GAMUZA",
+            "categoria": "CHAQUETAS",
+            "disponible": 6,
+            "venta_90d": 33,
+            "venta_ytd": 33,
+            "rotacion_anualizada": 134,
+            "dias_cobertura": 16.4,
+            "tendencia_interanual": null,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 5,
+            "costo_unitario": 90000,
+            "inversion_sugerida": 450000,
+            "num_variantes": 2,
+            "variantes": [
+              {
+                "id": 3739,
+                "talla": "AZUL TU",
+                "disponible": 2,
+                "sugerido": 4
+              },
+              {
+                "id": 3510,
+                "talla": "NEGRO TU",
+                "disponible": 4,
+                "sugerido": 1
+              }
+            ]
+          },
+          {
             "referencia": "CHAMARRA ROQUERA",
             "categoria": "CHAQUETAS",
             "disponible": 1,
@@ -6375,31 +6405,25 @@
             ]
           },
           {
-            "referencia": "CAPA JEAN GAMUZA",
+            "referencia": "CAPA JEAN VERDOSA OSCURA",
             "categoria": "CHAQUETAS",
-            "disponible": 7,
-            "venta_90d": 32,
-            "venta_ytd": 32,
-            "rotacion_anualizada": 130,
-            "dias_cobertura": 19.7,
+            "disponible": 3,
+            "venta_90d": 10,
+            "venta_ytd": 10,
+            "rotacion_anualizada": 41,
+            "dias_cobertura": 27.0,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
-            "sugerido": 4,
-            "costo_unitario": 90000,
-            "inversion_sugerida": 360000,
-            "num_variantes": 2,
+            "sugerido": 0,
+            "costo_unitario": 65000,
+            "inversion_sugerida": 0,
+            "num_variantes": 1,
             "variantes": [
               {
-                "id": 3739,
-                "talla": "AZUL TU",
-                "disponible": 2,
-                "sugerido": 4
-              },
-              {
-                "id": 3510,
-                "talla": "NEGRO TU",
-                "disponible": 5,
+                "id": 3524,
+                "talla": "TU",
+                "disponible": 3,
                 "sugerido": 0
               }
             ]
@@ -6408,23 +6432,23 @@
             "referencia": "CHAQUETA PAÑO TINA",
             "categoria": "CHAQUETAS",
             "disponible": 4,
-            "venta_90d": 14,
+            "venta_90d": 13,
             "venta_ytd": 28,
-            "rotacion_anualizada": 57,
-            "dias_cobertura": 25.7,
+            "rotacion_anualizada": 53,
+            "dias_cobertura": 27.7,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
-            "sugerido": 1,
+            "sugerido": 0,
             "costo_unitario": 90000,
-            "inversion_sugerida": 90000,
+            "inversion_sugerida": 0,
             "num_variantes": 5,
             "variantes": [
               {
                 "id": 3040,
                 "talla": "AVENA TU",
                 "disponible": 0,
-                "sugerido": 1
+                "sugerido": 0
               },
               {
                 "id": 3098,
@@ -6448,30 +6472,6 @@
                 "id": 3041,
                 "talla": "VERDE PINO TU",
                 "disponible": 0,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
-            "referencia": "CAPA JEAN VERDOSA OSCURA",
-            "categoria": "CHAQUETAS",
-            "disponible": 3,
-            "venta_90d": 10,
-            "venta_ytd": 10,
-            "rotacion_anualizada": 41,
-            "dias_cobertura": 27.0,
-            "tendencia_interanual": null,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 65000,
-            "inversion_sugerida": 0,
-            "num_variantes": 1,
-            "variantes": [
-              {
-                "id": 3524,
-                "talla": "TU",
-                "disponible": 3,
                 "sugerido": 0
               }
             ]
@@ -6765,37 +6765,13 @@
             ]
           },
           {
-            "referencia": "CHAMARRA CORTA CORREA  GRIS JASPEADO",
-            "categoria": "CHAQUETAS",
-            "disponible": 1,
-            "venta_90d": 2,
-            "venta_ytd": 2,
-            "rotacion_anualizada": 8,
-            "dias_cobertura": 45.0,
-            "tendencia_interanual": null,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 85000,
-            "inversion_sugerida": 0,
-            "num_variantes": 1,
-            "variantes": [
-              {
-                "id": 3742,
-                "talla": "TU",
-                "disponible": 1,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
             "referencia": "CAPA JEAN",
             "categoria": "CHAQUETAS",
-            "disponible": 44,
-            "venta_90d": 85,
-            "venta_ytd": 98,
-            "rotacion_anualizada": 345,
-            "dias_cobertura": 46.6,
+            "disponible": 42,
+            "venta_90d": 87,
+            "venta_ytd": 100,
+            "rotacion_anualizada": 353,
+            "dias_cobertura": 43.4,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -6831,7 +6807,7 @@
               {
                 "id": 3635,
                 "talla": "GRIS OSCURO TU",
-                "disponible": 18,
+                "disponible": 16,
                 "sugerido": 0
               },
               {
@@ -6843,14 +6819,74 @@
             ]
           },
           {
+            "referencia": "CHAMARRA CORTA CORREA  GRIS JASPEADO",
+            "categoria": "CHAQUETAS",
+            "disponible": 1,
+            "venta_90d": 2,
+            "venta_ytd": 2,
+            "rotacion_anualizada": 8,
+            "dias_cobertura": 45.0,
+            "tendencia_interanual": null,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 85000,
+            "inversion_sugerida": 0,
+            "num_variantes": 1,
+            "variantes": [
+              {
+                "id": 3742,
+                "talla": "TU",
+                "disponible": 1,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
+            "referencia": "CHAQUETA ISA",
+            "categoria": "CHAQUETAS",
+            "disponible": 3,
+            "venta_90d": 5,
+            "venta_ytd": 17,
+            "rotacion_anualizada": 20,
+            "dias_cobertura": 54.0,
+            "tendencia_interanual": null,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 105000,
+            "inversion_sugerida": 0,
+            "num_variantes": 3,
+            "variantes": [
+              {
+                "id": 1969,
+                "talla": "BEIGE TU",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 1968,
+                "talla": "CAMEL TU",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 1967,
+                "talla": "NEGRO TU",
+                "disponible": 2,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
             "referencia": "CHAQUETA POLAR",
             "categoria": "CHAQUETAS",
             "disponible": 9,
-            "venta_90d": 16,
+            "venta_90d": 15,
             "venta_ytd": 48,
-            "rotacion_anualizada": 65,
-            "dias_cobertura": 50.6,
-            "tendencia_interanual": -47.0,
+            "rotacion_anualizada": 61,
+            "dias_cobertura": 54.0,
+            "tendencia_interanual": -50.0,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -6891,42 +6927,6 @@
               {
                 "id": 1251,
                 "talla": "VINOTINTO TU",
-                "disponible": 2,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
-            "referencia": "CHAQUETA ISA",
-            "categoria": "CHAQUETAS",
-            "disponible": 3,
-            "venta_90d": 5,
-            "venta_ytd": 17,
-            "rotacion_anualizada": 20,
-            "dias_cobertura": 54.0,
-            "tendencia_interanual": null,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 105000,
-            "inversion_sugerida": 0,
-            "num_variantes": 3,
-            "variantes": [
-              {
-                "id": 1969,
-                "talla": "BEIGE TU",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 1968,
-                "talla": "CAMEL TU",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 1967,
-                "talla": "NEGRO TU",
                 "disponible": 2,
                 "sugerido": 0
               }
@@ -8086,8 +8086,8 @@
         "uds_disponibles": 176,
         "num_criticos": 10,
         "num_alerta": 1,
-        "unidades_sugeridas": 25,
-        "inversion_sugerida": 1076000,
+        "unidades_sugeridas": 22,
+        "inversion_sugerida": 927000,
         "referencias": [
           {
             "referencia": "BLUSA EMMA ENCAJE",
@@ -8351,16 +8351,16 @@
             "referencia": "BLUSA PARIS",
             "categoria": "SIN CATEGORÍA",
             "disponible": 0,
-            "venta_90d": 24,
+            "venta_90d": 22,
             "venta_ytd": 58,
-            "rotacion_anualizada": 97,
+            "rotacion_anualizada": 89,
             "dias_cobertura": 0.0,
             "tendencia_interanual": null,
             "estado": "critico",
             "estado_label": "Crítico",
-            "sugerido": 8,
+            "sugerido": 7,
             "costo_unitario": 43000,
-            "inversion_sugerida": 344000,
+            "inversion_sugerida": 301000,
             "num_variantes": 2,
             "variantes": [
               {
@@ -8373,7 +8373,7 @@
                 "id": 2743,
                 "talla": "NEGRO TU",
                 "disponible": 0,
-                "sugerido": 4
+                "sugerido": 3
               }
             ]
           },
@@ -8636,67 +8636,19 @@
             ]
           },
           {
-            "referencia": "CHAMARRA GAMUZA AURORA",
-            "categoria": "SIN CATEGORÍA",
-            "disponible": 2,
-            "venta_90d": 11,
-            "venta_ytd": 19,
-            "rotacion_anualizada": 45,
-            "dias_cobertura": 16.4,
-            "tendencia_interanual": null,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 2,
-            "costo_unitario": 80000,
-            "inversion_sugerida": 160000,
-            "num_variantes": 5,
-            "variantes": [
-              {
-                "id": 2768,
-                "talla": "CAFE",
-                "disponible": 0,
-                "sugerido": 1
-              },
-              {
-                "id": 2767,
-                "talla": "CAMEL",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 2771,
-                "talla": "MARFIL",
-                "disponible": 0,
-                "sugerido": 1
-              },
-              {
-                "id": 2769,
-                "talla": "NEGRO",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 2770,
-                "talla": "VERDE",
-                "disponible": 1,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
             "referencia": "BLUSA SANTORINI",
             "categoria": "SIN CATEGORÍA",
             "disponible": 12,
-            "venta_90d": 63,
+            "venta_90d": 60,
             "venta_ytd": 115,
-            "rotacion_anualizada": 255,
-            "dias_cobertura": 17.1,
+            "rotacion_anualizada": 243,
+            "dias_cobertura": 18.0,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
-            "sugerido": 9,
+            "sugerido": 8,
             "costo_unitario": 26000,
-            "inversion_sugerida": 234000,
+            "inversion_sugerida": 208000,
             "num_variantes": 6,
             "variantes": [
               {
@@ -8727,7 +8679,7 @@
                 "id": 2997,
                 "talla": "VERDE OLIVA TU",
                 "disponible": 0,
-                "sugerido": 3
+                "sugerido": 2
               },
               {
                 "id": 2998,
@@ -8775,6 +8727,54 @@
                 "id": 2718,
                 "talla": "VINOTINTO",
                 "disponible": 0,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
+            "referencia": "CHAMARRA GAMUZA AURORA",
+            "categoria": "SIN CATEGORÍA",
+            "disponible": 2,
+            "venta_90d": 10,
+            "venta_ytd": 19,
+            "rotacion_anualizada": 41,
+            "dias_cobertura": 18.0,
+            "tendencia_interanual": null,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 1,
+            "costo_unitario": 80000,
+            "inversion_sugerida": 80000,
+            "num_variantes": 5,
+            "variantes": [
+              {
+                "id": 2768,
+                "talla": "CAFE",
+                "disponible": 0,
+                "sugerido": 1
+              },
+              {
+                "id": 2767,
+                "talla": "CAMEL",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 2771,
+                "talla": "MARFIL",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 2769,
+                "talla": "NEGRO",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 2770,
+                "talla": "VERDE",
+                "disponible": 1,
                 "sugerido": 0
               }
             ]
@@ -9446,13 +9446,49 @@
             ]
           },
           {
+            "referencia": "BLUSA BOTON PAULINA",
+            "categoria": "SIN CATEGORÍA",
+            "disponible": 16,
+            "venta_90d": 7,
+            "venta_ytd": 16,
+            "rotacion_anualizada": 28,
+            "dias_cobertura": 205.7,
+            "tendencia_interanual": null,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 35000,
+            "inversion_sugerida": 0,
+            "num_variantes": 3,
+            "variantes": [
+              {
+                "id": 2819,
+                "talla": "BEIGE TU",
+                "disponible": 10,
+                "sugerido": 0
+              },
+              {
+                "id": 2821,
+                "talla": "MARFIL TU",
+                "disponible": 3,
+                "sugerido": 0
+              },
+              {
+                "id": 2820,
+                "talla": "NEGRO TU",
+                "disponible": 3,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
             "referencia": "JEAN BOTA RECTA",
             "categoria": "SIN CATEGORÍA",
             "disponible": 19,
-            "venta_90d": 9,
+            "venta_90d": 8,
             "venta_ytd": 33,
-            "rotacion_anualizada": 36,
-            "dias_cobertura": 190.0,
+            "rotacion_anualizada": 32,
+            "dias_cobertura": 213.8,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -9519,90 +9555,6 @@
                 "id": 2875,
                 "talla": "CAFE T8",
                 "disponible": 2,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
-            "referencia": "BLUSA BOTON PAULINA",
-            "categoria": "SIN CATEGORÍA",
-            "disponible": 16,
-            "venta_90d": 7,
-            "venta_ytd": 16,
-            "rotacion_anualizada": 28,
-            "dias_cobertura": 205.7,
-            "tendencia_interanual": null,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 35000,
-            "inversion_sugerida": 0,
-            "num_variantes": 3,
-            "variantes": [
-              {
-                "id": 2819,
-                "talla": "BEIGE TU",
-                "disponible": 10,
-                "sugerido": 0
-              },
-              {
-                "id": 2821,
-                "talla": "MARFIL TU",
-                "disponible": 3,
-                "sugerido": 0
-              },
-              {
-                "id": 2820,
-                "talla": "NEGRO TU",
-                "disponible": 3,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
-            "referencia": "JEAN ACANALADO ESTRELLA",
-            "categoria": "SIN CATEGORÍA",
-            "disponible": 5,
-            "venta_90d": 2,
-            "venta_ytd": 6,
-            "rotacion_anualizada": 8,
-            "dias_cobertura": 225.0,
-            "tendencia_interanual": null,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 63000,
-            "inversion_sugerida": 0,
-            "num_variantes": 5,
-            "variantes": [
-              {
-                "id": 2807,
-                "talla": "T10",
-                "disponible": 2,
-                "sugerido": 0
-              },
-              {
-                "id": 2808,
-                "talla": "T12",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 2804,
-                "talla": "T4",
-                "disponible": 2,
-                "sugerido": 0
-              },
-              {
-                "id": 2805,
-                "talla": "T6",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 2806,
-                "talla": "T8",
-                "disponible": 0,
                 "sugerido": 0
               }
             ]
@@ -9728,6 +9680,54 @@
             ]
           },
           {
+            "referencia": "JEAN ACANALADO ESTRELLA",
+            "categoria": "SIN CATEGORÍA",
+            "disponible": 5,
+            "venta_90d": 1,
+            "venta_ytd": 6,
+            "rotacion_anualizada": 4,
+            "dias_cobertura": 450.0,
+            "tendencia_interanual": null,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 63000,
+            "inversion_sugerida": 0,
+            "num_variantes": 5,
+            "variantes": [
+              {
+                "id": 2807,
+                "talla": "T10",
+                "disponible": 2,
+                "sugerido": 0
+              },
+              {
+                "id": 2808,
+                "talla": "T12",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 2804,
+                "talla": "T4",
+                "disponible": 2,
+                "sugerido": 0
+              },
+              {
+                "id": 2805,
+                "talla": "T6",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 2806,
+                "talla": "T8",
+                "disponible": 0,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
             "referencia": "CHALECO NAPOLEON",
             "categoria": "SIN CATEGORÍA",
             "disponible": 35,
@@ -9774,11 +9774,11 @@
       {
         "categoria": "PANTALONES",
         "num_refs": 178,
-        "uds_disponibles": 826,
+        "uds_disponibles": 824,
         "num_criticos": 9,
         "num_alerta": 2,
-        "unidades_sugeridas": 37,
-        "inversion_sugerida": 2960000,
+        "unidades_sugeridas": 34,
+        "inversion_sugerida": 2685000,
         "referencias": [
           {
             "referencia": "CHALECO JEAN ADA",
@@ -11812,23 +11812,23 @@
             "referencia": "JEAN BORDADO",
             "categoria": "PANTALONES",
             "disponible": 1,
-            "venta_90d": 32,
+            "venta_90d": 31,
             "venta_ytd": 59,
-            "rotacion_anualizada": 130,
-            "dias_cobertura": 2.8,
+            "rotacion_anualizada": 126,
+            "dias_cobertura": 2.9,
             "tendencia_interanual": null,
             "estado": "critico",
             "estado_label": "Crítico",
-            "sugerido": 10,
+            "sugerido": 9,
             "costo_unitario": 120000,
-            "inversion_sugerida": 1200000,
+            "inversion_sugerida": 1080000,
             "num_variantes": 5,
             "variantes": [
               {
                 "id": 3179,
                 "talla": "BEIGE T10",
                 "disponible": 0,
-                "sugerido": 3
+                "sugerido": 2
               },
               {
                 "id": 3180,
@@ -11860,16 +11860,16 @@
             "referencia": "FALDA SHORT APLIQUE ESTRELLA",
             "categoria": "PANTALONES",
             "disponible": 1,
-            "venta_90d": 24,
+            "venta_90d": 20,
             "venta_ytd": 36,
-            "rotacion_anualizada": 97,
-            "dias_cobertura": 3.8,
+            "rotacion_anualizada": 81,
+            "dias_cobertura": 4.5,
             "tendencia_interanual": null,
             "estado": "critico",
             "estado_label": "Crítico",
-            "sugerido": 7,
+            "sugerido": 6,
             "costo_unitario": 70000,
-            "inversion_sugerida": 490000,
+            "inversion_sugerida": 420000,
             "num_variantes": 4,
             "variantes": [
               {
@@ -11894,7 +11894,7 @@
                 "id": 3164,
                 "talla": "AZUL CLARO T8",
                 "disponible": 1,
-                "sugerido": 1
+                "sugerido": 0
               }
             ]
           },
@@ -12385,54 +12385,6 @@
             ]
           },
           {
-            "referencia": "JEAN NUBE",
-            "categoria": "PANTALONES",
-            "disponible": 2,
-            "venta_90d": 6,
-            "venta_ytd": 61,
-            "rotacion_anualizada": 24,
-            "dias_cobertura": 30.0,
-            "tendencia_interanual": -60.0,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 84000,
-            "inversion_sugerida": 0,
-            "num_variantes": 5,
-            "variantes": [
-              {
-                "id": 1112,
-                "talla": "BLANCO T10",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 1113,
-                "talla": "BLANCO T12",
-                "disponible": 2,
-                "sugerido": 0
-              },
-              {
-                "id": 1109,
-                "talla": "BLANCO T4",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 1110,
-                "talla": "BLANCO T6",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 1111,
-                "talla": "BLANCO T8",
-                "disponible": 0,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
             "referencia": "JEAN RAYAS",
             "categoria": "PANTALONES",
             "disponible": 3,
@@ -12475,6 +12427,54 @@
               {
                 "id": 3445,
                 "talla": "AZUL CLARO T8",
+                "disponible": 0,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
+            "referencia": "JEAN NUBE",
+            "categoria": "PANTALONES",
+            "disponible": 2,
+            "venta_90d": 5,
+            "venta_ytd": 61,
+            "rotacion_anualizada": 20,
+            "dias_cobertura": 36.0,
+            "tendencia_interanual": -60.0,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 84000,
+            "inversion_sugerida": 0,
+            "num_variantes": 5,
+            "variantes": [
+              {
+                "id": 1112,
+                "talla": "BLANCO T10",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 1113,
+                "talla": "BLANCO T12",
+                "disponible": 2,
+                "sugerido": 0
+              },
+              {
+                "id": 1109,
+                "talla": "BLANCO T4",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 1110,
+                "talla": "BLANCO T6",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 1111,
+                "talla": "BLANCO T8",
                 "disponible": 0,
                 "sugerido": 0
               }
@@ -12986,12 +12986,12 @@
             "venta_ytd": 133,
             "rotacion_anualizada": 187,
             "dias_cobertura": 50.9,
-            "tendencia_interanual": 84.0,
+            "tendencia_interanual": 77.0,
             "estado": "ok",
             "estado_label": "Cobertura ok",
-            "sugerido": 2,
+            "sugerido": 1,
             "costo_unitario": 85000,
-            "inversion_sugerida": 170000,
+            "inversion_sugerida": 85000,
             "num_variantes": 12,
             "variantes": [
               {
@@ -13004,7 +13004,7 @@
                 "id": 1446,
                 "talla": "GRIS T12",
                 "disponible": 0,
-                "sugerido": 1
+                "sugerido": 0
               },
               {
                 "id": 1447,
@@ -13814,7 +13814,7 @@
             "venta_ytd": 32,
             "rotacion_anualizada": 36,
             "dias_cobertura": 70.0,
-            "tendencia_interanual": -59.0,
+            "tendencia_interanual": -57.0,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -14233,6 +14233,90 @@
               {
                 "id": 2498,
                 "talla": "GRIS T8",
+                "disponible": 0,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
+            "referencia": "BRAGA JEAN",
+            "categoria": "PANTALONES",
+            "disponible": 6,
+            "venta_90d": 6,
+            "venta_ytd": 13,
+            "rotacion_anualizada": 24,
+            "dias_cobertura": 90.0,
+            "tendencia_interanual": null,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 68000,
+            "inversion_sugerida": 0,
+            "num_variantes": 11,
+            "variantes": [
+              {
+                "id": 2812,
+                "talla": "AZUL CLARO T10",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 2813,
+                "talla": "AZUL CLARO T12",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 2809,
+                "talla": "AZUL CLARO T4",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 2810,
+                "talla": "AZUL CLARO T6",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 2811,
+                "talla": "AZUL CLARO T8",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 3415,
+                "talla": "GRIS OSCURO T10",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 3416,
+                "talla": "GRIS OSCURO T12",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 3417,
+                "talla": "GRIS OSCURO T14",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 3412,
+                "talla": "GRIS OSCURO T4",
+                "disponible": 2,
+                "sugerido": 0
+              },
+              {
+                "id": 3413,
+                "talla": "GRIS OSCURO T6",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 3414,
+                "talla": "GRIS OSCURO T8",
                 "disponible": 0,
                 "sugerido": 0
               }
@@ -14797,36 +14881,6 @@
             ]
           },
           {
-            "referencia": "PANTALON ENCAJE",
-            "categoria": "PANTALONES",
-            "disponible": 15,
-            "venta_90d": 15,
-            "venta_ytd": 28,
-            "rotacion_anualizada": 61,
-            "dias_cobertura": 90.0,
-            "tendencia_interanual": null,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 35000,
-            "inversion_sugerida": 0,
-            "num_variantes": 2,
-            "variantes": [
-              {
-                "id": 1095,
-                "talla": "MARFIL TU",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 20,
-                "talla": "NEGRO TU",
-                "disponible": 14,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
             "referencia": "PANTALON LIKE CUERINA",
             "categoria": "PANTALONES",
             "disponible": 1,
@@ -14900,6 +14954,36 @@
                 "id": 3193,
                 "talla": "AVENA T8",
                 "disponible": 1,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
+            "referencia": "PANTALON ENCAJE",
+            "categoria": "PANTALONES",
+            "disponible": 15,
+            "venta_90d": 13,
+            "venta_ytd": 28,
+            "rotacion_anualizada": 53,
+            "dias_cobertura": 103.8,
+            "tendencia_interanual": null,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 35000,
+            "inversion_sugerida": 0,
+            "num_variantes": 2,
+            "variantes": [
+              {
+                "id": 1095,
+                "talla": "MARFIL TU",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 20,
+                "talla": "NEGRO TU",
+                "disponible": 14,
                 "sugerido": 0
               }
             ]
@@ -15403,90 +15487,6 @@
             ]
           },
           {
-            "referencia": "BRAGA JEAN",
-            "categoria": "PANTALONES",
-            "disponible": 8,
-            "venta_90d": 4,
-            "venta_ytd": 11,
-            "rotacion_anualizada": 16,
-            "dias_cobertura": 180.0,
-            "tendencia_interanual": null,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 68000,
-            "inversion_sugerida": 0,
-            "num_variantes": 11,
-            "variantes": [
-              {
-                "id": 2812,
-                "talla": "AZUL CLARO T10",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 2813,
-                "talla": "AZUL CLARO T12",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 2809,
-                "talla": "AZUL CLARO T4",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 2810,
-                "talla": "AZUL CLARO T6",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 2811,
-                "talla": "AZUL CLARO T8",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 3415,
-                "talla": "GRIS OSCURO T10",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 3416,
-                "talla": "GRIS OSCURO T12",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 3417,
-                "talla": "GRIS OSCURO T14",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 3412,
-                "talla": "GRIS OSCURO T4",
-                "disponible": 2,
-                "sugerido": 0
-              },
-              {
-                "id": 3413,
-                "talla": "GRIS OSCURO T6",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 3414,
-                "talla": "GRIS OSCURO T8",
-                "disponible": 1,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
             "referencia": "CAPA FIRE",
             "categoria": "PANTALONES",
             "disponible": 2,
@@ -15667,78 +15667,6 @@
               {
                 "id": 1370,
                 "talla": "T4",
-                "disponible": 0,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
-            "referencia": "JEAN ESTRELLA",
-            "categoria": "PANTALONES",
-            "disponible": 2,
-            "venta_90d": 1,
-            "venta_ytd": 3,
-            "rotacion_anualizada": 4,
-            "dias_cobertura": 180.0,
-            "tendencia_interanual": -60.0,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 61111,
-            "inversion_sugerida": 0,
-            "num_variantes": 9,
-            "variantes": [
-              {
-                "id": 987,
-                "talla": "T12",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 1368,
-                "talla": "BEIGE T10",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 1369,
-                "talla": "BEIGE T12",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 1366,
-                "talla": "BEIGE T6",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 1367,
-                "talla": "BEIGE T8",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 986,
-                "talla": "T10",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 983,
-                "talla": "T4",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 984,
-                "talla": "T6",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 985,
-                "talla": "T8",
                 "disponible": 0,
                 "sugerido": 0
               }
@@ -17089,102 +17017,6 @@
             ]
           },
           {
-            "referencia": "JEAN",
-            "categoria": "PANTALONES",
-            "disponible": 9,
-            "venta_90d": 2,
-            "venta_ytd": 16,
-            "rotacion_anualizada": 8,
-            "dias_cobertura": 405.0,
-            "tendencia_interanual": -60.0,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 51077,
-            "inversion_sugerida": 0,
-            "num_variantes": 13,
-            "variantes": [
-              {
-                "id": 1090,
-                "talla": "ANIMAL PRINT  TU",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 840,
-                "talla": "BEIGE T10",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 841,
-                "talla": "BEIGE T12",
-                "disponible": 3,
-                "sugerido": 0
-              },
-              {
-                "id": 1765,
-                "talla": "BEIGE T14",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 837,
-                "talla": "BEIGE T4",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 838,
-                "talla": "BEIGE T6",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 839,
-                "talla": "BEIGE T8",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 835,
-                "talla": "ROSA T10",
-                "disponible": 2,
-                "sugerido": 0
-              },
-              {
-                "id": 836,
-                "talla": "ROSA T12",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 878,
-                "talla": "ROSA T14",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 832,
-                "talla": "ROSA T4",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 833,
-                "talla": "ROSA T6",
-                "disponible": 2,
-                "sugerido": 0
-              },
-              {
-                "id": 834,
-                "talla": "ROSA T8",
-                "disponible": 0,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
             "referencia": "JEAN ADA PALAZO",
             "categoria": "PANTALONES",
             "disponible": 5,
@@ -17413,6 +17245,102 @@
               {
                 "id": 793,
                 "talla": "T6",
+                "disponible": 0,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
+            "referencia": "JEAN",
+            "categoria": "PANTALONES",
+            "disponible": 9,
+            "venta_90d": 1,
+            "venta_ytd": 16,
+            "rotacion_anualizada": 4,
+            "dias_cobertura": 810.0,
+            "tendencia_interanual": -60.0,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 51077,
+            "inversion_sugerida": 0,
+            "num_variantes": 13,
+            "variantes": [
+              {
+                "id": 1090,
+                "talla": "ANIMAL PRINT  TU",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 840,
+                "talla": "BEIGE T10",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 841,
+                "talla": "BEIGE T12",
+                "disponible": 3,
+                "sugerido": 0
+              },
+              {
+                "id": 1765,
+                "talla": "BEIGE T14",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 837,
+                "talla": "BEIGE T4",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 838,
+                "talla": "BEIGE T6",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 839,
+                "talla": "BEIGE T8",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 835,
+                "talla": "ROSA T10",
+                "disponible": 2,
+                "sugerido": 0
+              },
+              {
+                "id": 836,
+                "talla": "ROSA T12",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 878,
+                "talla": "ROSA T14",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 832,
+                "talla": "ROSA T4",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 833,
+                "talla": "ROSA T6",
+                "disponible": 2,
+                "sugerido": 0
+              },
+              {
+                "id": 834,
+                "talla": "ROSA T8",
                 "disponible": 0,
                 "sugerido": 0
               }
@@ -18475,6 +18403,78 @@
               {
                 "id": 1345,
                 "talla": "T6",
+                "disponible": 0,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
+            "referencia": "JEAN ESTRELLA",
+            "categoria": "PANTALONES",
+            "disponible": 2,
+            "venta_90d": 0,
+            "venta_ytd": 3,
+            "rotacion_anualizada": 0,
+            "dias_cobertura": null,
+            "tendencia_interanual": -60.0,
+            "estado": "sin_rotacion",
+            "estado_label": "Sin rotación 90d",
+            "sugerido": 0,
+            "costo_unitario": 61111,
+            "inversion_sugerida": 0,
+            "num_variantes": 9,
+            "variantes": [
+              {
+                "id": 987,
+                "talla": "T12",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 1368,
+                "talla": "BEIGE T10",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 1369,
+                "talla": "BEIGE T12",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 1366,
+                "talla": "BEIGE T6",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 1367,
+                "talla": "BEIGE T8",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 986,
+                "talla": "T10",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 983,
+                "talla": "T4",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 984,
+                "talla": "T6",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 985,
+                "talla": "T8",
                 "disponible": 0,
                 "sugerido": 0
               }
@@ -20058,48 +20058,6 @@
             ]
           },
           {
-            "referencia": "BUZO BORREGO URBAN",
-            "categoria": "BUZOS",
-            "disponible": 6,
-            "venta_90d": 9,
-            "venta_ytd": 74,
-            "rotacion_anualizada": 36,
-            "dias_cobertura": 60.0,
-            "tendencia_interanual": -60.0,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 55000,
-            "inversion_sugerida": 0,
-            "num_variantes": 4,
-            "variantes": [
-              {
-                "id": 1017,
-                "talla": "CAMEL TU",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 3039,
-                "talla": "GRIS OSCURO TU",
-                "disponible": 4,
-                "sugerido": 0
-              },
-              {
-                "id": 1018,
-                "talla": "MARFIL TU",
-                "disponible": 2,
-                "sugerido": 0
-              },
-              {
-                "id": 1119,
-                "talla": "NEGRO TU",
-                "disponible": 0,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
             "referencia": "BUZO TIRA DALIA",
             "categoria": "BUZOS",
             "disponible": 9,
@@ -20143,6 +20101,48 @@
                 "id": 2853,
                 "talla": "VERDE OLIVA TU",
                 "disponible": 2,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
+            "referencia": "BUZO BORREGO URBAN",
+            "categoria": "BUZOS",
+            "disponible": 6,
+            "venta_90d": 8,
+            "venta_ytd": 74,
+            "rotacion_anualizada": 32,
+            "dias_cobertura": 67.5,
+            "tendencia_interanual": -60.0,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 55000,
+            "inversion_sugerida": 0,
+            "num_variantes": 4,
+            "variantes": [
+              {
+                "id": 1017,
+                "talla": "CAMEL TU",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 3039,
+                "talla": "GRIS OSCURO TU",
+                "disponible": 4,
+                "sugerido": 0
+              },
+              {
+                "id": 1018,
+                "talla": "MARFIL TU",
+                "disponible": 2,
+                "sugerido": 0
+              },
+              {
+                "id": 1119,
+                "talla": "NEGRO TU",
+                "disponible": 0,
                 "sugerido": 0
               }
             ]
@@ -20514,66 +20514,6 @@
             ]
           },
           {
-            "referencia": "BUZO ALGODON CELESTIAL",
-            "categoria": "BUZOS",
-            "disponible": 30,
-            "venta_90d": 10,
-            "venta_ytd": 20,
-            "rotacion_anualizada": 41,
-            "dias_cobertura": 270.0,
-            "tendencia_interanual": null,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 48000,
-            "inversion_sugerida": 0,
-            "num_variantes": 7,
-            "variantes": [
-              {
-                "id": 2593,
-                "talla": "AZUL BEBE TU",
-                "disponible": 7,
-                "sugerido": 0
-              },
-              {
-                "id": 2592,
-                "talla": "BEIGE TU",
-                "disponible": 5,
-                "sugerido": 0
-              },
-              {
-                "id": 2595,
-                "talla": "BLANCO TU",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 3294,
-                "talla": "GRIS CLARO TU",
-                "disponible": 4,
-                "sugerido": 0
-              },
-              {
-                "id": 2594,
-                "talla": "GRIS OSCURO TU",
-                "disponible": 7,
-                "sugerido": 0
-              },
-              {
-                "id": 2596,
-                "talla": "NEGRO TU",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 3295,
-                "talla": "VINOTINTO TU",
-                "disponible": 5,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
             "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/CAFE",
             "categoria": "BUZOS",
             "disponible": 3,
@@ -20665,6 +20605,66 @@
                 "id": 3038,
                 "talla": "VINOTINTO/AZUL TU",
                 "disponible": 4,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
+            "referencia": "BUZO ALGODON CELESTIAL",
+            "categoria": "BUZOS",
+            "disponible": 30,
+            "venta_90d": 9,
+            "venta_ytd": 20,
+            "rotacion_anualizada": 36,
+            "dias_cobertura": 300.0,
+            "tendencia_interanual": null,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 48000,
+            "inversion_sugerida": 0,
+            "num_variantes": 7,
+            "variantes": [
+              {
+                "id": 2593,
+                "talla": "AZUL BEBE TU",
+                "disponible": 7,
+                "sugerido": 0
+              },
+              {
+                "id": 2592,
+                "talla": "BEIGE TU",
+                "disponible": 5,
+                "sugerido": 0
+              },
+              {
+                "id": 2595,
+                "talla": "BLANCO TU",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 3294,
+                "talla": "GRIS CLARO TU",
+                "disponible": 4,
+                "sugerido": 0
+              },
+              {
+                "id": 2594,
+                "talla": "GRIS OSCURO TU",
+                "disponible": 7,
+                "sugerido": 0
+              },
+              {
+                "id": 2596,
+                "talla": "NEGRO TU",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 3295,
+                "talla": "VINOTINTO TU",
+                "disponible": 5,
                 "sugerido": 0
               }
             ]
@@ -21004,7 +21004,7 @@
       {
         "categoria": "BODYS",
         "num_refs": 57,
-        "uds_disponibles": 355,
+        "uds_disponibles": 354,
         "num_criticos": 5,
         "num_alerta": 0,
         "unidades_sugeridas": 8,
@@ -21126,7 +21126,7 @@
             "venta_ytd": 0,
             "rotacion_anualizada": 0,
             "dias_cobertura": null,
-            "tendencia_interanual": -60.0,
+            "tendencia_interanual": null,
             "estado": "agotado",
             "estado_label": "Agotado, sin rotación",
             "sugerido": 0,
@@ -21542,9 +21542,9 @@
             "referencia": "BODY CUADRADO MANGA CORTA",
             "categoria": "BODYS",
             "disponible": 0,
-            "venta_90d": 3,
+            "venta_90d": 2,
             "venta_ytd": 8,
-            "rotacion_anualizada": 12,
+            "rotacion_anualizada": 8,
             "dias_cobertura": 0.0,
             "tendencia_interanual": null,
             "estado": "critico",
@@ -21857,72 +21857,6 @@
             ]
           },
           {
-            "referencia": "BODY TIRA BASICO",
-            "categoria": "BODYS",
-            "disponible": 7,
-            "venta_90d": 15,
-            "venta_ytd": 42,
-            "rotacion_anualizada": 61,
-            "dias_cobertura": 42.0,
-            "tendencia_interanual": null,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 32000,
-            "inversion_sugerida": 0,
-            "num_variantes": 8,
-            "variantes": [
-              {
-                "id": 1588,
-                "talla": "AMARILLO",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 1622,
-                "talla": "AZUL REY",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 1659,
-                "talla": "CAFE TU",
-                "disponible": 3,
-                "sugerido": 0
-              },
-              {
-                "id": 1660,
-                "talla": "CAMEL",
-                "disponible": 2,
-                "sugerido": 0
-              },
-              {
-                "id": 1623,
-                "talla": "MARFIL TU",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 1658,
-                "talla": "NEGRO TU",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 1624,
-                "talla": "ROSA",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 3259,
-                "talla": "VERDE TU",
-                "disponible": 1,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
             "referencia": "BODY ESTRELLA TIRA",
             "categoria": "BODYS",
             "disponible": 1,
@@ -22031,6 +21965,72 @@
             ]
           },
           {
+            "referencia": "BODY TIRA BASICO",
+            "categoria": "BODYS",
+            "disponible": 7,
+            "venta_90d": 13,
+            "venta_ytd": 42,
+            "rotacion_anualizada": 53,
+            "dias_cobertura": 48.5,
+            "tendencia_interanual": null,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 32000,
+            "inversion_sugerida": 0,
+            "num_variantes": 8,
+            "variantes": [
+              {
+                "id": 1588,
+                "talla": "AMARILLO",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 1622,
+                "talla": "AZUL REY",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 1659,
+                "talla": "CAFE TU",
+                "disponible": 3,
+                "sugerido": 0
+              },
+              {
+                "id": 1660,
+                "talla": "CAMEL",
+                "disponible": 2,
+                "sugerido": 0
+              },
+              {
+                "id": 1623,
+                "talla": "MARFIL TU",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 1658,
+                "talla": "NEGRO TU",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 1624,
+                "talla": "ROSA",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 3259,
+                "talla": "VERDE TU",
+                "disponible": 1,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
             "referencia": "BODY ESTRAPLE LAU",
             "categoria": "BODYS",
             "disponible": 19,
@@ -22123,11 +22123,11 @@
           {
             "referencia": "BODY BASICO REDONDO",
             "categoria": "BODYS",
-            "disponible": 64,
+            "disponible": 63,
             "venta_90d": 80,
-            "venta_ytd": 124,
+            "venta_ytd": 125,
             "rotacion_anualizada": 324,
-            "dias_cobertura": 72.0,
+            "dias_cobertura": 70.9,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -22187,7 +22187,7 @@
               {
                 "id": 2505,
                 "talla": "NEGRO TU",
-                "disponible": 16,
+                "disponible": 15,
                 "sugerido": 0
               },
               {
@@ -23433,7 +23433,7 @@
       {
         "categoria": "FALDAS",
         "num_refs": 66,
-        "uds_disponibles": 282,
+        "uds_disponibles": 281,
         "num_criticos": 4,
         "num_alerta": 0,
         "unidades_sugeridas": 13,
@@ -24622,72 +24622,6 @@
             ]
           },
           {
-            "referencia": "FALDA SHORT CLASICA",
-            "categoria": "FALDAS",
-            "disponible": 16,
-            "venta_90d": 26,
-            "venta_ytd": 28,
-            "rotacion_anualizada": 105,
-            "dias_cobertura": 55.4,
-            "tendencia_interanual": null,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 70000,
-            "inversion_sugerida": 0,
-            "num_variantes": 8,
-            "variantes": [
-              {
-                "id": 3641,
-                "talla": "AZUL OSCURO T10",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 3642,
-                "talla": "AZUL OSCURO T12",
-                "disponible": 3,
-                "sugerido": 0
-              },
-              {
-                "id": 3639,
-                "talla": "AZUL OSCURO T6",
-                "disponible": 4,
-                "sugerido": 0
-              },
-              {
-                "id": 3640,
-                "talla": "AZUL OSCURO T8",
-                "disponible": 3,
-                "sugerido": 0
-              },
-              {
-                "id": 3270,
-                "talla": "TERRACOTA T10",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 3271,
-                "talla": "TERRACOTA T12",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 3268,
-                "talla": "TERRACOTA T6",
-                "disponible": 2,
-                "sugerido": 0
-              },
-              {
-                "id": 3269,
-                "talla": "TERRACOTA T8",
-                "disponible": 2,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
             "referencia": "FALDA SHORT TERCEOPELO",
             "categoria": "FALDAS",
             "disponible": 14,
@@ -24754,14 +24688,122 @@
             ]
           },
           {
+            "referencia": "FALDA SHORT CLASICA",
+            "categoria": "FALDAS",
+            "disponible": 16,
+            "venta_90d": 25,
+            "venta_ytd": 28,
+            "rotacion_anualizada": 101,
+            "dias_cobertura": 57.6,
+            "tendencia_interanual": null,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 70000,
+            "inversion_sugerida": 0,
+            "num_variantes": 8,
+            "variantes": [
+              {
+                "id": 3641,
+                "talla": "AZUL OSCURO T10",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 3642,
+                "talla": "AZUL OSCURO T12",
+                "disponible": 3,
+                "sugerido": 0
+              },
+              {
+                "id": 3639,
+                "talla": "AZUL OSCURO T6",
+                "disponible": 4,
+                "sugerido": 0
+              },
+              {
+                "id": 3640,
+                "talla": "AZUL OSCURO T8",
+                "disponible": 3,
+                "sugerido": 0
+              },
+              {
+                "id": 3270,
+                "talla": "TERRACOTA T10",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 3271,
+                "talla": "TERRACOTA T12",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 3268,
+                "talla": "TERRACOTA T6",
+                "disponible": 2,
+                "sugerido": 0
+              },
+              {
+                "id": 3269,
+                "talla": "TERRACOTA T8",
+                "disponible": 2,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
+            "referencia": "FALDA SHORT CLASICA AZUL FROSTEADO CLARO",
+            "categoria": "FALDAS",
+            "disponible": 11,
+            "venta_90d": 15,
+            "venta_ytd": 15,
+            "rotacion_anualizada": 61,
+            "dias_cobertura": 66.0,
+            "tendencia_interanual": null,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 65000,
+            "inversion_sugerida": 0,
+            "num_variantes": 4,
+            "variantes": [
+              {
+                "id": 3849,
+                "talla": "T10",
+                "disponible": 1,
+                "sugerido": 0
+              },
+              {
+                "id": 3850,
+                "talla": "T12",
+                "disponible": 2,
+                "sugerido": 0
+              },
+              {
+                "id": 3847,
+                "talla": "T6",
+                "disponible": 4,
+                "sugerido": 0
+              },
+              {
+                "id": 3848,
+                "talla": "T8",
+                "disponible": 4,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
             "referencia": "FALDA SHORT GEORGINA",
             "categoria": "FALDAS",
             "disponible": 9,
-            "venta_90d": 11,
+            "venta_90d": 10,
             "venta_ytd": 93,
-            "rotacion_anualizada": 45,
-            "dias_cobertura": 73.6,
-            "tendencia_interanual": -39.0,
+            "rotacion_anualizada": 41,
+            "dias_cobertura": 81.0,
+            "tendencia_interanual": -44.0,
             "estado": "ok",
             "estado_label": "Cobertura ok",
             "sugerido": 0,
@@ -24791,48 +24833,6 @@
                 "id": 615,
                 "talla": "VINOTINTO TU",
                 "disponible": 2,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
-            "referencia": "FALDA SHORT CLASICA AZUL FROSTEADO CLARO",
-            "categoria": "FALDAS",
-            "disponible": 12,
-            "venta_90d": 14,
-            "venta_ytd": 14,
-            "rotacion_anualizada": 57,
-            "dias_cobertura": 77.1,
-            "tendencia_interanual": null,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 65000,
-            "inversion_sugerida": 0,
-            "num_variantes": 4,
-            "variantes": [
-              {
-                "id": 3849,
-                "talla": "T10",
-                "disponible": 1,
-                "sugerido": 0
-              },
-              {
-                "id": 3850,
-                "talla": "T12",
-                "disponible": 3,
-                "sugerido": 0
-              },
-              {
-                "id": 3847,
-                "talla": "T6",
-                "disponible": 4,
-                "sugerido": 0
-              },
-              {
-                "id": 3848,
-                "talla": "T8",
-                "disponible": 4,
                 "sugerido": 0
               }
             ]
@@ -26306,7 +26306,7 @@
       {
         "categoria": "VESTIDOS",
         "num_refs": 33,
-        "uds_disponibles": 103,
+        "uds_disponibles": 102,
         "num_criticos": 4,
         "num_alerta": 0,
         "unidades_sugeridas": 1,
@@ -26991,66 +26991,6 @@
             ]
           },
           {
-            "referencia": "VESTIDO FLORES",
-            "categoria": "VESTIDOS",
-            "disponible": 6,
-            "venta_90d": 10,
-            "venta_ytd": 42,
-            "rotacion_anualizada": 41,
-            "dias_cobertura": 54.0,
-            "tendencia_interanual": null,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 40000,
-            "inversion_sugerida": 0,
-            "num_variantes": 7,
-            "variantes": [
-              {
-                "id": 1982,
-                "talla": "TU",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 2574,
-                "talla": "AMARILLO  TU",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 3253,
-                "talla": "BLANCO/AMARILLO TU",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 3252,
-                "talla": "BLANCO/AZUL TU",
-                "disponible": 4,
-                "sugerido": 0
-              },
-              {
-                "id": 3251,
-                "talla": "BLANCO/ROSA TU",
-                "disponible": 2,
-                "sugerido": 0
-              },
-              {
-                "id": 3906,
-                "talla": "NEGRO TU",
-                "disponible": 0,
-                "sugerido": 0
-              },
-              {
-                "id": 2725,
-                "talla": "ROSA  TU",
-                "disponible": 0,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
             "referencia": "JEAN VINTAGE",
             "categoria": "VESTIDOS",
             "disponible": 2,
@@ -27105,13 +27045,73 @@
             ]
           },
           {
+            "referencia": "VESTIDO FLORES",
+            "categoria": "VESTIDOS",
+            "disponible": 6,
+            "venta_90d": 9,
+            "venta_ytd": 42,
+            "rotacion_anualizada": 36,
+            "dias_cobertura": 60.0,
+            "tendencia_interanual": null,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 40000,
+            "inversion_sugerida": 0,
+            "num_variantes": 7,
+            "variantes": [
+              {
+                "id": 1982,
+                "talla": "TU",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 2574,
+                "talla": "AMARILLO  TU",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 3253,
+                "talla": "BLANCO/AMARILLO TU",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 3252,
+                "talla": "BLANCO/AZUL TU",
+                "disponible": 4,
+                "sugerido": 0
+              },
+              {
+                "id": 3251,
+                "talla": "BLANCO/ROSA TU",
+                "disponible": 2,
+                "sugerido": 0
+              },
+              {
+                "id": 3906,
+                "talla": "NEGRO TU",
+                "disponible": 0,
+                "sugerido": 0
+              },
+              {
+                "id": 2725,
+                "talla": "ROSA  TU",
+                "disponible": 0,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
             "referencia": "CAPA JEAN",
             "categoria": "VESTIDOS",
-            "disponible": 29,
-            "venta_90d": 37,
-            "venta_ytd": 212,
-            "rotacion_anualizada": 150,
-            "dias_cobertura": 70.5,
+            "disponible": 28,
+            "venta_90d": 36,
+            "venta_ytd": 213,
+            "rotacion_anualizada": 146,
+            "dias_cobertura": 70.0,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -27123,7 +27123,7 @@
               {
                 "id": 1727,
                 "talla": "AZUL CLARA TU",
-                "disponible": 20,
+                "disponible": 19,
                 "sugerido": 0
               },
               {
@@ -27613,11 +27613,11 @@
       {
         "categoria": "CONJUNTOS",
         "num_refs": 33,
-        "uds_disponibles": 204,
+        "uds_disponibles": 203,
         "num_criticos": 2,
         "num_alerta": 0,
-        "unidades_sugeridas": 14,
-        "inversion_sugerida": 1257778,
+        "unidades_sugeridas": 12,
+        "inversion_sugerida": 1078889,
         "referencias": [
           {
             "referencia": "BLAZER CORTO",
@@ -27947,16 +27947,16 @@
             "referencia": "SUDADERA ZOE",
             "categoria": "CONJUNTOS",
             "disponible": 3,
-            "venta_90d": 49,
+            "venta_90d": 46,
             "venta_ytd": 183,
-            "rotacion_anualizada": 199,
-            "dias_cobertura": 5.5,
-            "tendencia_interanual": -2.0,
+            "rotacion_anualizada": 187,
+            "dias_cobertura": 5.9,
+            "tendencia_interanual": -6.0,
             "estado": "critico",
             "estado_label": "Crítico",
-            "sugerido": 13,
+            "sugerido": 11,
             "costo_unitario": 89444,
-            "inversion_sugerida": 1162778,
+            "inversion_sugerida": 983889,
             "num_variantes": 9,
             "variantes": [
               {
@@ -27975,7 +27975,7 @@
                 "id": 1606,
                 "talla": "CAFE TU",
                 "disponible": 1,
-                "sugerido": 1
+                "sugerido": 0
               },
               {
                 "id": 782,
@@ -28011,7 +28011,7 @@
                 "id": 2071,
                 "talla": "VINOTINTO TU",
                 "disponible": 0,
-                "sugerido": 2
+                "sugerido": 1
               }
             ]
           },
@@ -28352,13 +28352,37 @@
             ]
           },
           {
+            "referencia": "SUDADERA DERT",
+            "categoria": "CONJUNTOS",
+            "disponible": 1,
+            "venta_90d": 1,
+            "venta_ytd": 1,
+            "rotacion_anualizada": 4,
+            "dias_cobertura": 90.0,
+            "tendencia_interanual": null,
+            "estado": "ok",
+            "estado_label": "Cobertura ok",
+            "sugerido": 0,
+            "costo_unitario": 135000,
+            "inversion_sugerida": 0,
+            "num_variantes": 1,
+            "variantes": [
+              {
+                "id": 3707,
+                "talla": "MARFIL TU",
+                "disponible": 1,
+                "sugerido": 0
+              }
+            ]
+          },
+          {
             "referencia": "SET JEAN SOL",
             "categoria": "CONJUNTOS",
             "disponible": 19,
-            "venta_90d": 19,
+            "venta_90d": 18,
             "venta_ytd": 57,
-            "rotacion_anualizada": 77,
-            "dias_cobertura": 90.0,
+            "rotacion_anualizada": 73,
+            "dias_cobertura": 95.0,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -28394,37 +28418,13 @@
             ]
           },
           {
-            "referencia": "SUDADERA DERT",
-            "categoria": "CONJUNTOS",
-            "disponible": 1,
-            "venta_90d": 1,
-            "venta_ytd": 1,
-            "rotacion_anualizada": 4,
-            "dias_cobertura": 90.0,
-            "tendencia_interanual": null,
-            "estado": "ok",
-            "estado_label": "Cobertura ok",
-            "sugerido": 0,
-            "costo_unitario": 135000,
-            "inversion_sugerida": 0,
-            "num_variantes": 1,
-            "variantes": [
-              {
-                "id": 3707,
-                "talla": "MARFIL TU",
-                "disponible": 1,
-                "sugerido": 0
-              }
-            ]
-          },
-          {
             "referencia": "SUDADERA CLASICA",
             "categoria": "CONJUNTOS",
-            "disponible": 20,
-            "venta_90d": 16,
-            "venta_ytd": 37,
-            "rotacion_anualizada": 65,
-            "dias_cobertura": 112.5,
+            "disponible": 19,
+            "venta_90d": 17,
+            "venta_ytd": 38,
+            "rotacion_anualizada": 69,
+            "dias_cobertura": 100.6,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -28448,7 +28448,7 @@
               {
                 "id": 2496,
                 "talla": "GRIS CLARO TU",
-                "disponible": 6,
+                "disponible": 5,
                 "sugerido": 0
               },
               {
@@ -29775,10 +29775,10 @@
             "referencia": "CORSET PETITE",
             "categoria": "CORSET",
             "disponible": 29,
-            "venta_90d": 87,
+            "venta_90d": 86,
             "venta_ytd": 99,
-            "rotacion_anualizada": 353,
-            "dias_cobertura": 30.0,
+            "rotacion_anualizada": 349,
+            "dias_cobertura": 30.3,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -30069,10 +30069,10 @@
             "referencia": "CORSET COPA LARGO",
             "categoria": "CORSET",
             "disponible": 37,
-            "venta_90d": 69,
+            "venta_90d": 67,
             "venta_ytd": 311,
-            "rotacion_anualizada": 280,
-            "dias_cobertura": 48.3,
+            "rotacion_anualizada": 272,
+            "dias_cobertura": 49.7,
             "tendencia_interanual": -60.0,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -31220,10 +31220,10 @@
             "referencia": "PROMOCIONES",
             "categoria": "GENERICOS",
             "disponible": 89,
-            "venta_90d": 19,
+            "venta_90d": 18,
             "venta_ytd": 104,
-            "rotacion_anualizada": 77,
-            "dias_cobertura": 421.6,
+            "rotacion_anualizada": 73,
+            "dias_cobertura": 445.0,
             "tendencia_interanual": -60.0,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -32017,10 +32017,10 @@
       {
         "categoria": "TOBILLERAS",
         "disponible": 19,
-        "venta_90d": 31,
+        "venta_90d": 30,
         "venta_ytd": 65,
-        "rotacion_anualizada": 126,
-        "dias_cobertura": 55.2,
+        "rotacion_anualizada": 122,
+        "dias_cobertura": 57.0,
         "tendencia_interanual": null,
         "estado": "ok",
         "estado_label": "Cobertura ok",
@@ -32031,11 +32031,11 @@
       },
       {
         "categoria": "ACCESORIOS",
-        "disponible": 309,
-        "venta_90d": 224,
-        "venta_ytd": 265,
-        "rotacion_anualizada": 908,
-        "dias_cobertura": 124.2,
+        "disponible": 307,
+        "venta_90d": 222,
+        "venta_ytd": 267,
+        "rotacion_anualizada": 900,
+        "dias_cobertura": 124.5,
         "tendencia_interanual": null,
         "estado": "ok",
         "estado_label": "Cobertura ok",
@@ -32062,10 +32062,10 @@
       {
         "categoria": "EARCUF",
         "disponible": 70,
-        "venta_90d": 46,
+        "venta_90d": 45,
         "venta_ytd": 152,
-        "rotacion_anualizada": 187,
-        "dias_cobertura": 137.0,
+        "rotacion_anualizada": 182,
+        "dias_cobertura": 140.0,
         "tendencia_interanual": null,
         "estado": "ok",
         "estado_label": "Cobertura ok",
@@ -32077,10 +32077,10 @@
       {
         "categoria": "PULSERAS",
         "disponible": 186,
-        "venta_90d": 96,
+        "venta_90d": 95,
         "venta_ytd": 371,
-        "rotacion_anualizada": 389,
-        "dias_cobertura": 174.4,
+        "rotacion_anualizada": 385,
+        "dias_cobertura": 176.2,
         "tendencia_interanual": null,
         "estado": "ok",
         "estado_label": "Cobertura ok",
@@ -32092,10 +32092,10 @@
       {
         "categoria": "CADENAS",
         "disponible": 484,
-        "venta_90d": 229,
+        "venta_90d": 225,
         "venta_ytd": 677,
-        "rotacion_anualizada": 929,
-        "dias_cobertura": 190.2,
+        "rotacion_anualizada": 912,
+        "dias_cobertura": 193.6,
         "tendencia_interanual": null,
         "estado": "ok",
         "estado_label": "Cobertura ok",
@@ -32106,11 +32106,11 @@
       },
       {
         "categoria": "ANILLOS",
-        "disponible": 187,
+        "disponible": 186,
         "venta_90d": 83,
-        "venta_ytd": 386,
+        "venta_ytd": 387,
         "rotacion_anualizada": 337,
-        "dias_cobertura": 202.8,
+        "dias_cobertura": 201.7,
         "tendencia_interanual": null,
         "estado": "ok",
         "estado_label": "Cobertura ok",
@@ -32122,10 +32122,10 @@
       {
         "categoria": "ARETES",
         "disponible": 544,
-        "venta_90d": 187,
+        "venta_90d": 185,
         "venta_ytd": 716,
-        "rotacion_anualizada": 758,
-        "dias_cobertura": 261.8,
+        "rotacion_anualizada": 750,
+        "dias_cobertura": 264.6,
         "tendencia_interanual": null,
         "estado": "ok",
         "estado_label": "Cobertura ok",
@@ -32137,10 +32137,10 @@
       {
         "categoria": "TOPOS",
         "disponible": 117,
-        "venta_90d": 34,
+        "venta_90d": 30,
         "venta_ytd": 207,
-        "rotacion_anualizada": 138,
-        "dias_cobertura": 309.7,
+        "rotacion_anualizada": 122,
+        "dias_cobertura": 351.0,
         "tendencia_interanual": null,
         "estado": "ok",
         "estado_label": "Cobertura ok",
@@ -32186,7 +32186,7 @@
     "categorias": [
       {
         "categoria": "ARETES",
-        "venta_90d_total": 187,
+        "venta_90d_total": 185,
         "venta_ytd_total": 716,
         "rangos": [
           {
@@ -32194,10 +32194,10 @@
             "precio_min": 10000,
             "precio_max": 15000,
             "disponible": 114,
-            "venta_90d": 71,
+            "venta_90d": 69,
             "venta_ytd": 268,
-            "rotacion_anualizada": 288,
-            "dias_cobertura": 144.5,
+            "rotacion_anualizada": 280,
+            "dias_cobertura": 148.7,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -32312,7 +32312,7 @@
       },
       {
         "categoria": "CADENAS",
-        "venta_90d_total": 229,
+        "venta_90d_total": 225,
         "venta_ytd_total": 677,
         "rangos": [
           {
@@ -32320,10 +32320,10 @@
             "precio_min": 30000,
             "precio_max": 35000,
             "disponible": 150,
-            "venta_90d": 55,
+            "venta_90d": 53,
             "venta_ytd": 175,
-            "rotacion_anualizada": 223,
-            "dias_cobertura": 245.5,
+            "rotacion_anualizada": 215,
+            "dias_cobertura": 254.7,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -32337,10 +32337,10 @@
             "precio_min": 25000,
             "precio_max": 30000,
             "disponible": 97,
-            "venta_90d": 67,
+            "venta_90d": 66,
             "venta_ytd": 161,
-            "rotacion_anualizada": 272,
-            "dias_cobertura": 130.3,
+            "rotacion_anualizada": 268,
+            "dias_cobertura": 132.3,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -32388,10 +32388,10 @@
             "precio_min": 10000,
             "precio_max": 15000,
             "disponible": 27,
-            "venta_90d": 10,
+            "venta_90d": 9,
             "venta_ytd": 60,
-            "rotacion_anualizada": 41,
-            "dias_cobertura": 243.0,
+            "rotacion_anualizada": 36,
+            "dias_cobertura": 270.0,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -32507,17 +32507,17 @@
       {
         "categoria": "ANILLOS",
         "venta_90d_total": 83,
-        "venta_ytd_total": 386,
+        "venta_ytd_total": 387,
         "rangos": [
           {
             "categoria": "ANILLOS",
             "precio_min": 15000,
             "precio_max": 20000,
-            "disponible": 111,
+            "disponible": 110,
             "venta_90d": 56,
-            "venta_ytd": 227,
+            "venta_ytd": 228,
             "rotacion_anualizada": 227,
-            "dias_cobertura": 178.4,
+            "dias_cobertura": 176.8,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -32615,7 +32615,7 @@
       },
       {
         "categoria": "PULSERAS",
-        "venta_90d_total": 96,
+        "venta_90d_total": 95,
         "venta_ytd_total": 371,
         "rangos": [
           {
@@ -32640,10 +32640,10 @@
             "precio_min": 20000,
             "precio_max": 25000,
             "disponible": 35,
-            "venta_90d": 25,
+            "venta_90d": 24,
             "venta_ytd": 83,
-            "rotacion_anualizada": 101,
-            "dias_cobertura": 126.0,
+            "rotacion_anualizada": 97,
+            "dias_cobertura": 131.2,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -32758,18 +32758,18 @@
       },
       {
         "categoria": "ACCESORIOS",
-        "venta_90d_total": 224,
-        "venta_ytd_total": 265,
+        "venta_90d_total": 222,
+        "venta_ytd_total": 267,
         "rangos": [
           {
             "categoria": "ACCESORIOS",
             "precio_min": 35000,
             "precio_max": 40000,
-            "disponible": 158,
+            "disponible": 156,
             "venta_90d": 172,
-            "venta_ytd": 176,
+            "venta_ytd": 178,
             "rotacion_anualizada": 698,
-            "dias_cobertura": 82.7,
+            "dias_cobertura": 81.6,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -32800,9 +32800,9 @@
             "precio_min": 15000,
             "precio_max": 20000,
             "disponible": 0,
-            "venta_90d": 10,
+            "venta_90d": 9,
             "venta_ytd": 11,
-            "rotacion_anualizada": 41,
+            "rotacion_anualizada": 36,
             "dias_cobertura": 0.0,
             "tendencia_interanual": null,
             "estado": "critico",
@@ -32817,10 +32817,10 @@
             "precio_min": 45000,
             "precio_max": 50000,
             "disponible": 2,
-            "venta_90d": 2,
+            "venta_90d": 1,
             "venta_ytd": 11,
-            "rotacion_anualizada": 8,
-            "dias_cobertura": 90.0,
+            "rotacion_anualizada": 4,
+            "dias_cobertura": 180.0,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -33003,7 +33003,7 @@
       },
       {
         "categoria": "TOPOS",
-        "venta_90d_total": 34,
+        "venta_90d_total": 30,
         "venta_ytd_total": 207,
         "rangos": [
           {
@@ -33011,10 +33011,10 @@
             "precio_min": 10000,
             "precio_max": 15000,
             "disponible": 16,
-            "venta_90d": 11,
+            "venta_90d": 10,
             "venta_ytd": 83,
-            "rotacion_anualizada": 45,
-            "dias_cobertura": 130.9,
+            "rotacion_anualizada": 41,
+            "dias_cobertura": 144.0,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -33028,10 +33028,10 @@
             "precio_min": 5000,
             "precio_max": 10000,
             "disponible": 43,
-            "venta_90d": 9,
+            "venta_90d": 6,
             "venta_ytd": 50,
-            "rotacion_anualizada": 36,
-            "dias_cobertura": 430.0,
+            "rotacion_anualizada": 24,
+            "dias_cobertura": 645.0,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -33112,7 +33112,7 @@
       },
       {
         "categoria": "EARCUF",
-        "venta_90d_total": 46,
+        "venta_90d_total": 45,
         "venta_ytd_total": 152,
         "rangos": [
           {
@@ -33120,10 +33120,10 @@
             "precio_min": 15000,
             "precio_max": 20000,
             "disponible": 21,
-            "venta_90d": 26,
+            "venta_90d": 25,
             "venta_ytd": 70,
-            "rotacion_anualizada": 105,
-            "dias_cobertura": 72.7,
+            "rotacion_anualizada": 101,
+            "dias_cobertura": 75.6,
             "tendencia_interanual": null,
             "estado": "ok",
             "estado_label": "Cobertura ok",
@@ -33187,7 +33187,7 @@
       },
       {
         "categoria": "TOBILLERAS",
-        "venta_90d_total": 31,
+        "venta_90d_total": 30,
         "venta_ytd_total": 65,
         "rangos": [
           {
@@ -33212,9 +33212,9 @@
             "precio_min": 15000,
             "precio_max": 20000,
             "disponible": 0,
-            "venta_90d": 4,
+            "venta_90d": 3,
             "venta_ytd": 15,
-            "rotacion_anualizada": 16,
+            "rotacion_anualizada": 12,
             "dias_cobertura": 0.0,
             "tendencia_interanual": null,
             "estado": "critico",

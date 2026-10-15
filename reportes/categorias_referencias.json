@@ -1,38 +1,38 @@
 {
   "anio_actual": {
-    "unidades_totales": 13873,
+    "unidades_totales": 13889,
     "categorias": [
       {
         "categoria": "PANTALONES",
-        "ventas_netas": 269889700.06,
-        "utilidad": 113184174.52,
-        "costo": 156705525.54,
-        "unidades": 2297,
-        "margen": 0.4194
+        "ventas_netas": 270089700.06,
+        "utilidad": 113248174.52,
+        "costo": 156841525.54,
+        "unidades": 2299,
+        "margen": 0.4193
       },
       {
         "categoria": "BLUSAS",
-        "ventas_netas": 150124600.0,
-        "utilidad": 80452954.8,
-        "costo": 69671645.2,
-        "unidades": 2320,
+        "ventas_netas": 150384600.0,
+        "utilidad": 80597954.8,
+        "costo": 69786645.2,
+        "unidades": 2324,
         "margen": 0.5359
       },
       {
         "categoria": "CHAQUETAS",
-        "ventas_netas": 147767249.99,
-        "utilidad": 60161405.21,
-        "costo": 87605844.78,
-        "unidades": 1130,
-        "margen": 0.4071
+        "ventas_netas": 148167249.99,
+        "utilidad": 60341405.21,
+        "costo": 87825844.78,
+        "unidades": 1133,
+        "margen": 0.4073
       },
       {
         "categoria": "CONJUNTOS",
-        "ventas_netas": 83459000.0,
-        "utilidad": 29629707.12,
-        "costo": 53829292.88,
-        "unidades": 561,
-        "margen": 0.355
+        "ventas_netas": 83609000.0,
+        "utilidad": 29699707.12,
+        "costo": 53909292.88,
+        "unidades": 562,
+        "margen": 0.3552
       },
       {
         "categoria": "CORSET",
@@ -44,27 +44,27 @@
       },
       {
         "categoria": "BODYS",
-        "ventas_netas": 61411350.28,
-        "utilidad": 34922001.7,
-        "costo": 26489348.58,
-        "unidades": 943,
-        "margen": 0.5687
+        "ventas_netas": 61476350.28,
+        "utilidad": 34969001.7,
+        "costo": 26507348.58,
+        "unidades": 944,
+        "margen": 0.5688
       },
       {
         "categoria": "VESTIDOS",
-        "ventas_netas": 56612500.26,
-        "utilidad": 25278168.23,
-        "costo": 31334332.03,
-        "unidades": 501,
-        "margen": 0.4465
+        "ventas_netas": 56742500.26,
+        "utilidad": 25323411.93,
+        "costo": 31419088.33,
+        "unidades": 502,
+        "margen": 0.4463
       },
       {
         "categoria": "FALDAS",
-        "ventas_netas": 49639000.0,
-        "utilidad": 21535915.9,
-        "costo": 28103084.1,
-        "unidades": 604,
-        "margen": 0.4339
+        "ventas_netas": 49734000.0,
+        "utilidad": 21565915.9,
+        "costo": 28168084.1,
+        "unidades": 605,
+        "margen": 0.4336
       },
       {
         "categoria": "BUZOS",
@@ -108,19 +108,19 @@
       },
       {
         "categoria": "ACCESORIOS",
-        "ventas_netas": 9663000.02,
-        "utilidad": 5642847.12,
-        "costo": 4020152.9,
-        "unidades": 265,
-        "margen": 0.584
+        "ventas_netas": 9733000.02,
+        "utilidad": 5682847.12,
+        "costo": 4050152.9,
+        "unidades": 267,
+        "margen": 0.5839
       },
       {
         "categoria": "ANILLOS",
-        "ventas_netas": 6317949.43,
-        "utilidad": 2972036.15,
-        "costo": 3345913.28,
-        "unidades": 386,
-        "margen": 0.4704
+        "ventas_netas": 6335949.43,
+        "utilidad": 2984736.15,
+        "costo": 3351213.28,
+        "unidades": 387,
+        "margen": 0.4711
       },
       {
         "categoria": "BLAZER",
@@ -206,8 +206,8 @@
     "top_referencias": [
       {
         "nombre": "CAPA JEAN",
-        "unidades": 309,
-        "ventas_netas": 39865000.2
+        "unidades": 312,
+        "ventas_netas": 40255000.21
       },
       {
         "nombre": "SUDADERA ZOE",
@@ -231,13 +231,13 @@
       },
       {
         "nombre": "BLUSA SALOME",
-        "unidades": 208,
-        "ventas_netas": 13330000.0
+        "unidades": 210,
+        "ventas_netas": 13460000.0
       },
       {
         "nombre": "BODY BASICO REDONDO",
-        "unidades": 200,
-        "ventas_netas": 12500000.1
+        "unidades": 201,
+        "ventas_netas": 12565000.1
       },
       {
         "nombre": "BLUSA GLOBO",
@@ -275,19 +275,19 @@
         "ventas_netas": 9910000.0
       },
       {
+        "nombre": "SUDADERA CLASICA",
+        "unidades": 74,
+        "ventas_netas": 9555000.0
+      },
+      {
         "nombre": "JEAN BORDADO",
         "unidades": 59,
         "ventas_netas": 9410000.0
       },
       {
-        "nombre": "SUDADERA CLASICA",
-        "unidades": 73,
-        "ventas_netas": 9405000.0
-      },
-      {
         "nombre": "CAPA JEAN GAMUZA",
-        "unidades": 66,
-        "ventas_netas": 9200000.0
+        "unidades": 67,
+        "ventas_netas": 9340000.0
       },
       {
         "nombre": "BLUSA CORSET",
@@ -645,6 +645,11 @@
         "ventas_netas": 3100000.0
       },
       {
+        "nombre": "CORREA DORADA $35000",
+        "unidades": 89,
+        "ventas_netas": 3096000.0
+      },
+      {
         "nombre": "JEAN ICONIC PRINT",
         "unidades": 22,
         "ventas_netas": 3070000.0
@@ -658,11 +663,6 @@
         "nombre": "BODY BASICO CUADRADO",
         "unidades": 46,
         "ventas_netas": 3027350.03
-      },
-      {
-        "nombre": "CORREA DORADA $35000",
-        "unidades": 87,
-        "ventas_netas": 3026000.0
       },
       {
         "nombre": "BLAZER",
@@ -695,6 +695,11 @@
         "ventas_netas": 2850000.01
       },
       {
+        "nombre": "BLUSA JASPEADA MATILDA",
+        "unidades": 44,
+        "ventas_netas": 2838000.0
+      },
+      {
         "nombre": "CHAQUETA CAPOTA CALIFORNIA",
         "unidades": 20,
         "ventas_netas": 2810000.0
@@ -703,11 +708,6 @@
         "nombre": "SUDADERA AMSTERDAN",
         "unidades": 20,
         "ventas_netas": 2805000.0
-      },
-      {
-        "nombre": "BLUSA JASPEADA MATILDA",
-        "unidades": 43,
-        "ventas_netas": 2773000.0
       },
       {
         "nombre": "CADENA $38000",
@@ -1020,6 +1020,11 @@
         "ventas_netas": 1835000.0
       },
       {
+        "nombre": "BLUSA CASCADA",
+        "unidades": 28,
+        "ventas_netas": 1823000.0
+      },
+      {
         "nombre": "JEAN CINTURA RECOGIDA",
         "unidades": 14,
         "ventas_netas": 1810000.0
@@ -1035,18 +1040,13 @@
         "ventas_netas": 1784999.84
       },
       {
-        "nombre": "BLUSA CASCADA",
-        "unidades": 27,
-        "ventas_netas": 1758000.0
+        "nombre": "JEAN BLANCO LATENTE",
+        "unidades": 14,
+        "ventas_netas": 1750000.0
       },
       {
         "nombre": "JEAN GLOX BOTA RECTA CLARO",
         "unidades": 15,
-        "ventas_netas": 1750000.0
-      },
-      {
-        "nombre": "JEAN BLANCO LATENTE",
-        "unidades": 14,
         "ventas_netas": 1750000.0
       },
       {
@@ -1103,6 +1103,11 @@
         "nombre": "BODY ENCAJE LIKE",
         "unidades": 25,
         "ventas_netas": 1615000.0
+      },
+      {
+        "nombre": "BRAGA JEAN",
+        "unidades": 13,
+        "ventas_netas": 1610000.0
       },
       {
         "nombre": "VESTIDO MALLA BANDEJA LARGO",
@@ -1185,11 +1190,6 @@
         "ventas_netas": 1415650.0
       },
       {
-        "nombre": "BRAGA JEAN",
-        "unidades": 11,
-        "ventas_netas": 1410000.0
-      },
-      {
         "nombre": "BLUSA ESTRAPLE NICO",
         "unidades": 21,
         "ventas_netas": 1405000.0
@@ -1260,6 +1260,11 @@
         "ventas_netas": 1350000.0
       },
       {
+        "nombre": "FALDA SHORT CLASICA AZUL FROSTEADO CLARO",
+        "unidades": 15,
+        "ventas_netas": 1345000.0
+      },
+      {
         "nombre": "BODY BRILLANTE MARIA",
         "unidades": 21,
         "ventas_netas": 1339000.0
@@ -1312,11 +1317,6 @@
       {
         "nombre": "JEAN PALAZO LICRADO",
         "unidades": 11,
-        "ventas_netas": 1250000.0
-      },
-      {
-        "nombre": "FALDA SHORT CLASICA AZUL FROSTEADO CLARO",
-        "unidades": 14,
         "ventas_netas": 1250000.0
       },
       {
@@ -1375,12 +1375,12 @@
         "ventas_netas": 1175000.0
       },
       {
-        "nombre": "JEAN ROMBOS",
+        "nombre": "JEAN COQUETTE",
         "unidades": 9,
         "ventas_netas": 1170000.0
       },
       {
-        "nombre": "JEAN COQUETTE",
+        "nombre": "JEAN ROMBOS",
         "unidades": 9,
         "ventas_netas": 1170000.0
       },
@@ -1390,6 +1390,11 @@
         "ventas_netas": 1165000.0
       },
       {
+        "nombre": "FALDA SHORT GRECIA",
+        "unidades": 14,
+        "ventas_netas": 1145000.0
+      },
+      {
         "nombre": "CORSET COPA CUERINA",
         "unidades": 13,
         "ventas_netas": 1145000.0
@@ -1397,11 +1402,6 @@
       {
         "nombre": "JEAN LYNDA MOÑOS",
         "unidades": 9,
-        "ventas_netas": 1145000.0
-      },
-      {
-        "nombre": "FALDA SHORT GRECIA",
-        "unidades": 14,
         "ventas_netas": 1145000.0
       },
       {
@@ -1465,6 +1465,11 @@
         "ventas_netas": 1070000.0
       },
       {
+        "nombre": "ANILLO $15000",
+        "unidades": 70,
+        "ventas_netas": 1040999.95
+      },
+      {
         "nombre": "CHAQUETA BOMBER",
         "unidades": 8,
         "ventas_netas": 1040000.01
@@ -1483,11 +1488,6 @@
         "nombre": "JEAN RAYAS",
         "unidades": 8,
         "ventas_netas": 1030000.0
-      },
-      {
-        "nombre": "ANILLO $15000",
-        "unidades": 69,
-        "ventas_netas": 1022999.95
       },
       {
         "nombre": "JEAN BOTA RECTA AZUL FROSTEADO OSCURO",
@@ -1535,13 +1535,13 @@
         "ventas_netas": 965000.0
       },
       {
-        "nombre": "CHAMARRA CHARLOTTE",
-        "unidades": 7,
+        "nombre": "JEAN BOTA RECTA FROSTEADO",
+        "unidades": 8,
         "ventas_netas": 960000.0
       },
       {
-        "nombre": "JEAN BOTA RECTA FROSTEADO",
-        "unidades": 8,
+        "nombre": "CHAMARRA CHARLOTTE",
+        "unidades": 7,
         "ventas_netas": 960000.0
       },
       {
@@ -1580,17 +1580,17 @@
         "ventas_netas": 915999.9
       },
       {
+        "nombre": "JEAN BAGGY DAVINCI",
+        "unidades": 7,
+        "ventas_netas": 910000.0
+      },
+      {
         "nombre": "JEAN ACANALADO BOTA CAMPANA",
         "unidades": 7,
         "ventas_netas": 910000.0
       },
       {
         "nombre": "JEAN BOTA BORDADO",
-        "unidades": 7,
-        "ventas_netas": 910000.0
-      },
-      {
-        "nombre": "JEAN BAGGY DAVINCI",
         "unidades": 7,
         "ventas_netas": 910000.0
       },
@@ -4146,8 +4146,8 @@
         },
         {
           "sucursal": "Local 433",
-          "unidades": 134,
-          "ventas_netas": 17365000.07,
+          "unidades": 136,
+          "ventas_netas": 17625000.07,
           "variantes": [
             {
               "nombre": "Única",
@@ -4156,8 +4156,8 @@
             },
             {
               "nombre": "GRIS OSCURO TU",
-              "unidades": 37,
-              "ventas_netas": 4830000.0
+              "unidades": 39,
+              "ventas_netas": 5090000.0
             },
             {
               "nombre": "AZUL CLARA TU",
@@ -4203,8 +4203,8 @@
         },
         {
           "sucursal": "Local 107",
-          "unidades": 27,
-          "ventas_netas": 3550000.02,
+          "unidades": 28,
+          "ventas_netas": 3680000.02,
           "variantes": [
             {
               "nombre": "GRIS OSCURO TU",
@@ -4213,8 +4213,8 @@
             },
             {
               "nombre": "AZUL CLARA TU",
-              "unidades": 6,
-              "ventas_netas": 780000.02
+              "unidades": 7,
+              "ventas_netas": 910000.02
             },
             {
               "nombre": "MARFIL TU",
@@ -5124,13 +5124,18 @@
         },
         {
           "sucursal": "Local 433",
-          "unidades": 69,
-          "ventas_netas": 4431000.0,
+          "unidades": 71,
+          "ventas_netas": 4561000.0,
           "variantes": [
             {
               "nombre": "MARFIL TU",
               "unidades": 9,
               "ventas_netas": 578000.0
+            },
+            {
+              "nombre": "AMARILLO TU",
+              "unidades": 8,
+              "ventas_netas": 515000.0
             },
             {
               "nombre": "VINOTINTO",
@@ -5141,11 +5146,6 @@
               "nombre": "VINOTINTO TU",
               "unidades": 6,
               "ventas_netas": 390000.0
-            },
-            {
-              "nombre": "AMARILLO TU",
-              "unidades": 6,
-              "ventas_netas": 385000.0
             },
             {
               "nombre": "CAFE",
@@ -5357,8 +5357,8 @@
         },
         {
           "sucursal": "Local 433",
-          "unidades": 55,
-          "ventas_netas": 3530000.02,
+          "unidades": 56,
+          "ventas_netas": 3595000.02,
           "variantes": [
             {
               "nombre": "Única",
@@ -5367,8 +5367,8 @@
             },
             {
               "nombre": "NEGRO TU",
-              "unidades": 12,
-              "ventas_netas": 780000.01
+              "unidades": 13,
+              "ventas_netas": 845000.01
             },
             {
               "nombre": "MARFIL TU",
@@ -6460,6 +6460,109 @@
           ]
         }
       ],
+      "SUDADERA CLASICA": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 48,
+          "ventas_netas": 6130000.0,
+          "variantes": [
+            {
+              "nombre": "ROJO",
+              "unidades": 16,
+              "ventas_netas": 1990000.0
+            },
+            {
+              "nombre": "NEGRO",
+              "unidades": 10,
+              "ventas_netas": 1240000.0
+            },
+            {
+              "nombre": "GRIS",
+              "unidades": 8,
+              "ventas_netas": 1020000.0
+            },
+            {
+              "nombre": "GRIS CLARA",
+              "unidades": 4,
+              "ventas_netas": 520000.0
+            },
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 3,
+              "ventas_netas": 430000.0
+            },
+            {
+              "nombre": "CAFE",
+              "unidades": 3,
+              "ventas_netas": 390000.0
+            },
+            {
+              "nombre": "GRIS CLARO TU",
+              "unidades": 2,
+              "ventas_netas": 300000.0
+            },
+            {
+              "nombre": "CAFE TU",
+              "unidades": 2,
+              "ventas_netas": 240000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 22,
+          "ventas_netas": 2895000.0,
+          "variantes": [
+            {
+              "nombre": "GRIS",
+              "unidades": 8,
+              "ventas_netas": 960000.0
+            },
+            {
+              "nombre": "GRIS CLARO TU",
+              "unidades": 6,
+              "ventas_netas": 890000.0
+            },
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 3,
+              "ventas_netas": 420000.0
+            },
+            {
+              "nombre": "CAFE TU",
+              "unidades": 2,
+              "ventas_netas": 280000.0
+            },
+            {
+              "nombre": "ROJO",
+              "unidades": 2,
+              "ventas_netas": 225000.0
+            },
+            {
+              "nombre": "NEGRO",
+              "unidades": 1,
+              "ventas_netas": 120000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 107",
+          "unidades": 4,
+          "ventas_netas": 530000.0,
+          "variantes": [
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 3,
+              "ventas_netas": 400000.0
+            },
+            {
+              "nombre": "GRIS CLARO TU",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            }
+          ]
+        }
+      ],
       "JEAN BORDADO": [
         {
           "sucursal": "Local 144",
@@ -6521,114 +6624,11 @@
           ]
         }
       ],
-      "SUDADERA CLASICA": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 48,
-          "ventas_netas": 6130000.0,
-          "variantes": [
-            {
-              "nombre": "ROJO",
-              "unidades": 16,
-              "ventas_netas": 1990000.0
-            },
-            {
-              "nombre": "NEGRO",
-              "unidades": 10,
-              "ventas_netas": 1240000.0
-            },
-            {
-              "nombre": "GRIS",
-              "unidades": 8,
-              "ventas_netas": 1020000.0
-            },
-            {
-              "nombre": "GRIS CLARA",
-              "unidades": 4,
-              "ventas_netas": 520000.0
-            },
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 3,
-              "ventas_netas": 430000.0
-            },
-            {
-              "nombre": "CAFE",
-              "unidades": 3,
-              "ventas_netas": 390000.0
-            },
-            {
-              "nombre": "GRIS CLARO TU",
-              "unidades": 2,
-              "ventas_netas": 300000.0
-            },
-            {
-              "nombre": "CAFE TU",
-              "unidades": 2,
-              "ventas_netas": 240000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 21,
-          "ventas_netas": 2745000.0,
-          "variantes": [
-            {
-              "nombre": "GRIS",
-              "unidades": 8,
-              "ventas_netas": 960000.0
-            },
-            {
-              "nombre": "GRIS CLARO TU",
-              "unidades": 5,
-              "ventas_netas": 740000.0
-            },
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 3,
-              "ventas_netas": 420000.0
-            },
-            {
-              "nombre": "CAFE TU",
-              "unidades": 2,
-              "ventas_netas": 280000.0
-            },
-            {
-              "nombre": "ROJO",
-              "unidades": 2,
-              "ventas_netas": 225000.0
-            },
-            {
-              "nombre": "NEGRO",
-              "unidades": 1,
-              "ventas_netas": 120000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 107",
-          "unidades": 4,
-          "ventas_netas": 530000.0,
-          "variantes": [
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 3,
-              "ventas_netas": 400000.0
-            },
-            {
-              "nombre": "GRIS CLARO TU",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            }
-          ]
-        }
-      ],
       "CAPA JEAN GAMUZA": [
         {
           "sucursal": "Local 144",
-          "unidades": 32,
-          "ventas_netas": 4450000.0,
+          "unidades": 33,
+          "ventas_netas": 4590000.0,
           "variantes": [
             {
               "nombre": "Única",
@@ -6637,8 +6637,8 @@
             },
             {
               "nombre": "NEGRO TU",
-              "unidades": 7,
-              "ventas_netas": 980000.0
+              "unidades": 8,
+              "ventas_netas": 1120000.0
             },
             {
               "nombre": "AZUL TU",
@@ -14035,6 +14035,44 @@
           ]
         }
       ],
+      "CORREA DORADA $35000": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 37,
+          "ventas_netas": 1283000.0,
+          "variantes": [
+            {
+              "nombre": "Única",
+              "unidades": 37,
+              "ventas_netas": 1283000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 107",
+          "unidades": 31,
+          "ventas_netas": 1078000.0,
+          "variantes": [
+            {
+              "nombre": "Única",
+              "unidades": 31,
+              "ventas_netas": 1078000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 21,
+          "ventas_netas": 735000.0,
+          "variantes": [
+            {
+              "nombre": "Única",
+              "unidades": 21,
+              "ventas_netas": 735000.0
+            }
+          ]
+        }
+      ],
       "JEAN ICONIC PRINT": [
         {
           "sucursal": "Local 144",
@@ -14348,44 +14386,6 @@
               "nombre": "VINOTINTO TU",
               "unidades": 1,
               "ventas_netas": 65000.0
-            }
-          ]
-        }
-      ],
-      "CORREA DORADA $35000": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 37,
-          "ventas_netas": 1283000.0,
-          "variantes": [
-            {
-              "nombre": "Única",
-              "unidades": 37,
-              "ventas_netas": 1283000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 107",
-          "unidades": 31,
-          "ventas_netas": 1078000.0,
-          "variantes": [
-            {
-              "nombre": "Única",
-              "unidades": 31,
-              "ventas_netas": 1078000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 19,
-          "ventas_netas": 665000.0,
-          "variantes": [
-            {
-              "nombre": "Única",
-              "unidades": 19,
-              "ventas_netas": 665000.0
             }
           ]
         }
@@ -14912,6 +14912,89 @@
           ]
         }
       ],
+      "BLUSA JASPEADA MATILDA": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 23,
+          "ventas_netas": 1490000.0,
+          "variantes": [
+            {
+              "nombre": "VINOTINTO TU",
+              "unidades": 12,
+              "ventas_netas": 775000.0
+            },
+            {
+              "nombre": "AZUL TU",
+              "unidades": 5,
+              "ventas_netas": 335000.0
+            },
+            {
+              "nombre": "CAFE TU",
+              "unidades": 5,
+              "ventas_netas": 315000.0
+            },
+            {
+              "nombre": "VERDE TU",
+              "unidades": 1,
+              "ventas_netas": 65000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 13,
+          "ventas_netas": 838000.0,
+          "variantes": [
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 6,
+              "ventas_netas": 390000.0
+            },
+            {
+              "nombre": "VINOTINTO TU",
+              "unidades": 4,
+              "ventas_netas": 253000.0
+            },
+            {
+              "nombre": "AZUL TU",
+              "unidades": 2,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "CAFE TU",
+              "unidades": 1,
+              "ventas_netas": 65000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 107",
+          "unidades": 8,
+          "ventas_netas": 510000.0,
+          "variantes": [
+            {
+              "nombre": "AZUL TU",
+              "unidades": 3,
+              "ventas_netas": 195000.0
+            },
+            {
+              "nombre": "VINOTINTO TU",
+              "unidades": 3,
+              "ventas_netas": 185000.0
+            },
+            {
+              "nombre": "CAFE TU",
+              "unidades": 1,
+              "ventas_netas": 65000.0
+            },
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 1,
+              "ventas_netas": 65000.0
+            }
+          ]
+        }
+      ],
       "CHAQUETA CAPOTA CALIFORNIA": [
         {
           "sucursal": "Local 144",
@@ -15057,84 +15140,6 @@
               "nombre": "VINOTINTO TU",
               "unidades": 1,
               "ventas_netas": 140000.0
-            }
-          ]
-        }
-      ],
-      "BLUSA JASPEADA MATILDA": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 23,
-          "ventas_netas": 1490000.0,
-          "variantes": [
-            {
-              "nombre": "VINOTINTO TU",
-              "unidades": 12,
-              "ventas_netas": 775000.0
-            },
-            {
-              "nombre": "AZUL TU",
-              "unidades": 5,
-              "ventas_netas": 335000.0
-            },
-            {
-              "nombre": "CAFE TU",
-              "unidades": 5,
-              "ventas_netas": 315000.0
-            },
-            {
-              "nombre": "VERDE TU",
-              "unidades": 1,
-              "ventas_netas": 65000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 12,
-          "ventas_netas": 773000.0,
-          "variantes": [
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 6,
-              "ventas_netas": 390000.0
-            },
-            {
-              "nombre": "VINOTINTO TU",
-              "unidades": 4,
-              "ventas_netas": 253000.0
-            },
-            {
-              "nombre": "AZUL TU",
-              "unidades": 2,
-              "ventas_netas": 130000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 107",
-          "unidades": 8,
-          "ventas_netas": 510000.0,
-          "variantes": [
-            {
-              "nombre": "AZUL TU",
-              "unidades": 3,
-              "ventas_netas": 195000.0
-            },
-            {
-              "nombre": "VINOTINTO TU",
-              "unidades": 3,
-              "ventas_netas": 185000.0
-            },
-            {
-              "nombre": "CAFE TU",
-              "unidades": 1,
-              "ventas_netas": 65000.0
-            },
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 1,
-              "ventas_netas": 65000.0
             }
           ]
         }
@@ -19190,6 +19195,94 @@
           ]
         }
       ],
+      "BLUSA CASCADA": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 11,
+          "ventas_netas": 713000.0,
+          "variantes": [
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 4,
+              "ventas_netas": 263000.0
+            },
+            {
+              "nombre": "VINOTINTO TU",
+              "unidades": 4,
+              "ventas_netas": 260000.0
+            },
+            {
+              "nombre": "AMARILLO TU",
+              "unidades": 2,
+              "ventas_netas": 125000.0
+            },
+            {
+              "nombre": "CAFE TU",
+              "unidades": 1,
+              "ventas_netas": 65000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 107",
+          "unidades": 10,
+          "ventas_netas": 655000.0,
+          "variantes": [
+            {
+              "nombre": "MARFIL TU",
+              "unidades": 3,
+              "ventas_netas": 195000.0
+            },
+            {
+              "nombre": "CAFE TU",
+              "unidades": 2,
+              "ventas_netas": 135000.0
+            },
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 2,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "VINOTINTO TU",
+              "unidades": 2,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "AMARILLO TU",
+              "unidades": 1,
+              "ventas_netas": 65000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 7,
+          "ventas_netas": 455000.0,
+          "variantes": [
+            {
+              "nombre": "MARFIL TU",
+              "unidades": 3,
+              "ventas_netas": 195000.0
+            },
+            {
+              "nombre": "CAFE TU",
+              "unidades": 2,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "AMARILLO TU",
+              "unidades": 1,
+              "ventas_netas": 65000.0
+            },
+            {
+              "nombre": "VINOTINTO TU",
+              "unidades": 1,
+              "ventas_netas": 65000.0
+            }
+          ]
+        }
+      ],
       "JEAN CINTURA RECOGIDA": [
         {
           "sucursal": "Local 144",
@@ -19330,135 +19423,6 @@
           ]
         }
       ],
-      "BLUSA CASCADA": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 11,
-          "ventas_netas": 713000.0,
-          "variantes": [
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 4,
-              "ventas_netas": 263000.0
-            },
-            {
-              "nombre": "VINOTINTO TU",
-              "unidades": 4,
-              "ventas_netas": 260000.0
-            },
-            {
-              "nombre": "AMARILLO TU",
-              "unidades": 2,
-              "ventas_netas": 125000.0
-            },
-            {
-              "nombre": "CAFE TU",
-              "unidades": 1,
-              "ventas_netas": 65000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 107",
-          "unidades": 10,
-          "ventas_netas": 655000.0,
-          "variantes": [
-            {
-              "nombre": "MARFIL TU",
-              "unidades": 3,
-              "ventas_netas": 195000.0
-            },
-            {
-              "nombre": "CAFE TU",
-              "unidades": 2,
-              "ventas_netas": 135000.0
-            },
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 2,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "VINOTINTO TU",
-              "unidades": 2,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "AMARILLO TU",
-              "unidades": 1,
-              "ventas_netas": 65000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 6,
-          "ventas_netas": 390000.0,
-          "variantes": [
-            {
-              "nombre": "MARFIL TU",
-              "unidades": 3,
-              "ventas_netas": 195000.0
-            },
-            {
-              "nombre": "AMARILLO TU",
-              "unidades": 1,
-              "ventas_netas": 65000.0
-            },
-            {
-              "nombre": "CAFE TU",
-              "unidades": 1,
-              "ventas_netas": 65000.0
-            },
-            {
-              "nombre": "VINOTINTO TU",
-              "unidades": 1,
-              "ventas_netas": 65000.0
-            }
-          ]
-        }
-      ],
-      "JEAN GLOX BOTA RECTA CLARO": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 12,
-          "ventas_netas": 1420000.0,
-          "variantes": [
-            {
-              "nombre": "T12",
-              "unidades": 5,
-              "ventas_netas": 600000.0
-            },
-            {
-              "nombre": "T10",
-              "unidades": 4,
-              "ventas_netas": 470000.0
-            },
-            {
-              "nombre": "T8",
-              "unidades": 3,
-              "ventas_netas": 350000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 3,
-          "ventas_netas": 330000.0,
-          "variantes": [
-            {
-              "nombre": "T12",
-              "unidades": 2,
-              "ventas_netas": 220000.0
-            },
-            {
-              "nombre": "T10",
-              "unidades": 1,
-              "ventas_netas": 110000.0
-            }
-          ]
-        }
-      ],
       "JEAN BLANCO LATENTE": [
         {
           "sucursal": "Local 144",
@@ -19511,6 +19475,47 @@
               "nombre": "T4",
               "unidades": 1,
               "ventas_netas": 120000.0
+            }
+          ]
+        }
+      ],
+      "JEAN GLOX BOTA RECTA CLARO": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 12,
+          "ventas_netas": 1420000.0,
+          "variantes": [
+            {
+              "nombre": "T12",
+              "unidades": 5,
+              "ventas_netas": 600000.0
+            },
+            {
+              "nombre": "T10",
+              "unidades": 4,
+              "ventas_netas": 470000.0
+            },
+            {
+              "nombre": "T8",
+              "unidades": 3,
+              "ventas_netas": 350000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 3,
+          "ventas_netas": 330000.0,
+          "variantes": [
+            {
+              "nombre": "T12",
+              "unidades": 2,
+              "ventas_netas": 220000.0
+            },
+            {
+              "nombre": "T10",
+              "unidades": 1,
+              "ventas_netas": 110000.0
             }
           ]
         }
@@ -20172,6 +20177,67 @@
             {
               "nombre": "VINOTINTO",
               "unidades": 2,
+              "ventas_netas": 130000.0
+            }
+          ]
+        }
+      ],
+      "BRAGA JEAN": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 11,
+          "ventas_netas": 1350000.0,
+          "variantes": [
+            {
+              "nombre": "AZUL CLARO T12",
+              "unidades": 2,
+              "ventas_netas": 260000.0
+            },
+            {
+              "nombre": "AZUL CLARO T6",
+              "unidades": 2,
+              "ventas_netas": 260000.0
+            },
+            {
+              "nombre": "AZUL CLARO T4",
+              "unidades": 2,
+              "ventas_netas": 240000.0
+            },
+            {
+              "nombre": "AZUL CLARO T8",
+              "unidades": 2,
+              "ventas_netas": 230000.0
+            },
+            {
+              "nombre": "GRIS OSCURO T10",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "GRIS OSCURO T14",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "GRIS OSCURO T8",
+              "unidades": 1,
+              "ventas_netas": 100000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 2,
+          "ventas_netas": 260000.0,
+          "variantes": [
+            {
+              "nombre": "AZUL CLARO T4",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "GRIS OSCURO T6",
+              "unidades": 1,
               "ventas_netas": 130000.0
             }
           ]
@@ -20924,62 +20990,6 @@
               "nombre": "NEGRO TU",
               "unidades": 1,
               "ventas_netas": 140000.0
-            }
-          ]
-        }
-      ],
-      "BRAGA JEAN": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 9,
-          "ventas_netas": 1150000.0,
-          "variantes": [
-            {
-              "nombre": "AZUL CLARO T12",
-              "unidades": 2,
-              "ventas_netas": 260000.0
-            },
-            {
-              "nombre": "AZUL CLARO T6",
-              "unidades": 2,
-              "ventas_netas": 260000.0
-            },
-            {
-              "nombre": "AZUL CLARO T4",
-              "unidades": 2,
-              "ventas_netas": 240000.0
-            },
-            {
-              "nombre": "AZUL CLARO T8",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "GRIS OSCURO T10",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "GRIS OSCURO T14",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 2,
-          "ventas_netas": 260000.0,
-          "variantes": [
-            {
-              "nombre": "AZUL CLARO T4",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "GRIS OSCURO T6",
-              "unidades": 1,
-              "ventas_netas": 130000.0
             }
           ]
         }
@@ -21916,6 +21926,74 @@
           ]
         }
       ],
+      "FALDA SHORT CLASICA AZUL FROSTEADO CLARO": [
+        {
+          "sucursal": "Local 433",
+          "unidades": 7,
+          "ventas_netas": 635000.0,
+          "variantes": [
+            {
+              "nombre": "T10",
+              "unidades": 4,
+              "ventas_netas": 350000.0
+            },
+            {
+              "nombre": "T12",
+              "unidades": 1,
+              "ventas_netas": 95000.0
+            },
+            {
+              "nombre": "T6",
+              "unidades": 1,
+              "ventas_netas": 95000.0
+            },
+            {
+              "nombre": "T8",
+              "unidades": 1,
+              "ventas_netas": 95000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 107",
+          "unidades": 5,
+          "ventas_netas": 450000.0,
+          "variantes": [
+            {
+              "nombre": "T10",
+              "unidades": 3,
+              "ventas_netas": 270000.0
+            },
+            {
+              "nombre": "T8",
+              "unidades": 1,
+              "ventas_netas": 95000.0
+            },
+            {
+              "nombre": "T12",
+              "unidades": 1,
+              "ventas_netas": 85000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 144",
+          "unidades": 3,
+          "ventas_netas": 260000.0,
+          "variantes": [
+            {
+              "nombre": "T12",
+              "unidades": 2,
+              "ventas_netas": 175000.0
+            },
+            {
+              "nombre": "T6",
+              "unidades": 1,
+              "ventas_netas": 85000.0
+            }
+          ]
+        }
+      ],
       "BODY BRILLANTE MARIA": [
         {
           "sucursal": "Local 144",
@@ -22467,69 +22545,6 @@
               "nombre": "T12",
               "unidades": 2,
               "ventas_netas": 240000.0
-            }
-          ]
-        }
-      ],
-      "FALDA SHORT CLASICA AZUL FROSTEADO CLARO": [
-        {
-          "sucursal": "Local 433",
-          "unidades": 6,
-          "ventas_netas": 540000.0,
-          "variantes": [
-            {
-              "nombre": "T10",
-              "unidades": 4,
-              "ventas_netas": 350000.0
-            },
-            {
-              "nombre": "T6",
-              "unidades": 1,
-              "ventas_netas": 95000.0
-            },
-            {
-              "nombre": "T8",
-              "unidades": 1,
-              "ventas_netas": 95000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 107",
-          "unidades": 5,
-          "ventas_netas": 450000.0,
-          "variantes": [
-            {
-              "nombre": "T10",
-              "unidades": 3,
-              "ventas_netas": 270000.0
-            },
-            {
-              "nombre": "T8",
-              "unidades": 1,
-              "ventas_netas": 95000.0
-            },
-            {
-              "nombre": "T12",
-              "unidades": 1,
-              "ventas_netas": 85000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 144",
-          "unidades": 3,
-          "ventas_netas": 260000.0,
-          "variantes": [
-            {
-              "nombre": "T12",
-              "unidades": 2,
-              "ventas_netas": 175000.0
-            },
-            {
-              "nombre": "T6",
-              "unidades": 1,
-              "ventas_netas": 85000.0
             }
           ]
         }
@@ -23142,47 +23157,6 @@
           ]
         }
       ],
-      "JEAN ROMBOS": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 5,
-          "ventas_netas": 630000.0,
-          "variantes": [
-            {
-              "nombre": "AZUL T4",
-              "unidades": 3,
-              "ventas_netas": 370000.0
-            },
-            {
-              "nombre": "AZUL T6",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "AZUL T8",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 4,
-          "ventas_netas": 540000.0,
-          "variantes": [
-            {
-              "nombre": "AZUL T8",
-              "unidades": 3,
-              "ventas_netas": 410000.0
-            },
-            {
-              "nombre": "AZUL T6",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            }
-          ]
-        }
-      ],
       "JEAN COQUETTE": [
         {
           "sucursal": "Local 144",
@@ -23236,6 +23210,47 @@
           ]
         }
       ],
+      "JEAN ROMBOS": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 5,
+          "ventas_netas": 630000.0,
+          "variantes": [
+            {
+              "nombre": "AZUL T4",
+              "unidades": 3,
+              "ventas_netas": 370000.0
+            },
+            {
+              "nombre": "AZUL T6",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "AZUL T8",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 4,
+          "ventas_netas": 540000.0,
+          "variantes": [
+            {
+              "nombre": "AZUL T8",
+              "unidades": 3,
+              "ventas_netas": 410000.0
+            },
+            {
+              "nombre": "AZUL T6",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            }
+          ]
+        }
+      ],
       "CHALECO JEAN ADA": [
         {
           "sucursal": "Local 144",
@@ -23263,6 +23278,64 @@
               "nombre": "TU",
               "unidades": 1,
               "ventas_netas": 75000.0
+            }
+          ]
+        }
+      ],
+      "FALDA SHORT GRECIA": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 7,
+          "ventas_netas": 560000.0,
+          "variantes": [
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 4,
+              "ventas_netas": 300000.0
+            },
+            {
+              "nombre": "BLANCO TU",
+              "unidades": 2,
+              "ventas_netas": 175000.0
+            },
+            {
+              "nombre": "GRIS CLARO TU",
+              "unidades": 1,
+              "ventas_netas": 85000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 4,
+          "ventas_netas": 330000.0,
+          "variantes": [
+            {
+              "nombre": "BLANCO TU",
+              "unidades": 2,
+              "ventas_netas": 170000.0
+            },
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 2,
+              "ventas_netas": 160000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 107",
+          "unidades": 3,
+          "ventas_netas": 255000.0,
+          "variantes": [
+            {
+              "nombre": "GRIS CLARO TU",
+              "unidades": 2,
+              "ventas_netas": 170000.0
+            },
+            {
+              "nombre": "CAMEL TU",
+              "unidades": 1,
+              "ventas_netas": 85000.0
             }
           ]
         }
@@ -23394,64 +23467,6 @@
               "nombre": "VERDE T6",
               "unidades": 1,
               "ventas_netas": 130000.0
-            }
-          ]
-        }
-      ],
-      "FALDA SHORT GRECIA": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 7,
-          "ventas_netas": 560000.0,
-          "variantes": [
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 4,
-              "ventas_netas": 300000.0
-            },
-            {
-              "nombre": "BLANCO TU",
-              "unidades": 2,
-              "ventas_netas": 175000.0
-            },
-            {
-              "nombre": "GRIS CLARO TU",
-              "unidades": 1,
-              "ventas_netas": 85000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 4,
-          "ventas_netas": 330000.0,
-          "variantes": [
-            {
-              "nombre": "BLANCO TU",
-              "unidades": 2,
-              "ventas_netas": 170000.0
-            },
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 2,
-              "ventas_netas": 160000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 107",
-          "unidades": 3,
-          "ventas_netas": 255000.0,
-          "variantes": [
-            {
-              "nombre": "GRIS CLARO TU",
-              "unidades": 2,
-              "ventas_netas": 170000.0
-            },
-            {
-              "nombre": "CAMEL TU",
-              "unidades": 1,
-              "ventas_netas": 85000.0
             }
           ]
         }
@@ -23998,6 +24013,32 @@
           ]
         }
       ],
+      "ANILLO $15000": [
+        {
+          "sucursal": "Local 107",
+          "unidades": 69,
+          "ventas_netas": 1022999.95,
+          "variantes": [
+            {
+              "nombre": "Única",
+              "unidades": 69,
+              "ventas_netas": 1022999.95
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 1,
+          "ventas_netas": 18000.0,
+          "variantes": [
+            {
+              "nombre": "Única",
+              "unidades": 1,
+              "ventas_netas": 18000.0
+            }
+          ]
+        }
+      ],
       "CHAQUETA BOMBER": [
         {
           "sucursal": "Local 144",
@@ -24197,20 +24238,6 @@
               "nombre": "AZUL CLARO T8",
               "unidades": 1,
               "ventas_netas": 120000.0
-            }
-          ]
-        }
-      ],
-      "ANILLO $15000": [
-        {
-          "sucursal": "Local 107",
-          "unidades": 69,
-          "ventas_netas": 1022999.95,
-          "variantes": [
-            {
-              "nombre": "Única",
-              "unidades": 69,
-              "ventas_netas": 1022999.95
             }
           ]
         }
@@ -24650,42 +24677,6 @@
           ]
         }
       ],
-      "CHAMARRA CHARLOTTE": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 4,
-          "ventas_netas": 550000.0,
-          "variantes": [
-            {
-              "nombre": "BEIGE",
-              "unidades": 3,
-              "ventas_netas": 420000.0
-            },
-            {
-              "nombre": "VINOTINTO",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 3,
-          "ventas_netas": 410000.0,
-          "variantes": [
-            {
-              "nombre": "BEIGE",
-              "unidades": 2,
-              "ventas_netas": 270000.0
-            },
-            {
-              "nombre": "VINOTINTO",
-              "unidades": 1,
-              "ventas_netas": 140000.0
-            }
-          ]
-        }
-      ],
       "JEAN BOTA RECTA FROSTEADO": [
         {
           "sucursal": "Local 144",
@@ -24718,6 +24709,42 @@
               "nombre": "CAFE T12",
               "unidades": 1,
               "ventas_netas": 130000.0
+            }
+          ]
+        }
+      ],
+      "CHAMARRA CHARLOTTE": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 4,
+          "ventas_netas": 550000.0,
+          "variantes": [
+            {
+              "nombre": "BEIGE",
+              "unidades": 3,
+              "ventas_netas": 420000.0
+            },
+            {
+              "nombre": "VINOTINTO",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 3,
+          "ventas_netas": 410000.0,
+          "variantes": [
+            {
+              "nombre": "BEIGE",
+              "unidades": 2,
+              "ventas_netas": 270000.0
+            },
+            {
+              "nombre": "VINOTINTO",
+              "unidades": 1,
+              "ventas_netas": 140000.0
             }
           ]
         }
@@ -25069,6 +25096,52 @@
           ]
         }
       ],
+      "JEAN BAGGY DAVINCI": [
+        {
+          "sucursal": "Local 107",
+          "unidades": 5,
+          "ventas_netas": 650000.0,
+          "variantes": [
+            {
+              "nombre": "CAFE T6",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "CAFE T8",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "NEGRO T4",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "NEGRO T6",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "NEGRO T8",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 144",
+          "unidades": 2,
+          "ventas_netas": 260000.0,
+          "variantes": [
+            {
+              "nombre": "CAFE T10",
+              "unidades": 2,
+              "ventas_netas": 260000.0
+            }
+          ]
+        }
+      ],
       "JEAN ACANALADO BOTA CAMPANA": [
         {
           "sucursal": "Local 144",
@@ -25152,52 +25225,6 @@
               "nombre": "T10",
               "unidades": 1,
               "ventas_netas": 120000.0
-            }
-          ]
-        }
-      ],
-      "JEAN BAGGY DAVINCI": [
-        {
-          "sucursal": "Local 107",
-          "unidades": 5,
-          "ventas_netas": 650000.0,
-          "variantes": [
-            {
-              "nombre": "CAFE T6",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "CAFE T8",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "NEGRO T4",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "NEGRO T6",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "NEGRO T8",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 144",
-          "unidades": 2,
-          "ventas_netas": 260000.0,
-          "variantes": [
-            {
-              "nombre": "CAFE T10",
-              "unidades": 2,
-              "ventas_netas": 260000.0
             }
           ]
         }
@@ -37063,8 +37090,8 @@
       "BLUSAS": [
         {
           "nombre": "BLUSA SALOME",
-          "unidades": 208,
-          "ventas_netas": 13330000.0
+          "unidades": 210,
+          "ventas_netas": 13460000.0
         },
         {
           "nombre": "BLUSA GABY",
@@ -37115,8 +37142,8 @@
         },
         {
           "nombre": "CAPA JEAN",
-          "unidades": 98,
-          "ventas_netas": 12800000.0
+          "unidades": 100,
+          "ventas_netas": 13060000.0
         },
         {
           "nombre": "CHAMARRA HOMBRO GAMUZA",
@@ -37140,8 +37167,8 @@
         },
         {
           "nombre": "CAPA JEAN GAMUZA",
-          "unidades": 32,
-          "ventas_netas": 4480000.0
+          "unidades": 33,
+          "ventas_netas": 4620000.0
         }
       ],
       "CONJUNTOS": [
@@ -37157,8 +37184,8 @@
         },
         {
           "nombre": "SUDADERA CLASICA",
-          "unidades": 73,
-          "ventas_netas": 9405000.0
+          "unidades": 74,
+          "ventas_netas": 9555000.0
         },
         {
           "nombre": "SUDADERA VENECIA",
@@ -37231,8 +37258,8 @@
       "BODYS": [
         {
           "nombre": "BODY BASICO REDONDO",
-          "unidades": 200,
-          "ventas_netas": 12500000.1
+          "unidades": 201,
+          "ventas_netas": 12565000.1
         },
         {
           "nombre": "BODY SOLES",
@@ -37273,8 +37300,8 @@
       "VESTIDOS": [
         {
           "nombre": "CAPA JEAN",
-          "unidades": 211,
-          "ventas_netas": 27065000.2
+          "unidades": 212,
+          "ventas_netas": 27195000.21
         },
         {
           "nombre": "CAPA JEAN GAMUZA",
@@ -37567,8 +37594,8 @@
       "ACCESORIOS": [
         {
           "nombre": "CORREA DORADA $35000",
-          "unidades": 87,
-          "ventas_netas": 3026000.0
+          "unidades": 89,
+          "ventas_netas": 3096000.0
         },
         {
           "nombre": "CORREA PLATEADA $35000",
@@ -37619,8 +37646,8 @@
         },
         {
           "nombre": "ANILLO $15000",
-          "unidades": 58,
-          "ventas_netas": 857999.95
+          "unidades": 59,
+          "ventas_netas": 875999.95
         },
         {
           "nombre": "ANILLO $16000",
@@ -37901,34 +37928,34 @@
     }
   },
   "mes_actual": {
-    "unidades_totales": 703
+    "unidades_totales": 719
   },
   "historico": {
-    "unidades_totales": 28164,
+    "unidades_totales": 28180,
     "categorias": [
       {
         "categoria": "PANTALONES",
-        "ventas_netas": 642959700.06,
-        "utilidad": 261277174.52,
-        "costo": 381682525.54,
-        "unidades": 5871,
-        "margen": 0.4064
+        "ventas_netas": 643159700.06,
+        "utilidad": 261341174.52,
+        "costo": 381818525.54,
+        "unidades": 5873,
+        "margen": 0.4063
       },
       {
         "categoria": "BLUSAS",
-        "ventas_netas": 346415600.0,
-        "utilidad": 177381954.8,
-        "costo": 169033645.2,
-        "unidades": 5837,
-        "margen": 0.512
+        "ventas_netas": 346675600.0,
+        "utilidad": 177526954.8,
+        "costo": 169148645.2,
+        "unidades": 5841,
+        "margen": 0.5121
       },
       {
         "categoria": "CHAQUETAS",
-        "ventas_netas": 280548249.99,
-        "utilidad": 112665405.21,
-        "costo": 167882844.78,
-        "unidades": 2313,
-        "margen": 0.4016
+        "ventas_netas": 280948249.99,
+        "utilidad": 112845405.21,
+        "costo": 168102844.78,
+        "unidades": 2316,
+        "margen": 0.4017
       },
       {
         "categoria": "CORSET",
@@ -37939,20 +37966,20 @@
         "margen": 0.4157
       },
       {
-        "categoria": "BODYS",
-        "ventas_netas": 138249350.28,
-        "utilidad": 77630001.7,
-        "costo": 60619348.58,
-        "unidades": 2418,
-        "margen": 0.5615
+        "categoria": "CONJUNTOS",
+        "ventas_netas": 138387000.0,
+        "utilidad": 47797707.12,
+        "costo": 90589292.88,
+        "unidades": 1048,
+        "margen": 0.3454
       },
       {
-        "categoria": "CONJUNTOS",
-        "ventas_netas": 138237000.0,
-        "utilidad": 47727707.12,
-        "costo": 90509292.88,
-        "unidades": 1047,
-        "margen": 0.3453
+        "categoria": "BODYS",
+        "ventas_netas": 138314350.28,
+        "utilidad": 77677001.7,
+        "costo": 60637348.58,
+        "unidades": 2419,
+        "margen": 0.5616
       },
       {
         "categoria": "BUZOS",
@@ -37964,19 +37991,19 @@
       },
       {
         "categoria": "FALDAS",
-        "ventas_netas": 105553000.0,
-        "utilidad": 46137915.9,
-        "costo": 59415084.1,
-        "unidades": 1375,
-        "margen": 0.4371
+        "ventas_netas": 105648000.0,
+        "utilidad": 46167915.9,
+        "costo": 59480084.1,
+        "unidades": 1376,
+        "margen": 0.437
       },
       {
         "categoria": "VESTIDOS",
-        "ventas_netas": 102528500.26,
-        "utilidad": 46924168.23,
-        "costo": 55604332.03,
-        "unidades": 993,
-        "margen": 0.4577
+        "ventas_netas": 102658500.26,
+        "utilidad": 46969411.93,
+        "costo": 55689088.33,
+        "unidades": 994,
+        "margen": 0.4575
       },
       {
         "categoria": "CHALECOS",
@@ -38028,19 +38055,19 @@
       },
       {
         "categoria": "ACCESORIOS",
-        "ventas_netas": 9828000.02,
-        "utilidad": 5735847.12,
-        "costo": 4092152.9,
-        "unidades": 271,
-        "margen": 0.5836
+        "ventas_netas": 9898000.02,
+        "utilidad": 5775847.12,
+        "costo": 4122152.9,
+        "unidades": 273,
+        "margen": 0.5835
       },
       {
         "categoria": "ANILLOS",
-        "ventas_netas": 6317949.43,
-        "utilidad": 2972036.15,
-        "costo": 3345913.28,
-        "unidades": 386,
-        "margen": 0.4704
+        "ventas_netas": 6335949.43,
+        "utilidad": 2984736.15,
+        "costo": 3351213.28,
+        "unidades": 387,
+        "margen": 0.4711
       },
       {
         "categoria": "CAMISAS",
@@ -38115,13 +38142,13 @@
       },
       {
         "nombre": "CAPA JEAN",
-        "unidades": 413,
-        "ventas_netas": 51899000.2
+        "unidades": 416,
+        "ventas_netas": 52289000.21
       },
       {
         "nombre": "BLUSA SALOME",
-        "unidades": 777,
-        "ventas_netas": 44924000.0
+        "unidades": 779,
+        "ventas_netas": 45054000.0
       },
       {
         "nombre": "SUDADERA ZOE",
@@ -38160,8 +38187,8 @@
       },
       {
         "nombre": "BODY BASICO REDONDO",
-        "unidades": 421,
-        "ventas_netas": 23060000.1
+        "unidades": 422,
+        "ventas_netas": 23125000.1
       },
       {
         "nombre": "PANTALON",
@@ -38169,14 +38196,14 @@
         "ventas_netas": 21715000.0
       },
       {
+        "nombre": "SUDADERA CLASICA",
+        "unidades": 166,
+        "ventas_netas": 20400000.0
+      },
+      {
         "nombre": "BODY TIRA CUELLO",
         "unidades": 318,
         "ventas_netas": 20399000.0
-      },
-      {
-        "nombre": "SUDADERA CLASICA",
-        "unidades": 165,
-        "ventas_netas": 20250000.0
       },
       {
         "nombre": "BLUSA GABY",
@@ -38369,6 +38396,11 @@
         "ventas_netas": 9410000.0
       },
       {
+        "nombre": "CAPA JEAN GAMUZA",
+        "unidades": 67,
+        "ventas_netas": 9340000.0
+      },
+      {
         "nombre": "BLUSA RADICAL",
         "unidades": 131,
         "ventas_netas": 9215000.0
@@ -38377,11 +38409,6 @@
         "nombre": "PANTALON PRETINA",
         "unidades": 119,
         "ventas_netas": 9202000.0
-      },
-      {
-        "nombre": "CAPA JEAN GAMUZA",
-        "unidades": 66,
-        "ventas_netas": 9200000.0
       },
       {
         "nombre": "FALDA SHORT TELA",
@@ -38949,14 +38976,14 @@
         "ventas_netas": 3100000.0
       },
       {
+        "nombre": "CORREA DORADA $35000",
+        "unidades": 89,
+        "ventas_netas": 3096000.0
+      },
+      {
         "nombre": "JEAN PALAZO MERAKI",
         "unidades": 27,
         "ventas_netas": 3078000.0
-      },
-      {
-        "nombre": "JEAN ICONIC PRINT",
-        "unidades": 22,
-        "ventas_netas": 3070000.0
       },
       {
         "nombre": "CAPA OXA JEAN",
@@ -38964,9 +38991,9 @@
         "ventas_netas": 3070000.0
       },
       {
-        "nombre": "CORREA DORADA $35000",
-        "unidades": 87,
-        "ventas_netas": 3026000.0
+        "nombre": "JEAN ICONIC PRINT",
+        "unidades": 22,
+        "ventas_netas": 3070000.0
       },
       {
         "nombre": "BRAGA JEAN CLARO",
@@ -39004,6 +39031,11 @@
         "ventas_netas": 2870000.0
       },
       {
+        "nombre": "BLUSA JASPEADA MATILDA",
+        "unidades": 44,
+        "ventas_netas": 2838000.0
+      },
+      {
         "nombre": "CHAQUETA CAPOTA CALIFORNIA",
         "unidades": 20,
         "ventas_netas": 2810000.0
@@ -39017,11 +39049,6 @@
         "nombre": "BUZO TEJIDO BANDEJA",
         "unidades": 32,
         "ventas_netas": 2780000.0
-      },
-      {
-        "nombre": "BLUSA JASPEADA MATILDA",
-        "unidades": 43,
-        "ventas_netas": 2773000.0
       },
       {
         "nombre": "CADENA $38000",
@@ -39064,13 +39091,13 @@
         "ventas_netas": 2645000.0
       },
       {
-        "nombre": "CAMISA TEJIDA DOBLE TONO",
-        "unidades": 41,
+        "nombre": "JEAN ESTRELLA",
+        "unidades": 26,
         "ventas_netas": 2640000.0
       },
       {
-        "nombre": "JEAN ESTRELLA",
-        "unidades": 26,
+        "nombre": "CAMISA TEJIDA DOBLE TONO",
+        "unidades": 41,
         "ventas_netas": 2640000.0
       },
       {
@@ -39209,13 +39236,13 @@
         "ventas_netas": 2260000.0
       },
       {
-        "nombre": "OVERZISE EDNA",
-        "unidades": 27,
+        "nombre": "BODY MAYA LUCIA",
+        "unidades": 42,
         "ventas_netas": 2238000.0
       },
       {
-        "nombre": "BODY MAYA LUCIA",
-        "unidades": 42,
+        "nombre": "OVERZISE EDNA",
+        "unidades": 27,
         "ventas_netas": 2238000.0
       },
       {
@@ -39419,6 +39446,11 @@
         "ventas_netas": 1844999.82
       },
       {
+        "nombre": "BLUSA CASCADA",
+        "unidades": 28,
+        "ventas_netas": 1823000.0
+      },
+      {
         "nombre": "JEAN CINTURA RECOGIDA",
         "unidades": 14,
         "ventas_netas": 1810000.0
@@ -39442,11 +39474,6 @@
         "nombre": "BOLSOS",
         "unidades": 24,
         "ventas_netas": 1769000.0
-      },
-      {
-        "nombre": "BLUSA CASCADA",
-        "unidades": 27,
-        "ventas_netas": 1758000.0
       },
       {
         "nombre": "JEAN BLANCO LATENTE",
@@ -39544,6 +39571,11 @@
         "ventas_netas": 1620000.0
       },
       {
+        "nombre": "BRAGA JEAN",
+        "unidades": 13,
+        "ventas_netas": 1610000.0
+      },
+      {
         "nombre": "BODY ESCOTE ESQUELETO",
         "unidades": 27,
         "ventas_netas": 1588000.01
@@ -39594,8 +39626,8 @@
         "ventas_netas": 1545000.0
       },
       {
-        "nombre": "BLAZER ESTAMPADO",
-        "unidades": 17,
+        "nombre": "JEAN CORAZON DESGASTE",
+        "unidades": 14,
         "ventas_netas": 1530000.0
       },
       {
@@ -39604,8 +39636,8 @@
         "ventas_netas": 1530000.0
       },
       {
-        "nombre": "JEAN CORAZON DESGASTE",
-        "unidades": 14,
+        "nombre": "BLAZER ESTAMPADO",
+        "unidades": 17,
         "ventas_netas": 1530000.0
       },
       {
@@ -39614,13 +39646,13 @@
         "ventas_netas": 1521999.79
       },
       {
-        "nombre": "CAMISA COLOMBIA BORDADA",
-        "unidades": 17,
+        "nombre": "VESTIDO MAYA BANDEJA LARGO",
+        "unidades": 18,
         "ventas_netas": 1510000.0
       },
       {
-        "nombre": "VESTIDO MAYA BANDEJA LARGO",
-        "unidades": 18,
+        "nombre": "CAMISA COLOMBIA BORDADA",
+        "unidades": 17,
         "ventas_netas": 1510000.0
       },
       {
@@ -39644,19 +39676,9 @@
         "ventas_netas": 1415650.0
       },
       {
-        "nombre": "BRAGA JEAN",
-        "unidades": 11,
-        "ventas_netas": 1410000.0
-      },
-      {
         "nombre": "BLUSA ESTRAPLE NICO",
         "unidades": 21,
         "ventas_netas": 1405000.0
-      },
-      {
-        "nombre": "JEAN EBANO VERDE FROSTEADO",
-        "unidades": 11,
-        "ventas_netas": 1395000.0
       },
       {
         "nombre": "JEAN SEMILICRADO PELLIZCO",
@@ -39664,13 +39686,18 @@
         "ventas_netas": 1395000.0
       },
       {
-        "nombre": "BLUSA ZARA",
-        "unidades": 30,
+        "nombre": "JEAN EBANO VERDE FROSTEADO",
+        "unidades": 11,
         "ventas_netas": 1395000.0
       },
       {
         "nombre": "JEAN FLARE BIGOTE",
         "unidades": 11,
+        "ventas_netas": 1395000.0
+      },
+      {
+        "nombre": "BLUSA ZARA",
+        "unidades": 30,
         "ventas_netas": 1395000.0
       },
       {
@@ -39709,6 +39736,11 @@
         "ventas_netas": 1350000.0
       },
       {
+        "nombre": "FALDA SHORT CLASICA AZUL FROSTEADO CLARO",
+        "unidades": 15,
+        "ventas_netas": 1345000.0
+      },
+      {
         "nombre": "BODY BRILLANTE MARIA",
         "unidades": 21,
         "ventas_netas": 1339000.0
@@ -39729,13 +39761,13 @@
         "ventas_netas": 1294000.0
       },
       {
-        "nombre": "SET JEAN DULCE",
-        "unidades": 8,
+        "nombre": "BLUSA IGNACIA",
+        "unidades": 20,
         "ventas_netas": 1290000.0
       },
       {
-        "nombre": "BLUSA IGNACIA",
-        "unidades": 20,
+        "nombre": "SET JEAN DULCE",
+        "unidades": 8,
         "ventas_netas": 1290000.0
       },
       {
@@ -39744,23 +39776,23 @@
         "ventas_netas": 1287000.0
       },
       {
-        "nombre": "FALDA SHORT PRESES LIKE",
-        "unidades": 16,
-        "ventas_netas": 1280000.0
-      },
-      {
         "nombre": "BLUSA LYNDA ENCAJE",
         "unidades": 20,
         "ventas_netas": 1280000.0
       },
       {
-        "nombre": "BODY SAMANTHA MALLA",
-        "unidades": 15,
-        "ventas_netas": 1270000.0
+        "nombre": "FALDA SHORT PRESES LIKE",
+        "unidades": 16,
+        "ventas_netas": 1280000.0
       },
       {
         "nombre": "PANT CUERINA NEGRO TERCIO",
         "unidades": 13,
+        "ventas_netas": 1270000.0
+      },
+      {
+        "nombre": "BODY SAMANTHA MALLA",
+        "unidades": 15,
         "ventas_netas": 1270000.0
       },
       {
@@ -39769,18 +39801,13 @@
         "ventas_netas": 1265000.0
       },
       {
-        "nombre": "JEAN RAVE",
-        "unidades": 10,
-        "ventas_netas": 1250000.0
-      },
-      {
-        "nombre": "FALDA SHORT CLASICA AZUL FROSTEADO CLARO",
-        "unidades": 14,
-        "ventas_netas": 1250000.0
-      },
-      {
         "nombre": "JEAN PALAZO LICRADO",
         "unidades": 11,
+        "ventas_netas": 1250000.0
+      },
+      {
+        "nombre": "JEAN RAVE",
+        "unidades": 10,
         "ventas_netas": 1250000.0
       },
       {
@@ -39804,13 +39831,13 @@
         "ventas_netas": 1238000.0
       },
       {
-        "nombre": "PALAZO MERAKI ROTOS",
-        "unidades": 10,
+        "nombre": "CORSET JULI",
+        "unidades": 22,
         "ventas_netas": 1230000.0
       },
       {
-        "nombre": "CORSET JULI",
-        "unidades": 22,
+        "nombre": "PALAZO MERAKI ROTOS",
+        "unidades": 10,
         "ventas_netas": 1230000.0
       },
       {
@@ -39859,12 +39886,12 @@
         "ventas_netas": 1175000.0
       },
       {
-        "nombre": "JEAN COQUETTE",
+        "nombre": "JEAN ROMBOS",
         "unidades": 9,
         "ventas_netas": 1170000.0
       },
       {
-        "nombre": "JEAN ROMBOS",
+        "nombre": "JEAN COQUETTE",
         "unidades": 9,
         "ventas_netas": 1170000.0
       },
@@ -39879,8 +39906,8 @@
         "ventas_netas": 1160000.0
       },
       {
-        "nombre": "JEAN MOMFIT",
-        "unidades": 12,
+        "nombre": "JEAN PIO",
+        "unidades": 11,
         "ventas_netas": 1155000.0
       },
       {
@@ -39889,8 +39916,8 @@
         "ventas_netas": 1155000.0
       },
       {
-        "nombre": "JEAN PIO",
-        "unidades": 11,
+        "nombre": "JEAN MOMFIT",
+        "unidades": 12,
         "ventas_netas": 1155000.0
       },
       {
@@ -39899,13 +39926,13 @@
         "ventas_netas": 1153000.0
       },
       {
-        "nombre": "CORSET COPA CUERINA",
-        "unidades": 13,
+        "nombre": "JEAN LYNDA MOÑOS",
+        "unidades": 9,
         "ventas_netas": 1145000.0
       },
       {
-        "nombre": "JEAN LYNDA MOÑOS",
-        "unidades": 9,
+        "nombre": "CORSET COPA CUERINA",
+        "unidades": 13,
         "ventas_netas": 1145000.0
       },
       {
@@ -39929,8 +39956,8 @@
         "ventas_netas": 1135000.0
       },
       {
-        "nombre": "CORSET OLIVIA MALLA",
-        "unidades": 17,
+        "nombre": "FALDA JEAN MURREN",
+        "unidades": 14,
         "ventas_netas": 1125000.0
       },
       {
@@ -39939,8 +39966,8 @@
         "ventas_netas": 1125000.0
       },
       {
-        "nombre": "FALDA JEAN MURREN",
-        "unidades": 14,
+        "nombre": "CORSET OLIVIA MALLA",
+        "unidades": 17,
         "ventas_netas": 1125000.0
       },
       {
@@ -40009,6 +40036,11 @@
         "ventas_netas": 1045000.0
       },
       {
+        "nombre": "ANILLO $15000",
+        "unidades": 70,
+        "ventas_netas": 1040999.95
+      },
+      {
         "nombre": "JEAN BOTA RECTA AZUL",
         "unidades": 8,
         "ventas_netas": 1040000.0
@@ -40027,11 +40059,6 @@
         "nombre": "JEAN RAYAS",
         "unidades": 8,
         "ventas_netas": 1030000.0
-      },
-      {
-        "nombre": "ANILLO $15000",
-        "unidades": 69,
-        "ventas_netas": 1022999.95
       },
       {
         "nombre": "JEAN CARGO MERAKI",
@@ -43588,8 +43615,8 @@
         },
         {
           "sucursal": "Local 433",
-          "unidades": 184,
-          "ventas_netas": 23214000.07,
+          "unidades": 186,
+          "ventas_netas": 23474000.07,
           "variantes": [
             {
               "nombre": "Única",
@@ -43598,8 +43625,8 @@
             },
             {
               "nombre": "GRIS OSCURO TU",
-              "unidades": 37,
-              "ventas_netas": 4830000.0
+              "unidades": 39,
+              "ventas_netas": 5090000.0
             },
             {
               "nombre": "AZUL CLARA TU",
@@ -43645,8 +43672,8 @@
         },
         {
           "sucursal": "Local 107",
-          "unidades": 27,
-          "ventas_netas": 3550000.02,
+          "unidades": 28,
+          "ventas_netas": 3680000.02,
           "variantes": [
             {
               "nombre": "GRIS OSCURO TU",
@@ -43655,8 +43682,8 @@
             },
             {
               "nombre": "AZUL CLARA TU",
-              "unidades": 6,
-              "ventas_netas": 780000.02
+              "unidades": 7,
+              "ventas_netas": 910000.02
             },
             {
               "nombre": "MARFIL TU",
@@ -43821,8 +43848,8 @@
         },
         {
           "sucursal": "Local 433",
-          "unidades": 223,
-          "ventas_netas": 12891000.0,
+          "unidades": 225,
+          "ventas_netas": 13021000.0,
           "variantes": [
             {
               "nombre": "CAFE",
@@ -43865,6 +43892,11 @@
               "ventas_netas": 578000.0
             },
             {
+              "nombre": "AMARILLO TU",
+              "unidades": 8,
+              "ventas_netas": 515000.0
+            },
+            {
               "nombre": "AZUL REY",
               "unidades": 9,
               "ventas_netas": 515000.0
@@ -43883,11 +43915,6 @@
               "nombre": "ROSA",
               "unidades": 7,
               "ventas_netas": 387000.0
-            },
-            {
-              "nombre": "AMARILLO TU",
-              "unidades": 6,
-              "ventas_netas": 385000.0
             },
             {
               "nombre": "NEGRO TU",
@@ -45190,8 +45217,8 @@
         },
         {
           "sucursal": "Local 433",
-          "unidades": 115,
-          "ventas_netas": 6417000.02,
+          "unidades": 116,
+          "ventas_netas": 6482000.02,
           "variantes": [
             {
               "nombre": "Única",
@@ -45200,8 +45227,8 @@
             },
             {
               "nombre": "NEGRO TU",
-              "unidades": 12,
-              "ventas_netas": 780000.01
+              "unidades": 13,
+              "ventas_netas": 845000.01
             },
             {
               "nombre": "MARFIL TU",
@@ -45359,6 +45386,134 @@
           ]
         }
       ],
+      "SUDADERA CLASICA": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 109,
+          "ventas_netas": 13300000.0,
+          "variantes": [
+            {
+              "nombre": "ROJO",
+              "unidades": 31,
+              "ventas_netas": 3745000.0
+            },
+            {
+              "nombre": "NEGRO",
+              "unidades": 24,
+              "ventas_netas": 2880000.0
+            },
+            {
+              "nombre": "GRIS",
+              "unidades": 14,
+              "ventas_netas": 1715000.0
+            },
+            {
+              "nombre": "CAFE",
+              "unidades": 11,
+              "ventas_netas": 1350000.0
+            },
+            {
+              "nombre": "CAMEL",
+              "unidades": 10,
+              "ventas_netas": 1175000.0
+            },
+            {
+              "nombre": "BLANCO",
+              "unidades": 8,
+              "ventas_netas": 945000.0
+            },
+            {
+              "nombre": "GRIS CLARA",
+              "unidades": 4,
+              "ventas_netas": 520000.0
+            },
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 3,
+              "ventas_netas": 430000.0
+            },
+            {
+              "nombre": "GRIS CLARO TU",
+              "unidades": 2,
+              "ventas_netas": 300000.0
+            },
+            {
+              "nombre": "CAFE TU",
+              "unidades": 2,
+              "ventas_netas": 240000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 53,
+          "ventas_netas": 6570000.0,
+          "variantes": [
+            {
+              "nombre": "GRIS",
+              "unidades": 11,
+              "ventas_netas": 1330000.0
+            },
+            {
+              "nombre": "ROJO",
+              "unidades": 10,
+              "ventas_netas": 1180000.0
+            },
+            {
+              "nombre": "NEGRO",
+              "unidades": 8,
+              "ventas_netas": 955000.0
+            },
+            {
+              "nombre": "GRIS CLARO TU",
+              "unidades": 6,
+              "ventas_netas": 890000.0
+            },
+            {
+              "nombre": "CAMEL",
+              "unidades": 7,
+              "ventas_netas": 795000.0
+            },
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 3,
+              "ventas_netas": 420000.0
+            },
+            {
+              "nombre": "BLANCO",
+              "unidades": 3,
+              "ventas_netas": 360000.0
+            },
+            {
+              "nombre": "CAFE",
+              "unidades": 3,
+              "ventas_netas": 360000.0
+            },
+            {
+              "nombre": "CAFE TU",
+              "unidades": 2,
+              "ventas_netas": 280000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 107",
+          "unidades": 4,
+          "ventas_netas": 530000.0,
+          "variantes": [
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 3,
+              "ventas_netas": 400000.0
+            },
+            {
+              "nombre": "GRIS CLARO TU",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            }
+          ]
+        }
+      ],
       "BODY TIRA CUELLO": [
         {
           "sucursal": "Local 144",
@@ -45508,134 +45663,6 @@
               "nombre": "NEGRO TU",
               "unidades": 3,
               "ventas_netas": 195000.0
-            }
-          ]
-        }
-      ],
-      "SUDADERA CLASICA": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 109,
-          "ventas_netas": 13300000.0,
-          "variantes": [
-            {
-              "nombre": "ROJO",
-              "unidades": 31,
-              "ventas_netas": 3745000.0
-            },
-            {
-              "nombre": "NEGRO",
-              "unidades": 24,
-              "ventas_netas": 2880000.0
-            },
-            {
-              "nombre": "GRIS",
-              "unidades": 14,
-              "ventas_netas": 1715000.0
-            },
-            {
-              "nombre": "CAFE",
-              "unidades": 11,
-              "ventas_netas": 1350000.0
-            },
-            {
-              "nombre": "CAMEL",
-              "unidades": 10,
-              "ventas_netas": 1175000.0
-            },
-            {
-              "nombre": "BLANCO",
-              "unidades": 8,
-              "ventas_netas": 945000.0
-            },
-            {
-              "nombre": "GRIS CLARA",
-              "unidades": 4,
-              "ventas_netas": 520000.0
-            },
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 3,
-              "ventas_netas": 430000.0
-            },
-            {
-              "nombre": "GRIS CLARO TU",
-              "unidades": 2,
-              "ventas_netas": 300000.0
-            },
-            {
-              "nombre": "CAFE TU",
-              "unidades": 2,
-              "ventas_netas": 240000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 52,
-          "ventas_netas": 6420000.0,
-          "variantes": [
-            {
-              "nombre": "GRIS",
-              "unidades": 11,
-              "ventas_netas": 1330000.0
-            },
-            {
-              "nombre": "ROJO",
-              "unidades": 10,
-              "ventas_netas": 1180000.0
-            },
-            {
-              "nombre": "NEGRO",
-              "unidades": 8,
-              "ventas_netas": 955000.0
-            },
-            {
-              "nombre": "CAMEL",
-              "unidades": 7,
-              "ventas_netas": 795000.0
-            },
-            {
-              "nombre": "GRIS CLARO TU",
-              "unidades": 5,
-              "ventas_netas": 740000.0
-            },
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 3,
-              "ventas_netas": 420000.0
-            },
-            {
-              "nombre": "BLANCO",
-              "unidades": 3,
-              "ventas_netas": 360000.0
-            },
-            {
-              "nombre": "CAFE",
-              "unidades": 3,
-              "ventas_netas": 360000.0
-            },
-            {
-              "nombre": "CAFE TU",
-              "unidades": 2,
-              "ventas_netas": 280000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 107",
-          "unidades": 4,
-          "ventas_netas": 530000.0,
-          "variantes": [
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 3,
-              "ventas_netas": 400000.0
-            },
-            {
-              "nombre": "GRIS CLARO TU",
-              "unidades": 1,
-              "ventas_netas": 130000.0
             }
           ]
         }
@@ -50609,6 +50636,79 @@
           ]
         }
       ],
+      "CAPA JEAN GAMUZA": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 33,
+          "ventas_netas": 4590000.0,
+          "variantes": [
+            {
+              "nombre": "Única",
+              "unidades": 20,
+              "ventas_netas": 2780000.0
+            },
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 8,
+              "ventas_netas": 1120000.0
+            },
+            {
+              "nombre": "AZUL TU",
+              "unidades": 3,
+              "ventas_netas": 420000.0
+            },
+            {
+              "nombre": "TU",
+              "unidades": 2,
+              "ventas_netas": 270000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 23,
+          "ventas_netas": 3210000.0,
+          "variantes": [
+            {
+              "nombre": "Única",
+              "unidades": 10,
+              "ventas_netas": 1400000.0
+            },
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 10,
+              "ventas_netas": 1400000.0
+            },
+            {
+              "nombre": "TU",
+              "unidades": 2,
+              "ventas_netas": 270000.0
+            },
+            {
+              "nombre": "AZUL TU",
+              "unidades": 1,
+              "ventas_netas": 140000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 107",
+          "unidades": 11,
+          "ventas_netas": 1540000.0,
+          "variantes": [
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 9,
+              "ventas_netas": 1260000.0
+            },
+            {
+              "nombre": "AZUL TU",
+              "unidades": 2,
+              "ventas_netas": 280000.0
+            }
+          ]
+        }
+      ],
       "BLUSA RADICAL": [
         {
           "sucursal": "Local 144",
@@ -50782,79 +50882,6 @@
               "nombre": "CAMEL T12",
               "unidades": 2,
               "ventas_netas": 160000.0
-            }
-          ]
-        }
-      ],
-      "CAPA JEAN GAMUZA": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 32,
-          "ventas_netas": 4450000.0,
-          "variantes": [
-            {
-              "nombre": "Única",
-              "unidades": 20,
-              "ventas_netas": 2780000.0
-            },
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 7,
-              "ventas_netas": 980000.0
-            },
-            {
-              "nombre": "AZUL TU",
-              "unidades": 3,
-              "ventas_netas": 420000.0
-            },
-            {
-              "nombre": "TU",
-              "unidades": 2,
-              "ventas_netas": 270000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 23,
-          "ventas_netas": 3210000.0,
-          "variantes": [
-            {
-              "nombre": "Única",
-              "unidades": 10,
-              "ventas_netas": 1400000.0
-            },
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 10,
-              "ventas_netas": 1400000.0
-            },
-            {
-              "nombre": "TU",
-              "unidades": 2,
-              "ventas_netas": 270000.0
-            },
-            {
-              "nombre": "AZUL TU",
-              "unidades": 1,
-              "ventas_netas": 140000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 107",
-          "unidades": 11,
-          "ventas_netas": 1540000.0,
-          "variantes": [
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 9,
-              "ventas_netas": 1260000.0
-            },
-            {
-              "nombre": "AZUL TU",
-              "unidades": 2,
-              "ventas_netas": 280000.0
             }
           ]
         }
@@ -61081,6 +61108,44 @@
           ]
         }
       ],
+      "CORREA DORADA $35000": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 37,
+          "ventas_netas": 1283000.0,
+          "variantes": [
+            {
+              "nombre": "Única",
+              "unidades": 37,
+              "ventas_netas": 1283000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 107",
+          "unidades": 31,
+          "ventas_netas": 1078000.0,
+          "variantes": [
+            {
+              "nombre": "Única",
+              "unidades": 31,
+              "ventas_netas": 1078000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 21,
+          "ventas_netas": 735000.0,
+          "variantes": [
+            {
+              "nombre": "Única",
+              "unidades": 21,
+              "ventas_netas": 735000.0
+            }
+          ]
+        }
+      ],
       "JEAN PALAZO MERAKI": [
         {
           "sucursal": "Local 144",
@@ -61153,6 +61218,62 @@
               "nombre": "T10",
               "unidades": 1,
               "ventas_netas": 110000.0
+            }
+          ]
+        }
+      ],
+      "CAPA OXA JEAN": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 15,
+          "ventas_netas": 1900000.0,
+          "variantes": [
+            {
+              "nombre": "Única",
+              "unidades": 9,
+              "ventas_netas": 1120000.0
+            },
+            {
+              "nombre": "TU",
+              "unidades": 3,
+              "ventas_netas": 390000.0
+            },
+            {
+              "nombre": "CAFE TU",
+              "unidades": 2,
+              "ventas_netas": 260000.0
+            },
+            {
+              "nombre": "VERDE TU",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 9,
+          "ventas_netas": 1170000.0,
+          "variantes": [
+            {
+              "nombre": "Única",
+              "unidades": 5,
+              "ventas_netas": 650000.0
+            },
+            {
+              "nombre": "TU",
+              "unidades": 2,
+              "ventas_netas": 260000.0
+            },
+            {
+              "nombre": "CAFE TU",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "VERDE TU",
+              "unidades": 1,
+              "ventas_netas": 130000.0
             }
           ]
         }
@@ -61266,100 +61387,6 @@
               "nombre": "NEGRO T8",
               "unidades": 1,
               "ventas_netas": 140000.0
-            }
-          ]
-        }
-      ],
-      "CAPA OXA JEAN": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 15,
-          "ventas_netas": 1900000.0,
-          "variantes": [
-            {
-              "nombre": "Única",
-              "unidades": 9,
-              "ventas_netas": 1120000.0
-            },
-            {
-              "nombre": "TU",
-              "unidades": 3,
-              "ventas_netas": 390000.0
-            },
-            {
-              "nombre": "CAFE TU",
-              "unidades": 2,
-              "ventas_netas": 260000.0
-            },
-            {
-              "nombre": "VERDE TU",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 9,
-          "ventas_netas": 1170000.0,
-          "variantes": [
-            {
-              "nombre": "Única",
-              "unidades": 5,
-              "ventas_netas": 650000.0
-            },
-            {
-              "nombre": "TU",
-              "unidades": 2,
-              "ventas_netas": 260000.0
-            },
-            {
-              "nombre": "CAFE TU",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "VERDE TU",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            }
-          ]
-        }
-      ],
-      "CORREA DORADA $35000": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 37,
-          "ventas_netas": 1283000.0,
-          "variantes": [
-            {
-              "nombre": "Única",
-              "unidades": 37,
-              "ventas_netas": 1283000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 107",
-          "unidades": 31,
-          "ventas_netas": 1078000.0,
-          "variantes": [
-            {
-              "nombre": "Única",
-              "unidades": 31,
-              "ventas_netas": 1078000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 19,
-          "ventas_netas": 665000.0,
-          "variantes": [
-            {
-              "nombre": "Única",
-              "unidades": 19,
-              "ventas_netas": 665000.0
             }
           ]
         }
@@ -61874,6 +61901,89 @@
           ]
         }
       ],
+      "BLUSA JASPEADA MATILDA": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 23,
+          "ventas_netas": 1490000.0,
+          "variantes": [
+            {
+              "nombre": "VINOTINTO TU",
+              "unidades": 12,
+              "ventas_netas": 775000.0
+            },
+            {
+              "nombre": "AZUL TU",
+              "unidades": 5,
+              "ventas_netas": 335000.0
+            },
+            {
+              "nombre": "CAFE TU",
+              "unidades": 5,
+              "ventas_netas": 315000.0
+            },
+            {
+              "nombre": "VERDE TU",
+              "unidades": 1,
+              "ventas_netas": 65000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 13,
+          "ventas_netas": 838000.0,
+          "variantes": [
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 6,
+              "ventas_netas": 390000.0
+            },
+            {
+              "nombre": "VINOTINTO TU",
+              "unidades": 4,
+              "ventas_netas": 253000.0
+            },
+            {
+              "nombre": "AZUL TU",
+              "unidades": 2,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "CAFE TU",
+              "unidades": 1,
+              "ventas_netas": 65000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 107",
+          "unidades": 8,
+          "ventas_netas": 510000.0,
+          "variantes": [
+            {
+              "nombre": "AZUL TU",
+              "unidades": 3,
+              "ventas_netas": 195000.0
+            },
+            {
+              "nombre": "VINOTINTO TU",
+              "unidades": 3,
+              "ventas_netas": 185000.0
+            },
+            {
+              "nombre": "CAFE TU",
+              "unidades": 1,
+              "ventas_netas": 65000.0
+            },
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 1,
+              "ventas_netas": 65000.0
+            }
+          ]
+        }
+      ],
       "CHAQUETA CAPOTA CALIFORNIA": [
         {
           "sucursal": "Local 144",
@@ -62105,84 +62215,6 @@
               "nombre": "VINOTINTO",
               "unidades": 1,
               "ventas_netas": 85000.0
-            }
-          ]
-        }
-      ],
-      "BLUSA JASPEADA MATILDA": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 23,
-          "ventas_netas": 1490000.0,
-          "variantes": [
-            {
-              "nombre": "VINOTINTO TU",
-              "unidades": 12,
-              "ventas_netas": 775000.0
-            },
-            {
-              "nombre": "AZUL TU",
-              "unidades": 5,
-              "ventas_netas": 335000.0
-            },
-            {
-              "nombre": "CAFE TU",
-              "unidades": 5,
-              "ventas_netas": 315000.0
-            },
-            {
-              "nombre": "VERDE TU",
-              "unidades": 1,
-              "ventas_netas": 65000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 12,
-          "ventas_netas": 773000.0,
-          "variantes": [
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 6,
-              "ventas_netas": 390000.0
-            },
-            {
-              "nombre": "VINOTINTO TU",
-              "unidades": 4,
-              "ventas_netas": 253000.0
-            },
-            {
-              "nombre": "AZUL TU",
-              "unidades": 2,
-              "ventas_netas": 130000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 107",
-          "unidades": 8,
-          "ventas_netas": 510000.0,
-          "variantes": [
-            {
-              "nombre": "AZUL TU",
-              "unidades": 3,
-              "ventas_netas": 195000.0
-            },
-            {
-              "nombre": "VINOTINTO TU",
-              "unidades": 3,
-              "ventas_netas": 185000.0
-            },
-            {
-              "nombre": "CAFE TU",
-              "unidades": 1,
-              "ventas_netas": 65000.0
-            },
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 1,
-              "ventas_netas": 65000.0
             }
           ]
         }
@@ -62630,62 +62662,6 @@
           ]
         }
       ],
-      "CAMISA TEJIDA DOBLE TONO": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 30,
-          "ventas_netas": 1940000.0,
-          "variantes": [
-            {
-              "nombre": "BLANCO",
-              "unidades": 11,
-              "ventas_netas": 700000.0
-            },
-            {
-              "nombre": "NEGRO",
-              "unidades": 8,
-              "ventas_netas": 530000.0
-            },
-            {
-              "nombre": "GRIS",
-              "unidades": 6,
-              "ventas_netas": 390000.0
-            },
-            {
-              "nombre": "BEIGE",
-              "unidades": 5,
-              "ventas_netas": 320000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 11,
-          "ventas_netas": 700000.0,
-          "variantes": [
-            {
-              "nombre": "BLANCO",
-              "unidades": 5,
-              "ventas_netas": 320000.0
-            },
-            {
-              "nombre": "BEIGE",
-              "unidades": 3,
-              "ventas_netas": 195000.0
-            },
-            {
-              "nombre": "GRIS",
-              "unidades": 2,
-              "ventas_netas": 120000.0
-            },
-            {
-              "nombre": "NEGRO",
-              "unidades": 1,
-              "ventas_netas": 65000.0
-            }
-          ]
-        }
-      ],
       "JEAN ESTRELLA": [
         {
           "sucursal": "Local 144",
@@ -62773,6 +62749,62 @@
               "nombre": "T8",
               "unidades": 1,
               "ventas_netas": 95000.0
+            }
+          ]
+        }
+      ],
+      "CAMISA TEJIDA DOBLE TONO": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 30,
+          "ventas_netas": 1940000.0,
+          "variantes": [
+            {
+              "nombre": "BLANCO",
+              "unidades": 11,
+              "ventas_netas": 700000.0
+            },
+            {
+              "nombre": "NEGRO",
+              "unidades": 8,
+              "ventas_netas": 530000.0
+            },
+            {
+              "nombre": "GRIS",
+              "unidades": 6,
+              "ventas_netas": 390000.0
+            },
+            {
+              "nombre": "BEIGE",
+              "unidades": 5,
+              "ventas_netas": 320000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 11,
+          "ventas_netas": 700000.0,
+          "variantes": [
+            {
+              "nombre": "BLANCO",
+              "unidades": 5,
+              "ventas_netas": 320000.0
+            },
+            {
+              "nombre": "BEIGE",
+              "unidades": 3,
+              "ventas_netas": 195000.0
+            },
+            {
+              "nombre": "GRIS",
+              "unidades": 2,
+              "ventas_netas": 120000.0
+            },
+            {
+              "nombre": "NEGRO",
+              "unidades": 1,
+              "ventas_netas": 65000.0
             }
           ]
         }
@@ -64528,49 +64560,6 @@
           ]
         }
       ],
-      "OVERZISE EDNA": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 15,
-          "ventas_netas": 1240000.0,
-          "variantes": [
-            {
-              "nombre": "BLANCO TU",
-              "unidades": 14,
-              "ventas_netas": 1155000.0
-            },
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 1,
-              "ventas_netas": 85000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 8,
-          "ventas_netas": 673000.0,
-          "variantes": [
-            {
-              "nombre": "BLANCO TU",
-              "unidades": 8,
-              "ventas_netas": 673000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 107",
-          "unidades": 4,
-          "ventas_netas": 325000.0,
-          "variantes": [
-            {
-              "nombre": "BLANCO TU",
-              "unidades": 4,
-              "ventas_netas": 325000.0
-            }
-          ]
-        }
-      ],
       "BODY MAYA LUCIA": [
         {
           "sucursal": "Local 144",
@@ -64638,6 +64627,49 @@
               "nombre": "NEGRO",
               "unidades": 1,
               "ventas_netas": 48000.0
+            }
+          ]
+        }
+      ],
+      "OVERZISE EDNA": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 15,
+          "ventas_netas": 1240000.0,
+          "variantes": [
+            {
+              "nombre": "BLANCO TU",
+              "unidades": 14,
+              "ventas_netas": 1155000.0
+            },
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 1,
+              "ventas_netas": 85000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 8,
+          "ventas_netas": 673000.0,
+          "variantes": [
+            {
+              "nombre": "BLANCO TU",
+              "unidades": 8,
+              "ventas_netas": 673000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 107",
+          "unidades": 4,
+          "ventas_netas": 325000.0,
+          "variantes": [
+            {
+              "nombre": "BLANCO TU",
+              "unidades": 4,
+              "ventas_netas": 325000.0
             }
           ]
         }
@@ -67168,6 +67200,94 @@
           ]
         }
       ],
+      "BLUSA CASCADA": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 11,
+          "ventas_netas": 713000.0,
+          "variantes": [
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 4,
+              "ventas_netas": 263000.0
+            },
+            {
+              "nombre": "VINOTINTO TU",
+              "unidades": 4,
+              "ventas_netas": 260000.0
+            },
+            {
+              "nombre": "AMARILLO TU",
+              "unidades": 2,
+              "ventas_netas": 125000.0
+            },
+            {
+              "nombre": "CAFE TU",
+              "unidades": 1,
+              "ventas_netas": 65000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 107",
+          "unidades": 10,
+          "ventas_netas": 655000.0,
+          "variantes": [
+            {
+              "nombre": "MARFIL TU",
+              "unidades": 3,
+              "ventas_netas": 195000.0
+            },
+            {
+              "nombre": "CAFE TU",
+              "unidades": 2,
+              "ventas_netas": 135000.0
+            },
+            {
+              "nombre": "NEGRO TU",
+              "unidades": 2,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "VINOTINTO TU",
+              "unidades": 2,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "AMARILLO TU",
+              "unidades": 1,
+              "ventas_netas": 65000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 7,
+          "ventas_netas": 455000.0,
+          "variantes": [
+            {
+              "nombre": "MARFIL TU",
+              "unidades": 3,
+              "ventas_netas": 195000.0
+            },
+            {
+              "nombre": "CAFE TU",
+              "unidades": 2,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "AMARILLO TU",
+              "unidades": 1,
+              "ventas_netas": 65000.0
+            },
+            {
+              "nombre": "VINOTINTO TU",
+              "unidades": 1,
+              "ventas_netas": 65000.0
+            }
+          ]
+        }
+      ],
       "JEAN CINTURA RECOGIDA": [
         {
           "sucursal": "Local 144",
@@ -67366,94 +67486,6 @@
               "nombre": "TU",
               "unidades": 1,
               "ventas_netas": 55000.0
-            }
-          ]
-        }
-      ],
-      "BLUSA CASCADA": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 11,
-          "ventas_netas": 713000.0,
-          "variantes": [
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 4,
-              "ventas_netas": 263000.0
-            },
-            {
-              "nombre": "VINOTINTO TU",
-              "unidades": 4,
-              "ventas_netas": 260000.0
-            },
-            {
-              "nombre": "AMARILLO TU",
-              "unidades": 2,
-              "ventas_netas": 125000.0
-            },
-            {
-              "nombre": "CAFE TU",
-              "unidades": 1,
-              "ventas_netas": 65000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 107",
-          "unidades": 10,
-          "ventas_netas": 655000.0,
-          "variantes": [
-            {
-              "nombre": "MARFIL TU",
-              "unidades": 3,
-              "ventas_netas": 195000.0
-            },
-            {
-              "nombre": "CAFE TU",
-              "unidades": 2,
-              "ventas_netas": 135000.0
-            },
-            {
-              "nombre": "NEGRO TU",
-              "unidades": 2,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "VINOTINTO TU",
-              "unidades": 2,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "AMARILLO TU",
-              "unidades": 1,
-              "ventas_netas": 65000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 6,
-          "ventas_netas": 390000.0,
-          "variantes": [
-            {
-              "nombre": "MARFIL TU",
-              "unidades": 3,
-              "ventas_netas": 195000.0
-            },
-            {
-              "nombre": "AMARILLO TU",
-              "unidades": 1,
-              "ventas_netas": 65000.0
-            },
-            {
-              "nombre": "CAFE TU",
-              "unidades": 1,
-              "ventas_netas": 65000.0
-            },
-            {
-              "nombre": "VINOTINTO TU",
-              "unidades": 1,
-              "ventas_netas": 65000.0
             }
           ]
         }
@@ -68568,6 +68600,67 @@
           ]
         }
       ],
+      "BRAGA JEAN": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 11,
+          "ventas_netas": 1350000.0,
+          "variantes": [
+            {
+              "nombre": "AZUL CLARO T12",
+              "unidades": 2,
+              "ventas_netas": 260000.0
+            },
+            {
+              "nombre": "AZUL CLARO T6",
+              "unidades": 2,
+              "ventas_netas": 260000.0
+            },
+            {
+              "nombre": "AZUL CLARO T4",
+              "unidades": 2,
+              "ventas_netas": 240000.0
+            },
+            {
+              "nombre": "AZUL CLARO T8",
+              "unidades": 2,
+              "ventas_netas": 230000.0
+            },
+            {
+              "nombre": "GRIS OSCURO T10",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "GRIS OSCURO T14",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "GRIS OSCURO T8",
+              "unidades": 1,
+              "ventas_netas": 100000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 2,
+          "ventas_netas": 260000.0,
+          "variantes": [
+            {
+              "nombre": "AZUL CLARO T4",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "GRIS OSCURO T6",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            }
+          ]
+        }
+      ],
       "BODY ESCOTE ESQUELETO": [
         {
           "sucursal": "Local 144",
@@ -69031,108 +69124,6 @@
           ]
         }
       ],
-      "BLAZER ESTAMPADO": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 13,
-          "ventas_netas": 1150000.0,
-          "variantes": [
-            {
-              "nombre": "T12",
-              "unidades": 5,
-              "ventas_netas": 420000.0
-            },
-            {
-              "nombre": "T10",
-              "unidades": 3,
-              "ventas_netas": 275000.0
-            },
-            {
-              "nombre": "T6",
-              "unidades": 3,
-              "ventas_netas": 265000.0
-            },
-            {
-              "nombre": "T14",
-              "unidades": 2,
-              "ventas_netas": 190000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 4,
-          "ventas_netas": 380000.0,
-          "variantes": [
-            {
-              "nombre": "T10",
-              "unidades": 2,
-              "ventas_netas": 190000.0
-            },
-            {
-              "nombre": "T14",
-              "unidades": 1,
-              "ventas_netas": 95000.0
-            },
-            {
-              "nombre": "T8",
-              "unidades": 1,
-              "ventas_netas": 95000.0
-            }
-          ]
-        }
-      ],
-      "JEAN BAGGY": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 10,
-          "ventas_netas": 1280000.0,
-          "variantes": [
-            {
-              "nombre": "ANIMAL PRINT T6",
-              "unidades": 3,
-              "ventas_netas": 390000.0
-            },
-            {
-              "nombre": "ANIMAL PRINT T4",
-              "unidades": 3,
-              "ventas_netas": 370000.0
-            },
-            {
-              "nombre": "ANIMAL PRINT T8",
-              "unidades": 2,
-              "ventas_netas": 270000.0
-            },
-            {
-              "nombre": "ANIMAL PRINT T12",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "ANIMAL PRINT T10",
-              "unidades": 1,
-              "ventas_netas": 120000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 2,
-          "ventas_netas": 250000.0,
-          "variantes": [
-            {
-              "nombre": "ANIMAL PRINT T4",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "ANIMAL PRINT T6",
-              "unidades": 1,
-              "ventas_netas": 120000.0
-            }
-          ]
-        }
-      ],
       "JEAN CORAZON DESGASTE": [
         {
           "sucursal": "Local 144",
@@ -69204,6 +69195,108 @@
           ]
         }
       ],
+      "JEAN BAGGY": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 10,
+          "ventas_netas": 1280000.0,
+          "variantes": [
+            {
+              "nombre": "ANIMAL PRINT T6",
+              "unidades": 3,
+              "ventas_netas": 390000.0
+            },
+            {
+              "nombre": "ANIMAL PRINT T4",
+              "unidades": 3,
+              "ventas_netas": 370000.0
+            },
+            {
+              "nombre": "ANIMAL PRINT T8",
+              "unidades": 2,
+              "ventas_netas": 270000.0
+            },
+            {
+              "nombre": "ANIMAL PRINT T12",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "ANIMAL PRINT T10",
+              "unidades": 1,
+              "ventas_netas": 120000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 2,
+          "ventas_netas": 250000.0,
+          "variantes": [
+            {
+              "nombre": "ANIMAL PRINT T4",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "ANIMAL PRINT T6",
+              "unidades": 1,
+              "ventas_netas": 120000.0
+            }
+          ]
+        }
+      ],
+      "BLAZER ESTAMPADO": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 13,
+          "ventas_netas": 1150000.0,
+          "variantes": [
+            {
+              "nombre": "T12",
+              "unidades": 5,
+              "ventas_netas": 420000.0
+            },
+            {
+              "nombre": "T10",
+              "unidades": 3,
+              "ventas_netas": 275000.0
+            },
+            {
+              "nombre": "T6",
+              "unidades": 3,
+              "ventas_netas": 265000.0
+            },
+            {
+              "nombre": "T14",
+              "unidades": 2,
+              "ventas_netas": 190000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 4,
+          "ventas_netas": 380000.0,
+          "variantes": [
+            {
+              "nombre": "T10",
+              "unidades": 2,
+              "ventas_netas": 190000.0
+            },
+            {
+              "nombre": "T14",
+              "unidades": 1,
+              "ventas_netas": 95000.0
+            },
+            {
+              "nombre": "T8",
+              "unidades": 1,
+              "ventas_netas": 95000.0
+            }
+          ]
+        }
+      ],
       "PULSERAS $25000": [
         {
           "sucursal": "Local 107",
@@ -69214,32 +69307,6 @@
               "nombre": "Única",
               "unidades": 61,
               "ventas_netas": 1521999.79
-            }
-          ]
-        }
-      ],
-      "CAMISA COLOMBIA BORDADA": [
-        {
-          "sucursal": "Local 433",
-          "unidades": 9,
-          "ventas_netas": 810000.0,
-          "variantes": [
-            {
-              "nombre": "TU",
-              "unidades": 9,
-              "ventas_netas": 810000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 144",
-          "unidades": 8,
-          "ventas_netas": 700000.0,
-          "variantes": [
-            {
-              "nombre": "TU",
-              "unidades": 8,
-              "ventas_netas": 700000.0
             }
           ]
         }
@@ -69266,6 +69333,32 @@
               "nombre": "Única",
               "unidades": 6,
               "ventas_netas": 505000.0
+            }
+          ]
+        }
+      ],
+      "CAMISA COLOMBIA BORDADA": [
+        {
+          "sucursal": "Local 433",
+          "unidades": 9,
+          "ventas_netas": 810000.0,
+          "variantes": [
+            {
+              "nombre": "TU",
+              "unidades": 9,
+              "ventas_netas": 810000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 144",
+          "unidades": 8,
+          "ventas_netas": 700000.0,
+          "variantes": [
+            {
+              "nombre": "TU",
+              "unidades": 8,
+              "ventas_netas": 700000.0
             }
           ]
         }
@@ -69456,62 +69549,6 @@
           ]
         }
       ],
-      "BRAGA JEAN": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 9,
-          "ventas_netas": 1150000.0,
-          "variantes": [
-            {
-              "nombre": "AZUL CLARO T12",
-              "unidades": 2,
-              "ventas_netas": 260000.0
-            },
-            {
-              "nombre": "AZUL CLARO T6",
-              "unidades": 2,
-              "ventas_netas": 260000.0
-            },
-            {
-              "nombre": "AZUL CLARO T4",
-              "unidades": 2,
-              "ventas_netas": 240000.0
-            },
-            {
-              "nombre": "AZUL CLARO T8",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "GRIS OSCURO T10",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "GRIS OSCURO T14",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 2,
-          "ventas_netas": 260000.0,
-          "variantes": [
-            {
-              "nombre": "AZUL CLARO T4",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "GRIS OSCURO T6",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            }
-          ]
-        }
-      ],
       "BLUSA ESTRAPLE NICO": [
         {
           "sucursal": "Local 144",
@@ -69569,57 +69606,6 @@
               "nombre": "VERDE",
               "unidades": 1,
               "ventas_netas": 60000.0
-            }
-          ]
-        }
-      ],
-      "JEAN EBANO VERDE FROSTEADO": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 9,
-          "ventas_netas": 1160000.0,
-          "variantes": [
-            {
-              "nombre": "T4",
-              "unidades": 3,
-              "ventas_netas": 390000.0
-            },
-            {
-              "nombre": "T6",
-              "unidades": 3,
-              "ventas_netas": 390000.0
-            },
-            {
-              "nombre": "T10",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "T14",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "T8",
-              "unidades": 1,
-              "ventas_netas": 120000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 2,
-          "ventas_netas": 235000.0,
-          "variantes": [
-            {
-              "nombre": "T14",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "T8",
-              "unidades": 1,
-              "ventas_netas": 105000.0
             }
           ]
         }
@@ -69682,68 +69668,53 @@
           ]
         }
       ],
-      "BLUSA ZARA": [
+      "JEAN EBANO VERDE FROSTEADO": [
         {
           "sucursal": "Local 144",
-          "unidades": 21,
-          "ventas_netas": 1008000.0,
+          "unidades": 9,
+          "ventas_netas": 1160000.0,
           "variantes": [
             {
-              "nombre": "NEGRO",
-              "unidades": 6,
-              "ventas_netas": 298000.0
-            },
-            {
-              "nombre": "VINOTINTO",
-              "unidades": 4,
-              "ventas_netas": 190000.0
-            },
-            {
-              "nombre": "MARFIL",
-              "unidades": 4,
-              "ventas_netas": 180000.0
-            },
-            {
-              "nombre": "BLANCO",
+              "nombre": "T4",
               "unidades": 3,
-              "ventas_netas": 145000.0
+              "ventas_netas": 390000.0
             },
             {
-              "nombre": "CAFE",
+              "nombre": "T6",
               "unidades": 3,
-              "ventas_netas": 135000.0
+              "ventas_netas": 390000.0
             },
             {
-              "nombre": "AZUL BEBE",
+              "nombre": "T10",
               "unidades": 1,
-              "ventas_netas": 60000.0
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "T14",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "T8",
+              "unidades": 1,
+              "ventas_netas": 120000.0
             }
           ]
         },
         {
           "sucursal": "Local 433",
-          "unidades": 9,
-          "ventas_netas": 387000.0,
+          "unidades": 2,
+          "ventas_netas": 235000.0,
           "variantes": [
             {
-              "nombre": "NEGRO",
-              "unidades": 4,
-              "ventas_netas": 166000.0
-            },
-            {
-              "nombre": "MARFIL",
-              "unidades": 3,
-              "ventas_netas": 138000.0
-            },
-            {
-              "nombre": "VINOTINTO",
+              "nombre": "T14",
               "unidades": 1,
-              "ventas_netas": 45000.0
+              "ventas_netas": 130000.0
             },
             {
-              "nombre": "CAFE",
+              "nombre": "T8",
               "unidades": 1,
-              "ventas_netas": 38000.0
+              "ventas_netas": 105000.0
             }
           ]
         }
@@ -69817,6 +69788,72 @@
               "nombre": "AZUL CLARO T6",
               "unidades": 1,
               "ventas_netas": 130000.0
+            }
+          ]
+        }
+      ],
+      "BLUSA ZARA": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 21,
+          "ventas_netas": 1008000.0,
+          "variantes": [
+            {
+              "nombre": "NEGRO",
+              "unidades": 6,
+              "ventas_netas": 298000.0
+            },
+            {
+              "nombre": "VINOTINTO",
+              "unidades": 4,
+              "ventas_netas": 190000.0
+            },
+            {
+              "nombre": "MARFIL",
+              "unidades": 4,
+              "ventas_netas": 180000.0
+            },
+            {
+              "nombre": "BLANCO",
+              "unidades": 3,
+              "ventas_netas": 145000.0
+            },
+            {
+              "nombre": "CAFE",
+              "unidades": 3,
+              "ventas_netas": 135000.0
+            },
+            {
+              "nombre": "AZUL BEBE",
+              "unidades": 1,
+              "ventas_netas": 60000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 9,
+          "ventas_netas": 387000.0,
+          "variantes": [
+            {
+              "nombre": "NEGRO",
+              "unidades": 4,
+              "ventas_netas": 166000.0
+            },
+            {
+              "nombre": "MARFIL",
+              "unidades": 3,
+              "ventas_netas": 138000.0
+            },
+            {
+              "nombre": "VINOTINTO",
+              "unidades": 1,
+              "ventas_netas": 45000.0
+            },
+            {
+              "nombre": "CAFE",
+              "unidades": 1,
+              "ventas_netas": 38000.0
             }
           ]
         }
@@ -70348,6 +70385,74 @@
           ]
         }
       ],
+      "FALDA SHORT CLASICA AZUL FROSTEADO CLARO": [
+        {
+          "sucursal": "Local 433",
+          "unidades": 7,
+          "ventas_netas": 635000.0,
+          "variantes": [
+            {
+              "nombre": "T10",
+              "unidades": 4,
+              "ventas_netas": 350000.0
+            },
+            {
+              "nombre": "T12",
+              "unidades": 1,
+              "ventas_netas": 95000.0
+            },
+            {
+              "nombre": "T6",
+              "unidades": 1,
+              "ventas_netas": 95000.0
+            },
+            {
+              "nombre": "T8",
+              "unidades": 1,
+              "ventas_netas": 95000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 107",
+          "unidades": 5,
+          "ventas_netas": 450000.0,
+          "variantes": [
+            {
+              "nombre": "T10",
+              "unidades": 3,
+              "ventas_netas": 270000.0
+            },
+            {
+              "nombre": "T8",
+              "unidades": 1,
+              "ventas_netas": 95000.0
+            },
+            {
+              "nombre": "T12",
+              "unidades": 1,
+              "ventas_netas": 85000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 144",
+          "unidades": 3,
+          "ventas_netas": 260000.0,
+          "variantes": [
+            {
+              "nombre": "T12",
+              "unidades": 2,
+              "ventas_netas": 175000.0
+            },
+            {
+              "nombre": "T6",
+              "unidades": 1,
+              "ventas_netas": 85000.0
+            }
+          ]
+        }
+      ],
       "BODY BRILLANTE MARIA": [
         {
           "sucursal": "Local 144",
@@ -70591,32 +70696,6 @@
           ]
         }
       ],
-      "SET JEAN DULCE": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 5,
-          "ventas_netas": 800000.0,
-          "variantes": [
-            {
-              "nombre": "Única",
-              "unidades": 5,
-              "ventas_netas": 800000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 3,
-          "ventas_netas": 490000.0,
-          "variantes": [
-            {
-              "nombre": "Única",
-              "unidades": 3,
-              "ventas_netas": 490000.0
-            }
-          ]
-        }
-      ],
       "BLUSA IGNACIA": [
         {
           "sucursal": "Local 144",
@@ -70683,6 +70762,32 @@
           ]
         }
       ],
+      "SET JEAN DULCE": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 5,
+          "ventas_netas": 800000.0,
+          "variantes": [
+            {
+              "nombre": "Única",
+              "unidades": 5,
+              "ventas_netas": 800000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 3,
+          "ventas_netas": 490000.0,
+          "variantes": [
+            {
+              "nombre": "Única",
+              "unidades": 3,
+              "ventas_netas": 490000.0
+            }
+          ]
+        }
+      ],
       "BUZO MILAN CADENA": [
         {
           "sucursal": "Local 144",
@@ -70734,6 +70839,52 @@
           ]
         }
       ],
+      "BLUSA LYNDA ENCAJE": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 15,
+          "ventas_netas": 945000.0,
+          "variantes": [
+            {
+              "nombre": "NEGRO",
+              "unidades": 6,
+              "ventas_netas": 380000.0
+            },
+            {
+              "nombre": "MARFIL",
+              "unidades": 5,
+              "ventas_netas": 315000.0
+            },
+            {
+              "nombre": "BLANCO",
+              "unidades": 4,
+              "ventas_netas": 250000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 5,
+          "ventas_netas": 335000.0,
+          "variantes": [
+            {
+              "nombre": "MARFIL",
+              "unidades": 2,
+              "ventas_netas": 140000.0
+            },
+            {
+              "nombre": "BLANCO",
+              "unidades": 2,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "NEGRO",
+              "unidades": 1,
+              "ventas_netas": 65000.0
+            }
+          ]
+        }
+      ],
       "FALDA SHORT PRESES LIKE": [
         {
           "sucursal": "Local 144",
@@ -70781,78 +70932,6 @@
               "nombre": "TL",
               "unidades": 1,
               "ventas_netas": 85000.0
-            }
-          ]
-        }
-      ],
-      "BLUSA LYNDA ENCAJE": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 15,
-          "ventas_netas": 945000.0,
-          "variantes": [
-            {
-              "nombre": "NEGRO",
-              "unidades": 6,
-              "ventas_netas": 380000.0
-            },
-            {
-              "nombre": "MARFIL",
-              "unidades": 5,
-              "ventas_netas": 315000.0
-            },
-            {
-              "nombre": "BLANCO",
-              "unidades": 4,
-              "ventas_netas": 250000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 5,
-          "ventas_netas": 335000.0,
-          "variantes": [
-            {
-              "nombre": "MARFIL",
-              "unidades": 2,
-              "ventas_netas": 140000.0
-            },
-            {
-              "nombre": "BLANCO",
-              "unidades": 2,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "NEGRO",
-              "unidades": 1,
-              "ventas_netas": 65000.0
-            }
-          ]
-        }
-      ],
-      "BODY SAMANTHA MALLA": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 13,
-          "ventas_netas": 1100000.0,
-          "variantes": [
-            {
-              "nombre": "MULTICOLOR",
-              "unidades": 13,
-              "ventas_netas": 1100000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 2,
-          "ventas_netas": 170000.0,
-          "variantes": [
-            {
-              "nombre": "MULTICOLOR",
-              "unidades": 2,
-              "ventas_netas": 170000.0
             }
           ]
         }
@@ -70918,6 +70997,32 @@
           ]
         }
       ],
+      "BODY SAMANTHA MALLA": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 13,
+          "ventas_netas": 1100000.0,
+          "variantes": [
+            {
+              "nombre": "MULTICOLOR",
+              "unidades": 13,
+              "ventas_netas": 1100000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 2,
+          "ventas_netas": 170000.0,
+          "variantes": [
+            {
+              "nombre": "MULTICOLOR",
+              "unidades": 2,
+              "ventas_netas": 170000.0
+            }
+          ]
+        }
+      ],
       "SHORT JEAN UZI": [
         {
           "sucursal": "Local 144",
@@ -70979,6 +71084,52 @@
           ]
         }
       ],
+      "JEAN PALAZO LICRADO": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 9,
+          "ventas_netas": 1010000.0,
+          "variantes": [
+            {
+              "nombre": "T10",
+              "unidades": 4,
+              "ventas_netas": 460000.0
+            },
+            {
+              "nombre": "T8",
+              "unidades": 2,
+              "ventas_netas": 190000.0
+            },
+            {
+              "nombre": "T4",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "T12",
+              "unidades": 1,
+              "ventas_netas": 120000.0
+            },
+            {
+              "nombre": "T6",
+              "unidades": 1,
+              "ventas_netas": 110000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 2,
+          "ventas_netas": 240000.0,
+          "variantes": [
+            {
+              "nombre": "T12",
+              "unidades": 2,
+              "ventas_netas": 240000.0
+            }
+          ]
+        }
+      ],
       "JEAN RAVE": [
         {
           "sucursal": "Local 144",
@@ -71036,115 +71187,6 @@
               "nombre": "T8",
               "unidades": 1,
               "ventas_netas": 120000.0
-            }
-          ]
-        }
-      ],
-      "FALDA SHORT CLASICA AZUL FROSTEADO CLARO": [
-        {
-          "sucursal": "Local 433",
-          "unidades": 6,
-          "ventas_netas": 540000.0,
-          "variantes": [
-            {
-              "nombre": "T10",
-              "unidades": 4,
-              "ventas_netas": 350000.0
-            },
-            {
-              "nombre": "T6",
-              "unidades": 1,
-              "ventas_netas": 95000.0
-            },
-            {
-              "nombre": "T8",
-              "unidades": 1,
-              "ventas_netas": 95000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 107",
-          "unidades": 5,
-          "ventas_netas": 450000.0,
-          "variantes": [
-            {
-              "nombre": "T10",
-              "unidades": 3,
-              "ventas_netas": 270000.0
-            },
-            {
-              "nombre": "T8",
-              "unidades": 1,
-              "ventas_netas": 95000.0
-            },
-            {
-              "nombre": "T12",
-              "unidades": 1,
-              "ventas_netas": 85000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 144",
-          "unidades": 3,
-          "ventas_netas": 260000.0,
-          "variantes": [
-            {
-              "nombre": "T12",
-              "unidades": 2,
-              "ventas_netas": 175000.0
-            },
-            {
-              "nombre": "T6",
-              "unidades": 1,
-              "ventas_netas": 85000.0
-            }
-          ]
-        }
-      ],
-      "JEAN PALAZO LICRADO": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 9,
-          "ventas_netas": 1010000.0,
-          "variantes": [
-            {
-              "nombre": "T10",
-              "unidades": 4,
-              "ventas_netas": 460000.0
-            },
-            {
-              "nombre": "T8",
-              "unidades": 2,
-              "ventas_netas": 190000.0
-            },
-            {
-              "nombre": "T4",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "T12",
-              "unidades": 1,
-              "ventas_netas": 120000.0
-            },
-            {
-              "nombre": "T6",
-              "unidades": 1,
-              "ventas_netas": 110000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 2,
-          "ventas_netas": 240000.0,
-          "variantes": [
-            {
-              "nombre": "T12",
-              "unidades": 2,
-              "ventas_netas": 240000.0
             }
           ]
         }
@@ -71383,62 +71425,6 @@
           ]
         }
       ],
-      "PALAZO MERAKI ROTOS": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 7,
-          "ventas_netas": 850000.0,
-          "variantes": [
-            {
-              "nombre": "T6",
-              "unidades": 2,
-              "ventas_netas": 260000.0
-            },
-            {
-              "nombre": "T8",
-              "unidades": 2,
-              "ventas_netas": 240000.0
-            },
-            {
-              "nombre": "T10",
-              "unidades": 1,
-              "ventas_netas": 120000.0
-            },
-            {
-              "nombre": "T12",
-              "unidades": 1,
-              "ventas_netas": 120000.0
-            },
-            {
-              "nombre": "T4",
-              "unidades": 1,
-              "ventas_netas": 110000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 3,
-          "ventas_netas": 380000.0,
-          "variantes": [
-            {
-              "nombre": "T4",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "T12",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "T10",
-              "unidades": 1,
-              "ventas_netas": 120000.0
-            }
-          ]
-        }
-      ],
       "CORSET JULI": [
         {
           "sucursal": "Local 144",
@@ -71496,6 +71482,62 @@
               "nombre": "NEGRO",
               "unidades": 1,
               "ventas_netas": 55000.0
+            }
+          ]
+        }
+      ],
+      "PALAZO MERAKI ROTOS": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 7,
+          "ventas_netas": 850000.0,
+          "variantes": [
+            {
+              "nombre": "T6",
+              "unidades": 2,
+              "ventas_netas": 260000.0
+            },
+            {
+              "nombre": "T8",
+              "unidades": 2,
+              "ventas_netas": 240000.0
+            },
+            {
+              "nombre": "T10",
+              "unidades": 1,
+              "ventas_netas": 120000.0
+            },
+            {
+              "nombre": "T12",
+              "unidades": 1,
+              "ventas_netas": 120000.0
+            },
+            {
+              "nombre": "T4",
+              "unidades": 1,
+              "ventas_netas": 110000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 3,
+          "ventas_netas": 380000.0,
+          "variantes": [
+            {
+              "nombre": "T4",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "T12",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "T10",
+              "unidades": 1,
+              "ventas_netas": 120000.0
             }
           ]
         }
@@ -71899,6 +71941,47 @@
           ]
         }
       ],
+      "JEAN ROMBOS": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 5,
+          "ventas_netas": 630000.0,
+          "variantes": [
+            {
+              "nombre": "AZUL T4",
+              "unidades": 3,
+              "ventas_netas": 370000.0
+            },
+            {
+              "nombre": "AZUL T6",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "AZUL T8",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 4,
+          "ventas_netas": 540000.0,
+          "variantes": [
+            {
+              "nombre": "AZUL T8",
+              "unidades": 3,
+              "ventas_netas": 410000.0
+            },
+            {
+              "nombre": "AZUL T6",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            }
+          ]
+        }
+      ],
       "JEAN COQUETTE": [
         {
           "sucursal": "Local 144",
@@ -71946,47 +72029,6 @@
           "variantes": [
             {
               "nombre": "AZUL OSCURO T10",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            }
-          ]
-        }
-      ],
-      "JEAN ROMBOS": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 5,
-          "ventas_netas": 630000.0,
-          "variantes": [
-            {
-              "nombre": "AZUL T4",
-              "unidades": 3,
-              "ventas_netas": 370000.0
-            },
-            {
-              "nombre": "AZUL T6",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "AZUL T8",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 4,
-          "ventas_netas": 540000.0,
-          "variantes": [
-            {
-              "nombre": "AZUL T8",
-              "unidades": 3,
-              "ventas_netas": 410000.0
-            },
-            {
-              "nombre": "AZUL T6",
               "unidades": 1,
               "ventas_netas": 130000.0
             }
@@ -72050,46 +72092,51 @@
           ]
         }
       ],
-      "JEAN MOMFIT": [
+      "JEAN PIO": [
         {
           "sucursal": "Local 144",
-          "unidades": 10,
-          "ventas_netas": 950000.0,
+          "unidades": 8,
+          "ventas_netas": 855000.0,
           "variantes": [
             {
-              "nombre": "T6",
-              "unidades": 3,
-              "ventas_netas": 285000.0
+              "nombre": "T8",
+              "unidades": 4,
+              "ventas_netas": 395000.0
             },
             {
               "nombre": "T10",
-              "unidades": 3,
-              "ventas_netas": 280000.0
+              "unidades": 2,
+              "ventas_netas": 230000.0
             },
             {
-              "nombre": "T8",
-              "unidades": 3,
-              "ventas_netas": 265000.0
-            },
-            {
-              "nombre": "T12",
+              "nombre": "T6",
               "unidades": 1,
               "ventas_netas": 120000.0
+            },
+            {
+              "nombre": "T4",
+              "unidades": 1,
+              "ventas_netas": 110000.0
             }
           ]
         },
         {
           "sucursal": "Local 433",
-          "unidades": 2,
-          "ventas_netas": 205000.0,
+          "unidades": 3,
+          "ventas_netas": 300000.0,
           "variantes": [
             {
-              "nombre": "T10",
+              "nombre": "T8",
               "unidades": 1,
               "ventas_netas": 110000.0
             },
             {
-              "nombre": "T8",
+              "nombre": "T4",
+              "unidades": 1,
+              "ventas_netas": 95000.0
+            },
+            {
+              "nombre": "T6",
               "unidades": 1,
               "ventas_netas": 95000.0
             }
@@ -72142,51 +72189,46 @@
           ]
         }
       ],
-      "JEAN PIO": [
+      "JEAN MOMFIT": [
         {
           "sucursal": "Local 144",
-          "unidades": 8,
-          "ventas_netas": 855000.0,
+          "unidades": 10,
+          "ventas_netas": 950000.0,
           "variantes": [
             {
-              "nombre": "T8",
-              "unidades": 4,
-              "ventas_netas": 395000.0
+              "nombre": "T6",
+              "unidades": 3,
+              "ventas_netas": 285000.0
             },
             {
               "nombre": "T10",
-              "unidades": 2,
-              "ventas_netas": 230000.0
+              "unidades": 3,
+              "ventas_netas": 280000.0
             },
             {
-              "nombre": "T6",
+              "nombre": "T8",
+              "unidades": 3,
+              "ventas_netas": 265000.0
+            },
+            {
+              "nombre": "T12",
               "unidades": 1,
               "ventas_netas": 120000.0
-            },
-            {
-              "nombre": "T4",
-              "unidades": 1,
-              "ventas_netas": 110000.0
             }
           ]
         },
         {
           "sucursal": "Local 433",
-          "unidades": 3,
-          "ventas_netas": 300000.0,
+          "unidades": 2,
+          "ventas_netas": 205000.0,
           "variantes": [
             {
-              "nombre": "T8",
+              "nombre": "T10",
               "unidades": 1,
               "ventas_netas": 110000.0
             },
             {
-              "nombre": "T4",
-              "unidades": 1,
-              "ventas_netas": 95000.0
-            },
-            {
-              "nombre": "T6",
+              "nombre": "T8",
               "unidades": 1,
               "ventas_netas": 95000.0
             }
@@ -72235,6 +72277,69 @@
               "nombre": "VERDE",
               "unidades": 1,
               "ventas_netas": 55000.0
+            }
+          ]
+        }
+      ],
+      "JEAN LYNDA MOÑOS": [
+        {
+          "sucursal": "Local 144",
+          "unidades": 6,
+          "ventas_netas": 745000.0,
+          "variantes": [
+            {
+              "nombre": "VERDE T4",
+              "unidades": 2,
+              "ventas_netas": 260000.0
+            },
+            {
+              "nombre": "VERDE T10",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "VERDE T12",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "VERDE T6",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "VERDE T8",
+              "unidades": 1,
+              "ventas_netas": 95000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 107",
+          "unidades": 2,
+          "ventas_netas": 270000.0,
+          "variantes": [
+            {
+              "nombre": "VERDE T12",
+              "unidades": 1,
+              "ventas_netas": 140000.0
+            },
+            {
+              "nombre": "VERDE T10",
+              "unidades": 1,
+              "ventas_netas": 130000.0
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 1,
+          "ventas_netas": 130000.0,
+          "variantes": [
+            {
+              "nombre": "VERDE T6",
+              "unidades": 1,
+              "ventas_netas": 130000.0
             }
           ]
         }
@@ -72303,69 +72408,6 @@
               "nombre": "CAFE TS",
               "unidades": 1,
               "ventas_netas": 85000.0
-            }
-          ]
-        }
-      ],
-      "JEAN LYNDA MOÑOS": [
-        {
-          "sucursal": "Local 144",
-          "unidades": 6,
-          "ventas_netas": 745000.0,
-          "variantes": [
-            {
-              "nombre": "VERDE T4",
-              "unidades": 2,
-              "ventas_netas": 260000.0
-            },
-            {
-              "nombre": "VERDE T10",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "VERDE T12",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "VERDE T6",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "VERDE T8",
-              "unidades": 1,
-              "ventas_netas": 95000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 107",
-          "unidades": 2,
-          "ventas_netas": 270000.0,
-          "variantes": [
-            {
-              "nombre": "VERDE T12",
-              "unidades": 1,
-              "ventas_netas": 140000.0
-            },
-            {
-              "nombre": "VERDE T10",
-              "unidades": 1,
-              "ventas_netas": 130000.0
-            }
-          ]
-        },
-        {
-          "sucursal": "Local 433",
-          "unidades": 1,
-          "ventas_netas": 130000.0,
-          "variantes": [
-            {
-              "nombre": "VERDE T6",
-              "unidades": 1,
-              "ventas_netas": 130000.0
             }
           ]
         }
@@ -72645,58 +72687,53 @@
           ]
         }
       ],
-      "CORSET OLIVIA MALLA": [
+      "FALDA JEAN MURREN": [
         {
           "sucursal": "Local 144",
-          "unidades": 13,
-          "ventas_netas": 865000.0,
+          "unidades": 8,
+          "ventas_netas": 625000.0,
           "variantes": [
             {
-              "nombre": "ROSADO",
-              "unidades": 5,
-              "ventas_netas": 325000.0
-            },
-            {
-              "nombre": "CAFE",
+              "nombre": "T6",
               "unidades": 3,
-              "ventas_netas": 215000.0
+              "ventas_netas": 245000.0
             },
             {
-              "nombre": "AMARILLO",
-              "unidades": 2,
-              "ventas_netas": 130000.0
+              "nombre": "T8",
+              "unidades": 3,
+              "ventas_netas": 230000.0
             },
             {
-              "nombre": "AZUL BEBE",
-              "unidades": 2,
-              "ventas_netas": 130000.0
-            },
-            {
-              "nombre": "NEGRO",
+              "nombre": "T10",
               "unidades": 1,
-              "ventas_netas": 65000.0
+              "ventas_netas": 75000.0
+            },
+            {
+              "nombre": "T12",
+              "unidades": 1,
+              "ventas_netas": 75000.0
             }
           ]
         },
         {
           "sucursal": "Local 433",
-          "unidades": 4,
-          "ventas_netas": 260000.0,
+          "unidades": 6,
+          "ventas_netas": 500000.0,
           "variantes": [
             {
-              "nombre": "CAFE",
+              "nombre": "T8",
+              "unidades": 3,
+              "ventas_netas": 255000.0
+            },
+            {
+              "nombre": "T12",
               "unidades": 2,
-              "ventas_netas": 130000.0
+              "ventas_netas": 170000.0
             },
             {
-              "nombre": "NEGRO",
+              "nombre": "T6",
               "unidades": 1,
-              "ventas_netas": 65000.0
-            },
-            {
-              "nombre": "ROSADO",
-              "unidades": 1,
-              "ventas_netas": 65000.0
+              "ventas_netas": 75000.0
             }
           ]
         }
@@ -72767,53 +72804,58 @@
           ]
         }
       ],
-      "FALDA JEAN MURREN": [
+      "CORSET OLIVIA MALLA": [
         {
           "sucursal": "Local 144",
-          "unidades": 8,
-          "ventas_netas": 625000.0,
+          "unidades": 13,
+          "ventas_netas": 865000.0,
           "variantes": [
             {
-              "nombre": "T6",
+              "nombre": "ROSADO",
+              "unidades": 5,
+              "ventas_netas": 325000.0
+            },
+            {
+              "nombre": "CAFE",
               "unidades": 3,
-              "ventas_netas": 245000.0
+              "ventas_netas": 215000.0
             },
             {
-              "nombre": "T8",
-              "unidades": 3,
-              "ventas_netas": 230000.0
+              "nombre": "AMARILLO",
+              "unidades": 2,
+              "ventas_netas": 130000.0
             },
             {
-              "nombre": "T10",
+              "nombre": "AZUL BEBE",
+              "unidades": 2,
+              "ventas_netas": 130000.0
+            },
+            {
+              "nombre": "NEGRO",
               "unidades": 1,
-              "ventas_netas": 75000.0
-            },
-            {
-              "nombre": "T12",
-              "unidades": 1,
-              "ventas_netas": 75000.0
+              "ventas_netas": 65000.0
             }
           ]
         },
         {
           "sucursal": "Local 433",
-          "unidades": 6,
-          "ventas_netas": 500000.0,
+          "unidades": 4,
+          "ventas_netas": 260000.0,
           "variantes": [
             {
-              "nombre": "T8",
-              "unidades": 3,
-              "ventas_netas": 255000.0
-            },
-            {
-              "nombre": "T12",
+              "nombre": "CAFE",
               "unidades": 2,
-              "ventas_netas": 170000.0
+              "ventas_netas": 130000.0
             },
             {
-              "nombre": "T6",
+              "nombre": "NEGRO",
               "unidades": 1,
-              "ventas_netas": 75000.0
+              "ventas_netas": 65000.0
+            },
+            {
+              "nombre": "ROSADO",
+              "unidades": 1,
+              "ventas_netas": 65000.0
             }
           ]
         }
@@ -73365,6 +73407,32 @@
           ]
         }
       ],
+      "ANILLO $15000": [
+        {
+          "sucursal": "Local 107",
+          "unidades": 69,
+          "ventas_netas": 1022999.95,
+          "variantes": [
+            {
+              "nombre": "Única",
+              "unidades": 69,
+              "ventas_netas": 1022999.95
+            }
+          ]
+        },
+        {
+          "sucursal": "Local 433",
+          "unidades": 1,
+          "ventas_netas": 18000.0,
+          "variantes": [
+            {
+              "nombre": "Única",
+              "unidades": 1,
+              "ventas_netas": 18000.0
+            }
+          ]
+        }
+      ],
       "JEAN BOTA RECTA AZUL": [
         {
           "sucursal": "Local 144",
@@ -73559,20 +73627,6 @@
               "nombre": "AZUL CLARO T8",
               "unidades": 1,
               "ventas_netas": 120000.0
-            }
-          ]
-        }
-      ],
-      "ANILLO $15000": [
-        {
-          "sucursal": "Local 107",
-          "unidades": 69,
-          "ventas_netas": 1022999.95,
-          "variantes": [
-            {
-              "nombre": "Única",
-              "unidades": 69,
-              "ventas_netas": 1022999.95
             }
           ]
         }
@@ -90372,8 +90426,8 @@
       "BLUSAS": [
         {
           "nombre": "BLUSA SALOME",
-          "unidades": 777,
-          "ventas_netas": 44924000.0
+          "unidades": 779,
+          "ventas_netas": 45054000.0
         },
         {
           "nombre": "BODY TIRA CUELLO",
@@ -90439,8 +90493,8 @@
         },
         {
           "nombre": "CAPA JEAN",
-          "unidades": 98,
-          "ventas_netas": 12800000.0
+          "unidades": 100,
+          "ventas_netas": 13060000.0
         },
         {
           "nombre": "CHAQUETA CUERO BOLSILLO",
@@ -90495,11 +90549,53 @@
           "ventas_netas": 4255000.0
         }
       ],
+      "CONJUNTOS": [
+        {
+          "nombre": "SUDADERA ZOE",
+          "unidades": 324,
+          "ventas_netas": 41975000.0
+        },
+        {
+          "nombre": "SUDADERA CLASICA",
+          "unidades": 166,
+          "ventas_netas": 20400000.0
+        },
+        {
+          "nombre": "SET JEAN SOL",
+          "unidades": 57,
+          "ventas_netas": 11023000.0
+        },
+        {
+          "nombre": "SUDADERA ALASKA CAPOTA",
+          "unidades": 90,
+          "ventas_netas": 10620000.0
+        },
+        {
+          "nombre": "SUDADERA VENECIA",
+          "unidades": 58,
+          "ventas_netas": 8580000.0
+        },
+        {
+          "nombre": "SET DENIM PELLIZCO",
+          "unidades": 34,
+          "ventas_netas": 6585000.0
+        },
+        {
+          "nombre": "SUDADERA ALASKA",
+          "unidades": 47,
+          "ventas_netas": 5620000.0
+        },
+        {
+          "nombre": "SUDADERA AMELIA",
+          "unidades": 26,
+          "ventas_netas": 3875000.0
+        }
+      ],
       "BODYS": [
         {
           "nombre": "BODY BASICO REDONDO",
-          "unidades": 421,
-          "ventas_netas": 23060000.1
+          "unidades": 422,
+          "ventas_netas": 23125000.1
         },
         {
           "nombre": "BODY BANDEJA MALLA",
@@ -90535,48 +90631,6 @@
           "nombre": "BODY BASICO SISA",
           "unidades": 99,
           "ventas_netas": 4521000.0
-        }
-      ],
-      "CONJUNTOS": [
-        {
-          "nombre": "SUDADERA ZOE",
-          "unidades": 324,
-          "ventas_netas": 41975000.0
-        },
-        {
-          "nombre": "SUDADERA CLASICA",
-          "unidades": 165,
-          "ventas_netas": 20250000.0
-        },
-        {
-          "nombre": "SET JEAN SOL",
-          "unidades": 57,
-          "ventas_netas": 11023000.0
-        },
-        {
-          "nombre": "SUDADERA ALASKA CAPOTA",
-          "unidades": 90,
-          "ventas_netas": 10620000.0
-        },
-        {
-          "nombre": "SUDADERA VENECIA",
-          "unidades": 58,
-          "ventas_netas": 8580000.0
-        },
-        {
-          "nombre": "SET DENIM PELLIZCO",
-          "unidades": 34,
-          "ventas_netas": 6585000.0
-        },
-        {
-          "nombre": "SUDADERA ALASKA",
-          "unidades": 47,
-          "ventas_netas": 5620000.0
-        },
-        {
-          "nombre": "SUDADERA AMELIA",
-          "unidades": 26,
-          "ventas_netas": 3875000.0
         }
       ],
       "BUZOS": [
@@ -90666,8 +90720,8 @@
       "VESTIDOS": [
         {
           "nombre": "CAPA JEAN",
-          "unidades": 315,
-          "ventas_netas": 39099000.2
+          "unidades": 316,
+          "ventas_netas": 39229000.21
         },
         {
           "nombre": "VESTIDO SIRENA",
@@ -90905,8 +90959,8 @@
       "ACCESORIOS": [
         {
           "nombre": "CORREA DORADA $35000",
-          "unidades": 87,
-          "ventas_netas": 3026000.0
+          "unidades": 89,
+          "ventas_netas": 3096000.0
         },
         {
           "nombre": "CORREA PLATEADA $35000",
@@ -90957,8 +91011,8 @@
         },
         {
           "nombre": "ANILLO $15000",
-          "unidades": 58,
-          "ventas_netas": 857999.95
+          "unidades": 59,
+          "ventas_netas": 875999.95
         },
         {
           "nombre": "ANILLO $16000",
