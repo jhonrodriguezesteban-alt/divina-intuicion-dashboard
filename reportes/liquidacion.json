@@ -1,21 +1,21 @@
 {
-  "generado_al": "2026-10-14",
+  "generado_al": "2026-10-17",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 426,
-      "unidades": 3614,
-      "valor_costo": 172921500.0
+      "num_referencias": 422,
+      "unidades": 3529,
+      "valor_costo": 169426500.0
     },
     "inactivas": {
-      "num_referencias": 8,
-      "unidades": 13,
-      "valor_costo": 719000.0
+      "num_referencias": 9,
+      "unidades": 14,
+      "valor_costo": 779000.0
     },
     "nuevas": {
-      "num_referencias": 26,
-      "unidades": 147,
-      "valor_costo": 7118000.0
+      "num_referencias": 25,
+      "unidades": 134,
+      "valor_costo": 6494000.0
     }
   },
   "inactivas": [
@@ -48,6 +48,12 @@
       "categoria": "PANTALONES",
       "disponible": 1,
       "valor_costo": 65000.0
+    },
+    {
+      "referencia": "JEAN CORAZON DESGASTE",
+      "categoria": "PANTALONES",
+      "disponible": 1,
+      "valor_costo": 60000.0
     },
     {
       "referencia": "JEAN PALAZO ROTOS",
@@ -86,12 +92,6 @@
       "categoria": "PANTALONES",
       "disponible": 12,
       "valor_costo": 780000.0
-    },
-    {
-      "referencia": "FALDA BRILLO LENTEJUELA",
-      "categoria": "FALDAS",
-      "disponible": 13,
-      "valor_costo": 624000.0
     },
     {
       "referencia": "BLUSA SALOME ENCAJE",

@@ -1,62 +1,62 @@
 {
   "total_articulos": 3429,
-  "articulos_sin_stock": 1773,
-  "unidades_totales": 5724,
-  "valor_total_costo": 204990635.0,
+  "articulos_sin_stock": 1796,
+  "unidades_totales": 5638,
+  "valor_total_costo": 201116135.0,
   "stock_por_sucursal": {
-    "Local 144": 2122,
-    "Local 433": 1470,
-    "Local 107": 1641,
-    "Bodega Principal 413": 491
+    "Local 144": 2058,
+    "Local 433": 1441,
+    "Local 107": 1656,
+    "Bodega Principal 413": 483
   },
   "top_categorias_por_valor": [
     {
       "Categoría": "PANTALONES",
       "articulos": 1015,
-      "stock_total": 824.0,
-      "valor_costo": 55540000.0
+      "stock_total": 797.0,
+      "valor_costo": 53804000.0
     },
     {
       "Categoría": "CONJUNTOS",
       "articulos": 131,
-      "stock_total": 203.0,
-      "valor_costo": 20443000.0
+      "stock_total": 215.0,
+      "valor_costo": 21402000.0
     },
     {
       "Categoría": "BLUSAS",
       "articulos": 477,
-      "stock_total": 678.0,
-      "valor_costo": 19300500.0
+      "stock_total": 661.0,
+      "valor_costo": 18827500.0
     },
     {
       "Categoría": "CHAQUETAS",
       "articulos": 225,
-      "stock_total": 259.0,
-      "valor_costo": 18152000.0
+      "stock_total": 249.0,
+      "valor_costo": 17399000.0
     },
     {
       "Categoría": "CORSET",
       "articulos": 219,
-      "stock_total": 366.0,
-      "valor_costo": 14292000.0
+      "stock_total": 349.0,
+      "valor_costo": 13610000.0
     },
     {
       "Categoría": "BUZOS",
       "articulos": 152,
-      "stock_total": 325.0,
-      "valor_costo": 12389000.0
+      "stock_total": 315.0,
+      "valor_costo": 12061000.0
     },
     {
       "Categoría": "FALDAS",
       "articulos": 285,
-      "stock_total": 281.0,
-      "valor_costo": 12361000.0
+      "stock_total": 271.0,
+      "valor_costo": 11940000.0
     },
     {
       "Categoría": "BODYS",
       "articulos": 233,
-      "stock_total": 354.0,
-      "valor_costo": 8631000.0
+      "stock_total": 345.0,
+      "valor_costo": 8430000.0
     }
   ]
 }
