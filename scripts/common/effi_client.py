@@ -230,7 +230,7 @@ def exportar_excel_pagina_actual(page, context, columnas: list, ruta: Path, nomb
     texto = page.inner_text("body")
     resumen = next((l for l in texto.splitlines() if "encontrad" in l.lower()), "")
     if resumen:
-        print("Rango:", resumen.strip())
+        print(f"[{datetime.now():%H:%M:%S}] Rango:", resumen.strip())
     antes = set(_links_reportes(page))
 
     page.locator(boton_abrir).first.click()
@@ -250,7 +250,7 @@ def exportar_excel_pagina_actual(page, context, columnas: list, ruta: Path, nomb
         print(f"Descarga directa -> {ruta}")
         return ruta
 
-    print("Exportación en segundo plano; esperando el enlace en notificaciones...")
+    print(f"[{datetime.now():%H:%M:%S}] Exportación en segundo plano; esperando el enlace en notificaciones...")
     esperado, nuevo = 0, None
     while esperado < max_espera_s:
         nuevos = [h for h in _links_reportes(page) if h not in antes and _es_reporte_esperado(h, nombre_reporte, momento_clic)]
@@ -271,7 +271,7 @@ def exportar_excel_pagina_actual(page, context, columnas: list, ruta: Path, nomb
     if not nuevo:
         raise TimeoutError(f"Effi no generó el reporte '{nombre_reporte}' en {max_espera_s}s.")
 
-    print(f"Reporte listo: {_nombre_archivo(nuevo)}")
+    print(f"[{datetime.now():%H:%M:%S}] Reporte listo: {_nombre_archivo(nuevo)}")
     ultimo_error = None
     for intento in range(3):
         try:
@@ -279,10 +279,11 @@ def exportar_excel_pagina_actual(page, context, columnas: list, ruta: Path, nomb
             cuerpo = resp.body()
             if resp.ok and cuerpo[:2] == b"PK":
                 ruta.write_bytes(cuerpo)
-                print(f"Descargado en {ruta} ({len(cuerpo):,} bytes)")
+                print(f"[{datetime.now():%H:%M:%S}] Descargado en {ruta} ({len(cuerpo):,} bytes)")
                 return ruta
             ultimo_error = f"HTTP {resp.status}, {len(cuerpo)} bytes, no es xlsx"
         except Exception as e:
             ultimo_error = str(e)
+            print(f"[{datetime.now():%H:%M:%S}] Falló la descarga del archivo (intento {intento + 1}/3): {ultimo_error[:120]}")
         page.wait_for_timeout(5000)
     raise RuntimeError(f"No se pudo bajar el archivo generado: {ultimo_error}")
