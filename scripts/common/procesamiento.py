@@ -257,7 +257,13 @@ def cargar_conceptos_combinados() -> pd.DataFrame:
     re-fecha con mapa_fecha_original_facturas cuando la factura viene de una
     remisión convertida en lote (ver esa función).
     """
-    remisiones = leer_excel_effi(RAW_DIR / "raw_conceptos.xlsx")[_COLUMNAS_CONCEPTOS].copy()
+    remisiones = leer_excel_effi(RAW_DIR / "raw_conceptos.xlsx")
+    # Desde oct-2026 el reporte trae "Vigencia": las líneas de remisiones
+    # anuladas venían mezcladas con "Pago total" y sobrecontaban 0.5-4.7%
+    # contra la venta oficial. Sin ellas cuadra al peso (verificado 2026-10-17).
+    if "Vigencia" in remisiones.columns:
+        remisiones = remisiones[remisiones["Vigencia"] != "Remisión anulada"]
+    remisiones = remisiones[_COLUMNAS_CONCEPTOS].copy()
     marcos = [remisiones]
 
     ruta_conceptos_facturas = RAW_DIR / "raw_conceptos_facturas.xlsx"
@@ -265,6 +271,8 @@ def cargar_conceptos_combinados() -> pd.DataFrame:
     ruta_remisiones_doc = RAW_DIR / "raw_remisiones_completo.xlsx"
     if ruta_conceptos_facturas.exists() and ruta_facturas.exists():
         conceptos_f = leer_excel_effi(ruta_conceptos_facturas)
+        if "Vigencia factura" in conceptos_f.columns:
+            conceptos_f = conceptos_f[conceptos_f["Vigencia factura"] != "Anulada"]
         facturas = leer_excel_effi(ruta_facturas)[["ID interno", "Estado CXC"]]
         conceptos_f = conceptos_f.merge(facturas, on="ID interno", how="left")
         conceptos_f = conceptos_f.rename(columns={"Fecha creación factura": "Fecha creación"})

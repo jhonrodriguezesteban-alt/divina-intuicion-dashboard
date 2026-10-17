@@ -10,12 +10,17 @@ from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
-from common.effi_client import obtener_contexto
+import sys
+
+from common.effi_client import obtener_contexto, exportar_excel_pagina_actual
 from common.procesamiento import cargar_config
 
 RAW_DIR = Path(__file__).resolve().parent.parent / "reportes" / "raw"
 URL = "https://effi.com.co/app/remision_v/reporte_mensual"
 DESDE = "2025-01-01 00:00:00"
+# Usadas por procesar_historico_mensual.py. Desde ~15-oct-2026 Effi pide elegir
+# columnas en un modal y genera el archivo en segundo plano.
+COLUMNAS = ["Fecha", "Cantidad", "Total bruto", "Total neto", "Utilidad costo manual", "Margen de utilidad costo manual"]
 HASTA = datetime.now().strftime("%Y-%m-%d 23:59:59")
 
 
@@ -66,9 +71,12 @@ def main():
             print(f"{s['nombre']} ({s['nombre_effi']}): {resumen}")
 
             ruta = RAW_DIR / f"raw_mensual_{s['codigo']}.xlsx"
-            with page.expect_download(timeout=120_000) as dl_info:
-                page.locator("text=Exportar a excel").first.click()
-            dl_info.value.save_as(str(ruta))
+            try:
+                exportar_excel_pagina_actual(page, context, COLUMNAS, ruta, "Reporte mensual de Notas de remisión de venta", boton_abrir="#toExcel")
+            except Exception as e:
+                print(f"ERROR descargando el mensual de {s['nombre']}: {e}")
+                browser.close()
+                sys.exit(1)
             print(f"  -> descargado: {ruta.name}")
 
         browser.close()

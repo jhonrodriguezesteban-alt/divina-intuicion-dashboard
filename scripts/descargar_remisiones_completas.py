@@ -1,47 +1,47 @@
 """
 Descarga TODAS las remisiones de venta desde 2025-01-01 hasta hoy (nivel
-documento, una fila por remisión) usando el filtro de fecha por
-querystring confirmado en explore/test_filtro_fecha.py.
+documento, una fila por remisión).
 
-Igual que "Reporte de conceptos" (ver descargar_conceptos.py), este
-export SIEMPRE dispara un download directo del navegador — nunca pasa
-por el centro de notificaciones. A medida que crece el histórico puede
-tardar más de lo que parecía al principio, así que se usa un timeout
-largo en vez del helper de fallback async (que nunca encuentra nada
-para este tipo de reporte y solo hace perder minutos esperando).
+Desde ~15-oct-2026 Effi ya no descarga directo: "Exportar a excel" abre un
+modal de selección de columnas y genera el archivo en segundo plano (llega
+como enlace al centro de notificaciones) -- todo eso lo maneja
+common.effi_client.exportar_excel. Solo se piden las columnas que usa el
+pipeline (antes bajaban ~70 columnas y el archivo pesaba ~60 MB).
 """
 
+import sys
 from datetime import datetime
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
-from common.effi_client import obtener_contexto
+from common.effi_client import obtener_contexto, exportar_excel
 
 RAW_DIR = Path(__file__).resolve().parent.parent / "reportes" / "raw"
 DESDE = "2025-01-01 00:00:00"
 HASTA = datetime.now().strftime("%Y-%m-%d 23:59:59")
+
+# Usadas por procesar_ventas.py, procesar_ventas_diarias.py,
+# procesar_historico_mensual.py y mapa_fecha_original_facturas()
+# (Observación de anulación = rastro de "Remisión convertida a factura #ID").
+COLUMNAS = [
+    "Sucursal", "ID remisión", "Cliente", "Total neto", "Costo manual",
+    "Utilidad (costo manual)", "Margen de utilidad (costo manual)",
+    "Estado CXC", "Estado remisión", "Fecha de creación",
+    "Observación de anulación", "Fecha de anulación",
+]
 
 
 def main():
     url = f"https://effi.com.co/app/remision_v?desde={DESDE.replace(' ', '%20')}&hasta={HASTA.replace(' ', '%20')}"
     with sync_playwright() as p:
         browser, context, page = obtener_contexto(p, headless=True)
-        page.goto(url, wait_until="domcontentloaded")
-        boton = page.locator("text=Exportar a excel").first
-        boton.wait_for(state="visible", timeout=120_000)
-        page.wait_for_timeout(1500)
-
-        texto = page.inner_text("body")
-        resumen = next((l for l in texto.splitlines() if "encontrad" in l.lower()), "?")
-        print("Rango:", resumen)
-
-        ruta = RAW_DIR / "raw_remisiones_completo.xlsx"
-        print("Enviando export, puede tardar varios minutos...")
-        with page.expect_download(timeout=900_000) as dl_info:
-            boton.click()
-        dl_info.value.save_as(str(ruta))
-        print(f"Descargado en {ruta}")
+        try:
+            exportar_excel(page, context, url, COLUMNAS, RAW_DIR / "raw_remisiones_completo.xlsx", "Reporte de Notas de remisión de venta")
+        except Exception as e:
+            print(f"ERROR descargando remisiones: {e}")
+            browser.close()
+            sys.exit(1)
         browser.close()
 
 

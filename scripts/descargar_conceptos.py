@@ -1,63 +1,54 @@
 """
-Descarga el "Reporte de conceptos" (detalle por línea/artículo dentro de
-cada remisión) para todo el histórico — necesario para Rentabilidad por
-categoría y Top de referencias, que las remisiones a nivel documento no
-traen.
+Descarga el "Reporte de conceptos" de remisiones (detalle por línea/artículo)
+para todo el histórico -> reportes/raw/raw_conceptos.xlsx. Lo usan
+Rentabilidad por categoría, Top de referencias, Reorden y Planeación de
+temporada.
 
-A diferencia del catálogo de Artículos, este reporte SIEMPRE dispara un
-download directo del navegador (no pasa por el centro de notificaciones)
-— para 15 meses de historia simplemente tarda varios minutos, así que se
-le da un timeout largo en vez de sondear notificaciones que nunca llegan.
-
-Campos elegidos (ver reportes/raw/_debug_reporte_conceptos.html para el
-mapeo completo value->label):
-  c1  Sucursal            c47 Categoría artículo
-  c22 Estado CXC          c51 Cod. artículo
-  c25 Fecha creación      c52 Descripción artículo
-                           c57 Cantidad
-                           c60 Costo manual unitario
-                           c61 Costo manual total
-                           c69 Precio neto total
-                           c70 Utilidad total (costo manual)
+Desde ~15-oct-2026 Effi abre un modal de columnas (#modalExcel_EXCEL1) y
+genera el archivo en segundo plano -- ver common.effi_client. Se piden por
+nombre (antes por código c1, c22... que Effi puede reordenar).
+"Vigencia" y "ID remisión" son nuevas en el reporte: permiten identificar
+líneas de remisiones anuladas, que antes se colaban.
 """
 
+import sys
 from datetime import datetime
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
-from common.effi_client import obtener_contexto
+from common.effi_client import obtener_contexto, exportar_excel_pagina_actual
 
 RAW_DIR = Path(__file__).resolve().parent.parent / "reportes" / "raw"
 DESDE = "2025-01-01 00:00:00"
 HASTA = datetime.now().strftime("%Y-%m-%d 23:59:59")
 
-CAMPOS = ["c1", "c22", "c25", "c47", "c51", "c52", "c57", "c60", "c61", "c69", "c70"]
+COLUMNAS = [
+    "Sucursal", "ID remisión", "Estado CXC", "Vigencia", "Fecha creación",
+    "Categoría artículo", "Cod. artículo", "Descripción artículo", "Cantidad",
+    "Costo manual unitario", "Costo manual total", "Precio neto total",
+    "Utilidad total (costo manual)",
+]
 
 
 def main():
     url = f"https://effi.com.co/app/remision_v?desde={DESDE.replace(' ', '%20')}&hasta={HASTA.replace(' ', '%20')}"
     with sync_playwright() as p:
         browser, context, page = obtener_contexto(p, headless=True)
-
-        page.goto(url, wait_until="domcontentloaded")
-        page.wait_for_timeout(4000)
-        page.locator("text=Reportes y análisis de datos").first.click()
-        page.wait_for_timeout(1500)
-        page.locator("text=Reporte de conceptos").first.click()
-        page.locator("#btnValidarExcelConceptos").wait_for(state="visible", timeout=15_000)
-
-        page.locator("text=Desmarcar todo").first.click()
-        page.wait_for_timeout(500)
-        for c in CAMPOS:
-            page.locator(f"input[type='checkbox'][value='{c}']").first.check(force=True)
-
-        ruta = RAW_DIR / "raw_conceptos.xlsx"
-        print("Enviando export, puede tardar varios minutos para 15 meses de historia...")
-        with page.expect_download(timeout=900_000) as dl_info:
-            page.locator("#btnValidarExcelConceptos").click()
-        dl_info.value.save_as(str(ruta))
-        print(f"Descargado en {ruta}")
+        try:
+            page.goto(url, wait_until="domcontentloaded", timeout=120_000)
+            page.wait_for_timeout(4000)
+            page.locator("a:has-text('Reportes y análisis de datos')").last.click()
+            page.wait_for_timeout(1500)
+            exportar_excel_pagina_actual(
+                page, context, COLUMNAS, RAW_DIR / "raw_conceptos.xlsx",
+                "Reporte de conceptos de Notas de remisión de venta",
+                boton_abrir="#toExcel_EXCEL1", boton_confirmar="#btnValidarExcel_EXCEL1",
+            )
+        except Exception as e:
+            print(f"ERROR descargando conceptos de remisiones: {e}")
+            browser.close()
+            sys.exit(1)
         browser.close()
 
 
