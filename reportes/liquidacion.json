@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-10-17",
+  "generado_al": "2026-10-18",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 422,
-      "unidades": 3529,
-      "valor_costo": 169426500.0
+      "num_referencias": 424,
+      "unidades": 3482,
+      "valor_costo": 166947500.0
     },
     "inactivas": {
       "num_referencias": 9,
@@ -13,9 +13,9 @@
       "valor_costo": 779000.0
     },
     "nuevas": {
-      "num_referencias": 25,
-      "unidades": 134,
-      "valor_costo": 6494000.0
+      "num_referencias": 23,
+      "unidades": 116,
+      "valor_costo": 5564000.0
     }
   },
   "inactivas": [
@@ -88,12 +88,6 @@
       "valor_costo": 1045000.0
     },
     {
-      "referencia": "JEAN VINTAGE BAGGY",
-      "categoria": "PANTALONES",
-      "disponible": 12,
-      "valor_costo": 780000.0
-    },
-    {
       "referencia": "BLUSA SALOME ENCAJE",
       "categoria": "BLUSAS",
       "disponible": 15,
@@ -140,12 +134,6 @@
       "categoria": "FALDAS",
       "disponible": 6,
       "valor_costo": 168000.0
-    },
-    {
-      "referencia": "BODY CELESTE MALLA CEREZA",
-      "categoria": "CORSET",
-      "disponible": 6,
-      "valor_costo": 150000.0
     },
     {
       "referencia": "BLAZER CUADROS TREN",

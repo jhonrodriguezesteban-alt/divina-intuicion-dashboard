@@ -1,16 +1,16 @@
 CIERRE DEL DÍA — Divina Intuición
-Fecha: 2026-10-17 14:53
+Fecha: 2026-10-18 20:27
 
-Venta de hoy: $2.369.000 (13 ventas) · vs ayer: -56.8%
-  - Local 107: $1.010.000 (5 ventas)
-  - Local 433: $704.000 (3 ventas)
-  - Local 144: $655.000 (5 ventas)
+Venta de hoy: $4.113.000 (27 ventas) · vs ayer: -35.4%
+  - Local 107: $1.993.000 (15 ventas)
+  - Local 144: $1.368.000 (6 ventas)
+  - Local 433: $752.000 (6 ventas)
 
-Mes en curso: $73.356.000 · 495 ventas · margen 48.4%
-Año en curso: $968.056.748 · 6898 ventas · margen 46.5%
+Mes en curso: $81.464.000 · 545 ventas · margen 48.3%
+Año en curso: $976.164.748 · 6948 ventas · margen 46.5%
 
 Inventario / pedidos a proveedores:
-  - Ropa: 70 críticas · 5 en alerta · 150 und. sugeridas
+  - Ropa: 71 críticas · 5 en alerta · 159 und. sugeridas
   - Accesorios: 0 categorías críticas · 0 en alerta · 0 und. sugeridas
 
 Dashboard: revisa el link publicado en GitHub Pages para el detalle completo.
