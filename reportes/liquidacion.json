@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-10-19",
+  "generado_al": "2026-10-20",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 424,
-      "unidades": 3455,
-      "valor_costo": 165716500.0
+      "num_referencias": 425,
+      "unidades": 3433,
+      "valor_costo": 165138500.0
     },
     "inactivas": {
       "num_referencias": 9,
@@ -13,9 +13,9 @@
       "valor_costo": 779000.0
     },
     "nuevas": {
-      "num_referencias": 23,
-      "unidades": 116,
-      "valor_costo": 5564000.0
+      "num_referencias": 22,
+      "unidades": 105,
+      "valor_costo": 4519000.0
     }
   },
   "inactivas": [
@@ -80,12 +80,6 @@
       "categoria": "CHAQUETAS",
       "disponible": 18,
       "valor_costo": 1440000.0
-    },
-    {
-      "referencia": "SUDADERA GACEL",
-      "categoria": "CONJUNTOS",
-      "disponible": 11,
-      "valor_costo": 1045000.0
     },
     {
       "referencia": "BLUSA SALOME ENCAJE",
@@ -190,15 +184,15 @@
       "valor_costo": 60000.0
     },
     {
-      "referencia": "FALDA CARGO",
-      "categoria": "FALDAS",
-      "disponible": 1,
-      "valor_costo": 40000.0
-    },
-    {
       "referencia": "BODY MALLA MAR",
       "categoria": "CORSET",
       "disponible": 2,
+      "valor_costo": 40000.0
+    },
+    {
+      "referencia": "FALDA CARGO",
+      "categoria": "FALDAS",
+      "disponible": 1,
       "valor_costo": 40000.0
     },
     {
