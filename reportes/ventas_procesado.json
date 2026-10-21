@@ -1,5 +1,5 @@
 {
-  "actualizado_hasta": "2026-10-20 17:58:18",
+  "actualizado_hasta": "2026-10-20 18:57:11",
   "historico": {
     "kpis": {
       "ingreso_total": 2089561748.36,
@@ -116,7 +116,7 @@
     "ingreso_ayer": 2935000.0
   },
   "cartera": {
-    "num_anuladas_historico": 1174,
+    "num_anuladas_historico": 1175,
     "pendiente_de_cobro": 23004800.92,
     "num_pendiente_de_cobro": 99
   }
