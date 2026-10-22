@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-10-20",
+  "generado_al": "2026-10-21",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 425,
-      "unidades": 3433,
-      "valor_costo": 165138500.0
+      "num_referencias": 426,
+      "unidades": 3404,
+      "valor_costo": 163534500.0
     },
     "inactivas": {
       "num_referencias": 9,
@@ -13,9 +13,9 @@
       "valor_costo": 779000.0
     },
     "nuevas": {
-      "num_referencias": 22,
-      "unidades": 105,
-      "valor_costo": 4519000.0
+      "num_referencias": 21,
+      "unidades": 99,
+      "valor_costo": 4351000.0
     }
   },
   "inactivas": [
@@ -124,12 +124,6 @@
       "valor_costo": 200000.0
     },
     {
-      "referencia": "FALDA PECAS BOLERO",
-      "categoria": "FALDAS",
-      "disponible": 6,
-      "valor_costo": 168000.0
-    },
-    {
       "referencia": "BLAZER CUADROS TREN",
       "categoria": "CONJUNTOS",
       "disponible": 2,
@@ -160,13 +154,13 @@
       "valor_costo": 95000.0
     },
     {
-      "referencia": "BODY MALLA DADOS",
+      "referencia": "BODY MALLA BESO",
       "categoria": "CORSET",
       "disponible": 4,
       "valor_costo": 80000.0
     },
     {
-      "referencia": "BODY MALLA BESO",
+      "referencia": "BODY MALLA DADOS",
       "categoria": "CORSET",
       "disponible": 4,
       "valor_costo": 80000.0
