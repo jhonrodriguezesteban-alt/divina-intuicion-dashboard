@@ -20,3 +20,6 @@ venv/
 
 # Estado interno del harness/agente, no es parte del proyecto
 .claude/
+
+# Contexto para Claude Code (decisiones de negocio, metas) -- local, el repo es público
+CLAUDE.md
