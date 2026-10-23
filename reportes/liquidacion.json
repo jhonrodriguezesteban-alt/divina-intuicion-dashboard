@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-10-21",
+  "generado_al": "2026-10-22",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 426,
-      "unidades": 3404,
-      "valor_costo": 163534500.0
+      "num_referencias": 425,
+      "unidades": 3376,
+      "valor_costo": 162096500.0
     },
     "inactivas": {
       "num_referencias": 9,
