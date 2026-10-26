@@ -1,11 +1,11 @@
 {
-  "actualizado_hasta": "2026-10-26 14:38:56",
+  "actualizado_hasta": "2026-10-26 15:47:00",
   "historico": {
     "kpis": {
-      "ingreso_total": 2114188748.33,
-      "num_transacciones": 15070,
-      "ticket_promedio": 140291.22,
-      "utilidad_total": 922215827.38,
+      "ingreso_total": 2114513748.33,
+      "num_transacciones": 15071,
+      "ticket_promedio": 140303.48,
+      "utilidad_total": 922391827.38,
       "margen_promedio": 0.4515
     },
     "por_sucursal": [
@@ -21,8 +21,8 @@
       },
       {
         "sucursal": "DIVINA INTUICION 107",
-        "ingreso": 157094048.57,
-        "transacciones": 1907
+        "ingreso": 157419048.57,
+        "transacciones": 1908
       }
     ],
     "rango_fechas": {
@@ -32,10 +32,10 @@
   },
   "anio_actual": {
     "kpis": {
-      "ingreso_total": 1007500748.33,
-      "num_transacciones": 7194,
-      "ticket_promedio": 140047.37,
-      "utilidad_total": 448671827.38,
+      "ingreso_total": 1007825748.33,
+      "num_transacciones": 7195,
+      "ticket_promedio": 140073.07,
+      "utilidad_total": 448847827.38,
       "margen_promedio": 0.4647
     },
     "por_sucursal": [
@@ -51,23 +51,23 @@
       },
       {
         "sucursal": "DIVINA INTUICION 107",
-        "ingreso": 157094048.57,
-        "transacciones": 1907
+        "ingreso": 157419048.57,
+        "transacciones": 1908
       }
     ],
     "composicion": {
       "facturado": 110125549.19,
-      "remisionado": 897375199.14,
+      "remisionado": 897700199.14,
       "num_facturado": 1002,
-      "num_remisionado": 6192
+      "num_remisionado": 6193
     }
   },
   "mes_actual": {
     "kpis": {
-      "ingreso_total": 117944999.97,
-      "num_transacciones": 810,
-      "ticket_promedio": 145611.11,
-      "utilidad_total": 56313925.31,
+      "ingreso_total": 118269999.97,
+      "num_transacciones": 811,
+      "ticket_promedio": 145832.31,
+      "utilidad_total": 56489925.31,
       "margen_promedio": 0.487
     },
     "por_sucursal": [
@@ -78,8 +78,8 @@
       },
       {
         "sucursal": "DIVINA INTUICION 107",
-        "ingreso": 43586999.97,
-        "transacciones": 345
+        "ingreso": 43911999.97,
+        "transacciones": 346
       },
       {
         "sucursal": "Local 433",
@@ -90,17 +90,17 @@
   },
   "hoy": {
     "kpis": {
-      "ingreso_total": 1683000.0,
-      "num_transacciones": 11,
-      "ticket_promedio": 153000.0,
-      "utilidad_total": 854564.71,
-      "margen_promedio": 0.5143
+      "ingreso_total": 2008000.0,
+      "num_transacciones": 12,
+      "ticket_promedio": 167333.33,
+      "utilidad_total": 1030564.71,
+      "margen_promedio": 0.5166
     },
     "por_sucursal": [
       {
         "sucursal": "DIVINA INTUICION 107",
-        "ingreso": 963000.0,
-        "transacciones": 6
+        "ingreso": 1288000.0,
+        "transacciones": 7
       },
       {
         "sucursal": "Local 144",
