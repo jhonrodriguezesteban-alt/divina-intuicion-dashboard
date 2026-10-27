@@ -1,29 +1,41 @@
 {
-  "generado_al": "2026-10-22",
+  "generado_al": "2026-10-27",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 425,
-      "unidades": 3376,
-      "valor_costo": 162096500.0
+      "num_referencias": 410,
+      "unidades": 3593,
+      "valor_costo": 171044114.0
     },
     "inactivas": {
-      "num_referencias": 9,
-      "unidades": 14,
-      "valor_costo": 779000.0
+      "num_referencias": 11,
+      "unidades": 28,
+      "valor_costo": 1549000.0
     },
     "nuevas": {
-      "num_referencias": 21,
-      "unidades": 99,
-      "valor_costo": 4351000.0
+      "num_referencias": 32,
+      "unidades": 152,
+      "valor_costo": 8117700.0
     }
   },
   "inactivas": [
+    {
+      "referencia": "JEAN DOBLE PRETINA",
+      "categoria": "PANTALONES",
+      "disponible": 8,
+      "valor_costo": 560000.0
+    },
     {
       "referencia": "JEAN MOMFIT MERAKI",
       "categoria": "PANTALONES",
       "disponible": 5,
       "valor_costo": 260000.0
+    },
+    {
+      "referencia": "FALDA PRENSES CORREA",
+      "categoria": "FALDAS",
+      "disponible": 6,
+      "valor_costo": 210000.0
     },
     {
       "referencia": "JEAN MAOS MOÑOS",
@@ -76,22 +88,28 @@
   ],
   "nuevas": [
     {
+      "referencia": "JEAN OREO",
+      "categoria": "PANTALONES",
+      "disponible": 27,
+      "valor_costo": 1955000.0
+    },
+    {
       "referencia": "CHAQUETA TEDDY",
       "categoria": "CHAQUETAS",
-      "disponible": 18,
-      "valor_costo": 1440000.0
+      "disponible": 17,
+      "valor_costo": 1360000.0
+    },
+    {
+      "referencia": "JEAN BAMBI",
+      "categoria": "PANTALONES",
+      "disponible": 12,
+      "valor_costo": 720000.0
     },
     {
       "referencia": "BLUSA SALOME ENCAJE",
       "categoria": "BLUSAS",
-      "disponible": 15,
-      "valor_costo": 375000.0
-    },
-    {
-      "referencia": "BERMUDA JEAN AZUL MEDIO",
-      "categoria": "PANTALONES",
-      "disponible": 6,
-      "valor_costo": 330000.0
+      "disponible": 14,
+      "valor_costo": 350000.0
     },
     {
       "referencia": "FALDA SHORT MARA",
@@ -100,10 +118,28 @@
       "valor_costo": 280000.0
     },
     {
+      "referencia": "BODY CHER",
+      "categoria": "BODYS",
+      "disponible": 9,
+      "valor_costo": 270000.0
+    },
+    {
+      "referencia": "CHAMARRA CHICAGO",
+      "categoria": "CHAQUETAS",
+      "disponible": 3,
+      "valor_costo": 270000.0
+    },
+    {
       "referencia": "CORSET DENIM",
       "categoria": "CORSET",
       "disponible": 6,
       "valor_costo": 270000.0
+    },
+    {
+      "referencia": "JEAN PRINT",
+      "categoria": "PANTALONES",
+      "disponible": 4,
+      "valor_costo": 240000.0
     },
     {
       "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
@@ -124,6 +160,24 @@
       "valor_costo": 200000.0
     },
     {
+      "referencia": "SUDADERA GACEL AZUL OSCUROTU",
+      "categoria": "CONJUNTOS",
+      "disponible": 2,
+      "valor_costo": 190000.0
+    },
+    {
+      "referencia": "CHAQUETA PRINT PELUCHE",
+      "categoria": "CHAQUETAS",
+      "disponible": 2,
+      "valor_costo": 170000.0
+    },
+    {
+      "referencia": "BASICA RIB MANTEQUILLA",
+      "categoria": "BLUSAS",
+      "disponible": 9,
+      "valor_costo": 162000.0
+    },
+    {
       "referencia": "BLAZER CUADROS TREN",
       "categoria": "CONJUNTOS",
       "disponible": 2,
@@ -142,34 +196,28 @@
       "valor_costo": 114000.0
     },
     {
+      "referencia": "VESTIDO ENCAJE VANESSA",
+      "categoria": "VESTIDOS",
+      "disponible": 3,
+      "valor_costo": 105000.0
+    },
+    {
       "referencia": "FALDA SHORT MARA MIEL",
       "categoria": "FALDAS",
       "disponible": 3,
       "valor_costo": 105000.0
     },
     {
-      "referencia": "SUDADERA GACEL AZUL OSCUROTU",
-      "categoria": "CONJUNTOS",
-      "disponible": 1,
-      "valor_costo": 95000.0
-    },
-    {
-      "referencia": "BODY MALLA BESO",
-      "categoria": "CORSET",
-      "disponible": 4,
-      "valor_costo": 80000.0
-    },
-    {
-      "referencia": "BODY MALLA DADOS",
-      "categoria": "CORSET",
-      "disponible": 4,
-      "valor_costo": 80000.0
-    },
-    {
-      "referencia": "VESTIDO BOLERO",
-      "categoria": "VESTIDOS",
+      "referencia": "OVERSIZE NEW YORK",
+      "categoria": "BLUSAS",
       "disponible": 2,
-      "valor_costo": 76000.0
+      "valor_costo": 91000.0
+    },
+    {
+      "referencia": "CHAQUETA CAPA PAÑO",
+      "categoria": "CHAQUETAS",
+      "disponible": 1,
+      "valor_costo": 80000.0
     },
     {
       "referencia": "JEAN BOTA RECTA MAOS",
@@ -178,28 +226,58 @@
       "valor_costo": 60000.0
     },
     {
-      "referencia": "BODY MALLA MAR",
-      "categoria": "CORSET",
-      "disponible": 2,
-      "valor_costo": 40000.0
-    },
-    {
-      "referencia": "FALDA CARGO",
-      "categoria": "FALDAS",
+      "referencia": "OVERSIZE OSO FASHION",
+      "categoria": "BLUSAS",
       "disponible": 1,
-      "valor_costo": 40000.0
+      "valor_costo": 45900.0
     },
     {
-      "referencia": "BODY BASICO ESQUELETO VERDE",
-      "categoria": "BODYS",
-      "disponible": 2,
-      "valor_costo": 36000.0
+      "referencia": "OVERSIZE HAPPY",
+      "categoria": "BLUSAS",
+      "disponible": 1,
+      "valor_costo": 45900.0
     },
     {
-      "referencia": "CAMISA RAYAS  AZUL BEBE/CAFE",
-      "categoria": "CAMISAS",
-      "disponible": 6,
-      "valor_costo": 0.0
+      "referencia": "OVERSIZE CORAZON",
+      "categoria": "BLUSAS",
+      "disponible": 1,
+      "valor_costo": 45900.0
+    },
+    {
+      "referencia": "OVERSIZE PARADISE",
+      "categoria": "BLUSAS",
+      "disponible": 1,
+      "valor_costo": 45500.0
+    },
+    {
+      "referencia": "OVERSIZE PUNTOS",
+      "categoria": "BLUSAS",
+      "disponible": 1,
+      "valor_costo": 45500.0
+    },
+    {
+      "referencia": "OVERSIZE SALMOS",
+      "categoria": "BLUSAS",
+      "disponible": 1,
+      "valor_costo": 45500.0
+    },
+    {
+      "referencia": "OVERSIZE SUNDRIME",
+      "categoria": "BLUSAS",
+      "disponible": 1,
+      "valor_costo": 45500.0
+    },
+    {
+      "referencia": "TEJIDO CHICLE AZUL BEBE/BLANCO",
+      "categoria": "BUZOS",
+      "disponible": 1,
+      "valor_costo": 38000.0
+    },
+    {
+      "referencia": "VESTIDO BOLERO",
+      "categoria": "VESTIDOS",
+      "disponible": 1,
+      "valor_costo": 38000.0
     }
   ]
 }

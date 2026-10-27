@@ -1,114 +1,103 @@
 {
-  "actualizado_hasta": "2026-10-26 18:13:35",
+  "actualizado_hasta": "2026-10-26 18:39:54",
   "historico": {
     "kpis": {
-      "ingreso_total": 2115436748.33,
-      "num_transacciones": 15079,
-      "ticket_promedio": 140290.25,
-      "utilidad_total": 922809827.38,
+      "ingreso_total": 2116177748.33,
+      "num_transacciones": 15086,
+      "ticket_promedio": 140274.28,
+      "utilidad_total": 923134449.23,
       "margen_promedio": 0.4515
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 1287437699.85,
-        "transacciones": 8842
+        "ingreso": 1287717699.85,
+        "transacciones": 8845
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 669911999.91,
-        "transacciones": 4324
+        "ingreso": 670136999.91,
+        "transacciones": 4326
       },
       {
         "sucursal": "DIVINA INTUICION 107",
-        "ingreso": 158087048.57,
-        "transacciones": 1913
+        "ingreso": 158323048.57,
+        "transacciones": 1915
       }
     ],
     "rango_fechas": {
       "desde": "2025-04-01",
-      "hasta": "2026-10-26"
+      "hasta": "2026-10-27"
     }
   },
   "anio_actual": {
     "kpis": {
-      "ingreso_total": 1008748748.33,
-      "num_transacciones": 7203,
-      "ticket_promedio": 140045.64,
-      "utilidad_total": 449265827.38,
+      "ingreso_total": 1009489748.33,
+      "num_transacciones": 7210,
+      "ticket_promedio": 140012.45,
+      "utilidad_total": 449590449.23,
       "margen_promedio": 0.4647
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 548652699.85,
-        "transacciones": 3458
+        "ingreso": 548932699.85,
+        "transacciones": 3461
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 302008999.91,
-        "transacciones": 1832
+        "ingreso": 302233999.91,
+        "transacciones": 1834
       },
       {
         "sucursal": "DIVINA INTUICION 107",
-        "ingreso": 158087048.57,
-        "transacciones": 1913
+        "ingreso": 158323048.57,
+        "transacciones": 1915
       }
     ],
     "composicion": {
       "facturado": 110125549.19,
-      "remisionado": 898623199.14,
+      "remisionado": 899364199.14,
       "num_facturado": 1002,
-      "num_remisionado": 6201
+      "num_remisionado": 6208
     }
   },
   "mes_actual": {
     "kpis": {
-      "ingreso_total": 119192999.97,
-      "num_transacciones": 819,
-      "ticket_promedio": 145534.8,
-      "utilidad_total": 56907925.31,
-      "margen_promedio": 0.4868
+      "ingreso_total": 119933999.97,
+      "num_transacciones": 826,
+      "ticket_promedio": 145198.55,
+      "utilidad_total": 57232547.16,
+      "margen_promedio": 0.4866
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 46274000.0,
-        "transacciones": 299
+        "ingreso": 46554000.0,
+        "transacciones": 302
       },
       {
         "sucursal": "DIVINA INTUICION 107",
-        "ingreso": 44579999.97,
-        "transacciones": 351
+        "ingreso": 44815999.97,
+        "transacciones": 353
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 28339000.0,
-        "transacciones": 169
+        "ingreso": 28564000.0,
+        "transacciones": 171
       }
     ]
   },
   "hoy": {
     "kpis": {
-      "ingreso_total": 2931000.0,
-      "num_transacciones": 20,
-      "ticket_promedio": 146550.0,
-      "utilidad_total": 1448564.71,
-      "margen_promedio": 0.495
+      "ingreso_total": 0,
+      "num_transacciones": 0,
+      "ticket_promedio": 0,
+      "utilidad_total": 0,
+      "margen_promedio": 0
     },
-    "por_sucursal": [
-      {
-        "sucursal": "DIVINA INTUICION 107",
-        "ingreso": 1956000.0,
-        "transacciones": 12
-      },
-      {
-        "sucursal": "Local 144",
-        "ingreso": 975000.0,
-        "transacciones": 8
-      }
-    ],
-    "ingreso_ayer": 5793000.0
+    "por_sucursal": [],
+    "ingreso_ayer": 3672000.0
   },
   "cartera": {
     "num_anuladas_historico": 1394,
