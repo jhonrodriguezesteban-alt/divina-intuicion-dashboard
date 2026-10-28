@@ -3,9 +3,9 @@
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 410,
-      "unidades": 3593,
-      "valor_costo": 171044114.0
+      "num_referencias": 409,
+      "unidades": 3551,
+      "valor_costo": 169174114.0
     },
     "inactivas": {
       "num_referencias": 11,
@@ -13,9 +13,9 @@
       "valor_costo": 1549000.0
     },
     "nuevas": {
-      "num_referencias": 32,
-      "unidades": 152,
-      "valor_costo": 8117700.0
+      "num_referencias": 31,
+      "unidades": 151,
+      "valor_costo": 8072200.0
     }
   },
   "inactivas": [
@@ -196,14 +196,14 @@
       "valor_costo": 114000.0
     },
     {
-      "referencia": "VESTIDO ENCAJE VANESSA",
-      "categoria": "VESTIDOS",
+      "referencia": "FALDA SHORT MARA MIEL",
+      "categoria": "FALDAS",
       "disponible": 3,
       "valor_costo": 105000.0
     },
     {
-      "referencia": "FALDA SHORT MARA MIEL",
-      "categoria": "FALDAS",
+      "referencia": "VESTIDO ENCAJE VANESSA",
+      "categoria": "VESTIDOS",
       "disponible": 3,
       "valor_costo": 105000.0
     },
@@ -226,7 +226,7 @@
       "valor_costo": 60000.0
     },
     {
-      "referencia": "OVERSIZE OSO FASHION",
+      "referencia": "OVERSIZE CORAZON",
       "categoria": "BLUSAS",
       "disponible": 1,
       "valor_costo": 45900.0
@@ -238,7 +238,7 @@
       "valor_costo": 45900.0
     },
     {
-      "referencia": "OVERSIZE CORAZON",
+      "referencia": "OVERSIZE OSO FASHION",
       "categoria": "BLUSAS",
       "disponible": 1,
       "valor_costo": 45900.0
@@ -257,12 +257,6 @@
     },
     {
       "referencia": "OVERSIZE SALMOS",
-      "categoria": "BLUSAS",
-      "disponible": 1,
-      "valor_costo": 45500.0
-    },
-    {
-      "referencia": "OVERSIZE SUNDRIME",
       "categoria": "BLUSAS",
       "disponible": 1,
       "valor_costo": 45500.0
