@@ -1,24 +1,30 @@
 {
-  "generado_al": "2026-10-29",
+  "generado_al": "2026-10-30",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 412,
-      "unidades": 3482,
-      "valor_costo": 165965114.0
+      "num_referencias": 418,
+      "unidades": 4268,
+      "valor_costo": 208320114.0
     },
     "inactivas": {
-      "num_referencias": 10,
-      "unidades": 20,
-      "valor_costo": 989000.0
+      "num_referencias": 11,
+      "unidades": 23,
+      "valor_costo": 1289000.0
     },
     "nuevas": {
-      "num_referencias": 28,
-      "unidades": 122,
-      "valor_costo": 6732200.0
+      "num_referencias": 43,
+      "unidades": 393,
+      "valor_costo": 16061200.0
     }
   },
   "inactivas": [
+    {
+      "referencia": "CHAQUETA AVRILA",
+      "categoria": "CHAQUETAS",
+      "disponible": 3,
+      "valor_costo": 300000.0
+    },
     {
       "referencia": "JEAN MOMFIT MERAKI",
       "categoria": "PANTALONES",
@@ -94,21 +100,99 @@
       "valor_costo": 1360000.0
     },
     {
+      "referencia": "CHAMARRA BERLIN",
+      "categoria": "CHAQUETAS",
+      "disponible": 18,
+      "valor_costo": 1170000.0
+    },
+    {
+      "referencia": "FALDA SHORT PARIS",
+      "categoria": "FALDAS",
+      "disponible": 46,
+      "valor_costo": 1150000.0
+    },
+    {
+      "referencia": "FALDA ANTONIA PRENSES",
+      "categoria": "FALDAS",
+      "disponible": 24,
+      "valor_costo": 1080000.0
+    },
+    {
+      "referencia": "BODY ANTONIA BOTON",
+      "categoria": "BODYS",
+      "disponible": 42,
+      "valor_costo": 1050000.0
+    },
+    {
+      "referencia": "CORSET MELISA CLASICO",
+      "categoria": "CORSET",
+      "disponible": 18,
+      "valor_costo": 810000.0
+    },
+    {
+      "referencia": "JEAN SEMILICRADO YEF",
+      "categoria": "PANTALONES",
+      "disponible": 13,
+      "valor_costo": 715000.0
+    },
+    {
+      "referencia": "BLUSA EMMA VELO",
+      "categoria": "BLUSAS",
+      "disponible": 22,
+      "valor_costo": 550000.0
+    },
+    {
+      "referencia": "FALDA ANTONIA",
+      "categoria": "FALDAS",
+      "disponible": 12,
+      "valor_costo": 540000.0
+    },
+    {
+      "referencia": "JEAN BOTON CINTURA",
+      "categoria": "PANTALONES",
+      "disponible": 8,
+      "valor_costo": 520000.0
+    },
+    {
+      "referencia": "BLUSA SANTORINI BRILLO",
+      "categoria": "BLUSAS",
+      "disponible": 20,
+      "valor_costo": 520000.0
+    },
+    {
+      "referencia": "TEJIDO CAPA CORREA",
+      "categoria": "BUZOS",
+      "disponible": 12,
+      "valor_costo": 300000.0
+    },
+    {
+      "referencia": "VESTIDO BASICO CUADRADO",
+      "categoria": "VESTIDOS",
+      "disponible": 12,
+      "valor_costo": 300000.0
+    },
+    {
+      "referencia": "VESTIDO BASICO ALTO",
+      "categoria": "VESTIDOS",
+      "disponible": 12,
+      "valor_costo": 300000.0
+    },
+    {
       "referencia": "FALDA SHORT MARA",
       "categoria": "FALDAS",
       "disponible": 8,
       "valor_costo": 280000.0
     },
     {
-      "referencia": "BODY CHER",
-      "categoria": "BODYS",
-      "disponible": 9,
-      "valor_costo": 270000.0
-    },
-    {
       "referencia": "CORSET DENIM",
       "categoria": "CORSET",
       "disponible": 6,
+      "valor_costo": 270000.0
+    },
+    {
+      "referencia": "BODY CHER",
+      "categoria": "BODYS",
+      "disponible": 9,
       "valor_costo": 270000.0
     },
     {
@@ -142,6 +226,12 @@
       "valor_costo": 190000.0
     },
     {
+      "referencia": "VESTIDO ENCAJE VANESSA",
+      "categoria": "VESTIDOS",
+      "disponible": 5,
+      "valor_costo": 175000.0
+    },
+    {
       "referencia": "CHAQUETA PRINT PELUCHE",
       "categoria": "CHAQUETAS",
       "disponible": 2,
@@ -152,6 +242,12 @@
       "categoria": "BLUSAS",
       "disponible": 9,
       "valor_costo": 162000.0
+    },
+    {
+      "referencia": "VESTIDO ZARA VELO",
+      "categoria": "VESTIDOS",
+      "disponible": 6,
+      "valor_costo": 150000.0
     },
     {
       "referencia": "BLAZER CUADROS TREN",
@@ -172,16 +268,16 @@
       "valor_costo": 114000.0
     },
     {
-      "referencia": "VESTIDO ENCAJE VANESSA",
-      "categoria": "VESTIDOS",
-      "disponible": 3,
-      "valor_costo": 105000.0
-    },
-    {
       "referencia": "FALDA SHORT MARA MIEL",
       "categoria": "FALDAS",
       "disponible": 3,
       "valor_costo": 105000.0
+    },
+    {
+      "referencia": "BLUSA SANTORINI BRILLO VERDE",
+      "categoria": "BLUSAS",
+      "disponible": 4,
+      "valor_costo": 104000.0
     },
     {
       "referencia": "OVERSIZE NEW YORK",
@@ -202,7 +298,7 @@
       "valor_costo": 60000.0
     },
     {
-      "referencia": "OVERSIZE OSO FASHION",
+      "referencia": "OVERSIZE HAPPY",
       "categoria": "BLUSAS",
       "disponible": 1,
       "valor_costo": 45900.0
@@ -214,13 +310,13 @@
       "valor_costo": 45900.0
     },
     {
-      "referencia": "OVERSIZE HAPPY",
+      "referencia": "OVERSIZE OSO FASHION",
       "categoria": "BLUSAS",
       "disponible": 1,
       "valor_costo": 45900.0
     },
     {
-      "referencia": "OVERSIZE PARADISE",
+      "referencia": "OVERSIZE SALMOS",
       "categoria": "BLUSAS",
       "disponible": 1,
       "valor_costo": 45500.0
@@ -232,7 +328,7 @@
       "valor_costo": 45500.0
     },
     {
-      "referencia": "OVERSIZE SALMOS",
+      "referencia": "OVERSIZE PARADISE",
       "categoria": "BLUSAS",
       "disponible": 1,
       "valor_costo": 45500.0
