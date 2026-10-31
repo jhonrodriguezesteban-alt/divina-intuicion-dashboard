@@ -1,30 +1,24 @@
 {
-  "generado_al": "2026-10-27",
+  "generado_al": "2026-10-29",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 409,
-      "unidades": 3551,
-      "valor_costo": 169174114.0
+      "num_referencias": 412,
+      "unidades": 3482,
+      "valor_costo": 165965114.0
     },
     "inactivas": {
-      "num_referencias": 11,
-      "unidades": 28,
-      "valor_costo": 1549000.0
+      "num_referencias": 10,
+      "unidades": 20,
+      "valor_costo": 989000.0
     },
     "nuevas": {
-      "num_referencias": 31,
-      "unidades": 151,
-      "valor_costo": 8072200.0
+      "num_referencias": 28,
+      "unidades": 122,
+      "valor_costo": 6732200.0
     }
   },
   "inactivas": [
-    {
-      "referencia": "JEAN DOBLE PRETINA",
-      "categoria": "PANTALONES",
-      "disponible": 8,
-      "valor_costo": 560000.0
-    },
     {
       "referencia": "JEAN MOMFIT MERAKI",
       "categoria": "PANTALONES",
@@ -100,18 +94,6 @@
       "valor_costo": 1360000.0
     },
     {
-      "referencia": "JEAN BAMBI",
-      "categoria": "PANTALONES",
-      "disponible": 12,
-      "valor_costo": 720000.0
-    },
-    {
-      "referencia": "BLUSA SALOME ENCAJE",
-      "categoria": "BLUSAS",
-      "disponible": 14,
-      "valor_costo": 350000.0
-    },
-    {
       "referencia": "FALDA SHORT MARA",
       "categoria": "FALDAS",
       "disponible": 8,
@@ -124,22 +106,10 @@
       "valor_costo": 270000.0
     },
     {
-      "referencia": "CHAMARRA CHICAGO",
-      "categoria": "CHAQUETAS",
-      "disponible": 3,
-      "valor_costo": 270000.0
-    },
-    {
       "referencia": "CORSET DENIM",
       "categoria": "CORSET",
       "disponible": 6,
       "valor_costo": 270000.0
-    },
-    {
-      "referencia": "JEAN PRINT",
-      "categoria": "PANTALONES",
-      "disponible": 4,
-      "valor_costo": 240000.0
     },
     {
       "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
@@ -150,6 +120,12 @@
     {
       "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/AZUL",
       "categoria": "BUZOS",
+      "disponible": 4,
+      "valor_costo": 240000.0
+    },
+    {
+      "referencia": "JEAN PRINT",
+      "categoria": "PANTALONES",
       "disponible": 4,
       "valor_costo": 240000.0
     },
@@ -196,14 +172,14 @@
       "valor_costo": 114000.0
     },
     {
-      "referencia": "FALDA SHORT MARA MIEL",
-      "categoria": "FALDAS",
+      "referencia": "VESTIDO ENCAJE VANESSA",
+      "categoria": "VESTIDOS",
       "disponible": 3,
       "valor_costo": 105000.0
     },
     {
-      "referencia": "VESTIDO ENCAJE VANESSA",
-      "categoria": "VESTIDOS",
+      "referencia": "FALDA SHORT MARA MIEL",
+      "categoria": "FALDAS",
       "disponible": 3,
       "valor_costo": 105000.0
     },
@@ -226,6 +202,12 @@
       "valor_costo": 60000.0
     },
     {
+      "referencia": "OVERSIZE OSO FASHION",
+      "categoria": "BLUSAS",
+      "disponible": 1,
+      "valor_costo": 45900.0
+    },
+    {
       "referencia": "OVERSIZE CORAZON",
       "categoria": "BLUSAS",
       "disponible": 1,
@@ -233,12 +215,6 @@
     },
     {
       "referencia": "OVERSIZE HAPPY",
-      "categoria": "BLUSAS",
-      "disponible": 1,
-      "valor_costo": 45900.0
-    },
-    {
-      "referencia": "OVERSIZE OSO FASHION",
       "categoria": "BLUSAS",
       "disponible": 1,
       "valor_costo": 45900.0
