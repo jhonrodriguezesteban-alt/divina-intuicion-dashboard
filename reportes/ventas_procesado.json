@@ -1,122 +1,90 @@
 {
-  "actualizado_hasta": "2026-10-31 16:44:37",
+  "actualizado_hasta": "2026-10-31 18:57:00",
   "historico": {
     "kpis": {
-      "ingreso_total": 2136573748.16,
-      "num_transacciones": 15265,
-      "ticket_promedio": 139965.53,
-      "utilidad_total": 927174061.84,
+      "ingreso_total": 2138838748.16,
+      "num_transacciones": 15278,
+      "ticket_promedio": 139994.68,
+      "utilidad_total": 928140591.25,
       "margen_promedio": 0.4505
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 1295805699.77,
-        "transacciones": 8912
+        "ingreso": 1296370699.77,
+        "transacciones": 8917
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 672354999.82,
-        "transacciones": 4356
+        "ingreso": 673424999.82,
+        "transacciones": 4359
       },
       {
         "sucursal": "DIVINA INTUICION 107",
-        "ingreso": 168413048.57,
-        "transacciones": 1997
+        "ingreso": 169043048.57,
+        "transacciones": 2002
       }
     ],
     "rango_fechas": {
       "desde": "2025-04-01",
-      "hasta": "2026-10-31"
+      "hasta": "2026-11-01"
     }
   },
   "anio_actual": {
     "kpis": {
-      "ingreso_total": 1029885748.16,
-      "num_transacciones": 7389,
-      "ticket_promedio": 139380.94,
-      "utilidad_total": 453630061.84,
+      "ingreso_total": 1032150748.16,
+      "num_transacciones": 7402,
+      "ticket_promedio": 139442.14,
+      "utilidad_total": 454596591.25,
       "margen_promedio": 0.4623
     },
     "por_sucursal": [
       {
         "sucursal": "Local 144",
-        "ingreso": 557020699.77,
-        "transacciones": 3528
+        "ingreso": 557585699.77,
+        "transacciones": 3533
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 304451999.82,
-        "transacciones": 1864
+        "ingreso": 305521999.82,
+        "transacciones": 1867
       },
       {
         "sucursal": "DIVINA INTUICION 107",
-        "ingreso": 168413048.57,
-        "transacciones": 1997
+        "ingreso": 169043048.57,
+        "transacciones": 2002
       }
     ],
     "composicion": {
       "facturado": 155405048.76,
-      "remisionado": 874480699.4,
+      "remisionado": 876745699.4,
       "num_facturado": 1391,
-      "num_remisionado": 5998
+      "num_remisionado": 6011
     }
   },
   "mes_actual": {
     "kpis": {
-      "ingreso_total": 149096999.99,
-      "num_transacciones": 1033,
-      "ticket_promedio": 144333.98,
-      "utilidad_total": 71088132.88,
-      "margen_promedio": 0.4863
+      "ingreso_total": 0,
+      "num_transacciones": 0,
+      "ticket_promedio": 0,
+      "utilidad_total": 0,
+      "margen_promedio": 0
     },
-    "por_sucursal": [
-      {
-        "sucursal": "Local 144",
-        "ingreso": 59595000.0,
-        "transacciones": 384
-      },
-      {
-        "sucursal": "DIVINA INTUICION 107",
-        "ingreso": 54974999.99,
-        "transacciones": 436
-      },
-      {
-        "sucursal": "Local 433",
-        "ingreso": 34527000.0,
-        "transacciones": 213
-      }
-    ]
+    "por_sucursal": []
   },
   "hoy": {
     "kpis": {
-      "ingreso_total": 6857000.01,
-      "num_transacciones": 48,
-      "ticket_promedio": 142854.17,
-      "utilidad_total": 3385300.0,
-      "margen_promedio": 0.5047
+      "ingreso_total": 0,
+      "num_transacciones": 0,
+      "ticket_promedio": 0,
+      "utilidad_total": 0,
+      "margen_promedio": 0
     },
-    "por_sucursal": [
-      {
-        "sucursal": "Local 144",
-        "ingreso": 3016000.0,
-        "transacciones": 20
-      },
-      {
-        "sucursal": "DIVINA INTUICION 107",
-        "ingreso": 2248000.01,
-        "transacciones": 16
-      },
-      {
-        "sucursal": "Local 433",
-        "ingreso": 1593000.0,
-        "transacciones": 12
-      }
-    ],
-    "ingreso_ayer": 5461000.0
+    "por_sucursal": [],
+    "ingreso_ayer": 9122000.01
   },
   "cartera": {
-    "num_anuladas_historico": 1812,
+    "num_anuladas_historico": 1813,
     "pendiente_de_cobro": 36916801.39,
     "num_pendiente_de_cobro": 146
   }
