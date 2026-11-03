@@ -1,11 +1,11 @@
 {
-  "generado_al": "2026-10-31",
+  "generado_al": "2026-11-02",
   "anio": 2026,
   "resumen": {
     "activas": {
-      "num_referencias": 422,
-      "unidades": 4303,
-      "valor_costo": 209308114.0
+      "num_referencias": 421,
+      "unidades": 4284,
+      "valor_costo": 207407114.0
     },
     "inactivas": {
       "num_referencias": 11,
@@ -13,9 +13,9 @@
       "valor_costo": 1289000.0
     },
     "nuevas": {
-      "num_referencias": 37,
-      "unidades": 269,
-      "valor_costo": 12341200.0
+      "num_referencias": 36,
+      "unidades": 227,
+      "valor_costo": 11291200.0
     }
   },
   "inactivas": [
@@ -112,12 +112,6 @@
       "valor_costo": 1080000.0
     },
     {
-      "referencia": "BODY ANTONIA BOTON",
-      "categoria": "BODYS",
-      "disponible": 42,
-      "valor_costo": 1050000.0
-    },
-    {
       "referencia": "JEAN SEMILICRADO YEF",
       "categoria": "PANTALONES",
       "disponible": 13,
@@ -130,8 +124,8 @@
       "valor_costo": 520000.0
     },
     {
-      "referencia": "VESTIDO BASICO CUADRADO",
-      "categoria": "VESTIDOS",
+      "referencia": "TEJIDO CAPA CORREA",
+      "categoria": "BUZOS",
       "disponible": 12,
       "valor_costo": 300000.0
     },
@@ -142,8 +136,8 @@
       "valor_costo": 300000.0
     },
     {
-      "referencia": "TEJIDO CAPA CORREA",
-      "categoria": "BUZOS",
+      "referencia": "VESTIDO BASICO CUADRADO",
+      "categoria": "VESTIDOS",
       "disponible": 12,
       "valor_costo": 300000.0
     },
@@ -166,13 +160,13 @@
       "valor_costo": 270000.0
     },
     {
-      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/AZUL",
+      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
       "categoria": "BUZOS",
       "disponible": 4,
       "valor_costo": 240000.0
     },
     {
-      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/GRIS",
+      "referencia": "TEJIDO CUELLO BOTON AZUL BEBE/AZUL",
       "categoria": "BUZOS",
       "disponible": 4,
       "valor_costo": 240000.0
@@ -262,7 +256,7 @@
       "valor_costo": 60000.0
     },
     {
-      "referencia": "OVERSIZE CORAZON",
+      "referencia": "OVERSIZE OSO FASHION",
       "categoria": "BLUSAS",
       "disponible": 1,
       "valor_costo": 45900.0
@@ -274,13 +268,13 @@
       "valor_costo": 45900.0
     },
     {
-      "referencia": "OVERSIZE OSO FASHION",
+      "referencia": "OVERSIZE CORAZON",
       "categoria": "BLUSAS",
       "disponible": 1,
       "valor_costo": 45900.0
     },
     {
-      "referencia": "OVERSIZE SALMOS",
+      "referencia": "OVERSIZE PARADISE",
       "categoria": "BLUSAS",
       "disponible": 1,
       "valor_costo": 45500.0
@@ -292,20 +286,20 @@
       "valor_costo": 45500.0
     },
     {
-      "referencia": "OVERSIZE PARADISE",
+      "referencia": "OVERSIZE SALMOS",
       "categoria": "BLUSAS",
       "disponible": 1,
       "valor_costo": 45500.0
     },
     {
-      "referencia": "VESTIDO BOLERO",
-      "categoria": "VESTIDOS",
+      "referencia": "TEJIDO CHICLE AZUL BEBE/BLANCO",
+      "categoria": "BUZOS",
       "disponible": 1,
       "valor_costo": 38000.0
     },
     {
-      "referencia": "TEJIDO CHICLE AZUL BEBE/BLANCO",
-      "categoria": "BUZOS",
+      "referencia": "VESTIDO BOLERO",
+      "categoria": "VESTIDOS",
       "disponible": 1,
       "valor_costo": 38000.0
     }
