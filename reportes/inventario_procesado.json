@@ -1,45 +1,45 @@
 {
   "total_articulos": 3620,
-  "articulos_sin_stock": 1982,
-  "unidades_totales": 6008,
-  "valor_total_costo": 239192526.5,
+  "articulos_sin_stock": 1986,
+  "unidades_totales": 5989,
+  "valor_total_costo": 238322526.5,
   "stock_por_sucursal": {
-    "Local 144": 1846,
-    "Local 433": 1386,
+    "Local 144": 1850,
+    "Local 433": 1383,
     "Local 107": 0,
-    "Bodega Principal 413": 1209,
-    "Divina Accesorios": 1567
+    "Bodega Principal 413": 1197,
+    "Divina Accesorios": 1559
   },
   "top_categorias_por_valor": [
     {
       "Categoría": "PANTALONES",
       "articulos": 1082,
-      "stock_total": 852.0,
-      "valor_costo": 56895114.0
+      "stock_total": 847.0,
+      "valor_costo": 56610114.0
     },
     {
       "Categoría": "CONJUNTOS",
       "articulos": 133,
-      "stock_total": 381.0,
-      "valor_costo": 36890000.0
+      "stock_total": 379.0,
+      "valor_costo": 36710000.0
     },
     {
       "Categoría": "BLUSAS",
       "articulos": 524,
-      "stock_total": 921.0,
-      "valor_costo": 24856200.0
+      "stock_total": 919.0,
+      "valor_costo": 24813200.0
     },
     {
       "Categoría": "CHAQUETAS",
       "articulos": 236,
-      "stock_total": 325.0,
-      "valor_costo": 23974000.0
+      "stock_total": 323.0,
+      "valor_costo": 23847000.0
     },
     {
       "Categoría": "CORSET",
       "articulos": 233,
-      "stock_total": 458.0,
-      "valor_costo": 19588000.0
+      "stock_total": 456.0,
+      "valor_costo": 19508000.0
     },
     {
       "Categoría": "FALDAS",
@@ -50,14 +50,14 @@
     {
       "Categoría": "BUZOS",
       "articulos": 167,
-      "stock_total": 362.0,
-      "valor_costo": 13260000.0
+      "stock_total": 361.0,
+      "valor_costo": 13210000.0
     },
     {
       "Categoría": "BODYS",
       "articulos": 240,
-      "stock_total": 377.0,
-      "valor_costo": 9653000.0
+      "stock_total": 375.0,
+      "valor_costo": 9607000.0
     }
   ]
 }
