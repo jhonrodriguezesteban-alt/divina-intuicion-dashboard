@@ -1,63 +1,63 @@
 {
   "total_articulos": 3620,
-  "articulos_sin_stock": 1986,
-  "unidades_totales": 5989,
-  "valor_total_costo": 238322526.5,
+  "articulos_sin_stock": 1987,
+  "unidades_totales": 5952,
+  "valor_total_costo": 236787226.5,
   "stock_por_sucursal": {
-    "Local 144": 1850,
-    "Local 433": 1383,
+    "Local 144": 1843,
+    "Local 433": 1382,
     "Local 107": 0,
-    "Bodega Principal 413": 1197,
-    "Divina Accesorios": 1559
+    "Bodega Principal 413": 1185,
+    "Divina Accesorios": 1542
   },
   "top_categorias_por_valor": [
     {
       "Categoría": "PANTALONES",
       "articulos": 1082,
-      "stock_total": 847.0,
-      "valor_costo": 56610114.0
+      "stock_total": 843.0,
+      "valor_costo": 56329114.0
     },
     {
       "Categoría": "CONJUNTOS",
       "articulos": 133,
-      "stock_total": 379.0,
-      "valor_costo": 36710000.0
+      "stock_total": 377.0,
+      "valor_costo": 36466000.0
     },
     {
       "Categoría": "BLUSAS",
       "articulos": 524,
-      "stock_total": 919.0,
-      "valor_costo": 24813200.0
+      "stock_total": 912.0,
+      "valor_costo": 24645200.0
     },
     {
       "Categoría": "CHAQUETAS",
       "articulos": 236,
-      "stock_total": 323.0,
-      "valor_costo": 23847000.0
+      "stock_total": 319.0,
+      "valor_costo": 23535000.0
     },
     {
       "Categoría": "CORSET",
       "articulos": 233,
-      "stock_total": 456.0,
-      "valor_costo": 19508000.0
+      "stock_total": 453.0,
+      "valor_costo": 19382000.0
     },
     {
       "Categoría": "FALDAS",
       "articulos": 306,
-      "stock_total": 370.0,
-      "valor_costo": 15746000.0
+      "stock_total": 369.0,
+      "valor_costo": 15701000.0
     },
     {
       "Categoría": "BUZOS",
       "articulos": 167,
-      "stock_total": 361.0,
-      "valor_costo": 13210000.0
+      "stock_total": 359.0,
+      "valor_costo": 13166000.0
     },
     {
       "Categoría": "BODYS",
       "articulos": 240,
-      "stock_total": 375.0,
-      "valor_costo": 9607000.0
+      "stock_total": 371.0,
+      "valor_costo": 9507000.0
     }
   ]
 }
