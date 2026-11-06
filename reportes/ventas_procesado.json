@@ -1,11 +1,11 @@
 {
-  "actualizado_hasta": "2026-11-06 16:55:53",
+  "actualizado_hasta": "2026-11-06 17:46:13",
   "historico": {
     "kpis": {
-      "ingreso_total": 2157855748.15,
-      "num_transacciones": 15420,
-      "ticket_promedio": 139938.76,
-      "utilidad_total": 936741530.75,
+      "ingreso_total": 2158080748.15,
+      "num_transacciones": 15423,
+      "ticket_promedio": 139926.13,
+      "utilidad_total": 936851530.75,
       "margen_promedio": 0.4507
     },
     "por_sucursal": [
@@ -16,13 +16,13 @@
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 678827999.82,
-        "transacciones": 4391
+        "ingreso": 678892999.82,
+        "transacciones": 4392
       },
       {
         "sucursal": "DIVINA INTUICION 107",
-        "ingreso": 176544048.56,
-        "transacciones": 2067
+        "ingreso": 176704048.56,
+        "transacciones": 2069
       }
     ],
     "rango_fechas": {
@@ -32,10 +32,10 @@
   },
   "anio_actual": {
     "kpis": {
-      "ingreso_total": 1051167748.15,
-      "num_transacciones": 7544,
-      "ticket_promedio": 139338.25,
-      "utilidad_total": 463197530.75,
+      "ingreso_total": 1051392748.15,
+      "num_transacciones": 7547,
+      "ticket_promedio": 139312.67,
+      "utilidad_total": 463307530.75,
       "margen_promedio": 0.4625
     },
     "por_sucursal": [
@@ -46,35 +46,35 @@
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 310924999.82,
-        "transacciones": 1899
+        "ingreso": 310989999.82,
+        "transacciones": 1900
       },
       {
         "sucursal": "DIVINA INTUICION 107",
-        "ingreso": 176544048.56,
-        "transacciones": 2067
+        "ingreso": 176704048.56,
+        "transacciones": 2069
       }
     ],
     "composicion": {
       "facturado": 158753048.72,
-      "remisionado": 892414699.43,
+      "remisionado": 892639699.43,
       "num_facturado": 1420,
-      "num_remisionado": 6124
+      "num_remisionado": 6127
     }
   },
   "mes_actual": {
     "kpis": {
-      "ingreso_total": 19939999.99,
-      "num_transacciones": 145,
-      "ticket_promedio": 137517.24,
-      "utilidad_total": 9534174.78,
+      "ingreso_total": 20164999.99,
+      "num_transacciones": 148,
+      "ticket_promedio": 136250.0,
+      "utilidad_total": 9644174.78,
       "margen_promedio": 0.4924
     },
     "por_sucursal": [
       {
         "sucursal": "DIVINA INTUICION 107",
-        "ingreso": 7500999.99,
-        "transacciones": 65
+        "ingreso": 7660999.99,
+        "transacciones": 67
       },
       {
         "sucursal": "Local 144",
@@ -83,29 +83,29 @@
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 5663000.0,
-        "transacciones": 33
+        "ingreso": 5728000.0,
+        "transacciones": 34
       }
     ]
   },
   "hoy": {
     "kpis": {
-      "ingreso_total": 3110000.0,
-      "num_transacciones": 26,
-      "ticket_promedio": 119615.38,
-      "utilidad_total": 1524676.47,
-      "margen_promedio": 0.4967
+      "ingreso_total": 3335000.0,
+      "num_transacciones": 29,
+      "ticket_promedio": 115000.0,
+      "utilidad_total": 1634676.47,
+      "margen_promedio": 0.4962
     },
     "por_sucursal": [
       {
         "sucursal": "DIVINA INTUICION 107",
-        "ingreso": 1559000.0,
-        "transacciones": 16
+        "ingreso": 1719000.0,
+        "transacciones": 18
       },
       {
         "sucursal": "Local 433",
-        "ingreso": 780000.0,
-        "transacciones": 5
+        "ingreso": 845000.0,
+        "transacciones": 6
       },
       {
         "sucursal": "Local 144",
